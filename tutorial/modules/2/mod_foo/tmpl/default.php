@@ -14,6 +14,4 @@ defined('_JEXEC') or die;
 $domain = $params->get('domain', 'https://www.joomla.org');
 ?>
 
-<a href="<?php echo $domain; ?>">
-	<?php echo '[PROJECT_NAME]'; ?>
-</a>
+<?php echo '[PROJECT_NAME]' . $test; 

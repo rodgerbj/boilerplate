@@ -22,3 +22,4 @@ To customize the boilerplates using your own name you need to take the following
    * [COPYRIGHT]
    * [PACKAGE_NAME]
    
+modulclass sfx: https://github.com/joomla/joomla-cms/pull/17447

@@ -44,6 +44,18 @@ class RoboFile extends \Robo\Tasks
 	}
 
 	/**
+	 * Unmap from a Joomla installation.
+	 *
+	 * @param   String  $target  The target joomla instance
+	 *
+	 * @return  void
+	 */
+	public function umap($target)
+	{
+		(new \Joomla\Jorobo\Tasks\Umap($target))->run();
+	}
+
+        /**
 	 * Build the joomla extension package
 	 *
 	 * @param   array  $params  Additional params

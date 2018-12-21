@@ -211,6 +211,20 @@ class Map extends JTask implements TaskInterface
 	}
 
 	/**
+	 * Process media
+	 *
+	 * @param   String  $toDir  The target
+	 *
+	 * @return  void
+	 *
+	 * @since   1.0
+	 */
+	private function processTemplates($src, $toDir)
+	{
+		$this->linkSubdirectories($src, $toDir . "/templates");
+	}
+
+        /**
 	 * Link subdirectories into folder
 	 *
 	 * @param   string  $src  The source
