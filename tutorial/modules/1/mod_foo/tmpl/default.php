@@ -10,8 +10,6 @@
 
 defined('_JEXEC') or die;
 
-// Access to module parameters
-$domain = $params->get('domain', 'https://www.joomla.org');
 ?>
 
 <?php echo '[PROJECT_NAME]'; 

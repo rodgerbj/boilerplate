@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="module" version="3.8" client="site" method="upgrade">
+<extension type="module" version="4.0" client="site" method="upgrade">
     <name>MOD_FOO</name>
     <creationDate>[DATE]</creationDate>
     <author>[AUTHOR]</author>
@@ -9,7 +9,7 @@
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <version>1.0</version>
     <description>MOD_FOO_XML_DESCRIPTION</description>
-
+    <namespace>Joomla\Module\Foo</namespace>
     <files>
         <filename module="mod_foo">mod_foo.php</filename>
         <folder>tmpl</folder>
@@ -17,10 +17,5 @@
         <folder>language</folder>
         <filename>mod_foo.xml</filename>
     </files>
-
-    <!-- Update servers -->
-    <updateservers>
-        <server type="extension" priority="1" name="[PROJECT_NAME]">https://www.example.com/mod_foo.xml</server>
-    </updateservers>
 
 </extension>

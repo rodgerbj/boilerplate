@@ -11,14 +11,6 @@ namespace Joomla\Module\Foo\Site\Helper;
 
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Application\CMSApplication;
-use Joomla\CMS\Factory;
-use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Language\Multilanguage;
-use Joomla\CMS\Language\Text;
-use Joomla\CMS\Router\Route;
-use Joomla\Registry\Registry;
-
 /**
  * Helper for mod_foo
  *
@@ -34,7 +26,7 @@ class FooHelper
 	 *
 	 * @return  array
 	 */
-	public static function getText(Registry $params, CMSApplication $app)
+	public static function getText()
 	{
 		return 'FooHelpertest';
 	}

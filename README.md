@@ -1,10 +1,16 @@
-# Boilerplate
-Boilerplate files for Joomla! extensions.
+# Boilerplate and Tutorial Sample Files
+Boilerplate files for Joomla! 4 extensions.
+
+# Tutorial Sample Files
+You can find the Tutorial Sample Files in the folder *Tutorial* :)
 
 # Installation
-The boilerplates can be installed as-is using the Extension Manager. However, the component, module and plugin will be called Foo :)
+The boilerplates are in the folder src. They can be installed 
+as-is using the Extension Manager. 
+However, the component, module and plugin will be called Foo :)
 
-To create installable zip packages, you only need to zip the folder with the files and it is ready to be installed.
+To create installable zip packages, you only need to zip the folder with 
+the files and it is ready to be installed.
 
 # Customizing
 To customize the boilerplates using your own name you need to take the following steps:
@@ -21,5 +27,3 @@ To customize the boilerplates using your own name you need to take the following
    * [AUTHOR_URL]
    * [COPYRIGHT]
    * [PACKAGE_NAME]
-   
-modulclass sfx: https://github.com/joomla/joomla-cms/pull/17447
