@@ -11,15 +11,9 @@
 			addfieldprefix="Joomla\Component\Foos\Administrator\Field"
 		>
 			<field
-				name="show_text"
-				type="text"
-				label="COM_FOOS_FIELD_TEXT_SHOW_LABEL"
-				default="Hi" 
-			/>
-			<field
 				name="id"
 				type="modal_foo"
-				label="COM_CONTACT_SELECT_CONTACT_LABEL"
+				label="COM_FOOS_SELECT_FOO_LABEL"
 				required="true"
 				select="true"
 				new="true"

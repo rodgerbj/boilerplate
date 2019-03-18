@@ -74,6 +74,40 @@ class FooField extends FormField
 				function jSelectFoo_" . $this->id . "(id, title, object) {
 					window.processModalSelect('Foo', '" . $this->id . "', id, title, '', object);
 				}
+
+
+  window.jSelectFoo = function (id, title, catid, object, link, lang) {
+    var hreflang = '';
+    window.parent.Joomla.Modal.getCurrent().close();
+    return true;
+  };
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // Get the elements
+    var elements = document.querySelectorAll('.select-link');
+
+    for (var i = 0, l = elements.length; l > i; i += 1) {
+      // Listen for click event
+      elements[i].addEventListener('click', function (event) {
+        event.preventDefault();
+        var functionName = event.target.getAttribute('data-function');
+
+        if (functionName === 'jSelectFoo') {
+          // Used in xtd_contacts
+          window[functionName](event.target.getAttribute('data-id'), event.target.getAttribute('data-title'), null, null, event.target.getAttribute('data-uri'), event.target.getAttribute('data-language'), null);
+        } else {
+          // Used in com_menus
+          window.parent[functionName](event.target.getAttribute('data-id'), event.target.getAttribute('data-title'), null, null, event.target.getAttribute('data-uri'), event.target.getAttribute('data-language'), null);
+        }
+
+        if (window.parent.Joomla.Modal) {
+          window.parent.Joomla.Modal.getCurrent().close();
+        }
+      });
+    }
+  });
+
+
 				");
 
 				$scriptSelect[$this->id] = true;
@@ -101,7 +135,7 @@ class FooField extends FormField
 			$db    = Factory::getDbo();
 			$query = $db->getQuery(true)
 				->select($db->quoteName('name'))
-				->from($db->quoteName('#__foo_details'))
+				->from($db->quoteName('#__foos_details'))
 				->where($db->quoteName('id') . ' = ' . (int) $value);
 			$db->setQuery($query);
 
