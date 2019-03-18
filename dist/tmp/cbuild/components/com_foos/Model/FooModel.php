@@ -12,6 +12,7 @@ namespace Joomla\Component\Foos\Site\Model;
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\BaseDatabaseModel;
 
 /**
@@ -34,10 +35,8 @@ class FooModel extends BaseDatabaseModel
 	 */
 	public function getMsg()
 	{
-		if (!isset($this->message))
-		{
-			$this->message = 'Hello Foo!';
-		}
+		$app = Factory::getApplication();
+		$this->message = $app->input->get('show_text', "Hi");
 
 		return $this->message;
 	}
