@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package     Joomla.Administrator
  * @subpackage  com_foos
@@ -11,28 +12,60 @@ namespace Joomla\Component\Foos\Administrator\View\Foos;
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
+use Joomla\CMS\Toolbar\Toolbar;
+use Joomla\CMS\Toolbar\ToolbarHelper;
 
 /**
  * View class for a list of foos.
  *
- * @since  4.0
+ * @since  1.6
  */
 class HtmlView extends BaseHtmlView
 {
+
 	/**
-	 * Method to display the view.
+	 * An array of items
 	 *
-	 * @param   string  $tpl  A template file to load. [optional]
+	 * @var  array
+	 */
+	protected $items;
+
+	/**
+	 * Display the view.
 	 *
-	 * @return  mixed  A string if successful, otherwise an \Exception object.
+	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
 	 *
-	 * @since   4.0
+	 * @return  mixed  A string if successful, otherwise an Error object.
 	 */
 	public function display($tpl = null)
 	{
+
 		$this->items = $this->get('Items');
-		
+
+		$this->addToolbar();
+		$this->sidebar = \JHtmlSidebar::render();
 		return parent::display($tpl);
 	}
+
+	/**
+	 * Add the page title and toolbar.
+	 *
+	 * @return  void
+	 *
+	 * @since   1.6
+	 */
+	protected function addToolbar()
+	{
+		// Get the toolbar object instance
+		$toolbar = Toolbar::getInstance('toolbar');
+
+		ToolbarHelper::title(Text::_('COM_FOO_MANAGER_FOOS'), 'address foo');
+
+		$toolbar->addNew('foo.add');
+		HTMLHelper::_('sidebar.setAction', 'index.php?option=com_foos');
+	}
+
 }

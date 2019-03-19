@@ -41,13 +41,8 @@ class FooField extends FormField
 	 */
 	protected function getInput()
 	{
-		$allowNew    = ((string) $this->element['new'] == 'true');
-		$allowEdit   = ((string) $this->element['edit'] == 'true');
 		$allowClear  = ((string) $this->element['clear'] != 'false');
 		$allowSelect = ((string) $this->element['select'] != 'false');
-
-		// Load language
-		Factory::getLanguage()->load('com_foos', JPATH_ADMINISTRATOR);
 
 		// The active foo id field.
 		$value = (int) $this->value > 0 ? (int) $this->value : '';
@@ -74,40 +69,6 @@ class FooField extends FormField
 				function jSelectFoo_" . $this->id . "(id, title, object) {
 					window.processModalSelect('Foo', '" . $this->id . "', id, title, '', object);
 				}
-
-
-  window.jSelectFoo = function (id, title, catid, object, link, lang) {
-    var hreflang = '';
-    window.parent.Joomla.Modal.getCurrent().close();
-    return true;
-  };
-
-  document.addEventListener('DOMContentLoaded', function () {
-    // Get the elements
-    var elements = document.querySelectorAll('.select-link');
-
-    for (var i = 0, l = elements.length; l > i; i += 1) {
-      // Listen for click event
-      elements[i].addEventListener('click', function (event) {
-        event.preventDefault();
-        var functionName = event.target.getAttribute('data-function');
-
-        if (functionName === 'jSelectFoo') {
-          // Used in xtd_contacts
-          window[functionName](event.target.getAttribute('data-id'), event.target.getAttribute('data-title'), null, null, event.target.getAttribute('data-uri'), event.target.getAttribute('data-language'), null);
-        } else {
-          // Used in com_menus
-          window.parent[functionName](event.target.getAttribute('data-id'), event.target.getAttribute('data-title'), null, null, event.target.getAttribute('data-uri'), event.target.getAttribute('data-language'), null);
-        }
-
-        if (window.parent.Joomla.Modal) {
-          window.parent.Joomla.Modal.getCurrent().close();
-        }
-      });
-    }
-  });
-
-
 				");
 
 				$scriptSelect[$this->id] = true;
@@ -119,16 +80,7 @@ class FooField extends FormField
 		$linkFoo  = 'index.php?option=com_foos&amp;view=foo&amp;layout=modal&amp;tmpl=component&amp;' . Session::getFormToken() . '=1';
 		$modalTitle   = Text::_('COM_FOO_CHANGE_FOO');
 
-		if (isset($this->element['language']))
-		{
-			$linkFoos .= '&amp;forcedLanguage=' . $this->element['language'];
-			$linkFoo   .= '&amp;forcedLanguage=' . $this->element['language'];
-			$modalTitle     .= ' &#8212; ' . $this->element['label'];
-		}
-
 		$urlSelect = $linkFoos . '&amp;function=jSelectFoo_' . $this->id;
-		$urlEdit   = $linkFoo . '&amp;task=foo.edit&amp;id=\' + document.getElementById("' . $this->id . '_id").value + \'';
-		$urlNew    = $linkFoo . '&amp;task=foo.add';
 
 		if ($value)
 		{
@@ -179,34 +131,6 @@ class FooField extends FormField
 				. '</button>';
 		}
 
-		// New foo button
-		if ($allowNew)
-		{
-			$html .= '<button'
-				. ' class="btn btn-secondary hasTooltip' . ($value ? ' hidden' : '') . '"'
-				. ' id="' . $this->id . '_new"'
-				. ' data-toggle="modal"'
-				. ' type="button"'
-				. ' data-target="#ModalNew' . $modalId . '"'
-				. ' title="' . HTMLHelper::tooltipText('COM_FOO_NEW_FOO') . '">'
-				. '<span class="icon-new" aria-hidden="true"></span> ' . Text::_('JACTION_CREATE')
-				. '</button>';
-		}
-
-		// Edit foo button
-		if ($allowEdit)
-		{
-			$html .= '<button'
-				. ' class="btn btn-secondary hasTooltip' . ($value ? '' : ' hidden') . '"'
-				. ' id="' . $this->id . '_edit"'
-				. ' data-toggle="modal"'
-				. ' type="button"'
-				. ' data-target="#ModalEdit' . $modalId . '"'
-				. ' title="' . HTMLHelper::tooltipText('COM_FOO_EDIT_FOO') . '">'
-				. '<span class="icon-edit" aria-hidden="true"></span> ' . Text::_('JACTION_EDIT')
-				. '</button>';
-		}
-
 		// Clear foo button
 		if ($allowClear)
 		{
@@ -243,70 +167,6 @@ class FooField extends FormField
 			);
 		}
 
-		// New foo modal
-		if ($allowNew)
-		{
-			$html .= HTMLHelper::_(
-				'bootstrap.renderModal',
-				'ModalNew' . $modalId,
-				array(
-					'title'       => Text::_('COM_FOO_NEW_FOO'),
-					'backdrop'    => 'static',
-					'keyboard'    => false,
-					'closeButton' => false,
-					'url'         => $urlNew,
-					'height'      => '400px',
-					'width'       => '800px',
-					'bodyHeight'  => 70,
-					'modalWidth'  => 80,
-					'footer'      => '<a role="button" class="btn btn-secondary" aria-hidden="true"'
-							. ' onclick="window.processModalEdit(this, \''
-							. $this->id . '\', \'add\', \'foo\', \'cancel\', \'foo-form\', \'jform_id\', \'jform_name\'); return false;">'
-							. Text::_('JLIB_HTML_BEHAVIOR_CLOSE') . '</a>'
-							. '<a role="button" class="btn btn-primary" aria-hidden="true"'
-							. ' onclick="window.processModalEdit(this, \''
-							. $this->id . '\', \'add\', \'foo\', \'save\', \'foo-form\', \'jform_id\', \'jform_name\'); return false;">'
-							. Text::_('JSAVE') . '</a>'
-							. '<a role="button" class="btn btn-success" aria-hidden="true"'
-							. ' onclick="window.processModalEdit(this, \''
-							. $this->id . '\', \'add\', \'foo\', \'apply\', \'foo-form\', \'jform_id\', \'jform_name\'); return false;">'
-							. Text::_('JAPPLY') . '</a>',
-				)
-			);
-		}
-
-		// Edit foo modal.
-		if ($allowEdit)
-		{
-			$html .= HTMLHelper::_(
-				'bootstrap.renderModal',
-				'ModalEdit' . $modalId,
-				array(
-					'title'       => Text::_('COM_FOO_EDIT_FOO'),
-					'backdrop'    => 'static',
-					'keyboard'    => false,
-					'closeButton' => false,
-					'url'         => $urlEdit,
-					'height'      => '400px',
-					'width'       => '800px',
-					'bodyHeight'  => 70,
-					'modalWidth'  => 80,
-					'footer'      => '<a role="button" class="btn btn-secondary" aria-hidden="true"'
-							. ' onclick="window.processModalEdit(this, \'' . $this->id
-							. '\', \'edit\', \'foo\', \'cancel\', \'foo-form\', \'jform_id\', \'jform_name\'); return false;">'
-							. Text::_('JLIB_HTML_BEHAVIOR_CLOSE') . '</a>'
-							. '<a role="button" class="btn btn-primary" aria-hidden="true"'
-							. ' onclick="window.processModalEdit(this, \''
-							. $this->id . '\', \'edit\', \'foo\', \'save\', \'foo-form\', \'jform_id\', \'jform_name\'); return false;">'
-							. Text::_('JSAVE') . '</a>'
-							. '<a role="button" class="btn btn-success" aria-hidden="true"'
-							. ' onclick="window.processModalEdit(this, \''
-							. $this->id . '\', \'edit\', \'foo\', \'apply\', \'foo-form\', \'jform_id\', \'jform_name\'); return false;">'
-							. Text::_('JAPPLY') . '</a>',
-				)
-			);
-		}
-
 		// Note: class='required' for client side validation.
 		$class = $this->required ? ' class="required modal-value"' : '';
 
@@ -321,7 +181,7 @@ class FooField extends FormField
 	 *
 	 * @return  string  The field label markup.
 	 *
-	 * @since   3.4
+	 * @since   4.0
 	 */
 	protected function getLabel()
 	{
