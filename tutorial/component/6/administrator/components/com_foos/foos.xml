@@ -43,8 +43,8 @@
 			<folder>Service</folder>
 			<folder>View</folder>
 			<folder>services</folder>
-			<folder>tmpl</folder>
 			<folder>sql</folder>
+			<folder>tmpl</folder>
 		</files>
 	</administration>
 </extension>

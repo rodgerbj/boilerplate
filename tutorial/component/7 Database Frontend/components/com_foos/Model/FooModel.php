@@ -33,11 +33,11 @@ class FooModel extends BaseDatabaseModel
 	/**
 	 * Gets a foo
 	 *
-	 * @param   integer  $pk  Id for the contact
+	 * @param   integer  $pk  Id for the foo
 	 *
 	 * @return  mixed Object or null
 	 *
-	 * @since   1.6.0
+	 * @since   4.0
 	 */
 	public function getItem($pk = null)
 	{
@@ -65,7 +65,7 @@ class FooModel extends BaseDatabaseModel
 
 				if (empty($data))
 				{
-					throw new \Exception(Text::_('COM_CONTACT_ERROR_CONTACT_NOT_FOUND'), 404);
+					throw new \Exception(Text::_('COM_FOOS_ERROR_FOO_NOT_FOUND'), 404);
 				}
 				$this->_item[$pk] = $data;
 			}

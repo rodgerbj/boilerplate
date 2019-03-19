@@ -29,15 +29,15 @@ use Joomla\CMS\Router\Route;
 				<?php else : ?>
 					<table class="table" id="fooList">
 						<caption id="captionTable" class="sr-only">
-							<?php echo Text::_('COM_FOO_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
+							<?php echo Text::_('COM_FOOS_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 						</caption>
 						<thead>
 							<tr>
 								<th scope="col" style="width:1%" class="text-center d-none d-md-table-cell">
-									<?php echo Text::_('COM_FOO_TABLE_TABLEHEAD_NAME'); ?>
+									<?php echo Text::_('COM_FOOS_TABLE_TABLEHEAD_NAME'); ?>
 								</th>
 								<th scope="col">
-									<?php echo Text::_('COM_FOO_TABLE_TABLEHEAD_ID'); ?>
+									<?php echo Text::_('COM_FOOS_TABLE_TABLEHEAD_ID'); ?>
 								</th>
 							</tr>
 						</thead>

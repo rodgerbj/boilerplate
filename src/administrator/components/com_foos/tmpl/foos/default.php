@@ -15,12 +15,7 @@ use Joomla\CMS\Router\Route;
 ?>
 <form action="<?php echo Route::_('index.php?option=com_foos'); ?>" method="post" name="adminForm" id="adminForm">
 	<div class="row">
-		<?php if (!empty($this->sidebar)) : ?>
-            <div id="j-sidebar-container" class="col-md-2">
-				<?php echo $this->sidebar; ?>
-            </div>
-		<?php endif; ?>
-        <div class="<?php if (!empty($this->sidebar)) {echo 'col-md-10'; } else { echo 'col-md-12'; } ?>">
+        <div class="col-md-10">
 			<div id="j-main-container" class="j-main-container">
 				<?php if (empty($this->items)) : ?>
 					<div class="alert alert-warning">
@@ -29,15 +24,15 @@ use Joomla\CMS\Router\Route;
 				<?php else : ?>
 					<table class="table" id="fooList">
 						<caption id="captionTable" class="sr-only">
-							<?php echo Text::_('COM_FOO_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
+							<?php echo Text::_('COM_FOOS_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 						</caption>
 						<thead>
 							<tr>
 								<th scope="col" style="width:1%" class="text-center d-none d-md-table-cell">
-									<?php echo Text::_('COM_FOO_TABLE_TABLEHEAD_NAME'); ?>
+									<?php echo Text::_('COM_FOOS_TABLE_TABLEHEAD_NAME'); ?>
 								</th>
 								<th scope="col">
-									<?php echo Text::_('COM_FOO_TABLE_TABLEHEAD_ID'); ?>
+									<?php echo Text::_('COM_FOOS_TABLE_TABLEHEAD_ID'); ?>
 								</th>
 							</tr>
 						</thead>

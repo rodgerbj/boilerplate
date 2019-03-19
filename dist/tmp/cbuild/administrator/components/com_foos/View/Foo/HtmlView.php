@@ -98,7 +98,7 @@ class HtmlView extends BaseHtmlView
 
 		$isNew      = ($this->item->id == 0);
 
-		ToolbarHelper::title($isNew ? Text::_('COM_FOO_MANAGER_FOO_NEW') : Text::_('COM_FOO_MANAGER_FOO_EDIT'), 'address foo');
+		ToolbarHelper::title($isNew ? Text::_('COM_FOOS_MANAGER_FOO_NEW') : Text::_('COM_FOOS_MANAGER_FOO_EDIT'), 'address foo');
 
 		// Build the actions for new and existing records.
 		if ($isNew)

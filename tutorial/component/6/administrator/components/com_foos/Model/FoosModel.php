@@ -15,7 +15,7 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\ListModel;
 
 /**
- * Methods supporting a list of contact records.
+ * Methods supporting a list of foo records.
  *
  * @since  4.0
  */
@@ -38,7 +38,7 @@ class FoosModel extends ListModel
 	 *
 	 * @return  \JDatabaseQuery
 	 *
-	 * @since   1.6
+	 * @since   4.0
 	 */
 	protected function getListQuery()
 	{

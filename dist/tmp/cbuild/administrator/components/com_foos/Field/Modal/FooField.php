@@ -78,7 +78,7 @@ class FooField extends FormField
 		// Setup variables for display.
 		$linkFoos = 'index.php?option=com_foos&amp;view=foos&amp;layout=modal&amp;tmpl=component&amp;' . Session::getFormToken() . '=1';
 		$linkFoo  = 'index.php?option=com_foos&amp;view=foo&amp;layout=modal&amp;tmpl=component&amp;' . Session::getFormToken() . '=1';
-		$modalTitle   = Text::_('COM_FOO_CHANGE_FOO');
+		$modalTitle   = Text::_('COM_FOOS_CHANGE_FOO');
 
 		$urlSelect = $linkFoos . '&amp;function=jSelectFoo_' . $this->id;
 
@@ -101,7 +101,7 @@ class FooField extends FormField
 			}
 		}
 
-		$title = empty($title) ? Text::_('COM_FOO_SELECT_A_FOO') : htmlspecialchars($title, ENT_QUOTES, 'UTF-8');
+		$title = empty($title) ? Text::_('COM_FOOS_SELECT_A_FOO') : htmlspecialchars($title, ENT_QUOTES, 'UTF-8');
 
 		// The current foo display field.
 		$html  = '';
@@ -126,7 +126,7 @@ class FooField extends FormField
 				. ' data-toggle="modal"'
 				. ' type="button"'
 				. ' data-target="#ModalSelect' . $modalId . '"'
-				. ' title="' . HTMLHelper::tooltipText('COM_FOO_CHANGE_FOO') . '">'
+				. ' title="' . HTMLHelper::tooltipText('COM_FOOS_CHANGE_FOO') . '">'
 				. '<span class="icon-file" aria-hidden="true"></span> ' . Text::_('JSELECT')
 				. '</button>';
 		}
@@ -171,7 +171,7 @@ class FooField extends FormField
 		$class = $this->required ? ' class="required modal-value"' : '';
 
 		$html .= '<input type="hidden" id="' . $this->id . '_id"' . $class . ' data-required="' . (int) $this->required . '" name="' . $this->name
-			. '" data-text="' . htmlspecialchars(Text::_('COM_FOO_SELECT_A_FOO', true), ENT_COMPAT, 'UTF-8') . '" value="' . $value . '">';
+			. '" data-text="' . htmlspecialchars(Text::_('COM_FOOS_SELECT_A_FOO', true), ENT_COMPAT, 'UTF-8') . '" value="' . $value . '">';
 
 		return $html;
 	}

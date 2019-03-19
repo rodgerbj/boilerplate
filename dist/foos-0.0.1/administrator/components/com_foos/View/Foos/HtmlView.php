@@ -62,7 +62,7 @@ class HtmlView extends BaseHtmlView
 		// Get the toolbar object instance
 		$toolbar = Toolbar::getInstance('toolbar');
 
-		ToolbarHelper::title(Text::_('COM_FOO_MANAGER_FOOS'), 'address foo');
+		ToolbarHelper::title(Text::_('COM_FOOS_MANAGER_FOOS'), 'address foo');
 
 		$toolbar->addNew('foo.add');
 		HTMLHelper::_('sidebar.setAction', 'index.php?option=com_foos');
