@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package     Joomla.Administrator
  * @subpackage  com_foos
@@ -8,30 +7,35 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace Joomla\Component\Foos\Administrator\View\Foos;
+namespace Joomla\Component\Foos\Administrator\View\Foo;
 
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Helper\ContentHelper;
+use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
-use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 
 /**
- * View class for a list of foos.
+ * View to edit a foo.
  *
  * @since  1.6
  */
 class HtmlView extends BaseHtmlView
 {
+	/**
+	 * The \JForm object
+	 *
+	 * @var  \JForm
+	 */
+	protected $form;
 
 	/**
-	 * An array of items
+	 * The active item
 	 *
-	 * @var  array
+	 * @var  object
 	 */
-	protected $items;
+	protected $item;
 
 	/**
 	 * Display the view.
@@ -42,7 +46,7 @@ class HtmlView extends BaseHtmlView
 	 */
 	public function display($tpl = null)
 	{
-		$this->items = $this->get('Items');
+		$this->item = $this->get('Item');
 
 		$this->addToolbar();
 
@@ -58,21 +62,13 @@ class HtmlView extends BaseHtmlView
 	 */
 	protected function addToolbar()
 	{
-		$canDo = ContentHelper::getActions('com_foos');
+		Factory::getApplication()->input->set('hidemainmenu', true);
 
-		// Get the toolbar object instance
-		$toolbar = Toolbar::getInstance('toolbar');
+		$isNew = ($this->item->id == 0);
 
-		ToolbarHelper::title(Text::_('COM_FOOS_MANAGER_FOOS'), 'address foo');
+		ToolbarHelper::title($isNew ? Text::_('COM_FOOS_MANAGER_FOO_NEW') : Text::_('COM_FOOS_MANAGER_FOO_EDIT'), 'address foo');
 
-		if ($canDo->get('core.create'))
-		{
-			$toolbar->addNew('foo.add');
-		}
-		
-		if ($canDo->get('core.options'))
-		{
-			$toolbar->preferences('com_foos');
-		}
+		ToolbarHelper::apply('foo.apply');
+		ToolbarHelper::cancel('foo.cancel', 'JTOOLBAR_CLOSE');
 	}
 }

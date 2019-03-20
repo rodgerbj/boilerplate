@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
+
 	<fieldset>
+
 		<field
 			name="id"
 			type="number"
@@ -18,4 +20,6 @@
 			required="true"
 		 />
 	</fieldset>
+
+
 </form>
