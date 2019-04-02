@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
-	<fieldset addruleprefix="Joomla\Component\Foos\Administrator\Rule">
+	<fieldset>
 		<field
 			name="id"
 			type="number"
@@ -15,9 +15,14 @@
 			type="text"
 			label="COM_FOO_FIELD_NAME_LABEL"
 			size="40"
-			class="validate-letter"
 			required="true"
-			validate="letter"
 		 />
+
+		<field
+			name="access"
+			type="accesslevel"
+			label="JFIELD_ACCESS_LABEL"
+			size="1"
+		/>
 	</fieldset>
 </form>
