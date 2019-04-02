@@ -9,7 +9,7 @@
 		<field
 			name="show_foo_name_label"
 			type="list"
-			label="COM_CONTACT_FIELD_CONTACT_SHOW_CATEGORY_LABEL"
+			label="COM_FOOS_FIELD_FOO_SHOW_CATEGORY_LABEL"
 			default="1"
 			>
 			<option value="0">JNO</option>
