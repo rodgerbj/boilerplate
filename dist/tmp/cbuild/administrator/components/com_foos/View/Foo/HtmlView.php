@@ -11,9 +11,7 @@ namespace Joomla\Component\Foos\Administrator\View\Foo;
 
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Factory;
-use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Toolbar\ToolbarHelper;
@@ -40,13 +38,6 @@ class HtmlView extends BaseHtmlView
 	protected $item;
 
 	/**
-	 * The model state
-	 *
-	 * @var  \JObject
-	 */
-	protected $state;
-
-	/**
 	 * Display the view.
 	 *
 	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
@@ -55,30 +46,7 @@ class HtmlView extends BaseHtmlView
 	 */
 	public function display($tpl = null)
 	{
-		// Initialise variables.
-		$this->form  = $this->get('Form');
-		$this->item  = $this->get('Item');
-		$this->state = $this->get('State');
-
-		// Check for errors.
-		if (count($errors = $this->get('Errors')))
-		{
-			throw new \JViewGenericdataexception(implode("\n", $errors), 500);
-		}
-
-		// If we are forcing a language in modal (used for associations).
-		if ($this->getLayout() === 'modal' && $forcedLanguage = Factory::getApplication()->input->get('forcedLanguage', '', 'cmd'))
-		{
-			// Set the language field to the forcedLanguage and disable changing it.
-			$this->form->setValue('language', null, $forcedLanguage);
-			$this->form->setFieldAttribute('language', 'readonly', 'true');
-
-			// Only allow to select categories with All language or with the forced language.
-			$this->form->setFieldAttribute('catid', 'language', '*,' . $forcedLanguage);
-
-			// Only allow to select tags with All language or with the forced language.
-			$this->form->setFieldAttribute('tags', 'language', '*,' . $forcedLanguage);
-		}
+		$this->item = $this->get('Item');
 
 		$this->addToolbar();
 
@@ -96,40 +64,11 @@ class HtmlView extends BaseHtmlView
 	{
 		Factory::getApplication()->input->set('hidemainmenu', true);
 
-		$isNew      = ($this->item->id == 0);
+		$isNew = ($this->item->id == 0);
 
 		ToolbarHelper::title($isNew ? Text::_('COM_FOOS_MANAGER_FOO_NEW') : Text::_('COM_FOOS_MANAGER_FOO_EDIT'), 'address foo');
 
-		// Build the actions for new and existing records.
-		if ($isNew)
-		{
-				ToolbarHelper::apply('foo.apply');
-
-				ToolbarHelper::saveGroup(
-					[
-						['save', 'foo.save'],
-						['save2new', 'foo.save2new']
-					],
-					'btn-success'
-				);
-			ToolbarHelper::cancel('foo.cancel');
-		}
-		else
-		{
-			$toolbarButtons = [];
-
-				ToolbarHelper::apply('foo.apply');
-
-				$toolbarButtons[] = ['save', 'foo.save'];
-
-					$toolbarButtons[] = ['save2new', 'foo.save2new'];
-			}
-
-
-
-			ToolbarHelper::cancel('foo.cancel', 'JTOOLBAR_CLOSE');
-
-		ToolbarHelper::divider();
-		ToolbarHelper::help('JHELP_COMPONENTS_FOOS_FOOS_EDIT');
+		ToolbarHelper::apply('foo.apply');
+		ToolbarHelper::cancel('foo.cancel', 'JTOOLBAR_CLOSE');
 	}
 }
