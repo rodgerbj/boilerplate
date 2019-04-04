@@ -21,7 +21,6 @@ HTMLHelper::_('script', 'com_foos/admin-foos-letter.js', array('version' => 'aut
 $app = Factory::getApplication();
 $input = $app->input;
 
-$this->ignore_fieldsets = array('details', 'jmetadata');
 $this->useCoreUI = true;
 
 // In case of modal
