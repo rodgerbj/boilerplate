@@ -19,6 +19,14 @@
 		 />
 
 		<field
+			name="language"
+			type="contentlanguage"
+			label="JFIELD_LANGUAGE_LABEL"
+			>
+			<option value="*">JALL</option>
+		</field>
+
+		<field
 			name="published"
 			type="list"
 			label="JSTATUS"
@@ -32,6 +40,26 @@
 			<option value="2">JARCHIVED</option>
 			<option value="-2">JTRASHED</option>
 		</field>
+
+		<field
+			name="publish_up"
+			type="calendar"
+			label="COM_FOOS_FIELD_PUBLISH_UP_LABEL"
+			translateformat="true"
+			showtime="true"
+			size="22"
+			filter="user_utc"
+		/>
+
+		<field
+			name="publish_down"
+			type="calendar"
+			label="COM_FOOS_FIELD_PUBLISH_DOWN_LABEL"
+			translateformat="true"
+			showtime="true"
+			size="22"
+			filter="user_utc"
+		/>
 
 		<field
 			name="catid"

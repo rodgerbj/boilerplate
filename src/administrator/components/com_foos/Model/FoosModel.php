@@ -48,7 +48,7 @@ class FoosModel extends ListModel
 
 		// Select the required fields from the table.
 		$query->select(
-			$db->quoteName(array('a.id', 'a.name', 'a.catid', 'a.access', 'a.published', 'a.publish_up', 'a.publish_down'))
+			$db->quoteName(array('a.id', 'a.name', 'a.catid', 'a.access', 'a.published', 'a.publish_up', 'a.publish_down', 'a.language'))
 		);
 
 		$query->from($db->quoteName('#__foos_details', 'a'));
@@ -65,6 +65,14 @@ class FoosModel extends ListModel
 			->join(
 				'LEFT',
 				$db->quoteName('#__categories', 'c') . ' ON ' . $db->quoteName('c.id') . ' = ' . $db->quoteName('a.catid')
+			);
+
+		// Join over the language
+		$query->select($db->quoteName('l.title', 'language_title'))
+			->select($db->quoteName('l.image', 'language_image'))
+			->join(
+				'LEFT',
+				$db->quoteName('#__languages', 'l') . ' ON ' . $db->quoteName('l.lang_code') . ' = ' . $db->quoteName('a.language')
 			);
 
 		return $query;

@@ -10,7 +10,18 @@
 		<field
 			name="show_foo_name_label"
 			type="list"
-			label="COM_CONTACT_FIELD_CONTACT_SHOW_CATEGORY_LABEL"
+			label="COM_FOOS_FIELD_FOO_SHOW_CATEGORY_LABEL"
+			default="1"
+			>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+
+		<field
+			name="custom_fields_enable"
+			type="radio"
+			class="switcher"
+			label="JGLOBAL_CUSTOM_FIELDS_ENABLE_LABEL"
 			default="1"
 			>
 			<option value="0">JNO</option>

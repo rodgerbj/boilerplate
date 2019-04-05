@@ -11,6 +11,7 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Associations;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Layout\LayoutHelper;
@@ -20,6 +21,8 @@ HTMLHelper::_('script', 'com_foos/admin-foos-letter.js', array('version' => 'aut
 
 $app = Factory::getApplication();
 $input = $app->input;
+
+$assoc = Associations::isEnabled();
 
 $this->useCoreUI = true;
 
@@ -44,11 +47,20 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 						<?php echo $this->getForm()->renderField('publish_up'); ?>
 						<?php echo $this->getForm()->renderField('publish_down'); ?>
 						<?php echo $this->getForm()->renderField('catid'); ?>
+						<?php echo $this->getForm()->renderField('language'); ?>
 					</div>
 				</div>
 			</div>
 		</div>
 		<?php echo HTMLHelper::_('uitab.endTab'); ?>
+
+		<?php if ( ! $isModal && $assoc) : ?>
+			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'associations', Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS')); ?>
+			<?php echo $this->loadTemplate('associations'); ?>
+			<?php echo HTMLHelper::_('uitab.endTab'); ?>
+		<?php elseif ($isModal && $assoc) : ?>
+			<div class="hidden"><?php echo $this->loadTemplate('associations'); ?></div>
+		<?php endif; ?>
 		
 		<?php echo LayoutHelper::render('joomla.edit.params', $this); ?>
 

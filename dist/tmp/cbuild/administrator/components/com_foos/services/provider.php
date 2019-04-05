@@ -9,6 +9,8 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\Component\Foos\Administrator\Extension\FoosComponent;
+use Joomla\CMS\Categories\CategoryFactoryInterface;
 use Joomla\CMS\Dispatcher\ComponentDispatcherFactoryInterface;
 use Joomla\CMS\Extension\ComponentInterface;
 use Joomla\CMS\Extension\Service\Provider\CategoryFactory;
@@ -18,7 +20,7 @@ use Joomla\CMS\HTML\Registry;
 use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 use Joomla\DI\Container;
 use Joomla\DI\ServiceProviderInterface;
-use Joomla\Component\Foos\Administrator\Extension\FoosComponent;
+
 
 /**
  * The foos service provider. 
@@ -51,6 +53,7 @@ return new class implements ServiceProviderInterface
 
 				$component->setRegistry($container->get(Registry::class));
 				$component->setMVCFactory($container->get(MVCFactoryInterface::class));
+				$component->setCategoryFactory($container->get(CategoryFactoryInterface::class));
 
 				return $component;
 			}
