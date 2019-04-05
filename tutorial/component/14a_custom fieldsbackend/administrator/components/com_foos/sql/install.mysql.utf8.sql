@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS `#__foos_details` (
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `idx_catid` (`catid`),
+  KEY `idx_state` (`published`),
   KEY `idx_access` (`access`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 

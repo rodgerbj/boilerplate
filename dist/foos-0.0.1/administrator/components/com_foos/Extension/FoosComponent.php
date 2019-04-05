@@ -18,7 +18,7 @@ use Joomla\CMS\Categories\CategoryServiceTrait;
 use Joomla\CMS\Extension\BootableExtensionInterface;
 use Joomla\CMS\Extension\MVCComponent;
 use Joomla\CMS\HTML\HTMLRegistryAwareTrait;
-use Joomla\Component\Foos\Administrator\Service\Html\Foo;
+use Joomla\Component\Foos\Administrator\Service\HTML\AdministratorService;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -26,7 +26,8 @@ use Psr\Container\ContainerInterface;
  *
  * @since  4.0.0
  */
-class FoosComponent extends MVCComponent implements BootableExtensionInterface, CategoryServiceInterface
+class FoosComponent extends MVCComponent 
+implements BootableExtensionInterface, CategoryServiceInterface, AssociationServiceInterface
 {
 	use CategoryServiceTrait;
 	use AssociationServiceTrait;
@@ -47,6 +48,6 @@ class FoosComponent extends MVCComponent implements BootableExtensionInterface, 
 	 */
 	public function boot(ContainerInterface $container)
 	{
-		$this->getRegistry()->register('foo', new Foo);
+		$this->getRegistry()->register('foosadministrator', new AdministratorService);
 	}
 }

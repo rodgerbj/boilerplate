@@ -36,6 +36,27 @@ class HtmlView extends BaseHtmlView
 	protected $items;
 
 	/**
+	 * The model state
+	 *
+	 * @var  \JObject
+	 */
+	protected $state;
+
+	/**
+	 * Form object for search filters
+	 *
+	 * @var  \JForm
+	 */
+	public $filterForm;
+
+	/**
+	 * The active search filters
+	 *
+	 * @var  array
+	 */
+	public $activeFilters;
+
+	/**
 	 * The sidebar markup
 	 *
 	 * @var  string
@@ -52,7 +73,24 @@ class HtmlView extends BaseHtmlView
 	public function display($tpl = null)
 	{
 		$this->items = $this->get('Items');
+		$this->filterForm = $this->get('FilterForm');
+		$this->activeFilters = $this->get('ActiveFilters');
+		$this->state = $this->get('State');
 
+		// Check for errors.
+		if (count($errors = $this->get('Errors')))
+		{
+			throw new \JViewGenericdataexception(implode("\n", $errors), 500);
+		}
+
+		// Preprocess the list of items to find ordering divisions.
+		// TODO: Complete the ordering stuff with nested sets
+		foreach ($this->items as &$item)
+		{
+			$item->order_up = true;
+			$item->order_dn = true;
+		}
+		
 		$this->addToolbar();
 
 		return parent::display($tpl);
@@ -88,5 +126,24 @@ class HtmlView extends BaseHtmlView
 		}
 
 		HTMLHelper::_('sidebar.setAction', 'index.php?option=com_foos');
+	}
+	/**
+	 * Returns an array of fields the table can be sorted by
+	 *
+	 * @return  array  Array containing the field name to sort by as the key and display text as value
+	 *
+	 * @since   3.0
+	 */
+	protected function getSortFields()
+	{
+		return array(
+			'a.ordering'     => Text::_('JGRID_HEADING_ORDERING'),
+			'a.published'    => Text::_('JSTATUS'),
+			'a.name'         => Text::_('JGLOBAL_TITLE'),
+			'category_title' => Text::_('JCATEGORY'),
+			'a.access'       => Text::_('JGRID_HEADING_ACCESS'),
+			'a.language'     => Text::_('JGRID_HEADING_LANGUAGE'),
+			'a.id'           => Text::_('JGRID_HEADING_ID'),
+		);
 	}
 }

@@ -12,6 +12,7 @@ namespace Joomla\Component\Foos\Administrator\Model;
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Associations;
 use Joomla\CMS\MVC\Model\ListModel;
 
 /**
@@ -31,8 +32,31 @@ class FoosModel extends ListModel
 	 */
 	public function __construct($config = array())
 	{
+		if (empty($config['filter_fields']))
+		{
+			$config['filter_fields'] = array(
+				'id', 'a.id',
+				'name', 'a.name',
+				'catid', 'a.catid', 'category_id', 'category_title',
+				'published', 'a.published',
+				'access', 'a.access', 'access_level',
+				'ordering', 'a.ordering',
+				'language', 'a.language', 'language_title',
+				'publish_up', 'a.publish_up',
+				'publish_down', 'a.publish_down',
+			);
+
+			$assoc = Associations::isEnabled();
+
+			if ($assoc)
+			{
+				$config['filter_fields'][] = 'association';
+			}
+		}
+		
 		parent::__construct($config);
 	}
+
 	/**
 	 * Build an SQL query to load the list data.
 	 *
@@ -74,6 +98,41 @@ class FoosModel extends ListModel
 				'LEFT',
 				$db->quoteName('#__languages', 'l') . ' ON ' . $db->quoteName('l.lang_code') . ' = ' . $db->quoteName('a.language')
 			);
+
+		// Join over the associations.
+		$assoc = Associations::isEnabled();
+
+		if ($assoc)
+		{
+			$query->select('COUNT(' . $db->quoteName('asso2.id') . ') > 1 as ' . $db->quoteName('association'))
+				->join(
+					'LEFT',
+					$db->quoteName('#__associations', 'asso') . ' ON ' . $db->quoteName('asso.id') . ' = ' . $db->quoteName('a.id')
+					. ' AND ' . $db->quoteName('asso.context') . ' = ' . $db->quote('com_foos.item')
+				)
+				->join(
+					'LEFT',
+					$db->quoteName('#__associations', 'asso2') . ' ON ' . $db->quoteName('asso2.key') . ' = ' . $db->quoteName('asso.key')
+				)
+				->group(
+					$db->quoteName(
+						array(
+							'a.id',
+							'a.name',
+							'a.catid',
+							'a.published',
+							'a.access',
+							'a.language',
+							'a.publish_up',
+							'a.publish_down',
+							'l.title' ,
+							'l.image' ,
+							'ag.title' ,
+							'c.title'
+						)
+					)
+				);
+		}
 
 		return $query;
 	}

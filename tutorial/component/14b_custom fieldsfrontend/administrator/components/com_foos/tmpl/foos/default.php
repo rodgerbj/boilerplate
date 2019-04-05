@@ -8,11 +8,12 @@
  */
 
 defined('_JEXEC') or die;
-$canChange  = true;
 
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
+
+$canChange  = true;
 ?>
 <form action="<?php echo Route::_('index.php?option=com_foos'); ?>" method="post" name="adminForm" id="adminForm">
 	<div class="row">

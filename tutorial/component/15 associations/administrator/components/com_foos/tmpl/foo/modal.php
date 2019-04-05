@@ -7,15 +7,9 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace Joomla\Component\Foos\Administrator\Service\Html;
-
-defined('JPATH_BASE') or die;
-
-/**
- * Foo HTML class.
- *
- * @since  4.0
- */
-class Foo
-{
-}
+defined('_JEXEC') or die;
+?>
+<div class="container-popup">
+	<?php $this->setLayout('edit'); ?>
+	<?php echo $this->loadTemplate(); ?>
+</div>

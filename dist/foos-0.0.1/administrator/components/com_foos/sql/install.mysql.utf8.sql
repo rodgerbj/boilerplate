@@ -4,11 +4,13 @@ CREATE TABLE IF NOT EXISTS `#__foos_details` (
   `name` varchar(255) NOT NULL DEFAULT '',
   `catid` int(11) NOT NULL DEFAULT 0,
   `language` char(7) NOT NULL DEFAULT '*',
+  `ordering` int(11) NOT NULL DEFAULT 0,
   `published` tinyint(1) NOT NULL DEFAULT 0,
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `idx_catid` (`catid`),
+  KEY `idx_state` (`published`),
   KEY `idx_language` (`language`),
   KEY `idx_access` (`access`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;

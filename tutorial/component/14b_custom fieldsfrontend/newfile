@@ -1,0 +1,1 @@
+use Joomla\CMS\Fields\FieldsServiceInterface; in Extension

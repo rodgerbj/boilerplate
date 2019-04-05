@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
-	<fieldset>
+	<fieldset addfieldprefix="Joomla\Component\Foos\Administrator\Field">
 		<field
 			name="id"
 			type="number"
@@ -77,5 +77,13 @@
 			label="JFIELD_ACCESS_LABEL"
 			size="1"
 		/>
+
+		<field
+			name="ordering"
+			type="ordering"
+			label="JFIELD_ORDERING_LABEL"
+			content_type="com_foos.foo"
+		/>
+
 	</fieldset>
 </form>

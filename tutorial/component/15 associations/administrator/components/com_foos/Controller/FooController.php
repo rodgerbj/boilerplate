@@ -7,15 +7,17 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace Joomla\Component\Foos\Administrator\Service\Html;
+namespace Joomla\Component\Foos\Administrator\Controller;
 
-defined('JPATH_BASE') or die;
+defined('_JEXEC') or die;
+
+use Joomla\CMS\MVC\Controller\FormController;
 
 /**
- * Foo HTML class.
+ * Controller for a single foo
  *
  * @since  4.0
  */
-class Foo
+class FooController extends FormController
 {
 }

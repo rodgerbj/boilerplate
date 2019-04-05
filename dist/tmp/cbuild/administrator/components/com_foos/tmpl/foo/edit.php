@@ -24,6 +24,7 @@ $input = $app->input;
 
 $assoc = Associations::isEnabled();
 
+$this->ignore_fieldsets = array('item_associations');
 $this->useCoreUI = true;
 
 // In case of modal
@@ -47,6 +48,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 						<?php echo $this->getForm()->renderField('publish_up'); ?>
 						<?php echo $this->getForm()->renderField('publish_down'); ?>
 						<?php echo $this->getForm()->renderField('catid'); ?>
+						<?php echo $this->getForm()->renderField('ordering'); ?>
 						<?php echo $this->getForm()->renderField('language'); ?>
 					</div>
 				</div>
