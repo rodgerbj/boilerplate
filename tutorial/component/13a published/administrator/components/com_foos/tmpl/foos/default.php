@@ -25,9 +25,6 @@ $canChange  = true;
 					</div>
 				<?php else : ?>
 					<table class="table" id="fooList">
-						<caption id="captionTable" class="sr-only">
-							<?php echo Text::_('COM_FOOS_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
-						</caption>
 						<thead>
 							<tr>
 								<td style="width:1%" class="text-center">
