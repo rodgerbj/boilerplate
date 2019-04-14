@@ -15,6 +15,7 @@ use Joomla\CMS\Router\Route;
 use Joomla\CMS\Language\Multilanguage;
 use Joomla\CMS\Language\Associations;
 use Joomla\CMS\Layout\LayoutHelper;
+use Joomla\CMS\Session\Session;
 
 $canChange  = true;
 $assoc = Associations::isEnabled();
@@ -25,7 +26,6 @@ $saveOrder = $listOrder == 'a.ordering';
 if ($saveOrder && !empty($this->items))
 {
 	$saveOrderingUrl = 'index.php?option=com_foos&task=foos.saveOrderAjax&tmpl=component&' . Session::getFormToken() . '=1';
-	HTMLHelper::_('draggablelist.draggable');
 }
 ?>
 <form action="<?php echo Route::_('index.php?option=com_foos'); ?>" method="post" name="adminForm" id="adminForm">
@@ -49,30 +49,33 @@ if ($saveOrder && !empty($this->items))
 						</caption>
 						<thead>
 							<tr>
+								<th scope="col" style="width:1%" class="text-center d-none d-md-table-cell">
+									<?php echo HTMLHelper::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
+								</th>
 								<td style="width:1%" class="text-center">
 									<?php echo HTMLHelper::_('grid.checkall'); ?>
 								</td>
 								<th scope="col" style="width:1%" class="text-center d-none d-md-table-cell">
-									<?php echo Text::_('COM_FOOS_TABLE_TABLEHEAD_NAME'); ?>
+									<?php echo HTMLHelper::_('searchtools.sort', 'COM_FOOS_TABLE_TABLEHEAD_NAME', 'a.name', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
-									<?php echo TEXT::_('JGRID_HEADING_ACCESS') ?>
+									<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'access_level', $listDirn, $listOrder); ?>
 								</th>
 								<?php if ($assoc) : ?>
 									<th scope="col" style="width:10%">
-										<?php echo Text::_('COM_FOOS_HEADING_ASSOCIATION'); ?>
+										<?php echo HTMLHelper::_('searchtools.sort', 'COM_CONTACT_HEADING_ASSOCIATION', 'association', $listDirn, $listOrder); ?>
 									</th>
 								<?php endif; ?>
 								<?php if (Multilanguage::isEnabled()) : ?>
 									<th scope="col" style="width:10%" class="d-none d-md-table-cell">
-										<?php echo Text::_('JGRID_HEADING_LANGUAGE'); ?>
+										<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_LANGUAGE', 'language_title', $listDirn, $listOrder); ?>
 									</th>
 								<?php endif; ?>
 								<th scope="col" style="width:1%; min-width:85px" class="text-center">
-									<?php echo Text::_('JSTATUS'); ?>
+									<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'a.published', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col">
-									<?php echo Text::_('COM_FOOS_TABLE_TABLEHEAD_ID'); ?>
+									<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
 								</th>
 							</tr>
 						</thead>
@@ -82,10 +85,33 @@ if ($saveOrder && !empty($this->items))
 						foreach ($this->items as $i => $item) :
 							?>
 							<tr class="row<?php echo $i % 2; ?>">
+								<td class="order text-center d-none d-md-table-cell">
+									<?php
+									$iconClass = '';
+									if (!$canChange)
+									{
+										$iconClass = ' inactive';
+									}
+									elseif (!$saveOrder)
+									{
+										$iconClass = ' inactive tip-top hasTooltip" title="' . HTMLHelper::_('tooltipText', 'JORDERINGDISABLED');
+									}
+									?>
+									<span class="sortable-handler<?php echo $iconClass; ?>">
+										<span class="icon-menu" aria-hidden="true"></span>
+									</span>
+									<?php if ($canChange && $saveOrder) : ?>
+										<input type="text" style="display:none" name="order[]" size="5"
+											value="<?php echo $item->ordering; ?>" class="width-20 text-area-order">
+									<?php endif; ?>
+								</td>
 								<td class="text-center">
 									<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
 								</td>
 								<td scope="row" class="has-context">
+									<?php if ($item->checked_out) : ?>
+										<?php echo HTMLHelper::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'foos.', true); ?>
+									<?php endif; ?>
 									<div>
 										<?php echo $this->escape($item->name); ?>
 									</div>
@@ -127,6 +153,18 @@ if ($saveOrder && !empty($this->items))
 							<?php endforeach; ?>
 						</tbody>
 					</table>
+
+					<?php echo $this->pagination->getListFooter(); ?>
+				
+					<?php echo HTMLHelper::_(
+						'bootstrap.renderModal',
+						'collapseModal',
+						array(
+							'title'  => Text::_('COM_CONTACT_BATCH_OPTIONS'),
+							'footer' => $this->loadTemplate('batch_footer'),
+						),
+						$this->loadTemplate('batch_body')
+					); ?>
 
 				<?php endif; ?>
 				<input type="hidden" name="task" value="">

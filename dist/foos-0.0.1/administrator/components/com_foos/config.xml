@@ -28,6 +28,17 @@
 			<option value="1">JYES</option>
 		</field>
 
+		<field
+			name="show_name"
+			type="radio"
+			label="COM_FOOS_FIELD_PARAMS_NAME_LABEL"
+			default="1"
+			class="switcher"
+			>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
 	</fieldset>
 	<fieldset
 		name="permissions"

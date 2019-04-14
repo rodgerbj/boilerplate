@@ -13,6 +13,7 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Table\Table;
 use Joomla\Database\DatabaseDriver;
+use Joomla\Registry\Registry;
 
 /**
  * Foos Table class.
@@ -34,6 +35,28 @@ class FooTable extends Table
 
 		parent::__construct('#__foos_details', 'id', $db);
 	}
+
+	/**
+	 * Stores a contact.
+	 *
+	 * @param   boolean  $updateNulls  True to update fields even if they are null.
+	 *
+	 * @return  boolean  True on success, false on failure.
+	 *
+	 * @since   1.6
+	 */
+	public function store($updateNulls = false)
+	{
+		// Transform the params field
+		if (is_array($this->params))
+		{
+			$registry = new Registry($this->params);
+			$this->params = (string) $registry;
+		}
+
+		return parent::store($updateNulls);
+	}
+
 	/**
 	 * Overloaded check function
 	 *
@@ -77,5 +100,27 @@ class FooTable extends Table
 		}
 
 		return true;
+	}
+	/**
+	 * Generate a valid alias from title / date.
+	 * Remains public to be able to check for duplicated alias before saving
+	 *
+	 * @return  string
+	 */
+	public function generateAlias()
+	{
+		if (empty($this->alias))
+		{
+			$this->alias = $this->name;
+		}
+
+		$this->alias = ApplicationHelper::stringURLSafe($this->alias, $this->language);
+
+		if (trim(str_replace('-', '', $this->alias)) == '')
+		{
+			$this->alias = Factory::getDate()->format('Y-m-d-H-i-s');
+		}
+
+		return $this->alias;
 	}
 }

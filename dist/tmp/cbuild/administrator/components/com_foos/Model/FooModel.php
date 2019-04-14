@@ -27,7 +27,7 @@ class FooModel extends AdminModel
 	 * The type alias for this content type.
 	 *
 	 * @var    string
-	 * @since  3.2
+	 * @since  4.0
 	 */
 	public $typeAlias = 'com_foos.foo';
 
@@ -35,9 +35,26 @@ class FooModel extends AdminModel
 	 * The context used for the associations table
 	 *
 	 * @var    string
-	 * @since  3.4.4
+	 * @since  4.0
 	 */
 	protected $associationsContext = 'com_foos.item';
+
+	/**
+	 * Batch copy/move command. If set to false, the batch copy/move command is not supported
+	 *
+	 * @var  string
+	 */
+	protected $batch_copymove = 'category_id';
+
+	/**
+	 * Allowed batch commands
+	 *
+	 * @var array
+	 */
+	protected $batch_commands = array(
+		'assetgroup_id' => 'batchAccess',
+		'language_id'   => 'batchLanguage',
+	);
 
 	/**
 	 * Method to get the row form.
@@ -127,7 +144,6 @@ class FooModel extends AdminModel
 	 */
 	protected function preprocessForm(\JForm $form, $data, $group = 'content')
 	{
-		// Association contact items
 		if (Associations::isEnabled())
 		{
 			$languages = LanguageHelper::getContentLanguages(false, true, null, 'ordering', 'asc');

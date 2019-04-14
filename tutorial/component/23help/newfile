@@ -1,0 +1,17 @@
+/var/www/html/joomla-cms4/libraries/src/Toolbar/ToolbarHelper.php
+
+
+	 *
+	 * @param   string  $ref        The name of the popup file (excluding the file extension for an xml file).
+	 * @param   bool    $com        Use the help file in the component directory.
+	 * @param   string  $override   Use this URL instead of any other
+	 * @param   string  $component  Name of component to get Help (null for current component)
+	 *
+	 * @return  void
+	 *
+	 * @since   1.5
+	 */
+	public static function help($ref, $com = false, $override = null, $component = null)
+	{
+
+---
