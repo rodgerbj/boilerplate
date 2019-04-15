@@ -115,6 +115,9 @@ class HtmlView extends BaseHtmlView
 	protected function addToolbar()
 	{
 
+		FooHelper::addSubmenu('foos');
+		$this->sidebar = \JHtmlSidebar::render();
+
 		$canDo = ContentHelper::getActions('com_foos', 'category', $this->state->get('filter.category_id'));
 		$user  = Factory::getUser();
 
@@ -173,6 +176,9 @@ class HtmlView extends BaseHtmlView
 		{
 			$toolbar->preferences('com_foos');
 		}
+
+		ToolbarHelper::divider();
+		ToolbarHelper::help('', false, 'http://google.de');
 
 		HTMLHelper::_('sidebar.setAction', 'index.php?option=com_foos');
 }

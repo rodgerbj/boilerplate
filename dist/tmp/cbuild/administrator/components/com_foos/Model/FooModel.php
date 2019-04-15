@@ -115,7 +115,6 @@ class FooModel extends AdminModel
 		if ($assoc)
 		{
 			$item->associations = array();
-			$item->alias = "test";
 
 			if ($item->id != null)
 			{

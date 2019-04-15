@@ -37,6 +37,7 @@ class FoosModel extends ListModel
 			$config['filter_fields'] = array(
 				'id', 'a.id',
 				'name', 'a.name',
+				'alias', 'a.alias',
 				'catid', 'a.catid', 'category_id', 'category_title',
 				'checked_out', 'a.checked_out',
 				'checked_out_time', 'a.checked_out_time',
@@ -74,7 +75,7 @@ class FoosModel extends ListModel
 
 		// Select the required fields from the table.
 		$query->select(
-			$db->quoteName(array('a.id', 'a.name', 'a.catid', 'a.access', 'a.published', 'a.publish_up', 'a.publish_down', 'a.language', 'a.ordering', 'a.checked_out', 'a.checked_out_time'))
+			$db->quoteName(array('a.id', 'a.name', 'a.alias', 'a.catid', 'a.access', 'a.published', 'a.publish_up', 'a.publish_down', 'a.language', 'a.ordering', 'a.checked_out', 'a.checked_out_time'))
 		);
 
 		$query->from($db->quoteName('#__foos_details', 'a'));
@@ -121,6 +122,7 @@ class FoosModel extends ListModel
 						array(
 							'a.id',
 							'a.name',
+							'a.alias',
 							'a.catid',
 							'a.checked_out',
 							'a.checked_out_time',
