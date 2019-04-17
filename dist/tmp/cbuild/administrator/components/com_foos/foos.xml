@@ -7,7 +7,7 @@
 	<authorUrl>[AUTHOR_URL]</authorUrl>
 	<copyright>[COPYRIGHT]</copyright>
 	<license>GNU General Public License version 2 or later;</license>
-	<version>1.0</version>
+	<version>1.0.0</version>
 	<description>COM_FOOS_XML_DESCRIPTION</description>
 	<namespace>Joomla\Component\Foos</namespace>
 	<scriptfile>script.php</scriptfile>
@@ -61,4 +61,8 @@
 			<folder>tmpl</folder>
 		</files>
 	</administration>
+	<changelogurl>http://localhost/joomla-cms4/changelog.xml</changelogurl>
+	<updateservers>
+		<server type="extension" name="Foo Updates">http://localhost/joomla-cms4/foo_update.xml</server>
+	</updateservers>
 </extension>

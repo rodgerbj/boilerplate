@@ -8,7 +8,7 @@
         <downloads>
             <downloadurl type="full" format="zip">http://www.example.com/mod_foo_101.zip</downloadurl>
         </downloads>
-        <maintainer>Joomla</maintainer>
+        <maintainer>Foo Creator</maintainer>
         <maintainerurl>http://www.example.com</maintainerurl>
         <targetplatform name="joomla" version="4.0"/>
         <client>site</client>
