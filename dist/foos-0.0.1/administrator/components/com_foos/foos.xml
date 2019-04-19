@@ -61,8 +61,8 @@
 			<folder>tmpl</folder>
 		</files>
 	</administration>
-	<changelogurl>http://localhost/joomla-cms4/changelog.xml</changelogurl>
+	<changelogurl>https://example.com/.../changelog.xml</changelogurl>
 	<updateservers>
-		<server type="extension" name="Foo Updates">http://localhost/joomla-cms4/foo_update.xml</server>
+		<server type="extension" name="Foo Updates">http://example.com/.../foo_update.xml</server>
 	</updateservers>
 </extension>
