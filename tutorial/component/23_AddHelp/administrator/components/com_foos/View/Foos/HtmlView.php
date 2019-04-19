@@ -37,6 +37,13 @@ class HtmlView extends BaseHtmlView
 	protected $items;
 
 	/**
+	 * The pagination object
+	 *
+	 * @var  \JPagination
+	 */
+	protected $pagination;
+
+	/**
 	 * The model state
 	 *
 	 * @var  \JObject
@@ -74,6 +81,7 @@ class HtmlView extends BaseHtmlView
 	public function display($tpl = null)
 	{
 		$this->items = $this->get('Items');
+		$this->pagination = $this->get('Pagination');
 		$this->filterForm = $this->get('FilterForm');
 		$this->activeFilters = $this->get('ActiveFilters');
 		$this->state = $this->get('State');
@@ -106,6 +114,9 @@ class HtmlView extends BaseHtmlView
 	 */
 	protected function addToolbar()
 	{
+
+		FooHelper::addSubmenu('foos');
+		$this->sidebar = \JHtmlSidebar::render();
 
 		$canDo = ContentHelper::getActions('com_foos', 'category', $this->state->get('filter.category_id'));
 		$user  = Factory::getUser();
@@ -148,6 +159,11 @@ class HtmlView extends BaseHtmlView
 			}
 		}
 
+		$toolbar->popupButton('batch')
+			->text('JTOOLBAR_BATCH')
+			->selector('collapseModal')
+			->listCheck(true);
+
 		if ($this->state->get('filter.published') == -2 && $canDo->get('core.delete'))
 		{
 			$toolbar->delete('foos.delete')
@@ -160,6 +176,9 @@ class HtmlView extends BaseHtmlView
 		{
 			$toolbar->preferences('com_foos');
 		}
+
+		ToolbarHelper::divider();
+		ToolbarHelper::help('', false, 'http://google.de');
 
 		HTMLHelper::_('sidebar.setAction', 'index.php?option=com_foos');
 }

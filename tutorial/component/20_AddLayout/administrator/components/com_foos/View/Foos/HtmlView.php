@@ -37,6 +37,13 @@ class HtmlView extends BaseHtmlView
 	protected $items;
 
 	/**
+	 * The pagination object
+	 *
+	 * @var  \JPagination
+	 */
+	protected $pagination;
+
+	/**
 	 * The model state
 	 *
 	 * @var  \JObject
@@ -74,6 +81,7 @@ class HtmlView extends BaseHtmlView
 	public function display($tpl = null)
 	{
 		$this->items = $this->get('Items');
+		$this->pagination = $this->get('Pagination');
 		$this->filterForm = $this->get('FilterForm');
 		$this->activeFilters = $this->get('ActiveFilters');
 		$this->state = $this->get('State');
@@ -136,11 +144,6 @@ class HtmlView extends BaseHtmlView
 			$childBar->unpublish('foos.unpublish')->listCheck(true);
 
 			$childBar->archive('foos.archive')->listCheck(true);
-
-			if ($user->authorise('core.admin'))
-			{
-				$childBar->checkin('foos.checkin')->listCheck(true);
-			}
 
 			if ($this->state->get('filter.published') != -2)
 			{
