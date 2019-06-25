@@ -10,9 +10,19 @@
 	<version>1.0.0</version>
 	<description>COM_FOOS_XML_DESCRIPTION</description>
 	<namespace>Joomla\Component\Foos</namespace>
-        <scriptfile>script.php</scriptfile>
+	<scriptfile>script.php</scriptfile>
+	<install> <!-- Runs on install -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall> <!-- Runs on uninstall -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
 	<!-- Frond-end files -->
-		<files folder="components/com_foos">
+	<files folder="components/com_foos">
 		<folder>Controller</folder>
 		<folder>Model</folder>
 		<folder>View</folder>
@@ -29,9 +39,11 @@
 			<filename>foos.xml</filename>
 			<folder>Controller</folder>
 			<folder>Extension</folder>
+			<folder>Model</folder>
 			<folder>Service</folder>
 			<folder>View</folder>
 			<folder>services</folder>
+			<folder>sql</folder>
 			<folder>tmpl</folder>
 		</files>
 	</administration>
