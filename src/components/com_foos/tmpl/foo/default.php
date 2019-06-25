@@ -1,1 +1,2 @@
-<?php echo $this->msg;
+<?php 
+echo $this->Item->name;

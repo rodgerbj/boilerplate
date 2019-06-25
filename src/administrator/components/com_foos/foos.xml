@@ -28,6 +28,9 @@
 		<folder>View</folder>
 		<folder>tmpl</folder>
 	</files>
+    <media folder="media/com_foos" destination="com_foos">
+		<folder>js</folder>
+    </media>
 	<!-- Back-end files -->
 	<administration>
 		<!-- Menu entries -->
@@ -39,9 +42,12 @@
 			<filename>foos.xml</filename>
 			<folder>Controller</folder>
 			<folder>Extension</folder>
+			<folder>Field</folder>
 			<folder>Model</folder>
 			<folder>Service</folder>
+			<folder>Table</folder>
 			<folder>View</folder>
+			<folder>forms</folder>
 			<folder>services</folder>
 			<folder>sql</folder>
 			<folder>tmpl</folder>
