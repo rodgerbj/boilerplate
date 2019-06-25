@@ -14,6 +14,7 @@
 	<!-- Frond-end files -->
 		<files folder="components/com_foos">
 		<folder>Controller</folder>
+		<folder>Model</folder>
 		<folder>View</folder>
 		<folder>tmpl</folder>
 	</files>
