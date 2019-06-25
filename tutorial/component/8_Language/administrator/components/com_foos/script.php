@@ -15,7 +15,7 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\Log\Log;
 
 /**
- * Script file of HelloWorld module
+ * Script file of Foo Component
  * 
  * @since  4.0.0
  * 
@@ -136,5 +136,4 @@ class Com_FoosInstallerScript
 
 		return true;
 	}
-
 }
