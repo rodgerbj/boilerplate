@@ -63,7 +63,7 @@ if ($saveOrder && !empty($this->items))
 								</th>
 								<?php if ($assoc) : ?>
 									<th scope="col" style="width:10%">
-										<?php echo HTMLHelper::_('searchtools.sort', 'COM_CONTACT_HEADING_ASSOCIATION', 'association', $listDirn, $listOrder); ?>
+										<?php echo HTMLHelper::_('searchtools.sort', 'COM_FOOS_HEADING_ASSOCIATION', 'association', $listDirn, $listOrder); ?>
 									</th>
 								<?php endif; ?>
 								<?php if (Multilanguage::isEnabled()) : ?>
@@ -160,7 +160,7 @@ if ($saveOrder && !empty($this->items))
 						'bootstrap.renderModal',
 						'collapseModal',
 						array(
-							'title'  => Text::_('COM_CONTACT_BATCH_OPTIONS'),
+							'title'  => Text::_('COM_FOOS_BATCH_OPTIONS'),
 							'footer' => $this->loadTemplate('batch_footer'),
 						),
 						$this->loadTemplate('batch_body')
