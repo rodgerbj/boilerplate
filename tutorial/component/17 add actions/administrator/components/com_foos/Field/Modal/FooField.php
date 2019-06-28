@@ -20,7 +20,7 @@ use Joomla\CMS\Session\Session;
 /**
  * Supports a modal foo picker.
  *
- * @since  1.6
+ * @since  4.0
  */
 class FooField extends FormField
 {

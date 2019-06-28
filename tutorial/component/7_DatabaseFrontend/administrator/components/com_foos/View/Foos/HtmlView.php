@@ -20,7 +20,7 @@ use Joomla\CMS\Toolbar\ToolbarHelper;
 /**
  * View class for a list of foos.
  *
- * @since  1.6
+ * @since  4.0
  */
 class HtmlView extends BaseHtmlView
 {

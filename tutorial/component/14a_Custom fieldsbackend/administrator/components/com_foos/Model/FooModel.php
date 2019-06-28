@@ -17,7 +17,7 @@ use Joomla\CMS\MVC\Model\AdminModel;
 /**
  * Item Model for a Foo.
  *
- * @since  1.6
+ * @since  4.0
  */
 class FooModel extends AdminModel
 {

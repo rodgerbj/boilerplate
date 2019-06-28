@@ -21,7 +21,7 @@ use Joomla\Utilities\ArrayHelper;
 /**
  * Contacts list controller class.
  *
- * @since  1.6
+ * @since  4.0
  */
 class FoosController extends AdminController
 {

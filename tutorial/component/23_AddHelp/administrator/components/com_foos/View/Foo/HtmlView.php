@@ -22,7 +22,7 @@ use Joomla\CMS\Toolbar\ToolbarHelper;
 /**
  * View to edit a foo.
  *
- * @since  1.6
+ * @since  4.0
  */
 class HtmlView extends BaseHtmlView
 {

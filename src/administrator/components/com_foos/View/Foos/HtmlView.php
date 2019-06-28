@@ -12,6 +12,7 @@ namespace Joomla\Component\Foos\Administrator\View\Foos;
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Toolbar\Toolbar;
@@ -20,7 +21,7 @@ use Joomla\CMS\Toolbar\ToolbarHelper;
 /**
  * View class for a list of foos.
  *
- * @since  1.6
+ * @since  4.0
  */
 class HtmlView extends BaseHtmlView
 {
@@ -41,7 +42,6 @@ class HtmlView extends BaseHtmlView
 	 */
 	public function display($tpl = null)
 	{
-
 		$this->items = $this->get('Items');
 
 		$this->addToolbar();
@@ -54,17 +54,25 @@ class HtmlView extends BaseHtmlView
 	 *
 	 * @return  void
 	 *
-	 * @since   1.6
+	 * @since   4.0
 	 */
 	protected function addToolbar()
 	{
+		$canDo = ContentHelper::getActions('com_foos');
+
 		// Get the toolbar object instance
 		$toolbar = Toolbar::getInstance('toolbar');
 
 		ToolbarHelper::title(Text::_('COM_FOOS_MANAGER_FOOS'), 'address foo');
 
-		$toolbar->addNew('foo.add');
-		$toolbar->preferences('com_foos');
+		if ($canDo->get('core.create'))
+		{
+			$toolbar->addNew('foo.add');
+		}
+		
+		if ($canDo->get('core.options'))
+		{
+			$toolbar->preferences('com_foos');
+		}
 	}
-
 }

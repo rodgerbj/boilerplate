@@ -19,7 +19,7 @@ use Joomla\CMS\Language\LanguageHelper;
 /**
  * Item Model for a Foo.
  *
- * @since  1.6
+ * @since  4.0
  */
 class FooModel extends AdminModel
 {
