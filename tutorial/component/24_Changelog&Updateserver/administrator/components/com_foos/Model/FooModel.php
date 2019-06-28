@@ -64,7 +64,7 @@ class FooModel extends AdminModel
 	 *
 	 * @return  \JForm|boolean  A \JForm object on success, false on failure
 	 *
-	 * @since   1.6
+	 * @since   4.0
 	 */
 	public function getForm($data = array(), $loadData = true)
 	{
@@ -103,7 +103,7 @@ class FooModel extends AdminModel
 	 *
 	 * @return  mixed  Object on success, false on failure.
 	 *
-	 * @since   1.6
+	 * @since   4.0
 	 */
 	public function getItem($pk = null)
 	{

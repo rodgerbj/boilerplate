@@ -43,7 +43,7 @@ class FooTable extends Table
 	 *
 	 * @return  boolean  True on success, false on failure.
 	 *
-	 * @since   1.6
+	 * @since   4.0
 	 */
 	public function store($updateNulls = false)
 	{

@@ -39,7 +39,7 @@ class FoosModel extends ListModel
 	 *
 	 * @return  \JDatabaseQuery
 	 *
-	 * @since   1.6
+	 * @since   4.0
 	 */
 	protected function getListQuery()
 	{

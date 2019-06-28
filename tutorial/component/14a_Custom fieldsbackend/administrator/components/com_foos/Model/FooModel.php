@@ -25,7 +25,7 @@ class FooModel extends AdminModel
 	 * The type alias for this content type.
 	 *
 	 * @var    string
-	 * @since  3.2
+	 * @since  4.0
 	 */
 	public $typeAlias = 'com_foos.foo';
 
@@ -38,7 +38,7 @@ class FooModel extends AdminModel
 	 *
 	 * @return  \JForm|boolean  A \JForm object on success, false on failure
 	 *
-	 * @since   1.6
+	 * @since   4.0
 	 */
 	public function getForm($data = array(), $loadData = true)
 	{

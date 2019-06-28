@@ -28,7 +28,7 @@ class FooField extends FormField
 	 * The form field type.
 	 *
 	 * @var     string
-	 * @since   1.6
+	 * @since   4.0
 	 */
 	protected $type = 'Modal_Foo';
 
@@ -37,7 +37,7 @@ class FooField extends FormField
 	 *
 	 * @return  string  The field input markup.
 	 *
-	 * @since   1.6
+	 * @since   4.0
 	 */
 	protected function getInput()
 	{
