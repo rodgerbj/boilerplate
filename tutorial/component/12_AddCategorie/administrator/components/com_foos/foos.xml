@@ -48,6 +48,7 @@
 			<folder>Controller</folder>
 			<folder>Extension</folder>
 			<folder>Model</folder>
+			<folder>Rule</folder>
 			<folder>Service</folder>
 			<folder>View</folder>
 			<folder>services</folder>
