@@ -13,6 +13,8 @@
 		<field
 			name="name"
 			type="text"
+			validate="Letter"
+			class="validate-letter"
 			label="COM_FOOS_FIELD_NAME_LABEL"
 			size="40"
 			required="true"
