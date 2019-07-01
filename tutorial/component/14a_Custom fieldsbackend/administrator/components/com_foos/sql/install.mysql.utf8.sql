@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS `#__foos_details` (
   `access` int(10) unsigned NOT NULL DEFAULT 0,
   `name` varchar(255) NOT NULL DEFAULT '',
   `catid` int(11) NOT NULL DEFAULT 0,
+  `state` tinyint(3) NOT NULL DEFAULT 0,
   `published` tinyint(1) NOT NULL DEFAULT 0,
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',

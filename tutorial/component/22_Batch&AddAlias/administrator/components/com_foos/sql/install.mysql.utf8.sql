@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS `#__foos_details` (
   `access` int(10) unsigned NOT NULL DEFAULT 0,
   `name` varchar(255) NOT NULL DEFAULT '',
   `catid` int(11) NOT NULL DEFAULT 0,
+  `state` tinyint(3) NOT NULL DEFAULT 0,
   `language` char(7) NOT NULL DEFAULT '*',
   `ordering` int(11) NOT NULL DEFAULT 0,
   `checked_out` int(10) unsigned NOT NULL DEFAULT 0,

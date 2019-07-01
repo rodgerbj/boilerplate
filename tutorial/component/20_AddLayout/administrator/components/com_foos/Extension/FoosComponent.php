@@ -50,4 +50,18 @@ implements BootableExtensionInterface, CategoryServiceInterface, AssociationServ
 	{
 		$this->getRegistry()->register('foosadministrator', new AdministratorService);
 	}
+
+	/**
+	 * Returns the table for the count items functions for the given section.
+	 *
+	 * @param   string  $section  The section
+	 *
+	 * @return  string|null
+	 *
+	 * @since   4.0.0
+	 */
+	protected function getTableNameForSection(string $section = null)
+	{
+		return 'foos_details';
+	}
 }
