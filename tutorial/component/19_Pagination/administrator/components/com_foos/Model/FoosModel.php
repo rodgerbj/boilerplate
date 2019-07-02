@@ -72,7 +72,19 @@ class FoosModel extends ListModel
 
 		// Select the required fields from the table.
 		$query->select(
-			$db->quoteName(array('a.id', 'a.name', 'a.catid', 'a.access', 'a.published', 'a.publish_up', 'a.publish_down', 'a.language', 'a.ordering'))
+			$this->getState(
+				'list.select',
+				'a.id AS id,'
+				. 'a.name AS name,'
+				. 'a.access,'
+				. 'a.language,'
+				. 'a.ordering AS ordering,'
+				. 'a.state AS state,'
+				. 'a.catid AS catid,'
+				. 'a.published AS published,'
+				. 'a.publish_up,'
+				. 'a.publish_down'
+			)
 		);
 
 		$query->from($db->quoteName('#__foos_details', 'a'));

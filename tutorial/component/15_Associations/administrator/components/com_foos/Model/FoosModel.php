@@ -11,7 +11,6 @@ namespace Joomla\Component\Foos\Administrator\Model;
 
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Associations;
 use Joomla\CMS\MVC\Model\ListModel;
 
@@ -50,6 +49,22 @@ class FoosModel extends ListModel
 		// Select the required fields from the table.
 		$query->select(
 			$db->quoteName(array('a.id', 'a.name', 'a.catid', 'a.access', 'a.published', 'a.publish_up', 'a.publish_down', 'a.language'))
+		);
+
+		// Select the required fields from the table.
+		$query->select(
+			$this->getState(
+				'list.select',
+				'a.id AS id,'
+				. 'a.name AS name,'
+				. 'a.access,'
+				. 'a.language,'
+				. 'a.state AS state,'
+				. 'a.catid AS catid,'
+				. 'a.published AS published,'
+				. 'a.publish_up,'
+				. 'a.publish_down'
+			)
 		);
 
 		$query->from($db->quoteName('#__foos_details', 'a'));

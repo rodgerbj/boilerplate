@@ -34,6 +34,8 @@ class FooTable extends Table
 		$this->typeAlias = 'com_foos.foo';
 
 		parent::__construct('#__foos_details', 'id', $db);
+
+		$this->setColumnAlias('published', 'state');
 	}
 
 	/**
