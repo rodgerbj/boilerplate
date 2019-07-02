@@ -13,6 +13,7 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Table\Table;
 use Joomla\Database\DatabaseDriver;
+use Joomla\CMS\Factory;
 
 /**
  * Foos Table class.
@@ -33,6 +34,8 @@ class FooTable extends Table
 		$this->typeAlias = 'com_foos.foo';
 
 		parent::__construct('#__foos_details', 'id', $db);
+
+		$this->setColumnAlias('published', 'state');
 	}
 	/**
 	 * Overloaded check function
