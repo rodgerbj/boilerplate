@@ -26,7 +26,7 @@ class FoosController extends AdminController
 	 * The prefix to use with controller messages.
 	 *
 	 * @var    string
-	 * @since  1.6
+	 * @since  4.0
 	 */
 	protected $text_prefix = 'COM_FOOS_FOOS';
 

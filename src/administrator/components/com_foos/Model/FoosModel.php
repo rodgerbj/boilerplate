@@ -11,7 +11,6 @@ namespace Joomla\Component\Foos\Administrator\Model;
 
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\ListModel;
 
 /**
@@ -59,6 +58,7 @@ class FoosModel extends ListModel
 				. 'a.publish_down'
 			)
 		);
+
 		$query->from($db->quoteName('#__foos_details', 'a'));
 
 		// Join over the asset groups.
