@@ -7,15 +7,8 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace Joomla\Component\Foos\Administrator\Service\Html;
+defined('_JEXEC') or die;
 
-defined('JPATH_BASE') or die;
+use Joomla\CMS\Layout\LayoutHelper;
 
-/**
- * Foo HTML class.
- *
- * @since  4.0
- */
-class Foo
-{
-}
+echo LayoutHelper::render('joomla.edit.associations', $this);
