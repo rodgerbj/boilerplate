@@ -46,6 +46,7 @@ class FoosModel extends ListModel
 		$query = $db->getQuery(true);
 
 		// Select the required fields from the table.
+		// Select the required fields from the table.
 		$query->select(
 			$this->getState(
 				'list.select',
