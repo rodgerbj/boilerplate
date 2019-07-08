@@ -1,0 +1,5518 @@
+= Creating a Simple Component for Joomla!4.x =
+
+This is a multiple-article series of tutorials on how to develop a Model-View-Controller [[S:MyLanguage/Component|Component]] for Joomla! Version 4x. You can navigate the articles in this series by using the navigation drop down menu.
+
+Begin with the Introduction, and navigate the articles in this series by using the navigation button at the bottom or the box to the right (''Articles in this series'').
+Let's start with the introduction.
+
+= Developing a Basic Component - Part 1 =
+
+==Notes== 
+* If you are new to Joomla!, please read [[S:MyLanguage/Absolute_Basics_of_How_a_Component_Functions|Absolute Basics of How a Component Functions]]. 
+* This tutorial is for Joomlaǃ 4. For creating a component for Joomlaǃ 3 see [https://docs.joomla.org/J3.x:Developing_an_MVC_Component| Developing a Model-View-Controller Component/3.x]
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha7-dev). You can download Joomla! 4 at [https://github.com/joomla/joomla-cms/tree/4.0-dev GitHub], on the [https://developer.joomla.org/nightly-builds.html Developer website] or you can create a free website at https://launch.joomla.org.
+
+
+== Creating a simple Component/Developing a Basic Component ==
+
+You can see many examples of components in the standard Joomla! install. For example
+* Content
+* Banners
+* Tags or
+* Contact
+
+This tutorial will explain how to go about creating a simple component. Through this tutorial you will learn the basic file structure of a Joomlaǃ 4 component. This basic structure can then be expanded to produce more complex components.
+
+=== File Structure ===
+
+There are a few basic files that are used in the standard pattern of component development:
+
+* <code>administrator/components/com_foos/Controller/DisplayController.php</code> - This file .
+
+* <code>administrator/components/com_foos/Extension/FoosComponent.php</code> - This file .
+
+* <code>administrator/components/com_foos/Service/Html/Foo.php</code> - This file .
+
+* <code>administrator/components/com_foos/View/Foos/HtmlView.php</code> - This file .
+
+* <code>administrator/components/com_foos/services/provider.php</code> - This file .
+
+* <code>administrator/components/com_foos/tmpl/foos/default.php</code> - This file .
+
+* <code>com_foo.xml</code> - This file contains information about the componente. It defines the files that need to be installed by the Joomla! installer and specifies configuration parameters for the componente.
+
+* <code>script.php</code> - This file .
+
+=== Creating administrator/components/com_foos/Controller/DisplayController.php ===
+
+The <tt>administrator/components/com_foos/Controller/DisplayController.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/Controller/DisplayController.php file ====
+
+The code for the <tt>administrator/components/com_foos/Controller/DisplayController.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Creating administrator/components/com_foos/Extension/FoosComponent.php ===
+
+The <tt>administrator/components/com_foos/Extension/FoosComponent.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/Extension/FoosComponent.php file ====
+
+The code for the <tt>administrator/components/com_foos/Extension/FoosComponent.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Creating administrator/components/com_foos/Service/Html/Foo.php ===
+
+The <tt>administrator/components/com_foos/Service/Html/Foo.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/Service/Html/Foo.php file ====
+
+The code for the <tt>administrator/components/com_foos/Service/Html/Foo.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Creating administrator/components/com_foos/View/Foos/HtmlView.php ===
+
+The <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/View/Foos/HtmlView.php file ====
+
+The code for the <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Creating administrator/components/com_foos/services/provider.php ===
+
+The <tt>administrator/components/com_foos/services/provider.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/services/provider.php file ====
+
+The code for the <tt>administrator/components/com_foos/services/provider.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Creating administrator/components/com_foos/tmpl/foos/default.php ===
+
+The <tt>administrator/components/com_foos/tmpl/foos/default.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/tmpl/foos/default.php file ====
+
+The code for the <tt>administrator/components/com_foos/tmpl/foos/default.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Creating script.php ===
+
+The <tt>script.php</tt> file is the installation file. Most entries are self-explanatory.
+
+==== Completed script.php file ====
+
+The code for the <tt>script.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Creating com_foos.xml ===
+
+The <tt>mod_foo.xml</tt> file is the installation file. Most entries are self-explanatory.
+
+==== Completed mod_foo.xml file ====
+
+The code for the <tt>mod_foo.xml</tt>  file is as follows:
+ 
+<source lang="xml">
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="componente" version="3.8" client="site" method="upgrade">
+    <name>MOD_FOO</name>
+    <creationDate>[DATE]</creationDate>
+    <author>[AUTHOR]</author>
+    <authorEmail>[AUTHOR_EMAIL]</authorEmail>
+    <authorUrl>[AUTHOR_URL]</authorUrl>
+    <copyright>[COPYRIGHT]</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <version>1.0</version>
+    <description>MOD_FOO_XML_DESCRIPTION</description>
+    <files>
+        <filename componente="mod_foo">mod_foo.php</filename>
+        <folder>tmpl</folder>
+        <folder>language</folder>
+        <filename>mod_foo.xml</filename>
+    </files>
+</extension>
+</source>
+
+=== Creating script.php ===
+
+The <tt>script.php</tt> file is the installation file. Most entries are self-explanatory.
+
+==== Completed script.php file ====
+
+The code for the <tt>script.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+
+== Test your componente ==
+
+Now you can zip all files and install them via Joomla Extension Manager.
+After that you can choose your component in the menu of the Joomlaǃ backend. 
+
+[[File:componenttutorial1.png|700px]]
+
+In the front end there is no change up to now. We are going to work on this in the next chapter.
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ |administrator/components/com_foos/Controller/DisplayController.php
+ |this is the administrator entry point to the Foo component 
+ | new
+ |-
+  |1
+ |administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | new
+ |-
+|1
+ |administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | new
+ |-
+|1
+ |administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | new
+ |-
+|1
+ |administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | new
+ |-
+|1
+ |administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | new
+ |-
+|1
+ |administrator/components/com_foos/foos.xml
+ |this is an XML (manifest) file that tells Joomla! how to install our component.
+ | new
+ |-
+|1
+ |administrator/components/com_foos/script.php
+ | the installer script
+ | new
+ |-
+|}
+
+[[File:componenttutorialdiff1.png|700px]]
+
+== Conclusion ==
+
+Component development for Joomla! is a fairly simple, straightforward process. Using the techniques described in this tutorial, an endless variety of componentes can be developed with little hassle.
+
+Boilerplates you can find hereː
+* https://github.com/joomla-extensions/boilerplate/tree/master/plugins/system
+The sample files for this Tutorial you can find hereː
+* https://github.com/astridx/boilerplate/tree/tutorial/tutorial/component/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= Adding a view to the site part - Part 2 =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+== File Structure ==
+
+=== Creating components/com_foos/Controller/DisplayController.php ===
+
+The <tt>components/com_foos/Controller/DisplayController.php</tt> file is the installation file.
+
+==== Completed components/com_foos/Controller/DisplayController.php file ====
+
+The code for the <tt>components/com_foos/Controller/DisplayController.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Creating components/com_foos/View/Foo/HtmlView.php ===
+
+The <tt>components/com_foos/View/Foo/HtmlView.php</tt> file is the installation file.
+
+==== Completed components/com_foos/View/Foo/HtmlView.php file ====
+
+The code for the <tt>components/com_foos/View/Foo/HtmlView.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Creating components/com_foos/tmpl/foo/default.php ===
+
+The <tt>components/com_foos/tmpl/foo/default.php</tt> file is the installation file. Most entries are self-explanatory.
+
+==== Completed components/com_foos/tmpl/foo/default.php file ====
+
+The code for the <tt>components/com_foos/tmpl/foo/default.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+== Test your component ==
+
+Now you can zip all files and install them via Joomla Extension Manager.
+After that you can see the view in the front end. 
+
+[[File:componenttutorial1.png|700px]]
+
+In the front end you can see the view if you open the address joomla-cms4/index.php?option=com_foos&view=foo.
+
+[[File:componenttutorial2x.png|700px]]
+
+At the moment you have enter the address manually. It would be nicer to have a menu item. 
+We are going to work on this in the next chapter.
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+  |1
+ |administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/foos.xml
+ |this is an XML (manifest) file that tells Joomla! how to install our component.
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+|2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | new
+ |-
+|2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | new
+ |-
+|2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | new
+ |-
+|}
+
+[[File:componenttutorialdiff2.png|700px]]
+
+== Conclusion ==
+
+Now we have a basic view in the backend and in the front end.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= Adding a menu type to the site part - Part 3 =
+
+In this article we will cover how to add a menu item to a basic Joomla! component.
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+== File Structure ==
+
+=== Creating components/com_foos/tmpl/foo/default.xml ===
+
+The <tt>components/com_foos/tmpl/foo/default.xml</tt> file is the installation file.
+
+==== Completed components/com_foos/tmpl/foo/default.xml file ====
+
+The code for the <tt>components/com_foos/tmpl/foo/default.xml</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/foos.xml ===
+
+The <tt>administrator/components/com_foos/foos.xml</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/foos.xml file ====
+
+The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+== Test your component ==
+
+Now you can zip all files and install them via Joomla Extension Manager.
+After that you can create a menu item. 
+
+In the front end you can see the menu item and you can open the view with the help of the menu item.
+
+[[File:componenttutorial3̠1.png|700px]]
+
+[[File:componenttutorial3̠2.png|700px]]
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+  |1
+ |administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/foos.xml
+ |this is an XML (manifest) file that tells Joomla! how to install our component.
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+|2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+|-
+|2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+|2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | unchanged
+ |-
+|3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | new
+ |-
+|}
+
+[[File:componenttutorialdiff3.png|700px]]
+
+== Conclusion ==
+Now we are able to add a Menu Item to our component. This will allow us to access our component a menu item rather than having to remember what to type into the address bar. 
+Currently the view does not show any data yet. In order to work with data, we will add a model to our component in the next chapter.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= Adding a model to the site part - Part 4 =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+== File Structure ==
+
+=== Changing administrator/components/com_foos/foos.xml ===
+
+The <tt>administrator/components/com_foos/foos.xml</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/foos.xml file ====
+
+The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Creating components/com_foos/Model/FooModel.php ===
+
+The <tt>components/com_foos/Model/FooModel.php</tt> file is the installation file.
+
+==== Completed components/com_foos/Model/FooModel.php file ====
+
+The code for the <tt>components/com_foos/Model/FooModel.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Changing components/com_foos/View/Foo/HtmlView.php ===
+
+The <tt>components/com_foos/View/Foo/HtmlView.php</tt> file is the installation file.
+
+==== Completed components/com_foos/View/Foo/HtmlView.php file ====
+
+The code for the <tt>components/com_foos/View/Foo/HtmlView.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Changing components/com_foos/tmpl/foo/default.php ===
+
+The <tt>components/com_foos/tmpl/foo/default.php</tt> file is the installation file. Most entries are self-explanatory.
+
+==== Completed components/com_foos/tmpl/foo/default.php file ====
+
+The code for the <tt>components/com_foos/tmpl/foo/default.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+== Test your component ==
+
+Now you can zip all files and install them via Joomla Extension Manager.
+After that you can see the view in the front end. 
+
+[[File:componenttutorial341.png|700px]]
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+  |1
+ |administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/foos.xml
+ |this is an XML (manifest) file that tells Joomla! how to install our component.
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+|2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+|-
+|4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | new 
+|-
+|2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | changed
+ |-
+|2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | changed
+ |-
+|3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | unchanged
+ |-
+|}
+
+[[File:componenttutorialdiff4.png|700px]]
+
+== Conclusion ==
+
+At the moment you can create a menu item, that shows a special view of your component. 
+What, if you want to show a view depending on a parameter? That is easy. You can add a variable request in the menu item. 
+We are going to work on this in the next chapter.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= Adding a variable request in the menu type - Part 5 =
+
+For the moment, the displayed message is always fix. In Joomla! it is possible to add parameters to menu types. 
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+== File Structure ==
+
+=== Creating components/com_foos/Model/FooModel.php ===
+
+The <tt>components/com_foos/Model/FooModel.php</tt> file is the installation file.
+
+==== Completed components/com_foos/Model/FooModel.php file ====
+
+The code for the <tt>components/com_foos/Model/FooModel.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Changing components/com_foos/tmpl/foo/default.xml ===
+
+The <tt>components/com_foos/tmpl/foo/default.xml</tt> file is the installation file.
+
+==== Completed components/com_foos/tmpl/foo/default.xml file ====
+
+The code for the <tt>components/com_foos/tmpl/foo/default.xml</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+== Test your component ==
+
+Now you can zip all files and install them via Joomla Extension Manager.
+After that you can add a parameter to the menu item. 
+
+[[File:componenttutorial351.png|700px]]
+
+Depending on the parameter, the view is set up in the front end.
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+  |1
+ |administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/foos.xml
+ |this is an XML (manifest) file that tells Joomla! how to install our component.
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+|2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+|-
+|4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | changed 
+|-
+|2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+|2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | unchanged
+ |-
+|3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | changed
+ |-
+|}
+
+[[File:componenttutorialdiff5.png|700px]]
+
+== Conclusion ==
+For the moment, the messages are hard coded or entered manually. We would like to store the data in the Joomla! database. 
+Therefore, in the next chapter, we will add database access to the component.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= Using the database in the backend - Part 6 =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+== File Structure ==
+
+=== Creating administrator/components/com_foos/Model/FoosModel.php ===
+
+The <tt>administrator/components/com_foos/Model/FoosModel.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/Model/FoosModel.php file ====
+
+The code for the <tt>administrator/components/com_foos/Model/FoosModel.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/View/Foos/HtmlView.php ===
+
+The <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/View/Foos/HtmlView.php file ====
+
+The code for the <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/services/provider.php ===
+
+The <tt>administrator/components/com_foos/services/provider.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/services/provider.php file ====
+
+The code for the <tt>administrator/components/com_foos/services/provider.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Creating administrator/components/com_foos/sql/install.mysql.utf8.sql ===
+
+The <tt>administrator/components/com_foos/sql/install.mysql.utf8.sql</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/sql/install.mysql.utf8.sql file ====
+
+The code for the <tt>administrator/components/com_foos/sql/install.mysql.utf8.sql</tt> file is as follows:
+ 
+<source lang="sql" highlight="0-11">
+CREATE TABLE IF NOT EXISTS `#__foos_details` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `#__foos_details` (`name`) VALUES
+('Nina'),
+('Astrid'),
+('Elmar');
+</source>
+
+=== Creating administrator/components/com_foos/sql/uninstall.mysql.utf8.sql ===
+
+The <tt>administrator/components/com_foos/sql/uninstall.mysql.utf8.sql</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/sql/uninstall.mysql.utf8.sql file ====
+
+The code for the <tt>administrator/components/com_foos/sql/uninstall.mysql.utf8.sql</tt> file is as follows:
+ 
+<source lang="sql" highlight="0-1">
+DROP TABLE IF EXISTS `#__foos_details`;
+</source>
+
+=== Changing administrator/components/com_foos/tmpl/foos/default.php ===
+
+The <tt>administrator/components/com_foos/tmpl/foos/default.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/tmpl/foos/default.php file ====
+
+The code for the <tt>administrator/components/com_foos/tmpl/foos/default.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/foos.xml ===
+
+The <tt>administrator/components/com_foos/foos.xml</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/foos.xml file ====
+
+The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as follows:
+ 
+<source lang="xml" highlight="14-23,42,46">
+<?xml version="1.0" encoding="utf-8" ?>
+<extension type="component" version="4.0" method="upgrade">
+	<name>COM_FOOS</name>
+	<creationDate>[DATE]</creationDate>
+	<author>[AUTHOR]</author>
+	<authorEmail>[AUTHOR_EMAIL]</authorEmail>
+	<authorUrl>[AUTHOR_URL]</authorUrl>
+	<copyright>[COPYRIGHT]</copyright>
+	<license>GNU General Public License version 2 or later;</license>
+	<version>1.0.0</version>
+	<description>COM_FOOS_XML_DESCRIPTION</description>
+	<namespace>Joomla\Component\Foos</namespace>
+	<scriptfile>script.php</scriptfile>
+	<install> <!-- Runs on install -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall> <!-- Runs on uninstall -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<!-- Frond-end files -->
+	<files folder="components/com_foos">
+		<folder>Controller</folder>
+		<folder>Model</folder>
+		<folder>View</folder>
+		<folder>tmpl</folder>
+	</files>
+	<!-- Back-end files -->
+	<administration>
+		<!-- Menu entries -->
+		<menu view="foos">COM_FOOS</menu>
+		<submenu>
+			<menu link="option=com_foos">COM_FOOS</menu>
+		</submenu>
+		<files folder="administrator/components/com_foos">
+			<filename>foos.xml</filename>
+			<folder>Controller</folder>
+			<folder>Extension</folder>
+			<folder>Model</folder>
+			<folder>Service</folder>
+			<folder>View</folder>
+			<folder>services</folder>
+			<folder>sql</folder>
+			<folder>tmpl</folder>
+		</files>
+	</administration>
+</extension>
+</source>
+
+
+== Test your component ==
+
+Now you can zip all files and install them via Joomla Extension Manager.
+After that you can add a parameter to the menu item. 
+
+[[File:componenttutorial61.png|700px]]
+
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+ |1
+ |administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+| 6
+ | administrator/components/com_foos/Model/FoosModel.php
+ | this is the model of the Foo component 
+ | new
+ |-
+|1
+ |administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | changed
+ |-
+|6
+ |administrator/components/com_foos/sql/install.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | new
+ |-
+|6
+ |administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | new
+ |-
+|1
+ |administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/foos.xml
+ |this is an XML (manifest) file that tells Joomla! how to install our component.
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+|2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+|-
+|4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | unchanged 
+|-
+|2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+|2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | unchanged
+ |-
+|3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | unchanged
+ |-
+|}
+
+
+[[File:componenttutorialdiff6.png|700px]]
+
+== Conclusion ==
+
+Now our component has a database table where it can store data. In this chapter we have seen, how 
+we can display this data in the backend. In the next chapter we will have a look, how we can use 
+the data in the front end.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= Using the database in the frontend - Part 7 =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+== File Structure ==
+
+=== Creating administrator/components/com_foos/Controller/FooController.php ===
+
+The <tt>administrator/components/com_foos/Controller/FooController.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/Controller/FooController.php file ====
+
+The code for the <tt>administrator/components/com_foos/Controller/FooController.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Creating administrator/components/com_foos/Field/FooField.php ===
+
+The <tt>administrator/components/com_foos/Field/FooField.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/Field/FooField.php file ====
+
+The code for the <tt>administrator/components/com_foos/Field/FooField.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Creating administrator/components/com_foos/Model/FooModel.php ===
+
+The <tt>administrator/components/com_foos/Model/FooModel.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/Model/FooModel.php file ====
+
+The code for the <tt>administrator/components/com_foos/Model/FooModel.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/View/Foos/HtmlView.php ===
+
+The <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/View/Foos/HtmlView.php file ====
+
+The code for the <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/tmpl/foos/default.php ===
+
+The <tt>administrator/components/com_foos/tmpl/foos/default.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/tmpl/foos/default.php file ====
+
+The code for the <tt>administrator/components/com_foos/tmpl/foos/default.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Creating administrator/components/com_foos/Table/FooTable.php ===
+
+The <tt>administrator/components/com_foos/Table/FooTable.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/Table/FooTable.php file ====
+
+The code for the <tt>administrator/components/com_foos/Table/FooTable.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/foos.xml ===
+
+The <tt>administrator/components/com_foos/foos.xml</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/foos.xml file ====
+
+The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Creating administrator/components/com_foos/forms/foo.xml ===
+
+The <tt>administrator/components/com_foos/forms/foo.xml</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/forms/foo.xml file ====
+
+The code for the <tt>administrator/components/com_foos/forms/foo.xml</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing components/com_foos/Model/FooModel.php ===
+
+The <tt>components/com_foos/Model/FooModel.php</tt> file is the installation file.
+
+==== Completed components/com_foos/Model/FooModel.php file ====
+
+The code for the <tt>components/com_foos/Model/FooModel.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Changing components/com_foos/View/Foos/HtmlView.php ===
+
+The <tt>components/com_foos/View/Foos/HtmlView.php</tt> file is the installation file.
+
+==== Completed components/com_foos/View/Foos/HtmlView.php file ====
+
+The code for the <tt>components/com_foos/View/Foos/HtmlView.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Changing components/com_foos/View/Foo/HtmlView.php ===
+
+The <tt>components/com_foos/View/Foo/HtmlView.php</tt> file is the installation file.
+
+==== Completed components/com_foos/View/Foo/HtmlView.php file ====
+
+The code for the <tt>components/com_foos/View/Foo/HtmlView.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Creating components/com_foos/tmpl/foos/edit.php ===
+
+The <tt>components/com_foos/tmpl/foos/edit.php</tt> file is the installation file.
+
+==== Completed components/com_foos/tmpl/foos/edit.php file ====
+
+The code for the <tt>components/com_foos/tmpl/foos/edit.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Creating Creating components/com_foos/tmpl/foos/modal.php ===
+
+The <tt>Creating components/com_foos/tmpl/foos/modal.php</tt> file is the installation file.
+
+==== Completed Creating components/com_foos/tmpl/foos/modal.php file ====
+
+The code for the <tt>Creating components/com_foos/tmpl/foos/modal.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Changing components/com_foos/tmpl/foo/default.php ===
+
+The <tt>components/com_foos/tmpl/foo/default.php</tt> file is the installation file.
+
+==== Completed components/com_foos/tmpl/foo/default.php file ====
+
+The code for the <tt>components/com_foos/tmpl/foo/default.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Creating components/com_foos/tmpl/foo/modal.php ===
+
+The <tt>components/com_foos/tmpl/foo/modal.php</tt> file is the installation file.
+
+==== Completed components/com_foos/tmpl/foo/modal.php file ====
+
+The code for the <tt>components/com_foos/tmpl/foo/modal.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Changing components/com_foos/tmpl/foo/default.php ===
+
+The <tt>components/com_foos/tmpl/foo/default.php</tt> file is the installation file.
+
+==== Completed components/com_foos/tmpl/foo/default.php file ====
+
+The code for the <tt>components/com_foos/tmpl/foo/default.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Changing components/com_foos/tmpl/foo/default.xml ===
+
+The <tt>components/com_foos/tmpl/foo/default.xml</tt> file is the installation file.
+
+==== Completed components/com_foos/tmpl/foo/default.xml file ====
+
+The code for the <tt>components/com_foos/tmpl/foo/default.xml</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Creating media/com_foos/js/admin-foos-modal.js ===
+
+The <tt>media/com_foos/js/admin-foos-modal.js</tt> file is the installation file.
+
+==== Completed media/com_foos/js/admin-foos-modal.js file ====
+
+The code for the <tt>media/com_foos/js/admin-foos-modal.js</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+== Test your component ==
+
+Now you can zip all files and install them via Joomla Extension Manager.
+After that you can add a parameter to the menu item. 
+
+[[File:componenttutorial71.png|700px]]
+
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Controller/FooController.php
+ | this is the entry point to the Foo component 
+ | new
+ |-
+ | 1
+ | administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Field/FooField.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | new
+ |-
+ | 7
+ | administrator/components/com_foos/Model/FooModel.php
+ | this is the model of the Foo component item
+ | new
+ |-
+ | 6
+ | administrator/components/com_foos/Model/FoosModel.php
+ | this is the model of the Foo component 
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Table/FooTable.php
+ | the database table
+ | new
+ |-
+ | 1
+ | administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | changed
+ |-
+ | 1
+ | administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | changed
+ |-
+ | 6
+ | administrator/components/com_foos/sql/install.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/forms/foo.xml
+ | the default form in the back end
+ | new
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/edit.php
+ | the default view in the back end
+ | new
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/modal.php
+ | the default view in the back end
+ | new
+ |-
+ | 1
+ | administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | changed
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foos/modal.php
+ | the default view in the back end
+ | new
+ |-
+ |1
+ |administrator/components/com_foos/foos.xml
+ |this is an XML (manifest) file that tells Joomla! how to install our component.
+ | changed
+ |-
+ | 1
+ |administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+ | 2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+ |-
+ | 4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | changed 
+ |-
+ | 2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | changed
+ |-
+ | 7
+ | components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the frond end
+ | new
+ |-
+ | 2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | changed
+ |-
+ | 3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | changed
+ |-
+ | 7
+ | media/com_foos/js/admin-foos-modal.js
+ | the javascript file
+ | new
+ |-
+|}
+
+
+[[File:componenttutorialdiff7a.png|700px]]
+[[File:componenttutorialdiff7b.png|700px]]
+
+== Conclusion ==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= Using languages files - Part 8 =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+todo
+
+== Test your component == 
+
+[[File:componenttutorial81a.png|700px]]
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Controller/FooController.php
+ | this is the entry point to the Foo component 
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Field/FooField.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Model/FooModel.php
+ | this is the model of the Foo component item
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/Model/FoosModel.php
+ | this is the model of the Foo component 
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Table/FooTable.php
+ | the database table
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/sql/install.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/forms/foo.xml
+ | the default form in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/edit.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/modal.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foos/modal.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/foos.xml
+ | this is an XML (manifest) file that tells Joomla! how to install our component.
+ | changed
+ |-
+ | 1
+ | administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+ | 8
+ | administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini
+ | the language file
+ | new
+ |-
+ | 8
+ | administrator/components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+ | the language file
+ | new
+ |-
+ | 2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+ |-
+ | 4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | unchanged 
+ |-
+ | 2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+ | 7
+ | components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+ | 2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | changed
+ |-
+ | 3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | unchanged
+ |-
+ | 8
+ | components/com_foos/language/en-GB/en-GB.com_foos.ini
+ | the language file
+ | new
+ |-
+ | 8
+ | components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+ | the language file
+ | new
+ |-
+ | 7
+ | media/com_foos/js/admin-foos-modal.js
+ | the javascript file
+ | unchanged
+ |-
+|}
+
+[[File:componenttutorialdiff8.png|700px]]
+
+== Conclusion ==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= Adding configuration - Part 9 =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+== File Structure ==
+
+=== Creating administrator/components/com_foos/config.php ===
+
+The <tt>administrator/components/com_foos/config.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/config.php file ====
+
+The code for the <tt>administrator/components/com_foos/config.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/foos.xml ===
+
+The <tt>administrator/components/com_foos/foos.xml</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/foos.xml file ====
+
+The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/foos.xml ===
+
+The <tt>administrator/components/com_foos/foos.xml</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/foos.xml file ====
+
+The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini ===
+
+The <tt>administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini file ====
+
+The code for the <tt>administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/Model/FooModel.php ===
+
+The <tt>administrator/components/com_foos/Model/FooModel.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/Model/FooModel.php file ====
+
+The code for the <tt>administrator/components/com_foos/Model/FooModel.php</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/View/Foos/HtmlView.php ===
+
+The <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/View/Foos/HtmlView.php file ====
+
+The code for the <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing components/com_foos/Model/FooModel.php ===
+
+The <tt>components/com_foos/Model/FooModel.php</tt> file is the installation file.
+
+==== Completed components/com_foos/Model/FooModel.php file ====
+
+The code for the <tt>components/com_foos/Model/FooModel.php</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing components/com_foos/tmpl/foo/default.php ===
+
+The <tt>components/com_foos/tmpl/foo/default.php</tt> file is the installation file.
+
+==== Completed components/com_foos/tmpl/foo/default.php file ====
+
+The code for the <tt>components/com_foos/tmpl/foo/default.php</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+== Test your component ==
+[[File:componenttutorial91.png|700px]]
+
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Controller/FooController.php
+ | this is the entry point to the Foo component 
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Field/FooField.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Model/FooModel.php
+ | this is the model of the Foo component item
+ | changed
+ |-
+ | 6
+ | administrator/components/com_foos/Model/FoosModel.php
+ | this is the model of the Foo component 
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Table/FooTable.php
+ | the database table
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | changed
+ |-
+ | 1
+ | administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/sql/install.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/forms/foo.xml
+ | the default form in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/edit.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/modal.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foos/modal.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/foos.xml
+ | this is an XML (manifest) file that tells Joomla! how to install our component.
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+ | 8
+ | administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini
+ | the language file
+ | changed
+ |-
+ | 8
+ | administrator/components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+ | the language file
+ | unchanged
+ |-
+ | 9
+ | administrator/components/com_foos/config.php
+ | the configuration
+ | new
+ |-
+ | 2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+ |-
+ | 4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | changed 
+ |-
+ | 2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+ | 7
+ | components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+ | 2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | changed
+ |-
+ | 3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | unchanged
+ |-
+ | 8
+ | components/com_foos/language/en-GB/en-GB.com_foos.ini
+ | the language file
+ | unchanged
+ |-
+ | 8
+ | components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+ | the language file
+ | unchanged
+ |-
+ | 7
+ | media/com_foos/js/admin-foos-modal.js
+ | the javascript file
+ | unchanged
+ |-
+|}
+
+[[File:componenttutorialdiff9.png|700px]]
+
+== Conclusion ==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= Adding ACL - Part 10 =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+== File Structure ==
+
+=== Creating administrator/components/com_foos/access.xml ===
+
+The <tt>administrator/components/com_foos/access.xml</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/access.xml file ====
+
+The code for the <tt>administrator/components/com_foos/access.xml</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/foos.xml ===
+
+The <tt>administrator/components/com_foos/foos.xml</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/foos.xml file ====
+
+The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/Model/FoosModel.php ===
+
+The <tt>administrator/components/com_foos/Model/FoosModel.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/Model/FoosModel.php file ====
+
+The code for the <tt>administrator/components/com_foos/Model/FoosModel.php</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/View/Foos/HtmlView.php ===
+
+The <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/View/Foos/HtmlView.php file ====
+
+The code for the <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/config.xml ===
+
+The <tt>administrator/components/com_foos/config.xml</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/config.xml file ====
+
+The code for the <tt>administrator/components/com_foos/config.xml</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/forms/foo.xml ===
+
+The <tt>administrator/components/com_foos/forms/foo.xml</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/forms/foo.xml file ====
+
+The code for the <tt>administrator/components/com_foos/forms/foo.xml</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/sql/install.mysql.utf8.sql ===
+
+The <tt>administrator/components/com_foos/sql/install.mysql.utf8.sql</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/sql/install.mysql.utf8.sql file ====
+
+The code for the <tt>administrator/components/com_foos/sql/install.mysql.utf8.sql</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/tmpl/foo/edit.php ===
+
+The <tt>administrator/components/com_foos/tmpl/foo/edit.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/tmpl/foo/edit.php file ====
+
+The code for the <tt>administrator/components/com_foos/tmpl/foo/edit.php</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/tmpl/foo/default.php ===
+
+The <tt>administrator/components/com_foos/tmpl/foo/default.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/tmpl/foo/default.php file ====
+
+The code for the <tt>administrator/components/com_foos/tmpl/foo/default.php</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+
+== Test your component ==
+
+[[File:componenttutorial10a.png|700px]]
+
+== Example in Joomla! ==
+
+/components/com_users/Rule/LoginUniqueFieldRule.php
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Controller/FooController.php
+ | this is the entry point to the Foo component 
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Field/FooField.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Model/FooModel.php
+ | this is the model of the Foo component item
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/Model/FoosModel.php
+ | this is the model of the Foo component 
+ | changed
+ |-
+ | 1
+ | administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Table/FooTable.php
+ | the database table
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | changed
+ |-
+ | 1
+ | administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/sql/install.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | changed
+ |-
+ | 6
+ | administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/forms/foo.xml
+ | the default form in the back end
+ | changed
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/edit.php
+ | the default view in the back end
+ | changed
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/modal.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | changed
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foos/modal.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/foos.xml
+ | this is an XML (manifest) file that tells Joomla! how to install our component.
+ | changed
+ |-
+ | 1
+ | administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+ | 8
+ | administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini
+ | the language file
+ | unchanged
+ |-
+ | 8
+ | administrator/components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+ | the language file
+ | unchanged
+ |-
+ | 9
+ | administrator/components/com_foos/config.php
+ | the configuration
+ | changed
+ |-
+ | 10
+ | administrator/components/com_foos/access.xml
+ | the ACL file for permissen handling
+ | new
+ |-
+ | 2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+ |-
+ | 4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | unchanged 
+ |-
+ | 2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+ | 7
+ | components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+ | 2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | unchanged
+ |-
+ | 3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | unchanged
+ |-
+ | 8
+ | components/com_foos/language/en-GB/en-GB.com_foos.ini
+ | the language file
+ | unchanged
+ |-
+ | 8
+ | components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+ | the language file
+ | unchanged
+ |-
+ | 7
+ | media/com_foos/js/admin-foos-modal.js
+ | the javascript file
+ | unchanged
+ |-
+|}
+
+[[File:componenttutorialdiff10.png|700px]]
+
+== Conclusion ==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= Adding Server side validation - Part 11a =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+== File Structure ==
+
+=== Create administrator/components/com_foos/Rule/LetterRule.php ===
+
+The <tt>administrator/components/com_foos/Rule/LetterRule.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/Rule/LetterRule.php file ====
+
+The code for the <tt>administrator/components/com_foos/Rule/LetterRule.php</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/forms/foo.xml ===
+
+The <tt>administrator/components/com_foos/forms/foo.xml</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/forms/foo.xml file ====
+
+The code for the <tt>administrator/components/com_foos/forms/foo.xml</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/foo.xml ===
+
+The <tt>administrator/components/com_foos/foo.xml</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/foo.xml file ====
+
+The code for the <tt>administrator/components/com_foos/foo.xml</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+== Test your component ==
+
+
+
+== Example in Joomla! ==
+
+[[File:componenttutorial11a1.png|700px]]
+
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Controller/FooController.php
+ | this is the entry point to the Foo component 
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Field/FooField.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Model/FooModel.php
+ | this is the model of the Foo component item
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/Model/FoosModel.php
+ | this is the model of the Foo component 
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Table/FooTable.php
+ | the database table
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/sql/install.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/forms/foo.xml
+ | the default form in the back end
+ | changed
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/edit.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/modal.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foos/modal.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/foos.xml
+ | this is an XML (manifest) file that tells Joomla! how to install our component.
+ | changed
+ |-
+ | 1
+ | administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+ | 8
+ | administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini
+ | the language file
+ | unchanged
+ |-
+ | 8
+ | administrator/components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+ | the language file
+ | unchanged
+ |-
+ | 9
+ | administrator/components/com_foos/config.php
+ | the configuration
+ | unchanged
+ |-
+ | 10
+ | administrator/components/com_foos/access.xml
+ | the ACL file for permissen handling
+ | unchanged
+ |-
+ | 11a
+ | administrator/components/com_foos/Rule/LetterRule.php
+ | the server side validation rule
+ | new
+ |-
+ | 2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+ |-
+ | 4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | unchanged 
+ |-
+ | 2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+ | 7
+ | components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+ | 2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | unchanged
+ |-
+ | 3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | unchanged
+ |-
+ | 8
+ | components/com_foos/language/en-GB/en-GB.com_foos.ini
+ | the language file
+ | unchanged
+ |-
+ | 8
+ | components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+ | the language file
+ | unchanged
+ |-
+ | 7
+ | media/com_foos/js/admin-foos-modal.js
+ | the javascript file
+ | unchanged
+ |-
+|}
+
+[[File:componenttutorialdiff11a.png|700px]]
+
+== Conclusion ==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= Adding Client side validation - Part 11b =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+== File Structure ==
+
+=== Create media/com_foos/js/admin-foos-letter.js ===
+
+The <tt>media/com_foos/js/admin-foos-letter.js</tt> file is the installation file.
+
+==== Completed media/com_foos/js/admin-foos-letter.js file ====
+
+The code for the <tt>media/com_foos/js/admin-foos-letter.js</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/forms/foo.xml ===
+
+The <tt>administrator/components/com_foos/forms/foo.xml</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/forms/foo.xml file ====
+
+The code for the <tt>administrator/components/com_foos/forms/foo.xml</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/tmpl/foo/edit.php ===
+
+The <tt>administrator/components/com_foos/tmpl/foo/edit.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/tmpl/foo/edit.php file ====
+
+The code for the <tt>administrator/components/com_foos/tmpl/foo/edit.php</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+== Test your component ==
+
+[[File:componenttutorial10a.png|700px]]
+
+== Example in Joomla! ==
+
+[[File:componenttutorial11b1.png|700px]]
+
+==  Example in Joomla ==
+/var/www/html/backend-template/media/system/js/fields/passwordstrength.js
+/var/www/html/backend-template/administrator/components/com_users/forms/user.xml
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Controller/FooController.php
+ | this is the entry point to the Foo component 
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Field/FooField.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Model/FooModel.php
+ | this is the model of the Foo component item
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/Model/FoosModel.php
+ | this is the model of the Foo component 
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Table/FooTable.php
+ | the database table
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/sql/install.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/forms/foo.xml
+ | the default form in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/edit.php
+ | the default view in the back end
+ | changed
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/modal.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foos/modal.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/foos.xml
+ | this is an XML (manifest) file that tells Joomla! how to install our component.
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+ | 8
+ | administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini
+ | the language file
+ | unchanged
+ |-
+ | 8
+ | administrator/components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+ | the language file
+ | unchanged
+ |-
+ | 9
+ | administrator/components/com_foos/config.php
+ | the configuration
+ | unchanged
+ |-
+ | 10
+ | administrator/components/com_foos/access.xml
+ | the ACL file for permissen handling
+ | unchanged
+ |-
+ | 11a
+ | administrator/components/com_foos/Rule/LetterRule.php
+ | the server side validation rule
+ | unchanged
+ |-
+ | 2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+ |-
+ | 4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | unchanged 
+ |-
+ | 2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+ | 7
+ | components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+ | 2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | unchanged
+ |-
+ | 3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | unchanged
+ |-
+ | 8
+ | components/com_foos/language/en-GB/en-GB.com_foos.ini
+ | the language file
+ | unchanged
+ |-
+ | 8
+ | components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+ | the language file
+ | unchanged
+ |-
+ | 7
+ | media/com_foos/js/admin-foos-modal.js
+ | the javascript file
+ | unchanged
+ |-
+ | 11b
+ | media/com_foos/js/admin-foos-letter.js
+ | the client side validation rule
+ | new
+ |-
+|}
+
+[[File:componenttutorialdiff11b.png|700px]]
+
+== Conclusion ==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= Adding categories - Part 12 =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+== File Structure ==
+
+=== Changing administrator/components/com_foos/Model/FoosModel.php ===
+
+The <tt>administrator/components/com_foos/Model/FoosModel.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/Model/FoosModel.php file ====
+
+The code for the <tt>administrator/components/com_foos/Model/FoosModel.php</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/access.xml ===
+
+The <tt>administrator/components/com_foos/access.xml</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/access.xml file ====
+
+The code for the <tt>administrator/components/com_foos/access.xml</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/foos.xml ===
+
+The <tt>administrator/components/com_foos/foos.xml</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/foos.xml file ====
+
+The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/forms/foo.xml ===
+
+The <tt>administrator/components/com_foos/forms/foo.xml</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/forms/foo.xml file ====
+
+The code for the <tt>administrator/components/com_foos/forms/foo.xml</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/sql/install.mysql.utf8.sql ===
+
+We will implement <tt>state</tt> later.
+
+The <tt>administrator/components/com_foos/sql/install.mysql.utf8.sql</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/sql/install.mysql.utf8.sql file ====
+
+The code for the <tt>administrator/components/com_foos/sql/install.mysql.utf8.sql</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/Extension/FoosComponent.php ===
+
+The <tt>administrator/components/com_foos/Extension/FoosComponent.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/Extension/FoosComponent.php file ====
+
+The code for the <tt>administrator/components/com_foos/Extension/FoosComponent.php</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/tmpl/foo/edit.php ===
+
+The <tt>administrator/components/com_foos/tmpl/foo/edit.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/tmpl/foo/edit.php file ====
+
+The code for the <tt>administrator/components/com_foos/tmpl/foo/edit.php</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+=== Changing administrator/components/com_foos/tmpl/foos/default.php ===
+
+The <tt>administrator/components/com_foos/tmpl/foos/default.php</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/tmpl/foos/default.php file ====
+
+The code for the <tt>administrator/components/com_foos/tmpl/foos/default.php</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+== Test your component ==
+
+You have to run a new installation due to the changes in the database. 
+
+It would be good, to set a default categorie while installing your component. You can do this in the file <tt>script.php</tt>
+
+== Example in Joomla! ==
+x
+
+[[File:componenttutorial12a.png|700px]]
+
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Controller/FooController.php
+ | this is the entry point to the Foo component 
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | changed
+ |-
+ | 7
+ | administrator/components/com_foos/Field/FooField.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Model/FooModel.php
+ | this is the model of the Foo component item
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/Model/FoosModel.php
+ | this is the model of the Foo component 
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Table/FooTable.php
+ | the database table
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/sql/install.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/forms/foo.xml
+ | the default form in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/edit.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/modal.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foos/modal.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/foos.xml
+ | this is an XML (manifest) file that tells Joomla! how to install our component.
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+ | 8
+ | administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini
+ | the language file
+ | unchanged
+ |-
+ | 8
+ | administrator/components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+ | the language file
+ | unchanged
+ |-
+ | 9
+ | administrator/components/com_foos/config.php
+ | the configuration
+ | unchanged
+ |-
+ | 10
+ | administrator/components/com_foos/access.xml
+ | the ACL file for permissen handling
+ | unchanged
+ |-
+ | 11a
+ | administrator/components/com_foos/Rule/LetterRule.php
+ | the server side validation rule
+ | unchanged
+ |-
+ | 2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+ |-
+ | 4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | unchanged 
+ |-
+ | 2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+ | 7
+ | components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+ | 2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | unchanged
+ |-
+ | 3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | unchanged
+ |-
+ | 8
+ | components/com_foos/language/en-GB/en-GB.com_foos.ini
+ | the language file
+ | unchanged
+ |-
+ | 8
+ | components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+ | the language file
+ | unchanged
+ |-
+ | 7
+ | media/com_foos/js/admin-foos-modal.js
+ | the javascript file
+ | unchanged
+ |-
+ | 11b
+ | media/com_foos/js/admin-foos-letter.js
+ | the client side validation rule
+ | unchanged
+ |-
+|}
+[[File:componenttutorialdiff12.png|700px]]
+
+== Conclusion ==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php echo HTMLHelper::_('jgrid.published', $item->state, $i, 'foos.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
+<?php echo HTMLHelper::_('jgrid.published', $item->published, $i, 'foos.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
+
+Änderungen, die nicht zum Commit vorgemerkt sind:
+  (benutzen Sie "git add <Datei>...", um die Änderungen zum Commit vorzumerken)
+  (benutzen Sie "git checkout -- <Datei>...", um die Änderungen im Arbeitsverzeichnis zu verwerfen)
+
+	geändert:       src/administrator/components/com_foos/Model/FoosModel.php
+	geändert:       src/administrator/components/com_foos/Table/FooTable.php
+	geändert:       src/administrator/components/com_foos/forms/foo.xml
+	geändert:       src/administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini
+	geändert:       src/administrator/components/com_foos/services/provider.php
+	geändert:       src/administrator/components/com_foos/sql/install.mysql.utf8.sql
+	geändert:       src/administrator/components/com_foos/tmpl/foo/edit.php
+	geändert:       src/administrator/components/com_foos/tmpl/foos/default.php
+
+Unversionierte Dateien:
+  (benutzen Sie "git add <Datei>...", um die Änderungen zum Commit vorzumerken)
+
+	src/administrator/components/com_foos/Controller/FoosController.php
+
+
+= Adding Published/Unpublished - Part 13 =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+== File Structure ==
+
+=== Changing x ===
+
+The <tt>x</tt> file is the installation file.
+
+==== Completed x file ====
+
+The code for the <tt>x</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+
+== Test your component ==
+
+
+== Example in Joomla! ==
+
+[[File:componenttutorial13a.png|700px]]
+
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Controller/FooController.php
+ | this is the entry point to the Foo component 
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Field/FooField.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Model/FooModel.php
+ | this is the model of the Foo component item
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/Model/FoosModel.php
+ | this is the model of the Foo component 
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Table/FooTable.php
+ | the database table
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/sql/install.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/forms/foo.xml
+ | the default form in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/edit.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/modal.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foos/modal.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/foos.xml
+ | this is an XML (manifest) file that tells Joomla! how to install our component.
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+ | 8
+ | administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini
+ | the language file
+ | unchanged
+ |-
+ | 8
+ | administrator/components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+ | the language file
+ | unchanged
+ |-
+ | 9
+ | administrator/components/com_foos/config.php
+ | the configuration
+ | unchanged
+ |-
+ | 10
+ | administrator/components/com_foos/access.xml
+ | the ACL file for permissen handling
+ | unchanged
+ |-
+ | 11a
+ | administrator/components/com_foos/Rule/LetterRule.php
+ | the server side validation rule
+ | unchanged
+ |-
+ | 2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+ |-
+ | 4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | unchanged 
+ |-
+ | 2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+ | 7
+ | components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+ | 2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | unchanged
+ |-
+ | 3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | unchanged
+ |-
+ | 8
+ | components/com_foos/language/en-GB/en-GB.com_foos.ini
+ | the language file
+ | unchanged
+ |-
+ | 8
+ | components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+ | the language file
+ | unchanged
+ |-
+ | 7
+ | media/com_foos/js/admin-foos-modal.js
+ | the javascript file
+ | unchanged
+ |-
+ | 11b
+ | media/com_foos/js/admin-foos-letter.js
+ | the client side validation rule
+ | unchanged
+ |-
+|}
+
+[[File:componenttutorialdiff13.png|700px]]
+
+== Conclusion ==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ "git checkout -- <Datei>...", um die Änderungen im Arbeitsverzeichnis zu verwerfen)
+
+	geändert:       src/administrator/components/com_foos/Model/FoosModel.php
+	geändert:       src/administrator/components/com_foos/View/Foos/HtmlView.php
+	geändert:       src/administrator/components/com_foos/access.xml
+	geändert:       src/administrator/components/com_foos/config.xml
+	geändert:       src/administrator/components/com_foos/forms/foo.xml
+	geändert:       src/administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini
+	geändert:       src/administrator/components/com_foos/tmpl/foo/edit.php
+	geändert:       src/administrator/components/com_foos/tmpl/foos/default.php
+
+Unversionierte Dateien:
+  (benutzen Sie "git add <Datei>...", um die Änderungen zum Commit vorzumerken)
+
+	src/administrator/components/com_foos/Helper/FooHelper.php
+
+
+= Adding Custom Fields in the backend - Part 14a =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+
+[[File:componenttutorial14a1.png|700px]]
+
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Controller/FooController.php
+ | this is the entry point to the Foo component 
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Field/FooField.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Model/FooModel.php
+ | this is the model of the Foo component item
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/Model/FoosModel.php
+ | this is the model of the Foo component 
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Table/FooTable.php
+ | the database table
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/sql/install.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/forms/foo.xml
+ | the default form in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/edit.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/modal.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foos/modal.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/foos.xml
+ | this is an XML (manifest) file that tells Joomla! how to install our component.
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+ | 8
+ | administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini
+ | the language file
+ | unchanged
+ |-
+ | 8
+ | administrator/components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+ | the language file
+ | unchanged
+ |-
+ | 9
+ | administrator/components/com_foos/config.php
+ | the configuration
+ | unchanged
+ |-
+ | 10
+ | administrator/components/com_foos/access.xml
+ | the ACL file for permissen handling
+ | unchanged
+ |-
+ | 14a
+ | administrator/components/com_foos/Helper/FooHelper.php
+ | the helper file
+ | unchanged
+ |-
+ | 11a
+ | administrator/components/com_foos/Rule/LetterRule.php
+ | the server side validation rule
+ | unchanged
+ |-
+ | 2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+ |-
+ | 4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | unchanged 
+ |-
+ | 2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+ | 7
+ | components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+ | 2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | unchanged
+ |-
+ | 3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | unchanged
+ |-
+ | 8
+ | components/com_foos/language/en-GB/en-GB.com_foos.ini
+ | the language file
+ | unchanged
+ |-
+ | 8
+ | components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+ | the language file
+ | unchanged
+ |-
+ | 7
+ | media/com_foos/js/admin-foos-modal.js
+ | the javascript file
+ | unchanged
+ |-
+ | 11b
+ | media/com_foos/js/admin-foos-letter.js
+ | the client side validation rule
+ | unchanged
+ |-
+|}
+
+
+[[File:componenttutorialdiff14a.png|700px]]
+
+== Conclusion ==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	geändert:       src/administrator/components/com_foos/Model/FoosModel.php
+	geändert:       src/administrator/components/com_foos/tmpl/foo/edit.php
+	geändert:       src/components/com_foos/View/Foo/HtmlView.php
+	geändert:       src/components/com_foos/tmpl/foo/default.php
+
+
+= Adding Custom Fields in the frontend - Part 14b =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+
+[[File:componenttutorial14b1.png|700px]]
+
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Controller/FooController.php
+ | this is the entry point to the Foo component 
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Field/FooField.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Model/FooModel.php
+ | this is the model of the Foo component item
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/Model/FoosModel.php
+ | this is the model of the Foo component 
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Table/FooTable.php
+ | the database table
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/sql/install.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/forms/foo.xml
+ | the default form in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/edit.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/modal.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foos/modal.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/foos.xml
+ | this is an XML (manifest) file that tells Joomla! how to install our component.
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+ | 8
+ | administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini
+ | the language file
+ | unchanged
+ |-
+ | 8
+ | administrator/components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+ | the language file
+ | unchanged
+ |-
+ | 9
+ | administrator/components/com_foos/config.php
+ | the configuration
+ | unchanged
+ |-
+ | 10
+ | administrator/components/com_foos/access.xml
+ | the ACL file for permissen handling
+ | unchanged
+ |-
+ | 14a
+ | administrator/components/com_foos/Helper/FooHelper.php
+ | the helper file
+ | unchanged
+ |-
+ | 11a
+ | administrator/components/com_foos/Rule/LetterRule.php
+ | the server side validation rule
+ | unchanged
+ |-
+ | 2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+ |-
+ | 4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | unchanged 
+ |-
+ | 2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+ | 7
+ | components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+ | 2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | unchanged
+ |-
+ | 3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | unchanged
+ |-
+ | 8
+ | components/com_foos/language/en-GB/en-GB.com_foos.ini
+ | the language file
+ | unchanged
+ |-
+ | 8
+ | components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+ | the language file
+ | unchanged
+ |-
+ | 7
+ | media/com_foos/js/admin-foos-modal.js
+ | the javascript file
+ | unchanged
+ |-
+ | 11b
+ | media/com_foos/js/admin-foos-letter.js
+ | the client side validation rule
+ | unchanged
+ |-
+|}
+
+
+[[File:componenttutorialdiff14b.png|700px]]
+
+== Conclusion ==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+geändert:       src/administrator/components/com_foos/Extension/FoosComponent.php
+	geändert:       src/administrator/components/com_foos/Model/FooModel.php
+	geändert:       src/administrator/components/com_foos/Model/FoosModel.php
+	gelöscht:       src/administrator/components/com_foos/Service/Html/Foo.php
+	geändert:       src/administrator/components/com_foos/forms/foo.xml
+	geändert:       src/administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini
+	geändert:       src/administrator/components/com_foos/services/provider.php
+	geändert:       src/administrator/components/com_foos/sql/install.mysql.utf8.sql
+	geändert:       src/administrator/components/com_foos/tmpl/foo/edit.php
+	geändert:       src/administrator/components/com_foos/tmpl/foos/default.php
+
+Unversionierte Dateien:
+  (benutzen Sie "git add <Datei>...", um die Änderungen zum Commit vorzumerken)
+
+	src/administrator/components/com_foos/Helper/AssociationsHelper.php
+	src/administrator/components/com_foos/Service/HTML/
+	src/administrator/components/com_foos/tmpl/foo/edit_associations.php
+
+
+
+= Adding Associations - Part 15 =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+
+[[File:componenttutorial15a.png|700px]]
+
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Controller/FooController.php
+ | this is the entry point to the Foo component 
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Field/FooField.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Model/FooModel.php
+ | this is the model of the Foo component item
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/Model/FoosModel.php
+ | this is the model of the Foo component 
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Table/FooTable.php
+ | the database table
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/sql/install.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | unchanged
+ |-
+ | 6
+ | administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/forms/foo.xml
+ | the default form in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/edit.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/modal.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foos/modal.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/foos.xml
+ | this is an XML (manifest) file that tells Joomla! how to install our component.
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+ | 8
+ | administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini
+ | the language file
+ | unchanged
+ |-
+ | 8
+ | administrator/components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+ | the language file
+ | unchanged
+ |-
+ | 9
+ | administrator/components/com_foos/config.php
+ | the configuration
+ | unchanged
+ |-
+ | 10
+ | administrator/components/com_foos/access.xml
+ | the ACL file for permissen handling
+ | unchanged
+ |-
+ | 14a
+ | administrator/components/com_foos/Helper/FooHelper.php
+ | the helper file
+ | unchanged
+ |-
+ | 11a
+ | administrator/components/com_foos/Rule/LetterRule.php
+ | the server side validation rule
+ | unchanged
+ |-
+ | 2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+ |-
+ | 4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | unchanged 
+ |-
+ | 2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+ | 7
+ | components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+ | 2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | unchanged
+ |-
+ | 3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | unchanged
+ |-
+ | 8
+ | components/com_foos/language/en-GB/en-GB.com_foos.ini
+ | the language file
+ | unchanged
+ |-
+ | 8
+ | components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+ | the language file
+ | unchanged
+ |-
+ | 7
+ | media/com_foos/js/admin-foos-modal.js
+ | the javascript file
+ | unchanged
+ |-
+ | 11b
+ | media/com_foos/js/admin-foos-letter.js
+ | the client side validation rule
+ | unchanged
+ |-
+|}
+
+[[File:componenttutorialdiff15.png|700px]]
+
+== Conclusion ==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= Adding Ordering and Filter - Part 16 =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+
+[[File:componenttutorial16a.png|700px]]
+
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+ |1
+ |administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+| 6
+ | administrator/components/com_foos/Model/FoosModel.php
+ | this is the model of the Foo component 
+ | new
+ |-
+|1
+ |administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | changed
+ |-
+|6
+ |administrator/components/com_foos/sql/install.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | new
+ |-
+|6
+ |administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | new
+ |-
+|1
+ |administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/foos.xml
+ |this is an XML (manifest) file that tells Joomla! how to install our component.
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+|2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+|-
+|4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | unchanged 
+|-
+|2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+|2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | unchanged
+ |-
+|3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | unchanged
+ |-
+|}
+
+[[File:componenttutorialdiff16.png|700px]]
+
+== Conclusion ==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= Adding Actions - Part 17 =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+
+[[File:componenttutorial17a.png|700px]]
+
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+ |1
+ |administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+| 6
+ | administrator/components/com_foos/Model/FoosModel.php
+ | this is the model of the Foo component 
+ | new
+ |-
+|1
+ |administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | changed
+ |-
+|6
+ |administrator/components/com_foos/sql/install.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | new
+ |-
+|6
+ |administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | new
+ |-
+|1
+ |administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/foos.xml
+ |this is an XML (manifest) file that tells Joomla! how to install our component.
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+|2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+|-
+|4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | unchanged 
+|-
+|2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+|2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | unchanged
+ |-
+|3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | unchanged
+ |-
+|}
+
+[[File:componenttutorialdiff17.png|700px]]
+
+== Conclusion ==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= Adding Params - Part 18 =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+
+[[File:componenttutorial18a.png|700px]]
+
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+ |1
+ |administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+| 6
+ | administrator/components/com_foos/Model/FoosModel.php
+ | this is the model of the Foo component 
+ | new
+ |-
+|1
+ |administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | changed
+ |-
+|6
+ |administrator/components/com_foos/sql/install.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | new
+ |-
+|6
+ |administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | new
+ |-
+|1
+ |administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/foos.xml
+ |this is an XML (manifest) file that tells Joomla! how to install our component.
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+|2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+|-
+|4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | unchanged 
+|-
+|2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+|2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | unchanged
+ |-
+|3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | unchanged
+ |-
+|}
+
+[[File:componenttutorialdiff18.png|700px]]
+
+== Conclusion ==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= Adding Pagination - Part 19 =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+
+[[File:componenttutorial19a.png|700px]]
+
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+ |1
+ |administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+| 6
+ | administrator/components/com_foos/Model/FoosModel.php
+ | this is the model of the Foo component 
+ | new
+ |-
+|1
+ |administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | changed
+ |-
+|6
+ |administrator/components/com_foos/sql/install.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | new
+ |-
+|6
+ |administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | new
+ |-
+|1
+ |administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/foos.xml
+ |this is an XML (manifest) file that tells Joomla! how to install our component.
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+|2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+|-
+|4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | unchanged 
+|-
+|2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+|2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | unchanged
+ |-
+|3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | unchanged
+ |-
+|}
+
+[[File:componenttutorialdiff19.png|700px]]
+
+== Conclusion ==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= Adding a Layout - Part 20 =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+
+[[File:componenttutorial20a.png|700px]]
+
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+ |1
+ |administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+| 6
+ | administrator/components/com_foos/Model/FoosModel.php
+ | this is the model of the Foo component 
+ | new
+ |-
+|1
+ |administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | changed
+ |-
+|6
+ |administrator/components/com_foos/sql/install.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | new
+ |-
+|6
+ |administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | new
+ |-
+|1
+ |administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/foos.xml
+ |this is an XML (manifest) file that tells Joomla! how to install our component.
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+|2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+|-
+|4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | unchanged 
+|-
+|2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+|2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | unchanged
+ |-
+|3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | unchanged
+ |-
+|}
+
+[[File:componenttutorialdiff20.png|700px]]
+
+== Conclusion ==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= Adding Checkout - Part 21 =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+
+[[File:componenttutorial21a.png|700px]]
+
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+ |1
+ |administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+| 6
+ | administrator/components/com_foos/Model/FoosModel.php
+ | this is the model of the Foo component 
+ | new
+ |-
+|1
+ |administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | changed
+ |-
+|6
+ |administrator/components/com_foos/sql/install.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | new
+ |-
+|6
+ |administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | new
+ |-
+|1
+ |administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/foos.xml
+ |this is an XML (manifest) file that tells Joomla! how to install our component.
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+|2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+|-
+|4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | unchanged 
+|-
+|2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+|2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | unchanged
+ |-
+|3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | unchanged
+ |-
+|}
+
+
+[[File:componenttutorialdiff21.png|700px]]
+
+== Conclusion ==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= Adding a batch process and alias - Part 22 =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+
+[[File:componenttutorial22a.png|700px]]
+
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+ |1
+ |administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+| 6
+ | administrator/components/com_foos/Model/FoosModel.php
+ | this is the model of the Foo component 
+ | new
+ |-
+|1
+ |administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | changed
+ |-
+|6
+ |administrator/components/com_foos/sql/install.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | new
+ |-
+|6
+ |administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | new
+ |-
+|1
+ |administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/foos.xml
+ |this is an XML (manifest) file that tells Joomla! how to install our component.
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+|2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+|-
+|4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | unchanged 
+|-
+|2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+|2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | unchanged
+ |-
+|3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | unchanged
+ |-
+|}
+
+
+[[File:componenttutorialdiff22.png|700px]]
+
+== Conclusion ==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= Adding a help link - Part 23 =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+
+[[File:componenttutorial23a.png|700px]]
+
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+ |1
+ |administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+| 6
+ | administrator/components/com_foos/Model/FoosModel.php
+ | this is the model of the Foo component 
+ | new
+ |-
+|1
+ |administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | changed
+ |-
+|6
+ |administrator/components/com_foos/sql/install.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | new
+ |-
+|6
+ |administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | new
+ |-
+|1
+ |administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/foos.xml
+ |this is an XML (manifest) file that tells Joomla! how to install our component.
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+|2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+|-
+|4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | unchanged 
+|-
+|2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+|2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | unchanged
+ |-
+|3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | unchanged
+ |-
+|}
+
+[[File:componenttutorialdiff23a.png|700px]]
+
+== Conclusion ==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= Adding an update server and a changelog- Part 24 =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+
+[[File:componenttutorial24atest.png|700px]]
+
+== Component Contents ==
+
+At this point in the tutorial, your component should contain the following files:
+{| border=1
+ | 1
+ | administrator/components/com_foos/Controller/DisplayController.php
+ | this is the administrator entry point to the Foo component 
+ | unchanged
+ |-
+ |1
+ |administrator/components/com_foos/Extension/FoosComponent.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+| 6
+ | administrator/components/com_foos/Model/FoosModel.php
+ | this is the model of the Foo component 
+ | new
+ |-
+|1
+ |administrator/components/com_foos/Service/Html/Foo.php
+ | the html service see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+|1
+ |administrator/components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the back end
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/services/provider.php
+ | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
+ | changed
+ |-
+|6
+ |administrator/components/com_foos/sql/install.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | new
+ |-
+|6
+ |administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
+ | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
+ | new
+ |-
+|1
+ |administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/foos.xml
+ |this is an XML (manifest) file that tells Joomla! how to install our component.
+ | changed
+ |-
+|1
+ |administrator/components/com_foos/script.php
+ | the installer script
+ | unchanged
+ |-
+|2
+ | components/com_foos/Controller/DisplayController.php
+ | this is the frond end entry point to the Foo component 
+ | unchanged 
+|-
+|4
+ | components/com_foos/Model/FooModel.php
+ | this is the frond end model for the Foo component 
+ | unchanged 
+|-
+|2
+ | components/com_foos/View/Foo/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+|2
+ | components/com_foos/tmpl/foo/default.php 
+ | the default view in the frond end
+ | unchanged
+ |-
+|3
+ | components/com_foos/tmpl/foo/default.xml
+ | the xml for the menu item
+ | unchanged
+ |-
+|}
+
+[[File:componenttutorialdiff24.png|700px]]
+
+== Conclusion ==
