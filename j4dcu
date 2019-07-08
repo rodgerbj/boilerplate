@@ -3597,6 +3597,26 @@ Unversionierte Dateien:
 == Requirements ==
 You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
 
+== File Structure ==
+
+=== Changing x ===
+
+The <tt>x</tt> file is the installation file.
+
+==== Completed x file ====
+
+The code for the <tt>x</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+
+== Test your component ==
+
+
+== Example in Joomla! ==
 
 [[File:componenttutorial14a1.png|700px]]
 
@@ -3824,6 +3844,27 @@ At this point in the tutorial, your component should contain the following files
 
 == Requirements ==
 You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+== File Structure ==
+
+=== Changing x ===
+
+The <tt>x</tt> file is the installation file.
+
+==== Completed x file ====
+
+The code for the <tt>x</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+
+== Test your component ==
+
+
+== Example in Joomla! ==
 
 
 [[File:componenttutorial14b1.png|700px]]
@@ -4071,7 +4112,6 @@ Unversionierte Dateien:
   (benutzen Sie "git add <Datei>...", um die Änderungen zum Commit vorzumerken)
 
 	src/administrator/components/com_foos/Helper/AssociationsHelper.php
-	src/administrator/components/com_foos/Service/HTML/
 	src/administrator/components/com_foos/tmpl/foo/edit_associations.php
 
 
@@ -4080,6 +4120,28 @@ Unversionierte Dateien:
 
 == Requirements ==
 You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+== File Structure ==
+
+=== Changing x ===
+
+The <tt>x</tt> file is the installation file.
+
+==== Completed x file ====
+
+The code for the <tt>x</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+
+== Test your component ==
+You see a new tab with the name associations. At the moment it is possible to 
+select associations that are not possible. We will see how to fix this later.
+
+== Example in Joomla! ==
 
 
 [[File:componenttutorial15a.png|700px]]
@@ -4214,6 +4276,16 @@ At this point in the tutorial, your component should contain the following files
  | the server side validation rule
  | unchanged
  |-
+ | 15
+ | administrator/components/com_foos/Helper/AssociationsHelper.php
+ | the helper file for associations
+ | new
+ |-
+ | 15
+ | administrator/components/com_foos/tmpl/foo/edit_associations.ph
+ | the template for editing associations
+ | new
+ |-
  | 2
  | components/com_foos/Controller/DisplayController.php
  | this is the frond end entry point to the Foo component 
@@ -4312,6 +4384,26 @@ At this point in the tutorial, your component should contain the following files
 == Requirements ==
 You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
 
+== File Structure ==
+
+=== Changing x ===
+
+The <tt>x</tt> file is the installation file.
+
+==== Completed x file ====
+
+The code for the <tt>x</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+
+== Test your component ==
+
+
+== Example in Joomla! ==
 
 [[File:componenttutorial16a.png|700px]]
 
@@ -4325,79 +4417,184 @@ At this point in the tutorial, your component should contain the following files
  | this is the administrator entry point to the Foo component 
  | unchanged
  |-
- |1
- |administrator/components/com_foos/Extension/FoosComponent.php
+ | 7
+ | administrator/components/com_foos/Controller/FooController.php
+ | this is the entry point to the Foo component 
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/Extension/FoosComponent.php
  | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
  | unchanged
  |-
-| 6
+ | 7
+ | administrator/components/com_foos/Field/FooField.php
+ | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/Model/FooModel.php
+ | this is the model of the Foo component item
+ | unchanged
+ |-
+ | 6
  | administrator/components/com_foos/Model/FoosModel.php
  | this is the model of the Foo component 
- | new
+ | unchanged
  |-
-|1
- |administrator/components/com_foos/Service/Html/Foo.php
+ | 1
+ | administrator/components/com_foos/Service/Html/Foo.php
  | the html service see https://github.com/joomla/joomla-cms/pull/20217
  | unchanged
  |-
-|1
- |administrator/components/com_foos/View/Foos/HtmlView.php
+ | 7
+ | administrator/components/com_foos/Table/FooTable.php
+ | the database table
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/View/Foos/HtmlView.php
  | file representing the view in the back end
- | changed
+ | unchanged
  |-
-|1
- |administrator/components/com_foos/services/provider.php
+ | 1
+ | administrator/components/com_foos/services/provider.php
  | the service provider interface see https://github.com/joomla/joomla-cms/pull/20217
- | changed
+ | unchanged
  |-
-|6
- |administrator/components/com_foos/sql/install.mysql.utf8.sql
+ | 6
+ | administrator/components/com_foos/sql/install.mysql.utf8.sql
  | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
- | new
+ | unchanged
  |-
-|6
- |administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
+ | 6
+ | administrator/components/com_foos/sql/uninstall.mysql.utf8.sql
  | During the install/uninstall/update phase of a component, you can execute SQL queries through the use of this SQL text file 
- | new
+ | unchanged
  |-
-|1
- |administrator/components/com_foos/tmpl/foos/default.php
+ | 7
+ | administrator/components/com_foos/forms/foo.xml
+ | the default form in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foo/edit.php
  | the default view in the back end
- | changed
+ | unchanged
  |-
-|1
- |administrator/components/com_foos/foos.xml
- |this is an XML (manifest) file that tells Joomla! how to install our component.
- | changed
+ | 7
+ | administrator/components/com_foos/tmpl/foo/modal.php
+ | the default view in the back end
+ | unchanged
  |-
-|1
- |administrator/components/com_foos/script.php
+ | 1
+ | administrator/components/com_foos/tmpl/foos/default.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 7
+ | administrator/components/com_foos/tmpl/foos/modal.php
+ | the default view in the back end
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/foos.xml
+ | this is an XML (manifest) file that tells Joomla! how to install our component.
+ | unchanged
+ |-
+ | 1
+ | administrator/components/com_foos/script.php
  | the installer script
  | unchanged
  |-
-|2
+ | 8
+ | administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini
+ | the language file
+ | unchanged
+ |-
+ | 8
+ | administrator/components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+ | the language file
+ | unchanged
+ |-
+ | 9
+ | administrator/components/com_foos/config.php
+ | the configuration
+ | unchanged
+ |-
+ | 10
+ | administrator/components/com_foos/access.xml
+ | the ACL file for permissen handling
+ | unchanged
+ |-
+ | 14a
+ | administrator/components/com_foos/Helper/FooHelper.php
+ | the helper file
+ | unchanged
+ |-
+ | 11a
+ | administrator/components/com_foos/Rule/LetterRule.php
+ | the server side validation rule
+ | unchanged
+ |-
+ | 15
+ | administrator/components/com_foos/Helper/AssociationsHelper.php
+ | the helper file for associations
+ | new
+ |-
+ | 15
+ | administrator/components/com_foos/tmpl/foo/edit_associations.ph
+ | the template for editing associations
+ | new
+ |-
+ | 2
  | components/com_foos/Controller/DisplayController.php
  | this is the frond end entry point to the Foo component 
  | unchanged 
-|-
-|4
+ |-
+ | 4
  | components/com_foos/Model/FooModel.php
  | this is the frond end model for the Foo component 
  | unchanged 
-|-
-|2
+ |-
+ | 2
  | components/com_foos/View/Foo/HtmlView.php
  | file representing the view in the frond end
  | unchanged
  |-
-|2
+ | 7
+ | components/com_foos/View/Foos/HtmlView.php
+ | file representing the view in the frond end
+ | unchanged
+ |-
+ | 2
  | components/com_foos/tmpl/foo/default.php 
  | the default view in the frond end
  | unchanged
  |-
-|3
+ | 3
  | components/com_foos/tmpl/foo/default.xml
  | the xml for the menu item
+ | unchanged
+ |-
+ | 8
+ | components/com_foos/language/en-GB/en-GB.com_foos.ini
+ | the language file
+ | unchanged
+ |-
+ | 8
+ | components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+ | the language file
+ | unchanged
+ |-
+ | 7
+ | media/com_foos/js/admin-foos-modal.js
+ | the javascript file
+ | unchanged
+ |-
+ | 11b
+ | media/com_foos/js/admin-foos-letter.js
+ | the client side validation rule
  | unchanged
  |-
 |}
@@ -4453,6 +4650,27 @@ At this point in the tutorial, your component should contain the following files
 
 == Requirements ==
 You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+== File Structure ==
+
+=== Changing x ===
+
+The <tt>x</tt> file is the installation file.
+
+==== Completed x file ====
+
+The code for the <tt>x</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+
+== Test your component ==
+
+
+== Example in Joomla! ==
 
 
 [[File:componenttutorial17a.png|700px]]
@@ -4595,6 +4813,27 @@ At this point in the tutorial, your component should contain the following files
 == Requirements ==
 You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
 
+== File Structure ==
+
+=== Changing x ===
+
+The <tt>x</tt> file is the installation file.
+
+==== Completed x file ====
+
+The code for the <tt>x</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+
+== Test your component ==
+
+
+== Example in Joomla! ==
+
 
 [[File:componenttutorial18a.png|700px]]
 
@@ -4730,6 +4969,27 @@ At this point in the tutorial, your component should contain the following files
 == Requirements ==
 You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
 
+== File Structure ==
+
+=== Changing x ===
+
+The <tt>x</tt> file is the installation file.
+
+==== Completed x file ====
+
+The code for the <tt>x</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+
+== Test your component ==
+
+
+== Example in Joomla! ==
+
 
 [[File:componenttutorial19a.png|700px]]
 
@@ -4853,6 +5113,27 @@ At this point in the tutorial, your component should contain the following files
 
 == Requirements ==
 You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+== File Structure ==
+
+=== Changing x ===
+
+The <tt>x</tt> file is the installation file.
+
+==== Completed x file ====
+
+The code for the <tt>x</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+
+== Test your component ==
+
+
+== Example in Joomla! ==
 
 
 [[File:componenttutorial20a.png|700px]]
@@ -4989,6 +5270,27 @@ At this point in the tutorial, your component should contain the following files
 
 == Requirements ==
 You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+== File Structure ==
+
+=== Changing x ===
+
+The <tt>x</tt> file is the installation file.
+
+==== Completed x file ====
+
+The code for the <tt>x</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+
+== Test your component ==
+
+
+== Example in Joomla! ==
 
 
 [[File:componenttutorial21a.png|700px]]
@@ -5135,6 +5437,27 @@ At this point in the tutorial, your component should contain the following files
 == Requirements ==
 You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
 
+== File Structure ==
+
+=== Changing x ===
+
+The <tt>x</tt> file is the installation file.
+
+==== Completed x file ====
+
+The code for the <tt>x</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+
+== Test your component ==
+
+
+== Example in Joomla! ==
+
 
 [[File:componenttutorial22a.png|700px]]
 
@@ -5276,6 +5599,27 @@ At this point in the tutorial, your component should contain the following files
 
 == Requirements ==
 You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+== File Structure ==
+
+=== Changing x ===
+
+The <tt>x</tt> file is the installation file.
+
+==== Completed x file ====
+
+The code for the <tt>x</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+
+== Test your component ==
+
+
+== Example in Joomla! ==
 
 
 [[File:componenttutorial23a.png|700px]]
@@ -5423,6 +5767,27 @@ At this point in the tutorial, your component should contain the following files
 
 == Requirements ==
 You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+== File Structure ==
+
+=== Changing x ===
+
+The <tt>x</tt> file is the installation file.
+
+==== Completed x file ====
+
+The code for the <tt>x</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+
+== Test your component ==
+
+
+== Example in Joomla! ==
 
 
 [[File:componenttutorial24atest.png|700px]]
