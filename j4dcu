@@ -4165,7 +4165,7 @@ Unversionierte Dateien:
 
 
 
-= Adding Associations - Part 15 =
+= Adding Associations - Part 15a =
 
 == Requirements ==
 You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
@@ -4405,6 +4405,72 @@ At this point in the tutorial, your component should contain the following files
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+tutorial/component/16_AddingOrderingStateFilter/administrator/components/com_foos/Field/Modal/FooField.php
+	geändert:       tutorial/component/16_AddingOrderingStateFilter/administrator/components/com_foos/Model/FoosModel.php
+	geändert:       tutorial/component/16_AddingOrderingStateFilter/administrator/components/com_foos/View/Foo/HtmlView.php
+	geändert:       tutorial/component/16_AddingOrderingStateFilter/administrator/components/com_foos/View/Foos/HtmlView.php
+not ready
+
+
+= Adding Associations - Part 15b =
+
+== Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+
+== File Structure ==
+
+=== Changing x ===
+
+The <tt>x</tt> file is the installation file.
+
+==== Completed x file ====
+
+The code for the <tt>x</tt> file is as follows:
+ 
+<source lang="xml">
+<?php
+
+</source>
+
+
+== Test your component ==
+
+Now you can zip all files and install them via Joomla Extension Manager. 
+
+You have to run a new installation due to the changes in the database. 
+
+After that you can 
+
+Now the items in the modal are filtered.
+
+== Example in Joomla! ==
+
+
+== Component Contents ==
 
 
 
