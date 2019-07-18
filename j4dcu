@@ -5373,6 +5373,22 @@ At this point in the tutorial, your component should contain the following files
 
 
 
+
+
+geändert:       src/administrator/components/com_foos/Model/FoosModel.php
+	geändert:       src/administrator/components/com_foos/View/Foo/HtmlView.php
+	geändert:       src/administrator/components/com_foos/View/Foos/HtmlView.php
+	geändert:       src/administrator/components/com_foos/forms/foo.xml
+	geändert:       src/administrator/components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
+
+Unversionierte Dateien:
+  (benutzen Sie "git add <Datei>...", um die Änderungen zum Commit vorzumerken)
+
+	src/components/com_foos/tmpl/foo/withhead.php
+	src/components/com_foos/tmpl/foo/withhead.xml
+
+
+
 = Adding a Layout - Part 20 =
 
 == Requirements ==
