@@ -5225,7 +5225,8 @@ At this point in the tutorial, your component should contain the following files
 
 
 
-
+geändert:       src/administrator/components/com_foos/View/Foos/HtmlView.php
+	geändert:       src/administrator/components/com_foos/tmpl/foos/default.php
 
 = Adding Pagination - Part 19 =
 
