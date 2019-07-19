@@ -6,6 +6,8 @@ CREATE TABLE IF NOT EXISTS `#__foos_details` (
   `state` tinyint(3) NOT NULL DEFAULT 0,
   `language` char(7) NOT NULL DEFAULT '*',
   `ordering` int(11) NOT NULL DEFAULT 0,
+  `checked_out` int(10) unsigned NOT NULL DEFAULT 0,
+  `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `params` text NOT NULL,
   `published` tinyint(1) NOT NULL DEFAULT 0,
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',

@@ -5544,6 +5544,12 @@ At this point in the tutorial, your component should contain the following files
 
 
 
+ src/administrator/components/com_foos/Model/FoosModel.php
+	geändert:       src/administrator/components/com_foos/forms/foo.xml
+	geändert:       src/administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini
+	geändert:       src/administrator/components/com_foos/sql/install.mysql.utf8.sql
+	geändert:       src/administrator/components/com_foos/tmpl/foos/default.php
+	geändert:       tutorial/component/21_Checkin/administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini
 
 
 = Adding Checkout - Part 21 =
