@@ -69,7 +69,8 @@ class FooField extends FormField
 				function jSelectFoo_" . $this->id . "(id, title, object) {
 					window.processModalSelect('Foo', '" . $this->id . "', id, title, '', object);
 				}
-				");
+				"
+				);
 
 				$scriptSelect[$this->id] = true;
 			}
@@ -112,6 +113,7 @@ class FooField extends FormField
 
 		// The current foo display field.
 		$html  = '';
+
 		if ($allowSelect || $allowNew || $allowEdit || $allowClear)
 		{
 			$html .= '<span class="input-group">';

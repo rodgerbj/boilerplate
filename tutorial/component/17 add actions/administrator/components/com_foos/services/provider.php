@@ -25,7 +25,7 @@ use Joomla\CMS\Association\AssociationExtensionInterface;
 
 
 /**
- * The foos service provider. 
+ * The foos service provider.
  * https://github.com/joomla/joomla-cms/pull/20217
  *
  * @since  4.0.0

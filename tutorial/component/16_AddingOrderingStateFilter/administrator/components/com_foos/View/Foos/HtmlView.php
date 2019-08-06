@@ -29,7 +29,6 @@ use Joomla\CMS\Language\Multilanguage;
  */
 class HtmlView extends BaseHtmlView
 {
-
 	/**
 	 * An array of items
 	 *
@@ -92,7 +91,7 @@ class HtmlView extends BaseHtmlView
 			$item->order_up = true;
 			$item->order_dn = true;
 		}
-		
+
 		// We don't need toolbar in the modal window.
 		if ($this->getLayout() !== 'modal')
 		{
@@ -148,7 +147,7 @@ class HtmlView extends BaseHtmlView
 		{
 			$toolbar->addNew('foo.add');
 		}
-		
+
 		if ($canDo->get('core.options'))
 		{
 			$toolbar->preferences('com_foos');

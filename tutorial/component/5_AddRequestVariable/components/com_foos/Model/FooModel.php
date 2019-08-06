@@ -22,7 +22,6 @@ use Joomla\CMS\MVC\Model\BaseDatabaseModel;
  */
 class FooModel extends BaseDatabaseModel
 {
-
 	/**
 	 * @var string message
 	 */

@@ -55,7 +55,7 @@ class FoosModel extends ListModel
 				$config['filter_fields'][] = 'association';
 			}
 		}
-		
+
 		parent::__construct($config);
 	}
 
@@ -285,6 +285,6 @@ class FoosModel extends ListModel
 		{
 			$this->setState('filter.language', $forcedLanguage);
 		}
-	}	
+	}
 }
 

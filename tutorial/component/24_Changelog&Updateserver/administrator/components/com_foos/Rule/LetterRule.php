@@ -26,7 +26,7 @@ class LetterRule extends FormRule
 	 * @since  4.0.0
 	 */
 	protected $regex = '^([a-z]+)$';
-	
+
 	/**
 	 * The regular expression modifiers to use when testing a form field value.
 	 *

@@ -20,7 +20,7 @@ use Joomla\DI\ServiceProviderInterface;
 use Joomla\Component\Foos\Administrator\Extension\FoosComponent;
 
 /**
- * The foos service provider. 
+ * The foos service provider.
  * https://github.com/joomla/joomla-cms/pull/20217
  *
  * @since  4.0.0

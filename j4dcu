@@ -5714,7 +5714,22 @@ At this point in the tutorial, your component should contain the following files
 
 
 
+src/administrator/components/com_foos/Controller/FooController.php
+	geändert:       src/administrator/components/com_foos/Model/FooModel.php
+	geändert:       src/administrator/components/com_foos/Model/FoosModel.php
+	geändert:       src/administrator/components/com_foos/View/Foos/HtmlView.php
+	geändert:       src/administrator/components/com_foos/foos.xml  ??
+	geändert:       src/administrator/components/com_foos/forms/foo.xml
+	geändert:       src/administrator/components/com_foos/sql/install.mysql.utf8.sql
+	geändert:       src/administrator/components/com_foos/tmpl/foo/edit.php
+	geändert:       src/administrator/components/com_foos/tmpl/foos/default.php
 
+Unversionierte Dateien:
+  (benutzen Sie "git add <Datei>...", um die Änderungen zum Commit vorzumerken)
+
+	src/administrator/components/com_foos/tmpl/foos/default_batch.php
+	src/administrator/components/com_foos/tmpl/foos/default_batch_body.php
+	src/administrator/components/com_foos/tmpl/foos/default_batch_footer.php
 
 
 
@@ -5838,6 +5853,9 @@ At this point in the tutorial, your component should contain the following files
 [[File:componenttutorialdiff22.png|700px]]
 
 == Conclusion ==
+
+
+
 
 
 

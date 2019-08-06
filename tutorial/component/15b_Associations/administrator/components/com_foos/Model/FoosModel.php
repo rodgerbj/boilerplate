@@ -168,6 +168,6 @@ class FoosModel extends ListModel
 		{
 			$this->setState('filter.language', $forcedLanguage);
 		}
-	}		
+	}
 }
 

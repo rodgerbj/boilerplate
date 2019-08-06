@@ -26,7 +26,7 @@ use Psr\Container\ContainerInterface;
  *
  * @since  4.0.0
  */
-class FoosComponent extends MVCComponent 
+class FoosComponent extends MVCComponent
 implements BootableExtensionInterface, CategoryServiceInterface, AssociationServiceInterface
 {
 	use CategoryServiceTrait;

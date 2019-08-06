@@ -16,9 +16,9 @@ use Joomla\CMS\Log\Log;
 
 /**
  * Script file of Foo Component
- * 
+ *
  * @since  4.0.0
- * 
+ *
  */
 class Com_FoosInstallerScript
 {
@@ -26,7 +26,7 @@ class Com_FoosInstallerScript
 	 * Extension script constructor.
 	 *
 	 * @since  4.0.0
-	 * 
+	 *
 	 */
 	public function __construct()
 	{
@@ -40,9 +40,9 @@ class Com_FoosInstallerScript
 	 * @param   InstallerAdapter  $parent  The class calling this method
 	 *
 	 * @return  boolean  True on success
-	 * 
+	 *
 	 * @since  4.0.0
-	 * 
+	 *
 	 */
 	public function install($parent)
 	{
@@ -57,9 +57,9 @@ class Com_FoosInstallerScript
 	 * @param   InstallerAdapter  $parent  The class calling this method
 	 *
 	 * @return  boolean  True on success
-	 * 
+	 *
 	 * @since  4.0.0
-	 * 
+	 *
 	 */
 	public function uninstall($parent)
 	{
@@ -74,9 +74,9 @@ class Com_FoosInstallerScript
 	 * @param   InstallerAdapter  $parent  The class calling this method
 	 *
 	 * @return  boolean  True on success
-	 * 
+	 *
 	 * @since  4.0.0
-	 * 
+	 *
 	 */
 	public function update($parent)
 	{
@@ -92,9 +92,9 @@ class Com_FoosInstallerScript
 	 * @param   InstallerAdapter  $parent  The class calling this method
 	 *
 	 * @return  boolean  True on success
-	 * 
+	 *
 	 * @since  4.0.0
-	 * 
+	 *
 	 */
 	public function preflight($type, $parent)
 	{
@@ -126,9 +126,9 @@ class Com_FoosInstallerScript
 	 * @param   InstallerAdapter  $parent  The class calling this method
 	 *
 	 * @return  boolean  True on success
-	 * 
+	 *
 	 * @since  4.0.0
-	 * 
+	 *
 	 */
 	public function postflight($type, $parent)
 	{

@@ -29,7 +29,6 @@ use Joomla\CMS\Language\Multilanguage;
  */
 class HtmlView extends BaseHtmlView
 {
-
 	/**
 	 * An array of items
 	 *
@@ -100,8 +99,9 @@ class HtmlView extends BaseHtmlView
 			$item->order_up = true;
 			$item->order_dn = true;
 		}
-		
+
 		$this->addToolbar();
+
 		// We don't need toolbar in the modal window.
 		if ($this->getLayout() !== 'modal')
 		{
@@ -133,7 +133,6 @@ class HtmlView extends BaseHtmlView
 				$this->filterForm->setFieldAttribute('category_id', 'language', '*,' . $forcedLanguage, 'filter');
 			}
 		}
-
 
 		return parent::display($tpl);
 	}
@@ -197,7 +196,7 @@ class HtmlView extends BaseHtmlView
 		}
 
 		HTMLHelper::_('sidebar.setAction', 'index.php?option=com_foos');
-}
+	}
 
 	/**
 	 * Returns an array of fields the table can be sorted by

@@ -84,7 +84,7 @@ class HtmlView extends BaseHtmlView
 		$test = $user->getAuthorisedCategories('com_foos', 'core.create');
 
 		ToolbarHelper::title($isNew ? Text::_('COM_FOOS_MANAGER_FOO_NEW') : Text::_('COM_FOOS_MANAGER_FOO_EDIT'), 'address foo');
-		
+
 		// Since we don't track these assets at the item level, use the category id.
 		$canDo = ContentHelper::getActions('com_foos', 'category', $this->item->catid);
 

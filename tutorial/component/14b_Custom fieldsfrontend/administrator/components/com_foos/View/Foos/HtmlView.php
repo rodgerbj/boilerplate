@@ -27,7 +27,6 @@ use Joomla\Component\Foos\Administrator\Helper\FooHelper;
  */
 class HtmlView extends BaseHtmlView
 {
-
 	/**
 	 * An array of items
 	 *
@@ -81,7 +80,7 @@ class HtmlView extends BaseHtmlView
 		{
 			$toolbar->addNew('foo.add');
 		}
-		
+
 		if ($canDo->get('core.options'))
 		{
 			$toolbar->preferences('com_foos');

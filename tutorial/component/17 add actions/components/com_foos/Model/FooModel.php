@@ -24,7 +24,6 @@ use Joomla\Registry\Registry;
  */
 class FooModel extends BaseDatabaseModel
 {
-
 	/**
 	 * @var string item
 	 */
@@ -67,6 +66,7 @@ class FooModel extends BaseDatabaseModel
 				{
 					throw new \Exception(Text::_('COM_FOOS_ERROR_FOO_NOT_FOUND'), 404);
 				}
+
 				$this->_item[$pk] = $data;
 			}
 			catch (\Exception $e)

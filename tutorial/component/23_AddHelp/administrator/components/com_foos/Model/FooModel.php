@@ -75,6 +75,7 @@ class FooModel extends AdminModel
 		{
 			return false;
 		}
+
 		return $form;
 	}
 
@@ -128,7 +129,7 @@ class FooModel extends AdminModel
 		}
 
 		return $item;
-	}	
+	}
 
 	/**
 	 * Preprocess the form.

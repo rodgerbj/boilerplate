@@ -49,6 +49,7 @@ class FooModel extends AdminModel
 		{
 			return false;
 		}
+
 		return $form;
 	}
 	/**
