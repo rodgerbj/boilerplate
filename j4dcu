@@ -8,8 +8,10 @@ Let's start with the introduction.
 = Developing a Basic Component - Part 1 =
 
 ==Notes== 
-* If you are new to Joomla!, please read [[S:MyLanguage/Absolute_Basics_of_How_a_Component_Functions|Absolute Basics of How a Component Functions]]. 
-* This tutorial is for Joomlaǃ 4. For creating a component for Joomlaǃ 3 see [https://docs.joomla.org/J3.x:Developing_an_MVC_Component| Developing a Model-View-Controller Component/3.x]
+* If you are new to Joomla!, 
+please read [[S:MyLanguage/Absolute_Basics_of_How_a_Component_Functions|Absolute Basics of How a Component Functions]]. 
+* This tutorial is for Joomlaǃ4. 
+For creating a component for Joomlaǃ3 see [https://docs.joomla.org/J3.x:Developing_an_MVC_Component| Developing a Model-View-Controller Component/3.x].
 
 == Requirements ==
 You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha7-dev). You can download Joomla! 4 at [https://github.com/joomla/joomla-cms/tree/4.0-dev GitHub], on the [https://developer.joomla.org/nightly-builds.html Developer website] or you can create a free website at https://launch.joomla.org.
@@ -27,7 +29,8 @@ This tutorial will explain how to go about creating a simple component. Through 
 
 === File Structure ===
 
-There are a few basic files that are used in the standard pattern of component development:
+There are a few basic files that are used in the standard pattern of component 
+development:
 
 * <code>administrator/components/com_foos/Controller/DisplayController.php</code> - This file .
 
@@ -178,16 +181,24 @@ The code for the <tt>script.php</tt> file is as follows:
 
 </source>
 
+Note: If you ask yourself what version number you should take: 
+Joomla strictly follows Semantic Versioning (2.0.0) and it be good if you do this, too.
+See
+https://developer.joomla.org/news/586-joomla-development-strategy.html#version_numbering 
+and 
+https://semver.org/spec/v2.0.0.html
+for more informations.
 
 == Test your componente ==
 
 Now you can zip all files and install them via Joomla Extension Manager. 
 
-After that you can choose your component in the menu of the Joomlaǃ backend. 
+After that you can choose your component in the menu of the Joomlaǃbackend. 
 
 [[File:componenttutorial1.png|700px]]
 
-In the front end there is no change up to now. We are going to work on this in the next chapter.
+In the front end there is no change up to now. 
+We are going to work on this in the next chapter.
 
 == Component Contents ==
 
@@ -239,7 +250,9 @@ At this point in the tutorial, your component should contain the following files
 
 == Conclusion ==
 
-Component development for Joomla! is a fairly simple, straightforward process. Using the techniques described in this tutorial, an endless variety of componentes can be developed with little hassle.
+Component development for Joomla! is a fairly simple, straightforward process. 
+Using the techniques described in this tutorial, 
+an endless variety of componentes can be developed with little hassle.
 
 Boilerplates you can find hereː
 * https://github.com/joomla-extensions/boilerplate/tree/master/plugins/system
