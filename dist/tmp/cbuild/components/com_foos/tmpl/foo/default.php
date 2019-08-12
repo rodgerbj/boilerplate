@@ -1,1 +1,1 @@
-Hallo
+<?php echo $this->msg;

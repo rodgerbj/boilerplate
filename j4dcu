@@ -709,7 +709,7 @@ The code for the <tt>components/com_foos/tmpl/foo/default.php</tt> file is as fo
 
 Now you can zip all files and install them via Joomla Extension Manager.
 
-After that you can see the view in the front end. 
+After that you can see the view in the front using a model. 
 
 [[File:componenttutorial341.png|700px]]
 
@@ -863,6 +863,14 @@ After that you can add a parameter to the menu item.
 [[File:componenttutorial351.png|700px]]
 
 Depending on the parameter, the view is set up in the front end.
+== Note ==
+
+=== Why do we omit the close tag? ===
+
+Omitting the closing tag helps you prevent accidental 
+whitespace or newlines from being added to the end of the file. 
+See: https://www.php.net/manual/en/language.basic-syntax.instruction-separation.php
+
 
 == Component Contents ==
 
