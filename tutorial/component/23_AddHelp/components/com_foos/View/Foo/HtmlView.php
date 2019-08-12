@@ -55,7 +55,7 @@ class HtmlView extends BaseHtmlView
 	 */
 	public function display($tpl = null)
 	{
-		$item = $this->Item = $this->get('Item');
+		$item = $this->item = $this->get('Item');
 		$state = $this->State = $this->get('State');
 		$params = $this->Params = $state->get('params');
 		$itemparams = new Registry(json_decode($item->params));

@@ -1,2 +1,2 @@
 <?php 
-echo $this->Item->name;
+echo $this->item->name;

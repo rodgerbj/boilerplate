@@ -22,6 +22,14 @@ use Joomla\CMS\Factory;
 class HtmlView extends BaseHtmlView
 {
 	/**
+	 * The item object details
+	 *
+	 * @var    \JObject
+	 * @since  1.0.0
+	 */
+	protected $item;
+
+	/**
 	 * Execute and display a template script.
 	 *
 	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
@@ -30,7 +38,7 @@ class HtmlView extends BaseHtmlView
 	 */
 	public function display($tpl = null)
 	{
-		$item = $this->Item = $this->get('Item');
+		$item = $this->item = $this->get('Item');
 
 		Factory::getApplication()->triggerEvent('onContentPrepare', array ('com_foos.foo', &$item));
 
