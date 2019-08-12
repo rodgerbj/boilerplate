@@ -24,7 +24,7 @@ use Psr\Container\ContainerInterface;
 /**
  * Component class for com_foos
  *
- * @since  4.0.0
+ * @since  1.0.0
  */
 class FoosComponent extends MVCComponent
 implements BootableExtensionInterface, CategoryServiceInterface, AssociationServiceInterface
@@ -44,7 +44,7 @@ implements BootableExtensionInterface, CategoryServiceInterface, AssociationServ
 	 *
 	 * @return  void
 	 *
-	 * @since   4.0.0
+	 * @since   1.0.0
 	 */
 	public function boot(ContainerInterface $container)
 	{
@@ -58,7 +58,7 @@ implements BootableExtensionInterface, CategoryServiceInterface, AssociationServ
 	 *
 	 * @return  string|null
 	 *
-	 * @since   4.0.0
+	 * @since   1.0.0
 	 */
 	protected function getTableNameForSection(string $section = null)
 	{

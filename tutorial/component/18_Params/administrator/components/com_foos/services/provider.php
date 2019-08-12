@@ -28,7 +28,7 @@ use Joomla\CMS\Association\AssociationExtensionInterface;
  * The foos service provider.
  * https://github.com/joomla/joomla-cms/pull/20217
  *
- * @since  4.0.0
+ * @since  1.0.0
  */
 return new class implements ServiceProviderInterface
 {
@@ -39,7 +39,7 @@ return new class implements ServiceProviderInterface
 	 *
 	 * @return  void
 	 *
-	 * @since   4.0.0
+	 * @since   1.0.0
 	 */
 	public function register(Container $container)
 	{

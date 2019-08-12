@@ -17,7 +17,7 @@ use Joomla\Database\DatabaseDriver;
 /**
  * Foos Table class.
  *
- * @since  4.0
+ * @since  1.0
  */
 class FooTable extends Table
 {
@@ -26,7 +26,7 @@ class FooTable extends Table
 	 *
 	 * @param   DatabaseDriver  $db  Database connector object
 	 *
-	 * @since   4.0
+	 * @since   1.0
 	 */
 	public function __construct(DatabaseDriver $db)
 	{

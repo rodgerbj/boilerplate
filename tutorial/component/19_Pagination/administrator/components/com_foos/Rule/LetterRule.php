@@ -23,7 +23,7 @@ class LetterRule extends FormRule
 	 * The regular expression to use in testing a form field value.
 	 *
 	 * @var    string
-	 * @since  4.0.0
+	 * @since  1.0.0
 	 */
 	protected $regex = '^([a-z]+)$';
 
@@ -31,7 +31,7 @@ class LetterRule extends FormRule
 	 * The regular expression modifiers to use when testing a form field value.
 	 *
 	 * @var    string
-	 * @since  4.0.0
+	 * @since  1.0.0
 	 */
 	protected $modifiers = 'i';
 }

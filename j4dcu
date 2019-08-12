@@ -25,32 +25,41 @@ You can see many examples of components in the standard Joomla! install. For exa
 * Tags or
 * Contact
 
-This tutorial will explain how to go about creating a simple component. Through this tutorial you will learn the basic file structure of a Joomlaǃ 4 component. This basic structure can then be expanded to produce more complex components.
+This tutorial will explain how to go about creating a simple component. Through this tutorial you will learn the basic file structure of a Joomlaǃ4 component. This basic structure can then be expanded to produce more complex components.
 
 === File Structure ===
 
 There are a few basic files that are used in the standard pattern of component 
 development:
 
-* <code>administrator/components/com_foos/Controller/DisplayController.php</code> - This file .
+* <code>administrator/components/com_foos/Controller/DisplayController.php</code> - This 
+file is Foos master display controller.
 
-* <code>administrator/components/com_foos/Extension/FoosComponent.php</code> - This file .
+* <code>administrator/components/com_foos/Extension/FoosComponent.php</code> - This 
+file is the Component class for com_foos.
 
-* <code>administrator/components/com_foos/Service/Html/Foo.php</code> - This file .
+* <code>administrator/components/com_foos/Service/Html/Foo.php</code> - This 
+file is the Content HTML helper.
 
-* <code>administrator/components/com_foos/View/Foos/HtmlView.php</code> - This file .
+* <code>administrator/components/com_foos/View/Foos/HtmlView.php</code> - This 
+file is the View class for a list of foos.
 
-* <code>administrator/components/com_foos/services/provider.php</code> - This file .
+* <code>administrator/components/com_foos/services/provider.php</code> - This 
+file is the The foo service provider.
 
-* <code>administrator/components/com_foos/tmpl/foos/default.php</code> - This file .
+* <code>administrator/components/com_foos/tmpl/foos/default.php</code> - This 
+file is the template for a list of foos.
 
-* <code>com_foo.xml</code> - This file contains information about the componente. It defines the files that need to be installed by the Joomla! installer and specifies configuration parameters for the componente.
+* <code>com_foo.xml</code> - This file contains information about the componente. 
+It defines the files that need to be installed by the Joomla! installer and 
+specifies configuration parameters for the componente.
 
-* <code>script.php</code> - This file .
+* <code>script.php</code> - This file is the Installation Script file of Foo Component.
 
 === Creating administrator/components/com_foos/Controller/DisplayController.php ===
 
-The <tt>administrator/components/com_foos/Controller/DisplayController.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/Controller/DisplayController.php</tt> 
+file is is Foos master display controller.
 
 ==== Completed administrator/components/com_foos/Controller/DisplayController.php file ====
 
@@ -63,11 +72,13 @@ The code for the <tt>administrator/components/com_foos/Controller/DisplayControl
 
 === Creating administrator/components/com_foos/Extension/FoosComponent.php ===
 
-The <tt>administrator/components/com_foos/Extension/FoosComponent.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/Extension/FoosComponent.php</tt> file is 
+the Component class for com_foos.
 
 ==== Completed administrator/components/com_foos/Extension/FoosComponent.php file ====
 
-The code for the <tt>administrator/components/com_foos/Extension/FoosComponent.php</tt> file is as follows:
+The code for the <tt>administrator/components/com_foos/Extension/FoosComponent.php</tt> 
+file is as follows:
  
 <source lang="php">
 <?php
@@ -141,30 +152,44 @@ The code for the <tt>script.php</tt> file is as follows:
 
 === Creating com_foos.xml ===
 
-The <tt>mod_foo.xml</tt> file is the installation file. Most entries are self-explanatory.
+The <tt>mod_foo.xml</tt> file is the installation file. 
+Most entries are self-explanatory.
 
 ==== Completed mod_foo.xml file ====
 
 The code for the <tt>mod_foo.xml</tt>  file is as follows:
  
 <source lang="xml">
-<?xml version="1.0" encoding="utf-8"?>
-<extension type="componente" version="3.8" client="site" method="upgrade">
-    <name>MOD_FOO</name>
-    <creationDate>[DATE]</creationDate>
-    <author>[AUTHOR]</author>
-    <authorEmail>[AUTHOR_EMAIL]</authorEmail>
-    <authorUrl>[AUTHOR_URL]</authorUrl>
-    <copyright>[COPYRIGHT]</copyright>
-    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-    <version>1.0</version>
-    <description>MOD_FOO_XML_DESCRIPTION</description>
-    <files>
-        <filename componente="mod_foo">mod_foo.php</filename>
-        <folder>tmpl</folder>
-        <folder>language</folder>
-        <filename>mod_foo.xml</filename>
-    </files>
+<?xml version="1.0" encoding="utf-8" ?>
+<extension type="component" version="4.0" method="upgrade">
+	<name>COM_FOOS</name>
+	<creationDate>[DATE]</creationDate>
+	<author>[AUTHOR]</author>
+	<authorEmail>[AUTHOR_EMAIL]</authorEmail>
+	<authorUrl>[AUTHOR_URL]</authorUrl>
+	<copyright>[COPYRIGHT]</copyright>
+	<license>GNU General Public License version 2 or later;</license>
+	<version>1.0.0</version>
+	<description>COM_FOOS_XML_DESCRIPTION</description>
+	<namespace>Joomla\Component\Foos</namespace>
+        <scriptfile>script.php</scriptfile>
+	<!-- Back-end files -->
+	<administration>
+		<!-- Menu entries -->
+		<menu view="foos">COM_FOOS</menu>
+		<submenu>
+			<menu link="option=com_foos">COM_FOOS</menu>
+		</submenu>
+		<files folder="administrator/components/com_foos">
+			<filename>foos.xml</filename>
+			<folder>Controller</folder>
+			<folder>Extension</folder>
+			<folder>Service</folder>
+			<folder>View</folder>
+			<folder>services</folder>
+			<folder>tmpl</folder>
+		</files>
+	</administration>
 </extension>
 </source>
 
@@ -181,14 +206,6 @@ The code for the <tt>script.php</tt> file is as follows:
 
 </source>
 
-Note: If you ask yourself what version number you should take: 
-Joomla strictly follows Semantic Versioning (2.0.0) and it be good if you do this, too.
-See
-https://developer.joomla.org/news/586-joomla-development-strategy.html#version_numbering 
-and 
-https://semver.org/spec/v2.0.0.html
-for more informations.
-
 == Test your componente ==
 
 Now you can zip all files and install them via Joomla Extension Manager. 
@@ -200,16 +217,57 @@ After that you can choose your component in the menu of the Joomlaǃbackend.
 In the front end there is no change up to now. 
 We are going to work on this in the next chapter.
 
+== Note ==
+
+=== Version Number ===
+
+If you ask yourself what version number you should take: 
+Joomla strictly follows Semantic Versioning (2.0.0) and it be good if you do this, too.
+See
+https://developer.joomla.org/news/586-joomla-development-strategy.html#version_numbering 
+and 
+https://semver.org/spec/v2.0.0.html
+for more informations.
+
+=== index.html File ===
+
+Why was there an index.html file in almost every folder in Joomla in the past? 
+The blank index.html file in each folder was to prevent directory browsing via 
+web address. On a poorly configured web server someone could see all the files 
+contained in a folder by simply browsing to the path, such as 
+www.example.org/images/. This could be a potential security problem on 
+servers without directory browsing (indexing) turned off. 
+Having the blank <tt>index.html</tt> file returns a blank white screen to 
+the browser rather than displaying the contents of the folder.
+
+So, from a technical aspect, <tt>index.html</tt> files are not required 
+on a good configured web server, but do prevent 
+directory access on badly configured environments as already noted.
+
+If you're looking to list an extension on the Joomla! Extensions Directory, 
+(JED) it is not required to have <tt>index.html</tt> files.
+
+If you want to add <tt>index.html</tt> files to your site, 
+you can copy the script at 
+https://github.com/joomla/joomla-cms/blob/staging/build/indexmaker.php 
+and run it from a command line session on your server.
+
+=== Joomla! Extensions Directory ===
+
+You can use the JEDChecker extension at 
+http://extensions.joomla.org/extensions/miscellaneous/development/21336 
+to check JED requirements.
+
 == Component Contents ==
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  |administrator/components/com_foos/Controller/DisplayController.php
  |this is the administrator entry point to the Foo component 
  | new
  |-
-  |1
+|1
  |administrator/components/com_foos/Extension/FoosComponent.php
  | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
  | new

@@ -23,7 +23,7 @@ use Joomla\Component\Foos\Administrator\Helper\FooHelper;
 /**
  * View class for a list of foos.
  *
- * @since  4.0
+ * @since  1.0
  */
 class HtmlView extends BaseHtmlView
 {
@@ -62,7 +62,7 @@ class HtmlView extends BaseHtmlView
 	 *
 	 * @return  void
 	 *
-	 * @since   4.0
+	 * @since   1.0
 	 */
 	protected function addToolbar()
 	{

@@ -16,7 +16,7 @@ use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 /**
  * View class for a list of foos.
  *
- * @since  4.0
+ * @since  1.0
  */
 class HtmlView extends BaseHtmlView
 {
@@ -27,7 +27,7 @@ class HtmlView extends BaseHtmlView
 	 *
 	 * @return  mixed  A string if successful, otherwise an \Exception object.
 	 *
-	 * @since   4.0
+	 * @since   1.0
 	 */
 	public function display($tpl = null)
 	{

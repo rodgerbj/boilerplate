@@ -21,7 +21,7 @@ use Joomla\CMS\Router\Route;
 /**
  * Foos HTML helper class.
  *
- * @since  4.0
+ * @since  1.0
  */
 class AdministratorService
 {

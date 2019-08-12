@@ -58,7 +58,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 *
 	 * @return  array   Array of associations for the item
 	 *
-	 * @since  4.0.0
+	 * @since  1.0.0
 	 */
 	public function getAssociationsForItem($id = 0, $view = null)
 	{

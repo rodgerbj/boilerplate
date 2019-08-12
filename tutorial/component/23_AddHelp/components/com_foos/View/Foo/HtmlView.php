@@ -18,7 +18,7 @@ use Joomla\Registry\Registry;
 /**
  * HTML Foos View class for the Foo component
  *
- * @since  4.0
+ * @since  1.0
  */
 class HtmlView extends BaseHtmlView
 {
@@ -26,7 +26,7 @@ class HtmlView extends BaseHtmlView
 	 * The page parameters
 	 *
 	 * @var    \Joomla\Registry\Registry|null
-	 * @since  4.0.0
+	 * @since  1.0.0
 	 */
 	protected $params = null;
 
@@ -34,7 +34,7 @@ class HtmlView extends BaseHtmlView
 	 * The item model state
 	 *
 	 * @var    \Joomla\Registry\Registry
-	 * @since  4.0.0
+	 * @since  1.0.0
 	 */
 	protected $state;
 
@@ -42,7 +42,7 @@ class HtmlView extends BaseHtmlView
 	 * The item object details
 	 *
 	 * @var    \JObject
-	 * @since  4.0.0
+	 * @since  1.0.0
 	 */
 	protected $item;
 

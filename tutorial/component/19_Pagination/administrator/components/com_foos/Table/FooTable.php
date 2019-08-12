@@ -18,7 +18,7 @@ use Joomla\Registry\Registry;
 /**
  * Foos Table class.
  *
- * @since  4.0
+ * @since  1.0
  */
 class FooTable extends Table
 {
@@ -27,7 +27,7 @@ class FooTable extends Table
 	 *
 	 * @param   DatabaseDriver  $db  Database connector object
 	 *
-	 * @since   4.0
+	 * @since   1.0
 	 */
 	public function __construct(DatabaseDriver $db)
 	{
@@ -45,7 +45,7 @@ class FooTable extends Table
 	 *
 	 * @return  boolean  True on success, false on failure.
 	 *
-	 * @since   4.0
+	 * @since   1.0
 	 */
 	public function store($updateNulls = false)
 	{

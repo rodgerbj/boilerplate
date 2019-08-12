@@ -18,7 +18,7 @@ use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 /**
  * Contacts list controller class.
  *
- * @since  4.0
+ * @since  1.0
  */
 class FoosController extends AdminController
 {
@@ -26,7 +26,7 @@ class FoosController extends AdminController
 	 * The prefix to use with controller messages.
 	 *
 	 * @var    string
-	 * @since  4.0
+	 * @since  1.0
 	 */
 	protected $text_prefix = 'COM_FOOS_FOOS';
 
@@ -40,7 +40,7 @@ class FoosController extends AdminController
 	 * @param   CMSApplication       $app      The JApplication for the dispatcher
 	 * @param   \JInput              $input    Input
 	 *
-	 * @since   4.0
+	 * @since   1.0
 	 */
 	public function __construct($config = array(), MVCFactoryInterface $factory = null, $app = null, $input = null)
 	{
@@ -57,7 +57,7 @@ class FoosController extends AdminController
 	 *
 	 * @return  \Joomla\CMS\MVC\Model\BaseDatabaseModel
 	 *
-	 * @since   4.0
+	 * @since   1.0
 	 */
 	public function getModel($name = 'Foo', $prefix = 'Administrator', $config = array('ignore_request' => true))
 	{

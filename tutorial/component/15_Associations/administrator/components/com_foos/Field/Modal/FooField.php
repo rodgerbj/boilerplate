@@ -20,7 +20,7 @@ use Joomla\CMS\Session\Session;
 /**
  * Supports a modal foo picker.
  *
- * @since  4.0
+ * @since  1.0
  */
 class FooField extends FormField
 {
@@ -28,7 +28,7 @@ class FooField extends FormField
 	 * The form field type.
 	 *
 	 * @var     string
-	 * @since   4.0
+	 * @since   1.0
 	 */
 	protected $type = 'Modal_Foo';
 
@@ -37,7 +37,7 @@ class FooField extends FormField
 	 *
 	 * @return  string  The field input markup.
 	 *
-	 * @since   4.0
+	 * @since   1.0
 	 */
 	protected function getInput()
 	{
@@ -183,7 +183,7 @@ class FooField extends FormField
 	 *
 	 * @return  string  The field label markup.
 	 *
-	 * @since   4.0
+	 * @since   1.0
 	 */
 	protected function getLabel()
 	{

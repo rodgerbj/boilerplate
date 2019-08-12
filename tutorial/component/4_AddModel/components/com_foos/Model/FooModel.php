@@ -17,7 +17,7 @@ use Joomla\CMS\MVC\Model\BaseDatabaseModel;
 /**
  * Foo model for the Joomla Foos component.
  *
- * @since  4.0
+ * @since  1.0
  */
 class FooModel extends BaseDatabaseModel
 {

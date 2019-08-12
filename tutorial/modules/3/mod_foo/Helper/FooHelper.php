@@ -14,7 +14,7 @@ defined('_JEXEC') or die;
 /**
  * Helper for mod_foo
  *
- * @since  4.0
+ * @since  1.0
  */
 class FooHelper
 {

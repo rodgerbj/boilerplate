@@ -20,7 +20,7 @@ use Joomla\Registry\Registry;
 /**
  * Foo model for the Joomla Foos component.
  *
- * @since  4.0
+ * @since  1.0
  */
 class FooModel extends BaseDatabaseModel
 {
@@ -36,7 +36,7 @@ class FooModel extends BaseDatabaseModel
 	 *
 	 * @return  mixed Object or null
 	 *
-	 * @since   4.0.0
+	 * @since   1.0.0
 	 */
 	public function getItem($pk = null)
 	{

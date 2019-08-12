@@ -19,7 +19,7 @@ use Joomla\CMS\Language\LanguageHelper;
 /**
  * Item Model for a Foo.
  *
- * @since  4.0
+ * @since  1.0
  */
 class FooModel extends AdminModel
 {
@@ -27,7 +27,7 @@ class FooModel extends AdminModel
 	 * The type alias for this content type.
 	 *
 	 * @var    string
-	 * @since  4.0
+	 * @since  1.0
 	 */
 	public $typeAlias = 'com_foos.foo';
 
@@ -35,7 +35,7 @@ class FooModel extends AdminModel
 	 * The context used for the associations table
 	 *
 	 * @var    string
-	 * @since  4.0
+	 * @since  1.0
 	 */
 	protected $associationsContext = 'com_foos.item';
 
@@ -64,7 +64,7 @@ class FooModel extends AdminModel
 	 *
 	 * @return  \JForm|boolean  A \JForm object on success, false on failure
 	 *
-	 * @since   4.0
+	 * @since   1.0
 	 */
 	public function getForm($data = array(), $loadData = true)
 	{
@@ -84,7 +84,7 @@ class FooModel extends AdminModel
 	 *
 	 * @return  mixed  The data for the form.
 	 *
-	 * @since   4.0
+	 * @since   1.0
 	 */
 	protected function loadFormData()
 	{
@@ -104,7 +104,7 @@ class FooModel extends AdminModel
 	 *
 	 * @return  mixed  Object on success, false on failure.
 	 *
-	 * @since   4.0
+	 * @since   1.0
 	 */
 	public function getItem($pk = null)
 	{
@@ -140,7 +140,7 @@ class FooModel extends AdminModel
 	 *
 	 * @return  void
 	 *
-	 * @since   4.0
+	 * @since   1.0
 	 */
 	protected function preprocessForm(\JForm $form, $data, $group = 'content')
 	{
