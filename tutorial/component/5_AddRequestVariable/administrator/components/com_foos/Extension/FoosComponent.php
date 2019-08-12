@@ -16,8 +16,8 @@ use Joomla\CMS\Categories\CategoryServiceTrait;
 use Joomla\CMS\Extension\BootableExtensionInterface;
 use Joomla\CMS\Extension\MVCComponent;
 use Joomla\CMS\HTML\HTMLRegistryAwareTrait;
-use Joomla\Component\Foos\Administrator\Service\Html\Foo;
 use Psr\Container\ContainerInterface;
+use Joomla\Component\Foos\Administrator\Service\HTML\AdministratorService;
 
 /**
  * Component class for com_foos
@@ -44,6 +44,6 @@ class FoosComponent extends MVCComponent implements BootableExtensionInterface, 
 	 */
 	public function boot(ContainerInterface $container)
 	{
-		$this->getRegistry()->register('foo', new Foo);
+		$this->getRegistry()->register('foosadministrator', new AdministratorService);
 	}
 }

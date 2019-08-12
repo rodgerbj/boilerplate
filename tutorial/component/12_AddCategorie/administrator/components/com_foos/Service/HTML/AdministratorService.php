@@ -16,6 +16,6 @@ defined('JPATH_BASE') or die;
  *
  * @since  1.0
  */
-class Foo
+class AdministratorService
 {
 }
