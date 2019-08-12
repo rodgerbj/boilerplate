@@ -858,11 +858,15 @@ The code for the <tt>components/com_foos/tmpl/foo/default.xml</tt> file is as fo
 == Test your component ==
 
 Now you can zip all files and install them via Joomla Extension Manager.
+
 After that you can add a parameter to the menu item. 
+This parameter is a text field.
+The text you entered in this text field is shown in the front end.
 
 [[File:componenttutorial351.png|700px]]
 
 Depending on the parameter, the view is set up in the front end.
+
 == Note ==
 
 === Why do we omit the close tag? ===
@@ -946,7 +950,8 @@ At this point in the tutorial, your component should contain the following files
 [[File:componenttutorialdiff5.png|700px]]
 
 == Conclusion ==
-For the moment, the messages are hard coded or entered manually. We would like to store the data in the Joomla! database. 
+For the moment, the messages are hard coded or entered manually. 
+We would like to store the data in the Joomla database. 
 Therefore, in the next chapter, we will add database access to the component.
 
 
