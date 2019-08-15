@@ -2371,6 +2371,10 @@ After that you can
 
 /components/com_users/Rule/LoginUniqueFieldRule.php
 
+== Note ==
+
+
+
 == Component Contents ==
 
 At this point in the tutorial, your component should contain the following files:
