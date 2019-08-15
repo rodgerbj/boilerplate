@@ -53,6 +53,7 @@ class FoosModel extends ListModel
 					$this->getState(
 						'list.select',
 						'a.id, a.name, a.catid' .
+						', a.access' .
 						', a.published' .
 						', a.publish_up, a.publish_down'
 					)
