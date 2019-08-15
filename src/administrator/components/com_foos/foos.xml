@@ -7,7 +7,7 @@
 	<authorUrl>[AUTHOR_URL]</authorUrl>
 	<copyright>[COPYRIGHT]</copyright>
 	<license>GNU General Public License version 2 or later;</license>
-	<version>1.10.0</version>
+	<version>1.11.0</version>
 	<description>COM_FOOS_XML_DESCRIPTION</description>
 	<namespace>Joomla\Component\Foos</namespace>
 	<scriptfile>script.php</scriptfile>
@@ -46,6 +46,7 @@
 			<folder>Controller</folder>
 			<folder>Extension</folder>
 			<folder>Model</folder>
+			<folder>Rule</folder>
 			<folder>Service</folder>
 			<folder>View</folder>
 			<folder>services</folder>
