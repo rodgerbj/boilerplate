@@ -59,6 +59,7 @@ class FoosComponent extends MVCComponent implements BootableExtensionInterface, 
 	 */
 	protected function getTableNameForSection(string $section = null)
 	{
-		return 'foos_details';
+		return ($section === 'category' ? 'categories' : 'foos_details');
+		
 	}
 }
