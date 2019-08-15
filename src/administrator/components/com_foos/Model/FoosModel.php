@@ -62,3 +62,4 @@ class FoosModel extends ListModel
 		return $query;
 	}
 }
+
