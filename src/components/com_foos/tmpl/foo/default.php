@@ -9,3 +9,6 @@ if ($this->get('State')->get('params')->get('show_foo_name_label')) {
 } else {
 	echo $this->item->name;
 }
+echo $this->item->event->afterDisplayTitle; 
+echo $this->item->event->beforeDisplayContent;
+echo $this->item->event->afterDisplayContent;
