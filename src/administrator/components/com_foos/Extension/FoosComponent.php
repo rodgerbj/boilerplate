@@ -11,8 +11,6 @@ namespace Joomla\Component\Foos\Administrator\Extension;
 
 defined('JPATH_PLATFORM') or die;
 
-use Joomla\CMS\Association\AssociationServiceInterface;
-use Joomla\CMS\Association\AssociationServiceTrait;
 use Joomla\CMS\Categories\CategoryServiceInterface;
 use Joomla\CMS\Categories\CategoryServiceTrait;
 use Joomla\CMS\Extension\BootableExtensionInterface;
@@ -26,11 +24,9 @@ use Joomla\Component\Foos\Administrator\Service\HTML\AdministratorService;
  *
  * @since  1.0.0
  */
-class FoosComponent extends MVCComponent
-implements BootableExtensionInterface, CategoryServiceInterface, AssociationServiceInterface
+class FoosComponent extends MVCComponent implements BootableExtensionInterface, CategoryServiceInterface
 {
 	use CategoryServiceTrait;
-	use AssociationServiceTrait;
 	use HTMLRegistryAwareTrait;
 
 	/**
@@ -49,19 +45,5 @@ implements BootableExtensionInterface, CategoryServiceInterface, AssociationServ
 	public function boot(ContainerInterface $container)
 	{
 		$this->getRegistry()->register('foosadministrator', new AdministratorService);
-	}
-
-	/**
-	 * Returns the table for the count items functions for the given section.
-	 *
-	 * @param   string  $section  The section
-	 *
-	 * @return  string|null
-	 *
-	 * @since   1.0.0
-	 */
-	protected function getTableNameForSection(string $section = null)
-	{
-		return ($section === 'category' ? 'categories' : 'foos_details');
 	}
 }

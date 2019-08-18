@@ -20,7 +20,7 @@ use Joomla\CMS\Log\Log;
  * @since  1.0.0
  *
  */
-class Com_FoosInstallerScript
+class FoosInstallerScript
 {
 	/**
 	 * Extension script constructor.

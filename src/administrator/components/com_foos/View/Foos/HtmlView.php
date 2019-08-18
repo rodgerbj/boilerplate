@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package     Joomla.Administrator
  * @subpackage  com_foos
@@ -12,13 +11,7 @@ namespace Joomla\Component\Foos\Administrator\View\Foos;
 
 defined('_JEXEC') or die;
 
-use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Helper\ContentHelper;
-use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
-use Joomla\CMS\Toolbar\Toolbar;
-use Joomla\CMS\Toolbar\ToolbarHelper;
-use Joomla\Component\Foos\Administrator\Helper\FooHelper;
 
 /**
  * View class for a list of foos.
@@ -28,64 +21,16 @@ use Joomla\Component\Foos\Administrator\Helper\FooHelper;
 class HtmlView extends BaseHtmlView
 {
 	/**
-	 * An array of items
+	 * Method to display the view.
 	 *
-	 * @var  array
-	 */
-	protected $items;
-
-	/**
-	 * The sidebar markup
+	 * @param   string  $tpl  A template file to load. [optional]
 	 *
-	 * @var  string
-	 */
-	protected $sidebar;
-
-	/**
-	 * Display the view.
-	 *
-	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
-	 *
-	 * @return  mixed  A string if successful, otherwise an Error object.
-	 */
-	public function display($tpl = null)
-	{
-		$this->items = $this->get('Items');
-
-		$this->addToolbar();
-
-		return parent::display($tpl);
-	}
-
-	/**
-	 * Add the page title and toolbar.
-	 *
-	 * @return  void
+	 * @return  mixed  A string if successful, otherwise an \Exception object.
 	 *
 	 * @since   1.0
 	 */
-	protected function addToolbar()
+	public function display($tpl = null)
 	{
-		FooHelper::addSubmenu('foos');
-		$this->sidebar = \JHtmlSidebar::render();
-
-		$canDo = ContentHelper::getActions('com_foos');
-
-		// Get the toolbar object instance
-		$toolbar = Toolbar::getInstance('toolbar');
-
-		ToolbarHelper::title(Text::_('COM_FOOS_MANAGER_FOOS'), 'address foo');
-
-		if ($canDo->get('core.create'))
-		{
-			$toolbar->addNew('foo.add');
-		}
-
-		if ($canDo->get('core.options'))
-		{
-			$toolbar->preferences('com_foos');
-		}
-
-		HTMLHelper::_('sidebar.setAction', 'index.php?option=com_foos');
+		return parent::display($tpl);
 	}
 }
