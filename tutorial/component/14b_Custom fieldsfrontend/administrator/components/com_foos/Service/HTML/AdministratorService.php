@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace Joomla\Component\Foos\Administrator\Service\Html;
+namespace Joomla\Component\Foos\Administrator\Service\HTML;
 
 defined('JPATH_BASE') or die;
 

@@ -1759,6 +1759,61 @@ The code for the <tt>administrator/components/com_foos/Model/FoosModel.php</tt> 
  
 <source lang="php">
 <?php
+/**
+ * @package     Joomla.Administrator
+ * @subpackage  com_foos
+ *
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+namespace Joomla\Component\Foos\Administrator\Model;
+
+defined('_JEXEC') or die;
+
+use Joomla\CMS\MVC\Model\ListModel;
+
+/**
+ * Methods supporting a list of foo records.
+ *
+ * @since  1.0
+ */
+class FoosModel extends ListModel
+{
+	/**
+	 * Constructor.
+	 *
+	 * @param   array  $config  An optional associative array of configuration settings.
+	 *
+	 * @see     \JControllerLegacy
+	 * @since   1.0
+	 */
+	public function __construct($config = array())
+	{
+		parent::__construct($config);
+	}
+	/**
+	 * Build an SQL query to load the list data.
+	 *
+	 * @return  \JDatabaseQuery
+	 *
+	 * @since   1.0
+	 */
+	protected function getListQuery()
+	{
+		// Create a new query object.
+		$db = $this->getDbo();
+		$query = $db->getQuery(true);
+
+		// Select the required fields from the table.
+		$query->select(
+			$db->quoteName(array('id', 'name'))
+		);
+		$query->from($db->quoteName('#__foos_details'));
+
+		return $query;
+	}
+}
 
 </source>
 
@@ -1770,8 +1825,53 @@ The <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is th
 
 The code for the <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is as follows:
  
-<source lang="php">
+<source lang="php" highlight="23-28,41">
+
 <?php
+/**
+ * @package     Joomla.Administrator
+ * @subpackage  com_foos
+ *
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+namespace Joomla\Component\Foos\Administrator\View\Foos;
+
+defined('_JEXEC') or die;
+
+use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
+
+/**
+ * View class for a list of foos.
+ *
+ * @since  1.0
+ */
+class HtmlView extends BaseHtmlView
+{
+	/**
+	 * An array of items
+	 *
+	 * @var  array
+	 */
+	protected $items;
+
+	/**
+	 * Method to display the view.
+	 *
+	 * @param   string  $tpl  A template file to load. [optional]
+	 *
+	 * @return  mixed  A string if successful, otherwise an \Exception object.
+	 *
+	 * @since   1.0
+	 */
+	public function display($tpl = null)
+	{
+		$this->items = $this->get('Items');
+
+		return parent::display($tpl);
+	}
+}
 
 </source>
 
@@ -1783,8 +1883,66 @@ The <tt>administrator/components/com_foos/services/provider.php</tt> file is the
 
 The code for the <tt>administrator/components/com_foos/services/provider.php</tt> file is as follows:
  
-<source lang="php">
+<source lang="php" highlight="18,53">
 <?php
+/**
+ * @package     Joomla.Administrator
+ * @subpackage  com_foos
+ *
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+defined('_JEXEC') or die;
+
+use Joomla\CMS\Dispatcher\ComponentDispatcherFactoryInterface;
+use Joomla\CMS\Extension\ComponentInterface;
+use Joomla\CMS\Extension\Service\Provider\CategoryFactory;
+use Joomla\CMS\Extension\Service\Provider\ComponentDispatcherFactory;
+use Joomla\CMS\Extension\Service\Provider\MVCFactory;
+use Joomla\CMS\HTML\Registry;
+use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
+use Joomla\DI\Container;
+use Joomla\DI\ServiceProviderInterface;
+use Joomla\Component\Foos\Administrator\Extension\FoosComponent;
+
+/**
+ * The foos service provider.
+ * https://github.com/joomla/joomla-cms/pull/20217
+ *
+ * @since  1.0.0
+ */
+return new class implements ServiceProviderInterface
+{
+	/**
+	 * Registers the service provider with a DI container.
+	 *
+	 * @param   Container  $container  The DI container.
+	 *
+	 * @return  void
+	 *
+	 * @since   1.0.0
+	 */
+	public function register(Container $container)
+	{
+		$container->registerServiceProvider(new CategoryFactory('\\Joomla\\Component\\Foos'));
+		$container->registerServiceProvider(new MVCFactory('\\Joomla\\Component\\Foos'));
+		$container->registerServiceProvider(new ComponentDispatcherFactory('\\Joomla\\Component\\Foos'));
+
+		$container->set(
+			ComponentInterface::class,
+			function (Container $container)
+			{
+				$component = new FoosComponent($container->get(ComponentDispatcherFactoryInterface::class));
+
+				$component->setRegistry($container->get(Registry::class));
+				$component->setMVCFactory($container->get(MVCFactoryInterface::class));
+
+				return $component;
+			}
+		);
+	}
+};
 
 </source>
 
@@ -1796,9 +1954,11 @@ The <tt>administrator/components/com_foos/sql/install.mysql.utf8.sql</tt> file i
 
 The code for the <tt>administrator/components/com_foos/sql/install.mysql.utf8.sql</tt> file is as follows:
  
-<source lang="sql" highlight="0-11">
+<source lang="sql">
+
 CREATE TABLE IF NOT EXISTS `#__foos_details` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
   `name` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
@@ -1807,6 +1967,7 @@ INSERT INTO `#__foos_details` (`name`) VALUES
 ('Nina'),
 ('Astrid'),
 ('Elmar');
+
 </source>
 
 === Creating administrator/components/com_foos/sql/uninstall.mysql.utf8.sql ===
@@ -1817,7 +1978,7 @@ The <tt>administrator/components/com_foos/sql/uninstall.mysql.utf8.sql</tt> file
 
 The code for the <tt>administrator/components/com_foos/sql/uninstall.mysql.utf8.sql</tt> file is as follows:
  
-<source lang="sql" highlight="0-1">
+<source lang="sql">
 DROP TABLE IF EXISTS `#__foos_details`;
 </source>
 
@@ -1829,8 +1990,23 @@ The <tt>administrator/components/com_foos/tmpl/foos/default.php</tt> file is the
 
 The code for the <tt>administrator/components/com_foos/tmpl/foos/default.php</tt> file is as follows:
  
-<source lang="php">
+<source lang="php" highlight="1-15">
 <?php
+/**
+ * @package     Joomla.Administrator
+ * @subpackage  com_foos
+ *
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+defined('_JEXEC') or die;
+?>
+<?php foreach ($this->items as $i => $item) : ?>
+<?php echo $item->name; ?>
+</br>
+<?php endforeach; ?>
+
 
 </source>
 
@@ -1842,9 +2018,9 @@ The <tt>administrator/components/com_foos/foos.xml</tt> file is the installation
 
 The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as follows:
  
-<source lang="xml" highlight="14-23,42,46">
+<source lang="xml" highlight="10,14-23,42,46">
 <?xml version="1.0" encoding="utf-8" ?>
-<extension type="component" version="4.0" method="upgrade">
+<extension type="component" method="upgrade">
 	<name>COM_FOOS</name>
 	<creationDate>[DATE]</creationDate>
 	<author>[AUTHOR]</author>
@@ -1852,7 +2028,7 @@ The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as 
 	<authorUrl>[AUTHOR_URL]</authorUrl>
 	<copyright>[COPYRIGHT]</copyright>
 	<license>GNU General Public License version 2 or later;</license>
-	<version>1.0.0</version>
+	<version>6.0.0</version>
 	<description>COM_FOOS_XML_DESCRIPTION</description>
 	<namespace>Joomla\Component\Foos</namespace>
 	<scriptfile>script.php</scriptfile>
@@ -1893,6 +2069,7 @@ The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as 
 		</files>
 	</administration>
 </extension>
+
 </source>
 
 
@@ -1902,9 +2079,12 @@ Now you can zip all files and install them via Joomla Extension Manager.
 
 You have to run a new installation due to the changes in the database. 
 
-After that you can add a parameter to the menu item. 
+After that the data for this component is stored in the database. 
 
-[[File:componenttutorial61.png|700px]]
+In the next picture you can see how the data is retrieved and listed. 
+In the next chapters, we are working to make the data changeable in the backend.
+
+[[File:as_j4_t_6_1.png|700px]]
 
 
 == Component Contents ==
@@ -1998,8 +2178,8 @@ At this point in the tutorial, your component should contain the following files
 == Conclusion ==
 
 Now our component has a database table where it can store data. In this chapter we have seen, how 
-we can display this data in the backend. In the next chapter we will have a look, how we can use 
-the data in the front end.
+we can display this data in the backend. In the next chapter we will go on an check, 
+how we can use the data in the front end.
 
 
 
