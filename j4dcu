@@ -4899,11 +4899,16 @@ Now you can zip all files and install them via Joomla Extension Manager.
 
 You have to run a new installation due to the changes in the database. 
 
-After that you can 
+Now you can set the permissions for the component in the configuration (options). 
 
 [[File:as_j4_t_10_1.png|700px]]
 
+In the overview in the backend you can see a new table column. 
+This is a value entered if a specific authorization has been set for an item.
+
 [[File:as_j4_t_10_2.png|700px]]
+
+You can specify a special permission when editing a item. You can see that in the next picture.
 
 [[File:as_j4_t_10_3.png|700px]]
 
@@ -5084,7 +5089,9 @@ At this point in the tutorial, your component should contain the following files
 
 == Conclusion ==
 
-
+You can now accomplish many things with your component. 
+It is very important, however, to make the component user-friendly. 
+The next two chapters deal with validation for this reason.
 
 
 
