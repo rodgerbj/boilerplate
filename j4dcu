@@ -3261,6 +3261,10 @@ After that you
 
 [[File:as_j4_t_7_4.png|700px]]
 
+[[File:as_j4_t_7_5.png|700px]]
+
+[[File:as_j4_t_7_6.png|700px]]
+
 == Component Contents ==
 
 At this point in the tutorial, your component should contain the following files:
@@ -3520,8 +3524,7 @@ The <tt>components/com_foos/tmpl/foo/default.php</tt> file is the installation f
 The code for the <tt>components/com_foos/tmpl/foo/default.php</tt> file is as follows:
  
 <source lang="xml" highlight="3-5">
-<?php
-defined('_JEXEC') or die;
+<?php defined('_JEXEC') or die;
 
 use Joomla\CMS\Language\Text;
 
@@ -3600,9 +3603,11 @@ COM_FOOS_SELECT_A_FOO="Select a foo"
 
 Now you can zip all files and install them via Joomla Extension Manager. 
 
-After that you can 
+After that, all language strings are translated for all installed languages.
 
-[[File:componenttutorial81a.png|700px]]
+[[File:as_j4_t_8_1.png|700px]]
+
+[[File:as_j4_t_8_2.png|700px]]
 
 == Component Contents ==
 
