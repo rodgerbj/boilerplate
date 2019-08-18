@@ -3265,6 +3265,8 @@ After that you
 
 [[File:as_j4_t_7_6.png|700px]]
 
+[[File:as_j4_t_7_7.png|700px]]
+
 == Component Contents ==
 
 At this point in the tutorial, your component should contain the following files:
@@ -3805,8 +3807,26 @@ The <tt>administrator/components/com_foos/config.php</tt> file is the installati
 
 The code for the <tt>administrator/components/com_foos/config.php</tt> file is as follows:
  
-<source lang="php">
-<?php
+<source lang="xml">
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+
+	<fieldset
+		name="foo"
+		label="COM_FOOS_FIELD_CONFIG_INDIVIDUAL_FOO_DISPLAY"
+		description="COM_FOOS_FIELD_CONFIG_INDIVIDUAL_FOO_DESC"
+		>
+		<field
+			name="show_foo_name_label"
+			type="list"
+			label="COM_FOOS_FIELD_FOO_SHOW_CATEGORY_LABEL"
+			default="1"
+			>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+	</fieldset>
+</config>
 
 </source>
 
@@ -3818,21 +3838,63 @@ The <tt>administrator/components/com_foos/foos.xml</tt> file is the installation
 
 The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as follows:
  
-<source lang="xml">
-<?php
-
-</source>
-
-=== Changing administrator/components/com_foos/foos.xml ===
-
-The <tt>administrator/components/com_foos/foos.xml</tt> file is the installation file.
-
-==== Completed administrator/components/com_foos/foos.xml file ====
-
-The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as follows:
- 
-<source lang="xml">
-<?php
+<source lang="xml" highlight="10,43">
+<?xml version="1.0" encoding="utf-8" ?>
+<extension type="component" method="upgrade">
+	<name>COM_FOOS</name>
+	<creationDate>[DATE]</creationDate>
+	<author>[AUTHOR]</author>
+	<authorEmail>[AUTHOR_EMAIL]</authorEmail>
+	<authorUrl>[AUTHOR_URL]</authorUrl>
+	<copyright>[COPYRIGHT]</copyright>
+	<license>GNU General Public License version 2 or later;</license>
+	<version>9.0.0</version>
+	<description>COM_FOOS_XML_DESCRIPTION</description>
+	<namespace>Joomla\Component\Foos</namespace>
+	<scriptfile>script.php</scriptfile>
+	<install> <!-- Runs on install -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall> <!-- Runs on uninstall -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<!-- Frond-end files -->
+	<files folder="components/com_foos">
+		<folder>Controller</folder>
+		<folder>Model</folder>
+		<folder>View</folder>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+	</files>
+    <media folder="media/com_foos" destination="com_foos">
+		<folder>js</folder>
+    </media>
+	<!-- Back-end files -->
+	<administration>
+		<!-- Menu entries -->
+		<menu view="foos">COM_FOOS</menu>
+		<submenu>
+			<menu link="option=com_foos">COM_FOOS</menu>
+		</submenu>
+		<files folder="administrator/components/com_foos">
+			<filename>config.xml</filename>
+			<filename>foos.xml</filename>
+			<folder>Controller</folder>
+			<folder>Extension</folder>
+			<folder>Model</folder>
+			<folder>Service</folder>
+			<folder>View</folder>
+			<folder>services</folder>
+			<folder>tmpl</folder>
+			<folder>sql</folder>
+			<folder>language</folder>
+		</files>
+	</administration>
+</extension>
 
 </source>
 
@@ -3844,8 +3906,23 @@ The <tt>administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini</tt>
 
 The code for the <tt>administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini</tt> file is as follows:
  
-<source lang="xml">
-<?php
+<source lang="xml" highlight="14-16">
+COM_FOOS="[PROJECT_NAME]"
+COM_FOOS_CONFIGURATION="Foo Options"
+
+COM_FOOS_MANAGER_FOO_NEW="New"
+COM_FOOS_MANAGER_FOO_EDIT="Edit"
+COM_FOOS_MANAGER_FOOS="Foo Manager"
+
+COM_FOOS_TABLE_TABLEHEAD_NAME="Name"
+COM_FOOS_TABLE_TABLEHEAD_ID="ID"
+COM_FOOS_ERROR_FOO_NOT_FOUND="Foo not found"
+
+COM_FOOS_FIELD_NAME_LABEL="Name"
+
+COM_FOOS_FIELD_FOO_SHOW_CATEGORY_LABEL="Show name label"
+COM_FOOS_FIELD_CONFIG_INDIVIDUAL_FOO_DESC="These settings apply for all foo."
+COM_FOOS_FIELD_CONFIG_INDIVIDUAL_FOO_DISPLAY="Foo"
 
 </source>
 
@@ -3870,8 +3947,76 @@ The <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is th
 
 The code for the <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is as follows:
  
-<source lang="xml">
+<source lang="php" highlight="66">
 <?php
+
+/**
+ * @package     Joomla.Administrator
+ * @subpackage  com_foos
+ *
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+namespace Joomla\Component\Foos\Administrator\View\Foos;
+
+defined('_JEXEC') or die;
+
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
+use Joomla\CMS\Toolbar\Toolbar;
+use Joomla\CMS\Toolbar\ToolbarHelper;
+
+/**
+ * View class for a list of foos.
+ *
+ * @since  1.0
+ */
+class HtmlView extends BaseHtmlView
+{
+	/**
+	 * An array of items
+	 *
+	 * @var  array
+	 */
+	protected $items;
+
+	/**
+	 * Display the view.
+	 *
+	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
+	 *
+	 * @return  mixed  A string if successful, otherwise an Error object.
+	 */
+	public function display($tpl = null)
+	{
+
+		$this->items = $this->get('Items');
+
+		$this->addToolbar();
+
+		return parent::display($tpl);
+	}
+
+	/**
+	 * Add the page title and toolbar.
+	 *
+	 * @return  void
+	 *
+	 * @since   1.0
+	 */
+	protected function addToolbar()
+	{
+		// Get the toolbar object instance
+		$toolbar = Toolbar::getInstance('toolbar');
+
+		ToolbarHelper::title(Text::_('COM_FOOS_MANAGER_FOOS'), 'address foo');
+
+		$toolbar->addNew('foo.add');
+		$toolbar->preferences('com_foos');
+	}
+
+}
 
 </source>
 
@@ -3883,8 +4028,104 @@ The <tt>components/com_foos/Model/FooModel.php</tt> file is the installation fil
 
 The code for the <tt>components/com_foos/Model/FooModel.php</tt> file is as follows:
  
-<source lang="xml">
+<source lang="php" highlight="90-96">
 <?php
+
+/**
+ * @package     Joomla.Site
+ * @subpackage  com_foos
+ *
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+namespace Joomla\Component\Foos\Site\Model;
+
+defined('_JEXEC') or die;
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\Model\BaseDatabaseModel;
+use Joomla\CMS\Language\Text;
+use Joomla\Registry\Registry;
+
+/**
+ * Foo model for the Joomla Foos component.
+ *
+ * @since  1.0
+ */
+class FooModel extends BaseDatabaseModel
+{
+	/**
+	 * @var string item
+	 */
+	protected $_item = null;
+
+	/**
+	 * Gets a foo
+	 *
+	 * @param   integer  $pk  Id for the foo
+	 *
+	 * @return  mixed Object or null
+	 *
+	 * @since   1.0.0
+	 */
+	public function getItem($pk = null)
+	{
+		$app = Factory::getApplication();
+		$pk = $app->input->getInt('id');
+
+		if ($this->_item === null)
+		{
+			$this->_item = array();
+		}
+
+		if (!isset($this->_item[$pk]))
+		{
+			try
+			{
+				$db    = $this->getDbo();
+				$query = $db->getQuery(true);
+
+				$query->select('*')
+					->from($db->quoteName('#__foos_details', 'a'))
+					->where('a.id = ' . (int) $pk);
+
+				$db->setQuery($query);
+				$data = $db->loadObject();
+
+				if (empty($data))
+				{
+					throw new \Exception(Text::_('COM_FOOS_ERROR_FOO_NOT_FOUND'), 404);
+				}
+
+				$this->_item[$pk] = $data;
+			}
+			catch (\Exception $e)
+			{
+				$this->setError($e);
+				$this->_item[$pk] = false;
+			}
+		}
+
+		return $this->_item[$pk];
+	}
+	/**
+	 * Method to auto-populate the model state.
+	 *
+	 * Note. Calling getState in this method will result in recursion.
+	 *
+	 * @return  void
+	 *
+	 * @since   1.0
+	 */
+	protected function populateState()
+	{
+		$app = Factory::getApplication();
+
+		$this->setState('foo.id', $app->input->getInt('id'));
+		$this->setState('params', $app->getParams());
+	}
+}
 
 </source>
 
@@ -3896,8 +4137,19 @@ The <tt>components/com_foos/tmpl/foo/default.php</tt> file is the installation f
 
 The code for the <tt>components/com_foos/tmpl/foo/default.php</tt> file is as follows:
  
-<source lang="xml">
+<source lang="php" highlight="7-11">
 <?php
+
+defined('_JEXEC') or die;
+
+use Joomla\CMS\Language\Text;
+
+if ($this->get('State')->get('params')->get('show_foo_name_label')) {
+	echo Text::_('COM_FOOS_NAME') . $this->item->name;
+} else {
+	echo $this->item->name;
+}
+
 
 </source>
 
