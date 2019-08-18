@@ -14,7 +14,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\MVC\Model\ListModel;
 
 /**
- * Methods supporting a list of foos records.
+ * Methods supporting a list of foo records.
  *
  * @since  1.0
  */

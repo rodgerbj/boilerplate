@@ -15,7 +15,7 @@ use Joomla\CMS\Language\Associations;
 use Joomla\CMS\MVC\Model\ListModel;
 
 /**
- * Methods supporting a list of foos records.
+ * Methods supporting a list of foo records.
  *
  * @since  1.0
  */
