@@ -14,7 +14,7 @@ please read [[S:MyLanguage/Absolute_Basics_of_How_a_Component_Functions|Absolute
 For creating a component for Joomlaǃ3 see [https://docs.joomla.org/J3.x:Developing_an_MVC_Component| Developing a Model-View-Controller Component/3.x].
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha7-dev). You can download Joomla! 4 at [https://github.com/joomla/joomla-cms/tree/4.0-dev GitHub], on the [https://developer.joomla.org/nightly-builds.html Developer website] or you can create a free website at https://launch.joomla.org.
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev). You can download Joomla! 4 at [https://github.com/joomla/joomla-cms/tree/4.0-dev GitHub], on the [https://developer.joomla.org/nightly-builds.html Developer website] or you can create a free website at https://launch.joomla.org.
 
 
 == Creating a simple Component/Developing a Basic Component ==
@@ -346,7 +346,7 @@ The sample files for this Tutorial you can find hereː
 = Adding a view to the site part - Part 2 =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -506,7 +506,7 @@ Now we have a basic view in the backend and in the front end.
 In this article we will cover how to add a menu item to a basic Joomla! component.
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -649,7 +649,7 @@ Currently the view does not show any data yet. In order to work with data, we wi
 = Adding a model to the site part - Part 4 =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -825,7 +825,7 @@ We are going to work on this in the next chapter.
 For the moment, the displayed message is always fix. In Joomla! it is possible to add parameters to menu types. 
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -987,7 +987,7 @@ Therefore, in the next chapter, we will add database access to the component.
 = Using the database in the backend - Part 6 =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -1273,7 +1273,7 @@ the data in the front end.
 = Using the database in the frontend - Part 7 =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -1699,7 +1699,7 @@ At this point in the tutorial, your component should contain the following files
 = Using languages files - Part 8 =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 todo
 
@@ -1895,7 +1895,7 @@ At this point in the tutorial, your component should contain the following files
 = Adding configuration - Part 9 =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -2235,7 +2235,7 @@ At this point in the tutorial, your component should contain the following files
 = Adding ACL - Part 10 =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -2587,7 +2587,7 @@ At this point in the tutorial, your component should contain the following files
 = Adding Server side validation - Part 11a =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -2838,7 +2838,7 @@ At this point in the tutorial, your component should contain the following files
 = Adding Client side validation - Part 11b =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -3100,7 +3100,7 @@ At this point in the tutorial, your component should contain the following files
 = Adding categories - Part 12 =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -3461,7 +3461,7 @@ Unversionierte Dateien:
 = Adding Published/Unpublished - Part 13 =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -3724,7 +3724,7 @@ Unversionierte Dateien:
 = Adding Custom Fields in the backend - Part 14a =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -3976,7 +3976,7 @@ At this point in the tutorial, your component should contain the following files
 = Adding Custom Fields in the frontend - Part 14b =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -4256,7 +4256,8 @@ Unversionierte Dateien:
 = Adding Associations - Part 15a =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev). 
+The installation should be multilingual.
 
 == File Structure ==
 
@@ -4527,7 +4528,7 @@ not ready
 = Adding Associations - Part 15b =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -4602,7 +4603,7 @@ Unversionierte Dateien:
 = Adding Ordering and Filter - Part 16 =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -4882,7 +4883,7 @@ At this point in the tutorial, your component should contain the following files
 = Adding Actions - Part 17 =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -5162,7 +5163,7 @@ geändert:       src/administrator/components/com_foos/Model/FoosModel.php
 = Adding Params - Part 18 =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -5319,7 +5320,7 @@ geändert:       src/administrator/components/com_foos/View/Foos/HtmlView.php
 = Adding Pagination - Part 19 =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -5480,7 +5481,7 @@ Unversionierte Dateien:
 = Adding a Layout - Part 20 =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -5643,7 +5644,7 @@ At this point in the tutorial, your component should contain the following files
 = Adding Checkout - Part 21 =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -5824,7 +5825,7 @@ Unversionierte Dateien:
 = Adding a batch process and alias - Part 22 =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -5990,7 +5991,7 @@ At this point in the tutorial, your component should contain the following files
 = Adding a help link - Part 23 =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 
@@ -6158,7 +6159,7 @@ At this point in the tutorial, your component should contain the following files
 = Adding an update server and a changelog- Part 24 =
 
 == Requirements ==
-You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha6-dev)
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
 

@@ -20,6 +20,8 @@ use Joomla\CMS\HTML\Registry;
 use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 use Joomla\DI\Container;
 use Joomla\DI\ServiceProviderInterface;
+use Joomla\Component\Foos\Administrator\Helper\AssociationsHelper;
+use Joomla\CMS\Association\AssociationExtensionInterface;
 
 
 /**
@@ -41,6 +43,8 @@ return new class implements ServiceProviderInterface
 	 */
 	public function register(Container $container)
 	{
+		$container->set(AssociationExtensionInterface::class, new AssociationsHelper);
+
 		$container->registerServiceProvider(new CategoryFactory('\\Joomla\\Component\\Foos'));
 		$container->registerServiceProvider(new MVCFactory('\\Joomla\\Component\\Foos'));
 		$container->registerServiceProvider(new ComponentDispatcherFactory('\\Joomla\\Component\\Foos'));
@@ -54,6 +58,7 @@ return new class implements ServiceProviderInterface
 				$component->setRegistry($container->get(Registry::class));
 				$component->setMVCFactory($container->get(MVCFactoryInterface::class));
 				$component->setCategoryFactory($container->get(CategoryFactoryInterface::class));
+				$component->setAssociationExtension($container->get(AssociationExtensionInterface::class));
 
 				return $component;
 			}

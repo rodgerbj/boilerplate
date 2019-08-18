@@ -11,12 +11,13 @@ namespace Joomla\Component\Foos\Administrator\Extension;
 
 defined('JPATH_PLATFORM') or die;
 
+use Joomla\CMS\Association\AssociationServiceInterface;
+use Joomla\CMS\Association\AssociationServiceTrait;
 use Joomla\CMS\Categories\CategoryServiceInterface;
 use Joomla\CMS\Categories\CategoryServiceTrait;
 use Joomla\CMS\Extension\BootableExtensionInterface;
 use Joomla\CMS\Extension\MVCComponent;
 use Joomla\CMS\HTML\HTMLRegistryAwareTrait;
-use Joomla\Component\Foos\Administrator\Service\Html\Foo;
 use Psr\Container\ContainerInterface;
 use Joomla\Component\Foos\Administrator\Service\HTML\AdministratorService;
 
@@ -25,9 +26,11 @@ use Joomla\Component\Foos\Administrator\Service\HTML\AdministratorService;
  *
  * @since  1.0.0
  */
-class FoosComponent extends MVCComponent implements BootableExtensionInterface, CategoryServiceInterface
+class FoosComponent extends MVCComponent
+implements BootableExtensionInterface, CategoryServiceInterface, AssociationServiceInterface
 {
 	use CategoryServiceTrait;
+	use AssociationServiceTrait;
 	use HTMLRegistryAwareTrait;
 
 	/**
