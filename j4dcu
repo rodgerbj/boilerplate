@@ -876,8 +876,6 @@ Now you can zip all files and install them via Joomla Extension Manager.
 
 After that you can see the view in the front end. 
 
-[[File:componenttutorial1.png|700px]]
-
 In the front end you can see the view if you open the 
 address joomla-cms4/index.php?option=com_foos&view=foo.
 
