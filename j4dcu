@@ -5145,8 +5145,44 @@ The <tt>administrator/components/com_foos/Rule/LetterRule.php</tt> file is the i
 
 The code for the <tt>administrator/components/com_foos/Rule/LetterRule.php</tt> file is as follows:
  
-<source lang="xml">
+<source lang="php">
 <?php
+/**
+ * Joomla! Content Management System
+ *
+ * @copyright  Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+namespace Joomla\Component\Foos\Administrator\Rule;
+
+defined('JPATH_PLATFORM') or die;
+
+use Joomla\CMS\Form\FormRule;
+
+/**
+ * Form Rule class for the Joomla Platform.
+ *
+ * @since  1.7.0
+ */
+class LetterRule extends FormRule
+{
+	/**
+	 * The regular expression to use in testing a form field value.
+	 *
+	 * @var    string
+	 * @since  1.0.0
+	 */
+	protected $regex = '^([a-z]+)$';
+
+	/**
+	 * The regular expression modifiers to use when testing a form field value.
+	 *
+	 * @var    string
+	 * @since  1.0.0
+	 */
+	protected $modifiers = 'i';
+}
 
 </source>
 
@@ -5158,8 +5194,36 @@ The <tt>administrator/components/com_foos/forms/foo.xml</tt> file is the install
 
 The code for the <tt>administrator/components/com_foos/forms/foo.xml</tt> file is as follows:
  
-<source lang="xml">
-<?php
+<source lang="xml" hightlight="16">
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset addruleprefix="Joomla\Component\Foos\Administrator\Rule">
+		<field
+			name="id"
+			type="number"
+			label="JGLOBAL_FIELD_ID_LABEL"
+			default="0"
+			class="readonly"
+			readonly="true"
+		/>
+
+		<field
+			name="name"
+			type="text"
+			validate="Letter"
+			label="COM_FOOS_FIELD_NAME_LABEL"
+			size="40"
+			required="true"
+		 />
+
+		<field
+			name="access"
+			type="accesslevel"
+			label="JFIELD_ACCESS_LABEL"
+			size="1"
+		/>
+	</fieldset>
+</form>
 
 </source>
 
@@ -5171,8 +5235,70 @@ The <tt>administrator/components/com_foos/foo.xml</tt> file is the installation 
 
 The code for the <tt>administrator/components/com_foos/foo.xml</tt> file is as follows:
  
-<source lang="xml">
-<?php
+<source lang="xml" highlight="10,54">
+<?xml version="1.0" encoding="utf-8" ?>
+<extension type="component" method="upgrade">
+	<name>COM_FOOS</name>
+	<creationDate>[DATE]</creationDate>
+	<author>[AUTHOR]</author>
+	<authorEmail>[AUTHOR_EMAIL]</authorEmail>
+	<authorUrl>[AUTHOR_URL]</authorUrl>
+	<copyright>[COPYRIGHT]</copyright>
+	<license>GNU General Public License version 2 or later;</license>
+	<version>1.11.0</version>
+	<description>COM_FOOS_XML_DESCRIPTION</description>
+	<namespace>Joomla\Component\Foos</namespace>
+	<scriptfile>script.php</scriptfile>
+	<install> <!-- Runs on install -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall> <!-- Runs on uninstall -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<update>  <!-- Runs on update -->
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+	<!-- Frond-end files -->
+	<files folder="components/com_foos">
+		<folder>Controller</folder>
+		<folder>Model</folder>
+		<folder>View</folder>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+	</files>
+    <media folder="media/com_foos" destination="com_foos">
+		<folder>js</folder>
+    </media>
+	<!-- Back-end files -->
+	<administration>
+		<!-- Menu entries -->
+		<menu view="foos">COM_FOOS</menu>
+		<submenu>
+			<menu link="option=com_foos">COM_FOOS</menu>
+		</submenu>
+		<files folder="administrator/components/com_foos">
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>foos.xml</filename>
+			<folder>Controller</folder>
+			<folder>Extension</folder>
+			<folder>Model</folder>
+			<folder>Rule</folder>
+			<folder>Service</folder>
+			<folder>View</folder>
+			<folder>services</folder>
+			<folder>tmpl</folder>
+			<folder>sql</folder>
+			<folder>language</folder>
+		</files>
+	</administration>
+</extension>
 
 </source>
 
@@ -5186,7 +5312,10 @@ After that you can
 
 == Example in Joomla! ==
 
-[[File:componenttutorial11a1.png|700px]]
+If you want to save a letter in the name, this is not possible. 
+You will now see an error message after clicking the Save button
+
+[[File:as_j4_t_11a_1.png|700px]]
 
 
 == Component Contents ==
@@ -5364,7 +5493,11 @@ At this point in the tutorial, your component should contain the following files
 
 == Conclusion ==
 
-
+It is no longer possible to save an invalid value. 
+In large forms, it is not user-friendly to display all errors at the very end. 
+Therefore, server-side validation is often supplemented with client-side validation, 
+which checks during input. 
+You can read more on this topic in the next chapter.
 
 
 
@@ -5388,6 +5521,82 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 == File Structure ==
 
+=== Changing administrator/components/com_foos/foo.xml ===
+
+The <tt>administrator/components/com_foos/foo.xml</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/foo.xml file ====
+
+The code for the <tt>administrator/components/com_foos/foo.xml</tt> file is as follows:
+ 
+<source lang="xml" highlight="10,54">
+<?xml version="1.0" encoding="utf-8" ?>
+<extension type="component" method="upgrade">
+	<name>COM_FOOS</name>
+	<creationDate>[DATE]</creationDate>
+	<author>[AUTHOR]</author>
+	<authorEmail>[AUTHOR_EMAIL]</authorEmail>
+	<authorUrl>[AUTHOR_URL]</authorUrl>
+	<copyright>[COPYRIGHT]</copyright>
+	<license>GNU General Public License version 2 or later;</license>
+	<version>1.11.1</version>
+	<description>COM_FOOS_XML_DESCRIPTION</description>
+	<namespace>Joomla\Component\Foos</namespace>
+	<scriptfile>script.php</scriptfile>
+	<install> <!-- Runs on install -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall> <!-- Runs on uninstall -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<update>  <!-- Runs on update -->
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+	<!-- Frond-end files -->
+	<files folder="components/com_foos">
+		<folder>Controller</folder>
+		<folder>Model</folder>
+		<folder>View</folder>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+	</files>
+    <media folder="media/com_foos" destination="com_foos">
+		<folder>js</folder>
+    </media>
+	<!-- Back-end files -->
+	<administration>
+		<!-- Menu entries -->
+		<menu view="foos">COM_FOOS</menu>
+		<submenu>
+			<menu link="option=com_foos">COM_FOOS</menu>
+		</submenu>
+		<files folder="administrator/components/com_foos">
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>foos.xml</filename>
+			<folder>Controller</folder>
+			<folder>Extension</folder>
+			<folder>Model</folder>
+			<folder>Rule</folder>
+			<folder>Service</folder>
+			<folder>View</folder>
+			<folder>services</folder>
+			<folder>tmpl</folder>
+			<folder>sql</folder>
+			<folder>language</folder>
+		</files>
+	</administration>
+</extension>
+
+</source>
+
+
 === Create media/com_foos/js/admin-foos-letter.js ===
 
 The <tt>media/com_foos/js/admin-foos-letter.js</tt> file is the installation file.
@@ -5396,8 +5605,24 @@ The <tt>media/com_foos/js/admin-foos-letter.js</tt> file is the installation fil
 
 The code for the <tt>media/com_foos/js/admin-foos-letter.js</tt> file is as follows:
  
-<source lang="xml">
-<?php
+<source lang="js">
+document.addEventListener('DOMContentLoaded', function(){
+	"use strict";
+	if (document.formvalidator) {
+		document.formvalidator.setHandler('letter', function (value) {
+
+			var returnedValue = false;
+
+			var regex = /^([a-z]+)$/i;
+
+			if (regex.test(value))
+				returnedValue = true;
+
+			return returnedValue;
+		});
+		//console.log(document.formvalidator);
+	} 
+});
 
 </source>
 
@@ -5409,8 +5634,37 @@ The <tt>administrator/components/com_foos/forms/foo.xml</tt> file is the install
 
 The code for the <tt>administrator/components/com_foos/forms/foo.xml</tt> file is as follows:
  
-<source lang="xml">
-<?php
+<source lang="xml" highlight="17">
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset addruleprefix="Joomla\Component\Foos\Administrator\Rule">
+		<field
+			name="id"
+			type="number"
+			label="JGLOBAL_FIELD_ID_LABEL"
+			default="0"
+			class="readonly"
+			readonly="true"
+		/>
+
+		<field
+			name="name"
+			type="text"
+			validate="Letter"
+			class="validate-letter"
+			label="COM_FOOS_FIELD_NAME_LABEL"
+			size="40"
+			required="true"
+		 />
+
+		<field
+			name="access"
+			type="accesslevel"
+			label="JFIELD_ACCESS_LABEL"
+			size="1"
+		/>
+	</fieldset>
+</form>
 
 </source>
 
@@ -5422,8 +5676,40 @@ The <tt>administrator/components/com_foos/tmpl/foo/edit.php</tt> file is the ins
 
 The code for the <tt>administrator/components/com_foos/tmpl/foo/edit.php</tt> file is as follows:
  
-<source lang="xml">
+<source lang="php" highlight="16-17">
 <?php
+/**
+ * @package     Joomla.Administrator
+ * @subpackage  com_foos
+ *
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+defined('_JEXEC') or die;
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Router\Route;
+
+HTMLHelper::_('behavior.formvalidator');
+HTMLHelper::_('script', 'com_foos/admin-foos-letter.js', array('version' => 'auto', 'relative' => true));
+
+$app = Factory::getApplication();
+$input = $app->input;
+
+// In case of modal
+$isModal = $input->get('layout') == 'modal' ? true : false;
+$layout  = $isModal ? 'modal' : 'edit';
+$tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
+?>
+
+<form action="<?php echo Route::_('index.php?option=com_foos&layout=' . $layout . $tmpl . '&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="foo-form" class="form-validate">
+	<?php echo $this->getForm()->renderField('name'); ?>
+	<?php echo $this->getForm()->renderField('access'); ?>
+	<input type="hidden" name="task" value="">
+	<?php echo HTMLHelper::_('form.token'); ?>
+</form>
 
 </source>
 
@@ -5433,15 +5719,12 @@ Now you can zip all files and install them via Joomla Extension Manager.
 
 After that you can 
 
-[[File:componenttutorial10a.png|700px]]
+[[File:as_j4_t_11b_1.png.png|700px]]
 
-== Example in Joomla! ==
-
-[[File:componenttutorial11b1.png|700px]]
 
 ==  Example in Joomla ==
-/var/www/html/backend-template/media/system/js/fields/passwordstrength.js
-/var/www/html/backend-template/administrator/components/com_users/forms/user.xml
+/media/system/js/fields/passwordstrength.js
+/administrator/components/com_users/forms/user.xml
 
 == Component Contents ==
 
@@ -5623,6 +5906,8 @@ At this point in the tutorial, your component should contain the following files
 
 == Conclusion ==
 
+You now know the validation very well. 
+Next, we'll look at how you can create categories and easily map your items.
 
 
 
