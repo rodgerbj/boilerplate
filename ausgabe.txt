@@ -1,38 +1,1731 @@
-# Boilerplate and Tutorial Sample Files
-Boilerplate files for Joomla! 4 extensions.
+---
+generator: 'MediaWiki 1.27.3'
+robots: 'noindex,nofollow'
+title: 'User:Astridx - Joomla! Documentation'
+viewport: 'width=device-width, user-scalable=yes, initial-scale=1.0'
+---
 
-# Tutorial Sample Files
-You can find the Tutorial Sample Files in the folder *Tutorial* :)
+<div id="navwrapper">
 
-# Installation
-The boilerplates are in the folder src. They can be installed 
-as-is using the Extension Manager. 
-However, the component, module and plugin will be called Foo :)
+<div id="top-nav" class="fixed">
 
-To create installable zip packages, you only need to zip the folder with 
-the files and it is ready to be installed.
+-   [![Joomla!
+    Documentation](/skins/jforeground/joomla_logo_small.png)](/Main_Page)
+-   [[ ]{}](#)
 
-# Customizing
-To customize the boilerplates using your own name you need to take the following steps:
+<div class="section top-bar-section">
 
-1. Do a **case-sensitive** replace on the following strings and replace them with your own name:
-   * foo
-   * Foo
-   * FOO
-2. Do a **case-sensitive** replace on the following tags with their actual information:
-   * [DATE]
-   * [PROJECT_NAME]
-   * [AUTHOR]
-   * [AUTHOR_EMAIL]
-   * [AUTHOR_URL]
-   * [COPYRIGHT]
-   * [PACKAGE_NAME]
+-   <div id="p-sidebar-Joomla">
 
+    </div>
 
+    [Joomla!](#)
+    -   <div id="n-sidebar-Main">
 
+        </div>
 
+        [**Joomla! Home](https://www.joomla.org)
+    -   <div id="n-sidebar-What">
 
+        </div>
 
+        [What is Joomla?](https://www.joomla.org/about-joomla.html)
+    -   <div id="n-sidebar-Benefits">
+
+        </div>
+
+        [Benefits & Features](https://www.joomla.org/core-features.html)
+    -   <div id="n-sidebar-Leadership">
+
+        </div>
+
+        [Project &
+        Leadership](https://www.joomla.org/about-joomla/the-project.html)
+    -   <div id="n-sidebar-Trademark">
+
+        </div>
+
+        [Trademark & Licensing](https://tm.joomla.org)
+    -   -   <div id="label">
+
+        </div>
+
+        Support Joomla!
+    -   <div id="n-sidebar-Contribute">
+
+        </div>
+
+        [Contribute](https://www.joomla.org/contribute-to-joomla.html)
+    -   <div id="n-sidebar-Sponsorship">
+
+        </div>
+
+        [Sponsor](https://www.joomla.org/sponsor.html)
+    -   <div id="n-sidebar-Partner">
+
+        </div>
+
+        [Partner](https://www.joomla.org/about-joomla/partners.html)
+    -   <div id="n-sidebar-Shop">
+
+        </div>
+
+        [Shop](https://shop.joomla.org/)
+
+-   <div id="p-sidebar-Extend">
+
+    </div>
+
+    [Download & Extend](#)
+    -   <div id="n-sidebar-JoomlaCode">
+
+        </div>
+
+        [Downloads](https://downloads.joomla.org/)
+    -   <div id="n-sidebar-Extensions">
+
+        </div>
+
+        [Extensions](https://extensions.joomla.org/)
+    -   <div id="n-sidebar-Translations">
+
+        </div>
+
+        [Languages](https://community.joomla.org/translations.html)
+    -   <div id="n-sidebar-Free-Hosted">
+
+        </div>
+
+        [Get a free site](https://launch.joomla.org)
+
+-   <div id="p-sidebar-About">
+
+    </div>
+
+    [Discover & Learn](#)
+    -   <div id="n-sidebar-Docs">
+
+        </div>
+
+        [Documentation](https://docs.joomla.org)
+    -   <div id="n-sidebar-Training">
+
+        </div>
+
+        [Training](https://training.joomla.org)
+    -   <div id="n-sidebar-Certification">
+
+        </div>
+
+        [Certification](https://certification.joomla.org/)
+    -   <div id="n-sidebar-Showcase">
+
+        </div>
+
+        [Site Showcase](https://showcase.joomla.org/)
+    -   <div id="n-sidebar-Announcements">
+
+        </div>
+
+        [Announcements](https://www.joomla.org/announcements.html)
+    -   <div id="n-sidebar-Blogs">
+
+        </div>
+
+        [Blogs](https://community.joomla.org/blogs.html)
+    -   <div id="n-sidebar-Magazine">
+
+        </div>
+
+        [Magazine](https://magazine.joomla.org/)
+
+-   <div id="p-sidebar-News">
+
+    </div>
+
+    [Community & Support](#)
+    -   <div id="n-sidebar-Community">
+
+        </div>
+
+        [Community Portal](https://community.joomla.org/)
+    -   <div id="n-sidebar-Events">
+
+        </div>
+
+        [Events](https://events.joomla.org/)
+    -   <div id="n-sidebar-JUGs">
+
+        </div>
+
+        [User Groups](https://community.joomla.org/user-groups.html)
+    -   <div id="n-sidebar-Forum">
+
+        </div>
+
+        [Forum](https://forum.joomla.org/)
+    -   <div id="n-sidebar-Resources">
+
+        </div>
+
+        [Resources Directory](https://resources.joomla.org/)
+    -   <div id="n-sidebar-Volunteers">
+
+        </div>
+
+        [Volunteers Portal](https://volunteers.joomla.org/)
+    -   <div id="n-sidebar-Vel">
+
+        </div>
+
+        [Vulnerable Extensions List](https://vel.joomla.org)
+
+-   <div id="p-sidebar-Developers">
+
+    </div>
+
+    [Developer Resources](#)
+    -   <div id="n-sidebar-Developers">
+
+        </div>
+
+        [Developer Network](https://developer.joomla.org/)
+    -   <div id="n-sidebar-Security">
+
+        </div>
+
+        [Security
+        Centre](https://developer.joomla.org/security-centre.html)
+    -   <div id="n-sidebar-Issues">
+
+        </div>
+
+        [Issue Tracker](https://issues.joomla.org/)
+    -   <div id="n-sidebar-Github">
+
+        </div>
+
+        [GitHub](https://github.com/joomla)
+    -   <div id="n-sidebar-API">
+
+        </div>
+
+        [API Documentation](https://api.joomla.org/)
+    -   <div id="n-sidebar-Framework">
+
+        </div>
+
+        [Joomla! Framework](https://framework.joomla.org/)
+    -   <div id="n-sidebar-JoomlaCode">
+
+        </div>
+
+        [JoomlaCode](http://joomlacode.org/)
+
+<!-- -->
+
+-   [**](#)
+    -   <div id="t-whatlinkshere">
+
+        </div>
+
+        [What links
+        here](/Special:WhatLinksHere/User:Astridx "A list of all wiki pages that link here [j]")
+    -   <div id="t-recentchangeslinked">
+
+        </div>
+
+        [Related
+        changes](/Special:RecentChangesLinked/User:Astridx "Recent changes in pages linked from this page [k]")
+    -   <div id="t-contributions">
+
+        </div>
+
+        [User
+        contributions](/Special:Contributions/Astridx "A list of contributions by this user")
+    -   <div id="t-log">
+
+        </div>
+
+        [Logs](/Special:Log/Astridx)
+    -   <div id="t-specialpages">
+
+        </div>
+
+        [Special
+        pages](/Special:SpecialPages "A list of all special pages [q]")
+    -   <div id="t-print">
+
+        </div>
+
+        [Printable
+        version](/index.php?title=User:Astridx&printable=yes "Printable version of this page [p]")
+    -   <div id="t-permalink">
+
+        </div>
+
+        [Permanent
+        link](/index.php?title=User:Astridx&oldid=623966 "Permanent link to this revision of the page")
+    -   <div id="t-info">
+
+        </div>
+
+        [Page
+        information](/index.php?title=User:Astridx&action=info "More information about this page")
+    -   <div id="n-recentchanges">
+
+        </div>
+
+        [Recent changes](/Special:RecentChanges "Special:RecentChanges")
+    -   <div id="n-help">
+
+        </div>
+
+        [Help](/S:MyLanguage/Help:Contents)
+
+-   [Log in](/index.php?title=Special:UserLogin&returnto=User%3AAstridx)
+
+</div>
+
+</div>
+
+<div id="global-header">
+
+<div class="row">
+
+<div class="large-6 column">
+
+[](/Main_Page) {#section .page-title}
+==============
+
+<div class="title-name" style="display: inline-block;">
+
+Joomla! Documentation^™^
+
+</div>
+
+</div>
+
+<div class="large-6 column hide-for-small">
+
+-   [Download](https://downloads.joomla.org/){.button .success .radius}
+-   [Launch](https://launch.joomla.org/){.button .top .radius}
+
+</div>
+
+</div>
+
+</div>
+
+<div id="bottom-nav">
+
+-   [](/Main_Page) {#section-1 .title-name-small}
+    ==============
+
+    <div class="title-name" style="display:none;">
+
+    Joomla! Documentation^™^
+
+    </div>
+
+-   [[]{}](#)
+
+<div class="section top-bar-section">
+
+-   <div id="p-Learn">
+
+    </div>
+
+    [Learn](#)
+    -   <div id="n-More-About-Joomla.21">
+
+        </div>
+
+        [More About Joomla!](/Special:MyLanguage/Portal:Learn_More)
+    -   <div id="n-Beginners">
+
+        </div>
+
+        [Beginners](/Portal:Beginners)
+    -   <div id="n-Administrators">
+
+        </div>
+
+        [Administrators](/Portal:Administrators)
+    -   <div id="n-Developers">
+
+        </div>
+
+        [Developers](/Portal:Developers)
+    -   <div id="n-Joomla.21-Get-Involved">
+
+        </div>
+
+        [Joomla! Get Involved](/Portal:Participating_in_the_Community)
+    -   <div id="n-Joomla.21-Code-Contributors">
+
+        </div>
+
+        [Joomla! Code Contributors](/Portal:Joomla!_Code_Contributors)
+    -   <div id="n-Joomla-User-Groups">
+
+        </div>
+
+        [Joomla User
+        Groups](/Special:MyLanguage/Portal:Joomla_User_Groups)
+
+-   <div id="p-Browse">
+
+    </div>
+
+    [Browse](#)
+    -   <div id="n-CMS-Help-Screens">
+
+        </div>
+
+        [CMS Help Screens](/Help_screens)
+    -   <div id="n-Our-Docs">
+
+        </div>
+
+        [Our Docs](/Category:Top_Level)
+    -   <div id="n-Our-Glossary">
+
+        </div>
+
+        [Our Glossary](/Glossary)
+    -   <div id="n-The-Joomla.21-FAQs">
+
+        </div>
+
+        [The Joomla! FAQs](/Category:FAQ)
+    -   <div id="n-Tips-and-tricks">
+
+        </div>
+
+        [Tips and tricks](/Category:Tips_and_tricks)
+    -   <div id="n-Recent-Changes">
+
+        </div>
+
+        [Recent Changes](/Special:RecentChanges)
+
+-   <div id="p-Help">
+
+    </div>
+
+    [Help](#)
+    -   <div id="n-Contribute-to-Joomla.21-Docs">
+
+        </div>
+
+        [Contribute to Joomla!
+        Docs](/JDOC:How_to_Contribute_to_Joomla!_Documentation)
+    -   <div id="n-Translate-Joomla.21-Docs">
+
+        </div>
+
+        [Translate Joomla! Docs](/JDOC:Documentation_Translators)
+    -   <div id="n-Editing-Help">
+
+        </div>
+
+        [Editing Help](/JHelp:Cheatsheet)
+    -   <div id="n-Play-in-the-Sandbox">
+
+        </div>
+
+        [Play in the Sandbox](/Sandbox)
+    -   <div id="n-JDOC.27s-Policies">
+
+        </div>
+
+        [JDOC's Policies](/JDOC:Wiki_policy)
+    -   <div id="n-Documentation-License">
+
+        </div>
+
+        [Documentation License](/JEDL)
+    -   <div id="n-More-Help">
+
+        </div>
+
+        [More
+        Help](https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents)
+
+<!-- -->
+
+-   <div class="row">
+
+    <div class="small-12 columns">
+
+    Search
+
+    </div>
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="page-content">
+
+<div class="row">
+
+<div class="large-12 columns">
+
+<div class="mw-indicators">
+
+</div>
+
+</div>
+
+</div>
+
+<div id="mw-js-message" style="display:none;">
+
+</div>
+
+<div class="row">
+
+<div id="p-cactions" class="large-12 columns">
+
+#### User {#user .namespace .label}
+
+### From Joomla! Documentation {#tagline}
+
+<div id="social">
+
+<div class="addthis_sharing_toolbox">
+
+</div>
+
+</div>
+
+#####  {#section-2 .subtitle}
+
+<div id="ad">
+
+</div>
+
+<div class="clear_both">
+
+</div>
+
+<div class="mw-bodytext">
+
+<div id="mw-content-text" class="mw-content-ltr" lang="en" dir="ltr">
+
+<div class="hf-nsheader">
+
+</div>
+
+<div class="hf-header">
+
+</div>
+
+<div id="toc" class="toc">
+
+<div id="toctitle">
+
+Contents
+--------
+
+</div>
+
+-   [[1]{.tocnumber} [Creating a Simple Component for
+    Joomla!4.x]{.toctext}](#Creating_a_Simple_Component_for_Joomla.214.x)
+-   [[2]{.tocnumber} [Developing a Basic Component - Part
+    1]{.toctext}](#Developing_a_Basic_Component_-_Part_1)
+    -   [[2.1]{.tocnumber} [Notes]{.toctext}](#Notes)
+    -   [[2.2]{.tocnumber} [Requirements]{.toctext}](#Requirements)
+    -   [[2.3]{.tocnumber} [Creating a simple Component/Developing a
+        Basic
+        Component]{.toctext}](#Creating_a_simple_Component.2FDeveloping_a_Basic_Component)
+        -   [[2.3.1]{.tocnumber} [File
+            Structure]{.toctext}](#File_Structure)
+        -   [[2.3.2]{.tocnumber} [Creating
+            administrator/components/com\_foos/Controller/DisplayController.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FController.2FDisplayController.php)
+            -   [[2.3.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Controller/DisplayController.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FController.2FDisplayController.php_file)
+        -   [[2.3.3]{.tocnumber} [Creating
+            administrator/components/com\_foos/Extension/FoosComponent.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FExtension.2FFoosComponent.php)
+            -   [[2.3.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Extension/FoosComponent.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FExtension.2FFoosComponent.php_file)
+        -   [[2.3.4]{.tocnumber} [Creating
+            administrator/components/com\_foos/Service/HTML/AdministratorService.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FService.2FHTML.2FAdministratorService.php)
+            -   [[2.3.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Service/HTML/AdministratorService.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FService.2FHTML.2FAdministratorService.php_file)
+        -   [[2.3.5]{.tocnumber} [Creating
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php)
+            -   [[2.3.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file)
+        -   [[2.3.6]{.tocnumber} [Creating
+            administrator/components/com\_foos/services/provider.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Fservices.2Fprovider.php)
+            -   [[2.3.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/services/provider.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fservices.2Fprovider.php_file)
+        -   [[2.3.7]{.tocnumber} [Creating
+            administrator/components/com\_foos/tmpl/foos/default.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php)
+            -   [[2.3.7.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_file)
+        -   [[2.3.8]{.tocnumber} [Creating
+            script.php]{.toctext}](#Creating_script.php)
+            -   [[2.3.8.1]{.tocnumber} [Completed script.php
+                file]{.toctext}](#Completed_script.php_file)
+        -   [[2.3.9]{.tocnumber} [Creating
+            com\_foos.xml]{.toctext}](#Creating_com_foos.xml)
+            -   [[2.3.9.1]{.tocnumber} [Completed foo.xml
+                file]{.toctext}](#Completed_foo.xml_file)
+    -   [[2.4]{.tocnumber} [Test your
+        componente]{.toctext}](#Test_your_componente)
+    -   [[2.5]{.tocnumber} [Note]{.toctext}](#Note)
+        -   [[2.5.1]{.tocnumber} [Version
+            Number]{.toctext}](#Version_Number)
+        -   [[2.5.2]{.tocnumber} [index.html
+            File]{.toctext}](#index.html_File)
+        -   [[2.5.3]{.tocnumber} [Joomla! Extensions
+            Directory]{.toctext}](#Joomla.21_Extensions_Directory)
+    -   [[2.6]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents)
+    -   [[2.7]{.tocnumber} [Conclusion]{.toctext}](#Conclusion)
+-   [[3]{.tocnumber} [Adding a view to the site part - Part
+    2]{.toctext}](#Adding_a_view_to_the_site_part_-_Part_2)
+    -   [[3.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_2)
+    -   [[3.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_2)
+        -   [[3.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml)
+            -   [[3.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file)
+        -   [[3.2.2]{.tocnumber} [Creating
+            components/com\_foos/Controller/DisplayController.php]{.toctext}](#Creating_components.2Fcom_foos.2FController.2FDisplayController.php)
+            -   [[3.2.2.1]{.tocnumber} [Completed
+                components/com\_foos/Controller/DisplayController.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2FController.2FDisplayController.php_file)
+        -   [[3.2.3]{.tocnumber} [Creating
+            components/com\_foos/View/Foo/HtmlView.php]{.toctext}](#Creating_components.2Fcom_foos.2FView.2FFoo.2FHtmlView.php)
+            -   [[3.2.3.1]{.tocnumber} [Completed
+                components/com\_foos/View/Foo/HtmlView.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_file)
+        -   [[3.2.4]{.tocnumber} [Creating
+            components/com\_foos/tmpl/foo/default.php]{.toctext}](#Creating_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php)
+            -   [[3.2.4.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/default.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_file)
+    -   [[3.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component)
+    -   [[3.4]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_2)
+    -   [[3.5]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_2)
+-   [[4]{.tocnumber} [Adding a menu type to the site part - Part
+    3]{.toctext}](#Adding_a_menu_type_to_the_site_part_-_Part_3)
+    -   [[4.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_3)
+    -   [[4.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_3)
+        -   [[4.2.1]{.tocnumber} [Creating
+            components/com\_foos/tmpl/foo/default.xml]{.toctext}](#Creating_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.xml)
+            -   [[4.2.1.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/default.xml
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.xml_file)
+        -   [[4.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_2)
+            -   [[4.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_2)
+    -   [[4.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_2)
+    -   [[4.4]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_3)
+    -   [[4.5]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_3)
+-   [[5]{.tocnumber} [Adding a model to the site part - Part
+    4]{.toctext}](#Adding_a_model_to_the_site_part_-_Part_4)
+    -   [[5.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_4)
+    -   [[5.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_4)
+        -   [[5.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_3)
+            -   [[5.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_3)
+        -   [[5.2.2]{.tocnumber} [Creating
+            components/com\_foos/Model/FooModel.php]{.toctext}](#Creating_components.2Fcom_foos.2FModel.2FFooModel.php)
+            -   [[5.2.2.1]{.tocnumber} [Completed
+                components/com\_foos/Model/FooModel.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2FModel.2FFooModel.php_file)
+        -   [[5.2.3]{.tocnumber} [Changing
+            components/com\_foos/View/Foo/HtmlView.php]{.toctext}](#Changing_components.2Fcom_foos.2FView.2FFoo.2FHtmlView.php)
+            -   [[5.2.3.1]{.tocnumber} [Completed
+                components/com\_foos/View/Foo/HtmlView.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_file_2)
+        -   [[5.2.4]{.tocnumber} [Changing
+            components/com\_foos/tmpl/foo/default.php]{.toctext}](#Changing_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php)
+            -   [[5.2.4.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/default.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_file_2)
+    -   [[5.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_3)
+    -   [[5.4]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_4)
+    -   [[5.5]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_4)
+-   [[6]{.tocnumber} [Adding a variable request in the menu type - Part
+    5]{.toctext}](#Adding_a_variable_request_in_the_menu_type_-_Part_5)
+    -   [[6.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_5)
+    -   [[6.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_5)
+        -   [[6.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_4)
+            -   [[6.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_4)
+        -   [[6.2.2]{.tocnumber} [Changing
+            components/com\_foos/Model/FooModel.php]{.toctext}](#Changing_components.2Fcom_foos.2FModel.2FFooModel.php)
+            -   [[6.2.2.1]{.tocnumber} [Completed
+                components/com\_foos/Model/FooModel.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2FModel.2FFooModel.php_file_2)
+        -   [[6.2.3]{.tocnumber} [Changing
+            components/com\_foos/tmpl/foo/default.xml]{.toctext}](#Changing_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.xml)
+            -   [[6.2.3.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/default.xml
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.xml_file_2)
+    -   [[6.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_4)
+    -   [[6.4]{.tocnumber} [Note]{.toctext}](#Note_2)
+        -   [[6.4.1]{.tocnumber} [Why do we omit the close
+            tag?]{.toctext}](#Why_do_we_omit_the_close_tag.3F)
+    -   [[6.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_5)
+    -   [[6.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_5)
+-   [[7]{.tocnumber} [Using the database in the backend - Part
+    6]{.toctext}](#Using_the_database_in_the_backend_-_Part_6)
+    -   [[7.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_6)
+    -   [[7.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_6)
+        -   [[7.2.1]{.tocnumber} [Creating
+            administrator/components/com\_foos/Model/FoosModel.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php)
+            -   [[7.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FoosModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_file)
+        -   [[7.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php)
+            -   [[7.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_2)
+        -   [[7.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/services/provider.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fservices.2Fprovider.php)
+            -   [[7.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/services/provider.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fservices.2Fprovider.php_file_2)
+        -   [[7.2.4]{.tocnumber} [Creating
+            administrator/components/com\_foos/sql/install.mysql.utf8.sql]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Finstall.mysql.utf8.sql)
+            -   [[7.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/sql/install.mysql.utf8.sql
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Finstall.mysql.utf8.sql_file)
+        -   [[7.2.5]{.tocnumber} [Creating
+            administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Funinstall.mysql.utf8.sql)
+            -   [[7.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Funinstall.mysql.utf8.sql_file)
+        -   [[7.2.6]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foos/default.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php)
+            -   [[7.2.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_file_2)
+        -   [[7.2.7]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_5)
+            -   [[7.2.7.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_5)
+    -   [[7.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_5)
+    -   [[7.4]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_6)
+    -   [[7.5]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_6)
+-   [[8]{.tocnumber} [Using the database in the frontend - Part
+    7]{.toctext}](#Using_the_database_in_the_frontend_-_Part_7)
+    -   [[8.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_7)
+    -   [[8.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_7)
+        -   [[8.2.1]{.tocnumber} [Creating
+            administrator/components/com\_foos/Controller/FooController.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FController.2FFooController.php)
+            -   [[8.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Controller/FooController.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FController.2FFooController.php_file)
+        -   [[8.2.2]{.tocnumber} [Creating
+            administrator/components/com\_foos/Field/Modal/FooField.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FField.2FModal.2FFooField.php)
+            -   [[8.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Field/Modal/FooField.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FField.2FModal.2FFooField.php_file)
+        -   [[8.2.3]{.tocnumber} [Creating
+            administrator/components/com\_foos/Model/FooModel.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFooModel.php)
+            -   [[8.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FooModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFooModel.php_file)
+        -   [[8.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_2)
+            -   [[8.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_3)
+        -   [[8.2.5]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foos/default.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_2)
+            -   [[8.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_file_3)
+        -   [[8.2.6]{.tocnumber} [Creating
+            administrator/components/com\_foos/Table/FooTable.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FTable.2FFooTable.php)
+            -   [[8.2.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Table/FooTable.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FTable.2FFooTable.php_file)
+        -   [[8.2.7]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_6)
+            -   [[8.2.7.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_6)
+        -   [[8.2.8]{.tocnumber} [Creating
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml)
+            -   [[8.2.8.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file)
+        -   [[8.2.9]{.tocnumber} [Changing
+            components/com\_foos/Model/FooModel.php]{.toctext}](#Changing_components.2Fcom_foos.2FModel.2FFooModel.php_2)
+            -   [[8.2.9.1]{.tocnumber} [Completed
+                components/com\_foos/Model/FooModel.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2FModel.2FFooModel.php_file_3)
+        -   [[8.2.10]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_3)
+            -   [[8.2.10.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_4)
+        -   [[8.2.11]{.tocnumber} [Changing
+            components/com\_foos/View/Foo/HtmlView.php]{.toctext}](#Changing_components.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_2)
+            -   [[8.2.11.1]{.tocnumber} [Completed
+                components/com\_foos/View/Foo/HtmlView.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_file_3)
+        -   [[8.2.12]{.tocnumber} [Creating
+            administrator/components/com\_foos/tmpl/foo/edit.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php)
+            -   [[8.2.12.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foo/edit.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_file)
+        -   [[8.2.13]{.tocnumber} [Creating Creating
+            administrator/components/com\_foos/tmpl/foo/modal.php]{.toctext}](#Creating_Creating_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fmodal.php)
+            -   [[8.2.13.1]{.tocnumber} [Completed Creating
+                administrator/components/com\_foo/tmpl/foos/modal.php
+                file]{.toctext}](#Completed_Creating_administrator.2Fcomponents.2Fcom_foo.2Ftmpl.2Ffoos.2Fmodal.php_file)
+        -   [[8.2.14]{.tocnumber} [Changing
+            components/com\_foos/tmpl/foo/default.php]{.toctext}](#Changing_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_2)
+            -   [[8.2.14.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/default.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_file_3)
+        -   [[8.2.15]{.tocnumber} [Creating
+            administrator/components/com\_foos/tmpl/foos/modal.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fmodal.php)
+            -   [[8.2.15.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/modal.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fmodal.php_file)
+        -   [[8.2.16]{.tocnumber} [Changing
+            components/com\_foos/tmpl/foo/default.php]{.toctext}](#Changing_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_3)
+            -   [[8.2.16.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/default.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_file_4)
+        -   [[8.2.17]{.tocnumber} [Changing
+            components/com\_foos/tmpl/foo/default.xml]{.toctext}](#Changing_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.xml_2)
+            -   [[8.2.17.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/default.xml
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.xml_file_3)
+        -   [[8.2.18]{.tocnumber} [Creating
+            media/com\_foos/js/admin-foos-modal.js]{.toctext}](#Creating_media.2Fcom_foos.2Fjs.2Fadmin-foos-modal.js)
+            -   [[8.2.18.1]{.tocnumber} [Completed
+                media/com\_foos/js/admin-foos-modal.js
+                file]{.toctext}](#Completed_media.2Fcom_foos.2Fjs.2Fadmin-foos-modal.js_file)
+    -   [[8.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_6)
+    -   [[8.4]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_7)
+    -   [[8.5]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_7)
+-   [[9]{.tocnumber} [Using languages files - Part
+    8]{.toctext}](#Using_languages_files_-_Part_8)
+    -   [[9.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_8)
+    -   [[9.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_8)
+        -   [[9.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_7)
+            -   [[9.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_7)
+        -   [[9.2.2]{.tocnumber} [Changing
+            components/com\_foos/tmpl/foo/default.php]{.toctext}](#Changing_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_4)
+            -   [[9.2.2.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/default.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_file_5)
+        -   [[9.2.3]{.tocnumber} [Creating
+            components/com\_foos/language/en-GB/en-GB.com\_foo.ini]{.toctext}](#Creating_components.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foo.ini)
+            -   [[9.2.3.1]{.tocnumber} [Completed
+                components/com\_foos/language/en-GB/en-GB.com\_foo.ini
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foo.ini_file)
+        -   [[9.2.4]{.tocnumber} [Creating
+            administrator/components/com\_foos/language/en-GB/en-GB.com\_foo.ini]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foo.ini)
+            -   [[9.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/language/en-GB/en-GB.com\_foo.ini
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foo.ini_file)
+        -   [[9.2.5]{.tocnumber} [Creating
+            administrator/components/com\_foos/language/en-GB/en-GB.com\_foo.sys.ini]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foo.sys.ini)
+            -   [[9.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/language/en-GB/en-GB.com\_foo.sys.ini
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foo.sys.ini_file)
+    -   [[9.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_7)
+    -   [[9.4]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_8)
+    -   [[9.5]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_8)
+-   [[10]{.tocnumber} [Adding configuration - Part
+    9]{.toctext}](#Adding_configuration_-_Part_9)
+    -   [[10.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_9)
+    -   [[10.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_9)
+        -   [[10.2.1]{.tocnumber} [Creating
+            administrator/components/com\_foos/config.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Fconfig.php)
+            -   [[10.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/config.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fconfig.php_file)
+        -   [[10.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_8)
+            -   [[10.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_8)
+        -   [[10.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini)
+            -   [[10.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_file)
+        -   [[10.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FooModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFooModel.php)
+            -   [[10.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FooModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFooModel.php_file_2)
+        -   [[10.2.5]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_4)
+            -   [[10.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_5)
+        -   [[10.2.6]{.tocnumber} [Changing
+            components/com\_foos/Model/FooModel.php]{.toctext}](#Changing_components.2Fcom_foos.2FModel.2FFooModel.php_3)
+            -   [[10.2.6.1]{.tocnumber} [Completed
+                components/com\_foos/Model/FooModel.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2FModel.2FFooModel.php_file_4)
+        -   [[10.2.7]{.tocnumber} [Changing
+            components/com\_foos/tmpl/foo/default.php]{.toctext}](#Changing_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_5)
+            -   [[10.2.7.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/default.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_file_6)
+    -   [[10.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_8)
+    -   [[10.4]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_9)
+    -   [[10.5]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_9)
+-   [[11]{.tocnumber} [Adding ACL - Part
+    10]{.toctext}](#Adding_ACL_-_Part_10)
+    -   [[11.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_10)
+    -   [[11.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_10)
+        -   [[11.2.1]{.tocnumber} [Creating
+            administrator/components/com\_foos/access.xml]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Faccess.xml)
+            -   [[11.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/access.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Faccess.xml_file)
+        -   [[11.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_9)
+            -   [[11.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_9)
+        -   [[11.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FoosModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php)
+            -   [[11.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FoosModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_file_2)
+        -   [[11.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_5)
+            -   [[11.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_6)
+        -   [[11.2.5]{.tocnumber} [Changing
+            administrator/components/com\_foos/config.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fconfig.xml)
+            -   [[11.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/config.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fconfig.xml_file)
+        -   [[11.2.6]{.tocnumber} [Changing
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml)
+            -   [[11.2.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file_2)
+        -   [[11.2.7]{.tocnumber} [Creating
+            administrator/components/com\_foos/sql/updates/mysql/1.10.0.sql]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2Fmysql.2F1.10.0.sql)
+            -   [[11.2.7.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/sql/updates/mysql/1.10.0.sql
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2Fmysql.2F1.10.0.sql_file)
+        -   [[11.2.8]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foo/edit.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php)
+            -   [[11.2.8.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foo/edit.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_file_2)
+        -   [[11.2.9]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foo/default.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php)
+            -   [[11.2.9.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foo/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_file)
+    -   [[11.3]{.tocnumber} [Note]{.toctext}](#Note_3)
+    -   [[11.4]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_9)
+    -   [[11.5]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21)
+    -   [[11.6]{.tocnumber} [Note]{.toctext}](#Note_4)
+    -   [[11.7]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_10)
+    -   [[11.8]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_10)
+-   [[12]{.tocnumber} [Adding Server side validation - Part
+    11a]{.toctext}](#Adding_Server_side_validation_-_Part_11a)
+    -   [[12.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_11)
+    -   [[12.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_11)
+        -   [[12.2.1]{.tocnumber} [Create
+            administrator/components/com\_foos/Rule/LetterRule.php]{.toctext}](#Create_administrator.2Fcomponents.2Fcom_foos.2FRule.2FLetterRule.php)
+            -   [[12.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Rule/LetterRule.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FRule.2FLetterRule.php_file)
+        -   [[12.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_2)
+            -   [[12.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file_3)
+        -   [[12.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoo.xml)
+            -   [[12.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoo.xml_file)
+    -   [[12.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_10)
+    -   [[12.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_2)
+    -   [[12.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_11)
+    -   [[12.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_11)
+-   [[13]{.tocnumber} [Adding Client side validation - Part
+    11b]{.toctext}](#Adding_Client_side_validation_-_Part_11b)
+    -   [[13.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_12)
+    -   [[13.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_12)
+        -   [[13.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoo.xml_2)
+            -   [[13.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoo.xml_file_2)
+        -   [[13.2.2]{.tocnumber} [Create
+            media/com\_foos/js/admin-foos-letter.js]{.toctext}](#Create_media.2Fcom_foos.2Fjs.2Fadmin-foos-letter.js)
+            -   [[13.2.2.1]{.tocnumber} [Completed
+                media/com\_foos/js/admin-foos-letter.js
+                file]{.toctext}](#Completed_media.2Fcom_foos.2Fjs.2Fadmin-foos-letter.js_file)
+        -   [[13.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_3)
+            -   [[13.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file_4)
+        -   [[13.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foo/edit.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_2)
+            -   [[13.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foo/edit.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_file_3)
+    -   [[13.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_11)
+    -   [[13.4]{.tocnumber} [Example in
+        Joomla]{.toctext}](#Example_in_Joomla)
+    -   [[13.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_12)
+    -   [[13.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_12)
+-   [[14]{.tocnumber} [Adding categories - Part
+    12]{.toctext}](#Adding_categories_-_Part_12)
+    -   [[14.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_13)
+    -   [[14.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_13)
+        -   [[14.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FoosModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_2)
+            -   [[14.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FoosModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_file_3)
+        -   [[14.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/access.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Faccess.xml)
+            -   [[14.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/access.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Faccess.xml_file_2)
+        -   [[14.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_10)
+            -   [[14.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_10)
+        -   [[14.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_4)
+            -   [[14.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file_5)
+        -   [[14.2.5]{.tocnumber} [Changing
+            administrator/components/com\_foos/sql/update/1.12.0.sql]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdate.2F1.12.0.sql)
+            -   [[14.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/sql/update/1.12.0.sql
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdate.2F1.12.0.sql_file)
+        -   [[14.2.6]{.tocnumber} [Changing
+            administrator/components/com\_foos/Extension/FoosComponent.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FExtension.2FFoosComponent.php)
+            -   [[14.2.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Extension/FoosComponent.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FExtension.2FFoosComponent.php_file_2)
+        -   [[14.2.7]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foo/edit.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_3)
+            -   [[14.2.7.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foo/edit.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_file_4)
+        -   [[14.2.8]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foos/default.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_3)
+            -   [[14.2.8.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_file_4)
+    -   [[14.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_12)
+    -   [[14.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_3)
+    -   [[14.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_13)
+    -   [[14.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_13)
+-   [[15]{.tocnumber} [Adding Published/Unpublished - Part
+    13]{.toctext}](#Adding_Published.2FUnpublished_-_Part_13)
+    -   [[15.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_14)
+    -   [[15.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_14)
+        -   [[15.2.1]{.tocnumber} [Creating
+            administrator/components/com\_foos/Controller/FoosController.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FController.2FFoosController.php)
+            -   [[15.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Controller/FoosController.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FController.2FFoosController.php_file)
+        -   [[15.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FoosModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_3)
+            -   [[15.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FoosModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_file_4)
+        -   [[15.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/Table/FooTable.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FTable.2FFooTable.php)
+            -   [[15.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Table/FooTable.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FTable.2FFooTable.php_file_2)
+        -   [[15.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_5)
+            -   [[15.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file_6)
+        -   [[15.2.5]{.tocnumber} [Changing
+            administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_2)
+            -   [[15.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_file_2)
+        -   [[15.2.6]{.tocnumber} [Create
+            administrator/components/com\_foos/sql/updates/1.13.0.sql]{.toctext}](#Create_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2F1.13.0.sql)
+            -   [[15.2.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/sql/updates/1.13.0.sql
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2F1.13.0.sql_file)
+        -   [[15.2.7]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foo/edit.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_4)
+            -   [[15.2.7.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foo/edit.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_file_5)
+        -   [[15.2.8]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foos/default.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_4)
+            -   [[15.2.8.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_file_5)
+    -   [[15.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_13)
+    -   [[15.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_4)
+    -   [[15.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_14)
+    -   [[15.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_14)
+-   [[16]{.tocnumber} [Adding Custom Fields in the backend - Part
+    14a]{.toctext}](#Adding_Custom_Fields_in_the_backend_-_Part_14a)
+    -   [[16.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_15)
+    -   [[16.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_15)
+        -   [[16.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_6)
+            -   [[16.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_7)
+        -   [[16.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/access.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Faccess.xml_2)
+            -   [[16.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/access.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Faccess.xml_file_3)
+        -   [[16.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/config.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fconfig.xml_2)
+            -   [[16.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/config.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fconfig.xml_file_2)
+        -   [[16.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_11)
+            -   [[16.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_11)
+        -   [[16.2.5]{.tocnumber} [Changing
+            administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_3)
+            -   [[16.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_file_3)
+        -   [[16.2.6]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foo/edit.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_5)
+            -   [[16.2.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foo/edit.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_file_6)
+        -   [[16.2.7]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foos/default.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_5)
+            -   [[16.2.7.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_file_6)
+        -   [[16.2.8]{.tocnumber} [Creating
+            administrator/components/com\_foos/Helper]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FHelper)
+            -   [[16.2.8.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Helper
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FHelper_file)
+    -   [[16.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_14)
+    -   [[16.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_5)
+    -   [[16.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_15)
+    -   [[16.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_15)
+-   [[17]{.tocnumber} [Adding Custom Fields in the frontend - Part
+    14b]{.toctext}](#Adding_Custom_Fields_in_the_frontend_-_Part_14b)
+    -   [[17.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_16)
+    -   [[17.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_16)
+        -   [[17.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_12)
+            -   [[17.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_12)
+        -   [[17.2.2]{.tocnumber} [Changing
+            components/com\_foos/tmpl/foo/default.php]{.toctext}](#Changing_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_6)
+            -   [[17.2.2.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/default.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_file_7)
+        -   [[17.2.3]{.tocnumber} [Changing
+            components/com\_foos/View/Foo/HtmlView.php]{.toctext}](#Changing_components.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_3)
+            -   [[17.2.3.1]{.tocnumber} [Completed
+                components/com\_foos/View/Foo/HtmlView.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_file_4)
+    -   [[17.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_15)
+    -   [[17.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_6)
+    -   [[17.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_16)
+    -   [[17.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_16)
+-   [[18]{.tocnumber} [Adding Associations I - Part
+    15a]{.toctext}](#Adding_Associations_I_-_Part_15a)
+    -   [[18.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_17)
+    -   [[18.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_17)
+        -   [[18.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/Extension/FoosComponent.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FExtension.2FFoosComponent.php_2)
+            -   [[18.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Extension/FoosComponent.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FExtension.2FFoosComponent.php_file_3)
+        -   [[18.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FooModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFooModel.php_2)
+            -   [[18.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FooModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFooModel.php_file_3)
+        -   [[18.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FoosModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_4)
+            -   [[18.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FoosModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_file_5)
+        -   [[18.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/Service/HTML/AdministratorService.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FService.2FHTML.2FAdministratorService.php)
+            -   [[18.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Service/HTML/AdministratorService.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FService.2FHTML.2FAdministratorService.php_file_2)
+        -   [[18.2.5]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_13)
+            -   [[18.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_13)
+        -   [[18.2.6]{.tocnumber} [Changing
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_6)
+            -   [[18.2.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file_7)
+        -   [[18.2.7]{.tocnumber} [Changing
+            administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_4)
+            -   [[18.2.7.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_file_4)
+        -   [[18.2.8]{.tocnumber} [Changing
+            administrator/components/com\_foos/services/provider.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fservices.2Fprovider.php_2)
+            -   [[18.2.8.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/services/provider.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fservices.2Fprovider.php_file_3)
+        -   [[18.2.9]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foo/edit.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_6)
+            -   [[18.2.9.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foo/edit.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_file_7)
+        -   [[18.2.10]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foos/default.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_6)
+            -   [[18.2.10.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_file_7)
+        -   [[18.2.11]{.tocnumber} [Creating
+            administrator/components/com\_foos/Helper/AssociationsHelper.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FHelper.2FAssociationsHelper.php)
+            -   [[18.2.11.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Helper/AssociationsHelper.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FHelper.2FAssociationsHelper.php_file)
+        -   [[18.2.12]{.tocnumber} [Creating
+            administrator/components/com\_foos/sql/updates/mysql/1.15.0.sql]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2Fmysql.2F1.15.0.sql)
+            -   [[18.2.12.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/sql/updates/mysql/1.15.0.sql
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2Fmysql.2F1.15.0.sql_file)
+        -   [[18.2.13]{.tocnumber} [Creating
+            administrator/components/com\_foos/tmpl/foo/edit\_associations.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit_associations.php)
+            -   [[18.2.13.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foo/edit\_associations.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit_associations.php_file)
+    -   [[18.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_16)
+    -   [[18.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_7)
+    -   [[18.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_17)
+    -   [[18.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_17)
+-   [[19]{.tocnumber} [Adding Associations II - Part
+    15b]{.toctext}](#Adding_Associations_II_-_Part_15b)
+    -   [[19.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_18)
+    -   [[19.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_18)
+        -   [[19.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/Field/Modal/FooField.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FField.2FModal.2FFooField.php)
+            -   [[19.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Field/Modal/FooField.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FField.2FModal.2FFooField.php_file_2)
+        -   [[19.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FoosModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_5)
+            -   [[19.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FoosModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_file_6)
+        -   [[19.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foo/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoo.2FHtmlView.php)
+            -   [[19.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foo/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_file)
+        -   [[19.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_7)
+            -   [[19.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_8)
+        -   [[19.2.5]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_14)
+            -   [[19.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_14)
+    -   [[19.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_17)
+    -   [[19.4]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_18)
+-   [[20]{.tocnumber} [Adding Ordering and Filter - Part
+    16]{.toctext}](#Adding_Ordering_and_Filter_-_Part_16)
+    -   [[20.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_19)
+    -   [[20.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_19)
+        -   [[20.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FoosModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_6)
+            -   [[20.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FoosModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_file_7)
+        -   [[20.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_8)
+            -   [[20.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_9)
+        -   [[20.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_15)
+            -   [[20.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_15)
+        -   [[20.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_7)
+            -   [[20.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file_8)
+        -   [[20.2.5]{.tocnumber} [Create
+            administrator/components/com\_foos/sql/updates/mysql/1.16.0.sql]{.toctext}](#Create_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2Fmysql.2F1.16.0.sql)
+            -   [[20.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/sql/updates/mysql/1.16.0.sql
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2Fmysql.2F1.16.0.sql_file)
+        -   [[20.2.6]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foos/default.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_7)
+            -   [[20.2.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_file_8)
+        -   [[20.2.7]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foos/modal.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fmodal.php)
+            -   [[20.2.7.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/modal.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fmodal.php_file_2)
+    -   [[20.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_18)
+    -   [[20.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_8)
+    -   [[20.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_19)
+    -   [[20.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_18)
+-   [[21]{.tocnumber} [Adding Actions - Part
+    17]{.toctext}](#Adding_Actions_-_Part_17)
+    -   [[21.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_20)
+    -   [[21.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_20)
+        -   [[21.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foo/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_2)
+            -   [[21.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foo/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_file_2)
+        -   [[21.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_9)
+            -   [[21.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_10)
+        -   [[21.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_5)
+            -   [[21.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_file_5)
+        -   [[21.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_16)
+            -   [[21.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_16)
+    -   [[21.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_19)
+    -   [[21.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_9)
+    -   [[21.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_20)
+    -   [[21.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_19)
+-   [[22]{.tocnumber} [Adding Params - Part
+    18]{.toctext}](#Adding_Params_-_Part_18)
+    -   [[22.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_21)
+    -   [[22.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_21)
+        -   [[22.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FoosModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_7)
+            -   [[22.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FoosModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_file_8)
+        -   [[22.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/Table/FooTable.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FTable.2FFooTable.php_2)
+            -   [[22.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Table/FooTable.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FTable.2FFooTable.php_file_3)
+        -   [[22.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/config.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fconfig.xml_3)
+            -   [[22.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/config.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fconfig.xml_file_3)
+        -   [[22.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_17)
+            -   [[22.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_17)
+        -   [[22.2.5]{.tocnumber} [Changing
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_8)
+            -   [[22.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file_9)
+        -   [[22.2.6]{.tocnumber} [Changing
+            administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_6)
+            -   [[22.2.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_file_6)
+        -   [[22.2.7]{.tocnumber} [Changing
+            components/com\_foos/View/Foo/HtmlView.php]{.toctext}](#Changing_components.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_4)
+            -   [[22.2.7.1]{.tocnumber} [Completed
+                components/com\_foos/View/Foo/HtmlView.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_file_5)
+        -   [[22.2.8]{.tocnumber} [Changing x]{.toctext}](#Changing_x)
+            -   [[22.2.8.1]{.tocnumber} [Completed x
+                file]{.toctext}](#Completed_x_file)
+        -   [[22.2.9]{.tocnumber} [Changing
+            components/com\_foos/tmpl/foo/default.php]{.toctext}](#Changing_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_7)
+            -   [[22.2.9.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/default.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_file_8)
+        -   [[22.2.10]{.tocnumber} [Creating
+            administrator/components/com\_foos/sql/updates/mysql/1.18.0.sql]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2Fmysql.2F1.18.0.sql)
+            -   [[22.2.10.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/sql/updates/mysql/1.18.0.sql
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2Fmysql.2F1.18.0.sql_file)
+    -   [[22.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_20)
+    -   [[22.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_10)
+    -   [[22.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_21)
+    -   [[22.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_20)
+-   [[23]{.tocnumber} [Adding Pagination - Part
+    19]{.toctext}](#Adding_Pagination_-_Part_19)
+    -   [[23.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_22)
+    -   [[23.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_22)
+        -   [[23.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_18)
+            -   [[23.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_18)
+        -   [[23.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_10)
+            -   [[23.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_11)
+        -   [[23.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foos/default.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_8)
+            -   [[23.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_file_9)
+    -   [[23.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_21)
+    -   [[23.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_11)
+    -   [[23.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_22)
+    -   [[23.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_21)
+-   [[24]{.tocnumber} [Adding a Layout - Part
+    20]{.toctext}](#Adding_a_Layout_-_Part_20)
+    -   [[24.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_23)
+    -   [[24.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_23)
+        -   [[24.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_19)
+            -   [[24.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_19)
+        -   [[24.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_9)
+            -   [[24.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file_10)
+        -   [[24.2.3]{.tocnumber} [Changing x]{.toctext}](#Changing_x_2)
+            -   [[24.2.3.1]{.tocnumber} [Completed x
+                file]{.toctext}](#Completed_x_file_2)
+        -   [[24.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.sys.ini)
+            -   [[24.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.sys.ini_file)
+        -   [[24.2.5]{.tocnumber} [Creating
+            components/com\_foos/tmpl/foo/withhead.php]{.toctext}](#Creating_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fwithhead.php)
+            -   [[24.2.5.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/withhead.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fwithhead.php_file)
+        -   [[24.2.6]{.tocnumber} [Creating
+            components/com\_foos/tmpl/foo/withhead.xml]{.toctext}](#Creating_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fwithhead.xml)
+            -   [[24.2.6.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/withhead.xml
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fwithhead.xml_file)
+    -   [[24.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_22)
+    -   [[24.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_12)
+    -   [[24.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_23)
+    -   [[24.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_22)
+-   [[25]{.tocnumber} [Adding Checkout - Part
+    21]{.toctext}](#Adding_Checkout_-_Part_21)
+    -   [[25.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_24)
+    -   [[25.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_24)
+        -   [[25.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FoosModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_8)
+            -   [[25.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FoosModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_file_9)
+        -   [[25.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_11)
+            -   [[25.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_12)
+        -   [[25.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_20)
+            -   [[25.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_20)
+        -   [[25.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_10)
+            -   [[25.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file_11)
+        -   [[25.2.5]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foos/default.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_9)
+            -   [[25.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_file_10)
+        -   [[25.2.6]{.tocnumber} [Changing
+            administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_7)
+            -   [[25.2.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_file_7)
+        -   [[25.2.7]{.tocnumber} [Creating
+            /administrator/components/com\_foos/sql/updates/mysql/1.21.0.sql]{.toctext}](#Creating_.2Fadministrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2Fmysql.2F1.21.0.sql)
+            -   [[25.2.7.1]{.tocnumber} [Completed
+                /administrator/components/com\_foos/sql/updates/mysql/1.21.0.sql
+                file]{.toctext}](#Completed_.2Fadministrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2Fmysql.2F1.21.0.sql_file)
+    -   [[25.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_23)
+    -   [[25.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_13)
+    -   [[25.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_24)
+    -   [[25.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_23)
+-   [[26]{.tocnumber} [Adding a batch process and alias - Part
+    22]{.toctext}](#Adding_a_batch_process_and_alias_-_Part_22)
+    -   [[26.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_25)
+    -   [[26.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_25)
+        -   [[26.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/Controller/FooController.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FController.2FFooController.php)
+            -   [[26.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Controller/FooController.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FController.2FFooController.php_file_2)
+        -   [[26.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FooModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFooModel.php_3)
+            -   [[26.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FooModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFooModel.php_file_4)
+        -   [[26.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FoosModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_9)
+            -   [[26.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FoosModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_file_10)
+        -   [[26.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_12)
+            -   [[26.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_13)
+        -   [[26.2.5]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_21)
+            -   [[26.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_21)
+        -   [[26.2.6]{.tocnumber} [Changing
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_11)
+            -   [[26.2.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file_12)
+        -   [[26.2.7]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foo/edit.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_7)
+            -   [[26.2.7.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foo/edit.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_file_8)
+        -   [[26.2.8]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foos/default.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_10)
+            -   [[26.2.8.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_file_11)
+        -   [[26.2.9]{.tocnumber} [Creating
+            administrator/components/com\_foos/tmpl/foos/default\_batch.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault_batch.php)
+            -   [[26.2.9.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default\_batch.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault_batch.php_file)
+        -   [[26.2.10]{.tocnumber} [Creating
+            administrator/components/com\_foos/tmpl/foos/default\_batch\_body.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault_batch_body.php)
+            -   [[26.2.10.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default\_batch\_body.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault_batch_body.php_file)
+        -   [[26.2.11]{.tocnumber} [Creating
+            administrator/components/com\_foos/tmpl/foos/default\_batch\_footer.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault_batch_footer.php)
+            -   [[26.2.11.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default\_batch\_footer.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault_batch_footer.php_file)
+    -   [[26.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_24)
+    -   [[26.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_14)
+    -   [[26.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_25)
+    -   [[26.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_24)
+-   [[27]{.tocnumber} [Adding a help link - Part
+    23]{.toctext}](#Adding_a_help_link_-_Part_23)
+    -   [[27.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_26)
+    -   [[27.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_26)
+        -   [[27.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foo/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_3)
+            -   [[27.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foo/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_file_3)
+        -   [[27.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_13)
+            -   [[27.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_14)
+        -   [[27.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_22)
+            -   [[27.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_22)
+    -   [[27.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_25)
+    -   [[27.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_15)
+    -   [[27.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_26)
+    -   [[27.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_25)
+-   [[28]{.tocnumber} [Adding an update server and a changelog- Part
+    24]{.toctext}](#Adding_an_update_server_and_a_changelog-_Part_24)
+    -   [[28.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_27)
+    -   [[28.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_27)
+        -   [[28.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_23)
+            -   [[28.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_23)
+        -   [[28.2.2]{.tocnumber} [Creating
+            administrator/components/com\_foos/changelog.xml]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Fchangelog.xml)
+            -   [[28.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/changelog.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fchangelog.xml_file)
+        -   [[28.2.3]{.tocnumber} [Creating
+            administrator/components/com\_foos/foo\_update.xml]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Ffoo_update.xml)
+            -   [[28.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foo\_update.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoo_update.xml_file)
+    -   [[28.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_26)
+    -   [[28.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_16)
+    -   [[28.5]{.tocnumber} [More
+        informations]{.toctext}](#More_informations)
+    -   [[28.6]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_27)
+    -   [[28.7]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_26)
+-   [[29]{.tocnumber} [Adding Adding frontend edit - Part
+    25]{.toctext}](#Adding_Adding_frontend_edit_-_Part_25)
+-   [[30]{.tocnumber} [Adding Tags - Part
+    26]{.toctext}](#Adding_Tags_-_Part_26)
+-   [[31]{.tocnumber} [Adding Workflow - Part
+    27]{.toctext}](#Adding_Workflow_-_Part_27)
+
+</div>
 
 [Creating a Simple Component for Joomla!4.x]{#Creating_a_Simple_Component_for_Joomla.214.x .mw-headline}
 ========================================================================================================
@@ -17221,3 +18914,122 @@ following files:
 ====================================================================
 
 I am not sure if we can use it in a third party component.
+
+<div class="hf-footer">
+
+</div>
+
+<div class="hf-nsfooter">
+
+</div>
+
+</div>
+
+<div class="printfooter">
+
+Retrieved from
+"<https://docs.joomla.org/index.php?title=User:Astridx&oldid=623966>"
+
+</div>
+
+<div class="clear_both">
+
+</div>
+
+</div>
+
+<div class="group">
+
+<div id="catlinks" class="catlinks" data-mw="interface">
+
+<div id="mw-normal-catlinks" class="mw-normal-catlinks">
+
+[Categories](/Special:Categories "Special:Categories"):
+-   [Pages with syntax highlighting
+    errors](/Category:Pages_with_syntax_highlighting_errors "Category:Pages with syntax highlighting errors")
+-   [Pages with broken file
+    links](/Category:Pages_with_broken_file_links "Category:Pages with broken file links")
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="footer">
+
+<div class="social-footer large-12 small-12 columns">
+
+<div class="social-links">
+
+<div class="addthis_horizontal_follow_toolbox">
+
+</div>
+
+</div>
+
+</div>
+
+<div id="footer-left" class="large-8 small-12 columns">
+
+-   <div id="footer-lastmod">
+
+    </div>
+
+    This page was last modified on 19 August 2019, at 11:29.
+-   <div id="footer-copyright">
+
+    </div>
+
+    Content is available under [Joomla! EDL](/JEDL "JEDL") unless
+    otherwise noted.\
+    Joomla!^®^ is a registered trademark of Open Source Matters, Inc.\
+    If you are experiencing technical issues with this website,
+    [please report
+    it](https://github.com/joomla/joomla-websites/issues/new?title=%5Bjdocs%5D%20&body=Please%20describe%20the%20problem%20or%20your%20issue)
+    .\
+    Notice a content problem?
+    [Create an
+    account](/JDOC:How_to_Contribute_to_Joomla!_Documentation)
+    and fix it.
+-   <div id="footer-privacy">
+
+    </div>
+
+    [Privacy policy](/JDOC:Privacy_policy "JDOC:Privacy policy")
+-   <div id="footer-about">
+
+    </div>
+
+    [About Joomla! Documentation](/JDOC:About "JDOC:About")
+-   <div id="footer-disclaimer">
+
+    </div>
+
+    [Terms of
+    Service](/JDOC:General_disclaimer "JDOC:General disclaimer")
+
+</div>
+
+<div id="footer-right-icons" class="large-4 small-12 columns">
+
+-   [![Joomla!
+    EDL](https://docs.joomla.org/skins/JEDL_icon.png){width="88"
+    height="31"}](https://docs.joomla.org/JEDL)
+-   [![Powered by
+    MediaWiki](/resources/assets/poweredby_mediawiki_88x31.png){width="88"
+    height="31"
+    srcset="/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /resources/assets/poweredby_mediawiki_176x62.png 2x"}](//www.mediawiki.org/)
+-   [![Joomla! Hosting by
+    Rochen...](//cdn.joomla.org/rochen/rochen_footer_logo_white.png){width="88"
+    height="31"}](https://www.rochen.com/joomla-hosting)
+
+</div>
+
+</div>
+
+</div>
