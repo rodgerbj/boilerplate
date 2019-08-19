@@ -30,9 +30,7860 @@ To customize the boilerplates using your own name you need to take the following
 
 
 
+= Creating a Simple Component for Joomla!4.x = This is a
+multiple-article series of tutorials on how to develop a
+Model-View-Controller \[\[S:MyLanguage/Component|Component\]\] for
+Joomla! Version 4x. You can navigate the articles in this series by
+using the navigation drop down menu. Begin with the Introduction, and
+navigate the articles in this series by using the navigation button at
+the bottom or the box to the right (''Articles in this series''). Let's
+start with the introduction. = Developing a Basic Component - Part 1 =
+==Notes== \* If you are new to Joomla!, please read
+\[\[S:MyLanguage/Absolute\_Basics\_of\_How\_a\_Component\_Functions|Absolute
+Basics of How a Component Functions\]\]. \* This tutorial is for
+Joomlaǃ4. For creating a component for Joomlaǃ3 see
+\[https://docs.joomla.org/J3.x:Developing\_an\_MVC\_Component|
+Developing a Model-View-Controller Component/3.x\]. == Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla!
+4.0.0-alpha11-dev). You can download Joomla! 4 at
+\[https://github.com/joomla/joomla-cms/tree/4.0-dev GitHub\], on the
+\[https://developer.joomla.org/nightly-builds.html Developer website\]
+or you can create a free website at https://launch.joomla.org. ==
+Creating a simple Component/Developing a Basic Component == You can see
+many examples of components in the standard Joomla! install. For example
+\* Content \* Banners \* Tags or \* Contact This tutorial will explain
+how to go about creating a simple component. Through this tutorial you
+will learn the basic file structure of a Joomlaǃ4 component. This basic
+structure can then be expanded to produce more complex components. ===
+File Structure === There are a few basic files that are used in the
+standard pattern of component development: \*
+`administrator/components/com_foos/Controller/DisplayController.php` -
+This file is Foos master display controller. \*
+`administrator/components/com_foos/Extension/FoosComponent.php` - This
+file is the Component class for com\_foos. \*
+`administrator/components/com_foos/Service/HTML/AdministratorService.php`
+- This file is the Content HTML helper. \*
+`administrator/components/com_foos/View/Foos/HtmlView.php` - This file
+is the View class for a list of foos. \*
+`administrator/components/com_foos/services/provider.php` - This file is
+the The foo service provider. \*
+`administrator/components/com_foos/tmpl/foos/default.php` - This file is
+the template for a list of foos. \* `com_foo.xml` - This file contains
+information about the componente. It defines the files that need to be
+installed by the Joomla! installer and specifies configuration
+parameters for the componente. \* `script.php` - This file is the
+Installation Script file of Foo Component. === Creating
+administrator/components/com\_foos/Controller/DisplayController.php ===
+The `administrator/components/com_foos/Controller/DisplayController.php`
+file is is Foos master display controller. ==== Completed
+administrator/components/com\_foos/Controller/DisplayController.php file
+==== The code for the
+`administrator/components/com_foos/Controller/DisplayController.php`
+file is as follows:
 
+=== Creating
+administrator/components/com\_foos/Extension/FoosComponent.php === The
+`administrator/components/com_foos/Extension/FoosComponent.php` file is
+the Component class for com\_foos. ==== Completed
+administrator/components/com\_foos/Extension/FoosComponent.php file ====
+The code for the
+`administrator/components/com_foos/Extension/FoosComponent.php` file is
+as follows:
 
+getRegistry()-&gt;register('foosadministrator', new
+AdministratorService); } }
 
+=== Creating
+administrator/components/com\_foos/Service/HTML/AdministratorService.php
+=== The
+`administrator/components/com_foos/Service/HTML/AdministratorService.php`
+file is .... ==== Completed
+administrator/components/com\_foos/Service/HTML/AdministratorService.php
+file ==== The code for the
+`administrator/components/com_foos/Service/HTML/AdministratorService.php`
+file is as follows:
+
+=== Creating administrator/components/com\_foos/View/Foos/HtmlView.php
+=== The `administrator/components/com_foos/View/Foos/HtmlView.php` file
+is .... ==== Completed
+administrator/components/com\_foos/View/Foos/HtmlView.php file ==== The
+code for the `administrator/components/com_foos/View/Foos/HtmlView.php`
+file is as follows:
+
+=== Creating administrator/components/com\_foos/services/provider.php
+=== The `administrator/components/com_foos/services/provider.php` file
+is .... ==== Completed
+administrator/components/com\_foos/services/provider.php file ==== The
+code for the `administrator/components/com_foos/services/provider.php`
+file is as follows:
+
+registerServiceProvider(new
+CategoryFactory('\\\\Joomla\\\\Component\\\\Foos'));
+\$container-&gt;registerServiceProvider(new
+MVCFactory('\\\\Joomla\\\\Component\\\\Foos'));
+\$container-&gt;registerServiceProvider(new
+ComponentDispatcherFactory('\\\\Joomla\\\\Component\\\\Foos'));
+\$container-&gt;set( ComponentInterface::class, function (Container
+\$container) { \$component = new
+FoosComponent(\$container-&gt;get(ComponentDispatcherFactoryInterface::class));
+\$component-&gt;setRegistry(\$container-&gt;get(Registry::class));
+return \$component; } ); } };
+
+=== Creating administrator/components/com\_foos/tmpl/foos/default.php
+=== The `administrator/components/com_foos/tmpl/foos/default.php` file
+is .... ==== Completed
+administrator/components/com\_foos/tmpl/foos/default.php file ==== The
+code for the `administrator/components/com_foos/tmpl/foos/default.php`
+file is as follows:
+
+Hello Foos
+
+=== Creating script.php === The `script.php` file is .... Most entries
+are self-explanatory. ==== Completed script.php file ==== The code for
+the `script.php` file is as follows:
+
+\* @copyright \[COPYRIGHT\] \* @license GNU General Public License
+version 2 or later; see LICENSE.txt \* @link \[AUTHOR\_URL\] \*/ // No
+direct access to this file defined('\_JEXEC') or die; use
+Joomla\\CMS\\Language\\Text; use Joomla\\CMS\\Log\\Log; /\*\* \* Script
+file of Foo Component \* \* @since 1.0.0 \* \*/ class
+FoosInstallerScript { /\*\* \* Extension script constructor. \* \*
+@since 1.0.0 \* \*/ public function \_\_construct() {
+\$this-&gt;minimumJoomla = '4.0'; \$this-&gt;minimumPhp =
+JOOMLA\_MINIMUM\_PHP; } /\*\* \* Method to install the extension \* \*
+@param InstallerAdapter \$parent The class calling this method \* \*
+@return boolean True on success \* \* @since 1.0.0 \* \*/ public
+function install(\$parent) { echo
+Text::\_('COM\_FOOS\_INSTALLERSCRIPT\_UNINSTALL'); return true; } /\*\*
+\* Method to uninstall the extension \* \* @param InstallerAdapter
+\$parent The class calling this method \* \* @return boolean True on
+success \* \* @since 1.0.0 \* \*/ public function uninstall(\$parent) {
+echo Text::\_('COM\_FOOS\_INSTALLERSCRIPT\_UNINSTALL'); return true; }
+/\*\* \* Method to update the extension \* \* @param InstallerAdapter
+\$parent The class calling this method \* \* @return boolean True on
+success \* \* @since 1.0.0 \* \*/ public function update(\$parent) {
+echo Text::\_('COM\_FOOS\_INSTALLERSCRIPT\_UPDATE'); return true; }
+/\*\* \* Function called before extension installation/update/removal
+procedure commences \* \* @param string \$type The type of change
+(install, update or discover\_install, not uninstall) \* @param
+InstallerAdapter \$parent The class calling this method \* \* @return
+boolean True on success \* \* @since 1.0.0 \* \*/ public function
+preflight(\$type, \$parent) { // Check for the minimum PHP version
+before continuing if (!empty(\$this-&gt;minimumPhp) &&
+version\_compare(PHP\_VERSION, \$this-&gt;minimumPhp, '&lt;')) {
+Log::add(Text::sprintf('JLIB\_INSTALLER\_MINIMUM\_PHP',
+\$this-&gt;minimumPhp), Log::WARNING, 'jerror'); return false; } //
+Check for the minimum Joomla version before continuing if
+(!empty(\$this-&gt;minimumJoomla) && version\_compare(JVERSION,
+\$this-&gt;minimumJoomla, '&lt;')) {
+Log::add(Text::sprintf('JLIB\_INSTALLER\_MINIMUM\_JOOMLA',
+\$this-&gt;minimumJoomla), Log::WARNING, 'jerror'); return false; } echo
+Text::\_('COM\_FOOS\_INSTALLERSCRIPT\_PREFLIGHT'); return true; } /\*\*
+\* Function called after extension installation/update/removal procedure
+commences \* \* @param string \$type The type of change (install, update
+or discover\_install, not uninstall) \* @param InstallerAdapter \$parent
+The class calling this method \* \* @return boolean True on success \*
+\* @since 1.0.0 \* \*/ public function postflight(\$type, \$parent) {
+echo Text::\_('COM\_FOOS\_INSTALLERSCRIPT\_POSTFLIGHT'); return true; }
+}
+
+=== Creating com\_foos.xml === The `foo.xml` file is .... Most entries
+are self-explanatory. ==== Completed foo.xml file ==== The code for the
+`foo.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 1.0.0
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+
+COM\_FOOS
+
+COM\_FOOS
+
+foos.xml Controller Extension Service View services tmpl
+
+== Test your componente == Now you can zip all files and install them
+via Joomla Extension Manager. After that you can choose your component
+in the menu of the Joomlaǃbackend.
+\[\[File:as\_j4\_t\_1\_1.png|700px\]\] In the front end there is no
+change up to now. We are going to work on this in the next chapter. ==
+Note == === Version Number === If you ask yourself what version number
+you should take: Joomla strictly follows Semantic Versioning (2.0.0) and
+it be good if you do this, too. See
+https://developer.joomla.org/news/586-joomla-development-strategy.html\#version\_numbering
+and https://semver.org/spec/v2.0.0.html for more informations. ===
+index.html File === Why was there an index.html file in almost every
+folder in Joomla in the past? The blank index.html file in each folder
+was to prevent directory browsing via web address. On a poorly
+configured web server someone could see all the files contained in a
+folder by simply browsing to the path, such as www.example.org/images/.
+This could be a potential security problem on servers without directory
+browsing (indexing) turned off. Having the blank `index.html` file
+returns a blank white screen to the browser rather than displaying the
+contents of the folder. So, from a technical aspect, `index.html` files
+are not required on a good configured web server, but do prevent
+directory access on badly configured environments as already noted. If
+you're looking to list an extension on the Joomla! Extensions Directory,
+(JED) it is not required to have `index.html` files. If you want to add
+`index.html` files to your site, you can copy the script at
+https://github.com/joomla/joomla-cms/blob/staging/build/indexmaker.php
+and run it from a command line session on your server. === Joomla!
+Extensions Directory === You can use the JEDChecker extension at
+http://extensions.joomla.org/extensions/miscellaneous/development/21336
+to check JED requirements. == Component Contents == At this point in the
+tutorial, your component should contain the following files: {| border=1
+| 1 |administrator/components/com\_foos/Controller/DisplayController.php
+|this is the administrator entry point to the Foo component | new |- |1
+|administrator/components/com\_foos/Extension/FoosComponent.php | the
+interface BootableExtensionInterface where a component class can load
+its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | new |- |1
+|administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+new |- |1 |administrator/components/com\_foos/View/Foos/HtmlView.php |
+file representing the view in the back end | new |- |1
+|administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+new |- |1 |administrator/components/com\_foos/tmpl/foos/default.php |
+the default view in the back end | new |- |1
+|administrator/components/com\_foos/foos.xml |this is an XML (manifest)
+file that tells Joomla! how to install our component. | new |- |1
+|administrator/components/com\_foos/script.php | the installer script |
+new |- |} == Conclusion == Component development for Joomla! is a fairly
+simple, straightforward process. Using the techniques described in this
+tutorial, an endless variety of componentes can be developed with little
+hassle. Boilerplates you can find hereː \*
+https://github.com/joomla-extensions/boilerplate/tree/master/plugins/system
+The sample files for this Tutorial you can find hereː \*
+https://github.com/astridx/boilerplate/tree/tutorial/tutorial/component/
+= Adding a view to the site part - Part 2 = == Requirements == You need
+Joomla! 4.x for this tutorial (as of writing currently Joomla!
+4.0.0-alpha11-dev) == File Structure == === Changing
+administrator/components/com\_foos/foos.xml === The
+`administrator/components/com_foos/foos.xml` file is .... ==== Completed
+administrator/components/com\_foos/foos.xml file ==== The code for the
+`administrator/components/com_foos/foos.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 2.0.0
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+Controller View tmpl
+
+COM\_FOOS
+
+COM\_FOOS
+
+foos.xml Controller Extension Service View services tmpl
+
+=== Creating components/com\_foos/Controller/DisplayController.php ===
+The `components/com_foos/Controller/DisplayController.php` file is the
+main controller file for the frond end. ==== Completed
+components/com\_foos/Controller/DisplayController.php file ==== The code
+for the `components/com_foos/Controller/DisplayController.php` file is
+as follows:
+
+=== Creating components/com\_foos/View/Foo/HtmlView.php === The
+`components/com_foos/View/Foo/HtmlView.php` file is .... ==== Completed
+components/com\_foos/View/Foo/HtmlView.php file ==== The code for the
+`components/com_foos/View/Foo/HtmlView.php` file is as follows:
+
+=== Creating components/com\_foos/tmpl/foo/default.php === The
+`components/com_foos/tmpl/foo/default.php` file is .... Most entries are
+self-explanatory. ==== Completed
+components/com\_foos/tmpl/foo/default.php file ==== The code for the
+`components/com_foos/tmpl/foo/default.php` file is as follows:
+
+Hallo
+
+== Test your component == Now you can zip all files and install them via
+Joomla Extension Manager. After that you can see the view in the front
+end. In the front end you can see the view if you open the address
+joomla-cms4/index.php?option=com\_foos&view=foo.
+\[\[File:as\_j4\_t\_2\_1.png|700px\]\] At the moment you have enter the
+address manually. It would be nicer to have a menu item. We are going to
+work on this in the next chapter. == Component Contents == At this point
+in the tutorial, your component should contain the following files: {|
+border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- |1 |administrator/components/com\_foos/Extension/FoosComponent.php |
+the interface BootableExtensionInterface where a component class can
+load its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- |1
+|administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- |1
+|administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | unchanged |- |1
+|administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- |1
+|administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | unchanged |- |1
+|administrator/components/com\_foos/foos.xml |this is an XML (manifest)
+file that tells Joomla! how to install our component. | changed |- |1
+|administrator/components/com\_foos/script.php | the installer script |
+unchanged |- |2 | components/com\_foos/Controller/DisplayController.php
+| this is the frond end entry point to the Foo component | new |- |2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | new |- |2 | components/com\_foos/tmpl/foo/default.php
+| the default view in the frond end | new |- |} == Conclusion == Now we
+have a basic view in the backend and in the front end. = Adding a menu
+type to the site part - Part 3 = In this article we will cover how to
+add a menu item to a basic Joomla! component. == Requirements == You
+need Joomla! 4.x for this tutorial (as of writing currently Joomla!
+4.0.0-alpha11-dev) == File Structure == === Creating
+components/com\_foos/tmpl/foo/default.xml === The
+`components/com_foos/tmpl/foo/default.xml` file is .... ==== Completed
+components/com\_foos/tmpl/foo/default.xml file ==== The code for the
+`components/com_foos/tmpl/foo/default.xml` file is as follows:
+
+COM\_FOOS\_FOO\_VIEW\_DEFAULT\_DESC
+
+=== Changing administrator/components/com\_foos/foos.xml === The
+`administrator/components/com_foos/foos.xml` file is .... ==== Completed
+administrator/components/com\_foos/foos.xml file ==== The code for the
+`administrator/components/com_foos/foos.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 3.0.0
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+Controller View tmpl
+
+COM\_FOOS
+
+COM\_FOOS
+
+foos.xml Controller Extension Service View services tmpl
+
+== Test your component == Now you can zip all files and install them via
+Joomla Extension Manager. After that you can create a menu item in the
+menu manager. \[\[File:as\_j4\_t\_3\_1.png|700px\]\] Save the menu item.
+\[\[File:as\_j4\_t\_3\_2.png|700px\]\] Now you can see the view in the
+front using a menu item. In the front end you can see the menu item and
+you can open the view with the help of the menu item.
+\[\[File:as\_j4\_t\_3\_3.png|700px\]\] == Component Contents == At this
+point in the tutorial, your component should contain the following
+files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- |1 |administrator/components/com\_foos/Extension/FoosComponent.php |
+the interface BootableExtensionInterface where a component class can
+load its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- |1
+|administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- |1
+|administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | unchanged |- |1
+|administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- |1
+|administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | unchanged |- |1
+|administrator/components/com\_foos/foos.xml |this is an XML (manifest)
+file that tells Joomla! how to install our component. | changed |- |1
+|administrator/components/com\_foos/script.php | the installer script |
+unchanged |- |2 | components/com\_foos/Controller/DisplayController.php
+| this is the frond end entry point to the Foo component | unchanged |-
+|2 | components/com\_foos/View/Foo/HtmlView.php | file representing the
+view in the frond end | unchanged |- |2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | unchanged |- |3 | components/com\_foos/tmpl/foo/default.xml
+| the xml for the menu item | new |- |} == Conclusion == Now we are able
+to add a Menu Item to our component. This will allow us to access our
+component a menu item rather than having to remember what to type into
+the address bar. Currently the view does not show any data yet. In order
+to work with data, we will add a model to our component in the next
+chapter. = Adding a model to the site part - Part 4 = == Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla!
+4.0.0-alpha11-dev) == File Structure == === Changing
+administrator/components/com\_foos/foos.xml === The
+`administrator/components/com_foos/foos.xml` file is .... ==== Completed
+administrator/components/com\_foos/foos.xml file ==== The code for the
+`administrator/components/com_foos/foos.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 4.0.0
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+Controller Model View tmpl
+
+COM\_FOOS
+
+COM\_FOOS
+
+foos.xml Controller Extension Service View services tmpl
+
+=== Creating components/com\_foos/Model/FooModel.php === The
+`components/com_foos/Model/FooModel.php` file is .... ==== Completed
+components/com\_foos/Model/FooModel.php file ==== The code for the
+`components/com_foos/Model/FooModel.php` file is as follows:
+
+message)) { \$this-&gt;message = 'Hello Foo!'; } return
+\$this-&gt;message; } }
+
+=== Changing components/com\_foos/View/Foo/HtmlView.php === The
+`components/com_foos/View/Foo/HtmlView.php` file is .... ==== Completed
+components/com\_foos/View/Foo/HtmlView.php file ==== The code for the
+`components/com_foos/View/Foo/HtmlView.php` file is as follows:
+
+msg = \$this-&gt;get('Msg'); return parent::display(\$tpl); } }
+
+=== Changing components/com\_foos/tmpl/foo/default.php === The
+`components/com_foos/tmpl/foo/default.php` file is .... Most entries are
+self-explanatory. ==== Completed
+components/com\_foos/tmpl/foo/default.php file ==== The code for the
+`components/com_foos/tmpl/foo/default.php` file is as follows:
+
+msg;
+
+== Test your component == Now you can zip all files and install them via
+Joomla Extension Manager. After that you can see the view in the front
+using a model. \[\[File:as\_j4\_t\_4\_1.png|700px\]\] == Component
+Contents == At this point in the tutorial, your component should contain
+the following files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- |1 |administrator/components/com\_foos/Extension/FoosComponent.php |
+the interface BootableExtensionInterface where a component class can
+load its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- |1
+|administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- |1
+|administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | unchanged |- |1
+|administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- |1
+|administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | unchanged |- |1
+|administrator/components/com\_foos/foos.xml |this is an XML (manifest)
+file that tells Joomla! how to install our component. | changed |- |1
+|administrator/components/com\_foos/script.php | the installer script |
+unchanged |- |2 | components/com\_foos/Controller/DisplayController.php
+| this is the frond end entry point to the Foo component | unchanged |-
+|4 | components/com\_foos/Model/FooModel.php | this is the frond end
+model for the Foo component | new |- |2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | changed |- |2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | changed |- |3 | components/com\_foos/tmpl/foo/default.xml |
+the xml for the menu item | unchanged |- |} == Conclusion == At the
+moment you can create a menu item, that shows a special view of your
+component. What, if you want to show a view depending on a parameter?
+That is easy. You can add a variable request in the menu item. We are
+going to work on this in the next chapter. = Adding a variable request
+in the menu type - Part 5 = For the moment, the displayed message is
+always fix. In Joomla! it is possible to add parameters to menu types.
+== Requirements == You need Joomla! 4.x for this tutorial (as of writing
+currently Joomla! 4.0.0-alpha11-dev) == File Structure == === Changing
+administrator/components/com\_foos/foos.xml === The
+`administrator/components/com_foos/foos.xml` file is .... ==== Completed
+administrator/components/com\_foos/foos.xml file ==== The code for the
+`administrator/components/com_foos/foos.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 5.0.0
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+Controller Model View tmpl
+
+COM\_FOOS
+
+COM\_FOOS
+
+foos.xml Controller Extension Service View services tmpl
+
+=== Changing components/com\_foos/Model/FooModel.php === The
+`components/com_foos/Model/FooModel.php` file is .... ==== Completed
+components/com\_foos/Model/FooModel.php file ==== The code for the
+`components/com_foos/Model/FooModel.php` file is as follows:
+
+message = \$app-&gt;input-&gt;get('show\_text', "Hi"); return
+\$this-&gt;message; } }
+
+=== Changing components/com\_foos/tmpl/foo/default.xml === The
+`components/com_foos/tmpl/foo/default.xml` file is .... ==== Completed
+components/com\_foos/tmpl/foo/default.xml file ==== The code for the
+`components/com_foos/tmpl/foo/default.xml` file is as follows:
+
+COM\_FOOS\_FOO\_VIEW\_DEFAULT\_DESC
+
+== Test your component == Now you can zip all files and install them via
+Joomla Extension Manager. A new installation of the extension is
+necessary. After that you can add a parameter to the menu item. This
+parameter is set in a text field. \[\[File:as\_j4\_t\_5\_1.png|700px\]\]
+The text you entered in this text field is shown in the front end.
+Depending on the parameter, the view is set up in the front end.
+\[\[File:as\_j4\_t\_5\_2.png|700px\]\] == Note == === Why do we omit the
+close tag? === Omitting the closing tag helps you prevent accidental
+whitespace or newlines from being added to the end of the file. See:
+https://www.php.net/manual/en/language.basic-syntax.instruction-separation.php
+== Component Contents == At this point in the tutorial, your component
+should contain the following files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- |1 |administrator/components/com\_foos/Extension/FoosComponent.php |
+the interface BootableExtensionInterface where a component class can
+load its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- |1
+|administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- |1
+|administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | unchanged |- |1
+|administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- |1
+|administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | unchanged |- |1
+|administrator/components/com\_foos/foos.xml |this is an XML (manifest)
+file that tells Joomla! how to install our component. | changed |- |1
+|administrator/components/com\_foos/script.php | the installer script |
+unchanged |- |2 | components/com\_foos/Controller/DisplayController.php
+| this is the frond end entry point to the Foo component | unchanged |-
+|4 | components/com\_foos/Model/FooModel.php | this is the frond end
+model for the Foo component | changed |- |2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | unchanged |- |2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | unchanged |- |3 | components/com\_foos/tmpl/foo/default.xml
+| the xml for the menu item | changed |- |} == Conclusion == For the
+moment, the parameter (messages) is hard coded or entered manually. We
+would like to store this value in the Joomla database. Therefore, in the
+next chapter, we will add database access to the component. = Using the
+database in the backend - Part 6 = == Requirements == You need Joomla!
+4.x for this tutorial (as of writing currently Joomla!
+4.0.0-alpha11-dev) == File Structure == === Creating
+administrator/components/com\_foos/Model/FoosModel.php === The
+`administrator/components/com_foos/Model/FoosModel.php` file is ....
+==== Completed administrator/components/com\_foos/Model/FoosModel.php
+file ==== The code for the
+`administrator/components/com_foos/Model/FoosModel.php` file is as
+follows:
+
+getDbo(); \$query = \$db-&gt;getQuery(true); // Select the required
+fields from the table. \$query-&gt;select(
+\$db-&gt;quoteName(array('id', 'name')) );
+\$query-&gt;from(\$db-&gt;quoteName('\#\_\_foos\_details')); return
+\$query; } }
+
+=== Changing administrator/components/com\_foos/View/Foos/HtmlView.php
+=== The `administrator/components/com_foos/View/Foos/HtmlView.php` file
+is .... ==== Completed
+administrator/components/com\_foos/View/Foos/HtmlView.php file ==== The
+code for the `administrator/components/com_foos/View/Foos/HtmlView.php`
+file is as follows:
+
+items = \$this-&gt;get('Items'); return parent::display(\$tpl); } }
+
+=== Changing administrator/components/com\_foos/services/provider.php
+=== The `administrator/components/com_foos/services/provider.php` file
+is .... ==== Completed
+administrator/components/com\_foos/services/provider.php file ==== The
+code for the `administrator/components/com_foos/services/provider.php`
+file is as follows:
+
+registerServiceProvider(new
+CategoryFactory('\\\\Joomla\\\\Component\\\\Foos'));
+\$container-&gt;registerServiceProvider(new
+MVCFactory('\\\\Joomla\\\\Component\\\\Foos'));
+\$container-&gt;registerServiceProvider(new
+ComponentDispatcherFactory('\\\\Joomla\\\\Component\\\\Foos'));
+\$container-&gt;set( ComponentInterface::class, function (Container
+\$container) { \$component = new
+FoosComponent(\$container-&gt;get(ComponentDispatcherFactoryInterface::class));
+\$component-&gt;setRegistry(\$container-&gt;get(Registry::class));
+\$component-&gt;setMVCFactory(\$container-&gt;get(MVCFactoryInterface::class));
+return \$component; } ); } };
+
+=== Creating
+administrator/components/com\_foos/sql/install.mysql.utf8.sql === The
+`administrator/components/com_foos/sql/install.mysql.utf8.sql` file is
+.... ==== Completed
+administrator/components/com\_foos/sql/install.mysql.utf8.sql file ====
+The code for the
+`administrator/components/com_foos/sql/install.mysql.utf8.sql` file is
+as follows:
+
+CREATE TABLE IF NOT EXISTS \`\#\_\_foos\_details\` ( \`id\` int(11) NOT
+NULL AUTO\_INCREMENT, \`alias\` varchar(400) CHARACTER SET utf8mb4
+COLLATE utf8mb4\_bin NOT NULL DEFAULT '', \`name\` varchar(255) NOT NULL
+DEFAULT '', PRIMARY KEY (\`id\`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+DEFAULT COLLATE=utf8mb4\_unicode\_ci; INSERT INTO
+\`\#\_\_foos\_details\` (\`name\`) VALUES ('Nina'), ('Astrid'),
+('Elmar');
+
+=== Creating
+administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql === The
+`administrator/components/com_foos/sql/uninstall.mysql.utf8.sql` file is
+.... ==== Completed
+administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql file
+==== The code for the
+`administrator/components/com_foos/sql/uninstall.mysql.utf8.sql` file is
+as follows:
+
+DROP TABLE IF EXISTS \`\#\_\_foos\_details\`;
+
+=== Changing administrator/components/com\_foos/tmpl/foos/default.php
+=== The `administrator/components/com_foos/tmpl/foos/default.php` file
+is .... ==== Completed
+administrator/components/com\_foos/tmpl/foos/default.php file ==== The
+code for the `administrator/components/com_foos/tmpl/foos/default.php`
+file is as follows:
+
+items as \$i =&gt; \$item) : ?&gt;
+
+name; ?&gt;
+
+=== Changing administrator/components/com\_foos/foos.xml === The
+`administrator/components/com_foos/foos.xml` file is .... ==== Completed
+administrator/components/com\_foos/foos.xml file ==== The code for the
+`administrator/components/com_foos/foos.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 6.0.0
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+sql/install.mysql.utf8.sql sql/uninstall.mysql.utf8.sql Controller Model
+View tmpl
+
+COM\_FOOS
+
+COM\_FOOS
+
+foos.xml Controller Extension Model Service View services sql tmpl
+
+== Test your component == Now you can zip all files and install them via
+Joomla Extension Manager. You have to run a new installation or fix the
+database due to the changes in the database. After that the data for
+this component is stored in the database. In the next picture you can
+see how the data is retrieved and listed. In the next chapters, we are
+working to make the data changeable in the backend.
+\[\[File:as\_j4\_t\_6\_1.png|700px\]\] == Component Contents == At this
+point in the tutorial, your component should contain the following
+files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- |1 |administrator/components/com\_foos/Extension/FoosComponent.php |
+the interface BootableExtensionInterface where a component class can
+load its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 6 |
+administrator/components/com\_foos/Model/FoosModel.php | this is the
+model of the Foo component | new |- |1
+|administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- |1
+|administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | changed |- |1
+|administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+changed |- |6
+|administrator/components/com\_foos/sql/install.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | new |- |6
+|administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql |
+During the install/uninstall/update phase of a component, you can
+execute SQL queries through the use of this SQL text file | new |- |1
+|administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | changed |- |1
+|administrator/components/com\_foos/foos.xml |this is an XML (manifest)
+file that tells Joomla! how to install our component. | changed |- |1
+|administrator/components/com\_foos/script.php | the installer script |
+unchanged |- |2 | components/com\_foos/Controller/DisplayController.php
+| this is the frond end entry point to the Foo component | unchanged |-
+|4 | components/com\_foos/Model/FooModel.php | this is the frond end
+model for the Foo component | unchanged |- |2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | unchanged |- |2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | unchanged |- |3 | components/com\_foos/tmpl/foo/default.xml
+| the xml for the menu item | unchanged |- |} == Conclusion == Now our
+component has a database table where it can store data. In this chapter
+we have seen, how we can display this data in the backend. In the next
+chapter we will go on an check, how we can use the data in the front
+end. = Using the database in the frontend - Part 7 = == Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla!
+4.0.0-alpha11-dev) == File Structure == === Creating
+administrator/components/com\_foos/Controller/FooController.php === The
+`administrator/components/com_foos/Controller/FooController.php` file is
+the controller file. ==== Completed
+administrator/components/com\_foos/Controller/FooController.php file
+==== The code for the
+`administrator/components/com_foos/Controller/FooController.php` file is
+as follows:
+
+=== Creating administrator/components/com\_foos/Field/Modal/FooField.php
+=== The `administrator/components/com_foos/Field/Modal/FooField.php`
+file is contains the modal field. ==== Completed
+administrator/components/com\_foos/Field/Modal/FooField.php file ====
+The code for the
+`administrator/components/com_foos/Field/Modal/FooField.php` file is as
+follows:
+
+element\['clear'\] != 'false'); \$allowSelect = ((string)
+\$this-&gt;element\['select'\] != 'false'); // The active foo id field.
+\$value = (int) \$this-&gt;value &gt; 0 ? (int) \$this-&gt;value : '';
+// Create the modal id. \$modalId = 'Foo\_' . \$this-&gt;id; // Add the
+modal field script to the document head. HTMLHelper::\_('script',
+'system/fields/modal-fields.min.js', array('version' =&gt; 'auto',
+'relative' =&gt; true)); // Script to proxy the select modal function to
+the modal-fields.js file. if (\$allowSelect) { static \$scriptSelect =
+null; if (is\_null(\$scriptSelect)) { \$scriptSelect = array(); } if
+(!isset(\$scriptSelect\[\$this-&gt;id\])) {
+Factory::getDocument()-&gt;addScriptDeclaration(" function jSelectFoo\_"
+. \$this-&gt;id . "(id, title, object) {
+window.processModalSelect('Foo', '" . \$this-&gt;id . "', id, title, '',
+object); } " ); \$scriptSelect\[\$this-&gt;id\] = true; } } // Setup
+variables for display. \$linkFoos =
+'index.php?option=com\_foos&view=foos&layout=modal&tmpl=component&' .
+Session::getFormToken() . '=1'; \$linkFoo =
+'index.php?option=com\_foos&view=foo&layout=modal&tmpl=component&' .
+Session::getFormToken() . '=1'; \$modalTitle =
+Text::\_('COM\_FOOS\_CHANGE\_FOO'); \$urlSelect = \$linkFoos .
+'&function=jSelectFoo\_' . \$this-&gt;id; if (\$value) { \$db =
+Factory::getDbo(); \$query = \$db-&gt;getQuery(true)
+-&gt;select(\$db-&gt;quoteName('name'))
+-&gt;from(\$db-&gt;quoteName('\#\_\_foos\_details'))
+-&gt;where(\$db-&gt;quoteName('id') . ' = ' . (int) \$value);
+\$db-&gt;setQuery(\$query); try { \$title = \$db-&gt;loadResult(); }
+catch (\\RuntimeException \$e) {
+Factory::getApplication()-&gt;enqueueMessage(\$e-&gt;getMessage(),
+'error'); } } \$title = empty(\$title) ?
+Text::\_('COM\_FOOS\_SELECT\_A\_FOO') : htmlspecialchars(\$title,
+ENT\_QUOTES, 'UTF-8'); // The current foo display field. \$html = ''; if
+(\$allowSelect || \$allowNew || \$allowEdit || \$allowClear) { \$html .=
+''; } \$html .= ''; if (\$allowSelect || \$allowNew || \$allowEdit ||
+\$allowClear) { \$html .= ''; } // Select foo button if (\$allowSelect)
+{ \$html .= '' . '[]{.icon-file aria-hidden="true"} ' .
+Text::\_('JSELECT') . '
+
+'; } // Clear foo button if (\$allowClear) { \$html .= '' .
+'[]{.icon-remove aria-hidden="true"}' . Text::\_('JCLEAR') . '
+
+'; } if (\$allowSelect || \$allowNew || \$allowEdit || \$allowClear) {
+\$html .= ''; } // Select foo modal if (\$allowSelect) { \$html .=
+HTMLHelper::\_( 'bootstrap.renderModal', 'ModalSelect' . \$modalId,
+array( 'title' =&gt; \$modalTitle, 'url' =&gt; \$urlSelect, 'height'
+=&gt; '400px', 'width' =&gt; '800px', 'bodyHeight' =&gt; 70,
+'modalWidth' =&gt; 80, 'footer' =&gt; '[' .
+Text::\_('JLIB\_HTML\_BEHAVIOR\_CLOSE') . ']{.btn .btn-secondary}', ) );
+} // Note: class='required' for client side validation. \$class =
+\$this-&gt;required ? ' class="required modal-value"' : ''; \$html .=
+''; return \$html; } /\*\* \* Method to get the field label markup. \*
+\* @return string The field label markup. \* \* @since 1.0 \*/ protected
+function getLabel() { return str\_replace(\$this-&gt;id, \$this-&gt;id .
+'\_name', parent::getLabel()); } }
+
+=== Creating administrator/components/com\_foos/Model/FooModel.php ===
+The `administrator/components/com_foos/Model/FooModel.php` file is the
+model for a foo item. ==== Completed
+administrator/components/com\_foos/Model/FooModel.php file ==== The code
+for the `administrator/components/com_foos/Model/FooModel.php` file is
+as follows:
+
+loadForm('com\_foos.foo', 'foo', array('control' =&gt; 'jform',
+'load\_data' =&gt; \$loadData)); if (empty(\$form)) { return false; }
+return \$form; } /\*\* \* Method to get the data that should be injected
+in the form. \* \* @return mixed The data for the form. \* \* @since 1.0
+\*/ protected function loadFormData() { \$app =
+Factory::getApplication(); \$data = \$this-&gt;getItem();
+\$this-&gt;preprocessData('com\_foos.foo', \$data); return \$data; } }
+
+=== Changing administrator/components/com\_foos/View/Foos/HtmlView.php
+=== The `administrator/components/com_foos/View/Foos/HtmlView.php` file
+is .... ==== Completed
+administrator/components/com\_foos/View/Foos/HtmlView.php file ==== The
+code for the `administrator/components/com_foos/View/Foos/HtmlView.php`
+file is as follows:
+
+=== Changing administrator/components/com\_foos/tmpl/foos/default.php
+=== The `administrator/components/com_foos/tmpl/foos/default.php` file
+is .... ==== Completed
+administrator/components/com\_foos/tmpl/foos/default.php file ==== The
+code for the `administrator/components/com_foos/tmpl/foos/default.php`
+file is as follows:
+
+=== Creating administrator/components/com\_foos/Table/FooTable.php ===
+The `administrator/components/com_foos/Table/FooTable.php` file is ....
+==== Completed administrator/components/com\_foos/Table/FooTable.php
+file ==== The code for the
+`administrator/components/com_foos/Table/FooTable.php` file is as
+follows:
+
+typeAlias = 'com\_foos.foo';
+parent::\_\_construct('\#\_\_foos\_details', 'id', \$db); } }
+
+=== Changing administrator/components/com\_foos/foos.xml === The
+`administrator/components/com_foos/foos.xml` file is .... ==== Completed
+administrator/components/com\_foos/foos.xml file ==== The code for the
+`administrator/components/com_foos/foos.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 7.0.0
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+sql/install.mysql.utf8.sql sql/uninstall.mysql.utf8.sql Controller Model
+View tmpl js
+
+COM\_FOOS
+
+COM\_FOOS
+
+foos.xml Controller Extension Field Model Service Table View forms
+services sql tmpl
+
+=== Creating administrator/components/com\_foos/forms/foo.xml === The
+`administrator/components/com_foos/forms/foo.xml` file is .... ====
+Completed administrator/components/com\_foos/forms/foo.xml file ==== The
+code for the `administrator/components/com_foos/forms/foo.xml` file is
+as follows:
+
+=== Changing components/com\_foos/Model/FooModel.php === The
+`components/com_foos/Model/FooModel.php` file is .... ==== Completed
+components/com\_foos/Model/FooModel.php file ==== The code for the
+`components/com_foos/Model/FooModel.php` file is as follows:
+
+input-&gt;getInt('id'); if (\$this-&gt;\_item === null) {
+\$this-&gt;\_item = array(); } if (!isset(\$this-&gt;\_item\[\$pk\])) {
+try { \$db = \$this-&gt;getDbo(); \$query = \$db-&gt;getQuery(true);
+\$query-&gt;select('\*')
+-&gt;from(\$db-&gt;quoteName('\#\_\_foos\_details', 'a'))
+-&gt;where('a.id = ' . (int) \$pk); \$db-&gt;setQuery(\$query); \$data =
+\$db-&gt;loadObject(); if (empty(\$data)) { throw new
+\\Exception(Text::\_('COM\_FOOS\_ERROR\_FOO\_NOT\_FOUND'), 404); }
+\$this-&gt;\_item\[\$pk\] = \$data; } catch (\\Exception \$e) {
+\$this-&gt;setError(\$e); \$this-&gt;\_item\[\$pk\] = false; } } return
+\$this-&gt;\_item\[\$pk\]; } }
+
+=== Changing administrator/components/com\_foos/View/Foos/HtmlView.php
+=== The `administrator/components/com_foos/View/Foos/HtmlView.php` file
+is .... ==== Completed
+administrator/components/com\_foos/View/Foos/HtmlView.php file ==== The
+code for the `administrator/components/com_foos/View/Foos/HtmlView.php`
+file is as follows:
+
+items = \$this-&gt;get('Items'); \$this-&gt;addToolbar(); return
+parent::display(\$tpl); } /\*\* \* Add the page title and toolbar. \* \*
+@return void \* \* @since 1.0 \*/ protected function addToolbar() { //
+Get the toolbar object instance \$toolbar =
+Toolbar::getInstance('toolbar');
+ToolbarHelper::title(Text::\_('COM\_FOOS\_MANAGER\_FOOS'), 'address
+foo'); \$toolbar-&gt;addNew('foo.add'); } }
+
+=== Changing components/com\_foos/View/Foo/HtmlView.php === The
+`components/com_foos/View/Foo/HtmlView.php` file is .... ==== Completed
+components/com\_foos/View/Foo/HtmlView.php file ==== The code for the
+`components/com_foos/View/Foo/HtmlView.php` file is as follows:
+
+item = \$this-&gt;get('Item'); return parent::display(\$tpl); } }
+
+=== Creating administrator/components/com\_foos/tmpl/foo/edit.php ===
+The `administrator/components/com_foos/tmpl/foo/edit.php` file is ....
+==== Completed administrator/components/com\_foos/tmpl/foo/edit.php file
+==== The code for the `components/com_foos/tmpl/foos/edit.php` file is
+as follows:
+
+input; // In case of modal \$isModal = \$input-&gt;get('layout') ==
+'modal' ? true : false; \$layout = \$isModal ? 'modal' : 'edit'; \$tmpl
+= \$isModal || \$input-&gt;get('tmpl', '', 'cmd') === 'component' ?
+'&tmpl=component' : ''; ?&gt;
+
+getForm()-&gt;renderField('name'); ?&gt;
+
+=== Creating Creating
+administrator/components/com\_foos/tmpl/foo/modal.php === The
+`Creating administrator/components/com_foos/tmpl/foo/modal.php` file is
+.... ==== Completed Creating
+administrator/components/com\_foo/tmpl/foos/modal.php file ==== The code
+for the `Creating components/com_foos/tmpl/foo/modal.php` file is as
+follows:
+
+<div class="container-popup">
+
+setLayout('edit'); ?&gt;
+loadTemplate(); ?&gt;
+
+</div>
+
+=== Changing components/com\_foos/tmpl/foo/default.php === The
+`components/com_foos/tmpl/foo/default.php` file is .... ==== Completed
+components/com\_foos/tmpl/foo/default.php file ==== The code for the
+`components/com_foos/tmpl/foo/default.php` file is as follows:
+
+item-&gt;name;
+
+=== Creating administrator/components/com\_foos/tmpl/foos/modal.php ===
+The `administrator/components/com_foos/tmpl/foos/modal.php` file is ....
+==== Completed administrator/components/com\_foos/tmpl/foos/modal.php
+file ==== The code for the
+`administrator/components/com_foos/tmpl/foos/modal.php` file is as
+follows:
+
+'auto', 'relative' =&gt; true)); \$function =
+\$app-&gt;input-&gt;getCmd('function', 'jSelectFoos'); \$onclick =
+\$this-&gt;escape(\$function); ?&gt;
+
+<div class="container-popup">
+
+items)) : ?&gt;
+<div class="alert alert-warning">
+
+</div>
+
+'icon-trash', 0 =&gt; 'icon-unpublish', 1 =&gt; 'icon-publish', 2 =&gt;
+'icon-archive', ); ?&gt;
+items as \$i =&gt; \$item) : ?&gt;
+escape(\$item-&gt;name); ?&gt;
+id; ?&gt;
+
+</div>
+
+=== Changing components/com\_foos/tmpl/foo/default.php === The
+`components/com_foos/tmpl/foo/default.php` file is .... ==== Completed
+components/com\_foos/tmpl/foo/default.php file ==== The code for the
+`components/com_foos/tmpl/foo/default.php` file is as follows:
+
+item-&gt;name;
+
+=== Changing components/com\_foos/tmpl/foo/default.xml === The
+`components/com_foos/tmpl/foo/default.xml` file is .... ==== Completed
+components/com\_foos/tmpl/foo/default.xml file ==== The code for the
+`components/com_foos/tmpl/foo/default.xml` file is as follows:
+
+COM\_FOOS\_FOO\_VIEW\_DEFAULT\_DESC
+
+=== Creating media/com\_foos/js/admin-foos-modal.js === The
+`media/com_foos/js/admin-foos-modal.js` file is .... ==== Completed
+media/com\_foos/js/admin-foos-modal.js file ==== The code for the
+`media/com_foos/js/admin-foos-modal.js` file is as follows:
+
+(function () { 'use strict'; /\*\* \* Javascript to insert the link \*
+View element calls jSelectFoo when a foo is clicked \* jSelectFoo
+creates the link tag, sends it to the editor, \* and closes the select
+frame. \*/ window.jSelectFoo = function (id, title, catid, object, link,
+lang) { var hreflang = ''; if (!Joomla.getOptions('xtd-foos')) { //
+Something went wrong window.parent.Joomla.Modal.getCurrent().close();
+return false; } var \_Joomla\$getOptions =
+Joomla.getOptions('xtd-foos'), editor = \_Joomla\$getOptions.editor; if
+(lang !== '') { hreflang = "hreflang = \\"".concat(lang, "\\""); } var
+tag = "[").concat(title, "](\%22%22).concat(link,)");
+window.parent.Joomla.editors.instances\[editor\].replaceSelection(tag);
+window.parent.Joomla.Modal.getCurrent().close(); return true; };
+document.addEventListener('DOMContentLoaded', function () { // Get the
+elements var elements = document.querySelectorAll('.select-link'); for
+(var i = 0, l = elements.length; l &gt; i; i += 1) { // Listen for click
+event elements\[i\].addEventListener('click', function (event) {
+event.preventDefault(); var functionName =
+event.target.getAttribute('data-function'); if (functionName ===
+'jSelectFoo') { // Used in xtd\_foos
+window\[functionName\](event.target.getAttribute('data-id'),
+event.target.getAttribute('data-title'), null, null,
+event.target.getAttribute('data-uri'),
+event.target.getAttribute('data-language'), null); } else { // Used in
+com\_menus
+window.parent\[functionName\](event.target.getAttribute('data-id'),
+event.target.getAttribute('data-title'), null, null,
+event.target.getAttribute('data-uri'),
+event.target.getAttribute('data-language'), null); } if
+(window.parent.Joomla.Modal) {
+window.parent.Joomla.Modal.getCurrent().close(); } }); } }); })();
+
+== Test your component == This chapter contains a lot of work. It is the
+most extensive chapter in this tutorial. Now you can zip all files and
+install them via Joomla Extension Manager. After that you
+\[\[File:as\_j4\_t\_7\_1.png|700px\]\]
+\[\[File:as\_j4\_t\_7\_2.png|700px\]\]
+\[\[File:as\_j4\_t\_7\_3.png|700px\]\]
+\[\[File:as\_j4\_t\_7\_4.png|700px\]\]
+\[\[File:as\_j4\_t\_7\_5.png|700px\]\]
+\[\[File:as\_j4\_t\_7\_6.png|700px\]\]
+\[\[File:as\_j4\_t\_7\_7.png|700px\]\] == Component Contents == At this
+point in the tutorial, your component should contain the following
+files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- | 7 | administrator/components/com\_foos/Controller/FooController.php
+| this is the entry point to the Foo component | new |- | 1 |
+administrator/components/com\_foos/Extension/FoosComponent.php | the
+interface BootableExtensionInterface where a component class can load
+its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Field/FooField.php | the interface
+BootableExtensionInterface where a component class can load its internal
+class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | new |- | 7 |
+administrator/components/com\_foos/Model/FooModel.php | this is the
+model of the Foo component item | new |- | 6 |
+administrator/components/com\_foos/Model/FoosModel.php | this is the
+model of the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 7 | administrator/components/com\_foos/Table/FooTable.php
+| the database table | new |- | 1 |
+administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | changed |- | 1 |
+administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+changed |- | 6 |
+administrator/components/com\_foos/sql/install.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 6 |
+administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 7 |
+administrator/components/com\_foos/forms/foo.xml | the default form in
+the back end | new |- | 7 |
+administrator/components/com\_foos/tmpl/foo/edit.php | the default view
+in the back end | new |- | 7 |
+administrator/components/com\_foos/tmpl/foo/modal.php | the default view
+in the back end | new |- | 1 |
+administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | changed |- | 7 |
+administrator/components/com\_foos/tmpl/foos/modal.php | the default
+view in the back end | new |- |1
+|administrator/components/com\_foos/foos.xml |this is an XML (manifest)
+file that tells Joomla! how to install our component. | changed |- | 1
+|administrator/components/com\_foos/script.php | the installer script |
+unchanged |- | 2 | components/com\_foos/Controller/DisplayController.php
+| this is the frond end entry point to the Foo component | unchanged |-
+| 4 | components/com\_foos/Model/FooModel.php | this is the frond end
+model for the Foo component | changed |- | 2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | changed |- | 7 |
+components/com\_foos/View/Foos/HtmlView.php | file representing the view
+in the frond end | new |- | 2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | changed |- | 3 | components/com\_foos/tmpl/foo/default.xml |
+the xml for the menu item | changed |- | 7 |
+media/com\_foos/js/admin-foos-modal.js | the javascript file | new |- |}
+== Conclusion == = Using languages files - Part 8 = == Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla!
+4.0.0-alpha11-dev) == File Structure == === Changing
+administrator/components/com\_foos/foos.xml === The
+`administrator/components/com_foos/foos.xml` file is .... ==== Completed
+administrator/components/com\_foos/foos.xml file ==== The code for the
+`administrator/components/com_foos/foos.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 8.0.0
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+sql/install.mysql.utf8.sql sql/uninstall.mysql.utf8.sql Controller Model
+View tmpl language js
+
+COM\_FOOS
+
+COM\_FOOS
+
+foos.xml Controller Extension Model Service View services tmpl sql
+language
+
+=== Changing components/com\_foos/tmpl/foo/default.php === The
+`components/com_foos/tmpl/foo/default.php` file is .... ==== Completed
+components/com\_foos/tmpl/foo/default.php file ==== The code for the
+`components/com_foos/tmpl/foo/default.php` file is as follows:
+
+item-&gt;name;
+
+=== Creating components/com\_foos/language/en-GB/en-GB.com\_foo.ini ===
+The `components/com_foos/language/en-GB/en-GB.com_foo.ini` file is ....
+==== Completed components/com\_foos/language/en-GB/en-GB.com\_foo.ini
+file ==== The code for the
+`components/com_foos/language/en-GB/en-GB.com_foo.ini` file is as
+follows:
+
+COM\_FOOS\_NAME="Name: "
+
+=== Creating
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foo.ini ===
+The `administrator/components/com_foos/language/en-GB/en-GB.com_foo.ini`
+file is .... ==== Completed
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foo.ini
+file ==== The code for the
+`administrator/components/com_foos/language/en-GB/en-GB.com_foo.ini`
+file is as follows:
+
+COM\_FOOS="\[PROJECT\_NAME\]" COM\_FOOS\_CONFIGURATION="Foo Options"
+COM\_FOOS\_MANAGER\_FOO\_NEW="New" COM\_FOOS\_MANAGER\_FOO\_EDIT="Edit"
+COM\_FOOS\_MANAGER\_FOOS="Foo Manager"
+COM\_FOOS\_TABLE\_TABLEHEAD\_NAME="Name"
+COM\_FOOS\_TABLE\_TABLEHEAD\_ID="ID"
+COM\_FOOS\_ERROR\_FOO\_NOT\_FOUND="Foo not found"
+COM\_FOOS\_FIELD\_NAME\_LABEL="Name"
+
+=== Creating
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foo.sys.ini
+=== The
+`administrator/components/com_foos/language/en-GB/en-GB.com_foo.sys.ini`
+file is .... ==== Completed
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foo.sys.ini
+file ==== The code for the
+`administrator/components/com_foos/language/en-GB/en-GB.com_foo.sys.ini`
+file is as follows:
+
+COM\_FOOS="\[PROJECT\_NAME\]" COM\_FOOS\_XML\_DESCRIPTION="Foo
+Component" COM\_FOOS\_INSTALLERSCRIPT\_PREFLIGHT="
+
+Anything here happens before the installation/update/uninstallation of
+the component
+
+" COM\_FOOS\_INSTALLERSCRIPT\_UPDATE="
+
+The component has been updated
+
+" COM\_FOOS\_INSTALLERSCRIPT\_UNINSTALL="
+
+The component has been uninstalled
+
+" COM\_FOOS\_INSTALLERSCRIPT\_INSTALL="
+
+The component has been installed
+
+" COM\_FOOS\_INSTALLERSCRIPT\_POSTFLIGHT="
+
+Anything here happens after the installation/update/uninstallation of
+the component
+
+" COM\_FOOS\_FOO\_VIEW\_DEFAULT\_TITLE="Single Foo"
+COM\_FOOS\_FOO\_VIEW\_DEFAULT\_DESC="This links to the information for
+one foo." COM\_FOOS\_SELECT\_FOO\_LABEL="Select a foo"
+COM\_FOOS\_CHANGE\_FOO="Change a foo" COM\_FOOS\_SELECT\_A\_FOO="Select
+a foo"
+
+== Test your component == Now you can zip all files and install them via
+Joomla Extension Manager. After that, all language strings are
+translated for all installed languages.
+\[\[File:as\_j4\_t\_8\_1.png|700px\]\]
+\[\[File:as\_j4\_t\_8\_2.png|700px\]\] == Component Contents == At this
+point in the tutorial, your component should contain the following
+files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- | 7 | administrator/components/com\_foos/Controller/FooController.php
+| this is the entry point to the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Extension/FoosComponent.php | the
+interface BootableExtensionInterface where a component class can load
+its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Field/FooField.php | the interface
+BootableExtensionInterface where a component class can load its internal
+class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Model/FooModel.php | this is the
+model of the Foo component item | unchanged |- | 6 |
+administrator/components/com\_foos/Model/FoosModel.php | this is the
+model of the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 7 | administrator/components/com\_foos/Table/FooTable.php
+| the database table | unchanged |- | 1 |
+administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 6 |
+administrator/components/com\_foos/sql/install.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 6 |
+administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 7 |
+administrator/components/com\_foos/forms/foo.xml | the default form in
+the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foo/edit.php | the default view
+in the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foo/modal.php | the default view
+in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foos/modal.php | the default
+view in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/foos.xml | this is an XML (manifest)
+file that tells Joomla! how to install our component. | changed |- | 1 |
+administrator/components/com\_foos/script.php | the installer script |
+unchanged |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini |
+the language file | new |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini
+| the language file | new |- | 2 |
+components/com\_foos/Controller/DisplayController.php | this is the
+frond end entry point to the Foo component | unchanged |- | 4 |
+components/com\_foos/Model/FooModel.php | this is the frond end model
+for the Foo component | unchanged |- | 2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 7 |
+components/com\_foos/View/Foos/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | changed |- | 3 | components/com\_foos/tmpl/foo/default.xml |
+the xml for the menu item | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.ini | the language
+file | new |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini | the
+language file | new |- | 7 | media/com\_foos/js/admin-foos-modal.js |
+the javascript file | unchanged |- |} == Conclusion == = Adding
+configuration - Part 9 = == Requirements == You need Joomla! 4.x for
+this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev) ==
+File Structure == === Creating
+administrator/components/com\_foos/config.php === The
+`administrator/components/com_foos/config.php` file is .... ====
+Completed administrator/components/com\_foos/config.php file ==== The
+code for the `administrator/components/com_foos/config.php` file is as
+follows:
+
+JNO JYES
+
+=== Changing administrator/components/com\_foos/foos.xml === The
+`administrator/components/com_foos/foos.xml` file is .... ==== Completed
+administrator/components/com\_foos/foos.xml file ==== The code for the
+`administrator/components/com_foos/foos.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 9.0.0
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+sql/install.mysql.utf8.sql sql/uninstall.mysql.utf8.sql Controller Model
+View tmpl language js
+
+COM\_FOOS
+
+COM\_FOOS
+
+config.xml foos.xml Controller Extension Model Service View services
+tmpl sql language
+
+=== Changing
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+=== The
+`administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini`
+file is .... ==== Completed
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+file ==== The code for the
+`administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini`
+file is as follows:
+
+COM\_FOOS="\[PROJECT\_NAME\]" COM\_FOOS\_CONFIGURATION="Foo Options"
+COM\_FOOS\_MANAGER\_FOO\_NEW="New" COM\_FOOS\_MANAGER\_FOO\_EDIT="Edit"
+COM\_FOOS\_MANAGER\_FOOS="Foo Manager"
+COM\_FOOS\_TABLE\_TABLEHEAD\_NAME="Name"
+COM\_FOOS\_TABLE\_TABLEHEAD\_ID="ID"
+COM\_FOOS\_ERROR\_FOO\_NOT\_FOUND="Foo not found"
+COM\_FOOS\_FIELD\_NAME\_LABEL="Name"
+COM\_FOOS\_FIELD\_FOO\_SHOW\_CATEGORY\_LABEL="Show name label"
+COM\_FOOS\_FIELD\_CONFIG\_INDIVIDUAL\_FOO\_DESC="These settings apply
+for all foo." COM\_FOOS\_FIELD\_CONFIG\_INDIVIDUAL\_FOO\_DISPLAY="Foo"
+
+=== Changing administrator/components/com\_foos/Model/FooModel.php ===
+The `administrator/components/com_foos/Model/FooModel.php` file is ....
+==== Completed administrator/components/com\_foos/Model/FooModel.php
+file ==== The code for the
+`administrator/components/com_foos/Model/FooModel.php` file is as
+follows:
+
+=== Changing administrator/components/com\_foos/View/Foos/HtmlView.php
+=== The `administrator/components/com_foos/View/Foos/HtmlView.php` file
+is .... ==== Completed
+administrator/components/com\_foos/View/Foos/HtmlView.php file ==== The
+code for the `administrator/components/com_foos/View/Foos/HtmlView.php`
+file is as follows:
+
+items = \$this-&gt;get('Items'); \$this-&gt;addToolbar(); return
+parent::display(\$tpl); } /\*\* \* Add the page title and toolbar. \* \*
+@return void \* \* @since 1.0 \*/ protected function addToolbar() { //
+Get the toolbar object instance \$toolbar =
+Toolbar::getInstance('toolbar');
+ToolbarHelper::title(Text::\_('COM\_FOOS\_MANAGER\_FOOS'), 'address
+foo'); \$toolbar-&gt;addNew('foo.add');
+\$toolbar-&gt;preferences('com\_foos'); } }
+
+=== Changing components/com\_foos/Model/FooModel.php === The
+`components/com_foos/Model/FooModel.php` file is .... ==== Completed
+components/com\_foos/Model/FooModel.php file ==== The code for the
+`components/com_foos/Model/FooModel.php` file is as follows:
+
+input-&gt;getInt('id'); if (\$this-&gt;\_item === null) {
+\$this-&gt;\_item = array(); } if (!isset(\$this-&gt;\_item\[\$pk\])) {
+try { \$db = \$this-&gt;getDbo(); \$query = \$db-&gt;getQuery(true);
+\$query-&gt;select('\*')
+-&gt;from(\$db-&gt;quoteName('\#\_\_foos\_details', 'a'))
+-&gt;where('a.id = ' . (int) \$pk); \$db-&gt;setQuery(\$query); \$data =
+\$db-&gt;loadObject(); if (empty(\$data)) { throw new
+\\Exception(Text::\_('COM\_FOOS\_ERROR\_FOO\_NOT\_FOUND'), 404); }
+\$this-&gt;\_item\[\$pk\] = \$data; } catch (\\Exception \$e) {
+\$this-&gt;setError(\$e); \$this-&gt;\_item\[\$pk\] = false; } } return
+\$this-&gt;\_item\[\$pk\]; } /\*\* \* Method to auto-populate the model
+state. \* \* Note. Calling getState in this method will result in
+recursion. \* \* @return void \* \* @since 1.0 \*/ protected function
+populateState() { \$app = Factory::getApplication();
+\$this-&gt;setState('foo.id', \$app-&gt;input-&gt;getInt('id'));
+\$this-&gt;setState('params', \$app-&gt;getParams()); } }
+
+=== Changing components/com\_foos/tmpl/foo/default.php === The
+`components/com_foos/tmpl/foo/default.php` file is .... ==== Completed
+components/com\_foos/tmpl/foo/default.php file ==== The code for the
+`components/com_foos/tmpl/foo/default.php` file is as follows:
+
+get('State')-&gt;get('params')-&gt;get('show\_foo\_name\_label')) { echo
+Text::\_('COM\_FOOS\_NAME') . \$this-&gt;item-&gt;name; } else { echo
+\$this-&gt;item-&gt;name; }
+
+== Test your component == Now you can zip all files and install them via
+Joomla Extension Manager. Now you can globally use settings for your
+extension. You will find a button in the top right corner of the backend
+where you can open the options. \[\[File:as\_j4\_t\_9\_1.png|700px\]\]
+The options are the configuration that you can use for all the items in
+your extension. \[\[File:as\_j4\_t\_9\_2.png|700px\]\] == Component
+Contents == At this point in the tutorial, your component should contain
+the following files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- | 7 | administrator/components/com\_foos/Controller/FooController.php
+| this is the entry point to the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Extension/FoosComponent.php | the
+interface BootableExtensionInterface where a component class can load
+its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Field/FooField.php | the interface
+BootableExtensionInterface where a component class can load its internal
+class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Model/FooModel.php | this is the
+model of the Foo component item | changed |- | 6 |
+administrator/components/com\_foos/Model/FoosModel.php | this is the
+model of the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 7 | administrator/components/com\_foos/Table/FooTable.php
+| the database table | unchanged |- | 1 |
+administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | changed |- | 1 |
+administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 6 |
+administrator/components/com\_foos/sql/install.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 6 |
+administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 7 |
+administrator/components/com\_foos/forms/foo.xml | the default form in
+the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foo/edit.php | the default view
+in the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foo/modal.php | the default view
+in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foos/modal.php | the default
+view in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/foos.xml | this is an XML (manifest)
+file that tells Joomla! how to install our component. | unchanged |- | 1
+| administrator/components/com\_foos/script.php | the installer script |
+unchanged |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini |
+the language file | changed |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini
+| the language file | unchanged |- | 9 |
+administrator/components/com\_foos/config.php | the configuration | new
+|- | 2 | components/com\_foos/Controller/DisplayController.php | this is
+the frond end entry point to the Foo component | unchanged |- | 4 |
+components/com\_foos/Model/FooModel.php | this is the frond end model
+for the Foo component | changed |- | 2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 7 |
+components/com\_foos/View/Foos/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | changed |- | 3 | components/com\_foos/tmpl/foo/default.xml |
+the xml for the menu item | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.ini | the language
+file | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini | the
+language file | unchanged |- | 7 |
+media/com\_foos/js/admin-foos-modal.js | the javascript file | unchanged
+|- |} == Conclusion == You can now use your component very flexibly.
+Maybe you like to offer some settings only to a limited number of users.
+How to do this is the topic of the next chapter. = Adding ACL - Part 10
+= == Requirements == You need Joomla! 4.x for this tutorial (as of
+writing currently Joomla! 4.0.0-alpha11-dev) == File Structure == ===
+Creating administrator/components/com\_foos/access.xml === The
+`administrator/components/com_foos/access.xml` file is .... ====
+Completed administrator/components/com\_foos/access.xml file ==== The
+code for the `administrator/components/com_foos/access.xml` file is as
+follows:
+
+<div class="section" name="component">
+
+</div>
+
+=== Changing administrator/components/com\_foos/foos.xml === The
+`administrator/components/com_foos/foos.xml` file is .... ==== Completed
+administrator/components/com\_foos/foos.xml file ==== The code for the
+`administrator/components/com_foos/foos.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 1.10.0
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+sql/install.mysql.utf8.sql sql/uninstall.mysql.utf8.sql
+sql/updates/mysql Controller Model View tmpl language js
+
+COM\_FOOS
+
+COM\_FOOS
+
+access.xml config.xml foos.xml Controller Extension Model Service View
+services tmpl sql language
+
+=== Changing administrator/components/com\_foos/Model/FoosModel.php ===
+The `administrator/components/com_foos/Model/FoosModel.php` file is ....
+==== Completed administrator/components/com\_foos/Model/FoosModel.php
+file ==== The code for the
+`administrator/components/com_foos/Model/FoosModel.php` file is as
+follows:
+
+getDbo(); \$query = \$db-&gt;getQuery(true); // Select the required
+fields from the table. \$query-&gt;select(
+\$db-&gt;quoteName(array('a.id', 'a.name', 'a.access')) );
+\$query-&gt;from(\$db-&gt;quoteName('\#\_\_foos\_details', 'a')); //
+Join over the asset groups.
+\$query-&gt;select(\$db-&gt;quoteName('ag.title', 'access\_level'))
+-&gt;join( 'LEFT', \$db-&gt;quoteName('\#\_\_viewlevels', 'ag') . ' ON '
+. \$db-&gt;quoteName('ag.id') . ' = ' . \$db-&gt;quoteName('a.access')
+); return \$query; } }
+
+=== Changing administrator/components/com\_foos/View/Foos/HtmlView.php
+=== The `administrator/components/com_foos/View/Foos/HtmlView.php` file
+is .... ==== Completed
+administrator/components/com\_foos/View/Foos/HtmlView.php file ==== The
+code for the `administrator/components/com_foos/View/Foos/HtmlView.php`
+file is as follows:
+
+items = \$this-&gt;get('Items'); \$this-&gt;addToolbar(); return
+parent::display(\$tpl); } /\*\* \* Add the page title and toolbar. \* \*
+@return void \* \* @since 1.0 \*/ protected function addToolbar() {
+\$canDo = ContentHelper::getActions('com\_foos'); // Get the toolbar
+object instance \$toolbar = Toolbar::getInstance('toolbar');
+ToolbarHelper::title(Text::\_('COM\_FOOS\_MANAGER\_FOOS'), 'address
+foo'); if (\$canDo-&gt;get('core.create')) {
+\$toolbar-&gt;addNew('foo.add'); } if (\$canDo-&gt;get('core.options'))
+{ \$toolbar-&gt;preferences('com\_foos'); } } }
+
+=== Changing administrator/components/com\_foos/config.xml === The
+`administrator/components/com_foos/config.xml` file is .... ====
+Completed administrator/components/com\_foos/config.xml file ==== The
+code for the `administrator/components/com_foos/config.xml` file is as
+follows:
+
+JNO JYES
+
+=== Changing administrator/components/com\_foos/forms/foo.xml === The
+`administrator/components/com_foos/forms/foo.xml` file is .... ====
+Completed administrator/components/com\_foos/forms/foo.xml file ==== The
+code for the `administrator/components/com_foos/forms/foo.xml` file is
+as follows:
+
+=== Creating
+administrator/components/com\_foos/sql/updates/mysql/1.10.0.sql === The
+`administrator/components/com_foos/sql/updates/mysql/1.10.0.sql` file is
+.... ==== Completed
+administrator/components/com\_foos/sql/updates/mysql/1.10.0.sql file
+==== The code for the
+`administrator/components/com_foos/sql/updates/mysql/1.10.0.sql` file is
+as follows:
+
+ALTER TABLE \`\#\_\_foos\_details\` ADD COLUMN \`access\` int(10)
+unsigned NOT NULL DEFAULT 0 AFTER \`alias\`; ALTER TABLE
+\`\#\_\_foos\_details\` ADD KEY \`idx\_access\` (\`access\`);
+
+=== Changing administrator/components/com\_foos/tmpl/foo/edit.php ===
+The `administrator/components/com_foos/tmpl/foo/edit.php` file is ....
+==== Completed administrator/components/com\_foos/tmpl/foo/edit.php file
+==== The code for the
+`administrator/components/com_foos/tmpl/foo/edit.php` file is as
+follows:
+
+input; // In case of modal \$isModal = \$input-&gt;get('layout') ==
+'modal' ? true : false; \$layout = \$isModal ? 'modal' : 'edit'; \$tmpl
+= \$isModal || \$input-&gt;get('tmpl', '', 'cmd') === 'component' ?
+'&tmpl=component' : ''; ?&gt;
+
+getForm()-&gt;renderField('name'); ?&gt;
+
+getForm()-&gt;renderField('access'); ?&gt;
+
+=== Changing administrator/components/com\_foos/tmpl/foo/default.php ===
+The `administrator/components/com_foos/tmpl/foo/default.php` file is
+.... ==== Completed
+administrator/components/com\_foos/tmpl/foo/default.php file ==== The
+code for the `administrator/components/com_foos/tmpl/foo/default.php`
+file is as follows:
+
+<div class="row">
+
+<div class="col-md-10">
+
+<div id="j-main-container" class="j-main-container">
+
+items)) : ?&gt;
+<div class="alert alert-warning">
+
+</div>
+
+items); foreach (\$this-&gt;items as \$i =&gt; \$item) : ?&gt;
+<div>
+
+escape(\$item-&gt;name); ?&gt;
+
+</div>
+
+escape(\$item-&gt;name); ?&gt;
+access\_level; ?&gt;
+id; ?&gt;
+
+</div>
+
+</div>
+
+</div>
+
+== Note== In this tutorial we only cover MySql. How to handle postgrep
+you can find in the file
+joomla-cms4/administrator/manifests/files/joomla.xml == Test your
+component == Now you can zip all files and install them via Joomla
+Extension Manager. You have to run a new installation or fix the
+database due to the changes in the database. Now you can set the
+permissions for the component in the configuration (options).
+\[\[File:as\_j4\_t\_10\_1.png|700px\]\] In the overview in the backend
+you can see a new table column. This is a value entered if a specific
+authorization has been set for an item.
+\[\[File:as\_j4\_t\_10\_2.png|700px\]\] You can specify a special
+permission when editing a item. You can see that in the next picture.
+\[\[File:as\_j4\_t\_10\_3.png|700px\]\] == Example in Joomla! == == Note
+== == Component Contents == At this point in the tutorial, your
+component should contain the following files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- | 7 | administrator/components/com\_foos/Controller/FooController.php
+| this is the entry point to the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Extension/FoosComponent.php | the
+interface BootableExtensionInterface where a component class can load
+its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Field/FooField.php | the interface
+BootableExtensionInterface where a component class can load its internal
+class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Model/FooModel.php | this is the
+model of the Foo component item | unchanged |- | 6 |
+administrator/components/com\_foos/Model/FoosModel.php | this is the
+model of the Foo component | changed |- | 1 |
+administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 7 | administrator/components/com\_foos/Table/FooTable.php
+| the database table | unchanged |- | 1 |
+administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | changed |- | 1 |
+administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 6 |
+administrator/components/com\_foos/sql/install.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | changed |- | 6 |
+administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 7 |
+administrator/components/com\_foos/forms/foo.xml | the default form in
+the back end | changed |- | 7 |
+administrator/components/com\_foos/tmpl/foo/edit.php | the default view
+in the back end | changed |- | 7 |
+administrator/components/com\_foos/tmpl/foo/modal.php | the default view
+in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | changed |- | 7 |
+administrator/components/com\_foos/tmpl/foos/modal.php | the default
+view in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/foos.xml | this is an XML (manifest)
+file that tells Joomla! how to install our component. | changed |- | 1 |
+administrator/components/com\_foos/script.php | the installer script |
+unchanged |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini |
+the language file | unchanged |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini
+| the language file | unchanged |- | 9 |
+administrator/components/com\_foos/config.php | the configuration |
+changed |- | 10 | administrator/components/com\_foos/access.xml | the
+ACL file for permissen handling | new |- | 2 |
+components/com\_foos/Controller/DisplayController.php | this is the
+frond end entry point to the Foo component | unchanged |- | 4 |
+components/com\_foos/Model/FooModel.php | this is the frond end model
+for the Foo component | unchanged |- | 2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 7 |
+components/com\_foos/View/Foos/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | unchanged |- | 3 | components/com\_foos/tmpl/foo/default.xml
+| the xml for the menu item | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.ini | the language
+file | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini | the
+language file | unchanged |- | 7 |
+media/com\_foos/js/admin-foos-modal.js | the javascript file | unchanged
+|- |} == Conclusion == You can now accomplish many things with your
+component. It is very important, however, to make the component
+user-friendly. The next two chapters deal with validation for this
+reason. = Adding Server side validation - Part 11a = == Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla!
+4.0.0-alpha11-dev) == File Structure == === Create
+administrator/components/com\_foos/Rule/LetterRule.php === The
+`administrator/components/com_foos/Rule/LetterRule.php` file is ....
+==== Completed administrator/components/com\_foos/Rule/LetterRule.php
+file ==== The code for the
+`administrator/components/com_foos/Rule/LetterRule.php` file is as
+follows:
+
+=== Changing administrator/components/com\_foos/forms/foo.xml === The
+`administrator/components/com_foos/forms/foo.xml` file is .... ====
+Completed administrator/components/com\_foos/forms/foo.xml file ==== The
+code for the `administrator/components/com_foos/forms/foo.xml` file is
+as follows:
+
+=== Changing administrator/components/com\_foos/foo.xml === The
+`administrator/components/com_foos/foo.xml` file is .... ==== Completed
+administrator/components/com\_foos/foo.xml file ==== The code for the
+`administrator/components/com_foos/foo.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 1.11.0
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+sql/install.mysql.utf8.sql sql/uninstall.mysql.utf8.sql
+sql/updates/mysql Controller Model View tmpl language js
+
+COM\_FOOS
+
+COM\_FOOS
+
+access.xml config.xml foos.xml Controller Extension Model Rule Service
+View services tmpl sql language
+
+== Test your component == Now you can zip all files and install them via
+Joomla Extension Manager. After that you can == Example in Joomla! == If
+you want to save a letter in the name, this is not possible. You will
+now see an error message after clicking the Save button
+\[\[File:as\_j4\_t\_11a\_1.png|700px\]\] == Component Contents == At
+this point in the tutorial, your component should contain the following
+files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- | 7 | administrator/components/com\_foos/Controller/FooController.php
+| this is the entry point to the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Extension/FoosComponent.php | the
+interface BootableExtensionInterface where a component class can load
+its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Field/FooField.php | the interface
+BootableExtensionInterface where a component class can load its internal
+class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Model/FooModel.php | this is the
+model of the Foo component item | unchanged |- | 6 |
+administrator/components/com\_foos/Model/FoosModel.php | this is the
+model of the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 7 | administrator/components/com\_foos/Table/FooTable.php
+| the database table | unchanged |- | 1 |
+administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 6 |
+administrator/components/com\_foos/sql/install.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 6 |
+administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 7 |
+administrator/components/com\_foos/forms/foo.xml | the default form in
+the back end | changed |- | 7 |
+administrator/components/com\_foos/tmpl/foo/edit.php | the default view
+in the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foo/modal.php | the default view
+in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foos/modal.php | the default
+view in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/foos.xml | this is an XML (manifest)
+file that tells Joomla! how to install our component. | changed |- | 1 |
+administrator/components/com\_foos/script.php | the installer script |
+unchanged |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini |
+the language file | unchanged |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini
+| the language file | unchanged |- | 9 |
+administrator/components/com\_foos/config.php | the configuration |
+unchanged |- | 10 | administrator/components/com\_foos/access.xml | the
+ACL file for permissen handling | unchanged |- | 11a |
+administrator/components/com\_foos/Rule/LetterRule.php | the server side
+validation rule | new |- | 2 |
+components/com\_foos/Controller/DisplayController.php | this is the
+frond end entry point to the Foo component | unchanged |- | 4 |
+components/com\_foos/Model/FooModel.php | this is the frond end model
+for the Foo component | unchanged |- | 2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 7 |
+components/com\_foos/View/Foos/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | unchanged |- | 3 | components/com\_foos/tmpl/foo/default.xml
+| the xml for the menu item | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.ini | the language
+file | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini | the
+language file | unchanged |- | 7 |
+media/com\_foos/js/admin-foos-modal.js | the javascript file | unchanged
+|- |} == Conclusion == It is no longer possible to save an invalid
+value. In large forms, it is not user-friendly to display all errors at
+the very end. Therefore, server-side validation is often supplemented
+with client-side validation, which checks during input. You can read
+more on this topic in the next chapter. = Adding Client side validation
+- Part 11b = == Requirements == You need Joomla! 4.x for this tutorial
+(as of writing currently Joomla! 4.0.0-alpha11-dev) == File Structure ==
+=== Changing administrator/components/com\_foos/foo.xml === The
+`administrator/components/com_foos/foo.xml` file is .... ==== Completed
+administrator/components/com\_foos/foo.xml file ==== The code for the
+`administrator/components/com_foos/foo.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 1.11.1
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+sql/install.mysql.utf8.sql sql/uninstall.mysql.utf8.sql
+sql/updates/mysql Controller Model View tmpl language js
+
+COM\_FOOS
+
+COM\_FOOS
+
+access.xml config.xml foos.xml Controller Extension Model Rule Service
+View services tmpl sql language
+
+=== Create media/com\_foos/js/admin-foos-letter.js === The
+`media/com_foos/js/admin-foos-letter.js` file is .... ==== Completed
+media/com\_foos/js/admin-foos-letter.js file ==== The code for the
+`media/com_foos/js/admin-foos-letter.js` file is as follows:
+
+document.addEventListener('DOMContentLoaded', function(){ "use strict";
+if (document.formvalidator) {
+document.formvalidator.setHandler('letter', function (value) { var
+returnedValue = false; var regex = /\^(\[a-z\]+)\$/i; if
+(regex.test(value)) returnedValue = true; return returnedValue; });
+//console.log(document.formvalidator); } });
+
+=== Changing administrator/components/com\_foos/forms/foo.xml === The
+`administrator/components/com_foos/forms/foo.xml` file is .... ====
+Completed administrator/components/com\_foos/forms/foo.xml file ==== The
+code for the `administrator/components/com_foos/forms/foo.xml` file is
+as follows:
+
+=== Changing administrator/components/com\_foos/tmpl/foo/edit.php ===
+The `administrator/components/com_foos/tmpl/foo/edit.php` file is ....
+==== Completed administrator/components/com\_foos/tmpl/foo/edit.php file
+==== The code for the
+`administrator/components/com_foos/tmpl/foo/edit.php` file is as
+follows:
+
+'auto', 'relative' =&gt; true)); \$app = Factory::getApplication();
+\$input = \$app-&gt;input; // In case of modal \$isModal =
+\$input-&gt;get('layout') == 'modal' ? true : false; \$layout =
+\$isModal ? 'modal' : 'edit'; \$tmpl = \$isModal ||
+\$input-&gt;get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' :
+''; ?&gt;
+
+getForm()-&gt;renderField('name'); ?&gt;
+
+getForm()-&gt;renderField('access'); ?&gt;
+
+== Test your component == Now you can zip all files and install them via
+Joomla Extension Manager. If you now enter a number in the name field,
+you will see an error message immediately after leaving the field. For
+server-side validation, you only saw the error message after you
+submitted the form to the server using the Save button.
+\[\[File:as\_j4\_t\_11b\_1.png.png|700px\]\] == Example in Joomla ==
+/media/system/js/fields/passwordstrength.js
+/administrator/components/com\_users/forms/user.xml == Component
+Contents == At this point in the tutorial, your component should contain
+the following files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- | 7 | administrator/components/com\_foos/Controller/FooController.php
+| this is the entry point to the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Extension/FoosComponent.php | the
+interface BootableExtensionInterface where a component class can load
+its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Field/FooField.php | the interface
+BootableExtensionInterface where a component class can load its internal
+class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Model/FooModel.php | this is the
+model of the Foo component item | unchanged |- | 6 |
+administrator/components/com\_foos/Model/FoosModel.php | this is the
+model of the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 7 | administrator/components/com\_foos/Table/FooTable.php
+| the database table | unchanged |- | 1 |
+administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 6 |
+administrator/components/com\_foos/sql/install.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 6 |
+administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 7 |
+administrator/components/com\_foos/forms/foo.xml | the default form in
+the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foo/edit.php | the default view
+in the back end | changed |- | 7 |
+administrator/components/com\_foos/tmpl/foo/modal.php | the default view
+in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foos/modal.php | the default
+view in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/foos.xml | this is an XML (manifest)
+file that tells Joomla! how to install our component. | unchanged |- | 1
+| administrator/components/com\_foos/script.php | the installer script |
+unchanged |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini |
+the language file | unchanged |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini
+| the language file | unchanged |- | 9 |
+administrator/components/com\_foos/config.php | the configuration |
+unchanged |- | 10 | administrator/components/com\_foos/access.xml | the
+ACL file for permissen handling | unchanged |- | 11a |
+administrator/components/com\_foos/Rule/LetterRule.php | the server side
+validation rule | unchanged |- | 2 |
+components/com\_foos/Controller/DisplayController.php | this is the
+frond end entry point to the Foo component | unchanged |- | 4 |
+components/com\_foos/Model/FooModel.php | this is the frond end model
+for the Foo component | unchanged |- | 2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 7 |
+components/com\_foos/View/Foos/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | unchanged |- | 3 | components/com\_foos/tmpl/foo/default.xml
+| the xml for the menu item | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.ini | the language
+file | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini | the
+language file | unchanged |- | 7 |
+media/com\_foos/js/admin-foos-modal.js | the javascript file | unchanged
+|- | 11b | media/com\_foos/js/admin-foos-letter.js | the client side
+validation rule | new |- |} == Conclusion == You now know the validation
+very well. Next, we'll look at how you can create categories and easily
+map your items. = Adding categories - Part 12 = == Requirements == You
+need Joomla! 4.x for this tutorial (as of writing currently Joomla!
+4.0.0-alpha11-dev) == File Structure == === Changing
+administrator/components/com\_foos/Model/FoosModel.php === The
+`administrator/components/com_foos/Model/FoosModel.php` file is ....
+==== Completed administrator/components/com\_foos/Model/FoosModel.php
+file ==== The code for the
+`administrator/components/com_foos/Model/FoosModel.php` file is as
+follows:
+
+getDbo(); \$query = \$db-&gt;getQuery(true); // Select the required
+fields from the table. \$query-&gt;select(
+\$db-&gt;quoteName(array('a.id', 'a.name', 'a.catid', 'a.access')) );
+\$query-&gt;from(\$db-&gt;quoteName('\#\_\_foos\_details', 'a')); //
+Join over the asset groups.
+\$query-&gt;select(\$db-&gt;quoteName('ag.title', 'access\_level'))
+-&gt;join( 'LEFT', \$db-&gt;quoteName('\#\_\_viewlevels', 'ag') . ' ON '
+. \$db-&gt;quoteName('ag.id') . ' = ' . \$db-&gt;quoteName('a.access')
+); // Join over the categories.
+\$query-&gt;select(\$db-&gt;quoteName('c.title', 'category\_title'))
+-&gt;join( 'LEFT', \$db-&gt;quoteName('\#\_\_categories', 'c') . ' ON '
+. \$db-&gt;quoteName('c.id') . ' = ' . \$db-&gt;quoteName('a.catid') );
+return \$query; } }
+
+=== Changing administrator/components/com\_foos/access.xml === The
+`administrator/components/com_foos/access.xml` file is .... ====
+Completed administrator/components/com\_foos/access.xml file ==== The
+code for the `administrator/components/com_foos/access.xml` file is as
+follows:
+
+<div class="section" name="component">
+
+</div>
+
+<div class="section" name="category">
+
+</div>
+
+=== Changing administrator/components/com\_foos/foos.xml === The
+`administrator/components/com_foos/foos.xml` file is .... ==== Completed
+administrator/components/com\_foos/foos.xml file ==== The code for the
+`administrator/components/com_foos/foos.xml` file is as follows:
+
+=== Changing administrator/components/com\_foos/forms/foo.xml === The
+`administrator/components/com_foos/forms/foo.xml` file is .... ====
+Completed administrator/components/com\_foos/forms/foo.xml file ==== The
+code for the `administrator/components/com_foos/forms/foo.xml` file is
+as follows:
+
+=== Changing administrator/components/com\_foos/sql/update/1.12.0.sql
+=== We will implement `state` later. The
+`administrator/components/com_foos/sql/update/1.12.0.sql` file is ....
+==== Completed administrator/components/com\_foos/sql/update/1.12.0.sql
+file ==== The code for the
+`administrator/components/com_foos/sql/update/1.12.0.sql` file is as
+follows:
+
+ALTER TABLE \`\#\_\_foos\_details\` ADD COLUMN \`catid\` int(11) NOT
+NULL DEFAULT 0 AFTER \`alias\`; ALTER TABLE \`\#\_\_foos\_details\` ADD
+COLUMN \`state\` tinyint(3) NOT NULL DEFAULT 0 AFTER \`alias\`; ALTER
+TABLE \`\#\_\_foos\_details\` ADD KEY \`idx\_catid\` (\`catid\`);
+
+=== Changing
+administrator/components/com\_foos/Extension/FoosComponent.php === The
+`administrator/components/com_foos/Extension/FoosComponent.php` file is
+.... ==== Completed
+administrator/components/com\_foos/Extension/FoosComponent.php file ====
+The code for the
+`administrator/components/com_foos/Extension/FoosComponent.php` file is
+as follows:
+
+getRegistry()-&gt;register('foosadministrator', new
+AdministratorService); } /\*\* \* Returns the table for the count items
+functions for the given section. \* \* @param string \$section The
+section \* \* @return string|null \* \* @since 1.0.0 \*/ protected
+function getTableNameForSection(string \$section = null) { return
+(\$section === 'category' ? 'categories' : 'foos\_details'); } }
+
+=== Changing administrator/components/com\_foos/tmpl/foo/edit.php ===
+The `administrator/components/com_foos/tmpl/foo/edit.php` file is ....
+==== Completed administrator/components/com\_foos/tmpl/foo/edit.php file
+==== The code for the
+`administrator/components/com_foos/tmpl/foo/edit.php` file is as
+follows:
+
+'auto', 'relative' =&gt; true)); \$app = Factory::getApplication();
+\$input = \$app-&gt;input; // In case of modal \$isModal =
+\$input-&gt;get('layout') == 'modal' ? true : false; \$layout =
+\$isModal ? 'modal' : 'edit'; \$tmpl = \$isModal ||
+\$input-&gt;get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' :
+''; ?&gt;
+
+getForm()-&gt;renderField('name'); ?&gt;
+
+getForm()-&gt;renderField('access'); ?&gt;
+
+getForm()-&gt;renderField('catid'); ?&gt;
+
+=== Changing administrator/components/com\_foos/tmpl/foos/default.php
+=== The `administrator/components/com_foos/tmpl/foos/default.php` file
+is .... ==== Completed
+administrator/components/com\_foos/tmpl/foos/default.php file ==== The
+code for the `administrator/components/com_foos/tmpl/foos/default.php`
+file is as follows:
+
+<div class="row">
+
+<div class="col-md-10">
+
+<div id="j-main-container" class="j-main-container">
+
+items)) : ?&gt;
+<div class="alert alert-warning">
+
+</div>
+
+items); foreach (\$this-&gt;items as \$i =&gt; \$item) : ?&gt;
+<div>
+
+escape(\$item-&gt;name); ?&gt;
+
+</div>
+
+escape(\$item-&gt;name); ?&gt;
+<div class="small">
+
+escape(\$item-&gt;category\_title); ?&gt;
+
+</div>
+
+access\_level; ?&gt;
+id; ?&gt;
+
+</div>
+
+</div>
+
+</div>
+
+== Test your component == Now you can zip all files and install them via
+Joomla Extension Manager. You have to run a new installation or fix the
+database due to the changes in the database. After that you can It would
+be good, to set a default categorie while installing your component. You
+can do this in the file `script.php` == Example in Joomla! == In the
+sidebar you now see another menu item. With this menu item you can
+create categories for your extension.
+\[\[File:as\_j4\_t\_12b\_1.png|700px\]\] You can select this category
+when editing an item. \[\[File:as\_j4\_t\_12b\_2.png|700px\]\] If a
+category is assigned, it will be displayed in the overview.
+\[\[File:as\_j4\_t\_12b\_3.png|700px\]\] == Component Contents == At
+this point in the tutorial, your component should contain the following
+files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- | 7 | administrator/components/com\_foos/Controller/FooController.php
+| this is the entry point to the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Extension/FoosComponent.php | the
+interface BootableExtensionInterface where a component class can load
+its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | changed |- | 7 |
+administrator/components/com\_foos/Field/FooField.php | the interface
+BootableExtensionInterface where a component class can load its internal
+class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Model/FooModel.php | this is the
+model of the Foo component item | unchanged |- | 6 |
+administrator/components/com\_foos/Model/FoosModel.php | this is the
+model of the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 7 | administrator/components/com\_foos/Table/FooTable.php
+| the database table | unchanged |- | 1 |
+administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 6 |
+administrator/components/com\_foos/sql/install.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 6 |
+administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 7 |
+administrator/components/com\_foos/forms/foo.xml | the default form in
+the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foo/edit.php | the default view
+in the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foo/modal.php | the default view
+in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foos/modal.php | the default
+view in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/foos.xml | this is an XML (manifest)
+file that tells Joomla! how to install our component. | unchanged |- | 1
+| administrator/components/com\_foos/script.php | the installer script |
+unchanged |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini |
+the language file | unchanged |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini
+| the language file | unchanged |- | 9 |
+administrator/components/com\_foos/config.php | the configuration |
+unchanged |- | 10 | administrator/components/com\_foos/access.xml | the
+ACL file for permissen handling | unchanged |- | 11a |
+administrator/components/com\_foos/Rule/LetterRule.php | the server side
+validation rule | unchanged |- | 2 |
+components/com\_foos/Controller/DisplayController.php | this is the
+frond end entry point to the Foo component | unchanged |- | 4 |
+components/com\_foos/Model/FooModel.php | this is the frond end model
+for the Foo component | unchanged |- | 2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 7 |
+components/com\_foos/View/Foos/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | unchanged |- | 3 | components/com\_foos/tmpl/foo/default.xml
+| the xml for the menu item | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.ini | the language
+file | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini | the
+language file | unchanged |- | 7 |
+media/com\_foos/js/admin-foos-modal.js | the javascript file | unchanged
+|- | 11b | media/com\_foos/js/admin-foos-letter.js | the client side
+validation rule | unchanged |- |} == Conclusion == You can now classify
+the items into categories. Next, we'll look at how to change the state
+of an item. = Adding Published/Unpublished - Part 13 = == Requirements
+== You need Joomla! 4.x for this tutorial (as of writing currently
+Joomla! 4.0.0-alpha11-dev) == File Structure == === Creating
+administrator/components/com\_foos/Controller/FoosController.php === The
+`administrator/components/com_foos/Controller/FoosController.php` file
+is .... ==== Completed
+administrator/components/com\_foos/Controller/FoosController.php file
+==== The code for the
+`administrator/components/com_foos/Controller/FoosController.php` file
+is as follows:
+
+true)) { return parent::getModel(\$name, \$prefix, \$config); } }
+
+=== Changing administrator/components/com\_foos/Model/FoosModel.php ===
+The `administrator/components/com_foos/Model/FoosModel.php` file is ....
+==== Completed administrator/components/com\_foos/Model/FoosModel.php
+file ==== The code for the
+`administrator/components/com_foos/Model/FoosModel.php` file is as
+follows:
+
+getDbo(); \$query = \$db-&gt;getQuery(true); // Select the required
+fields from the table. \$query-&gt;select( \$db-&gt;quoteName( explode(
+', ', \$this-&gt;getState( 'list.select', 'a.id, a.name, a.catid' . ',
+a.access' . ', a.published' . ', a.publish\_up, a.publish\_down' ) ) )
+); \$query-&gt;from(\$db-&gt;quoteName('\#\_\_foos\_details', 'a')); //
+Join over the asset groups.
+\$query-&gt;select(\$db-&gt;quoteName('ag.title', 'access\_level'))
+-&gt;join( 'LEFT', \$db-&gt;quoteName('\#\_\_viewlevels', 'ag') . ' ON '
+. \$db-&gt;quoteName('ag.id') . ' = ' . \$db-&gt;quoteName('a.access')
+); // Join over the categories.
+\$query-&gt;select(\$db-&gt;quoteName('c.title', 'category\_title'))
+-&gt;join( 'LEFT', \$db-&gt;quoteName('\#\_\_categories', 'c') . ' ON '
+. \$db-&gt;quoteName('c.id') . ' = ' . \$db-&gt;quoteName('a.catid') );
+return \$query; } }
+
+=== Changing administrator/components/com\_foos/Table/FooTable.php ===
+The `administrator/components/com_foos/Table/FooTable.php` file is ....
+==== Completed administrator/components/com\_foos/Table/FooTable.php
+file ==== The code for the
+`administrator/components/com_foos/Table/FooTable.php` file is as
+follows:
+
+JPUBLISHED JUNPUBLISHED JARCHIVED JTRASHED
+
+=== Changing
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+=== The
+`administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini`
+file translation file. In this part you can learn how to use this with
+plural. ==== Completed
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+file ==== The code for the
+`administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini`
+file is as follows:
+
+COM\_FOOS="\[PROJECT\_NAME\]" COM\_FOOS\_CONFIGURATION="Foo Options"
+COM\_FOOS\_MANAGER\_FOO\_NEW="New" COM\_FOOS\_MANAGER\_FOO\_EDIT="Edit"
+COM\_FOOS\_MANAGER\_FOOS="Foo Manager"
+COM\_FOOS\_TABLE\_TABLEHEAD\_NAME="Name"
+COM\_FOOS\_TABLE\_TABLEHEAD\_ID="ID"
+COM\_FOOS\_ERROR\_FOO\_NOT\_FOUND="Foo not found"
+COM\_FOOS\_FIELD\_NAME\_LABEL="Name"
+COM\_FOOS\_FIELD\_FOO\_SHOW\_CATEGORY\_LABEL="Show name label"
+COM\_FOOS\_FIELD\_CONFIG\_INDIVIDUAL\_FOO\_DESC="These settings apply
+for all foo." COM\_FOOS\_FIELD\_CONFIG\_INDIVIDUAL\_FOO\_DISPLAY="Foo"
+COM\_FOOS\_FIELD\_PUBLISH\_DOWN\_LABEL="Finish Publishing"
+COM\_FOOS\_FIELD\_PUBLISH\_UP\_LABEL="Start Publishing"
+COM\_FOOS\_N\_ITEMS\_PUBLISHED="%d foos published."
+COM\_FOOS\_N\_ITEMS\_PUBLISHED\_1="%d foo published."
+COM\_FOOS\_N\_ITEMS\_UNPUBLISHED="%d foos unpublished."
+COM\_FOOS\_N\_ITEMS\_UNPUBLISHED\_1="%d foo unpublished."
+COM\_FOOS\_FOOS\_FIELD\_PUBLISH\_DOWN\_LABEL="Finish Publishing"
+COM\_FOOS\_FOOS\_FIELD\_PUBLISH\_UP\_LABEL="Start Publishing"
+COM\_FOOS\_FOOS\_N\_ITEMS\_PUBLISHED="%d foos published."
+COM\_FOOS\_FOOS\_N\_ITEMS\_PUBLISHED\_1="%d foo published."
+COM\_FOOS\_FOOS\_N\_ITEMS\_UNPUBLISHED="%d foos unpublished."
+COM\_FOOS\_FOOS\_N\_ITEMS\_UNPUBLISHED\_1="%d foo unpublished."
+
+=== Create administrator/components/com\_foos/sql/updates/1.13.0.sql ===
+The `administrator/components/com_foos/sql/updates/1.13.0.sql` file is
+.... ==== Completed
+administrator/components/com\_foos/sql/updates/1.13.0.sql file ==== The
+code for the `administrator/components/com_foos/sql/updates/1.13.0.sql`
+file is as follows:
+
+ALTER TABLE \`\#\_\_foos\_details\` ADD COLUMN \`published\` tinyint(1)
+NOT NULL DEFAULT 0 AFTER \`alias\`; ALTER TABLE \`\#\_\_foos\_details\`
+ADD COLUMN \`publish\_up\` datetime NOT NULL DEFAULT '0000-00-00
+00:00:00' AFTER \`alias\`; ALTER TABLE \`\#\_\_foos\_details\` ADD
+COLUMN \`publish\_down\` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+AFTER \`alias\`; ALTER TABLE \`\#\_\_foos\_details\` ADD KEY
+\`idx\_state\` (\`published\`);
+
+=== Changing administrator/components/com\_foos/tmpl/foo/edit.php ===
+The `administrator/components/com_foos/tmpl/foo/edit.php` file is ....
+==== Completed administrator/components/com\_foos/tmpl/foo/edit.php file
+==== The code for the
+`administrator/components/com_foos/tmpl/foo/edit.php` file is as
+follows:
+
+'auto', 'relative' =&gt; true)); \$app = Factory::getApplication();
+\$input = \$app-&gt;input; // In case of modal \$isModal =
+\$input-&gt;get('layout') == 'modal' ? true : false; \$layout =
+\$isModal ? 'modal' : 'edit'; \$tmpl = \$isModal ||
+\$input-&gt;get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' :
+''; ?&gt;
+
+getForm()-&gt;renderField('name'); ?&gt;
+
+getForm()-&gt;renderField('access'); ?&gt;
+
+getForm()-&gt;renderField('published'); ?&gt;
+
+getForm()-&gt;renderField('publish\_up'); ?&gt;
+
+getForm()-&gt;renderField('publish\_down'); ?&gt;
+
+getForm()-&gt;renderField('catid'); ?&gt;
+
+=== Changing administrator/components/com\_foos/tmpl/foos/default.php
+=== The `administrator/components/com_foos/tmpl/foos/default.php` file
+is .... ==== Completed
+administrator/components/com\_foos/tmpl/foos/default.php file ==== The
+code for the `administrator/components/com_foos/tmpl/foos/default.php`
+file is as follows:
+
+<div class="row">
+
+<div class="col-md-10">
+
+<div id="j-main-container" class="j-main-container">
+
+items)) : ?&gt;
+<div class="alert alert-warning">
+
+</div>
+
+items); foreach (\$this-&gt;items as \$i =&gt; \$item) : ?&gt;
+id); ?&gt;
+<div>
+
+escape(\$item-&gt;name); ?&gt;
+
+</div>
+
+escape(\$item-&gt;name); ?&gt;
+<div class="small">
+
+escape(\$item-&gt;category\_title); ?&gt;
+
+</div>
+
+access\_level; ?&gt;
+<div class="btn-group">
+
+published, \$i, 'foos.', \$canChange, 'cb', \$item-&gt;publish\_up,
+\$item-&gt;publish\_down); ?&gt;
+
+</div>
+
+id; ?&gt;
+
+</div>
+
+</div>
+
+</div>
+
+== Test your component == Now you can zip all files and install them via
+Joomla Extension Manager. You have to run a new installation or fix the
+database due to the changes in the database. After that you can ==
+Example in Joomla! == If you edit an item, you can now also specify the
+period to which it should be published.
+\[\[File:as\_j4\_t\_13\_1.png|700px\]\] In the overview you can see if
+an item is published or not. If you click the symbol the state is
+changed. \[\[File:as\_j4\_t\_13\_1.png|700px\]\] In category manager,
+the items are now also displayed with the correct state.
+\[\[File:as\_j4\_t\_13\_1.png|700px\]\] == Component Contents == At this
+point in the tutorial, your component should contain the following
+files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- | 7 | administrator/components/com\_foos/Controller/FooController.php
+| this is the entry point to the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Extension/FoosComponent.php | the
+interface BootableExtensionInterface where a component class can load
+its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Field/FooField.php | the interface
+BootableExtensionInterface where a component class can load its internal
+class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Model/FooModel.php | this is the
+model of the Foo component item | unchanged |- | 6 |
+administrator/components/com\_foos/Model/FoosModel.php | this is the
+model of the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 7 | administrator/components/com\_foos/Table/FooTable.php
+| the database table | unchanged |- | 1 |
+administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 6 |
+administrator/components/com\_foos/sql/install.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 6 |
+administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 7 |
+administrator/components/com\_foos/forms/foo.xml | the default form in
+the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foo/edit.php | the default view
+in the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foo/modal.php | the default view
+in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foos/modal.php | the default
+view in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/foos.xml | this is an XML (manifest)
+file that tells Joomla! how to install our component. | unchanged |- | 1
+| administrator/components/com\_foos/script.php | the installer script |
+unchanged |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini |
+the language file | unchanged |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini
+| the language file | unchanged |- | 9 |
+administrator/components/com\_foos/config.php | the configuration |
+unchanged |- | 10 | administrator/components/com\_foos/access.xml | the
+ACL file for permissen handling | unchanged |- | 11a |
+administrator/components/com\_foos/Rule/LetterRule.php | the server side
+validation rule | unchanged |- | 2 |
+components/com\_foos/Controller/DisplayController.php | this is the
+frond end entry point to the Foo component | unchanged |- | 4 |
+components/com\_foos/Model/FooModel.php | this is the frond end model
+for the Foo component | unchanged |- | 2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 7 |
+components/com\_foos/View/Foos/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | unchanged |- | 3 | components/com\_foos/tmpl/foo/default.xml
+| the xml for the menu item | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.ini | the language
+file | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini | the
+language file | unchanged |- | 7 |
+media/com\_foos/js/admin-foos-modal.js | the javascript file | unchanged
+|- | 11b | media/com\_foos/js/admin-foos-letter.js | the client side
+validation rule | unchanged |- |} == Conclusion == Now you can schedule
+the publication of your items. Now we continue with custom fields =
+Adding Custom Fields in the backend - Part 14a = == Requirements == You
+need Joomla! 4.x for this tutorial (as of writing currently Joomla!
+4.0.0-alpha11-dev) == File Structure == === Changing
+administrator/components/com\_foos/View/Foos/HtmlView.php === The
+`administrator/components/com_foos/View/Foos/HtmlView.php` file is ....
+==== Completed administrator/components/com\_foos/View/Foos/HtmlView.php
+file ==== The code for the
+`administrator/components/com_foos/View/Foos/HtmlView.php` file is as
+follows:
+
+items = \$this-&gt;get('Items'); \$this-&gt;addToolbar(); return
+parent::display(\$tpl); } /\*\* \* Add the page title and toolbar. \* \*
+@return void \* \* @since 1.0 \*/ protected function addToolbar() {
+FooHelper::addSubmenu('foos'); \$this-&gt;sidebar =
+\\JHtmlSidebar::render(); \$canDo =
+ContentHelper::getActions('com\_foos'); // Get the toolbar object
+instance \$toolbar = Toolbar::getInstance('toolbar');
+ToolbarHelper::title(Text::\_('COM\_FOOS\_MANAGER\_FOOS'), 'address
+foo'); if (\$canDo-&gt;get('core.create')) {
+\$toolbar-&gt;addNew('foo.add'); } if (\$canDo-&gt;get('core.options'))
+{ \$toolbar-&gt;preferences('com\_foos'); }
+HTMLHelper::\_('sidebar.setAction', 'index.php?option=com\_foos'); } }
+
+=== Changing administrator/components/com\_foos/access.xml === The
+`administrator/components/com_foos/access.xml` file is .... ====
+Completed administrator/components/com\_foos/access.xml file ==== The
+code for the `administrator/components/com_foos/access.xml` file is as
+follows:
+
+<div class="section" name="component">
+
+</div>
+
+<div class="section" name="category">
+
+</div>
+
+<div class="section" name="fieldgroup">
+
+</div>
+
+<div class="section" name="field">
+
+</div>
+
+=== Changing administrator/components/com\_foos/config.xml === The
+`administrator/components/com_foos/config.xml` file is .... ====
+Completed administrator/components/com\_foos/config.xml file ==== The
+code for the `administrator/components/com_foos/config.xml` file is as
+follows:
+
+JNO JYES JNO JYES
+
+=== Changing administrator/components/com\_foos/foos.xml === The
+`administrator/components/com_foos/foos.xml` file is .... ==== Completed
+administrator/components/com\_foos/foos.xml file ==== The code for the
+`administrator/components/com_foos/foos.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 1.14.0
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+sql/install.mysql.utf8.sql sql/uninstall.mysql.utf8.sql
+sql/updates/mysql Controller Model View tmpl language js
+
+COM\_FOOS
+
+COM\_FOOS
+
+JCATEGORY
+
+access.xml config.xml foos.xml Controller Extension Model Rule Service
+View services tmpl sql language
+
+=== Changing
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+=== The
+`administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini`
+file is .... ==== Completed
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+file ==== The code for the
+`administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini`
+file is as follows:
+
+COM\_FOOS="\[PROJECT\_NAME\]" COM\_FOOS\_CONFIGURATION="Foo Options"
+COM\_FOOS\_MANAGER\_FOO\_NEW="New" COM\_FOOS\_MANAGER\_FOO\_EDIT="Edit"
+COM\_FOOS\_MANAGER\_FOOS="Foo Manager"
+COM\_FOOS\_TABLE\_TABLEHEAD\_NAME="Name"
+COM\_FOOS\_TABLE\_TABLEHEAD\_ID="ID"
+COM\_FOOS\_ERROR\_FOO\_NOT\_FOUND="Foo not found"
+COM\_FOOS\_FIELD\_NAME\_LABEL="Name"
+COM\_FOOS\_FIELD\_FOO\_SHOW\_CATEGORY\_LABEL="Show name label"
+COM\_FOOS\_FIELD\_CONFIG\_INDIVIDUAL\_FOO\_DESC="These settings apply
+for all foo." COM\_FOOS\_FIELD\_CONFIG\_INDIVIDUAL\_FOO\_DISPLAY="Foo"
+COM\_FOOS\_FIELD\_PUBLISH\_DOWN\_LABEL="Finish Publishing"
+COM\_FOOS\_FIELD\_PUBLISH\_UP\_LABEL="Start Publishing"
+COM\_FOOS\_N\_ITEMS\_PUBLISHED="%d foos published."
+COM\_FOOS\_N\_ITEMS\_PUBLISHED\_1="%d foo published."
+COM\_FOOS\_N\_ITEMS\_UNPUBLISHED="%d foos unpublished."
+COM\_FOOS\_N\_ITEMS\_UNPUBLISHED\_1="%d foo unpublished."
+COM\_FOOS\_FOOS\_FIELD\_PUBLISH\_DOWN\_LABEL="Finish Publishing"
+COM\_FOOS\_FOOS\_FIELD\_PUBLISH\_UP\_LABEL="Start Publishing"
+COM\_FOOS\_FOOS\_N\_ITEMS\_PUBLISHED="%d foos published."
+COM\_FOOS\_FOOS\_N\_ITEMS\_PUBLISHED\_1="%d foo published."
+COM\_FOOS\_FOOS\_N\_ITEMS\_UNPUBLISHED="%d foos unpublished."
+COM\_FOOS\_FOOS\_N\_ITEMS\_UNPUBLISHED\_1="%d foo unpublished."
+COM\_FOOS\_EDIT\_FOO="Edit Foo" COM\_FOOS\_NEW\_FOO="New Foo"
+
+=== Changing administrator/components/com\_foos/tmpl/foo/edit.php ===
+The `administrator/components/com_foos/tmpl/foo/edit.php` file is ....
+==== Completed administrator/components/com\_foos/tmpl/foo/edit.php file
+==== The code for the
+`administrator/components/com_foos/tmpl/foo/edit.php` file is as
+follows:
+
+'auto', 'relative' =&gt; true)); \$app = Factory::getApplication();
+\$input = \$app-&gt;input; \$this-&gt;useCoreUI = true; // In case of
+modal \$isModal = \$input-&gt;get('layout') == 'modal' ? true : false;
+\$layout = \$isModal ? 'modal' : 'edit'; \$tmpl = \$isModal ||
+\$input-&gt;get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' :
+''; ?&gt;
+
+<div>
+
+'details')); ?&gt;
+item-&gt;id) ? Text::\_('COM\_FOOS\_NEW\_FOO') :
+Text::\_('COM\_FOOS\_EDIT\_FOO')); ?&gt;
+<div class="row">
+
+<div class="col-md-9">
+
+<div class="row">
+
+<div class="col-md-6">
+
+getForm()-&gt;renderField('name'); ?&gt;
+getForm()-&gt;renderField('access'); ?&gt;
+getForm()-&gt;renderField('published'); ?&gt;
+getForm()-&gt;renderField('publish\_up'); ?&gt;
+getForm()-&gt;renderField('publish\_down'); ?&gt;
+getForm()-&gt;renderField('catid'); ?&gt;
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+=== Changing administrator/components/com\_foos/tmpl/foos/default.php
+=== The `administrator/components/com_foos/tmpl/foos/default.php` file
+is .... ==== Completed
+administrator/components/com\_foos/tmpl/foos/default.php file ==== The
+code for the `administrator/components/com_foos/tmpl/foos/default.php`
+file is as follows:
+
+<div class="row">
+
+sidebar)) : ?&gt;
+<div id="j-sidebar-container" class="col-md-2">
+
+sidebar; ?&gt;
+
+</div>
+
+<div
+class="<?php if (!empty($this->sidebar)) {echo 'col-md-10'; } else { echo 'col-md-12'; } ?>">
+
+<div id="j-main-container" class="j-main-container">
+
+items)) : ?&gt;
+<div class="alert alert-warning">
+
+</div>
+
+items); foreach (\$this-&gt;items as \$i =&gt; \$item) : ?&gt;
+id); ?&gt;
+<div>
+
+escape(\$item-&gt;name); ?&gt;
+
+</div>
+
+escape(\$item-&gt;name); ?&gt;
+<div class="small">
+
+escape(\$item-&gt;category\_title); ?&gt;
+
+</div>
+
+access\_level; ?&gt;
+<div class="btn-group">
+
+published, \$i, 'foos.', \$canChange, 'cb', \$item-&gt;publish\_up,
+\$item-&gt;publish\_down); ?&gt;
+
+</div>
+
+id; ?&gt;
+
+</div>
+
+</div>
+
+</div>
+
+=== Creating administrator/components/com\_foos/Helper === The
+`administrator/components/com_foos/Helper` file is .... ==== Completed
+administrator/components/com\_foos/Helper file ==== The code for the
+`administrator/components/com_foos/Helper` file is as follows:
+
+get('custom\_fields\_enable', '1')) { \\JHtmlSidebar::addEntry(
+Text::\_('JGLOBAL\_FIELDS'),
+'index.php?option=com\_fields&context=com\_foos.foo', \$vName ==
+'fields.fields' ); \\JHtmlSidebar::addEntry(
+Text::\_('JGLOBAL\_FIELD\_GROUPS'),
+'index.php?option=com\_fields&view=groups&context=com\_foos.foo',
+\$vName == 'fields.groups' ); } } }
+
+== Test your component == Now you can zip all files and install them via
+Joomla Extension Manager. After that you have an option for activating
+custom fields in the options of your component.
+\[\[File:as\_j4\_t\_14\_1.png|700px\]\] If you activate the option for
+custom fields, then you see an submenu in the backend.
+\[\[File:as\_j4\_t\_14\_2.png|700px\]\] While editing an foo item, you
+see a tab, with all available custom fields for this item.
+\[\[File:as\_j4\_t\_14\_3.png|700px\]\] == Example in Joomla! == ==
+Component Contents == At this point in the tutorial, your component
+should contain the following files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- | 7 | administrator/components/com\_foos/Controller/FooController.php
+| this is the entry point to the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Extension/FoosComponent.php | the
+interface BootableExtensionInterface where a component class can load
+its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Field/FooField.php | the interface
+BootableExtensionInterface where a component class can load its internal
+class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Model/FooModel.php | this is the
+model of the Foo component item | unchanged |- | 6 |
+administrator/components/com\_foos/Model/FoosModel.php | this is the
+model of the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 7 | administrator/components/com\_foos/Table/FooTable.php
+| the database table | unchanged |- | 1 |
+administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 6 |
+administrator/components/com\_foos/sql/install.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 6 |
+administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 7 |
+administrator/components/com\_foos/forms/foo.xml | the default form in
+the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foo/edit.php | the default view
+in the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foo/modal.php | the default view
+in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foos/modal.php | the default
+view in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/foos.xml | this is an XML (manifest)
+file that tells Joomla! how to install our component. | unchanged |- | 1
+| administrator/components/com\_foos/script.php | the installer script |
+unchanged |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini |
+the language file | unchanged |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini
+| the language file | unchanged |- | 9 |
+administrator/components/com\_foos/config.php | the configuration |
+unchanged |- | 10 | administrator/components/com\_foos/access.xml | the
+ACL file for permissen handling | unchanged |- | 14a |
+administrator/components/com\_foos/Helper/FooHelper.php | the helper
+file | unchanged |- | 11a |
+administrator/components/com\_foos/Rule/LetterRule.php | the server side
+validation rule | unchanged |- | 2 |
+components/com\_foos/Controller/DisplayController.php | this is the
+frond end entry point to the Foo component | unchanged |- | 4 |
+components/com\_foos/Model/FooModel.php | this is the frond end model
+for the Foo component | unchanged |- | 2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 7 |
+components/com\_foos/View/Foos/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | unchanged |- | 3 | components/com\_foos/tmpl/foo/default.xml
+| the xml for the menu item | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.ini | the language
+file | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini | the
+language file | unchanged |- | 7 |
+media/com\_foos/js/admin-foos-modal.js | the javascript file | unchanged
+|- | 11b | media/com\_foos/js/admin-foos-letter.js | the client side
+validation rule | unchanged |- |} == Conclusion == You never know how to
+integrate custom fields in the backend into your component. In the next
+chapter, we'll look at how to display the values in the frontend. =
+Adding Custom Fields in the frontend - Part 14b = == Requirements == You
+need Joomla! 4.x for this tutorial (as of writing currently Joomla!
+4.0.0-alpha11-dev) == File Structure == === Changing
+administrator/components/com\_foos/foos.xml === The
+`administrator/components/com_foos/foos.xml` file is .... ==== Completed
+administrator/components/com\_foos/foos.xml file ==== The code for the
+`administrator/components/com_foos/foos.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 1.14.1
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+sql/install.mysql.utf8.sql sql/uninstall.mysql.utf8.sql
+sql/updates/mysql Controller Model View tmpl language js
+
+COM\_FOOS
+
+COM\_FOOS
+
+JCATEGORY
+
+access.xml config.xml foos.xml Controller Extension Model Rule Service
+View services tmpl sql language
+
+=== Changing components/com\_foos/tmpl/foo/default.php === The
+`components/com_foos/tmpl/foo/default.php` file is .... ==== Completed
+components/com\_foos/tmpl/foo/default.php file ==== The code for the
+`components/com_foos/tmpl/foo/default.php` file is as follows:
+
+get('State')-&gt;get('params')-&gt;get('show\_foo\_name\_label')) { echo
+Text::\_('COM\_FOOS\_NAME') . \$this-&gt;item-&gt;name; } else { echo
+\$this-&gt;item-&gt;name; } echo
+\$this-&gt;item-&gt;event-&gt;afterDisplayTitle; echo
+\$this-&gt;item-&gt;event-&gt;beforeDisplayContent; echo
+\$this-&gt;item-&gt;event-&gt;afterDisplayContent;
+
+=== Changing components/com\_foos/View/Foo/HtmlView.php === The
+`components/com_foos/View/Foo/HtmlView.php` file is .... ==== Completed
+components/com\_foos/View/Foo/HtmlView.php file ==== The code for the
+`components/com_foos/View/Foo/HtmlView.php` file is as follows:
+
+item = \$this-&gt;get('Item');
+Factory::getApplication()-&gt;triggerEvent('onContentPrepare', array
+('com\_foos.foo', &\$item)); // Store the events for later
+\$item-&gt;event = new \\stdClass; \$results =
+Factory::getApplication()-&gt;triggerEvent('onContentAfterTitle',
+array('com\_foos.foo', &\$item, &\$item-&gt;params));
+\$item-&gt;event-&gt;afterDisplayTitle = trim(implode("\\n",
+\$results)); \$results =
+Factory::getApplication()-&gt;triggerEvent('onContentBeforeDisplay',
+array('com\_foos.foo', &\$item, &\$item-&gt;params));
+\$item-&gt;event-&gt;beforeDisplayContent = trim(implode("\\n",
+\$results)); \$results =
+Factory::getApplication()-&gt;triggerEvent('onContentAfterDisplay',
+array('com\_foos.foo', &\$item, &\$item-&gt;params));
+\$item-&gt;event-&gt;afterDisplayContent = trim(implode("\\n",
+\$results)); return parent::display(\$tpl); } }
+
+== Test your component == Now you can zip all files and install them via
+Joomla Extension Manager. You can edit the value of a custom field in
+the backend. \[\[File:as\_j4\_t\_14b\_1.png|700px\]\] After that you can
+show the value for a custom field in the front end.
+\[\[File:as\_j4\_t\_14b\_2.png|700px\]\] == Example in Joomla! == ==
+Component Contents == At this point in the tutorial, your component
+should contain the following files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- | 7 | administrator/components/com\_foos/Controller/FooController.php
+| this is the entry point to the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Extension/FoosComponent.php | the
+interface BootableExtensionInterface where a component class can load
+its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Field/FooField.php | the interface
+BootableExtensionInterface where a component class can load its internal
+class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Model/FooModel.php | this is the
+model of the Foo component item | unchanged |- | 6 |
+administrator/components/com\_foos/Model/FoosModel.php | this is the
+model of the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 7 | administrator/components/com\_foos/Table/FooTable.php
+| the database table | unchanged |- | 1 |
+administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 6 |
+administrator/components/com\_foos/sql/install.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 6 |
+administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 7 |
+administrator/components/com\_foos/forms/foo.xml | the default form in
+the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foo/edit.php | the default view
+in the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foo/modal.php | the default view
+in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foos/modal.php | the default
+view in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/foos.xml | this is an XML (manifest)
+file that tells Joomla! how to install our component. | unchanged |- | 1
+| administrator/components/com\_foos/script.php | the installer script |
+unchanged |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini |
+the language file | unchanged |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini
+| the language file | unchanged |- | 9 |
+administrator/components/com\_foos/config.php | the configuration |
+unchanged |- | 10 | administrator/components/com\_foos/access.xml | the
+ACL file for permissen handling | unchanged |- | 14a |
+administrator/components/com\_foos/Helper/FooHelper.php | the helper
+file | unchanged |- | 11a |
+administrator/components/com\_foos/Rule/LetterRule.php | the server side
+validation rule | unchanged |- | 2 |
+components/com\_foos/Controller/DisplayController.php | this is the
+frond end entry point to the Foo component | unchanged |- | 4 |
+components/com\_foos/Model/FooModel.php | this is the frond end model
+for the Foo component | unchanged |- | 2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 7 |
+components/com\_foos/View/Foos/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | unchanged |- | 3 | components/com\_foos/tmpl/foo/default.xml
+| the xml for the menu item | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.ini | the language
+file | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini | the
+language file | unchanged |- | 7 |
+media/com\_foos/js/admin-foos-modal.js | the javascript file | unchanged
+|- | 11b | media/com\_foos/js/admin-foos-letter.js | the client side
+validation rule | unchanged |- |} == Conclusion == Your components can
+now fully use custom fields. This is a huge advantage because cusotm
+fields make joomla and every component in Joomla user friendly and
+customizable. = Adding Associations I - Part 15a = == Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla!
+4.0.0-alpha11-dev). The installation should be multilingual. == File
+Structure == === Changing
+administrator/components/com\_foos/Extension/FoosComponent.php === The
+`administrator/components/com_foos/Extension/FoosComponent.php` file is
+.... ==== Completed
+administrator/components/com\_foos/Extension/FoosComponent.php file ====
+The code for the
+`administrator/components/com_foos/Extension/FoosComponent.php` file is
+as follows:
+
+getRegistry()-&gt;register('foosadministrator', new
+AdministratorService); } /\*\* \* Returns the table for the count items
+functions for the given section. \* \* @param string \$section The
+section \* \* @return string|null \* \* @since 1.0.0 \*/ protected
+function getTableNameForSection(string \$section = null) { return
+(\$section === 'category' ? 'categories' : 'foos\_details'); } }
+
+=== Changing administrator/components/com\_foos/Model/FooModel.php ===
+The `administrator/components/com_foos/Model/FooModel.php` file is ....
+==== Completed administrator/components/com\_foos/Model/FooModel.php
+file ==== The code for the
+`administrator/components/com_foos/Model/FooModel.php` file is as
+follows:
+
+loadForm('com\_foos.foo', 'foo', array('control' =&gt; 'jform',
+'load\_data' =&gt; \$loadData)); if (empty(\$form)) { return false; }
+return \$form; } /\*\* \* Method to get the data that should be injected
+in the form. \* \* @return mixed The data for the form. \* \* @since 1.0
+\*/ protected function loadFormData() { \$app =
+Factory::getApplication(); \$data = \$this-&gt;getItem();
+\$this-&gt;preprocessData('com\_foos.foo', \$data); return \$data; }
+/\*\* \* Method to get a single record. \* \* @param integer \$pk The id
+of the primary key. \* \* @return mixed Object on success, false on
+failure. \* \* @since 1.0 \*/ public function getItem(\$pk = null) {
+\$item = parent::getItem(\$pk); // Load associated foo items \$assoc =
+Associations::isEnabled(); if (\$assoc) { \$item-&gt;associations =
+array(); \$item-&gt;alias = "test"; if (\$item-&gt;id != null) {
+\$associations = Associations::getAssociations('com\_foos',
+'\#\_\_foos\_details', 'com\_foos.item', \$item-&gt;id, 'id', null);
+foreach (\$associations as \$tag =&gt; \$association) {
+\$item-&gt;associations\[\$tag\] = \$association-&gt;id; } } } return
+\$item; } /\*\* \* Preprocess the form. \* \* @param \\JForm \$form Form
+object. \* @param object \$data Data object. \* @param string \$group
+Group name. \* \* @return void \* \* @since 1.0 \*/ protected function
+preprocessForm(\\JForm \$form, \$data, \$group = 'content') { //
+Association contact items if (Associations::isEnabled()) { \$languages =
+LanguageHelper::getContentLanguages(false, true, null, 'ordering',
+'asc'); if (count(\$languages) &gt; 1) { \$addform = new
+\\SimpleXMLElement('
+
+'); \$fields = \$addform-&gt;addChild('fields');
+\$fields-&gt;addAttribute('name', 'associations'); \$fieldset =
+\$fields-&gt;addChild('fieldset'); \$fieldset-&gt;addAttribute('name',
+'item\_associations'); foreach (\$languages as \$language) { \$field =
+\$fieldset-&gt;addChild('field'); \$field-&gt;addAttribute('name',
+\$language-&gt;lang\_code); \$field-&gt;addAttribute('type',
+'modal\_foo'); \$field-&gt;addAttribute('language',
+\$language-&gt;lang\_code); \$field-&gt;addAttribute('label',
+\$language-&gt;title); \$field-&gt;addAttribute('translate\_label',
+'false'); \$field-&gt;addAttribute('select', 'true');
+\$field-&gt;addAttribute('new', 'true');
+\$field-&gt;addAttribute('edit', 'true');
+\$field-&gt;addAttribute('clear', 'true'); } \$form-&gt;load(\$addform,
+false); } } parent::preprocessForm(\$form, \$data, \$group); } }
+
+=== Changing administrator/components/com\_foos/Model/FoosModel.php ===
+The `administrator/components/com_foos/Model/FoosModel.php` file is ....
+==== Completed administrator/components/com\_foos/Model/FoosModel.php
+file ==== The code for the
+`administrator/components/com_foos/Model/FooModel.php` file is as
+follows:
+
+getDbo(); \$query = \$db-&gt;getQuery(true); // Select the required
+fields from the table. \$query-&gt;select(
+\$db-&gt;quoteName(array('a.id', 'a.name', 'a.catid', 'a.access',
+'a.published', 'a.publish\_up', 'a.publish\_down', 'a.language')) ); //
+Select the required fields from the table. \$query-&gt;select(
+\$db-&gt;quoteName( explode( ', ', \$this-&gt;getState( 'list.select',
+'a.id, a.name, a.catid' . ', a.access' . ', a.language' . ',
+a.published' . ', a.publish\_up, a.publish\_down' ) ) ) );
+\$query-&gt;from(\$db-&gt;quoteName('\#\_\_foos\_details', 'a')); //
+Join over the asset groups.
+\$query-&gt;select(\$db-&gt;quoteName('ag.title', 'access\_level'))
+-&gt;join( 'LEFT', \$db-&gt;quoteName('\#\_\_viewlevels', 'ag') . ' ON '
+. \$db-&gt;quoteName('ag.id') . ' = ' . \$db-&gt;quoteName('a.access')
+); // Join over the categories.
+\$query-&gt;select(\$db-&gt;quoteName('c.title', 'category\_title'))
+-&gt;join( 'LEFT', \$db-&gt;quoteName('\#\_\_categories', 'c') . ' ON '
+. \$db-&gt;quoteName('c.id') . ' = ' . \$db-&gt;quoteName('a.catid') );
+// Join over the language
+\$query-&gt;select(\$db-&gt;quoteName('l.title', 'language\_title'))
+-&gt;select(\$db-&gt;quoteName('l.image', 'language\_image')) -&gt;join(
+'LEFT', \$db-&gt;quoteName('\#\_\_languages', 'l') . ' ON ' .
+\$db-&gt;quoteName('l.lang\_code') . ' = ' .
+\$db-&gt;quoteName('a.language') ); // Join over the associations.
+\$assoc = Associations::isEnabled(); if (\$assoc) {
+\$query-&gt;select('COUNT(' . \$db-&gt;quoteName('asso2.id') . ') &gt; 1
+as ' . \$db-&gt;quoteName('association')) -&gt;join( 'LEFT',
+\$db-&gt;quoteName('\#\_\_associations', 'asso') . ' ON ' .
+\$db-&gt;quoteName('asso.id') . ' = ' . \$db-&gt;quoteName('a.id') . '
+AND ' . \$db-&gt;quoteName('asso.context') . ' = ' .
+\$db-&gt;quote('com\_foos.item') ) -&gt;join( 'LEFT',
+\$db-&gt;quoteName('\#\_\_associations', 'asso2') . ' ON ' .
+\$db-&gt;quoteName('asso2.key') . ' = ' . \$db-&gt;quoteName('asso.key')
+) -&gt;group( \$db-&gt;quoteName( array( 'a.id', 'a.name', 'a.catid',
+'a.published', 'a.access', 'a.language', 'a.publish\_up',
+'a.publish\_down', 'l.title' , 'l.image' , 'ag.title' , 'c.title' ) ) );
+} return \$query; } }
+
+=== Changing
+administrator/components/com\_foos/Service/HTML/AdministratorService.php
+=== The
+`administrator/components/com_foos/Service/HTML/AdministratorService.php`
+file is .... ==== Completed
+administrator/components/com\_foos/Service/HTML/AdministratorService.php
+file ==== The code for the
+`administrator/components/com_foos/Service/HTML/AdministratorService.php`
+file is as follows:
+
+\$associated) { \$associations\[\$tag\] = (int) \$associated-&gt;id; }
+// Get the associated foo items \$db = Factory::getDbo(); \$query =
+\$db-&gt;getQuery(true) -&gt;select('c.id, c.name as title')
+-&gt;select('l.sef as lang\_sef, lang\_code')
+-&gt;from('\#\_\_foos\_details as c') -&gt;select('cat.title as
+category\_title') -&gt;join('LEFT', '\#\_\_categories as cat ON
+cat.id=c.catid') -&gt;where('c.id IN (' . implode(',',
+array\_values(\$associations)) . ')') -&gt;where('c.id != ' . \$fooid)
+-&gt;join('LEFT', '\#\_\_languages as l ON c.language=l.lang\_code')
+-&gt;select('l.image') -&gt;select('l.title as language\_title');
+\$db-&gt;setQuery(\$query); try { \$items =
+\$db-&gt;loadObjectList('id'); } catch (\\RuntimeException \$e) { throw
+new \\Exception(\$e-&gt;getMessage(), 500, \$e); } if (\$items) {
+foreach (\$items as &\$item) { \$text =
+strtoupper(\$item-&gt;lang\_sef); \$url =
+Route::\_('index.php?option=com\_foos&task=foo.edit&id=' . (int)
+\$item-&gt;id); \$tooltip = htmlspecialchars(\$item-&gt;title,
+ENT\_QUOTES, 'UTF-8') . '\
+' . Text::sprintf('JCATEGORY\_SPRINTF', \$item-&gt;category\_title);
+\$classes = 'hasPopover badge badge-secondary'; \$item-&gt;link = '[' .
+\$text . ']('%20.%20$url%20.%20' "' . $item->language_title . '"){.' ..
+.$classes .. .'}'; } } HTMLHelper::\_('bootstrap.popover'); \$html =
+LayoutHelper::render('joomla.content.associations', \$items); } return
+\$html; } }
+
+=== Changing administrator/components/com\_foos/foos.xml === The
+`administrator/components/com_foos/foos.xml` file is .... ==== Completed
+administrator/components/com\_foos/foos.xml file ==== The code for the
+`administrator/components/com_foos/foos.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 1.15.0
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+sql/install.mysql.utf8.sql sql/uninstall.mysql.utf8.sql
+sql/updates/mysql Controller Model View tmpl language js
+
+COM\_FOOS
+
+COM\_FOOS
+
+JCATEGORY
+
+access.xml config.xml foos.xml Controller Extension Model Rule Service
+View services tmpl sql language
+
+=== Changing administrator/components/com\_foos/forms/foo.xml === The
+`administrator/components/com_foos/forms/foo.xml` file is .... ====
+Completed administrator/components/com\_foos/forms/foo.xml file ==== The
+code for the `administrator/components/com_foos/forms/foo.xml` file is
+as follows:
+
+JALL JPUBLISHED JUNPUBLISHED JARCHIVED JTRASHED
+
+=== Changing
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+=== The
+`administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini`
+file is .... ==== Completed
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+file ==== The code for the
+`administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini`
+file is as follows:
+
+COM\_FOOS="\[PROJECT\_NAME\]" COM\_FOOS\_CONFIGURATION="Foo Options"
+COM\_FOOS\_MANAGER\_FOO\_NEW="New" COM\_FOOS\_MANAGER\_FOO\_EDIT="Edit"
+COM\_FOOS\_MANAGER\_FOOS="Foo Manager"
+COM\_FOOS\_TABLE\_TABLEHEAD\_NAME="Name"
+COM\_FOOS\_TABLE\_TABLEHEAD\_ID="ID"
+COM\_FOOS\_ERROR\_FOO\_NOT\_FOUND="Foo not found"
+COM\_FOOS\_FIELD\_NAME\_LABEL="Name"
+COM\_FOOS\_FIELD\_FOO\_SHOW\_CATEGORY\_LABEL="Show name label"
+COM\_FOOS\_FIELD\_CONFIG\_INDIVIDUAL\_FOO\_DESC="These settings apply
+for all foo." COM\_FOOS\_FIELD\_CONFIG\_INDIVIDUAL\_FOO\_DISPLAY="Foo"
+COM\_FOOS\_FIELD\_PUBLISH\_DOWN\_LABEL="Finish Publishing"
+COM\_FOOS\_FIELD\_PUBLISH\_UP\_LABEL="Start Publishing"
+COM\_FOOS\_N\_ITEMS\_PUBLISHED="%d foos published."
+COM\_FOOS\_N\_ITEMS\_PUBLISHED\_1="%d foo published."
+COM\_FOOS\_N\_ITEMS\_UNPUBLISHED="%d foos unpublished."
+COM\_FOOS\_N\_ITEMS\_UNPUBLISHED\_1="%d foo unpublished."
+COM\_FOOS\_FOOS\_FIELD\_PUBLISH\_DOWN\_LABEL="Finish Publishing"
+COM\_FOOS\_FOOS\_FIELD\_PUBLISH\_UP\_LABEL="Start Publishing"
+COM\_FOOS\_FOOS\_N\_ITEMS\_PUBLISHED="%d foos published."
+COM\_FOOS\_FOOS\_N\_ITEMS\_PUBLISHED\_1="%d foo published."
+COM\_FOOS\_FOOS\_N\_ITEMS\_UNPUBLISHED="%d foos unpublished."
+COM\_FOOS\_FOOS\_N\_ITEMS\_UNPUBLISHED\_1="%d foo unpublished."
+COM\_FOOS\_EDIT\_FOO="Edit Foo" COM\_FOOS\_NEW\_FOO="New Foo"
+COM\_FOOS\_HEADING\_ASSOCIATION="Association"
+COM\_FOOS\_CHANGE\_FOO="Change a foo" COM\_FOOS\_SELECT\_A\_FOO="Select
+a foo"
+
+=== Changing administrator/components/com\_foos/services/provider.php
+=== The `administrator/components/com_foos/services/provider.php` file
+is .... ==== Completed
+administrator/components/com\_foos/services/provider.php file ==== The
+code for the `administrator/components/com_foos/services/provider.php`
+file is as follows:
+
+set(AssociationExtensionInterface::class, new AssociationsHelper);
+\$container-&gt;registerServiceProvider(new
+CategoryFactory('\\\\Joomla\\\\Component\\\\Foos'));
+\$container-&gt;registerServiceProvider(new
+MVCFactory('\\\\Joomla\\\\Component\\\\Foos'));
+\$container-&gt;registerServiceProvider(new
+ComponentDispatcherFactory('\\\\Joomla\\\\Component\\\\Foos'));
+\$container-&gt;set( ComponentInterface::class, function (Container
+\$container) { \$component = new
+FoosComponent(\$container-&gt;get(ComponentDispatcherFactoryInterface::class));
+\$component-&gt;setRegistry(\$container-&gt;get(Registry::class));
+\$component-&gt;setMVCFactory(\$container-&gt;get(MVCFactoryInterface::class));
+\$component-&gt;setCategoryFactory(\$container-&gt;get(CategoryFactoryInterface::class));
+\$component-&gt;setAssociationExtension(\$container-&gt;get(AssociationExtensionInterface::class));
+return \$component; } ); } };
+
+=== Changing administrator/components/com\_foos/tmpl/foo/edit.php ===
+The `administrator/components/com_foos/tmpl/foo/edit.php` file is ....
+==== Completed administrator/components/com\_foos/tmpl/foo/edit.php file
+==== The code for the
+`administrator/components/com_foos/tmpl/foo/edit.php` file is as
+follows:
+
+'auto', 'relative' =&gt; true)); \$app = Factory::getApplication();
+\$input = \$app-&gt;input; \$assoc = Associations::isEnabled();
+\$this-&gt;ignore\_fieldsets = array('item\_associations');
+\$this-&gt;useCoreUI = true; // In case of modal \$isModal =
+\$input-&gt;get('layout') == 'modal' ? true : false; \$layout =
+\$isModal ? 'modal' : 'edit'; \$tmpl = \$isModal ||
+\$input-&gt;get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' :
+''; ?&gt;
+
+<div>
+
+'details')); ?&gt;
+item-&gt;id) ? Text::\_('COM\_FOOS\_NEW\_FOO') :
+Text::\_('COM\_FOOS\_EDIT\_FOO')); ?&gt;
+<div class="row">
+
+<div class="col-md-9">
+
+<div class="row">
+
+<div class="col-md-6">
+
+getForm()-&gt;renderField('name'); ?&gt;
+getForm()-&gt;renderField('access'); ?&gt;
+getForm()-&gt;renderField('published'); ?&gt;
+getForm()-&gt;renderField('publish\_up'); ?&gt;
+getForm()-&gt;renderField('publish\_down'); ?&gt;
+getForm()-&gt;renderField('catid'); ?&gt;
+getForm()-&gt;renderField('language'); ?&gt;
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+loadTemplate('associations'); ?&gt;
+<div class="hidden">
+
+loadTemplate('associations'); ?&gt;
+
+</div>
+
+</div>
+
+=== Changing administrator/components/com\_foos/tmpl/foos/default.php
+=== The `administrator/components/com_foos/tmpl/foos/default.php` file
+is .... ==== Completed
+administrator/components/com\_foos/tmpl/foos/default.php file ==== The
+code for the `administrator/components/com_foos/tmpl/foos/default.php`
+file is as follows:
+
+<div class="row">
+
+sidebar)) : ?&gt;
+<div id="j-sidebar-container" class="col-md-2">
+
+sidebar; ?&gt;
+
+</div>
+
+<div
+class="<?php if (!empty($this->sidebar)) {echo 'col-md-10'; } else { echo 'col-md-12'; } ?>">
+
+<div id="j-main-container" class="j-main-container">
+
+items)) : ?&gt;
+<div class="alert alert-warning">
+
+</div>
+
+items); foreach (\$this-&gt;items as \$i =&gt; \$item) : ?&gt;
+id); ?&gt;
+<div>
+
+escape(\$item-&gt;name); ?&gt;
+
+</div>
+
+escape(\$item-&gt;name); ?&gt;
+<div class="small">
+
+escape(\$item-&gt;category\_title); ?&gt;
+
+</div>
+
+access\_level; ?&gt;
+association) : ?&gt;
+id); ?&gt;
+<div class="btn-group">
+
+published, \$i, 'foos.', \$canChange, 'cb', \$item-&gt;publish\_up,
+\$item-&gt;publish\_down); ?&gt;
+
+</div>
+
+id; ?&gt;
+
+</div>
+
+</div>
+
+</div>
+
+=== Creating
+administrator/components/com\_foos/Helper/AssociationsHelper.php === The
+`administrator/components/com_foos/Helper/AssociationsHelper.php` file
+is .... ==== Completed
+administrator/components/com\_foos/Helper/AssociationsHelper.php file
+==== The code for the
+`administrator/components/com_foos/Helper/AssociationsHelper.php` file
+is as follows:
+
+=== Creating
+administrator/components/com\_foos/sql/updates/mysql/1.15.0.sql === The
+`administrator/components/com_foos/sql/updates/mysql/1.15.0.sql` file is
+.... ==== Completed
+administrator/components/com\_foos/sql/updates/mysql/1.15.0.sql file
+==== The code for the
+`administrator/components/com_foos/sql/updates/mysql/1.15.0.sql` file is
+as follows:
+
+ALTER TABLE \`\#\_\_foos\_details\` ADD COLUMN \`language\` char(7) NOT
+NULL DEFAULT '\*' AFTER \`alias\`; ALTER TABLE \`\#\_\_foos\_details\`
+ADD KEY \`idx\_language\` (\`language\`);
+
+=== Creating
+administrator/components/com\_foos/tmpl/foo/edit\_associations.php ===
+The `administrator/components/com_foos/tmpl/foo/edit_associations.php`
+file is .... ==== Completed
+administrator/components/com\_foos/tmpl/foo/edit\_associations.php file
+==== The code for the
+`administrator/components/com_foos/tmpl/foo/edit_associations.php` file
+is as follows:
+
+getType(\$typeName); \$context = \$this-&gt;extension . '.item';
+\$catidField = 'catid'; if (\$typeName === 'category') { \$context =
+'com\_categories.item'; \$catidField = ''; } // Get the associations.
+\$associations = Associations::getAssociations( \$this-&gt;extension,
+\$type\['tables'\]\['a'\], \$context, \$id, 'id', 'alias', \$catidField
+); return \$associations; } /\*\* \* Get item information \* \* @param
+string \$typeName The item type \* @param int \$id The id of item for
+which we need the associated items \* \* @return Table|null \* \* @since
+3.7.0 \*/ public function getItem(\$typeName, \$id) { if (empty(\$id)) {
+return null; } \$table = null; switch (\$typeName) { case 'foo': \$table
+= Table::getInstance('FooTable',
+'Joomla\\\\Component\\\\Foos\\\\Administrator\\\\Table\\\\'); break;
+case 'category': \$table = Table::getInstance('Category'); break; } if
+(empty(\$table)) { return null; } \$table-&gt;load(\$id); return
+\$table; } /\*\* \* Get information about the type \* \* @param string
+\$typeName The item type \* \* @return array Array of item types \* \*
+@since 3.7.0 \*/ public function getType(\$typeName = '') { \$fields =
+\$this-&gt;getFieldsTemplate(); \$tables = array(); \$joins = array();
+\$support = \$this-&gt;getSupportTemplate(); \$title = ''; if
+(in\_array(\$typeName, \$this-&gt;itemTypes)) { switch (\$typeName) {
+case 'foo': \$fields\['title'\] = 'a.name'; \$fields\['state'\] =
+'a.published'; \$support\['state'\] = true; \$support\['acl'\] = true;
+\$support\['category'\] = true; \$support\['save2copy'\] = true;
+\$tables = array( 'a' =&gt; '\#\_\_foos\_details' ); \$title = 'foo';
+break; case 'category': \$fields\['created\_user\_id'\] =
+'a.created\_user\_id'; \$fields\['ordering'\] = 'a.lft';
+\$fields\['level'\] = 'a.level'; \$fields\['catid'\] = '';
+\$fields\['state'\] = 'a.published'; \$support\['state'\] = true;
+\$support\['acl'\] = true; \$support\['checkout'\] = true;
+\$support\['level'\] = true; \$tables = array( 'a' =&gt;
+'\#\_\_categories' ); \$title = 'category'; break; } } return array(
+'fields' =&gt; \$fields, 'support' =&gt; \$support, 'tables' =&gt;
+\$tables, 'joins' =&gt; \$joins, 'title' =&gt; \$title ); } }
+
+== Test your component == Now you can zip all files and install them via
+Joomla Extension Manager. It is also important that you have more than
+one language installed and that the System - Language Filter plugin is
+enabled. Furthermore, it is necessary that you create a content
+language. \[\[File:as\_j4\_t\_15a\_1.png|700px\]\] You have to run a new
+installation or fix the database due to the changes in the database.
+\[\[File:as\_j4\_t\_15a\_2.png|700px\]\] After that you see a new tab
+with the name associations. Here you can select an association.
+\[\[File:as\_j4\_t\_15a\_3.png|700px\]\]
+\[\[File:as\_j4\_t\_15a\_4.png|700px\]\] At the moment all items are
+offered. Even those who are in the same language. It would be ideal if
+only the items are offered, which also match the linked language. We
+will do that later. In the default view of com\_foo you can see a column
+where the associations are shown.
+\[\[File:as\_j4\_t\_15a\_5.png|700px\]\] And you can translate the items
+with the help of the component Multilingual Assocciations.
+\[\[File:as\_j4\_t\_15a\_6.png|700px\]\] == Example in Joomla! == ==
+Component Contents == At this point in the tutorial, your component
+should contain the following files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- | 7 | administrator/components/com\_foos/Controller/FooController.php
+| this is the entry point to the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Extension/FoosComponent.php | the
+interface BootableExtensionInterface where a component class can load
+its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Field/FooField.php | the interface
+BootableExtensionInterface where a component class can load its internal
+class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Model/FooModel.php | this is the
+model of the Foo component item | unchanged |- | 6 |
+administrator/components/com\_foos/Model/FoosModel.php | this is the
+model of the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 7 | administrator/components/com\_foos/Table/FooTable.php
+| the database table | unchanged |- | 1 |
+administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 6 |
+administrator/components/com\_foos/sql/install.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 6 |
+administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 7 |
+administrator/components/com\_foos/forms/foo.xml | the default form in
+the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foo/edit.php | the default view
+in the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foo/modal.php | the default view
+in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foos/modal.php | the default
+view in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/foos.xml | this is an XML (manifest)
+file that tells Joomla! how to install our component. | unchanged |- | 1
+| administrator/components/com\_foos/script.php | the installer script |
+unchanged |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini |
+the language file | unchanged |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini
+| the language file | unchanged |- | 9 |
+administrator/components/com\_foos/config.php | the configuration |
+unchanged |- | 10 | administrator/components/com\_foos/access.xml | the
+ACL file for permissen handling | unchanged |- | 14a |
+administrator/components/com\_foos/Helper/FooHelper.php | the helper
+file | unchanged |- | 11a |
+administrator/components/com\_foos/Rule/LetterRule.php | the server side
+validation rule | unchanged |- | 15 |
+administrator/components/com\_foos/Helper/AssociationsHelper.php | the
+helper file for associations | new |- | 15 |
+administrator/components/com\_foos/tmpl/foo/edit\_associations.ph | the
+template for editing associations | new |- | 2 |
+components/com\_foos/Controller/DisplayController.php | this is the
+frond end entry point to the Foo component | unchanged |- | 4 |
+components/com\_foos/Model/FooModel.php | this is the frond end model
+for the Foo component | unchanged |- | 2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 7 |
+components/com\_foos/View/Foos/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | unchanged |- | 3 | components/com\_foos/tmpl/foo/default.xml
+| the xml for the menu item | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.ini | the language
+file | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini | the
+language file | unchanged |- | 7 |
+media/com\_foos/js/admin-foos-modal.js | the javascript file | unchanged
+|- | 11b | media/com\_foos/js/admin-foos-letter.js | the client side
+validation rule | unchanged |- |} == Conclusion == Your component is now
+fit for Multilingual Website. You support the Joomla own functions. In
+the next chapter we will make this even more user-friendly. = Adding
+Associations II - Part 15b = == Requirements == You need Joomla! 4.x for
+this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev) ==
+File Structure == === Changing
+administrator/components/com\_foos/Field/Modal/FooField.php === The
+`administrator/components/com_foos/Field/Modal/FooField.php` file is
+.... ==== Completed
+administrator/components/com\_foos/Field/Modal/FooField.php file ====
+The code for the
+`administrator/components/com_foos/Field/Modal/FooField.php` file is as
+follows:
+
+element\['clear'\] != 'false'); \$allowSelect = ((string)
+\$this-&gt;element\['select'\] != 'false'); // The active foo id field.
+\$value = (int) \$this-&gt;value &gt; 0 ? (int) \$this-&gt;value : '';
+// Create the modal id. \$modalId = 'Foo\_' . \$this-&gt;id; // Add the
+modal field script to the document head. HTMLHelper::\_('script',
+'system/fields/modal-fields.min.js', array('version' =&gt; 'auto',
+'relative' =&gt; true)); // Script to proxy the select modal function to
+the modal-fields.js file. if (\$allowSelect) { static \$scriptSelect =
+null; if (is\_null(\$scriptSelect)) { \$scriptSelect = array(); } if
+(!isset(\$scriptSelect\[\$this-&gt;id\])) {
+Factory::getDocument()-&gt;addScriptDeclaration(" function jSelectFoo\_"
+. \$this-&gt;id . "(id, title, object) {
+window.processModalSelect('Foo', '" . \$this-&gt;id . "', id, title, '',
+object); } " ); \$scriptSelect\[\$this-&gt;id\] = true; } } // Setup
+variables for display. \$linkFoos =
+'index.php?option=com\_foos&view=foos&layout=modal&tmpl=component&' .
+Session::getFormToken() . '=1'; \$linkFoo =
+'index.php?option=com\_foos&view=foo&layout=modal&tmpl=component&' .
+Session::getFormToken() . '=1'; \$modalTitle =
+Text::\_('COM\_FOOS\_CHANGE\_FOO'); if
+(isset(\$this-&gt;element\['language'\])) { \$linkFoos .=
+'&forcedLanguage=' . \$this-&gt;element\['language'\]; \$linkFoo .=
+'&forcedLanguage=' . \$this-&gt;element\['language'\]; \$modalTitle .= '
+— ' . \$this-&gt;element\['label'\]; } \$urlSelect = \$linkFoos .
+'&function=jSelectFoo\_' . \$this-&gt;id; if (\$value) { \$db =
+Factory::getDbo(); \$query = \$db-&gt;getQuery(true)
+-&gt;select(\$db-&gt;quoteName('name'))
+-&gt;from(\$db-&gt;quoteName('\#\_\_foos\_details'))
+-&gt;where(\$db-&gt;quoteName('id') . ' = ' . (int) \$value);
+\$db-&gt;setQuery(\$query); try { \$title = \$db-&gt;loadResult(); }
+catch (\\RuntimeException \$e) {
+Factory::getApplication()-&gt;enqueueMessage(\$e-&gt;getMessage(),
+'error'); } } \$title = empty(\$title) ?
+Text::\_('COM\_FOOS\_SELECT\_A\_FOO') : htmlspecialchars(\$title,
+ENT\_QUOTES, 'UTF-8'); // The current foo display field. \$html = ''; if
+(\$allowSelect || \$allowNew || \$allowEdit || \$allowClear) { \$html .=
+''; } \$html .= ''; if (\$allowSelect || \$allowNew || \$allowEdit ||
+\$allowClear) { \$html .= ''; } // Select foo button if (\$allowSelect)
+{ \$html .= '' . '[]{.icon-file aria-hidden="true"} ' .
+Text::\_('JSELECT') . '
+
+'; } // Clear foo button if (\$allowClear) { \$html .= '' .
+'[]{.icon-remove aria-hidden="true"}' . Text::\_('JCLEAR') . '
+
+'; } if (\$allowSelect || \$allowNew || \$allowEdit || \$allowClear) {
+\$html .= ''; } // Select foo modal if (\$allowSelect) { \$html .=
+HTMLHelper::\_( 'bootstrap.renderModal', 'ModalSelect' . \$modalId,
+array( 'title' =&gt; \$modalTitle, 'url' =&gt; \$urlSelect, 'height'
+=&gt; '400px', 'width' =&gt; '800px', 'bodyHeight' =&gt; 70,
+'modalWidth' =&gt; 80, 'footer' =&gt; '[' .
+Text::\_('JLIB\_HTML\_BEHAVIOR\_CLOSE') . ']{.btn .btn-secondary}', ) );
+} // Note: class='required' for client side validation. \$class =
+\$this-&gt;required ? ' class="required modal-value"' : ''; \$html .=
+''; return \$html; } /\*\* \* Method to get the field label markup. \*
+\* @return string The field label markup. \* \* @since 1.0 \*/ protected
+function getLabel() { return str\_replace(\$this-&gt;id, \$this-&gt;id .
+'\_name', parent::getLabel()); } }
+
+=== Changing administrator/components/com\_foos/Model/FoosModel.php ===
+The `administrator/components/com_foos/Model/FoosModel.php` file is ....
+==== Completed administrator/components/com\_foos/Model/FoosModel.php
+file ==== The code for the
+`administrator/components/com_foos/Model/FoosModel.php` file is as
+follows:
+
+getDbo(); \$query = \$db-&gt;getQuery(true); // Select the required
+fields from the table. \$query-&gt;select(
+\$db-&gt;quoteName(array('a.id', 'a.name', 'a.catid', 'a.access',
+'a.published', 'a.publish\_up', 'a.publish\_down', 'a.language')) ); //
+Select the required fields from the table. \$query-&gt;select(
+\$this-&gt;getState( 'list.select', 'a.id AS id,' . 'a.name AS name,' .
+'a.access,' . 'a.language,' . 'a.state AS state,' . 'a.catid AS catid,'
+. 'a.published AS published,' . 'a.publish\_up,' . 'a.publish\_down' )
+); \$query-&gt;from(\$db-&gt;quoteName('\#\_\_foos\_details', 'a')); //
+Join over the asset groups.
+\$query-&gt;select(\$db-&gt;quoteName('ag.title', 'access\_level'))
+-&gt;join( 'LEFT', \$db-&gt;quoteName('\#\_\_viewlevels', 'ag') . ' ON '
+. \$db-&gt;quoteName('ag.id') . ' = ' . \$db-&gt;quoteName('a.access')
+); // Join over the categories.
+\$query-&gt;select(\$db-&gt;quoteName('c.title', 'category\_title'))
+-&gt;join( 'LEFT', \$db-&gt;quoteName('\#\_\_categories', 'c') . ' ON '
+. \$db-&gt;quoteName('c.id') . ' = ' . \$db-&gt;quoteName('a.catid') );
+// Join over the language
+\$query-&gt;select(\$db-&gt;quoteName('l.title', 'language\_title'))
+-&gt;select(\$db-&gt;quoteName('l.image', 'language\_image')) -&gt;join(
+'LEFT', \$db-&gt;quoteName('\#\_\_languages', 'l') . ' ON ' .
+\$db-&gt;quoteName('l.lang\_code') . ' = ' .
+\$db-&gt;quoteName('a.language') ); // Join over the associations.
+\$assoc = Associations::isEnabled(); if (\$assoc) {
+\$query-&gt;select('COUNT(' . \$db-&gt;quoteName('asso2.id') . ') &gt; 1
+as ' . \$db-&gt;quoteName('association')) -&gt;join( 'LEFT',
+\$db-&gt;quoteName('\#\_\_associations', 'asso') . ' ON ' .
+\$db-&gt;quoteName('asso.id') . ' = ' . \$db-&gt;quoteName('a.id') . '
+AND ' . \$db-&gt;quoteName('asso.context') . ' = ' .
+\$db-&gt;quote('com\_foos.item') ) -&gt;join( 'LEFT',
+\$db-&gt;quoteName('\#\_\_associations', 'asso2') . ' ON ' .
+\$db-&gt;quoteName('asso2.key') . ' = ' . \$db-&gt;quoteName('asso.key')
+) -&gt;group( \$db-&gt;quoteName( array( 'a.id', 'a.name', 'a.catid',
+'a.published', 'a.access', 'a.language', 'a.publish\_up',
+'a.publish\_down', 'l.title' , 'l.image' , 'ag.title' , 'c.title' ) ) );
+} // Filter on the language. if (\$language =
+\$this-&gt;getState('filter.language')) {
+\$query-&gt;where(\$db-&gt;quoteName('a.language') . ' = :language');
+\$query-&gt;bind(':language', \$language); } return \$query; } /\*\* \*
+Method to auto-populate the model state. \* \* Note. Calling getState in
+this method will result in recursion. \* \* @param string \$ordering An
+optional ordering field. \* @param string \$direction An optional
+direction (asc|desc). \* \* @return void \* \* @since 1.0 \*/ protected
+function populateState(\$ordering = 'a.name', \$direction = 'asc') {
+\$app = Factory::getApplication(); \$forcedLanguage =
+\$app-&gt;input-&gt;get('forcedLanguage', '', 'cmd'); // Adjust the
+context to support modal layouts. if (\$layout =
+\$app-&gt;input-&gt;get('layout')) { \$this-&gt;context .= '.' .
+\$layout; } // Adjust the context to support forced languages. if
+(\$forcedLanguage) { \$this-&gt;context .= '.' . \$forcedLanguage; } //
+List state information. parent::populateState(\$ordering, \$direction);
+// Force a language. if (!empty(\$forcedLanguage)) {
+\$this-&gt;setState('filter.language', \$forcedLanguage); } } }
+
+=== Changing administrator/components/com\_foos/View/Foo/HtmlView.php
+=== The `administrator/components/com_foos/View/Foo/HtmlView.php` file
+is .... ==== Completed
+administrator/components/com\_foos/View/Foo/HtmlView.php file ==== The
+code for the `administrator/components/com_foos/View/Foo/HtmlView.php`
+file is as follows:
+
+item = \$this-&gt;get('Item'); // If we are forcing a language in modal
+(used for associations). if (\$this-&gt;getLayout() === 'modal' &&
+\$forcedLanguage =
+Factory::getApplication()-&gt;input-&gt;get('forcedLanguage', '',
+'cmd')) { // Set the language field to the forcedLanguage and disable
+changing it. \$this-&gt;form-&gt;setValue('language', null,
+\$forcedLanguage); \$this-&gt;form-&gt;setFieldAttribute('language',
+'readonly', 'true'); // Only allow to select categories with All
+language or with the forced language.
+\$this-&gt;form-&gt;setFieldAttribute('catid', 'language', '\*,' .
+\$forcedLanguage); } \$this-&gt;addToolbar(); return
+parent::display(\$tpl); } /\*\* \* Add the page title and toolbar. \* \*
+@return void \* \* @since 1.0 \*/ protected function addToolbar() {
+Factory::getApplication()-&gt;input-&gt;set('hidemainmenu', true);
+\$isNew = (\$this-&gt;item-&gt;id == 0); ToolbarHelper::title(\$isNew ?
+Text::\_('COM\_FOOS\_MANAGER\_FOO\_NEW') :
+Text::\_('COM\_FOOS\_MANAGER\_FOO\_EDIT'), 'address foo');
+ToolbarHelper::apply('foo.apply'); ToolbarHelper::cancel('foo.cancel',
+'JTOOLBAR\_CLOSE'); } }
+
+=== Changing administrator/components/com\_foos/View/Foos/HtmlView.php
+=== The `administrator/components/com_foos/View/Foos/HtmlView.php` file
+is .... ==== Completed
+administrator/components/com\_foos/View/Foos/HtmlView.php file ==== The
+code for the `administrator/components/com_foos/View/Foos/HtmlView.php`
+file is as follows:
+
+items = \$this-&gt;get('Items'); // We don't need toolbar in the modal
+window. if (\$this-&gt;getLayout() !== 'modal') {
+FooHelper::addSubmenu('foos'); \$this-&gt;addToolbar();
+\$this-&gt;sidebar = \\JHtmlSidebar::render(); // We do not need to
+filter by language when multilingual is disabled if
+(!Multilanguage::isEnabled()) {
+unset(\$this-&gt;activeFilters\['language'\]);
+\$this-&gt;filterForm-&gt;removeField('language', 'filter'); } } else {
+// In article associations modal we need to remove language filter if
+forcing a language. // We also need to change the category filter to
+show show categories with All or the forced language. if
+(\$forcedLanguage =
+Factory::getApplication()-&gt;input-&gt;get('forcedLanguage', '',
+'CMD')) { // If the language is forced we can't allow to select the
+language, so transform the language selector filter into a hidden field.
+\$languageXml = new \\SimpleXMLElement(''); } } return
+parent::display(\$tpl); } /\*\* \* Add the page title and toolbar. \* \*
+@return void \* \* @since 1.0 \*/ protected function addToolbar() {
+\$canDo = ContentHelper::getActions('com\_foos'); // Get the toolbar
+object instance \$toolbar = Toolbar::getInstance('toolbar');
+ToolbarHelper::title(Text::\_('COM\_FOOS\_MANAGER\_FOOS'), 'address
+foo'); if (\$canDo-&gt;get('core.create')) {
+\$toolbar-&gt;addNew('foo.add'); } if (\$canDo-&gt;get('core.options'))
+{ \$toolbar-&gt;preferences('com\_foos'); }
+HTMLHelper::\_('sidebar.setAction', 'index.php?option=com\_foos'); } }
+
+=== Changing administrator/components/com\_foos/foos.xml === The
+`administrator/components/com_foos/foos.xml` file is .... ==== Completed
+administrator/components/com\_foos/foos.xml file ==== The code for the
+`administrator/components/com_foos/foos.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 1.15.1
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+sql/install.mysql.utf8.sql sql/uninstall.mysql.utf8.sql
+sql/updates/mysql Controller Model View tmpl language js
+
+COM\_FOOS
+
+COM\_FOOS
+
+JCATEGORY
+
+access.xml config.xml foos.xml Controller Extension Model Rule Service
+View services tmpl sql language
+
+== Test your component == Now you can zip all files and install them via
+Joomla Extension Manager. Now the items in the modal are filtered.
+\[\[File:as\_j4\_t\_15b\_1.png|700px\]\] == Component Contents == =
+Adding Ordering and Filter - Part 16 = == Requirements == You need
+Joomla! 4.x for this tutorial (as of writing currently Joomla!
+4.0.0-alpha11-dev) == File Structure == === Changing
+administrator/components/com\_foos/Model/FoosModel.php === The
+`administrator/components/com_foos/Model/FoosModel.php` file is ....
+==== Completed administrator/components/com\_foos/Model/FoosModel.php
+file ==== The code for the
+`administrator/components/com_foos/Model/FoosModel.php` file is as
+follows:
+
+getDbo(); \$query = \$db-&gt;getQuery(true); // Select the required
+fields from the table. \$query-&gt;select( \$this-&gt;getState(
+'list.select', 'a.id AS id,' . 'a.name AS name,' . 'a.access,' .
+'a.language,' . 'a.ordering AS ordering,' . 'a.state AS state,' .
+'a.catid AS catid,' . 'a.published AS published,' . 'a.publish\_up,' .
+'a.publish\_down' ) );
+\$query-&gt;from(\$db-&gt;quoteName('\#\_\_foos\_details', 'a')); //
+Join over the asset groups.
+\$query-&gt;select(\$db-&gt;quoteName('ag.title', 'access\_level'))
+-&gt;join( 'LEFT', \$db-&gt;quoteName('\#\_\_viewlevels', 'ag') . ' ON '
+. \$db-&gt;quoteName('ag.id') . ' = ' . \$db-&gt;quoteName('a.access')
+); // Join over the categories.
+\$query-&gt;select(\$db-&gt;quoteName('c.title', 'category\_title'))
+-&gt;join( 'LEFT', \$db-&gt;quoteName('\#\_\_categories', 'c') . ' ON '
+. \$db-&gt;quoteName('c.id') . ' = ' . \$db-&gt;quoteName('a.catid') );
+// Join over the language
+\$query-&gt;select(\$db-&gt;quoteName('l.title', 'language\_title'))
+-&gt;select(\$db-&gt;quoteName('l.image', 'language\_image')) -&gt;join(
+'LEFT', \$db-&gt;quoteName('\#\_\_languages', 'l') . ' ON ' .
+\$db-&gt;quoteName('l.lang\_code') . ' = ' .
+\$db-&gt;quoteName('a.language') ); // Join over the associations.
+\$assoc = Associations::isEnabled(); if (\$assoc) {
+\$query-&gt;select('COUNT(' . \$db-&gt;quoteName('asso2.id') . ') &gt; 1
+as ' . \$db-&gt;quoteName('association')) -&gt;join( 'LEFT',
+\$db-&gt;quoteName('\#\_\_associations', 'asso') . ' ON ' .
+\$db-&gt;quoteName('asso.id') . ' = ' . \$db-&gt;quoteName('a.id') . '
+AND ' . \$db-&gt;quoteName('asso.context') . ' = ' .
+\$db-&gt;quote('com\_foos.item') ) -&gt;join( 'LEFT',
+\$db-&gt;quoteName('\#\_\_associations', 'asso2') . ' ON ' .
+\$db-&gt;quoteName('asso2.key') . ' = ' . \$db-&gt;quoteName('asso.key')
+) -&gt;group( \$db-&gt;quoteName( array( 'a.id', 'a.name', 'a.catid',
+'a.published', 'a.access', 'a.language', 'a.publish\_up',
+'a.publish\_down', 'l.title' , 'l.image' , 'ag.title' , 'c.title' ) ) );
+} // Filter by access level. if (\$access =
+\$this-&gt;getState('filter.access')) {
+\$query-&gt;where(\$db-&gt;quoteName('a.access') . ' = ' . (int)
+\$access); } // Filter by published state \$published = (string)
+\$this-&gt;getState('filter.published'); if (is\_numeric(\$published)) {
+\$query-&gt;where(\$db-&gt;quoteName('a.published') . ' = ' . (int)
+\$published); } elseif (\$published === '') { \$query-&gt;where('(' .
+\$db-&gt;quoteName('a.published') . ' = 0 OR ' .
+\$db-&gt;quoteName('a.published') . ' = 1)'); } // Filter by a single or
+group of categories. \$categoryId =
+\$this-&gt;getState('filter.category\_id'); if
+(is\_numeric(\$categoryId)) {
+\$query-&gt;where(\$db-&gt;quoteName('a.catid') . ' = ' . (int)
+\$categoryId); } elseif (is\_array(\$categoryId)) {
+\$query-&gt;where(\$db-&gt;quoteName('a.catid') . ' IN (' . implode(',',
+ArrayHelper::toInteger(\$categoryId)) . ')'); } // Filter by search in
+name. \$search = \$this-&gt;getState('filter.search'); if
+(!empty(\$search)) { if (stripos(\$search, 'id:') === 0) {
+\$query-&gt;where('a.id = ' . (int) substr(\$search, 3)); } else {
+\$search = \$db-&gt;quote('%' . str\_replace(' ', '%',
+\$db-&gt;escape(trim(\$search), true) . '%')); \$query-&gt;where( '(' .
+\$db-&gt;quoteName('a.name') . ' LIKE ' . \$search . ')' ); } } //
+Filter on the language. if (\$language =
+\$this-&gt;getState('filter.language')) {
+\$query-&gt;where(\$db-&gt;quoteName('a.language') . ' = ' .
+\$db-&gt;quote(\$language)); } // Add the list ordering clause.
+\$orderCol = \$this-&gt;state-&gt;get('list.ordering', 'a.name');
+\$orderDirn = \$this-&gt;state-&gt;get('list.direction', 'asc'); if
+(\$orderCol == 'a.ordering' || \$orderCol == 'category\_title') {
+\$orderCol = \$db-&gt;quoteName('c.title') . ' ' . \$orderDirn . ', ' .
+\$db-&gt;quoteName('a.ordering'); }
+\$query-&gt;order(\$db-&gt;escape(\$orderCol . ' ' . \$orderDirn));
+return \$query; } /\*\* \* Method to auto-populate the model state. \*
+\* Note. Calling getState in this method will result in recursion. \* \*
+@param string \$ordering An optional ordering field. \* @param string
+\$direction An optional direction (asc|desc). \* \* @return void \* \*
+@since 1.0 \*/ protected function populateState(\$ordering = 'a.name',
+\$direction = 'asc') { \$app = Factory::getApplication();
+\$forcedLanguage = \$app-&gt;input-&gt;get('forcedLanguage', '', 'cmd');
+// Adjust the context to support modal layouts. if (\$layout =
+\$app-&gt;input-&gt;get('layout')) { \$this-&gt;context .= '.' .
+\$layout; } // Adjust the context to support forced languages. if
+(\$forcedLanguage) { \$this-&gt;context .= '.' . \$forcedLanguage; } //
+List state information. parent::populateState(\$ordering, \$direction);
+// Force a language. if (!empty(\$forcedLanguage)) {
+\$this-&gt;setState('filter.language', \$forcedLanguage); } } }
+
+=== Changing administrator/components/com\_foos/View/Foos/HtmlView.php
+=== The `administrator/components/com_foos/View/Foos/HtmlView.php` file
+is .... ==== Completed
+administrator/components/com\_foos/View/Foos/HtmlView.php file ==== The
+code for the `administrator/components/com_foos/View/Foos/HtmlView.php`
+file is as follows:
+
+items = \$this-&gt;get('Items'); \$this-&gt;filterForm =
+\$this-&gt;get('FilterForm'); \$this-&gt;activeFilters =
+\$this-&gt;get('ActiveFilters'); \$this-&gt;state =
+\$this-&gt;get('State'); // Check for errors. if (count(\$errors =
+\$this-&gt;get('Errors'))) { throw new
+\\JViewGenericdataexception(implode("\\n", \$errors), 500); } //
+Preprocess the list of items to find ordering divisions. // TODO:
+Complete the ordering stuff with nested sets foreach (\$this-&gt;items
+as &\$item) { \$item-&gt;order\_up = true; \$item-&gt;order\_dn = true;
+} // We don't need toolbar in the modal window. if
+(\$this-&gt;getLayout() !== 'modal') { FooHelper::addSubmenu('foos');
+\$this-&gt;addToolbar(); \$this-&gt;sidebar = \\JHtmlSidebar::render();
+// We do not need to filter by language when multilingual is disabled if
+(!Multilanguage::isEnabled()) {
+unset(\$this-&gt;activeFilters\['language'\]);
+\$this-&gt;filterForm-&gt;removeField('language', 'filter'); } } else {
+// In article associations modal we need to remove language filter if
+forcing a language. // We also need to change the category filter to
+show show categories with All or the forced language. if
+(\$forcedLanguage =
+Factory::getApplication()-&gt;input-&gt;get('forcedLanguage', '',
+'CMD')) { // If the language is forced we can't allow to select the
+language, so transform the language selector filter into a hidden field.
+\$languageXml = new \\SimpleXMLElement('');
+\$this-&gt;filterForm-&gt;setField(\$languageXml, 'filter', true); //
+Also, unset the active language filter so the search tools is not open
+by default with this filter.
+unset(\$this-&gt;activeFilters\['language'\]); // One last changes
+needed is to change the category filter to just show categories with All
+language or with the forced language.
+\$this-&gt;filterForm-&gt;setFieldAttribute('category\_id', 'language',
+'\*,' . \$forcedLanguage, 'filter'); } } return parent::display(\$tpl);
+} /\*\* \* Add the page title and toolbar. \* \* @return void \* \*
+@since 1.0 \*/ protected function addToolbar() { \$canDo =
+ContentHelper::getActions('com\_foos'); // Get the toolbar object
+instance \$toolbar = Toolbar::getInstance('toolbar');
+ToolbarHelper::title(Text::\_('COM\_FOOS\_MANAGER\_FOOS'), 'address
+foo'); if (\$canDo-&gt;get('core.create')) {
+\$toolbar-&gt;addNew('foo.add'); } if (\$canDo-&gt;get('core.options'))
+{ \$toolbar-&gt;preferences('com\_foos'); }
+HTMLHelper::\_('sidebar.setAction', 'index.php?option=com\_foos'); }
+/\*\* \* Returns an array of fields the table can be sorted by \* \*
+@return array Array containing the field name to sort by as the key and
+display text as value \* \* @since 1.0 \*/ protected function
+getSortFields() { return array( 'a.ordering' =&gt;
+Text::\_('JGRID\_HEADING\_ORDERING'), 'a.published' =&gt;
+Text::\_('JSTATUS'), 'a.name' =&gt; Text::\_('JGLOBAL\_TITLE'),
+'category\_title' =&gt; Text::\_('JCATEGORY'), 'a.access' =&gt;
+Text::\_('JGRID\_HEADING\_ACCESS'), 'a.language' =&gt;
+Text::\_('JGRID\_HEADING\_LANGUAGE'), 'a.id' =&gt;
+Text::\_('JGRID\_HEADING\_ID'), ); } }
+
+=== Changing administrator/components/com\_foos/foos.xml === The
+`administrator/components/com_foos/foos.xml` file is .... ==== Completed
+administrator/components/com\_foos/foos.xml file ==== The code for the
+`administrator/components/com_foos/foos.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 1.16.0
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+sql/install.mysql.utf8.sql sql/uninstall.mysql.utf8.sql
+sql/updates/mysql Controller Model View tmpl language js
+
+COM\_FOOS
+
+COM\_FOOS
+
+JCATEGORY
+
+access.xml config.xml foos.xml Controller Extension Model Rule Service
+View services tmpl sql language
+
+=== Changing administrator/components/com\_foos/forms/foo.xml === The
+`administrator/components/com_foos/forms/foo.xml` file is .... ====
+Completed administrator/components/com\_foos/forms/foo.xml file ==== The
+code for the `administrator/components/com_foos/forms/foo.xml` file is
+as follows:
+
+JALL JPUBLISHED JUNPUBLISHED JARCHIVED JTRASHED
+
+=== Create
+administrator/components/com\_foos/sql/updates/mysql/1.16.0.sql === The
+`administrator/components/com_foos/sql/updates/mysql/1.16.0.sql` file is
+.... ==== Completed
+administrator/components/com\_foos/sql/updates/mysql/1.16.0.sql file
+==== The code for the
+`administrator/components/com_foos/sql/updates/mysql/1.16.0.sql` file is
+as follows:
+
+ALTER TABLE \`\#\_\_foos\_details\` ADD COLUMN \`ordering\` int(11) NOT
+NULL DEFAULT 0 AFTER \`alias\`;
+
+=== Changing administrator/components/com\_foos/tmpl/foos/default.php
+=== The `administrator/components/com_foos/tmpl/foos/default.php` file
+is .... ==== Completed
+administrator/components/com\_foos/tmpl/foos/default.php file ==== The
+code for the `administrator/components/com_foos/tmpl/foos/default.php`
+file is as follows:
+
+escape(\$this-&gt;state-&gt;get('list.ordering')); \$listDirn =
+\$this-&gt;escape(\$this-&gt;state-&gt;get('list.direction'));
+\$saveOrder = \$listOrder == 'a.ordering'; if (\$saveOrder &&
+!empty(\$this-&gt;items)) { \$saveOrderingUrl =
+'index.php?option=com\_foos&task=foos.saveOrderAjax&tmpl=component&' .
+Session::getFormToken() . '=1'; } ?&gt;
+
+<div class="row">
+
+sidebar)) : ?&gt;
+<div id="j-sidebar-container" class="col-md-2">
+
+sidebar; ?&gt;
+
+</div>
+
+<div
+class="<?php if (!empty($this->sidebar)) {echo 'col-md-10'; } else { echo 'col-md-12'; } ?>">
+
+<div id="j-main-container" class="j-main-container">
+
+\$this)); ?&gt;
+items)) : ?&gt;
+<div class="alert alert-warning">
+
+</div>
+
+,
+items); foreach (\$this-&gt;items as \$i =&gt; \$item) : ?&gt;
+[ []{.icon-menu aria-hidden="true"} ]{.sortable-handler<?php .echo
+.$iconClass; .?>}
+id); ?&gt;
+<div>
+
+escape(\$item-&gt;name); ?&gt;
+
+</div>
+
+escape(\$item-&gt;name); ?&gt;
+<div class="small">
+
+escape(\$item-&gt;category\_title); ?&gt;
+
+</div>
+
+access\_level; ?&gt;
+association) : ?&gt;
+id); ?&gt;
+<div class="btn-group">
+
+published, \$i, 'foos.', \$canChange, 'cb', \$item-&gt;publish\_up,
+\$item-&gt;publish\_down); ?&gt;
+
+</div>
+
+id; ?&gt;
+
+</div>
+
+</div>
+
+</div>
+
+=== Changing administrator/components/com\_foos/tmpl/foos/modal.php ===
+The `administrator/components/com_foos/tmpl/foos/modal.php` file is ....
+==== Completed administrator/components/com\_foos/tmpl/foos/modal.php
+file ==== The code for the
+`administrator/components/com_foos/tmpl/foos/modal.php` file is as
+follows:
+
+'auto', 'relative' =&gt; true)); \$function =
+\$app-&gt;input-&gt;getCmd('function', 'jSelectFoos'); \$onclick =
+\$this-&gt;escape(\$function); ?&gt;
+
+<div class="container-popup">
+
+items)) : ?&gt;
+<div class="alert alert-warning">
+
+</div>
+
+,
+'icon-trash', 0 =&gt; 'icon-unpublish', 1 =&gt; 'icon-publish', 2 =&gt;
+'icon-archive', ); ?&gt;
+items as \$i =&gt; \$item) : ?&gt;
+escape(\$item-&gt;name); ?&gt;
+id; ?&gt;
+
+</div>
+
+== Test your component == Now you can zip all files and install them via
+Joomla Extension Manager. You have to run a new installation or fix the
+database due to the changes in the database. These few changes allow you
+to sort and filter in your component. You use Joomla functions here and
+do not have to invent the wheel yourself. == Example in Joomla! ==
+\[\[File:as\_j4\_t\_16\_1.png|700px\]\] == Component Contents == At this
+point in the tutorial, your component should contain the following
+files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- | 7 | administrator/components/com\_foos/Controller/FooController.php
+| this is the entry point to the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Extension/FoosComponent.php | the
+interface BootableExtensionInterface where a component class can load
+its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Field/FooField.php | the interface
+BootableExtensionInterface where a component class can load its internal
+class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Model/FooModel.php | this is the
+model of the Foo component item | unchanged |- | 6 |
+administrator/components/com\_foos/Model/FoosModel.php | this is the
+model of the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 7 | administrator/components/com\_foos/Table/FooTable.php
+| the database table | unchanged |- | 1 |
+administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 6 |
+administrator/components/com\_foos/sql/install.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 6 |
+administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 7 |
+administrator/components/com\_foos/forms/foo.xml | the default form in
+the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foo/edit.php | the default view
+in the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foo/modal.php | the default view
+in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foos/modal.php | the default
+view in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/foos.xml | this is an XML (manifest)
+file that tells Joomla! how to install our component. | unchanged |- | 1
+| administrator/components/com\_foos/script.php | the installer script |
+unchanged |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini |
+the language file | unchanged |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini
+| the language file | unchanged |- | 9 |
+administrator/components/com\_foos/config.php | the configuration |
+unchanged |- | 10 | administrator/components/com\_foos/access.xml | the
+ACL file for permissen handling | unchanged |- | 14a |
+administrator/components/com\_foos/Helper/FooHelper.php | the helper
+file | unchanged |- | 11a |
+administrator/components/com\_foos/Rule/LetterRule.php | the server side
+validation rule | unchanged |- | 15 |
+administrator/components/com\_foos/Helper/AssociationsHelper.php | the
+helper file for associations | unchanged |- | 15 |
+administrator/components/com\_foos/tmpl/foo/edit\_associations.php | the
+template for editing associations | unchanged |- | 16 |
+administrator/components/com\_foos/forms/filter\_foos.xml | the form for
+the filter | new |- | 2 |
+components/com\_foos/Controller/DisplayController.php | this is the
+frond end entry point to the Foo component | unchanged |- | 4 |
+components/com\_foos/Model/FooModel.php | this is the frond end model
+for the Foo component | unchanged |- | 2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 7 |
+components/com\_foos/View/Foos/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | unchanged |- | 3 | components/com\_foos/tmpl/foo/default.xml
+| the xml for the menu item | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.ini | the language
+file | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini | the
+language file | unchanged |- | 7 |
+media/com\_foos/js/admin-foos-modal.js | the javascript file | unchanged
+|- | 11b | media/com\_foos/js/admin-foos-letter.js | the client side
+validation rule | unchanged |- |} == Conclusion == = Adding Actions -
+Part 17 = == Requirements == You need Joomla! 4.x for this tutorial (as
+of writing currently Joomla! 4.0.0-alpha11-dev) == File Structure == ===
+Changing administrator/components/com\_foos/View/Foo/HtmlView.php ===
+The `administrator/components/com_foos/View/Foo/HtmlView.php` file is
+.... ==== Completed
+administrator/components/com\_foos/View/Foo/HtmlView.php file ==== The
+code for the `administrator/components/com_foos/View/Foo/HtmlView.php`
+file is as follows:
+
+item = \$this-&gt;get('Item'); // If we are forcing a language in modal
+(used for associations). if (\$this-&gt;getLayout() === 'modal' &&
+\$forcedLanguage =
+Factory::getApplication()-&gt;input-&gt;get('forcedLanguage', '',
+'cmd')) { // Set the language field to the forcedLanguage and disable
+changing it. \$this-&gt;form-&gt;setValue('language', null,
+\$forcedLanguage); \$this-&gt;form-&gt;setFieldAttribute('language',
+'readonly', 'true'); // Only allow to select categories with All
+language or with the forced language.
+\$this-&gt;form-&gt;setFieldAttribute('catid', 'language', '\*,' .
+\$forcedLanguage); } \$this-&gt;addToolbar(); return
+parent::display(\$tpl); } /\*\* \* Add the page title and toolbar. \* \*
+@return void \* \* @since 1.0 \*/ protected function addToolbar() {
+Factory::getApplication()-&gt;input-&gt;set('hidemainmenu', true);
+\$user = Factory::getUser(); \$userId = \$user-&gt;id; \$isNew =
+(\$this-&gt;item-&gt;id == 0); ToolbarHelper::title(\$isNew ?
+Text::\_('COM\_FOOS\_MANAGER\_FOO\_NEW') :
+Text::\_('COM\_FOOS\_MANAGER\_FOO\_EDIT'), 'address foo'); // Since we
+don't track these assets at the item level, use the category id. \$canDo
+= ContentHelper::getActions('com\_foos', 'category',
+\$this-&gt;item-&gt;catid); // Build the actions for new and existing
+records. if (\$isNew) { // For new records, check the create permission.
+if (\$isNew && (count(\$user-&gt;getAuthorisedCategories('com\_foos',
+'core.create')) &gt; 0)) { ToolbarHelper::apply('foo.apply');
+ToolbarHelper::saveGroup( \[ \['save', 'foo.save'\], \['save2new',
+'foo.save2new'\] \], 'btn-success' ); }
+ToolbarHelper::cancel('foo.cancel'); } else { // Since it's an existing
+record, check the edit permission, or fall back to edit own if the
+owner. \$itemEditable = \$canDo-&gt;get('core.edit') ||
+(\$canDo-&gt;get('core.edit.own') && \$this-&gt;item-&gt;created\_by ==
+\$userId); \$toolbarButtons = \[\]; // Can't save the record if it's not
+editable if (\$itemEditable) { ToolbarHelper::apply('foo.apply');
+\$toolbarButtons\[\] = \['save', 'foo.save'\]; // We can save this
+record, but check the create permission to see if we can return to make
+a new one. if (\$canDo-&gt;get('core.create')) { \$toolbarButtons\[\] =
+\['save2new', 'foo.save2new'\]; } } // If checked out, we can still save
+if (\$canDo-&gt;get('core.create')) { \$toolbarButtons\[\] =
+\['save2copy', 'foo.save2copy'\]; } ToolbarHelper::saveGroup(
+\$toolbarButtons, 'btn-success' ); if (Associations::isEnabled() &&
+ComponentHelper::isEnabled('com\_associations')) {
+ToolbarHelper::custom('foo.editAssociations', 'contract', 'contract',
+'JTOOLBAR\_ASSOCIATIONS', false, false); }
+ToolbarHelper::cancel('foo.cancel', 'JTOOLBAR\_CLOSE'); } } }
+
+=== Changing administrator/components/com\_foos/View/Foos/HtmlView.php
+=== The `administrator/components/com_foos/View/Foos/HtmlView.php` file
+is .... ==== Completed
+administrator/components/com\_foos/View/Foos/HtmlView.php file ==== The
+code for the `administrator/components/com_foos/View/Foos/HtmlView.php`
+file is as follows:
+
+items = \$this-&gt;get('Items'); \$this-&gt;filterForm =
+\$this-&gt;get('FilterForm'); \$this-&gt;activeFilters =
+\$this-&gt;get('ActiveFilters'); \$this-&gt;state =
+\$this-&gt;get('State'); // Check for errors. if (count(\$errors =
+\$this-&gt;get('Errors'))) { throw new
+\\JViewGenericdataexception(implode("\\n", \$errors), 500); } //
+Preprocess the list of items to find ordering divisions. // TODO:
+Complete the ordering stuff with nested sets foreach (\$this-&gt;items
+as &\$item) { \$item-&gt;order\_up = true; \$item-&gt;order\_dn = true;
+} // We don't need toolbar in the modal window. if
+(\$this-&gt;getLayout() !== 'modal') { FooHelper::addSubmenu('foos');
+\$this-&gt;addToolbar(); \$this-&gt;sidebar = \\JHtmlSidebar::render();
+// We do not need to filter by language when multilingual is disabled if
+(!Multilanguage::isEnabled()) {
+unset(\$this-&gt;activeFilters\['language'\]);
+\$this-&gt;filterForm-&gt;removeField('language', 'filter'); } } else {
+// In article associations modal we need to remove language filter if
+forcing a language. // We also need to change the category filter to
+show show categories with All or the forced language. if
+(\$forcedLanguage =
+Factory::getApplication()-&gt;input-&gt;get('forcedLanguage', '',
+'CMD')) { // If the language is forced we can't allow to select the
+language, so transform the language selector filter into a hidden field.
+\$languageXml = new \\SimpleXMLElement('');
+\$this-&gt;filterForm-&gt;setField(\$languageXml, 'filter', true); //
+Also, unset the active language filter so the search tools is not open
+by default with this filter.
+unset(\$this-&gt;activeFilters\['language'\]); // One last changes
+needed is to change the category filter to just show categories with All
+language or with the forced language.
+\$this-&gt;filterForm-&gt;setFieldAttribute('category\_id', 'language',
+'\*,' . \$forcedLanguage, 'filter'); } } return parent::display(\$tpl);
+} /\*\* \* Add the page title and toolbar. \* \* @return void \* \*
+@since 1.0 \*/ protected function addToolbar() { \$canDo =
+ContentHelper::getActions('com\_foos', 'category',
+\$this-&gt;state-&gt;get('filter.category\_id')); \$user =
+Factory::getUser(); // Get the toolbar object instance \$toolbar =
+Toolbar::getInstance('toolbar');
+ToolbarHelper::title(Text::\_('COM\_FOO\_MANAGER\_FOOS'), 'address
+foos'); if (\$canDo-&gt;get('core.create') ||
+count(\$user-&gt;getAuthorisedCategories('com\_foos', 'core.create'))
+&gt; 0) { \$toolbar-&gt;addNew('foo.add'); } if
+(\$canDo-&gt;get('core.edit.state')) { \$dropdown =
+\$toolbar-&gt;dropdownButton('status-group')
+-&gt;text('JTOOLBAR\_CHANGE\_STATUS') -&gt;toggleSplit(false)
+-&gt;icon('fa fa-globe') -&gt;buttonClass('btn btn-info')
+-&gt;listCheck(true); \$childBar = \$dropdown-&gt;getChildToolbar();
+\$childBar-&gt;publish('foos.publish')-&gt;listCheck(true);
+\$childBar-&gt;unpublish('foos.unpublish')-&gt;listCheck(true);
+\$childBar-&gt;archive('foos.archive')-&gt;listCheck(true); if
+(\$user-&gt;authorise('core.admin')) {
+\$childBar-&gt;checkin('foos.checkin')-&gt;listCheck(true); } if
+(\$this-&gt;state-&gt;get('filter.published') != -2) {
+\$childBar-&gt;trash('foos.trash')-&gt;listCheck(true); } } if
+(\$this-&gt;state-&gt;get('filter.published') == -2 &&
+\$canDo-&gt;get('core.delete')) { \$toolbar-&gt;delete('foos.delete')
+-&gt;text('JTOOLBAR\_EMPTY\_TRASH')
+-&gt;message('JGLOBAL\_CONFIRM\_DELETE') -&gt;listCheck(true); } if
+(\$user-&gt;authorise('core.admin', 'com\_foos') ||
+\$user-&gt;authorise('core.options', 'com\_foos')) {
+\$toolbar-&gt;preferences('com\_foos'); }
+HTMLHelper::\_('sidebar.setAction', 'index.php?option=com\_foos'); }
+/\*\* \* Returns an array of fields the table can be sorted by \* \*
+@return array Array containing the field name to sort by as the key and
+display text as value \* \* @since 1.0 \*/ protected function
+getSortFields() { return array( 'a.ordering' =&gt;
+Text::\_('JGRID\_HEADING\_ORDERING'), 'a.published' =&gt;
+Text::\_('JSTATUS'), 'a.name' =&gt; Text::\_('JGLOBAL\_TITLE'),
+'category\_title' =&gt; Text::\_('JCATEGORY'), 'a.access' =&gt;
+Text::\_('JGRID\_HEADING\_ACCESS'), 'a.language' =&gt;
+Text::\_('JGRID\_HEADING\_LANGUAGE'), 'a.id' =&gt;
+Text::\_('JGRID\_HEADING\_ID'), ); } }
+
+=== Changing
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+=== The
+`administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini`
+file is .... ==== Completed
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+file ==== The code for the
+`administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini`
+file is as follows:
+
+COM\_FOOS="\[PROJECT\_NAME\]" COM\_FOOS\_CONFIGURATION="Foo Options"
+COM\_FOOS\_MANAGER\_FOO\_NEW="New" COM\_FOOS\_MANAGER\_FOO\_EDIT="Edit"
+COM\_FOOS\_MANAGER\_FOOS="Foo Manager"
+COM\_FOOS\_TABLE\_TABLEHEAD\_NAME="Name"
+COM\_FOOS\_TABLE\_TABLEHEAD\_ID="ID"
+COM\_FOOS\_ERROR\_FOO\_NOT\_FOUND="Foo not found"
+COM\_FOOS\_FIELD\_NAME\_LABEL="Name"
+COM\_FOOS\_FIELD\_FOO\_SHOW\_CATEGORY\_LABEL="Show name label"
+COM\_FOOS\_FIELD\_CONFIG\_INDIVIDUAL\_FOO\_DESC="These settings apply
+for all foo." COM\_FOOS\_FIELD\_CONFIG\_INDIVIDUAL\_FOO\_DISPLAY="Foo"
+COM\_FOOS\_FIELD\_PUBLISH\_DOWN\_LABEL="Finish Publishing"
+COM\_FOOS\_FIELD\_PUBLISH\_UP\_LABEL="Start Publishing"
+COM\_FOOS\_N\_ITEMS\_PUBLISHED="%d foos published."
+COM\_FOOS\_N\_ITEMS\_PUBLISHED\_1="%d foo published."
+COM\_FOOS\_N\_ITEMS\_UNPUBLISHED="%d foos unpublished."
+COM\_FOOS\_N\_ITEMS\_UNPUBLISHED\_1="%d foo unpublished."
+COM\_FOOS\_FOOS\_FIELD\_PUBLISH\_DOWN\_LABEL="Finish Publishing"
+COM\_FOOS\_FOOS\_FIELD\_PUBLISH\_UP\_LABEL="Start Publishing"
+COM\_FOOS\_FOOS\_N\_ITEMS\_PUBLISHED="%d foos published."
+COM\_FOOS\_FOOS\_N\_ITEMS\_PUBLISHED\_1="%d foo published."
+COM\_FOOS\_FOOS\_N\_ITEMS\_UNPUBLISHED="%d foos unpublished."
+COM\_FOOS\_FOOS\_N\_ITEMS\_UNPUBLISHED\_1="%d foo unpublished."
+COM\_FOOS\_EDIT\_FOO="Edit Foo" COM\_FOOS\_NEW\_FOO="New Foo"
+COM\_FOOS\_HEADING\_ASSOCIATION="Association"
+COM\_FOOS\_CHANGE\_FOO="Change a foo" COM\_FOOS\_SELECT\_A\_FOO="Select
+a foo" COM\_FOOS\_TABLE\_CAPTION="Foo Table Caption"
+COM\_FOOS\_N\_ITEMS\_ARCHIVED="%d foos archived."
+COM\_FOOS\_N\_ITEMS\_ARCHIVED\_1="%d foo archived."
+COM\_FOOS\_N\_ITEMS\_DELETED="%d foos deleted."
+COM\_FOOS\_N\_ITEMS\_DELETED\_1="%d foo deleted."
+COM\_FOOS\_N\_ITEMS\_TRASHED="%d foos trashed."
+COM\_FOOS\_N\_ITEMS\_TRASHED\_1="%d foo trashed."
+COM\_FOO\_MANAGER\_FOOS="Foos"
+
+=== Changing administrator/components/com\_foos/foos.xml === The
+`administrator/components/com_foos/foos.xml` file is .... ==== Completed
+administrator/components/com\_foos/foos.xml file ==== The code for the
+`administrator/components/com_foos/foos.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 1.17.0
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+sql/install.mysql.utf8.sql sql/uninstall.mysql.utf8.sql
+sql/updates/mysql Controller Model View tmpl language js
+
+COM\_FOOS
+
+COM\_FOOS
+
+JCATEGORY
+
+access.xml config.xml foos.xml Controller Extension Model Rule Service
+View services tmpl sql language
+
+== Test your component == == Example in Joomla! == Here you can see how
+you can use already implemented actions. Here is an example of an
+actions in the edit view. \[\[File:as\_j4-t\_17\_1.png|700px\]\] Here is
+an example of an actions in the default view.
+\[\[File:as\_j4-t\_17\_2.png|700px\]\] Do you have a specific problem?
+Then look at how the standard functions are implemented in Joomla and
+apply this analogously to your problem. == Component Contents == At this
+point in the tutorial, your component should contain the following
+files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- | 7 | administrator/components/com\_foos/Controller/FooController.php
+| this is the entry point to the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Extension/FoosComponent.php | the
+interface BootableExtensionInterface where a component class can load
+its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Field/FooField.php | the interface
+BootableExtensionInterface where a component class can load its internal
+class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 7 |
+administrator/components/com\_foos/Model/FooModel.php | this is the
+model of the Foo component item | unchanged |- | 6 |
+administrator/components/com\_foos/Model/FoosModel.php | this is the
+model of the Foo component | unchanged |- | 1 |
+administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 7 | administrator/components/com\_foos/Table/FooTable.php
+| the database table | unchanged |- | 1 |
+administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- | 6 |
+administrator/components/com\_foos/sql/install.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 6 |
+administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | unchanged |- | 7 |
+administrator/components/com\_foos/forms/foo.xml | the default form in
+the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foo/edit.php | the default view
+in the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foo/modal.php | the default view
+in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | unchanged |- | 7 |
+administrator/components/com\_foos/tmpl/foos/modal.php | the default
+view in the back end | unchanged |- | 1 |
+administrator/components/com\_foos/foos.xml | this is an XML (manifest)
+file that tells Joomla! how to install our component. | unchanged |- | 1
+| administrator/components/com\_foos/script.php | the installer script |
+unchanged |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini |
+the language file | unchanged |- | 8 |
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini
+| the language file | unchanged |- | 9 |
+administrator/components/com\_foos/config.php | the configuration |
+unchanged |- | 10 | administrator/components/com\_foos/access.xml | the
+ACL file for permissen handling | unchanged |- | 14a |
+administrator/components/com\_foos/Helper/FooHelper.php | the helper
+file | unchanged |- | 11a |
+administrator/components/com\_foos/Rule/LetterRule.php | the server side
+validation rule | unchanged |- | 15 |
+administrator/components/com\_foos/Helper/AssociationsHelper.php | the
+helper file for associations | unchanged |- | 15 |
+administrator/components/com\_foos/tmpl/foo/edit\_associations.php | the
+template for editing associations | unchanged |- | 16 |
+administrator/components/com\_foos/forms/filter\_foos.xml | the form for
+the filter | unchanged |- | 2 |
+components/com\_foos/Controller/DisplayController.php | this is the
+frond end entry point to the Foo component | unchanged |- | 4 |
+components/com\_foos/Model/FooModel.php | this is the frond end model
+for the Foo component | unchanged |- | 2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 7 |
+components/com\_foos/View/Foos/HtmlView.php | file representing the view
+in the frond end | unchanged |- | 2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | unchanged |- | 3 | components/com\_foos/tmpl/foo/default.xml
+| the xml for the menu item | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.ini | the language
+file | unchanged |- | 8 |
+components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini | the
+language file | unchanged |- | 7 |
+media/com\_foos/js/admin-foos-modal.js | the javascript file | unchanged
+|- | 11b | media/com\_foos/js/admin-foos-letter.js | the client side
+validation rule | unchanged |- |} == Conclusion == With its own
+functions, you can implement almost anything you want. You may want to
+save parameters that control the function of your component in addition
+to the data. This is the topic of the next chapter = Adding Params -
+Part 18 = == Requirements == You need Joomla! 4.x for this tutorial (as
+of writing currently Joomla! 4.0.0-alpha11-dev) == File Structure == ===
+Changing administrator/components/com\_foos/Model/FoosModel.php === The
+`administrator/components/com_foos/Model/FoosModel.php` file is ....
+==== Completed administrator/components/com\_foos/Model/FoosModel.php
+file ==== The code for the
+`administrator/components/com_foos/Model/FoosModel.php` file is as
+follows:
+
+getDbo(); \$query = \$db-&gt;getQuery(true); // Select the required
+fields from the table. \$query-&gt;select( \$this-&gt;getState(
+'list.select', 'a.id AS id,' . 'a.name AS name,' . 'a.access,' .
+'a.language,' . 'a.ordering AS ordering,' . 'a.state AS state,' .
+'a.catid AS catid,' . 'a.published AS published,' . 'a.publish\_up,' .
+'a.publish\_down' ) );
+\$query-&gt;from(\$db-&gt;quoteName('\#\_\_foos\_details', 'a')); //
+Join over the asset groups.
+\$query-&gt;select(\$db-&gt;quoteName('ag.title', 'access\_level'))
+-&gt;join( 'LEFT', \$db-&gt;quoteName('\#\_\_viewlevels', 'ag') . ' ON '
+. \$db-&gt;quoteName('ag.id') . ' = ' . \$db-&gt;quoteName('a.access')
+); // Join over the categories.
+\$query-&gt;select(\$db-&gt;quoteName('c.title', 'category\_title'))
+-&gt;join( 'LEFT', \$db-&gt;quoteName('\#\_\_categories', 'c') . ' ON '
+. \$db-&gt;quoteName('c.id') . ' = ' . \$db-&gt;quoteName('a.catid') );
+// Join over the language
+\$query-&gt;select(\$db-&gt;quoteName('l.title', 'language\_title'))
+-&gt;select(\$db-&gt;quoteName('l.image', 'language\_image')) -&gt;join(
+'LEFT', \$db-&gt;quoteName('\#\_\_languages', 'l') . ' ON ' .
+\$db-&gt;quoteName('l.lang\_code') . ' = ' .
+\$db-&gt;quoteName('a.language') ); // Join over the associations.
+\$assoc = Associations::isEnabled(); if (\$assoc) {
+\$query-&gt;select('COUNT(' . \$db-&gt;quoteName('asso2.id') . ') &gt; 1
+as ' . \$db-&gt;quoteName('association')) -&gt;join( 'LEFT',
+\$db-&gt;quoteName('\#\_\_associations', 'asso') . ' ON ' .
+\$db-&gt;quoteName('asso.id') . ' = ' . \$db-&gt;quoteName('a.id') . '
+AND ' . \$db-&gt;quoteName('asso.context') . ' = ' .
+\$db-&gt;quote('com\_foos.item') ) -&gt;join( 'LEFT',
+\$db-&gt;quoteName('\#\_\_associations', 'asso2') . ' ON ' .
+\$db-&gt;quoteName('asso2.key') . ' = ' . \$db-&gt;quoteName('asso.key')
+) -&gt;group( \$db-&gt;quoteName( array( 'a.id', 'a.name', 'a.catid',
+'a.published', 'a.access', 'a.language', 'a.publish\_up',
+'a.publish\_down', 'l.title' , 'l.image' , 'ag.title' , 'c.title' ) ) );
+} // Filter by access level. if (\$access =
+\$this-&gt;getState('filter.access')) {
+\$query-&gt;where(\$db-&gt;quoteName('a.access') . ' = ' . (int)
+\$access); } // Filter by published state \$published = (string)
+\$this-&gt;getState('filter.published'); if (is\_numeric(\$published)) {
+\$query-&gt;where(\$db-&gt;quoteName('a.published') . ' = ' . (int)
+\$published); } elseif (\$published === '') { \$query-&gt;where('(' .
+\$db-&gt;quoteName('a.published') . ' = 0 OR ' .
+\$db-&gt;quoteName('a.published') . ' = 1)'); } // Filter by a single or
+group of categories. \$categoryId =
+\$this-&gt;getState('filter.category\_id'); if
+(is\_numeric(\$categoryId)) {
+\$query-&gt;where(\$db-&gt;quoteName('a.catid') . ' = ' . (int)
+\$categoryId); } elseif (is\_array(\$categoryId)) {
+\$query-&gt;where(\$db-&gt;quoteName('a.catid') . ' IN (' . implode(',',
+ArrayHelper::toInteger(\$categoryId)) . ')'); } // Filter by search in
+name. \$search = \$this-&gt;getState('filter.search'); if
+(!empty(\$search)) { if (stripos(\$search, 'id:') === 0) {
+\$query-&gt;where('a.id = ' . (int) substr(\$search, 3)); } else {
+\$search = \$db-&gt;quote('%' . str\_replace(' ', '%',
+\$db-&gt;escape(trim(\$search), true) . '%')); \$query-&gt;where( '(' .
+\$db-&gt;quoteName('a.name') . ' LIKE ' . \$search . ')' ); } } //
+Filter on the language. if (\$language =
+\$this-&gt;getState('filter.language')) {
+\$query-&gt;where(\$db-&gt;quoteName('a.language') . ' = ' .
+\$db-&gt;quote(\$language)); } // Filter by a single tag. \$tagId =
+\$this-&gt;getState('filter.tag'); if (is\_numeric(\$tagId)) {
+\$query-&gt;where(\$db-&gt;quoteName('tagmap.tag\_id') . ' = ' . (int)
+\$tagId) -&gt;join( 'LEFT',
+\$db-&gt;quoteName('\#\_\_contentitem\_tag\_map', 'tagmap') . ' ON ' .
+\$db-&gt;quoteName('tagmap.content\_item\_id') . ' = ' .
+\$db-&gt;quoteName('a.id') . ' AND ' .
+\$db-&gt;quoteName('tagmap.type\_alias') . ' = ' .
+\$db-&gt;quote('com\_foos.contact') ); } // Filter on the level. if
+(\$level = \$this-&gt;getState('filter.level')) {
+\$query-&gt;where('c.level &lt;= ' . (int) \$level); } // Add the list
+ordering clause. \$orderCol = \$this-&gt;state-&gt;get('list.ordering',
+'a.name'); \$orderDirn = \$this-&gt;state-&gt;get('list.direction',
+'asc'); if (\$orderCol == 'a.ordering' || \$orderCol ==
+'category\_title') { \$orderCol = \$db-&gt;quoteName('c.title') . ' ' .
+\$orderDirn . ', ' . \$db-&gt;quoteName('a.ordering'); }
+\$query-&gt;order(\$db-&gt;escape(\$orderCol . ' ' . \$orderDirn));
+return \$query; } /\*\* \* Method to auto-populate the model state. \*
+\* Note. Calling getState in this method will result in recursion. \* \*
+@param string \$ordering An optional ordering field. \* @param string
+\$direction An optional direction (asc|desc). \* \* @return void \* \*
+@since 1.0 \*/ protected function populateState(\$ordering = 'a.name',
+\$direction = 'asc') { \$app = Factory::getApplication();
+\$forcedLanguage = \$app-&gt;input-&gt;get('forcedLanguage', '', 'cmd');
+// Adjust the context to support modal layouts. if (\$layout =
+\$app-&gt;input-&gt;get('layout')) { \$this-&gt;context .= '.' .
+\$layout; } // Adjust the context to support forced languages. if
+(\$forcedLanguage) { \$this-&gt;context .= '.' . \$forcedLanguage; } //
+List state information. parent::populateState(\$ordering, \$direction);
+// Force a language. if (!empty(\$forcedLanguage)) {
+\$this-&gt;setState('filter.language', \$forcedLanguage); } } }
+
+=== Changing administrator/components/com\_foos/Table/FooTable.php ===
+The `administrator/components/com_foos/Table/FooTable.php` file is ....
+==== Completed administrator/components/com\_foos/Table/FooTable.php
+file ==== The code for the
+`administrator/components/com_foos/Table/FooTable.php` file is as
+follows:
+
+typeAlias = 'com\_foos.foo';
+parent::\_\_construct('\#\_\_foos\_details', 'id', \$db); } /\*\* \*
+Stores a contact. \* \* @param boolean \$updateNulls True to update
+fields even if they are null. \* \* @return boolean True on success,
+false on failure. \* \* @since 1.0 \*/ public function
+store(\$updateNulls = false) { // Transform the params field if
+(is\_array(\$this-&gt;params)) { \$registry = new
+Registry(\$this-&gt;params); \$this-&gt;params = (string) \$registry; }
+return parent::store(\$updateNulls); } /\*\* \* Overloaded check
+function \* \* @return boolean \* \* @see Table::check \* @since 1.5 \*/
+public function check() { try { parent::check(); } catch (\\Exception
+\$e) { \$this-&gt;setError(\$e-&gt;getMessage()); return false; } // Set
+name \$this-&gt;name = htmlspecialchars\_decode(\$this-&gt;name,
+ENT\_QUOTES); // Check the publish down date is not earlier than publish
+up. if (\$this-&gt;publish\_down &gt; \$this-&gt;\_db-&gt;getNullDate()
+&& \$this-&gt;publish\_down &lt; \$this-&gt;publish\_up) {
+\$this-&gt;setError(Text::\_('JGLOBAL\_START\_PUBLISH\_AFTER\_FINISH'));
+return false; } if (empty(\$this-&gt;publish\_up)) {
+\$this-&gt;publish\_up = \$this-&gt;getDbo()-&gt;getNullDate(); } if
+(empty(\$this-&gt;publish\_down)) { \$this-&gt;publish\_down =
+\$this-&gt;getDbo()-&gt;getNullDate(); } return true; } }
+
+=== Changing administrator/components/com\_foos/config.xml === The
+`administrator/components/com_foos/config.xml` file is .... ====
+Completed administrator/components/com\_foos/config.xml file ==== The
+code for the `administrator/components/com_foos/config.xml` file is as
+follows:
+
+JNO JYES JNO JYES JHIDE JSHOW
+
+=== Changing administrator/components/com\_foos/foos.xml === The
+`administrator/components/com_foos/foos.xml` file is .... ==== Completed
+administrator/components/com\_foos/foos.xml file ==== The code for the
+`administrator/components/com_foos/foos.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 1.18.0
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+sql/install.mysql.utf8.sql sql/uninstall.mysql.utf8.sql
+sql/updates/mysql Controller Model View tmpl language js
+
+COM\_FOOS
+
+COM\_FOOS
+
+JCATEGORY
+
+access.xml config.xml foos.xml Controller Extension Model Rule Service
+View services tmpl sql language
+
+=== Changing administrator/components/com\_foos/forms/foo.xml === The
+`administrator/components/com_foos/forms/foo.xml` file is .... ====
+Completed administrator/components/com\_foos/forms/foo.xml file ==== The
+code for the `administrator/components/com_foos/forms/foo.xml` file is
+as follows:
+
+JALL JPUBLISHED JUNPUBLISHED JARCHIVED JTRASHED
+
+JHIDE JSHOW
+
+=== Changing
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+=== The
+`administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini`
+file is .... ==== Completed
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+file ==== The code for the
+`administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini`
+file is as follows:
+
+COM\_FOOS="\[PROJECT\_NAME\]" COM\_FOOS\_CONFIGURATION="Foo Options"
+COM\_FOOS\_MANAGER\_FOO\_NEW="New" COM\_FOOS\_MANAGER\_FOO\_EDIT="Edit"
+COM\_FOOS\_MANAGER\_FOOS="Foo Manager"
+COM\_FOOS\_TABLE\_TABLEHEAD\_NAME="Name"
+COM\_FOOS\_TABLE\_TABLEHEAD\_ID="ID"
+COM\_FOOS\_ERROR\_FOO\_NOT\_FOUND="Foo not found"
+COM\_FOOS\_FIELD\_NAME\_LABEL="Name"
+COM\_FOOS\_FIELD\_FOO\_SHOW\_CATEGORY\_LABEL="Show name label"
+COM\_FOOS\_FIELD\_CONFIG\_INDIVIDUAL\_FOO\_DESC="These settings apply
+for all foo." COM\_FOOS\_FIELD\_CONFIG\_INDIVIDUAL\_FOO\_DISPLAY="Foo"
+COM\_FOOS\_FIELD\_PUBLISH\_DOWN\_LABEL="Finish Publishing"
+COM\_FOOS\_FIELD\_PUBLISH\_UP\_LABEL="Start Publishing"
+COM\_FOOS\_N\_ITEMS\_PUBLISHED="%d foos published."
+COM\_FOOS\_N\_ITEMS\_PUBLISHED\_1="%d foo published."
+COM\_FOOS\_N\_ITEMS\_UNPUBLISHED="%d foos unpublished."
+COM\_FOOS\_N\_ITEMS\_UNPUBLISHED\_1="%d foo unpublished."
+COM\_FOOS\_FOOS\_FIELD\_PUBLISH\_DOWN\_LABEL="Finish Publishing"
+COM\_FOOS\_FOOS\_FIELD\_PUBLISH\_UP\_LABEL="Start Publishing"
+COM\_FOOS\_FOOS\_N\_ITEMS\_PUBLISHED="%d foos published."
+COM\_FOOS\_FOOS\_N\_ITEMS\_PUBLISHED\_1="%d foo published."
+COM\_FOOS\_FOOS\_N\_ITEMS\_UNPUBLISHED="%d foos unpublished."
+COM\_FOOS\_FOOS\_N\_ITEMS\_UNPUBLISHED\_1="%d foo unpublished."
+COM\_FOOS\_EDIT\_FOO="Edit Foo" COM\_FOOS\_NEW\_FOO="New Foo"
+COM\_FOOS\_HEADING\_ASSOCIATION="Association"
+COM\_FOOS\_CHANGE\_FOO="Change a foo" COM\_FOOS\_SELECT\_A\_FOO="Select
+a foo" COM\_FOOS\_TABLE\_CAPTION="Foo Table Caption"
+COM\_FOOS\_N\_ITEMS\_ARCHIVED="%d foos archived."
+COM\_FOOS\_N\_ITEMS\_ARCHIVED\_1="%d foo archived."
+COM\_FOOS\_N\_ITEMS\_DELETED="%d foos deleted."
+COM\_FOOS\_N\_ITEMS\_DELETED\_1="%d foo deleted."
+COM\_FOOS\_N\_ITEMS\_TRASHED="%d foos trashed."
+COM\_FOOS\_N\_ITEMS\_TRASHED\_1="%d foo trashed."
+COM\_FOO\_MANAGER\_FOOS="Foos"
+COM\_FOOS\_FIELD\_PARAMS\_NAME\_LABEL="Show Name"
+
+=== Changing components/com\_foos/View/Foo/HtmlView.php === The
+`components/com_foos/View/Foo/HtmlView.php` file is .... ==== Completed
+components/com\_foos/View/Foo/HtmlView.php file ==== The code for the
+`components/com_foos/View/Foo/HtmlView.php` file is as follows:
+
+=== Changing x === The `x` file is .... ==== Completed x file ==== The
+code for the `x` file is as follows:
+
+item = \$this-&gt;get('Item'); \$state = \$this-&gt;State =
+\$this-&gt;get('State'); \$params = \$this-&gt;Params =
+\$state-&gt;get('params'); \$itemparams = new
+Registry(json\_decode(\$item-&gt;params)); \$temp = clone \$params;
+\$temp-&gt;merge(\$itemparams); \$item-&gt;params = \$temp;
+Factory::getApplication()-&gt;triggerEvent('onContentPrepare', array
+('com\_foos.foo', &\$item)); // Store the events for later
+\$item-&gt;event = new \\stdClass; \$results =
+Factory::getApplication()-&gt;triggerEvent('onContentAfterTitle',
+array('com\_foos.foo', &\$item, &\$item-&gt;params));
+\$item-&gt;event-&gt;afterDisplayTitle = trim(implode("\\n",
+\$results)); \$results =
+Factory::getApplication()-&gt;triggerEvent('onContentBeforeDisplay',
+array('com\_foos.foo', &\$item, &\$item-&gt;params));
+\$item-&gt;event-&gt;beforeDisplayContent = trim(implode("\\n",
+\$results)); \$results =
+Factory::getApplication()-&gt;triggerEvent('onContentAfterDisplay',
+array('com\_foos.foo', &\$item, &\$item-&gt;params));
+\$item-&gt;event-&gt;afterDisplayContent = trim(implode("\\n",
+\$results)); return parent::display(\$tpl); } }
+
+=== Changing components/com\_foos/tmpl/foo/default.php === The
+`components/com_foos/tmpl/foo/default.php` file is .... ==== Completed
+components/com\_foos/tmpl/foo/default.php file ==== The code for the
+`components/com_foos/tmpl/foo/default.php` file is as follows:
+
+item-&gt;params-&gt;get('show\_name')) { if
+(\$this-&gt;Params-&gt;get('show\_foo\_name\_label')) { echo
+Text::\_('COM\_FOOS\_NAME') . \$this-&gt;item-&gt;name; } else { echo
+\$this-&gt;item-&gt;name; } } echo
+\$this-&gt;item-&gt;event-&gt;afterDisplayTitle; echo
+\$this-&gt;item-&gt;event-&gt;beforeDisplayContent; echo
+\$this-&gt;item-&gt;event-&gt;afterDisplayContent;
+
+=== Creating
+administrator/components/com\_foos/sql/updates/mysql/1.18.0.sql === The
+`administrator/components/com_foos/sql/updates/mysql/1.18.0.sql` file is
+.... ==== Completed
+administrator/components/com\_foos/sql/updates/mysql/1.18.0.sql file
+==== The code for the
+`administrator/components/com_foos/sql/updates/mysql/1.18.0.sql` file is
+as follows:
+
+== Test your component == Now you can save a parameter of the options
+separately for each item. \[\[File:as\_j4-t\_18\_1.png|700px\]\] ==
+Example in Joomla! == == Component Contents == At this point in the
+tutorial, your component should contain the following files: {| border=1
+| 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- |1 |administrator/components/com\_foos/Extension/FoosComponent.php |
+the interface BootableExtensionInterface where a component class can
+load its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 6 |
+administrator/components/com\_foos/Model/FoosModel.php | this is the
+model of the Foo component | new |- |1
+|administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- |1
+|administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | changed |- |1
+|administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+changed |- |6
+|administrator/components/com\_foos/sql/install.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | new |- |6
+|administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql |
+During the install/uninstall/update phase of a component, you can
+execute SQL queries through the use of this SQL text file | new |- |1
+|administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | changed |- |1
+|administrator/components/com\_foos/foos.xml |this is an XML (manifest)
+file that tells Joomla! how to install our component. | changed |- |1
+|administrator/components/com\_foos/script.php | the installer script |
+unchanged |- |2 | components/com\_foos/Controller/DisplayController.php
+| this is the frond end entry point to the Foo component | unchanged |-
+|4 | components/com\_foos/Model/FooModel.php | this is the frond end
+model for the Foo component | unchanged |- |2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | unchanged |- |2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | unchanged |- |3 | components/com\_foos/tmpl/foo/default.xml
+| the xml for the menu item | unchanged |- |} == Conclusion == You now
+have many different ways to save data in a component. In the next part,
+we'll look at how you can organize them on different subpages:
+Pagination. geändert:
+src/administrator/components/com\_foos/View/Foos/HtmlView.php geändert:
+src/administrator/components/com\_foos/tmpl/foos/default.php = Adding
+Pagination - Part 19 = == Requirements == You need Joomla! 4.x for this
+tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev) == File
+Structure == === Changing administrator/components/com\_foos/foos.xml
+=== The `administrator/components/com_foos/foos.xml` file is .... ====
+Completed administrator/components/com\_foos/foos.xml file ==== The code
+for the `administrator/components/com_foos/foos.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 1.19.0
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+sql/install.mysql.utf8.sql sql/uninstall.mysql.utf8.sql
+sql/updates/mysql Controller Model View tmpl language js
+
+COM\_FOOS
+
+COM\_FOOS
+
+JCATEGORY
+
+access.xml config.xml foos.xml Controller Extension Model Rule Service
+View services tmpl sql language
+
+=== Changing administrator/components/com\_foos/View/Foos/HtmlView.php
+=== The `administrator/components/com_foos/View/Foos/HtmlView.php` file
+is .... ==== Completed
+administrator/components/com\_foos/View/Foos/HtmlView.php file ==== The
+code for the `administrator/components/com_foos/View/Foos/HtmlView.php`
+file is as follows:
+
+items = \$this-&gt;get('Items'); \$this-&gt;pagination =
+\$this-&gt;get('Pagination'); \$this-&gt;filterForm =
+\$this-&gt;get('FilterForm'); \$this-&gt;activeFilters =
+\$this-&gt;get('ActiveFilters'); \$this-&gt;state =
+\$this-&gt;get('State'); // Check for errors. if (count(\$errors =
+\$this-&gt;get('Errors'))) { throw new
+\\JViewGenericdataexception(implode("\\n", \$errors), 500); } //
+Preprocess the list of items to find ordering divisions. // TODO:
+Complete the ordering stuff with nested sets foreach (\$this-&gt;items
+as &\$item) { \$item-&gt;order\_up = true; \$item-&gt;order\_dn = true;
+} // We don't need toolbar in the modal window. if
+(\$this-&gt;getLayout() !== 'modal') { FooHelper::addSubmenu('foos');
+\$this-&gt;addToolbar(); \$this-&gt;sidebar = \\JHtmlSidebar::render();
+// We do not need to filter by language when multilingual is disabled if
+(!Multilanguage::isEnabled()) {
+unset(\$this-&gt;activeFilters\['language'\]);
+\$this-&gt;filterForm-&gt;removeField('language', 'filter'); } } else {
+// In article associations modal we need to remove language filter if
+forcing a language. // We also need to change the category filter to
+show show categories with All or the forced language. if
+(\$forcedLanguage =
+Factory::getApplication()-&gt;input-&gt;get('forcedLanguage', '',
+'CMD')) { // If the language is forced we can't allow to select the
+language, so transform the language selector filter into a hidden field.
+\$languageXml = new \\SimpleXMLElement('');
+\$this-&gt;filterForm-&gt;setField(\$languageXml, 'filter', true); //
+Also, unset the active language filter so the search tools is not open
+by default with this filter.
+unset(\$this-&gt;activeFilters\['language'\]); // One last changes
+needed is to change the category filter to just show categories with All
+language or with the forced language.
+\$this-&gt;filterForm-&gt;setFieldAttribute('category\_id', 'language',
+'\*,' . \$forcedLanguage, 'filter'); } } return parent::display(\$tpl);
+} /\*\* \* Add the page title and toolbar. \* \* @return void \* \*
+@since 1.0 \*/ protected function addToolbar() { \$canDo =
+ContentHelper::getActions('com\_foos', 'category',
+\$this-&gt;state-&gt;get('filter.category\_id')); \$user =
+Factory::getUser(); // Get the toolbar object instance \$toolbar =
+Toolbar::getInstance('toolbar');
+ToolbarHelper::title(Text::\_('COM\_FOO\_MANAGER\_FOOS'), 'address
+foos'); if (\$canDo-&gt;get('core.create') ||
+count(\$user-&gt;getAuthorisedCategories('com\_foos', 'core.create'))
+&gt; 0) { \$toolbar-&gt;addNew('foo.add'); } if
+(\$canDo-&gt;get('core.edit.state')) { \$dropdown =
+\$toolbar-&gt;dropdownButton('status-group')
+-&gt;text('JTOOLBAR\_CHANGE\_STATUS') -&gt;toggleSplit(false)
+-&gt;icon('fa fa-globe') -&gt;buttonClass('btn btn-info')
+-&gt;listCheck(true); \$childBar = \$dropdown-&gt;getChildToolbar();
+\$childBar-&gt;publish('foos.publish')-&gt;listCheck(true);
+\$childBar-&gt;unpublish('foos.unpublish')-&gt;listCheck(true);
+\$childBar-&gt;archive('foos.archive')-&gt;listCheck(true); if
+(\$user-&gt;authorise('core.admin')) {
+\$childBar-&gt;checkin('foos.checkin')-&gt;listCheck(true); } if
+(\$this-&gt;state-&gt;get('filter.published') != -2) {
+\$childBar-&gt;trash('foos.trash')-&gt;listCheck(true); } } if
+(\$this-&gt;state-&gt;get('filter.published') == -2 &&
+\$canDo-&gt;get('core.delete')) { \$toolbar-&gt;delete('foos.delete')
+-&gt;text('JTOOLBAR\_EMPTY\_TRASH')
+-&gt;message('JGLOBAL\_CONFIRM\_DELETE') -&gt;listCheck(true); } if
+(\$user-&gt;authorise('core.admin', 'com\_foos') ||
+\$user-&gt;authorise('core.options', 'com\_foos')) {
+\$toolbar-&gt;preferences('com\_foos'); }
+HTMLHelper::\_('sidebar.setAction', 'index.php?option=com\_foos'); }
+/\*\* \* Returns an array of fields the table can be sorted by \* \*
+@return array Array containing the field name to sort by as the key and
+display text as value \* \* @since 1.0 \*/ protected function
+getSortFields() { return array( 'a.ordering' =&gt;
+Text::\_('JGRID\_HEADING\_ORDERING'), 'a.published' =&gt;
+Text::\_('JSTATUS'), 'a.name' =&gt; Text::\_('JGLOBAL\_TITLE'),
+'category\_title' =&gt; Text::\_('JCATEGORY'), 'a.access' =&gt;
+Text::\_('JGRID\_HEADING\_ACCESS'), 'a.language' =&gt;
+Text::\_('JGRID\_HEADING\_LANGUAGE'), 'a.id' =&gt;
+Text::\_('JGRID\_HEADING\_ID'), ); } }
+
+=== Changing administrator/components/com\_foos/tmpl/foos/default.php
+=== The `administrator/components/com_foos/tmpl/foos/default.php` file
+is .... ==== Completed
+administrator/components/com\_foos/tmpl/foos/default.php file ==== The
+code for the `administrator/components/com_foos/tmpl/foos/default.php`
+file is as follows:
+
+escape(\$this-&gt;state-&gt;get('list.ordering')); \$listDirn =
+\$this-&gt;escape(\$this-&gt;state-&gt;get('list.direction'));
+\$saveOrder = \$listOrder == 'a.ordering'; if (\$saveOrder &&
+!empty(\$this-&gt;items)) { \$saveOrderingUrl =
+'index.php?option=com\_foos&task=foos.saveOrderAjax&tmpl=component&' .
+Session::getFormToken() . '=1'; } ?&gt;
+
+<div class="row">
+
+sidebar)) : ?&gt;
+<div id="j-sidebar-container" class="col-md-2">
+
+sidebar; ?&gt;
+
+</div>
+
+<div
+class="<?php if (!empty($this->sidebar)) {echo 'col-md-10'; } else { echo 'col-md-12'; } ?>">
+
+<div id="j-main-container" class="j-main-container">
+
+\$this)); ?&gt;
+items)) : ?&gt;
+<div class="alert alert-warning">
+
+</div>
+
+,
+items); foreach (\$this-&gt;items as \$i =&gt; \$item) : ?&gt;
+[ []{.icon-menu aria-hidden="true"} ]{.sortable-handler<?php .echo
+.$iconClass; .?>}
+id); ?&gt;
+<div>
+
+escape(\$item-&gt;name); ?&gt;
+
+</div>
+
+escape(\$item-&gt;name); ?&gt;
+<div class="small">
+
+escape(\$item-&gt;category\_title); ?&gt;
+
+</div>
+
+access\_level; ?&gt;
+association) : ?&gt;
+id); ?&gt;
+<div class="btn-group">
+
+published, \$i, 'foos.', \$canChange, 'cb', \$item-&gt;publish\_up,
+\$item-&gt;publish\_down); ?&gt;
+
+</div>
+
+id; ?&gt;
+pagination-&gt;getListFooter(); ?&gt;
+
+</div>
+
+</div>
+
+</div>
+
+== Test your component == Now you see the page numbering in the lower
+part of the backend and you can scroll through the pages.
+\[\[File:as\_j4-t\_19\_1.png|700px\]\] == Example in Joomla! == ==
+Component Contents == At this point in the tutorial, your component
+should contain the following files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- |1 |administrator/components/com\_foos/Extension/FoosComponent.php |
+the interface BootableExtensionInterface where a component class can
+load its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 6 |
+administrator/components/com\_foos/Model/FoosModel.php | this is the
+model of the Foo component | new |- |1
+|administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- |1
+|administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | changed |- |1
+|administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+changed |- |6
+|administrator/components/com\_foos/sql/install.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | new |- |6
+|administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql |
+During the install/uninstall/update phase of a component, you can
+execute SQL queries through the use of this SQL text file | new |- |1
+|administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | changed |- |1
+|administrator/components/com\_foos/foos.xml |this is an XML (manifest)
+file that tells Joomla! how to install our component. | changed |- |1
+|administrator/components/com\_foos/script.php | the installer script |
+unchanged |- |2 | components/com\_foos/Controller/DisplayController.php
+| this is the frond end entry point to the Foo component | unchanged |-
+|4 | components/com\_foos/Model/FooModel.php | this is the frond end
+model for the Foo component | unchanged |- |2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | unchanged |- |2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | unchanged |- |3 | components/com\_foos/tmpl/foo/default.xml
+| the xml for the menu item | unchanged |- |} == Conclusion == You see a
+pagination in the lower part of the backend and you can scroll through
+the pages. In the next chapter, we'll look at how to make the layout
+consistent while also saving lines of code. = Adding a Layout - Part 20
+= In this chapter, we'll look at how to make the layout consistent while
+also saving lines of code. == Requirements == You need Joomla! 4.x for
+this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev) ==
+File Structure == === Changing
+administrator/components/com\_foos/foos.xml === The
+`administrator/components/com_foos/foos.xml` file is .... ==== Completed
+administrator/components/com\_foos/foos.xml file ==== The code for the
+`administrator/components/com_foos/foos.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 1.20.0
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+sql/install.mysql.utf8.sql sql/uninstall.mysql.utf8.sql
+sql/updates/mysql Controller Model View tmpl language js
+
+COM\_FOOS
+
+COM\_FOOS
+
+JCATEGORY
+
+access.xml config.xml foos.xml Controller Extension Model Rule Service
+View services tmpl sql language
+
+=== Changing administrator/components/com\_foos/forms/foo.xml === The
+`administrator/components/com_foos/forms/foo.xml` file is .... ====
+Completed administrator/components/com\_foos/forms/foo.xml file ==== The
+code for the `administrator/components/com_foos/forms/foo.xml` file is
+as follows:
+
+JALL JPUBLISHED JUNPUBLISHED JARCHIVED JTRASHED
+
+JHIDE JSHOW
+
+=== Changing x === The `x` file is .... ==== Completed x file ==== The
+code for the `x` file is as follows:
+
+=== Changing
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini
+=== The
+`administrator/components/com_foos/language/en-GB/en-GB.com_foos.sys.ini`
+file is .... ==== Completed
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini
+file ==== The code for the
+`administrator/components/com_foos/language/en-GB/en-GB.com_foos.sys.ini`
+file is as follows:
+
+COM\_FOOS="\[PROJECT\_NAME\]" COM\_FOOS\_XML\_DESCRIPTION="Foo
+Component" COM\_FOOS\_INSTALLERSCRIPT\_PREFLIGHT="
+
+Anything here happens before the installation/update/uninstallation of
+the component
+
+" COM\_FOOS\_INSTALLERSCRIPT\_UPDATE="
+
+The component has been updated
+
+" COM\_FOOS\_INSTALLERSCRIPT\_UNINSTALL="
+
+The component has been uninstalled
+
+" COM\_FOOS\_INSTALLERSCRIPT\_INSTALL="
+
+The component has been installed
+
+" COM\_FOOS\_INSTALLERSCRIPT\_POSTFLIGHT="
+
+Anything here happens after the installation/update/uninstallation of
+the component
+
+" COM\_FOOS\_FOO\_VIEW\_DEFAULT\_TITLE="Single Foo"
+COM\_FOOS\_FOO\_VIEW\_DEFAULT\_DESC="This links to the information for
+one foo." COM\_FOOS\_SELECT\_FOO\_LABEL="Select a foo"
+COM\_FOOS\_CHANGE\_FOO="Change a foo" COM\_FOOS\_SELECT\_A\_FOO="Select
+a foo" COM\_FOOS\_FOO\_VIEW\_WITHHEAD\_TITLE="Single Foo with a
+headertext" COM\_FOOS\_FOO\_VIEW\_WITHHEAD\_DESC="This links to the
+information for one foo with a headertext."
+
+=== Creating components/com\_foos/tmpl/foo/withhead.php === The
+`components/com_foos/tmpl/foo/withhead.php` file is .... ==== Completed
+components/com\_foos/tmpl/foo/withhead.php file ==== The code for the
+`components/com_foos/tmpl/foo/withhead.php` file is as follows:
+
+item-&gt;params-&gt;get('show\_name')) { if
+(\$this-&gt;Params-&gt;get('show\_foo\_name\_label')) { echo
+Text::\_('COM\_FOOS\_NAME') . \$this-&gt;item-&gt;name; } else { echo
+\$this-&gt;item-&gt;name; } } echo
+\$this-&gt;item-&gt;event-&gt;afterDisplayTitle; echo
+\$this-&gt;item-&gt;event-&gt;beforeDisplayContent; echo
+\$this-&gt;item-&gt;event-&gt;afterDisplayContent;
+
+=== Creating components/com\_foos/tmpl/foo/withhead.xml === The
+`components/com_foos/tmpl/foo/withhead.xml` file is .... ==== Completed
+components/com\_foos/tmpl/foo/withhead.xml file ==== The code for the
+`components/com_foos/tmpl/foo/withhead.xml` file is as follows:
+
+COM\_FOOS\_FOO\_VIEW\_WITHHEAD\_DESC
+
+== Test your component == == Example in Joomla! ==
+\[\[File:componenttutorial20a.png|700px\]\] == Component Contents == At
+this point in the tutorial, your component should contain the following
+files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- |1 |administrator/components/com\_foos/Extension/FoosComponent.php |
+the interface BootableExtensionInterface where a component class can
+load its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 6 |
+administrator/components/com\_foos/Model/FoosModel.php | this is the
+model of the Foo component | new |- |1
+|administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- |1
+|administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | changed |- |1
+|administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+changed |- |6
+|administrator/components/com\_foos/sql/install.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | new |- |6
+|administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql |
+During the install/uninstall/update phase of a component, you can
+execute SQL queries through the use of this SQL text file | new |- |1
+|administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | changed |- |1
+|administrator/components/com\_foos/foos.xml |this is an XML (manifest)
+file that tells Joomla! how to install our component. | changed |- |1
+|administrator/components/com\_foos/script.php | the installer script |
+unchanged |- |2 | components/com\_foos/Controller/DisplayController.php
+| this is the frond end entry point to the Foo component | unchanged |-
+|4 | components/com\_foos/Model/FooModel.php | this is the frond end
+model for the Foo component | unchanged |- |2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | unchanged |- |2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | unchanged |- |3 | components/com\_foos/tmpl/foo/default.xml
+| the xml for the menu item | unchanged |- |} == Conclusion == = Adding
+Checkout - Part 21 = == Requirements == You need Joomla! 4.x for this
+tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev) == File
+Structure == === Changing
+administrator/components/com\_foos/Model/FoosModel.php === The
+`administrator/components/com_foos/Model/FoosModel.php` file is ....
+==== Completed administrator/components/com\_foos/Model/FoosModel.php
+file ==== The code for the
+`administrator/components/com_foos/Model/FoosModel.php` file is as
+follows:
+
+getDbo(); \$query = \$db-&gt;getQuery(true); // Select the required
+fields from the table. \$query-&gt;select( \$this-&gt;getState(
+'list.select', 'a.id AS id,' . 'a.name AS name,' . 'a.access,' .
+'a.language,' . 'a.ordering AS ordering,' . 'a.checked\_out AS
+checked\_out,' . 'a.checked\_out\_time AS checked\_out\_time,' .
+'a.state AS state,' . 'a.catid AS catid,' . 'a.published AS published,'
+. 'a.publish\_up,' . 'a.publish\_down' ) );
+\$query-&gt;from(\$db-&gt;quoteName('\#\_\_foos\_details', 'a')); //
+Join over the asset groups.
+\$query-&gt;select(\$db-&gt;quoteName('ag.title', 'access\_level'))
+-&gt;join( 'LEFT', \$db-&gt;quoteName('\#\_\_viewlevels', 'ag') . ' ON '
+. \$db-&gt;quoteName('ag.id') . ' = ' . \$db-&gt;quoteName('a.access')
+); // Join over the categories.
+\$query-&gt;select(\$db-&gt;quoteName('c.title', 'category\_title'))
+-&gt;join( 'LEFT', \$db-&gt;quoteName('\#\_\_categories', 'c') . ' ON '
+. \$db-&gt;quoteName('c.id') . ' = ' . \$db-&gt;quoteName('a.catid') );
+// Join over the language
+\$query-&gt;select(\$db-&gt;quoteName('l.title', 'language\_title'))
+-&gt;select(\$db-&gt;quoteName('l.image', 'language\_image')) -&gt;join(
+'LEFT', \$db-&gt;quoteName('\#\_\_languages', 'l') . ' ON ' .
+\$db-&gt;quoteName('l.lang\_code') . ' = ' .
+\$db-&gt;quoteName('a.language') ); // Join over the associations.
+\$assoc = Associations::isEnabled(); if (\$assoc) {
+\$query-&gt;select('COUNT(' . \$db-&gt;quoteName('asso2.id') . ') &gt; 1
+as ' . \$db-&gt;quoteName('association')) -&gt;join( 'LEFT',
+\$db-&gt;quoteName('\#\_\_associations', 'asso') . ' ON ' .
+\$db-&gt;quoteName('asso.id') . ' = ' . \$db-&gt;quoteName('a.id') . '
+AND ' . \$db-&gt;quoteName('asso.context') . ' = ' .
+\$db-&gt;quote('com\_foos.item') ) -&gt;join( 'LEFT',
+\$db-&gt;quoteName('\#\_\_associations', 'asso2') . ' ON ' .
+\$db-&gt;quoteName('asso2.key') . ' = ' . \$db-&gt;quoteName('asso.key')
+) -&gt;group( \$db-&gt;quoteName( array( 'a.id', 'a.name', 'a.catid',
+'a.checked\_out', 'a.checked\_out\_time', 'a.published', 'a.access',
+'a.language', 'a.publish\_up', 'a.publish\_down', 'l.title' , 'l.image'
+, 'ag.title' , 'c.title' ) ) ); } // Join over the users for the checked
+out user. \$query-&gt;select(\$db-&gt;quoteName('uc.name', 'editor'))
+-&gt;join( 'LEFT', \$db-&gt;quoteName('\#\_\_users', 'uc') . ' ON ' .
+\$db-&gt;quoteName('uc.id') . ' = ' .
+\$db-&gt;quoteName('a.checked\_out') ); // Filter by access level. if
+(\$access = \$this-&gt;getState('filter.access')) {
+\$query-&gt;where(\$db-&gt;quoteName('a.access') . ' = ' . (int)
+\$access); } // Filter by published state \$published = (string)
+\$this-&gt;getState('filter.published'); if (is\_numeric(\$published)) {
+\$query-&gt;where(\$db-&gt;quoteName('a.published') . ' = ' . (int)
+\$published); } elseif (\$published === '') { \$query-&gt;where('(' .
+\$db-&gt;quoteName('a.published') . ' = 0 OR ' .
+\$db-&gt;quoteName('a.published') . ' = 1)'); } // Filter by a single or
+group of categories. \$categoryId =
+\$this-&gt;getState('filter.category\_id'); if
+(is\_numeric(\$categoryId)) {
+\$query-&gt;where(\$db-&gt;quoteName('a.catid') . ' = ' . (int)
+\$categoryId); } elseif (is\_array(\$categoryId)) {
+\$query-&gt;where(\$db-&gt;quoteName('a.catid') . ' IN (' . implode(',',
+ArrayHelper::toInteger(\$categoryId)) . ')'); } // Filter by search in
+name. \$search = \$this-&gt;getState('filter.search'); if
+(!empty(\$search)) { if (stripos(\$search, 'id:') === 0) {
+\$query-&gt;where('a.id = ' . (int) substr(\$search, 3)); } else {
+\$search = \$db-&gt;quote('%' . str\_replace(' ', '%',
+\$db-&gt;escape(trim(\$search), true) . '%')); \$query-&gt;where( '(' .
+\$db-&gt;quoteName('a.name') . ' LIKE ' . \$search . ')' ); } } //
+Filter on the language. if (\$language =
+\$this-&gt;getState('filter.language')) {
+\$query-&gt;where(\$db-&gt;quoteName('a.language') . ' = ' .
+\$db-&gt;quote(\$language)); } // Filter by a single tag. \$tagId =
+\$this-&gt;getState('filter.tag'); if (is\_numeric(\$tagId)) {
+\$query-&gt;where(\$db-&gt;quoteName('tagmap.tag\_id') . ' = ' . (int)
+\$tagId) -&gt;join( 'LEFT',
+\$db-&gt;quoteName('\#\_\_contentitem\_tag\_map', 'tagmap') . ' ON ' .
+\$db-&gt;quoteName('tagmap.content\_item\_id') . ' = ' .
+\$db-&gt;quoteName('a.id') . ' AND ' .
+\$db-&gt;quoteName('tagmap.type\_alias') . ' = ' .
+\$db-&gt;quote('com\_foos.contact') ); } // Filter on the level. if
+(\$level = \$this-&gt;getState('filter.level')) {
+\$query-&gt;where('c.level &lt;= ' . (int) \$level); } // Add the list
+ordering clause. \$orderCol = \$this-&gt;state-&gt;get('list.ordering',
+'a.name'); \$orderDirn = \$this-&gt;state-&gt;get('list.direction',
+'asc'); if (\$orderCol == 'a.ordering' || \$orderCol ==
+'category\_title') { \$orderCol = \$db-&gt;quoteName('c.title') . ' ' .
+\$orderDirn . ', ' . \$db-&gt;quoteName('a.ordering'); }
+\$query-&gt;order(\$db-&gt;escape(\$orderCol . ' ' . \$orderDirn));
+return \$query; } /\*\* \* Method to auto-populate the model state. \*
+\* Note. Calling getState in this method will result in recursion. \* \*
+@param string \$ordering An optional ordering field. \* @param string
+\$direction An optional direction (asc|desc). \* \* @return void \* \*
+@since 1.0 \*/ protected function populateState(\$ordering = 'a.name',
+\$direction = 'asc') { \$app = Factory::getApplication();
+\$forcedLanguage = \$app-&gt;input-&gt;get('forcedLanguage', '', 'cmd');
+// Adjust the context to support modal layouts. if (\$layout =
+\$app-&gt;input-&gt;get('layout')) { \$this-&gt;context .= '.' .
+\$layout; } // Adjust the context to support forced languages. if
+(\$forcedLanguage) { \$this-&gt;context .= '.' . \$forcedLanguage; } //
+List state information. parent::populateState(\$ordering, \$direction);
+// Force a language. if (!empty(\$forcedLanguage)) {
+\$this-&gt;setState('filter.language', \$forcedLanguage); } } }
+
+=== Changing administrator/components/com\_foos/View/Foos/HtmlView.php
+=== The `administrator/components/com_foos/View/Foos/HtmlView.php` file
+is .... ==== Completed
+administrator/components/com\_foos/View/Foos/HtmlView.php file ==== The
+code for the `administrator/components/com_foos/View/Foos/HtmlView.php`
+file is as follows:
+
+items = \$this-&gt;get('Items'); \$this-&gt;pagination =
+\$this-&gt;get('Pagination'); \$this-&gt;filterForm =
+\$this-&gt;get('FilterForm'); \$this-&gt;activeFilters =
+\$this-&gt;get('ActiveFilters'); \$this-&gt;state =
+\$this-&gt;get('State'); // Check for errors. if (count(\$errors =
+\$this-&gt;get('Errors'))) { throw new
+\\JViewGenericdataexception(implode("\\n", \$errors), 500); } //
+Preprocess the list of items to find ordering divisions. // TODO:
+Complete the ordering stuff with nested sets foreach (\$this-&gt;items
+as &\$item) { \$item-&gt;order\_up = true; \$item-&gt;order\_dn = true;
+} // We don't need toolbar in the modal window. if
+(\$this-&gt;getLayout() !== 'modal') { FooHelper::addSubmenu('foos');
+\$this-&gt;addToolbar(); \$this-&gt;sidebar = \\JHtmlSidebar::render();
+// We do not need to filter by language when multilingual is disabled if
+(!Multilanguage::isEnabled()) {
+unset(\$this-&gt;activeFilters\['language'\]);
+\$this-&gt;filterForm-&gt;removeField('language', 'filter'); } } else {
+// In article associations modal we need to remove language filter if
+forcing a language. // We also need to change the category filter to
+show show categories with All or the forced language. if
+(\$forcedLanguage =
+Factory::getApplication()-&gt;input-&gt;get('forcedLanguage', '',
+'CMD')) { // If the language is forced we can't allow to select the
+language, so transform the language selector filter into a hidden field.
+\$languageXml = new \\SimpleXMLElement('');
+\$this-&gt;filterForm-&gt;setField(\$languageXml, 'filter', true); //
+Also, unset the active language filter so the search tools is not open
+by default with this filter.
+unset(\$this-&gt;activeFilters\['language'\]); // One last changes
+needed is to change the category filter to just show categories with All
+language or with the forced language.
+\$this-&gt;filterForm-&gt;setFieldAttribute('category\_id', 'language',
+'\*,' . \$forcedLanguage, 'filter'); } } return parent::display(\$tpl);
+} /\*\* \* Add the page title and toolbar. \* \* @return void \* \*
+@since 1.0 \*/ protected function addToolbar() { \$canDo =
+ContentHelper::getActions('com\_foos', 'category',
+\$this-&gt;state-&gt;get('filter.category\_id')); \$user =
+Factory::getUser(); // Get the toolbar object instance \$toolbar =
+Toolbar::getInstance('toolbar');
+ToolbarHelper::title(Text::\_('COM\_FOO\_MANAGER\_FOOS'), 'address
+foos'); if (\$canDo-&gt;get('core.create') ||
+count(\$user-&gt;getAuthorisedCategories('com\_foos', 'core.create'))
+&gt; 0) { \$toolbar-&gt;addNew('foo.add'); } if
+(\$canDo-&gt;get('core.edit.state')) { \$dropdown =
+\$toolbar-&gt;dropdownButton('status-group')
+-&gt;text('JTOOLBAR\_CHANGE\_STATUS') -&gt;toggleSplit(false)
+-&gt;icon('fa fa-globe') -&gt;buttonClass('btn btn-info')
+-&gt;listCheck(true); \$childBar = \$dropdown-&gt;getChildToolbar();
+\$childBar-&gt;publish('foos.publish')-&gt;listCheck(true);
+\$childBar-&gt;unpublish('foos.unpublish')-&gt;listCheck(true);
+\$childBar-&gt;archive('foos.archive')-&gt;listCheck(true); if
+(\$user-&gt;authorise('core.admin')) {
+\$childBar-&gt;checkin('foos.checkin')-&gt;listCheck(true); } if
+(\$this-&gt;state-&gt;get('filter.published') != -2) {
+\$childBar-&gt;trash('foos.trash')-&gt;listCheck(true); } } if
+(\$this-&gt;state-&gt;get('filter.published') == -2 &&
+\$canDo-&gt;get('core.delete')) { \$toolbar-&gt;delete('foos.delete')
+-&gt;text('JTOOLBAR\_EMPTY\_TRASH')
+-&gt;message('JGLOBAL\_CONFIRM\_DELETE') -&gt;listCheck(true); } if
+(\$user-&gt;authorise('core.admin', 'com\_foos') ||
+\$user-&gt;authorise('core.options', 'com\_foos')) {
+\$toolbar-&gt;preferences('com\_foos'); }
+HTMLHelper::\_('sidebar.setAction', 'index.php?option=com\_foos'); }
+/\*\* \* Returns an array of fields the table can be sorted by \* \*
+@return array Array containing the field name to sort by as the key and
+display text as value \* \* @since 1.0 \*/ protected function
+getSortFields() { return array( 'a.ordering' =&gt;
+Text::\_('JGRID\_HEADING\_ORDERING'), 'a.published' =&gt;
+Text::\_('JSTATUS'), 'a.name' =&gt; Text::\_('JGLOBAL\_TITLE'),
+'category\_title' =&gt; Text::\_('JCATEGORY'), 'a.access' =&gt;
+Text::\_('JGRID\_HEADING\_ACCESS'), 'a.language' =&gt;
+Text::\_('JGRID\_HEADING\_LANGUAGE'), 'a.id' =&gt;
+Text::\_('JGRID\_HEADING\_ID'), ); } }
+
+=== Changing administrator/components/com\_foos/foos.xml === The
+`administrator/components/com_foos/foos.xml` file is .... ==== Completed
+administrator/components/com\_foos/foos.xml file ==== The code for the
+`administrator/components/com_foos/foos.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 1.21.0
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+sql/install.mysql.utf8.sql sql/uninstall.mysql.utf8.sql
+sql/updates/mysql Controller Model View tmpl language js
+
+COM\_FOOS
+
+COM\_FOOS
+
+JCATEGORY
+
+access.xml config.xml foos.xml Controller Extension Model Rule Service
+View services tmpl sql language
+
+=== Changing administrator/components/com\_foos/forms/foo.xml === The
+`administrator/components/com_foos/forms/foo.xml` file is .... ====
+Completed administrator/components/com\_foos/forms/foo.xml file ==== The
+code for the `administrator/components/com_foos/forms/foo.xml` file is
+as follows:
+
+JALL JPUBLISHED JUNPUBLISHED JARCHIVED JTRASHED
+
+JHIDE JSHOW
+
+=== Changing administrator/components/com\_foos/tmpl/foos/default.php
+=== The `administrator/components/com_foos/tmpl/foos/default.php` file
+is .... ==== Completed
+administrator/components/com\_foos/tmpl/foos/default.php file ==== The
+code for the `administrator/components/com_foos/tmpl/foos/default.php`
+file is as follows:
+
+escape(\$this-&gt;state-&gt;get('list.ordering')); \$listDirn =
+\$this-&gt;escape(\$this-&gt;state-&gt;get('list.direction'));
+\$saveOrder = \$listOrder == 'a.ordering'; if (\$saveOrder &&
+!empty(\$this-&gt;items)) { \$saveOrderingUrl =
+'index.php?option=com\_foos&task=foos.saveOrderAjax&tmpl=component&' .
+Session::getFormToken() . '=1'; } ?&gt;
+
+<div class="row">
+
+sidebar)) : ?&gt;
+<div id="j-sidebar-container" class="col-md-2">
+
+sidebar; ?&gt;
+
+</div>
+
+<div
+class="<?php if (!empty($this->sidebar)) {echo 'col-md-10'; } else { echo 'col-md-12'; } ?>">
+
+<div id="j-main-container" class="j-main-container">
+
+\$this)); ?&gt;
+items)) : ?&gt;
+<div class="alert alert-warning">
+
+</div>
+
+,
+items); foreach (\$this-&gt;items as \$i =&gt; \$item) : ?&gt;
+[ []{.icon-menu aria-hidden="true"} ]{.sortable-handler<?php .echo
+.$iconClass; .?>}
+id); ?&gt;
+checked\_out) : ?&gt;
+editor, \$item-&gt;checked\_out\_time, 'foos.', true); ?&gt;
+<div>
+
+escape(\$item-&gt;name); ?&gt;
+
+</div>
+
+escape(\$item-&gt;name); ?&gt;
+<div class="small">
+
+escape(\$item-&gt;category\_title); ?&gt;
+
+</div>
+
+access\_level; ?&gt;
+association) : ?&gt;
+id); ?&gt;
+<div class="btn-group">
+
+published, \$i, 'foos.', \$canChange, 'cb', \$item-&gt;publish\_up,
+\$item-&gt;publish\_down); ?&gt;
+
+</div>
+
+id; ?&gt;
+pagination-&gt;getListFooter(); ?&gt;
+
+</div>
+
+</div>
+
+</div>
+
+=== Changing
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+=== The
+`administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini`
+file is .... ==== Completed
+administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+file ==== The code for the
+`administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini`
+file is as follows:
+
+COM\_FOOS="\[PROJECT\_NAME\]" COM\_FOOS\_CONFIGURATION="Foo Options"
+COM\_FOOS\_MANAGER\_FOO\_NEW="New" COM\_FOOS\_MANAGER\_FOO\_EDIT="Edit"
+COM\_FOOS\_MANAGER\_FOOS="Foo Manager"
+COM\_FOOS\_TABLE\_TABLEHEAD\_NAME="Name"
+COM\_FOOS\_TABLE\_TABLEHEAD\_ID="ID"
+COM\_FOOS\_ERROR\_FOO\_NOT\_FOUND="Foo not found"
+COM\_FOOS\_FIELD\_NAME\_LABEL="Name"
+COM\_FOOS\_FIELD\_FOO\_SHOW\_CATEGORY\_LABEL="Show name label"
+COM\_FOOS\_FIELD\_CONFIG\_INDIVIDUAL\_FOO\_DESC="These settings apply
+for all foo." COM\_FOOS\_FIELD\_CONFIG\_INDIVIDUAL\_FOO\_DISPLAY="Foo"
+COM\_FOOS\_FIELD\_PUBLISH\_DOWN\_LABEL="Finish Publishing"
+COM\_FOOS\_FIELD\_PUBLISH\_UP\_LABEL="Start Publishing"
+COM\_FOOS\_N\_ITEMS\_ARCHIVED="%s foos archived."
+COM\_FOOS\_N\_ITEMS\_ARCHIVED\_1="%s foo archived."
+COM\_FOOS\_N\_ITEMS\_CHECKED\_IN\_1="%d foo checked in."
+COM\_FOOS\_N\_ITEMS\_CHECKED\_IN\_MORE="%d foos checked in."
+COM\_FOOS\_N\_ITEMS\_DELETED="%s foos deleted."
+COM\_FOOS\_N\_ITEMS\_DELETED\_1="%s foo deleted."
+COM\_FOOS\_N\_ITEMS\_FEATURED="%s foos featured."
+COM\_FOOS\_N\_ITEMS\_FEATURED\_1="%s foo featured."
+COM\_FOOS\_N\_ITEMS\_PUBLISHED="%s foos published."
+COM\_FOOS\_N\_ITEMS\_PUBLISHED\_1="%s foo published."
+COM\_FOOS\_N\_ITEMS\_TRASHED="%s foos trashed."
+COM\_FOOS\_N\_ITEMS\_TRASHED\_1="%s foo trashed."
+COM\_FOOS\_N\_ITEMS\_UNFEATURED="%s foos unfeatured."
+COM\_FOOS\_N\_ITEMS\_UNFEATURED\_1="%s foo unfeatured."
+COM\_FOOS\_N\_ITEMS\_UNPUBLISHED="%s foos unpublished."
+COM\_FOOS\_N\_ITEMS\_UNPUBLISHED\_1="%s foo unpublished."
+COM\_FOOS\_FOOS\_FIELD\_PUBLISH\_DOWN\_LABEL="Finish Publishing"
+COM\_FOOS\_FOOS\_FIELD\_PUBLISH\_UP\_LABEL="Start Publishing"
+COM\_FOOS\_FOOS\_N\_ITEMS\_ARCHIVED="%s foos archived."
+COM\_FOOS\_FOOS\_N\_ITEMS\_ARCHIVED\_1="%s foo archived."
+COM\_FOOS\_FOOS\_N\_ITEMS\_CHECKED\_IN\_1="%d foo checked in."
+COM\_FOOS\_FOOS\_N\_ITEMS\_CHECKED\_IN\_MORE="%d foos checked in."
+COM\_FOOS\_FOOS\_N\_ITEMS\_DELETED="%s foos deleted."
+COM\_FOOS\_FOOS\_N\_ITEMS\_DELETED\_1="%s foo deleted."
+COM\_FOOS\_FOOS\_N\_ITEMS\_FEATURED="%s foos featured."
+COM\_FOOS\_FOOS\_N\_ITEMS\_FEATURED\_1="%s foo featured."
+COM\_FOOS\_FOOS\_N\_ITEMS\_PUBLISHED="%s foos published."
+COM\_FOOS\_FOOS\_N\_ITEMS\_PUBLISHED\_1="%s foo published."
+COM\_FOOS\_FOOS\_N\_ITEMS\_TRASHED="%s foos trashed."
+COM\_FOOS\_FOOS\_N\_ITEMS\_TRASHED\_1="%s foo trashed."
+COM\_FOOS\_FOOS\_N\_ITEMS\_UNFEATURED="%s foos unfeatured."
+COM\_FOOS\_FOOS\_N\_ITEMS\_UNFEATURED\_1="%s foo unfeatured."
+COM\_FOOS\_FOOS\_N\_ITEMS\_UNPUBLISHED="%s foos unpublished."
+COM\_FOOS\_FOOS\_N\_ITEMS\_UNPUBLISHED\_1="%s foo unpublished."
+COM\_FOOS\_EDIT\_FOO="Edit Foo" COM\_FOOS\_NEW\_FOO="New Foo"
+COM\_FOOS\_HEADING\_ASSOCIATION="Association"
+COM\_FOOS\_CHANGE\_FOO="Change a foo" COM\_FOOS\_SELECT\_A\_FOO="Select
+a foo" COM\_FOOS\_TABLE\_CAPTION="Foo Table Caption"
+COM\_FOOS\_N\_ITEMS\_ARCHIVED="%d foos archived."
+COM\_FOOS\_N\_ITEMS\_ARCHIVED\_1="%d foo archived."
+COM\_FOOS\_N\_ITEMS\_DELETED="%d foos deleted."
+COM\_FOOS\_N\_ITEMS\_DELETED\_1="%d foo deleted."
+COM\_FOOS\_N\_ITEMS\_TRASHED="%d foos trashed."
+COM\_FOOS\_N\_ITEMS\_TRASHED\_1="%d foo trashed."
+COM\_FOO\_MANAGER\_FOOS="Foos"
+COM\_FOOS\_FIELD\_PARAMS\_NAME\_LABEL="Show Name"
+
+=== Creating
+/administrator/components/com\_foos/sql/updates/mysql/1.21.0.sql === The
+`/administrator/components/com_foos/sql/updates/mysql/1.21.0.sql` file
+is .... ==== Completed
+/administrator/components/com\_foos/sql/updates/mysql/1.21.0.sql file
+==== The code for the
+`/administrator/components/com_foos/sql/updates/mysql/1.21.0.sql` file
+is as follows:
+
+ALTER TABLE \`\#\_\_foos\_details\` ADD COLUMN \`checked\_out\` int(10)
+unsigned NOT NULL DEFAULT 0 AFTER \`alias\`; ALTER TABLE
+\`\#\_\_foos\_details\` ADD COLUMN \`checked\_out\_time\` datetime NOT
+NULL DEFAULT '0000-00-00 00:00:00' AFTER \`alias\`;
+
+== Test your component == If two users edit an item at the same time, it
+could lead to overlapping and thus data loss. Therefore, we block the
+entry as long as it is being edited by a user. The sign is the lock.
+\[\[File:as\_j4\_t\_21\_1.png|700px\]\] == Example in Joomla! == ==
+Component Contents == At this point in the tutorial, your component
+should contain the following files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- |1 |administrator/components/com\_foos/Extension/FoosComponent.php |
+the interface BootableExtensionInterface where a component class can
+load its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 6 |
+administrator/components/com\_foos/Model/FoosModel.php | this is the
+model of the Foo component | new |- |1
+|administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- |1
+|administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | changed |- |1
+|administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+changed |- |6
+|administrator/components/com\_foos/sql/install.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | new |- |6
+|administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql |
+During the install/uninstall/update phase of a component, you can
+execute SQL queries through the use of this SQL text file | new |- |1
+|administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | changed |- |1
+|administrator/components/com\_foos/foos.xml |this is an XML (manifest)
+file that tells Joomla! how to install our component. | changed |- |1
+|administrator/components/com\_foos/script.php | the installer script |
+unchanged |- |2 | components/com\_foos/Controller/DisplayController.php
+| this is the frond end entry point to the Foo component | unchanged |-
+|4 | components/com\_foos/Model/FooModel.php | this is the frond end
+model for the Foo component | unchanged |- |2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | unchanged |- |2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | unchanged |- |3 | components/com\_foos/tmpl/foo/default.xml
+| the xml for the menu item | unchanged |- |} == Conclusion == In this
+chapter, we have made sure that the data is processed more securely.
+Next, we'll look at how we can edit a lot of data in one fell swoop. =
+Adding a batch process and alias - Part 22 = In this chapter we'll look
+at how we can edit a lot of data in one fell swoop. == Requirements ==
+You need Joomla! 4.x for this tutorial (as of writing currently Joomla!
+4.0.0-alpha11-dev) == File Structure == === Changing
+administrator/components/com\_foos/Controller/FooController.php === The
+`administrator/components/com_foos/Controller/FooController.php` file is
+.... ==== Completed
+administrator/components/com\_foos/Controller/FooController.php file
+==== The code for the
+`administrator/components/com_foos/Controller/FooController.php` file is
+as follows:
+
+checkToken(); \$model = \$this-&gt;getModel('Foo', 'Administrator',
+array()); // Preset the redirect
+\$this-&gt;setRedirect(Route::\_('index.php?option=com\_foos&view=foos'
+. \$this-&gt;getRedirectToListAppend(), false)); return
+parent::batch(\$model); } }
+
+=== Changing administrator/components/com\_foos/Model/FooModel.php ===
+The `administrator/components/com_foos/Model/FooModel.php` file is ....
+==== Completed administrator/components/com\_foos/Model/FooModel.php
+file ==== The code for the
+`administrator/components/com_foos/Model/FooModel.php` file is as
+follows:
+
+'batchAccess', 'language\_id' =&gt; 'batchLanguage', ); /\*\* \* Method
+to get the row form. \* \* @param array \$data Data for the form. \*
+@param boolean \$loadData True if the form is to load its own data
+(default case), false if not. \* \* @return \\JForm|boolean A \\JForm
+object on success, false on failure \* \* @since 1.0 \*/ public function
+getForm(\$data = array(), \$loadData = true) { // Get the form. \$form =
+\$this-&gt;loadForm('com\_foos.foo', 'foo', array('control' =&gt;
+'jform', 'load\_data' =&gt; \$loadData)); if (empty(\$form)) { return
+false; } return \$form; } /\*\* \* Method to get the data that should be
+injected in the form. \* \* @return mixed The data for the form. \* \*
+@since 1.0 \*/ protected function loadFormData() { \$app =
+Factory::getApplication(); \$data = \$this-&gt;getItem();
+\$this-&gt;preprocessData('com\_foos.foo', \$data); return \$data; }
+/\*\* \* Method to get a single record. \* \* @param integer \$pk The id
+of the primary key. \* \* @return mixed Object on success, false on
+failure. \* \* @since 1.0 \*/ public function getItem(\$pk = null) {
+\$item = parent::getItem(\$pk); // Load associated foo items \$assoc =
+Associations::isEnabled(); if (\$assoc) { \$item-&gt;associations =
+array(); if (\$item-&gt;id != null) { \$associations =
+Associations::getAssociations('com\_foos', '\#\_\_foos\_details',
+'com\_foos.item', \$item-&gt;id, 'id', null); foreach (\$associations as
+\$tag =&gt; \$association) { \$item-&gt;associations\[\$tag\] =
+\$association-&gt;id; } } } return \$item; } /\*\* \* Preprocess the
+form. \* \* @param \\JForm \$form Form object. \* @param object \$data
+Data object. \* @param string \$group Group name. \* \* @return void \*
+\* @since 1.0 \*/ protected function preprocessForm(\\JForm \$form,
+\$data, \$group = 'content') { if (Associations::isEnabled()) {
+\$languages = LanguageHelper::getContentLanguages(false, true, null,
+'ordering', 'asc'); if (count(\$languages) &gt; 1) { \$addform = new
+\\SimpleXMLElement('
+
+'); \$fields = \$addform-&gt;addChild('fields');
+\$fields-&gt;addAttribute('name', 'associations'); \$fieldset =
+\$fields-&gt;addChild('fieldset'); \$fieldset-&gt;addAttribute('name',
+'item\_associations'); foreach (\$languages as \$language) { \$field =
+\$fieldset-&gt;addChild('field'); \$field-&gt;addAttribute('name',
+\$language-&gt;lang\_code); \$field-&gt;addAttribute('type',
+'modal\_foo'); \$field-&gt;addAttribute('language',
+\$language-&gt;lang\_code); \$field-&gt;addAttribute('label',
+\$language-&gt;title); \$field-&gt;addAttribute('translate\_label',
+'false'); \$field-&gt;addAttribute('select', 'true');
+\$field-&gt;addAttribute('new', 'true');
+\$field-&gt;addAttribute('edit', 'true');
+\$field-&gt;addAttribute('clear', 'true'); } \$form-&gt;load(\$addform,
+false); } } parent::preprocessForm(\$form, \$data, \$group); } }
+
+=== Changing administrator/components/com\_foos/Model/FoosModel.php ===
+The `administrator/components/com_foos/Model/FoosModel.php` file is ....
+==== Completed administrator/components/com\_foos/Model/FoosModel.php
+file ==== The code for the
+`administrator/components/com_foos/Model/FoosModel.php` file is as
+follows:
+
+getDbo(); \$query = \$db-&gt;getQuery(true); // Select the required
+fields from the table. \$query-&gt;select( \$this-&gt;getState(
+'list.select', 'a.id AS id,' . 'a.name AS name,' . 'a.access,' .
+'a.language,' . 'a.ordering AS ordering,' . 'a.checked\_out AS
+checked\_out,' . 'a.checked\_out\_time AS checked\_out\_time,' .
+'a.state AS state,' . 'a.catid AS catid,' . 'a.published AS published,'
+. 'a.publish\_up,' . 'a.publish\_down' ) );
+\$query-&gt;from(\$db-&gt;quoteName('\#\_\_foos\_details', 'a')); //
+Join over the asset groups.
+\$query-&gt;select(\$db-&gt;quoteName('ag.title', 'access\_level'))
+-&gt;join( 'LEFT', \$db-&gt;quoteName('\#\_\_viewlevels', 'ag') . ' ON '
+. \$db-&gt;quoteName('ag.id') . ' = ' . \$db-&gt;quoteName('a.access')
+); // Join over the categories.
+\$query-&gt;select(\$db-&gt;quoteName('c.title', 'category\_title'))
+-&gt;join( 'LEFT', \$db-&gt;quoteName('\#\_\_categories', 'c') . ' ON '
+. \$db-&gt;quoteName('c.id') . ' = ' . \$db-&gt;quoteName('a.catid') );
+// Join over the language
+\$query-&gt;select(\$db-&gt;quoteName('l.title', 'language\_title'))
+-&gt;select(\$db-&gt;quoteName('l.image', 'language\_image')) -&gt;join(
+'LEFT', \$db-&gt;quoteName('\#\_\_languages', 'l') . ' ON ' .
+\$db-&gt;quoteName('l.lang\_code') . ' = ' .
+\$db-&gt;quoteName('a.language') ); // Join over the associations.
+\$assoc = Associations::isEnabled(); if (\$assoc) {
+\$query-&gt;select('COUNT(' . \$db-&gt;quoteName('asso2.id') . ') &gt; 1
+as ' . \$db-&gt;quoteName('association')) -&gt;join( 'LEFT',
+\$db-&gt;quoteName('\#\_\_associations', 'asso') . ' ON ' .
+\$db-&gt;quoteName('asso.id') . ' = ' . \$db-&gt;quoteName('a.id') . '
+AND ' . \$db-&gt;quoteName('asso.context') . ' = ' .
+\$db-&gt;quote('com\_foos.item') ) -&gt;join( 'LEFT',
+\$db-&gt;quoteName('\#\_\_associations', 'asso2') . ' ON ' .
+\$db-&gt;quoteName('asso2.key') . ' = ' . \$db-&gt;quoteName('asso.key')
+) -&gt;group( \$db-&gt;quoteName( array( 'a.id', 'a.name', 'a.alias',
+'a.catid', 'a.checked\_out', 'a.checked\_out\_time', 'a.published',
+'a.access', 'a.language', 'a.publish\_up', 'a.publish\_down', 'l.title'
+, 'l.image' , 'ag.title' , 'c.title' ) ) ); } // Join over the users for
+the checked out user. \$query-&gt;select(\$db-&gt;quoteName('uc.name',
+'editor')) -&gt;join( 'LEFT', \$db-&gt;quoteName('\#\_\_users', 'uc') .
+' ON ' . \$db-&gt;quoteName('uc.id') . ' = ' .
+\$db-&gt;quoteName('a.checked\_out') ); // Filter by access level. if
+(\$access = \$this-&gt;getState('filter.access')) {
+\$query-&gt;where(\$db-&gt;quoteName('a.access') . ' = ' . (int)
+\$access); } // Filter by published state \$published = (string)
+\$this-&gt;getState('filter.published'); if (is\_numeric(\$published)) {
+\$query-&gt;where(\$db-&gt;quoteName('a.published') . ' = ' . (int)
+\$published); } elseif (\$published === '') { \$query-&gt;where('(' .
+\$db-&gt;quoteName('a.published') . ' = 0 OR ' .
+\$db-&gt;quoteName('a.published') . ' = 1)'); } // Filter by a single or
+group of categories. \$categoryId =
+\$this-&gt;getState('filter.category\_id'); if
+(is\_numeric(\$categoryId)) {
+\$query-&gt;where(\$db-&gt;quoteName('a.catid') . ' = ' . (int)
+\$categoryId); } elseif (is\_array(\$categoryId)) {
+\$query-&gt;where(\$db-&gt;quoteName('a.catid') . ' IN (' . implode(',',
+ArrayHelper::toInteger(\$categoryId)) . ')'); } // Filter by search in
+name. \$search = \$this-&gt;getState('filter.search'); if
+(!empty(\$search)) { if (stripos(\$search, 'id:') === 0) {
+\$query-&gt;where('a.id = ' . (int) substr(\$search, 3)); } else {
+\$search = \$db-&gt;quote('%' . str\_replace(' ', '%',
+\$db-&gt;escape(trim(\$search), true) . '%')); \$query-&gt;where( '(' .
+\$db-&gt;quoteName('a.name') . ' LIKE ' . \$search . ')' ); } } //
+Filter on the language. if (\$language =
+\$this-&gt;getState('filter.language')) {
+\$query-&gt;where(\$db-&gt;quoteName('a.language') . ' = ' .
+\$db-&gt;quote(\$language)); } // Filter by a single tag. \$tagId =
+\$this-&gt;getState('filter.tag'); if (is\_numeric(\$tagId)) {
+\$query-&gt;where(\$db-&gt;quoteName('tagmap.tag\_id') . ' = ' . (int)
+\$tagId) -&gt;join( 'LEFT',
+\$db-&gt;quoteName('\#\_\_contentitem\_tag\_map', 'tagmap') . ' ON ' .
+\$db-&gt;quoteName('tagmap.content\_item\_id') . ' = ' .
+\$db-&gt;quoteName('a.id') . ' AND ' .
+\$db-&gt;quoteName('tagmap.type\_alias') . ' = ' .
+\$db-&gt;quote('com\_foos.contact') ); } // Filter on the level. if
+(\$level = \$this-&gt;getState('filter.level')) {
+\$query-&gt;where('c.level &lt;= ' . (int) \$level); } // Add the list
+ordering clause. \$orderCol = \$this-&gt;state-&gt;get('list.ordering',
+'a.name'); \$orderDirn = \$this-&gt;state-&gt;get('list.direction',
+'asc'); if (\$orderCol == 'a.ordering' || \$orderCol ==
+'category\_title') { \$orderCol = \$db-&gt;quoteName('c.title') . ' ' .
+\$orderDirn . ', ' . \$db-&gt;quoteName('a.ordering'); }
+\$query-&gt;order(\$db-&gt;escape(\$orderCol . ' ' . \$orderDirn));
+return \$query; } /\*\* \* Method to auto-populate the model state. \*
+\* Note. Calling getState in this method will result in recursion. \* \*
+@param string \$ordering An optional ordering field. \* @param string
+\$direction An optional direction (asc|desc). \* \* @return void \* \*
+@since 1.0 \*/ protected function populateState(\$ordering = 'a.name',
+\$direction = 'asc') { \$app = Factory::getApplication();
+\$forcedLanguage = \$app-&gt;input-&gt;get('forcedLanguage', '', 'cmd');
+// Adjust the context to support modal layouts. if (\$layout =
+\$app-&gt;input-&gt;get('layout')) { \$this-&gt;context .= '.' .
+\$layout; } // Adjust the context to support forced languages. if
+(\$forcedLanguage) { \$this-&gt;context .= '.' . \$forcedLanguage; } //
+List state information. parent::populateState(\$ordering, \$direction);
+// Force a language. if (!empty(\$forcedLanguage)) {
+\$this-&gt;setState('filter.language', \$forcedLanguage); } } }
+
+=== Changing administrator/components/com\_foos/View/Foos/HtmlView.php
+=== The `administrator/components/com_foos/View/Foos/HtmlView.php` file
+is .... ==== Completed
+administrator/components/com\_foos/View/Foos/HtmlView.php file ==== The
+code for the `administrator/components/com_foos/View/Foos/HtmlView.php`
+file is as follows:
+
+items = \$this-&gt;get('Items'); \$this-&gt;pagination =
+\$this-&gt;get('Pagination'); \$this-&gt;filterForm =
+\$this-&gt;get('FilterForm'); \$this-&gt;activeFilters =
+\$this-&gt;get('ActiveFilters'); \$this-&gt;state =
+\$this-&gt;get('State'); // Check for errors. if (count(\$errors =
+\$this-&gt;get('Errors'))) { throw new
+\\JViewGenericdataexception(implode("\\n", \$errors), 500); } //
+Preprocess the list of items to find ordering divisions. // TODO:
+Complete the ordering stuff with nested sets foreach (\$this-&gt;items
+as &\$item) { \$item-&gt;order\_up = true; \$item-&gt;order\_dn = true;
+} // We don't need toolbar in the modal window. if
+(\$this-&gt;getLayout() !== 'modal') { FooHelper::addSubmenu('foos');
+\$this-&gt;addToolbar(); \$this-&gt;sidebar = \\JHtmlSidebar::render();
+// We do not need to filter by language when multilingual is disabled if
+(!Multilanguage::isEnabled()) {
+unset(\$this-&gt;activeFilters\['language'\]);
+\$this-&gt;filterForm-&gt;removeField('language', 'filter'); } } else {
+// In article associations modal we need to remove language filter if
+forcing a language. // We also need to change the category filter to
+show show categories with All or the forced language. if
+(\$forcedLanguage =
+Factory::getApplication()-&gt;input-&gt;get('forcedLanguage', '',
+'CMD')) { // If the language is forced we can't allow to select the
+language, so transform the language selector filter into a hidden field.
+\$languageXml = new \\SimpleXMLElement('');
+\$this-&gt;filterForm-&gt;setField(\$languageXml, 'filter', true); //
+Also, unset the active language filter so the search tools is not open
+by default with this filter.
+unset(\$this-&gt;activeFilters\['language'\]); // One last changes
+needed is to change the category filter to just show categories with All
+language or with the forced language.
+\$this-&gt;filterForm-&gt;setFieldAttribute('category\_id', 'language',
+'\*,' . \$forcedLanguage, 'filter'); } } return parent::display(\$tpl);
+} /\*\* \* Add the page title and toolbar. \* \* @return void \* \*
+@since 1.0 \*/ protected function addToolbar() { \$canDo =
+ContentHelper::getActions('com\_foos', 'category',
+\$this-&gt;state-&gt;get('filter.category\_id')); \$user =
+Factory::getUser(); // Get the toolbar object instance \$toolbar =
+Toolbar::getInstance('toolbar');
+ToolbarHelper::title(Text::\_('COM\_FOO\_MANAGER\_FOOS'), 'address
+foos'); if (\$canDo-&gt;get('core.create') ||
+count(\$user-&gt;getAuthorisedCategories('com\_foos', 'core.create'))
+&gt; 0) { \$toolbar-&gt;addNew('foo.add'); } if
+(\$canDo-&gt;get('core.edit.state')) { \$dropdown =
+\$toolbar-&gt;dropdownButton('status-group')
+-&gt;text('JTOOLBAR\_CHANGE\_STATUS') -&gt;toggleSplit(false)
+-&gt;icon('fa fa-globe') -&gt;buttonClass('btn btn-info')
+-&gt;listCheck(true); \$childBar = \$dropdown-&gt;getChildToolbar();
+\$childBar-&gt;publish('foos.publish')-&gt;listCheck(true);
+\$childBar-&gt;unpublish('foos.unpublish')-&gt;listCheck(true);
+\$childBar-&gt;archive('foos.archive')-&gt;listCheck(true); if
+(\$user-&gt;authorise('core.admin')) {
+\$childBar-&gt;checkin('foos.checkin')-&gt;listCheck(true); } if
+(\$this-&gt;state-&gt;get('filter.published') != -2) {
+\$childBar-&gt;trash('foos.trash')-&gt;listCheck(true); } }
+\$toolbar-&gt;popupButton('batch') -&gt;text('JTOOLBAR\_BATCH')
+-&gt;selector('collapseModal') -&gt;listCheck(true); if
+(\$this-&gt;state-&gt;get('filter.published') == -2 &&
+\$canDo-&gt;get('core.delete')) { \$toolbar-&gt;delete('foos.delete')
+-&gt;text('JTOOLBAR\_EMPTY\_TRASH')
+-&gt;message('JGLOBAL\_CONFIRM\_DELETE') -&gt;listCheck(true); } if
+(\$user-&gt;authorise('core.admin', 'com\_foos') ||
+\$user-&gt;authorise('core.options', 'com\_foos')) {
+\$toolbar-&gt;preferences('com\_foos'); }
+HTMLHelper::\_('sidebar.setAction', 'index.php?option=com\_foos'); }
+/\*\* \* Returns an array of fields the table can be sorted by \* \*
+@return array Array containing the field name to sort by as the key and
+display text as value \* \* @since 1.0 \*/ protected function
+getSortFields() { return array( 'a.ordering' =&gt;
+Text::\_('JGRID\_HEADING\_ORDERING'), 'a.published' =&gt;
+Text::\_('JSTATUS'), 'a.name' =&gt; Text::\_('JGLOBAL\_TITLE'),
+'category\_title' =&gt; Text::\_('JCATEGORY'), 'a.access' =&gt;
+Text::\_('JGRID\_HEADING\_ACCESS'), 'a.language' =&gt;
+Text::\_('JGRID\_HEADING\_LANGUAGE'), 'a.id' =&gt;
+Text::\_('JGRID\_HEADING\_ID'), ); } }
+
+=== Changing administrator/components/com\_foos/foos.xml === The
+`administrator/components/com_foos/foos.xml` file is .... ==== Completed
+administrator/components/com\_foos/foos.xml file ==== The code for the
+`administrator/components/com_foos/foos.xml` file is as follows:
+
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 1.22.0
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+sql/install.mysql.utf8.sql sql/uninstall.mysql.utf8.sql
+sql/updates/mysql Controller Model View tmpl language js
+
+COM\_FOOS
+
+COM\_FOOS
+
+JCATEGORY
+
+access.xml config.xml foos.xml Controller Extension Field Helper Model
+Rule Service Table View forms language services sql tmpl
+
+=== Changing administrator/components/com\_foos/forms/foo.xml === The
+`administrator/components/com_foos/forms/foo.xml` file is .... ====
+Completed administrator/components/com\_foos/forms/foo.xml file ==== The
+code for the `administrator/components/com_foos/forms/foo.xml` file is
+as follows:
+
+JALL JPUBLISHED JUNPUBLISHED JARCHIVED JTRASHED
+
+JHIDE JSHOW
+
+=== Changing administrator/components/com\_foos/tmpl/foo/edit.php ===
+The `administrator/components/com_foos/tmpl/foo/edit.php` file is ....
+==== Completed administrator/components/com\_foos/tmpl/foo/edit.php file
+==== The code for the
+`administrator/components/com_foos/tmpl/foo/edit.php` file is as
+follows:
+
+'auto', 'relative' =&gt; true)); \$app = Factory::getApplication();
+\$input = \$app-&gt;input; \$assoc = Associations::isEnabled();
+\$this-&gt;ignore\_fieldsets = array('item\_associations');
+\$this-&gt;useCoreUI = true; // In case of modal \$isModal =
+\$input-&gt;get('layout') == 'modal' ? true : false; \$layout =
+\$isModal ? 'modal' : 'edit'; \$tmpl = \$isModal ||
+\$input-&gt;get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' :
+''; ?&gt;
+
+<div>
+
+'details')); ?&gt;
+item-&gt;id) ? Text::\_('COM\_FOOS\_NEW\_FOO') :
+Text::\_('COM\_FOOS\_EDIT\_FOO')); ?&gt;
+<div class="row">
+
+<div class="col-md-9">
+
+<div class="row">
+
+<div class="col-md-6">
+
+getForm()-&gt;renderField('access'); ?&gt;
+getForm()-&gt;renderField('published'); ?&gt;
+getForm()-&gt;renderField('publish\_up'); ?&gt;
+getForm()-&gt;renderField('publish\_down'); ?&gt;
+getForm()-&gt;renderField('catid'); ?&gt;
+getForm()-&gt;renderField('language'); ?&gt;
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+loadTemplate('associations'); ?&gt;
+<div class="hidden">
+
+loadTemplate('associations'); ?&gt;
+
+</div>
+
+</div>
+
+=== Changing administrator/components/com\_foos/tmpl/foos/default.php
+=== The `administrator/components/com_foos/tmpl/foos/default.php` file
+is .... ==== Completed
+administrator/components/com\_foos/tmpl/foos/default.php file ==== The
+code for the `administrator/components/com_foos/tmpl/foos/default.php`
+file is as follows:
+
+escape(\$this-&gt;state-&gt;get('list.ordering')); \$listDirn =
+\$this-&gt;escape(\$this-&gt;state-&gt;get('list.direction'));
+\$saveOrder = \$listOrder == 'a.ordering'; if (\$saveOrder &&
+!empty(\$this-&gt;items)) { \$saveOrderingUrl =
+'index.php?option=com\_foos&task=foos.saveOrderAjax&tmpl=component&' .
+Session::getFormToken() . '=1'; } ?&gt;
+
+<div class="row">
+
+sidebar)) : ?&gt;
+<div id="j-sidebar-container" class="col-md-2">
+
+sidebar; ?&gt;
+
+</div>
+
+<div
+class="<?php if (!empty($this->sidebar)) {echo 'col-md-10'; } else { echo 'col-md-12'; } ?>">
+
+<div id="j-main-container" class="j-main-container">
+
+\$this)); ?&gt;
+items)) : ?&gt;
+<div class="alert alert-warning">
+
+</div>
+
+,
+items); foreach (\$this-&gt;items as \$i =&gt; \$item) : ?&gt;
+[ []{.icon-menu aria-hidden="true"} ]{.sortable-handler<?php .echo
+.$iconClass; .?>}
+id); ?&gt;
+checked\_out) : ?&gt;
+editor, \$item-&gt;checked\_out\_time, 'foos.', true); ?&gt;
+<div>
+
+escape(\$item-&gt;name); ?&gt;
+
+</div>
+
+escape(\$item-&gt;name); ?&gt;
+<div class="small">
+
+escape(\$item-&gt;category\_title); ?&gt;
+
+</div>
+
+access\_level; ?&gt;
+association) : ?&gt;
+id); ?&gt;
+<div class="btn-group">
+
+published, \$i, 'foos.', \$canChange, 'cb', \$item-&gt;publish\_up,
+\$item-&gt;publish\_down); ?&gt;
+
+</div>
+
+id; ?&gt;
+pagination-&gt;getListFooter(); ?&gt;
+Text::\_('COM\_FOOS\_BATCH\_OPTIONS'), 'footer' =&gt;
+\$this-&gt;loadTemplate('batch\_footer'), ),
+\$this-&gt;loadTemplate('batch\_body') ); ?&gt;
+
+</div>
+
+</div>
+
+</div>
+
+=== Creating
+administrator/components/com\_foos/tmpl/foos/default\_batch.php === The
+`administrator/components/com_foos/tmpl/foos/default_batch.php` file is
+the installation file. ==== Completed
+administrator/components/com\_foos/tmpl/foos/default\_batch.php file
+==== The code for the
+`administrator/components/com_foos/tmpl/foos/default_batch.php` file is
+as follows:
+
+state-&gt;get('filter.published'); \$noUser = true; ?&gt;
+
+<div id="collapseModal" class="modal hide fade">
+
+<div class="modal-header">
+
+×
+### 
+
+</div>
+
+<div class="modal-body modal-batch">
+
+<div class="row">
+
+<div class="form-group col-md-6">
+
+<div class="controls">
+
+</div>
+
+</div>
+
+<div class="form-group col-md-6">
+
+<div class="controls">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="row">
+
+= 0) : ?&gt;
+<div class="form-group col-md-6">
+
+<div class="controls">
+
+'com\_foos'\]); ?&gt;
+
+</div>
+
+</div>
+
+<div class="form-group col-md-6">
+
+<div class="controls">
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="control-group">
+
+<div class="controls">
+
+\$noUser\]); ?&gt;
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="modal-footer">
+
+</div>
+
+</div>
+
+=== Creating
+administrator/components/com\_foos/tmpl/foos/default\_batch\_body.php
+=== The
+`administrator/components/com_foos/tmpl/foos/default_batch_body.php`
+file is the installation file. ==== Completed
+administrator/components/com\_foos/tmpl/foos/default\_batch\_body.php
+file ==== The code for the
+`administrator/components/com_foos/tmpl/foos/default_batch_body.php`
+file is as follows:
+state-&gt;get('filter.published'); \$noUser = true; ?&gt;
+<div class="container">
+
+<div class="row">
+
+<div class="form-group col-md-6">
+
+<div class="controls">
+
+</div>
+
+</div>
+
+<div class="form-group col-md-6">
+
+<div class="controls">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="row">
+
+= 0) : ?&gt;
+<div class="form-group col-md-6">
+
+<div class="controls">
+
+'com\_foos'\]); ?&gt;
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+=== Creating
+administrator/components/com\_foos/tmpl/foos/default\_batch\_footer.php
+=== The
+`administrator/components/com_foos/tmpl/foos/default_batch_footer.php`
+file is the installation file. ==== Completed
+administrator/components/com\_foos/tmpl/foos/default\_batch\_footer.php
+file ==== The code for the
+`administrator/components/com_foos/tmpl/foos/default_batch_footer.php`
+file is as follows:
+== Test your component == \[\[File:as\_j4\_t\_22\_1.png|700px\]\]
+\[\[File:as\_j4\_t\_22\_2.png|700px\]\] == Example in Joomla! == ==
+Component Contents == At this point in the tutorial, your component
+should contain the following files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- |1 |administrator/components/com\_foos/Extension/FoosComponent.php |
+the interface BootableExtensionInterface where a component class can
+load its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 6 |
+administrator/components/com\_foos/Model/FoosModel.php | this is the
+model of the Foo component | new |- |1
+|administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- |1
+|administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | changed |- |1
+|administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+changed |- |6
+|administrator/components/com\_foos/sql/install.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | new |- |6
+|administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql |
+During the install/uninstall/update phase of a component, you can
+execute SQL queries through the use of this SQL text file | new |- |1
+|administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | changed |- |1
+|administrator/components/com\_foos/foos.xml |this is an XML (manifest)
+file that tells Joomla! how to install our component. | changed |- |1
+|administrator/components/com\_foos/script.php | the installer script |
+unchanged |- |2 | components/com\_foos/Controller/DisplayController.php
+| this is the frond end entry point to the Foo component | unchanged |-
+|4 | components/com\_foos/Model/FooModel.php | this is the frond end
+model for the Foo component | unchanged |- |2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | unchanged |- |2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | unchanged |- |3 | components/com\_foos/tmpl/foo/default.xml
+| the xml for the menu item | unchanged |- |} == Conclusion == Well, you
+have many different features built into your component. Perhaps you
+would like to explain these functions to your users with a help page?
+This is the topic of the next chapter. = Adding a help link - Part 23 =
+Well, you have many different features built into your component.
+Perhaps you would like to explain these functions to your users with a
+help page? This is the topic of this chapter == Requirements == You need
+Joomla! 4.x for this tutorial (as of writing currently Joomla!
+4.0.0-alpha11-dev) == File Structure == === Changing
+administrator/components/com\_foos/View/Foo/HtmlView.php === The
+`administrator/components/com_foos/View/Foo/HtmlView.php` file is ....
+==== Completed administrator/components/com\_foos/View/Foo/HtmlView.php
+file ==== The code for the `` file is as follows:
+item = \$this-&gt;get('Item'); // If we are forcing a language in modal
+(used for associations). if (\$this-&gt;getLayout() === 'modal' &&
+\$forcedLanguage =
+Factory::getApplication()-&gt;input-&gt;get('forcedLanguage', '',
+'cmd')) { // Set the language field to the forcedLanguage and disable
+changing it. \$this-&gt;form-&gt;setValue('language', null,
+\$forcedLanguage); \$this-&gt;form-&gt;setFieldAttribute('language',
+'readonly', 'true'); // Only allow to select categories with All
+language or with the forced language.
+\$this-&gt;form-&gt;setFieldAttribute('catid', 'language', '\*,' .
+\$forcedLanguage); } \$this-&gt;addToolbar(); return
+parent::display(\$tpl); } /\*\* \* Add the page title and toolbar. \* \*
+@return void \* \* @since 1.0 \*/ protected function addToolbar() {
+Factory::getApplication()-&gt;input-&gt;set('hidemainmenu', true);
+\$user = Factory::getUser(); \$userId = \$user-&gt;id; \$isNew =
+(\$this-&gt;item-&gt;id == 0); \$test =
+\$user-&gt;getAuthorisedCategories('com\_foos', 'core.create');
+ToolbarHelper::title(\$isNew ? Text::\_('COM\_FOOS\_MANAGER\_FOO\_NEW')
+: Text::\_('COM\_FOOS\_MANAGER\_FOO\_EDIT'), 'address foo'); // Since we
+don't track these assets at the item level, use the category id. \$canDo
+= ContentHelper::getActions('com\_foos', 'category',
+\$this-&gt;item-&gt;catid); // Build the actions for new and existing
+records. if (\$isNew) { // For new records, check the create permission.
+if ((count(\$user-&gt;getAuthorisedCategories('com\_foos',
+'core.create')) &gt; 0)) { ToolbarHelper::apply('foo.apply');
+ToolbarHelper::saveGroup( \[ \['save', 'foo.save'\], \['save2new',
+'foo.save2new'\] \], 'btn-success' ); }
+ToolbarHelper::cancel('foo.cancel'); } else { // Since it's an existing
+record, check the edit permission, or fall back to edit own if the
+owner. \$itemEditable = \$canDo-&gt;get('core.edit') ||
+(\$canDo-&gt;get('core.edit.own') && \$this-&gt;item-&gt;created\_by ==
+\$userId); \$toolbarButtons = \[\]; // Can't save the record if it's not
+editable if (\$itemEditable) { ToolbarHelper::apply('foo.apply');
+\$toolbarButtons\[\] = \['save', 'foo.save'\]; // We can save this
+record, but check the create permission to see if we can return to make
+a new one. if (\$canDo-&gt;get('core.create')) { \$toolbarButtons\[\] =
+\['save2new', 'foo.save2new'\]; } } // If checked out, we can still save
+if (\$canDo-&gt;get('core.create')) { \$toolbarButtons\[\] =
+\['save2copy', 'foo.save2copy'\]; } ToolbarHelper::saveGroup(
+\$toolbarButtons, 'btn-success' ); if (Associations::isEnabled() &&
+ComponentHelper::isEnabled('com\_associations')) {
+ToolbarHelper::custom('foo.editAssociations', 'contract', 'contract',
+'JTOOLBAR\_ASSOCIATIONS', false, false); }
+ToolbarHelper::cancel('foo.cancel', 'JTOOLBAR\_CLOSE'); }
+ToolbarHelper::divider(); ToolbarHelper::help('', false,
+'http://google.de'); } }
+=== Changing administrator/components/com\_foos/View/Foos/HtmlView.php
+=== The `administrator/components/com_foos/View/Foos/HtmlView.php` file
+is .... ==== Completed
+administrator/components/com\_foos/View/Foos/HtmlView.php file ==== The
+code for the `administrator/components/com_foos/View/Foos/HtmlView.php`
+file is as follows:
+items = \$this-&gt;get('Items'); \$this-&gt;pagination =
+\$this-&gt;get('Pagination'); \$this-&gt;filterForm =
+\$this-&gt;get('FilterForm'); \$this-&gt;activeFilters =
+\$this-&gt;get('ActiveFilters'); \$this-&gt;state =
+\$this-&gt;get('State'); // Check for errors. if (count(\$errors =
+\$this-&gt;get('Errors'))) { throw new
+\\JViewGenericdataexception(implode("\\n", \$errors), 500); } //
+Preprocess the list of items to find ordering divisions. // TODO:
+Complete the ordering stuff with nested sets foreach (\$this-&gt;items
+as &\$item) { \$item-&gt;order\_up = true; \$item-&gt;order\_dn = true;
+} // We don't need toolbar in the modal window. if
+(\$this-&gt;getLayout() !== 'modal') { FooHelper::addSubmenu('foos');
+\$this-&gt;addToolbar(); \$this-&gt;sidebar = \\JHtmlSidebar::render();
+// We do not need to filter by language when multilingual is disabled if
+(!Multilanguage::isEnabled()) {
+unset(\$this-&gt;activeFilters\['language'\]);
+\$this-&gt;filterForm-&gt;removeField('language', 'filter'); } } else {
+// In article associations modal we need to remove language filter if
+forcing a language. // We also need to change the category filter to
+show show categories with All or the forced language. if
+(\$forcedLanguage =
+Factory::getApplication()-&gt;input-&gt;get('forcedLanguage', '',
+'CMD')) { // If the language is forced we can't allow to select the
+language, so transform the language selector filter into a hidden field.
+\$languageXml = new \\SimpleXMLElement('');
+\$this-&gt;filterForm-&gt;setField(\$languageXml, 'filter', true); //
+Also, unset the active language filter so the search tools is not open
+by default with this filter.
+unset(\$this-&gt;activeFilters\['language'\]); // One last changes
+needed is to change the category filter to just show categories with All
+language or with the forced language.
+\$this-&gt;filterForm-&gt;setFieldAttribute('category\_id', 'language',
+'\*,' . \$forcedLanguage, 'filter'); } } return parent::display(\$tpl);
+} /\*\* \* Add the page title and toolbar. \* \* @return void \* \*
+@since 1.0 \*/ protected function addToolbar() { \$canDo =
+ContentHelper::getActions('com\_foos', 'category',
+\$this-&gt;state-&gt;get('filter.category\_id')); \$user =
+Factory::getUser(); // Get the toolbar object instance \$toolbar =
+Toolbar::getInstance('toolbar');
+ToolbarHelper::title(Text::\_('COM\_FOO\_MANAGER\_FOOS'), 'address
+foos'); if (\$canDo-&gt;get('core.create') ||
+count(\$user-&gt;getAuthorisedCategories('com\_foos', 'core.create'))
+&gt; 0) { \$toolbar-&gt;addNew('foo.add'); } if
+(\$canDo-&gt;get('core.edit.state')) { \$dropdown =
+\$toolbar-&gt;dropdownButton('status-group')
+-&gt;text('JTOOLBAR\_CHANGE\_STATUS') -&gt;toggleSplit(false)
+-&gt;icon('fa fa-globe') -&gt;buttonClass('btn btn-info')
+-&gt;listCheck(true); \$childBar = \$dropdown-&gt;getChildToolbar();
+\$childBar-&gt;publish('foos.publish')-&gt;listCheck(true);
+\$childBar-&gt;unpublish('foos.unpublish')-&gt;listCheck(true);
+\$childBar-&gt;archive('foos.archive')-&gt;listCheck(true); if
+(\$user-&gt;authorise('core.admin')) {
+\$childBar-&gt;checkin('foos.checkin')-&gt;listCheck(true); } if
+(\$this-&gt;state-&gt;get('filter.published') != -2) {
+\$childBar-&gt;trash('foos.trash')-&gt;listCheck(true); } }
+\$toolbar-&gt;popupButton('batch') -&gt;text('JTOOLBAR\_BATCH')
+-&gt;selector('collapseModal') -&gt;listCheck(true); if
+(\$this-&gt;state-&gt;get('filter.published') == -2 &&
+\$canDo-&gt;get('core.delete')) { \$toolbar-&gt;delete('foos.delete')
+-&gt;text('JTOOLBAR\_EMPTY\_TRASH')
+-&gt;message('JGLOBAL\_CONFIRM\_DELETE') -&gt;listCheck(true); } if
+(\$user-&gt;authorise('core.admin', 'com\_foos') ||
+\$user-&gt;authorise('core.options', 'com\_foos')) {
+\$toolbar-&gt;preferences('com\_foos'); } ToolbarHelper::divider();
+ToolbarHelper::help('', false, 'http://google.de');
+HTMLHelper::\_('sidebar.setAction', 'index.php?option=com\_foos'); }
+/\*\* \* Returns an array of fields the table can be sorted by \* \*
+@return array Array containing the field name to sort by as the key and
+display text as value \* \* @since 1.0 \*/ protected function
+getSortFields() { return array( 'a.ordering' =&gt;
+Text::\_('JGRID\_HEADING\_ORDERING'), 'a.published' =&gt;
+Text::\_('JSTATUS'), 'a.name' =&gt; Text::\_('JGLOBAL\_TITLE'),
+'category\_title' =&gt; Text::\_('JCATEGORY'), 'a.access' =&gt;
+Text::\_('JGRID\_HEADING\_ACCESS'), 'a.language' =&gt;
+Text::\_('JGRID\_HEADING\_LANGUAGE'), 'a.id' =&gt;
+Text::\_('JGRID\_HEADING\_ID'), ); } }
+=== Changing administrator/components/com\_foos/foos.xml === The
+`administrator/components/com_foos/foos.xml` file is .... ==== Completed
+administrator/components/com\_foos/foos.xml file ==== The code for the
+`administrator/components/com_foos/foos.xml` file is as follows:
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 1.23.0
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+sql/install.mysql.utf8.sql sql/uninstall.mysql.utf8.sql
+sql/updates/mysql Controller Model View tmpl language js
+COM\_FOOS
+COM\_FOOS
+JCATEGORY
+access.xml config.xml foos.xml Controller Extension Field Helper Model
+Rule Service Table View forms language services sql tmpl
+== Test your component == == Example in Joomla! == You can now
+individually offer a help page via the button on the top right. You can
+put these on the web and keep them up to date. Here I have chosen
+google.de as an example. Of course, you can adapt this page to your
+circumstances. \[\[File:as\_j4\_t\_23\_1.png|700px\]\] == Component
+Contents == At this point in the tutorial, your component should contain
+the following files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- |1 |administrator/components/com\_foos/Extension/FoosComponent.php |
+the interface BootableExtensionInterface where a component class can
+load its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 6 |
+administrator/components/com\_foos/Model/FoosModel.php | this is the
+model of the Foo component | new |- |1
+|administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- |1
+|administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | changed |- |1
+|administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+changed |- |6
+|administrator/components/com\_foos/sql/install.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | new |- |6
+|administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql |
+During the install/uninstall/update phase of a component, you can
+execute SQL queries through the use of this SQL text file | new |- |1
+|administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | changed |- |1
+|administrator/components/com\_foos/foos.xml |this is an XML (manifest)
+file that tells Joomla! how to install our component. | changed |- |1
+|administrator/components/com\_foos/script.php | the installer script |
+unchanged |- |2 | components/com\_foos/Controller/DisplayController.php
+| this is the frond end entry point to the Foo component | unchanged |-
+|4 | components/com\_foos/Model/FooModel.php | this is the frond end
+model for the Foo component | unchanged |- |2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | unchanged |- |2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | unchanged |- |3 | components/com\_foos/tmpl/foo/default.xml
+| the xml for the menu item | unchanged |- |} == Conclusion == You now
+know how to keep your users up to date. In the next chapter, we'll look
+at how you can make it easy for your users to keep your extension
+up-to-date. = Adding an update server and a changelog- Part 24 = In this
+chapter, we'll look at how you can make it easy for your users to keep
+your extension up-to-date. == Requirements == You need Joomla! 4.x for
+this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev) ==
+File Structure == === Changing
+administrator/components/com\_foos/foos.xml === The
+`administrator/components/com_foos/foos.xml` file is .... ==== Completed
+administrator/components/com\_foos/foos.xml file ==== The code for the
+`administrator/components/com_foos/foos.xml` file is as follows:
+COM\_FOOS \[DATE\] \[AUTHOR\] \[AUTHOR\_EMAIL\] \[AUTHOR\_URL\]
+\[COPYRIGHT\] GNU General Public License version 2 or later; 1.24.0
+COM\_FOOS\_XML\_DESCRIPTION Joomla\\Component\\Foos script.php
+sql/install.mysql.utf8.sql sql/uninstall.mysql.utf8.sql
+sql/updates/mysql Controller Model View tmpl language js
+COM\_FOOS
+COM\_FOOS
+JCATEGORY
+access.xml config.xml foos.xml Controller Extension Field Helper Model
+Rule Rule Service Table View forms language services sql tmpl
+https://example.com/.../changelog.xml
+http://example.com/.../foo\_update.xml
+=== Creating administrator/components/com\_foos/changelog.xml === The
+`administrator/components/com_foos/changelog.xml` file is the
+installation file. ==== Completed
+administrator/components/com\_foos/changelog.xml file ==== The code for
+the `administrator/components/com_foos/changelog.xml` file is as
+follows:
+com\_foos component 1.0.0
+Initial
+com\_foos component 1.0.0
+Add front end view
+com\_foos component 1.24.0 Item A &lt;h2&gt;You MUST replace this
+file&lt;/h2&gt; Item A Item b Item A Item b Item A Item b Item A Item b
+Item A Item b
+Item A Item b
+=== Creating administrator/components/com\_foos/foo\_update.xml === The
+`administrator/components/com_foos/foo_update.xml` file is the
+installation file. ==== Completed
+administrator/components/com\_foos/foo\_update.xml file ==== The code
+for the `administrator/components/com_foos/foo_update.xml` file is as
+follows:
+Foo This is com\_foo 1.24.0 com\_foo component 1.0.1
+http://www.example.com/com\_foo\_101.zip Foo Creator
+http://www.example.com site 7.1
+== Test your component ==
+\[\[File:componenttutorial24atest.png|700px\]\] == Example in Joomla! ==
+== More informations ==
+https://docs.joomla.org/Adding\_changelog\_to\_your\_manifest\_file
+https://github.com/joomla/joomla-cms/pull/24026 == Component Contents ==
+At this point in the tutorial, your component should contain the
+following files: {| border=1 | 1 |
+administrator/components/com\_foos/Controller/DisplayController.php |
+this is the administrator entry point to the Foo component | unchanged
+|- |1 |administrator/components/com\_foos/Extension/FoosComponent.php |
+the interface BootableExtensionInterface where a component class can
+load its internal class loader or register HTML services see
+https://github.com/joomla/joomla-cms/pull/20217 | unchanged |- | 6 |
+administrator/components/com\_foos/Model/FoosModel.php | this is the
+model of the Foo component | new |- |1
+|administrator/components/com\_foos/Service/HTML/AdministratorService.php
+| the html service see https://github.com/joomla/joomla-cms/pull/20217 |
+unchanged |- |1
+|administrator/components/com\_foos/View/Foos/HtmlView.php | file
+representing the view in the back end | changed |- |1
+|administrator/components/com\_foos/services/provider.php | the service
+provider interface see https://github.com/joomla/joomla-cms/pull/20217 |
+changed |- |6
+|administrator/components/com\_foos/sql/install.mysql.utf8.sql | During
+the install/uninstall/update phase of a component, you can execute SQL
+queries through the use of this SQL text file | new |- |6
+|administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql |
+During the install/uninstall/update phase of a component, you can
+execute SQL queries through the use of this SQL text file | new |- |1
+|administrator/components/com\_foos/tmpl/foos/default.php | the default
+view in the back end | changed |- |1
+|administrator/components/com\_foos/foos.xml |this is an XML (manifest)
+file that tells Joomla! how to install our component. | changed |- |1
+|administrator/components/com\_foos/script.php | the installer script |
+unchanged |- |2 | components/com\_foos/Controller/DisplayController.php
+| this is the frond end entry point to the Foo component | unchanged |-
+|4 | components/com\_foos/Model/FooModel.php | this is the frond end
+model for the Foo component | unchanged |- |2 |
+components/com\_foos/View/Foo/HtmlView.php | file representing the view
+in the frond end | unchanged |- |2 |
+components/com\_foos/tmpl/foo/default.php | the default view in the
+frond end | unchanged |- |3 | components/com\_foos/tmpl/foo/default.xml
+| the xml for the menu item | unchanged |- |} == Conclusion == = Adding
+Adding frontend edit - Part 25 =
+https://github.com/joomla/joomla-cms/pull/24311 = Adding Tags - Part 26
+= https://github.com/joomla/joomla-cms/issues/23589 = Adding Workflow -
+Part 27 = I am not sure if we can use it in a third party component.
+<div id="navwrapper">
+
+<div id="top-nav" class="fixed">
+
+-   [![Joomla!
+    Documentation](/skins/jforeground/joomla_logo_small.png)](/Main_Page)
+-   [[ ]{}](#)
+
+<div class="section top-bar-section">
+
+-   <div id="p-sidebar-Joomla">
+
+    </div>
+
+    [Joomla!](#)
+    -   <div id="n-sidebar-Main">
+
+        </div>
+
+        [**Joomla! Home](https://www.joomla.org)
+    -   <div id="n-sidebar-What">
+
+        </div>
+
+        [What is Joomla?](https://www.joomla.org/about-joomla.html)
+    -   <div id="n-sidebar-Benefits">
+
+        </div>
+
+        [Benefits & Features](https://www.joomla.org/core-features.html)
+    -   <div id="n-sidebar-Leadership">
+
+        </div>
+
+        [Project &
+        Leadership](https://www.joomla.org/about-joomla/the-project.html)
+    -   <div id="n-sidebar-Trademark">
+
+        </div>
+
+        [Trademark & Licensing](https://tm.joomla.org)
+    -   -   <div id="label">
+
+        </div>
+
+        Support Joomla!
+    -   <div id="n-sidebar-Contribute">
+
+        </div>
+
+        [Contribute](https://www.joomla.org/contribute-to-joomla.html)
+    -   <div id="n-sidebar-Sponsorship">
+
+        </div>
+
+        [Sponsor](https://www.joomla.org/sponsor.html)
+    -   <div id="n-sidebar-Partner">
+
+        </div>
+
+        [Partner](https://www.joomla.org/about-joomla/partners.html)
+    -   <div id="n-sidebar-Shop">
+
+        </div>
+
+        [Shop](https://shop.joomla.org/)
+
+-   <div id="p-sidebar-Extend">
+
+    </div>
+
+    [Download & Extend](#)
+    -   <div id="n-sidebar-JoomlaCode">
+
+        </div>
+
+        [Downloads](https://downloads.joomla.org/)
+    -   <div id="n-sidebar-Extensions">
+
+        </div>
+
+        [Extensions](https://extensions.joomla.org/)
+    -   <div id="n-sidebar-Translations">
+
+        </div>
+
+        [Languages](https://community.joomla.org/translations.html)
+    -   <div id="n-sidebar-Free-Hosted">
+
+        </div>
+
+        [Get a free site](https://launch.joomla.org)
+
+-   <div id="p-sidebar-About">
+
+    </div>
+
+    [Discover & Learn](#)
+    -   <div id="n-sidebar-Docs">
+
+        </div>
+
+        [Documentation](https://docs.joomla.org)
+    -   <div id="n-sidebar-Training">
+
+        </div>
+
+        [Training](https://training.joomla.org)
+    -   <div id="n-sidebar-Certification">
+
+        </div>
+
+        [Certification](https://certification.joomla.org/)
+    -   <div id="n-sidebar-Showcase">
+
+        </div>
+
+        [Site Showcase](https://showcase.joomla.org/)
+    -   <div id="n-sidebar-Announcements">
+
+        </div>
+
+        [Announcements](https://www.joomla.org/announcements.html)
+    -   <div id="n-sidebar-Blogs">
+
+        </div>
+
+        [Blogs](https://community.joomla.org/blogs.html)
+    -   <div id="n-sidebar-Magazine">
+
+        </div>
+
+        [Magazine](https://magazine.joomla.org/)
+
+-   <div id="p-sidebar-News">
+
+    </div>
+
+    [Community & Support](#)
+    -   <div id="n-sidebar-Community">
+
+        </div>
+
+        [Community Portal](https://community.joomla.org/)
+    -   <div id="n-sidebar-Events">
+
+        </div>
+
+        [Events](https://events.joomla.org/)
+    -   <div id="n-sidebar-JUGs">
+
+        </div>
+
+        [User Groups](https://community.joomla.org/user-groups.html)
+    -   <div id="n-sidebar-Forum">
+
+        </div>
+
+        [Forum](https://forum.joomla.org/)
+    -   <div id="n-sidebar-Resources">
+
+        </div>
+
+        [Resources Directory](https://resources.joomla.org/)
+    -   <div id="n-sidebar-Volunteers">
+
+        </div>
+
+        [Volunteers Portal](https://volunteers.joomla.org/)
+    -   <div id="n-sidebar-Vel">
+
+        </div>
+
+        [Vulnerable Extensions List](https://vel.joomla.org)
+
+-   <div id="p-sidebar-Developers">
+
+    </div>
+
+    [Developer Resources](#)
+    -   <div id="n-sidebar-Developers">
+
+        </div>
+
+        [Developer Network](https://developer.joomla.org/)
+    -   <div id="n-sidebar-Security">
+
+        </div>
+
+        [Security
+        Centre](https://developer.joomla.org/security-centre.html)
+    -   <div id="n-sidebar-Issues">
+
+        </div>
+
+        [Issue Tracker](https://issues.joomla.org/)
+    -   <div id="n-sidebar-Github">
+
+        </div>
+
+        [GitHub](https://github.com/joomla)
+    -   <div id="n-sidebar-API">
+
+        </div>
+
+        [API Documentation](https://api.joomla.org/)
+    -   <div id="n-sidebar-Framework">
+
+        </div>
+
+        [Joomla! Framework](https://framework.joomla.org/)
+    -   <div id="n-sidebar-JoomlaCode">
+
+        </div>
+
+        [JoomlaCode](http://joomlacode.org/)
+
+<!-- -->
+
+-   [**](#)
+    -   <div id="t-whatlinkshere">
+
+        </div>
+
+        [What links
+        here](/Special:WhatLinksHere/User:Astridx "A list of all wiki pages that link here [j]")
+    -   <div id="t-recentchangeslinked">
+
+        </div>
+
+        [Related
+        changes](/Special:RecentChangesLinked/User:Astridx "Recent changes in pages linked from this page [k]")
+    -   <div id="t-contributions">
+
+        </div>
+
+        [User
+        contributions](/Special:Contributions/Astridx "A list of contributions by this user")
+    -   <div id="t-log">
+
+        </div>
+
+        [Logs](/Special:Log/Astridx)
+    -   <div id="t-specialpages">
+
+        </div>
+
+        [Special
+        pages](/Special:SpecialPages "A list of all special pages [q]")
+    -   <div id="t-print">
+
+        </div>
+
+        [Printable
+        version](/index.php?title=User:Astridx&printable=yes "Printable version of this page [p]")
+    -   <div id="t-permalink">
+
+        </div>
+
+        [Permanent
+        link](/index.php?title=User:Astridx&oldid=623966 "Permanent link to this revision of the page")
+    -   <div id="t-info">
+
+        </div>
+
+        [Page
+        information](/index.php?title=User:Astridx&action=info "More information about this page")
+    -   <div id="n-recentchanges">
+
+        </div>
+
+        [Recent changes](/Special:RecentChanges "Special:RecentChanges")
+    -   <div id="n-help">
+
+        </div>
+
+        [Help](/S:MyLanguage/Help:Contents)
+
+-   [Log in](/index.php?title=Special:UserLogin&returnto=User%3AAstridx)
+
+</div>
+
+</div>
+
+<div id="global-header">
+
+<div class="row">
+
+<div class="large-6 column">
+
+[](/Main_Page) {#section-1 .page-title}
+==============
+
+<div class="title-name" style="display: inline-block;">
+
+Joomla! Documentation^™^
+
+</div>
+
+</div>
+
+<div class="large-6 column hide-for-small">
+
+-   [Download](https://downloads.joomla.org/){.button .success .radius}
+-   [Launch](https://launch.joomla.org/){.button .top .radius}
+
+</div>
+
+</div>
+
+</div>
+
+<div id="bottom-nav">
+
+-   [](/Main_Page) {#section-2 .title-name-small}
+    ==============
+
+    <div class="title-name" style="display:none;">
+
+    Joomla! Documentation^™^
+
+    </div>
+
+-   [[]{}](#)
+
+<div class="section top-bar-section">
+
+-   <div id="p-Learn">
+
+    </div>
+
+    [Learn](#)
+    -   <div id="n-More-About-Joomla.21">
+
+        </div>
+
+        [More About Joomla!](/Special:MyLanguage/Portal:Learn_More)
+    -   <div id="n-Beginners">
+
+        </div>
+
+        [Beginners](/Portal:Beginners)
+    -   <div id="n-Administrators">
+
+        </div>
+
+        [Administrators](/Portal:Administrators)
+    -   <div id="n-Developers">
+
+        </div>
+
+        [Developers](/Portal:Developers)
+    -   <div id="n-Joomla.21-Get-Involved">
+
+        </div>
+
+        [Joomla! Get Involved](/Portal:Participating_in_the_Community)
+    -   <div id="n-Joomla.21-Code-Contributors">
+
+        </div>
+
+        [Joomla! Code Contributors](/Portal:Joomla!_Code_Contributors)
+    -   <div id="n-Joomla-User-Groups">
+
+        </div>
+
+        [Joomla User
+        Groups](/Special:MyLanguage/Portal:Joomla_User_Groups)
+
+-   <div id="p-Browse">
+
+    </div>
+
+    [Browse](#)
+    -   <div id="n-CMS-Help-Screens">
+
+        </div>
+
+        [CMS Help Screens](/Help_screens)
+    -   <div id="n-Our-Docs">
+
+        </div>
+
+        [Our Docs](/Category:Top_Level)
+    -   <div id="n-Our-Glossary">
+
+        </div>
+
+        [Our Glossary](/Glossary)
+    -   <div id="n-The-Joomla.21-FAQs">
+
+        </div>
+
+        [The Joomla! FAQs](/Category:FAQ)
+    -   <div id="n-Tips-and-tricks">
+
+        </div>
+
+        [Tips and tricks](/Category:Tips_and_tricks)
+    -   <div id="n-Recent-Changes">
+
+        </div>
+
+        [Recent Changes](/Special:RecentChanges)
+
+-   <div id="p-Help">
+
+    </div>
+
+    [Help](#)
+    -   <div id="n-Contribute-to-Joomla.21-Docs">
+
+        </div>
+
+        [Contribute to Joomla!
+        Docs](/JDOC:How_to_Contribute_to_Joomla!_Documentation)
+    -   <div id="n-Translate-Joomla.21-Docs">
+
+        </div>
+
+        [Translate Joomla! Docs](/JDOC:Documentation_Translators)
+    -   <div id="n-Editing-Help">
+
+        </div>
+
+        [Editing Help](/JHelp:Cheatsheet)
+    -   <div id="n-Play-in-the-Sandbox">
+
+        </div>
+
+        [Play in the Sandbox](/Sandbox)
+    -   <div id="n-JDOC.27s-Policies">
+
+        </div>
+
+        [JDOC's Policies](/JDOC:Wiki_policy)
+    -   <div id="n-Documentation-License">
+
+        </div>
+
+        [Documentation License](/JEDL)
+    -   <div id="n-More-Help">
+
+        </div>
+
+        [More
+        Help](https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents)
+
+<!-- -->
+
+-   <div class="row">
+
+    <div class="small-12 columns">
+
+    Search
+
+    </div>
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="page-content">
+
+<div class="row">
+
+<div class="large-12 columns">
+
+<div class="mw-indicators">
+
+</div>
+
+</div>
+
+</div>
+
+<div id="mw-js-message" style="display:none;">
+
+</div>
+
+<div class="row">
+
+<div id="p-cactions" class="large-12 columns">
+
+#### User {#user .namespace .label}
+
+### From Joomla! Documentation {#tagline}
+
+<div id="social">
+
+<div class="addthis_sharing_toolbox">
+
+</div>
+
+</div>
+
+#####  {#section-3 .subtitle}
+
+<div id="ad">
+
+</div>
+
+<div class="clear_both">
+
+</div>
+
+<div class="mw-bodytext">
+
+<div id="mw-content-text" class="mw-content-ltr" lang="en" dir="ltr">
+
+<div class="hf-nsheader">
+
+</div>
+
+<div class="hf-header">
+
+</div>
+
+<div id="toc" class="toc">
+
+<div id="toctitle">
+
+Contents
+--------
+
+</div>
+
+-   [[1]{.tocnumber} [Creating a Simple Component for
+    Joomla!4.x]{.toctext}](#Creating_a_Simple_Component_for_Joomla.214.x)
+-   [[2]{.tocnumber} [Developing a Basic Component - Part
+    1]{.toctext}](#Developing_a_Basic_Component_-_Part_1)
+    -   [[2.1]{.tocnumber} [Notes]{.toctext}](#Notes)
+    -   [[2.2]{.tocnumber} [Requirements]{.toctext}](#Requirements)
+    -   [[2.3]{.tocnumber} [Creating a simple Component/Developing a
+        Basic
+        Component]{.toctext}](#Creating_a_simple_Component.2FDeveloping_a_Basic_Component)
+        -   [[2.3.1]{.tocnumber} [File
+            Structure]{.toctext}](#File_Structure)
+        -   [[2.3.2]{.tocnumber} [Creating
+            administrator/components/com\_foos/Controller/DisplayController.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FController.2FDisplayController.php)
+            -   [[2.3.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Controller/DisplayController.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FController.2FDisplayController.php_file)
+        -   [[2.3.3]{.tocnumber} [Creating
+            administrator/components/com\_foos/Extension/FoosComponent.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FExtension.2FFoosComponent.php)
+            -   [[2.3.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Extension/FoosComponent.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FExtension.2FFoosComponent.php_file)
+        -   [[2.3.4]{.tocnumber} [Creating
+            administrator/components/com\_foos/Service/HTML/AdministratorService.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FService.2FHTML.2FAdministratorService.php)
+            -   [[2.3.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Service/HTML/AdministratorService.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FService.2FHTML.2FAdministratorService.php_file)
+        -   [[2.3.5]{.tocnumber} [Creating
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php)
+            -   [[2.3.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file)
+        -   [[2.3.6]{.tocnumber} [Creating
+            administrator/components/com\_foos/services/provider.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Fservices.2Fprovider.php)
+            -   [[2.3.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/services/provider.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fservices.2Fprovider.php_file)
+        -   [[2.3.7]{.tocnumber} [Creating
+            administrator/components/com\_foos/tmpl/foos/default.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php)
+            -   [[2.3.7.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_file)
+        -   [[2.3.8]{.tocnumber} [Creating
+            script.php]{.toctext}](#Creating_script.php)
+            -   [[2.3.8.1]{.tocnumber} [Completed script.php
+                file]{.toctext}](#Completed_script.php_file)
+        -   [[2.3.9]{.tocnumber} [Creating
+            com\_foos.xml]{.toctext}](#Creating_com_foos.xml)
+            -   [[2.3.9.1]{.tocnumber} [Completed foo.xml
+                file]{.toctext}](#Completed_foo.xml_file)
+    -   [[2.4]{.tocnumber} [Test your
+        componente]{.toctext}](#Test_your_componente)
+    -   [[2.5]{.tocnumber} [Note]{.toctext}](#Note)
+        -   [[2.5.1]{.tocnumber} [Version
+            Number]{.toctext}](#Version_Number)
+        -   [[2.5.2]{.tocnumber} [index.html
+            File]{.toctext}](#index.html_File)
+        -   [[2.5.3]{.tocnumber} [Joomla! Extensions
+            Directory]{.toctext}](#Joomla.21_Extensions_Directory)
+    -   [[2.6]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents)
+    -   [[2.7]{.tocnumber} [Conclusion]{.toctext}](#Conclusion)
+-   [[3]{.tocnumber} [Adding a view to the site part - Part
+    2]{.toctext}](#Adding_a_view_to_the_site_part_-_Part_2)
+    -   [[3.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_2)
+    -   [[3.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_2)
+        -   [[3.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml)
+            -   [[3.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file)
+        -   [[3.2.2]{.tocnumber} [Creating
+            components/com\_foos/Controller/DisplayController.php]{.toctext}](#Creating_components.2Fcom_foos.2FController.2FDisplayController.php)
+            -   [[3.2.2.1]{.tocnumber} [Completed
+                components/com\_foos/Controller/DisplayController.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2FController.2FDisplayController.php_file)
+        -   [[3.2.3]{.tocnumber} [Creating
+            components/com\_foos/View/Foo/HtmlView.php]{.toctext}](#Creating_components.2Fcom_foos.2FView.2FFoo.2FHtmlView.php)
+            -   [[3.2.3.1]{.tocnumber} [Completed
+                components/com\_foos/View/Foo/HtmlView.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_file)
+        -   [[3.2.4]{.tocnumber} [Creating
+            components/com\_foos/tmpl/foo/default.php]{.toctext}](#Creating_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php)
+            -   [[3.2.4.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/default.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_file)
+    -   [[3.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component)
+    -   [[3.4]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_2)
+    -   [[3.5]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_2)
+-   [[4]{.tocnumber} [Adding a menu type to the site part - Part
+    3]{.toctext}](#Adding_a_menu_type_to_the_site_part_-_Part_3)
+    -   [[4.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_3)
+    -   [[4.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_3)
+        -   [[4.2.1]{.tocnumber} [Creating
+            components/com\_foos/tmpl/foo/default.xml]{.toctext}](#Creating_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.xml)
+            -   [[4.2.1.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/default.xml
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.xml_file)
+        -   [[4.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_2)
+            -   [[4.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_2)
+    -   [[4.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_2)
+    -   [[4.4]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_3)
+    -   [[4.5]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_3)
+-   [[5]{.tocnumber} [Adding a model to the site part - Part
+    4]{.toctext}](#Adding_a_model_to_the_site_part_-_Part_4)
+    -   [[5.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_4)
+    -   [[5.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_4)
+        -   [[5.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_3)
+            -   [[5.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_3)
+        -   [[5.2.2]{.tocnumber} [Creating
+            components/com\_foos/Model/FooModel.php]{.toctext}](#Creating_components.2Fcom_foos.2FModel.2FFooModel.php)
+            -   [[5.2.2.1]{.tocnumber} [Completed
+                components/com\_foos/Model/FooModel.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2FModel.2FFooModel.php_file)
+        -   [[5.2.3]{.tocnumber} [Changing
+            components/com\_foos/View/Foo/HtmlView.php]{.toctext}](#Changing_components.2Fcom_foos.2FView.2FFoo.2FHtmlView.php)
+            -   [[5.2.3.1]{.tocnumber} [Completed
+                components/com\_foos/View/Foo/HtmlView.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_file_2)
+        -   [[5.2.4]{.tocnumber} [Changing
+            components/com\_foos/tmpl/foo/default.php]{.toctext}](#Changing_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php)
+            -   [[5.2.4.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/default.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_file_2)
+    -   [[5.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_3)
+    -   [[5.4]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_4)
+    -   [[5.5]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_4)
+-   [[6]{.tocnumber} [Adding a variable request in the menu type - Part
+    5]{.toctext}](#Adding_a_variable_request_in_the_menu_type_-_Part_5)
+    -   [[6.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_5)
+    -   [[6.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_5)
+        -   [[6.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_4)
+            -   [[6.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_4)
+        -   [[6.2.2]{.tocnumber} [Changing
+            components/com\_foos/Model/FooModel.php]{.toctext}](#Changing_components.2Fcom_foos.2FModel.2FFooModel.php)
+            -   [[6.2.2.1]{.tocnumber} [Completed
+                components/com\_foos/Model/FooModel.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2FModel.2FFooModel.php_file_2)
+        -   [[6.2.3]{.tocnumber} [Changing
+            components/com\_foos/tmpl/foo/default.xml]{.toctext}](#Changing_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.xml)
+            -   [[6.2.3.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/default.xml
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.xml_file_2)
+    -   [[6.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_4)
+    -   [[6.4]{.tocnumber} [Note]{.toctext}](#Note_2)
+        -   [[6.4.1]{.tocnumber} [Why do we omit the close
+            tag?]{.toctext}](#Why_do_we_omit_the_close_tag.3F)
+    -   [[6.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_5)
+    -   [[6.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_5)
+-   [[7]{.tocnumber} [Using the database in the backend - Part
+    6]{.toctext}](#Using_the_database_in_the_backend_-_Part_6)
+    -   [[7.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_6)
+    -   [[7.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_6)
+        -   [[7.2.1]{.tocnumber} [Creating
+            administrator/components/com\_foos/Model/FoosModel.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php)
+            -   [[7.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FoosModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_file)
+        -   [[7.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php)
+            -   [[7.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_2)
+        -   [[7.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/services/provider.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fservices.2Fprovider.php)
+            -   [[7.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/services/provider.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fservices.2Fprovider.php_file_2)
+        -   [[7.2.4]{.tocnumber} [Creating
+            administrator/components/com\_foos/sql/install.mysql.utf8.sql]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Finstall.mysql.utf8.sql)
+            -   [[7.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/sql/install.mysql.utf8.sql
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Finstall.mysql.utf8.sql_file)
+        -   [[7.2.5]{.tocnumber} [Creating
+            administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Funinstall.mysql.utf8.sql)
+            -   [[7.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/sql/uninstall.mysql.utf8.sql
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Funinstall.mysql.utf8.sql_file)
+        -   [[7.2.6]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foos/default.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php)
+            -   [[7.2.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_file_2)
+        -   [[7.2.7]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_5)
+            -   [[7.2.7.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_5)
+    -   [[7.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_5)
+    -   [[7.4]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_6)
+    -   [[7.5]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_6)
+-   [[8]{.tocnumber} [Using the database in the frontend - Part
+    7]{.toctext}](#Using_the_database_in_the_frontend_-_Part_7)
+    -   [[8.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_7)
+    -   [[8.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_7)
+        -   [[8.2.1]{.tocnumber} [Creating
+            administrator/components/com\_foos/Controller/FooController.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FController.2FFooController.php)
+            -   [[8.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Controller/FooController.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FController.2FFooController.php_file)
+        -   [[8.2.2]{.tocnumber} [Creating
+            administrator/components/com\_foos/Field/Modal/FooField.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FField.2FModal.2FFooField.php)
+            -   [[8.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Field/Modal/FooField.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FField.2FModal.2FFooField.php_file)
+        -   [[8.2.3]{.tocnumber} [Creating
+            administrator/components/com\_foos/Model/FooModel.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFooModel.php)
+            -   [[8.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FooModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFooModel.php_file)
+        -   [[8.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_2)
+            -   [[8.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_3)
+        -   [[8.2.5]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foos/default.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_2)
+            -   [[8.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_file_3)
+        -   [[8.2.6]{.tocnumber} [Creating
+            administrator/components/com\_foos/Table/FooTable.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FTable.2FFooTable.php)
+            -   [[8.2.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Table/FooTable.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FTable.2FFooTable.php_file)
+        -   [[8.2.7]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_6)
+            -   [[8.2.7.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_6)
+        -   [[8.2.8]{.tocnumber} [Creating
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml)
+            -   [[8.2.8.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file)
+        -   [[8.2.9]{.tocnumber} [Changing
+            components/com\_foos/Model/FooModel.php]{.toctext}](#Changing_components.2Fcom_foos.2FModel.2FFooModel.php_2)
+            -   [[8.2.9.1]{.tocnumber} [Completed
+                components/com\_foos/Model/FooModel.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2FModel.2FFooModel.php_file_3)
+        -   [[8.2.10]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_3)
+            -   [[8.2.10.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_4)
+        -   [[8.2.11]{.tocnumber} [Changing
+            components/com\_foos/View/Foo/HtmlView.php]{.toctext}](#Changing_components.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_2)
+            -   [[8.2.11.1]{.tocnumber} [Completed
+                components/com\_foos/View/Foo/HtmlView.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_file_3)
+        -   [[8.2.12]{.tocnumber} [Creating
+            administrator/components/com\_foos/tmpl/foo/edit.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php)
+            -   [[8.2.12.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foo/edit.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_file)
+        -   [[8.2.13]{.tocnumber} [Creating Creating
+            administrator/components/com\_foos/tmpl/foo/modal.php]{.toctext}](#Creating_Creating_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fmodal.php)
+            -   [[8.2.13.1]{.tocnumber} [Completed Creating
+                administrator/components/com\_foo/tmpl/foos/modal.php
+                file]{.toctext}](#Completed_Creating_administrator.2Fcomponents.2Fcom_foo.2Ftmpl.2Ffoos.2Fmodal.php_file)
+        -   [[8.2.14]{.tocnumber} [Changing
+            components/com\_foos/tmpl/foo/default.php]{.toctext}](#Changing_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_2)
+            -   [[8.2.14.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/default.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_file_3)
+        -   [[8.2.15]{.tocnumber} [Creating
+            administrator/components/com\_foos/tmpl/foos/modal.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fmodal.php)
+            -   [[8.2.15.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/modal.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fmodal.php_file)
+        -   [[8.2.16]{.tocnumber} [Changing
+            components/com\_foos/tmpl/foo/default.php]{.toctext}](#Changing_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_3)
+            -   [[8.2.16.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/default.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_file_4)
+        -   [[8.2.17]{.tocnumber} [Changing
+            components/com\_foos/tmpl/foo/default.xml]{.toctext}](#Changing_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.xml_2)
+            -   [[8.2.17.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/default.xml
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.xml_file_3)
+        -   [[8.2.18]{.tocnumber} [Creating
+            media/com\_foos/js/admin-foos-modal.js]{.toctext}](#Creating_media.2Fcom_foos.2Fjs.2Fadmin-foos-modal.js)
+            -   [[8.2.18.1]{.tocnumber} [Completed
+                media/com\_foos/js/admin-foos-modal.js
+                file]{.toctext}](#Completed_media.2Fcom_foos.2Fjs.2Fadmin-foos-modal.js_file)
+    -   [[8.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_6)
+    -   [[8.4]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_7)
+    -   [[8.5]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_7)
+-   [[9]{.tocnumber} [Using languages files - Part
+    8]{.toctext}](#Using_languages_files_-_Part_8)
+    -   [[9.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_8)
+    -   [[9.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_8)
+        -   [[9.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_7)
+            -   [[9.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_7)
+        -   [[9.2.2]{.tocnumber} [Changing
+            components/com\_foos/tmpl/foo/default.php]{.toctext}](#Changing_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_4)
+            -   [[9.2.2.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/default.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_file_5)
+        -   [[9.2.3]{.tocnumber} [Creating
+            components/com\_foos/language/en-GB/en-GB.com\_foo.ini]{.toctext}](#Creating_components.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foo.ini)
+            -   [[9.2.3.1]{.tocnumber} [Completed
+                components/com\_foos/language/en-GB/en-GB.com\_foo.ini
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foo.ini_file)
+        -   [[9.2.4]{.tocnumber} [Creating
+            administrator/components/com\_foos/language/en-GB/en-GB.com\_foo.ini]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foo.ini)
+            -   [[9.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/language/en-GB/en-GB.com\_foo.ini
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foo.ini_file)
+        -   [[9.2.5]{.tocnumber} [Creating
+            administrator/components/com\_foos/language/en-GB/en-GB.com\_foo.sys.ini]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foo.sys.ini)
+            -   [[9.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/language/en-GB/en-GB.com\_foo.sys.ini
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foo.sys.ini_file)
+    -   [[9.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_7)
+    -   [[9.4]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_8)
+    -   [[9.5]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_8)
+-   [[10]{.tocnumber} [Adding configuration - Part
+    9]{.toctext}](#Adding_configuration_-_Part_9)
+    -   [[10.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_9)
+    -   [[10.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_9)
+        -   [[10.2.1]{.tocnumber} [Creating
+            administrator/components/com\_foos/config.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Fconfig.php)
+            -   [[10.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/config.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fconfig.php_file)
+        -   [[10.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_8)
+            -   [[10.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_8)
+        -   [[10.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini)
+            -   [[10.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_file)
+        -   [[10.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FooModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFooModel.php)
+            -   [[10.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FooModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFooModel.php_file_2)
+        -   [[10.2.5]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_4)
+            -   [[10.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_5)
+        -   [[10.2.6]{.tocnumber} [Changing
+            components/com\_foos/Model/FooModel.php]{.toctext}](#Changing_components.2Fcom_foos.2FModel.2FFooModel.php_3)
+            -   [[10.2.6.1]{.tocnumber} [Completed
+                components/com\_foos/Model/FooModel.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2FModel.2FFooModel.php_file_4)
+        -   [[10.2.7]{.tocnumber} [Changing
+            components/com\_foos/tmpl/foo/default.php]{.toctext}](#Changing_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_5)
+            -   [[10.2.7.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/default.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_file_6)
+    -   [[10.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_8)
+    -   [[10.4]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_9)
+    -   [[10.5]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_9)
+-   [[11]{.tocnumber} [Adding ACL - Part
+    10]{.toctext}](#Adding_ACL_-_Part_10)
+    -   [[11.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_10)
+    -   [[11.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_10)
+        -   [[11.2.1]{.tocnumber} [Creating
+            administrator/components/com\_foos/access.xml]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Faccess.xml)
+            -   [[11.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/access.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Faccess.xml_file)
+        -   [[11.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_9)
+            -   [[11.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_9)
+        -   [[11.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FoosModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php)
+            -   [[11.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FoosModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_file_2)
+        -   [[11.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_5)
+            -   [[11.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_6)
+        -   [[11.2.5]{.tocnumber} [Changing
+            administrator/components/com\_foos/config.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fconfig.xml)
+            -   [[11.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/config.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fconfig.xml_file)
+        -   [[11.2.6]{.tocnumber} [Changing
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml)
+            -   [[11.2.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file_2)
+        -   [[11.2.7]{.tocnumber} [Creating
+            administrator/components/com\_foos/sql/updates/mysql/1.10.0.sql]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2Fmysql.2F1.10.0.sql)
+            -   [[11.2.7.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/sql/updates/mysql/1.10.0.sql
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2Fmysql.2F1.10.0.sql_file)
+        -   [[11.2.8]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foo/edit.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php)
+            -   [[11.2.8.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foo/edit.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_file_2)
+        -   [[11.2.9]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foo/default.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php)
+            -   [[11.2.9.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foo/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_file)
+    -   [[11.3]{.tocnumber} [Note]{.toctext}](#Note_3)
+    -   [[11.4]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_9)
+    -   [[11.5]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21)
+    -   [[11.6]{.tocnumber} [Note]{.toctext}](#Note_4)
+    -   [[11.7]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_10)
+    -   [[11.8]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_10)
+-   [[12]{.tocnumber} [Adding Server side validation - Part
+    11a]{.toctext}](#Adding_Server_side_validation_-_Part_11a)
+    -   [[12.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_11)
+    -   [[12.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_11)
+        -   [[12.2.1]{.tocnumber} [Create
+            administrator/components/com\_foos/Rule/LetterRule.php]{.toctext}](#Create_administrator.2Fcomponents.2Fcom_foos.2FRule.2FLetterRule.php)
+            -   [[12.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Rule/LetterRule.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FRule.2FLetterRule.php_file)
+        -   [[12.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_2)
+            -   [[12.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file_3)
+        -   [[12.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoo.xml)
+            -   [[12.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoo.xml_file)
+    -   [[12.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_10)
+    -   [[12.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_2)
+    -   [[12.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_11)
+    -   [[12.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_11)
+-   [[13]{.tocnumber} [Adding Client side validation - Part
+    11b]{.toctext}](#Adding_Client_side_validation_-_Part_11b)
+    -   [[13.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_12)
+    -   [[13.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_12)
+        -   [[13.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoo.xml_2)
+            -   [[13.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoo.xml_file_2)
+        -   [[13.2.2]{.tocnumber} [Create
+            media/com\_foos/js/admin-foos-letter.js]{.toctext}](#Create_media.2Fcom_foos.2Fjs.2Fadmin-foos-letter.js)
+            -   [[13.2.2.1]{.tocnumber} [Completed
+                media/com\_foos/js/admin-foos-letter.js
+                file]{.toctext}](#Completed_media.2Fcom_foos.2Fjs.2Fadmin-foos-letter.js_file)
+        -   [[13.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_3)
+            -   [[13.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file_4)
+        -   [[13.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foo/edit.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_2)
+            -   [[13.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foo/edit.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_file_3)
+    -   [[13.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_11)
+    -   [[13.4]{.tocnumber} [Example in
+        Joomla]{.toctext}](#Example_in_Joomla)
+    -   [[13.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_12)
+    -   [[13.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_12)
+-   [[14]{.tocnumber} [Adding categories - Part
+    12]{.toctext}](#Adding_categories_-_Part_12)
+    -   [[14.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_13)
+    -   [[14.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_13)
+        -   [[14.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FoosModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_2)
+            -   [[14.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FoosModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_file_3)
+        -   [[14.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/access.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Faccess.xml)
+            -   [[14.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/access.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Faccess.xml_file_2)
+        -   [[14.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_10)
+            -   [[14.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_10)
+        -   [[14.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_4)
+            -   [[14.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file_5)
+        -   [[14.2.5]{.tocnumber} [Changing
+            administrator/components/com\_foos/sql/update/1.12.0.sql]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdate.2F1.12.0.sql)
+            -   [[14.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/sql/update/1.12.0.sql
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdate.2F1.12.0.sql_file)
+        -   [[14.2.6]{.tocnumber} [Changing
+            administrator/components/com\_foos/Extension/FoosComponent.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FExtension.2FFoosComponent.php)
+            -   [[14.2.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Extension/FoosComponent.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FExtension.2FFoosComponent.php_file_2)
+        -   [[14.2.7]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foo/edit.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_3)
+            -   [[14.2.7.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foo/edit.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_file_4)
+        -   [[14.2.8]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foos/default.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_3)
+            -   [[14.2.8.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_file_4)
+    -   [[14.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_12)
+    -   [[14.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_3)
+    -   [[14.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_13)
+    -   [[14.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_13)
+-   [[15]{.tocnumber} [Adding Published/Unpublished - Part
+    13]{.toctext}](#Adding_Published.2FUnpublished_-_Part_13)
+    -   [[15.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_14)
+    -   [[15.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_14)
+        -   [[15.2.1]{.tocnumber} [Creating
+            administrator/components/com\_foos/Controller/FoosController.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FController.2FFoosController.php)
+            -   [[15.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Controller/FoosController.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FController.2FFoosController.php_file)
+        -   [[15.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FoosModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_3)
+            -   [[15.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FoosModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_file_4)
+        -   [[15.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/Table/FooTable.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FTable.2FFooTable.php)
+            -   [[15.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Table/FooTable.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FTable.2FFooTable.php_file_2)
+        -   [[15.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_5)
+            -   [[15.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file_6)
+        -   [[15.2.5]{.tocnumber} [Changing
+            administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_2)
+            -   [[15.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_file_2)
+        -   [[15.2.6]{.tocnumber} [Create
+            administrator/components/com\_foos/sql/updates/1.13.0.sql]{.toctext}](#Create_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2F1.13.0.sql)
+            -   [[15.2.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/sql/updates/1.13.0.sql
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2F1.13.0.sql_file)
+        -   [[15.2.7]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foo/edit.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_4)
+            -   [[15.2.7.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foo/edit.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_file_5)
+        -   [[15.2.8]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foos/default.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_4)
+            -   [[15.2.8.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_file_5)
+    -   [[15.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_13)
+    -   [[15.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_4)
+    -   [[15.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_14)
+    -   [[15.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_14)
+-   [[16]{.tocnumber} [Adding Custom Fields in the backend - Part
+    14a]{.toctext}](#Adding_Custom_Fields_in_the_backend_-_Part_14a)
+    -   [[16.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_15)
+    -   [[16.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_15)
+        -   [[16.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_6)
+            -   [[16.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_7)
+        -   [[16.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/access.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Faccess.xml_2)
+            -   [[16.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/access.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Faccess.xml_file_3)
+        -   [[16.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/config.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fconfig.xml_2)
+            -   [[16.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/config.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fconfig.xml_file_2)
+        -   [[16.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_11)
+            -   [[16.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_11)
+        -   [[16.2.5]{.tocnumber} [Changing
+            administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_3)
+            -   [[16.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_file_3)
+        -   [[16.2.6]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foo/edit.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_5)
+            -   [[16.2.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foo/edit.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_file_6)
+        -   [[16.2.7]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foos/default.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_5)
+            -   [[16.2.7.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_file_6)
+        -   [[16.2.8]{.tocnumber} [Creating
+            administrator/components/com\_foos/Helper]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FHelper)
+            -   [[16.2.8.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Helper
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FHelper_file)
+    -   [[16.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_14)
+    -   [[16.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_5)
+    -   [[16.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_15)
+    -   [[16.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_15)
+-   [[17]{.tocnumber} [Adding Custom Fields in the frontend - Part
+    14b]{.toctext}](#Adding_Custom_Fields_in_the_frontend_-_Part_14b)
+    -   [[17.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_16)
+    -   [[17.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_16)
+        -   [[17.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_12)
+            -   [[17.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_12)
+        -   [[17.2.2]{.tocnumber} [Changing
+            components/com\_foos/tmpl/foo/default.php]{.toctext}](#Changing_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_6)
+            -   [[17.2.2.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/default.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_file_7)
+        -   [[17.2.3]{.tocnumber} [Changing
+            components/com\_foos/View/Foo/HtmlView.php]{.toctext}](#Changing_components.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_3)
+            -   [[17.2.3.1]{.tocnumber} [Completed
+                components/com\_foos/View/Foo/HtmlView.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_file_4)
+    -   [[17.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_15)
+    -   [[17.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_6)
+    -   [[17.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_16)
+    -   [[17.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_16)
+-   [[18]{.tocnumber} [Adding Associations I - Part
+    15a]{.toctext}](#Adding_Associations_I_-_Part_15a)
+    -   [[18.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_17)
+    -   [[18.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_17)
+        -   [[18.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/Extension/FoosComponent.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FExtension.2FFoosComponent.php_2)
+            -   [[18.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Extension/FoosComponent.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FExtension.2FFoosComponent.php_file_3)
+        -   [[18.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FooModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFooModel.php_2)
+            -   [[18.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FooModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFooModel.php_file_3)
+        -   [[18.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FoosModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_4)
+            -   [[18.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FoosModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_file_5)
+        -   [[18.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/Service/HTML/AdministratorService.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FService.2FHTML.2FAdministratorService.php)
+            -   [[18.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Service/HTML/AdministratorService.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FService.2FHTML.2FAdministratorService.php_file_2)
+        -   [[18.2.5]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_13)
+            -   [[18.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_13)
+        -   [[18.2.6]{.tocnumber} [Changing
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_6)
+            -   [[18.2.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file_7)
+        -   [[18.2.7]{.tocnumber} [Changing
+            administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_4)
+            -   [[18.2.7.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_file_4)
+        -   [[18.2.8]{.tocnumber} [Changing
+            administrator/components/com\_foos/services/provider.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fservices.2Fprovider.php_2)
+            -   [[18.2.8.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/services/provider.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fservices.2Fprovider.php_file_3)
+        -   [[18.2.9]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foo/edit.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_6)
+            -   [[18.2.9.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foo/edit.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_file_7)
+        -   [[18.2.10]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foos/default.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_6)
+            -   [[18.2.10.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_file_7)
+        -   [[18.2.11]{.tocnumber} [Creating
+            administrator/components/com\_foos/Helper/AssociationsHelper.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2FHelper.2FAssociationsHelper.php)
+            -   [[18.2.11.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Helper/AssociationsHelper.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FHelper.2FAssociationsHelper.php_file)
+        -   [[18.2.12]{.tocnumber} [Creating
+            administrator/components/com\_foos/sql/updates/mysql/1.15.0.sql]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2Fmysql.2F1.15.0.sql)
+            -   [[18.2.12.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/sql/updates/mysql/1.15.0.sql
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2Fmysql.2F1.15.0.sql_file)
+        -   [[18.2.13]{.tocnumber} [Creating
+            administrator/components/com\_foos/tmpl/foo/edit\_associations.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit_associations.php)
+            -   [[18.2.13.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foo/edit\_associations.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit_associations.php_file)
+    -   [[18.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_16)
+    -   [[18.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_7)
+    -   [[18.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_17)
+    -   [[18.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_17)
+-   [[19]{.tocnumber} [Adding Associations II - Part
+    15b]{.toctext}](#Adding_Associations_II_-_Part_15b)
+    -   [[19.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_18)
+    -   [[19.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_18)
+        -   [[19.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/Field/Modal/FooField.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FField.2FModal.2FFooField.php)
+            -   [[19.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Field/Modal/FooField.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FField.2FModal.2FFooField.php_file_2)
+        -   [[19.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FoosModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_5)
+            -   [[19.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FoosModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_file_6)
+        -   [[19.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foo/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoo.2FHtmlView.php)
+            -   [[19.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foo/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_file)
+        -   [[19.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_7)
+            -   [[19.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_8)
+        -   [[19.2.5]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_14)
+            -   [[19.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_14)
+    -   [[19.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_17)
+    -   [[19.4]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_18)
+-   [[20]{.tocnumber} [Adding Ordering and Filter - Part
+    16]{.toctext}](#Adding_Ordering_and_Filter_-_Part_16)
+    -   [[20.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_19)
+    -   [[20.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_19)
+        -   [[20.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FoosModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_6)
+            -   [[20.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FoosModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_file_7)
+        -   [[20.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_8)
+            -   [[20.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_9)
+        -   [[20.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_15)
+            -   [[20.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_15)
+        -   [[20.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_7)
+            -   [[20.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file_8)
+        -   [[20.2.5]{.tocnumber} [Create
+            administrator/components/com\_foos/sql/updates/mysql/1.16.0.sql]{.toctext}](#Create_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2Fmysql.2F1.16.0.sql)
+            -   [[20.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/sql/updates/mysql/1.16.0.sql
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2Fmysql.2F1.16.0.sql_file)
+        -   [[20.2.6]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foos/default.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_7)
+            -   [[20.2.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_file_8)
+        -   [[20.2.7]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foos/modal.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fmodal.php)
+            -   [[20.2.7.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/modal.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fmodal.php_file_2)
+    -   [[20.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_18)
+    -   [[20.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_8)
+    -   [[20.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_19)
+    -   [[20.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_18)
+-   [[21]{.tocnumber} [Adding Actions - Part
+    17]{.toctext}](#Adding_Actions_-_Part_17)
+    -   [[21.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_20)
+    -   [[21.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_20)
+        -   [[21.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foo/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_2)
+            -   [[21.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foo/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_file_2)
+        -   [[21.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_9)
+            -   [[21.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_10)
+        -   [[21.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_5)
+            -   [[21.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_file_5)
+        -   [[21.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_16)
+            -   [[21.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_16)
+    -   [[21.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_19)
+    -   [[21.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_9)
+    -   [[21.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_20)
+    -   [[21.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_19)
+-   [[22]{.tocnumber} [Adding Params - Part
+    18]{.toctext}](#Adding_Params_-_Part_18)
+    -   [[22.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_21)
+    -   [[22.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_21)
+        -   [[22.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FoosModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_7)
+            -   [[22.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FoosModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_file_8)
+        -   [[22.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/Table/FooTable.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FTable.2FFooTable.php_2)
+            -   [[22.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Table/FooTable.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FTable.2FFooTable.php_file_3)
+        -   [[22.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/config.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fconfig.xml_3)
+            -   [[22.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/config.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fconfig.xml_file_3)
+        -   [[22.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_17)
+            -   [[22.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_17)
+        -   [[22.2.5]{.tocnumber} [Changing
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_8)
+            -   [[22.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file_9)
+        -   [[22.2.6]{.tocnumber} [Changing
+            administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_6)
+            -   [[22.2.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_file_6)
+        -   [[22.2.7]{.tocnumber} [Changing
+            components/com\_foos/View/Foo/HtmlView.php]{.toctext}](#Changing_components.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_4)
+            -   [[22.2.7.1]{.tocnumber} [Completed
+                components/com\_foos/View/Foo/HtmlView.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_file_5)
+        -   [[22.2.8]{.tocnumber} [Changing x]{.toctext}](#Changing_x)
+            -   [[22.2.8.1]{.tocnumber} [Completed x
+                file]{.toctext}](#Completed_x_file)
+        -   [[22.2.9]{.tocnumber} [Changing
+            components/com\_foos/tmpl/foo/default.php]{.toctext}](#Changing_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_7)
+            -   [[22.2.9.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/default.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fdefault.php_file_8)
+        -   [[22.2.10]{.tocnumber} [Creating
+            administrator/components/com\_foos/sql/updates/mysql/1.18.0.sql]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2Fmysql.2F1.18.0.sql)
+            -   [[22.2.10.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/sql/updates/mysql/1.18.0.sql
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2Fmysql.2F1.18.0.sql_file)
+    -   [[22.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_20)
+    -   [[22.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_10)
+    -   [[22.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_21)
+    -   [[22.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_20)
+-   [[23]{.tocnumber} [Adding Pagination - Part
+    19]{.toctext}](#Adding_Pagination_-_Part_19)
+    -   [[23.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_22)
+    -   [[23.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_22)
+        -   [[23.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_18)
+            -   [[23.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_18)
+        -   [[23.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_10)
+            -   [[23.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_11)
+        -   [[23.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foos/default.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_8)
+            -   [[23.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_file_9)
+    -   [[23.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_21)
+    -   [[23.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_11)
+    -   [[23.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_22)
+    -   [[23.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_21)
+-   [[24]{.tocnumber} [Adding a Layout - Part
+    20]{.toctext}](#Adding_a_Layout_-_Part_20)
+    -   [[24.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_23)
+    -   [[24.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_23)
+        -   [[24.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_19)
+            -   [[24.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_19)
+        -   [[24.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_9)
+            -   [[24.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file_10)
+        -   [[24.2.3]{.tocnumber} [Changing x]{.toctext}](#Changing_x_2)
+            -   [[24.2.3.1]{.tocnumber} [Completed x
+                file]{.toctext}](#Completed_x_file_2)
+        -   [[24.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.sys.ini)
+            -   [[24.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.sys.ini
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.sys.ini_file)
+        -   [[24.2.5]{.tocnumber} [Creating
+            components/com\_foos/tmpl/foo/withhead.php]{.toctext}](#Creating_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fwithhead.php)
+            -   [[24.2.5.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/withhead.php
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fwithhead.php_file)
+        -   [[24.2.6]{.tocnumber} [Creating
+            components/com\_foos/tmpl/foo/withhead.xml]{.toctext}](#Creating_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fwithhead.xml)
+            -   [[24.2.6.1]{.tocnumber} [Completed
+                components/com\_foos/tmpl/foo/withhead.xml
+                file]{.toctext}](#Completed_components.2Fcom_foos.2Ftmpl.2Ffoo.2Fwithhead.xml_file)
+    -   [[24.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_22)
+    -   [[24.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_12)
+    -   [[24.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_23)
+    -   [[24.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_22)
+-   [[25]{.tocnumber} [Adding Checkout - Part
+    21]{.toctext}](#Adding_Checkout_-_Part_21)
+    -   [[25.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_24)
+    -   [[25.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_24)
+        -   [[25.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FoosModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_8)
+            -   [[25.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FoosModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_file_9)
+        -   [[25.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_11)
+            -   [[25.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_12)
+        -   [[25.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_20)
+            -   [[25.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_20)
+        -   [[25.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_10)
+            -   [[25.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file_11)
+        -   [[25.2.5]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foos/default.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_9)
+            -   [[25.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_file_10)
+        -   [[25.2.6]{.tocnumber} [Changing
+            administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_7)
+            -   [[25.2.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/language/en-GB/en-GB.com\_foos.ini
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Flanguage.2Fen-GB.2Fen-GB.com_foos.ini_file_7)
+        -   [[25.2.7]{.tocnumber} [Creating
+            /administrator/components/com\_foos/sql/updates/mysql/1.21.0.sql]{.toctext}](#Creating_.2Fadministrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2Fmysql.2F1.21.0.sql)
+            -   [[25.2.7.1]{.tocnumber} [Completed
+                /administrator/components/com\_foos/sql/updates/mysql/1.21.0.sql
+                file]{.toctext}](#Completed_.2Fadministrator.2Fcomponents.2Fcom_foos.2Fsql.2Fupdates.2Fmysql.2F1.21.0.sql_file)
+    -   [[25.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_23)
+    -   [[25.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_13)
+    -   [[25.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_24)
+    -   [[25.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_23)
+-   [[26]{.tocnumber} [Adding a batch process and alias - Part
+    22]{.toctext}](#Adding_a_batch_process_and_alias_-_Part_22)
+    -   [[26.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_25)
+    -   [[26.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_25)
+        -   [[26.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/Controller/FooController.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FController.2FFooController.php)
+            -   [[26.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Controller/FooController.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FController.2FFooController.php_file_2)
+        -   [[26.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FooModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFooModel.php_3)
+            -   [[26.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FooModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFooModel.php_file_4)
+        -   [[26.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/Model/FoosModel.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_9)
+            -   [[26.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/Model/FoosModel.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FModel.2FFoosModel.php_file_10)
+        -   [[26.2.4]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_12)
+            -   [[26.2.4.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_13)
+        -   [[26.2.5]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_21)
+            -   [[26.2.5.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_21)
+        -   [[26.2.6]{.tocnumber} [Changing
+            administrator/components/com\_foos/forms/foo.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_11)
+            -   [[26.2.6.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/forms/foo.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fforms.2Ffoo.xml_file_12)
+        -   [[26.2.7]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foo/edit.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_7)
+            -   [[26.2.7.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foo/edit.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoo.2Fedit.php_file_8)
+        -   [[26.2.8]{.tocnumber} [Changing
+            administrator/components/com\_foos/tmpl/foos/default.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_10)
+            -   [[26.2.8.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault.php_file_11)
+        -   [[26.2.9]{.tocnumber} [Creating
+            administrator/components/com\_foos/tmpl/foos/default\_batch.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault_batch.php)
+            -   [[26.2.9.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default\_batch.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault_batch.php_file)
+        -   [[26.2.10]{.tocnumber} [Creating
+            administrator/components/com\_foos/tmpl/foos/default\_batch\_body.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault_batch_body.php)
+            -   [[26.2.10.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default\_batch\_body.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault_batch_body.php_file)
+        -   [[26.2.11]{.tocnumber} [Creating
+            administrator/components/com\_foos/tmpl/foos/default\_batch\_footer.php]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault_batch_footer.php)
+            -   [[26.2.11.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/tmpl/foos/default\_batch\_footer.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ftmpl.2Ffoos.2Fdefault_batch_footer.php_file)
+    -   [[26.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_24)
+    -   [[26.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_14)
+    -   [[26.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_25)
+    -   [[26.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_24)
+-   [[27]{.tocnumber} [Adding a help link - Part
+    23]{.toctext}](#Adding_a_help_link_-_Part_23)
+    -   [[27.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_26)
+    -   [[27.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_26)
+        -   [[27.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foo/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_3)
+            -   [[27.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foo/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoo.2FHtmlView.php_file_3)
+        -   [[27.2.2]{.tocnumber} [Changing
+            administrator/components/com\_foos/View/Foos/HtmlView.php]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_13)
+            -   [[27.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/View/Foos/HtmlView.php
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2FView.2FFoos.2FHtmlView.php_file_14)
+        -   [[27.2.3]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_22)
+            -   [[27.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_22)
+    -   [[27.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_25)
+    -   [[27.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_15)
+    -   [[27.5]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_26)
+    -   [[27.6]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_25)
+-   [[28]{.tocnumber} [Adding an update server and a changelog- Part
+    24]{.toctext}](#Adding_an_update_server_and_a_changelog-_Part_24)
+    -   [[28.1]{.tocnumber} [Requirements]{.toctext}](#Requirements_27)
+    -   [[28.2]{.tocnumber} [File
+        Structure]{.toctext}](#File_Structure_27)
+        -   [[28.2.1]{.tocnumber} [Changing
+            administrator/components/com\_foos/foos.xml]{.toctext}](#Changing_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_23)
+            -   [[28.2.1.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foos.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoos.xml_file_23)
+        -   [[28.2.2]{.tocnumber} [Creating
+            administrator/components/com\_foos/changelog.xml]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Fchangelog.xml)
+            -   [[28.2.2.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/changelog.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Fchangelog.xml_file)
+        -   [[28.2.3]{.tocnumber} [Creating
+            administrator/components/com\_foos/foo\_update.xml]{.toctext}](#Creating_administrator.2Fcomponents.2Fcom_foos.2Ffoo_update.xml)
+            -   [[28.2.3.1]{.tocnumber} [Completed
+                administrator/components/com\_foos/foo\_update.xml
+                file]{.toctext}](#Completed_administrator.2Fcomponents.2Fcom_foos.2Ffoo_update.xml_file)
+    -   [[28.3]{.tocnumber} [Test your
+        component]{.toctext}](#Test_your_component_26)
+    -   [[28.4]{.tocnumber} [Example in
+        Joomla!]{.toctext}](#Example_in_Joomla.21_16)
+    -   [[28.5]{.tocnumber} [More
+        informations]{.toctext}](#More_informations)
+    -   [[28.6]{.tocnumber} [Component
+        Contents]{.toctext}](#Component_Contents_27)
+    -   [[28.7]{.tocnumber} [Conclusion]{.toctext}](#Conclusion_26)
+-   [[29]{.tocnumber} [Adding Adding frontend edit - Part
+    25]{.toctext}](#Adding_Adding_frontend_edit_-_Part_25)
+-   [[30]{.tocnumber} [Adding Tags - Part
+    26]{.toctext}](#Adding_Tags_-_Part_26)
+-   [[31]{.tocnumber} [Adding Workflow - Part
+    27]{.toctext}](#Adding_Workflow_-_Part_27)
+
+</div>
 
 [Creating a Simple Component for Joomla!4.x]{#Creating_a_Simple_Component_for_Joomla.214.x .mw-headline}
 ========================================================================================================
