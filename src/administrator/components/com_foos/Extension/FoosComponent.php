@@ -64,18 +64,4 @@ implements BootableExtensionInterface, CategoryServiceInterface, AssociationServ
 	{
 		return ($section === 'category' ? 'categories' : 'foos_details');
 	}
-
-	/**
-	 * Returns the state column for the count items functions for the given section.
-	 *
-	 * @param   string  $section  The section
-	 *
-	 * @return  string|null
-	 *
-	 * @since   4.0.0
-	 */
-	protected function getStateColumnForSection(string $section = null)
-	{
-		return 'published';
-	}
 }
