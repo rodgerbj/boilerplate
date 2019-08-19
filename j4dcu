@@ -18588,16 +18588,181 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 == File Structure ==
 
-=== Changing x ===
+=== Changing administrator/components/com_foos/foos.xml ===
 
-The <tt>x</tt> file is ....
+The <tt>administrator/components/com_foos/foos.xml</tt> file is ....
 
-==== Completed x file ====
+==== Completed administrator/components/com_foos/foos.xml file ====
 
-The code for the <tt>x</tt> file is as follows:
+The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as follows:
  
-<source lang="xml">
-<?php
+<source lang="xml" highlight="10,70-73">
+<?xml version="1.0" encoding="utf-8" ?>
+<extension type="component" method="upgrade">
+	<name>COM_FOOS</name>
+	<creationDate>[DATE]</creationDate>
+	<author>[AUTHOR]</author>
+	<authorEmail>[AUTHOR_EMAIL]</authorEmail>
+	<authorUrl>[AUTHOR_URL]</authorUrl>
+	<copyright>[COPYRIGHT]</copyright>
+	<license>GNU General Public License version 2 or later;</license>
+	<version>1.24.0</version>
+	<description>COM_FOOS_XML_DESCRIPTION</description>
+	<namespace>Joomla\Component\Foos</namespace>
+	<scriptfile>script.php</scriptfile>
+	<install> <!-- Runs on install -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall> <!-- Runs on uninstall -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<update>  <!-- Runs on update -->
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+	<!-- Frond-end files -->
+	<files folder="components/com_foos">
+		<folder>Controller</folder>
+		<folder>Model</folder>
+		<folder>View</folder>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+	</files>
+    <media folder="media/com_foos" destination="com_foos">
+		<folder>js</folder>
+    </media>
+	<!-- Back-end files -->
+	<administration>
+		<!-- Menu entries -->
+		<menu view="foos">COM_FOOS</menu>
+		<submenu>
+			<menu link="option=com_foos">COM_FOOS</menu>
+			<menu link="option=com_categories&amp;extension=com_foos"
+				view="categories" img="class:foos-cat" alt="Foos/Categories">JCATEGORY</menu>
+		</submenu>
+		<files folder="administrator/components/com_foos">
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>foos.xml</filename>
+			<folder>Controller</folder>
+			<folder>Extension</folder>
+			<folder>Field</folder>
+			<folder>Helper</folder>
+			<folder>Model</folder>
+			<folder>Rule</folder>
+			<folder>Rule</folder>
+			<folder>Service</folder>
+			<folder>Table</folder>
+			<folder>View</folder>
+			<folder>forms</folder>
+			<folder>language</folder>
+			<folder>services</folder>
+			<folder>sql</folder>
+			<folder>tmpl</folder>
+		</files>
+	</administration>
+	<changelogurl>https://example.com/.../changelog.xml</changelogurl>
+	<updateservers>
+		<server type="extension" name="Foo Updates">http://example.com/.../foo_update.xml</server>
+	</updateservers>
+</extension>
+
+
+</source>
+
+=== Creating administrator/components/com_foos/changelog.xml ===
+
+The <tt>administrator/components/com_foos/changelog.xml</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/changelog.xml file ====
+
+The code for the <tt>administrator/components/com_foos/changelog.xml</tt> file is as follows:
+ 
+<source lang="xml" highlight="">
+<changelogs>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>1.0.0</version>
+		<note>
+			<item>Initial</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>1.0.0</version>
+		<note>
+			<item>Add front end view</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>1.24.0</version>
+		<security>
+			<item>Item A</item>
+			<item><![CDATA[<h2>You MUST replace this file</h2>]]></item>
+		</security>
+		<fix>
+			<item>Item A</item>
+			<item>Item b</item>
+		</fix>
+		<language>
+			<item>Item A</item>
+			<item>Item b</item>
+		</language>
+		<addition>
+			<item>Item A</item>
+			<item>Item b</item>
+		</addition>
+		<change>
+			<item>Item A</item>
+			<item>Item b</item>
+		</change>
+		<remove>
+			<item>Item A</item>
+			<item>Item b</item>
+		</remove>
+		<note>
+			<item>Item A</item>
+			<item>Item b</item>
+		</note>
+	</changelog>
+</changelogs>
+</source>
+
+=== Creating administrator/components/com_foos/foo_update.xml ===
+
+The <tt>administrator/components/com_foos/foo_update.xml</tt> file is the installation file.
+
+==== Completed administrator/components/com_foos/foo_update.xml file ====
+
+The code for the <tt>administrator/components/com_foos/foo_update.xml</tt> file is as follows:
+ 
+<source lang="xml" highlight="">
+<updates>
+    <update>
+        <name>Foo</name>
+        <description>This is com_foo 1.24.0</description>
+        <element>com_foo</element>
+        <type>component</type>
+        <version>1.0.1</version>
+        <downloads>
+            <downloadurl type="full" format="zip">http://www.example.com/com_foo_101.zip</downloadurl>
+        </downloads>
+        <maintainer>Foo Creator</maintainer>
+        <maintainerurl>http://www.example.com</maintainerurl>
+        <targetplatform name="joomla" version="4.0"/>
+        <client>site</client>
+		<php_minimum>7.1</php_minimum>
+    </update>
+</updates>
 
 </source>
 
