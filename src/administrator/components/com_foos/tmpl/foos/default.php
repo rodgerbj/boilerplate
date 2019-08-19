@@ -151,6 +151,8 @@ if ($saveOrder && !empty($this->items))
 						</tbody>
 					</table>
 
+					<?php echo $this->pagination->getListFooter(); ?>
+				
 				<?php endif; ?>
 				<input type="hidden" name="task" value="">
 				<input type="hidden" name="boxchecked" value="0">

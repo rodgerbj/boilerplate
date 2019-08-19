@@ -78,9 +78,10 @@ class HtmlView extends BaseHtmlView
 	{
 		Factory::getApplication()->input->set('hidemainmenu', true);
 
-		$user       = Factory::getUser();
-		$userId     = $user->id;
-		$isNew      = ($this->item->id == 0);
+		$user  = Factory::getUser();
+		$userId = $user->id;
+		$isNew = ($this->item->id == 0);
+		$test = $user->getAuthorisedCategories('com_foos', 'core.create');
 
 		ToolbarHelper::title($isNew ? Text::_('COM_FOOS_MANAGER_FOO_NEW') : Text::_('COM_FOOS_MANAGER_FOO_EDIT'), 'address foo');
 
@@ -91,7 +92,7 @@ class HtmlView extends BaseHtmlView
 		if ($isNew)
 		{
 			// For new records, check the create permission.
-			if ($isNew && (count($user->getAuthorisedCategories('com_foos', 'core.create')) > 0))
+			if ((count($user->getAuthorisedCategories('com_foos', 'core.create')) > 0))
 			{
 				ToolbarHelper::apply('foo.apply');
 
