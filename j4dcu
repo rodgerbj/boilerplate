@@ -12187,10 +12187,6 @@ At this point in the tutorial, your component should contain the following files
 
 
 
-/home/astrid/git/joomla-development/boilerplate/tutorial/component/17 add actions/administrator
-/home/astrid/git/joomla-development/boilerplate/tutorial/component/17 add actions/components
-/home/astrid/git/joomla-development/boilerplate/tutorial/component/17 add actions/media
-
 = Adding Actions - Part 17 =
 
 == Requirements ==
@@ -12198,27 +12194,550 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 == File Structure ==
 
-=== Changing x ===
+=== Changing administrator/components/com_foos/View/Foo/HtmlView.php ===
 
-The <tt>x</tt> file is ....
+The <tt>administrator/components/com_foos/View/Foo/HtmlView.php</tt> file is ....
 
-==== Completed x file ====
+==== Completed administrator/components/com_foos/View/Foo/HtmlView.php file ====
 
-The code for the <tt>x</tt> file is as follows:
+The code for the <tt>administrator/components/com_foos/View/Foo/HtmlView.php</tt> file is as follows:
  
-<source lang="xml">
+<source lang="php" highlight="14-16,81-83,87-145">
 <?php
+/**
+ * @package     Joomla.Administrator
+ * @subpackage  com_foos
+ *
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+namespace Joomla\Component\Foos\Administrator\View\Foo;
+
+defined('_JEXEC') or die;
+
+use Joomla\CMS\Component\ComponentHelper;
+use Joomla\CMS\Helper\ContentHelper;
+use Joomla\CMS\Language\Associations;
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
+use Joomla\CMS\Toolbar\ToolbarHelper;
+
+/**
+ * View to edit a foo.
+ *
+ * @since  1.0
+ */
+class HtmlView extends BaseHtmlView
+{
+	/**
+	 * The \JForm object
+	 *
+	 * @var  \JForm
+	 */
+	protected $form;
+
+	/**
+	 * The active item
+	 *
+	 * @var  object
+	 */
+	protected $item;
+
+	/**
+	 * Display the view.
+	 *
+	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
+	 *
+	 * @return  mixed  A string if successful, otherwise an Error object.
+	 */
+	public function display($tpl = null)
+	{
+		$this->item = $this->get('Item');
+
+		// If we are forcing a language in modal (used for associations).
+		if ($this->getLayout() === 'modal' && $forcedLanguage = Factory::getApplication()->input->get('forcedLanguage', '', 'cmd'))
+		{
+			// Set the language field to the forcedLanguage and disable changing it.
+			$this->form->setValue('language', null, $forcedLanguage);
+			$this->form->setFieldAttribute('language', 'readonly', 'true');
+
+			// Only allow to select categories with All language or with the forced language.
+			$this->form->setFieldAttribute('catid', 'language', '*,' . $forcedLanguage);
+		}
+
+		$this->addToolbar();
+
+		return parent::display($tpl);
+	}
+
+	/**
+	 * Add the page title and toolbar.
+	 *
+	 * @return  void
+	 *
+	 * @since   1.0
+	 */
+	protected function addToolbar()
+	{
+		Factory::getApplication()->input->set('hidemainmenu', true);
+
+		$user       = Factory::getUser();
+		$userId     = $user->id;
+		$isNew      = ($this->item->id == 0);
+
+		ToolbarHelper::title($isNew ? Text::_('COM_FOOS_MANAGER_FOO_NEW') : Text::_('COM_FOOS_MANAGER_FOO_EDIT'), 'address foo');
+
+		// Since we don't track these assets at the item level, use the category id.
+		$canDo = ContentHelper::getActions('com_foos', 'category', $this->item->catid);
+
+		// Build the actions for new and existing records.
+		if ($isNew)
+		{
+			// For new records, check the create permission.
+			if ($isNew && (count($user->getAuthorisedCategories('com_foos', 'core.create')) > 0))
+			{
+				ToolbarHelper::apply('foo.apply');
+
+				ToolbarHelper::saveGroup(
+					[
+						['save', 'foo.save'],
+						['save2new', 'foo.save2new']
+					],
+					'btn-success'
+				);
+			}
+
+			ToolbarHelper::cancel('foo.cancel');
+		}
+		else
+		{
+			// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
+			$itemEditable = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == $userId);
+
+			$toolbarButtons = [];
+
+			// Can't save the record if it's not editable
+			if ($itemEditable)
+			{
+				ToolbarHelper::apply('foo.apply');
+
+				$toolbarButtons[] = ['save', 'foo.save'];
+
+				// We can save this record, but check the create permission to see if we can return to make a new one.
+				if ($canDo->get('core.create'))
+				{
+					$toolbarButtons[] = ['save2new', 'foo.save2new'];
+				}
+			}
+
+			// If checked out, we can still save
+			if ($canDo->get('core.create'))
+			{
+				$toolbarButtons[] = ['save2copy', 'foo.save2copy'];
+			}
+
+			ToolbarHelper::saveGroup(
+				$toolbarButtons,
+				'btn-success'
+			);
+
+			if (Associations::isEnabled() && ComponentHelper::isEnabled('com_associations'))
+			{
+				ToolbarHelper::custom('foo.editAssociations', 'contract', 'contract', 'JTOOLBAR_ASSOCIATIONS', false, false);
+			}
+
+			ToolbarHelper::cancel('foo.cancel', 'JTOOLBAR_CLOSE');
+		}
+	}
+}
+
 
 </source>
 
+=== Changing administrator/components/com_foos/View/Foos/HtmlView.php ===
+
+The <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is ....
+
+==== Completed administrator/components/com_foos/View/Foos/HtmlView.php file ====
+
+The code for the <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is as follows:
+ 
+<source lang="php" highlight="154-189">
+<?php
+
+/**
+ * @package     Joomla.Administrator
+ * @subpackage  com_foos
+ *
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+namespace Joomla\Component\Foos\Administrator\View\Foos;
+
+defined('_JEXEC') or die;
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Helper\ContentHelper;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
+use Joomla\CMS\Toolbar\Toolbar;
+use Joomla\CMS\Toolbar\ToolbarHelper;
+use Joomla\Component\Foos\Administrator\Helper\FooHelper;
+use Joomla\CMS\Language\Multilanguage;
+
+/**
+ * View class for a list of foos.
+ *
+ * @since  1.0
+ */
+class HtmlView extends BaseHtmlView
+{
+	/**
+	 * An array of items
+	 *
+	 * @var  array
+	 */
+	protected $items;
+
+	/**
+	 * The model state
+	 *
+	 * @var  \JObject
+	 */
+	protected $state;
+
+	/**
+	 * Form object for search filters
+	 *
+	 * @var  \JForm
+	 */
+	public $filterForm;
+
+	/**
+	 * The active search filters
+	 *
+	 * @var  array
+	 */
+	public $activeFilters;
+
+	/**
+	 * The sidebar markup
+	 *
+	 * @var  string
+	 */
+	protected $sidebar;
+
+	/**
+	 * Display the view.
+	 *
+	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
+	 *
+	 * @return  mixed  A string if successful, otherwise an Error object.
+	 */
+	public function display($tpl = null)
+	{
+		$this->items = $this->get('Items');
+		$this->filterForm = $this->get('FilterForm');
+		$this->activeFilters = $this->get('ActiveFilters');
+		$this->state = $this->get('State');
+
+		// Check for errors.
+		if (count($errors = $this->get('Errors')))
+		{
+			throw new \JViewGenericdataexception(implode("\n", $errors), 500);
+		}
+
+		// Preprocess the list of items to find ordering divisions.
+		// TODO: Complete the ordering stuff with nested sets
+		foreach ($this->items as &$item)
+		{
+			$item->order_up = true;
+			$item->order_dn = true;
+		}
+
+		// We don't need toolbar in the modal window.
+		if ($this->getLayout() !== 'modal')
+		{
+			FooHelper::addSubmenu('foos');
+			$this->addToolbar();
+			$this->sidebar = \JHtmlSidebar::render();
+
+			// We do not need to filter by language when multilingual is disabled
+			if (!Multilanguage::isEnabled())
+			{
+				unset($this->activeFilters['language']);
+				$this->filterForm->removeField('language', 'filter');
+			}
+		}
+		else
+		{
+			// In article associations modal we need to remove language filter if forcing a language.
+			// We also need to change the category filter to show show categories with All or the forced language.
+			if ($forcedLanguage = Factory::getApplication()->input->get('forcedLanguage', '', 'CMD'))
+			{
+				// If the language is forced we can't allow to select the language, so transform the language selector filter into a hidden field.
+				$languageXml = new \SimpleXMLElement('<field name="language" type="hidden" default="' . $forcedLanguage . '" />');
+				$this->filterForm->setField($languageXml, 'filter', true);
+
+				// Also, unset the active language filter so the search tools is not open by default with this filter.
+				unset($this->activeFilters['language']);
+
+				// One last changes needed is to change the category filter to just show categories with All language or with the forced language.
+				$this->filterForm->setFieldAttribute('category_id', 'language', '*,' . $forcedLanguage, 'filter');
+			}
+		}
+
+		return parent::display($tpl);
+	}
+
+	/**
+	 * Add the page title and toolbar.
+	 *
+	 * @return  void
+	 *
+	 * @since   1.0
+	 */
+	protected function addToolbar()
+	{
+		$canDo = ContentHelper::getActions('com_foos', 'category', $this->state->get('filter.category_id'));
+		$user  = Factory::getUser();
+
+		// Get the toolbar object instance
+		$toolbar = Toolbar::getInstance('toolbar');
+
+		ToolbarHelper::title(Text::_('COM_FOO_MANAGER_FOOS'), 'address foos');
+
+		if ($canDo->get('core.create') || count($user->getAuthorisedCategories('com_foos', 'core.create')) > 0)
+		{
+			$toolbar->addNew('foo.add');
+		}
+
+		if ($canDo->get('core.edit.state'))
+		{
+			$dropdown = $toolbar->dropdownButton('status-group')
+				->text('JTOOLBAR_CHANGE_STATUS')
+				->toggleSplit(false)
+				->icon('fa fa-globe')
+				->buttonClass('btn btn-info')
+				->listCheck(true);
+
+			$childBar = $dropdown->getChildToolbar();
+
+			$childBar->publish('foos.publish')->listCheck(true);
+
+			$childBar->unpublish('foos.unpublish')->listCheck(true);
+
+			$childBar->archive('foos.archive')->listCheck(true);
+
+			if ($user->authorise('core.admin'))
+			{
+				$childBar->checkin('foos.checkin')->listCheck(true);
+			}
+
+			if ($this->state->get('filter.published') != -2)
+			{
+				$childBar->trash('foos.trash')->listCheck(true);
+			}
+		}
+
+		if ($this->state->get('filter.published') == -2 && $canDo->get('core.delete'))
+		{
+			$toolbar->delete('foos.delete')
+				->text('JTOOLBAR_EMPTY_TRASH')
+				->message('JGLOBAL_CONFIRM_DELETE')
+				->listCheck(true);
+		}
+
+		if ($user->authorise('core.admin', 'com_foos') || $user->authorise('core.options', 'com_foos'))
+		{
+			$toolbar->preferences('com_foos');
+		}
+
+		HTMLHelper::_('sidebar.setAction', 'index.php?option=com_foos');
+	}
+
+	/**
+	 * Returns an array of fields the table can be sorted by
+	 *
+	 * @return  array  Array containing the field name to sort by as the key and display text as value
+	 *
+	 * @since   1.0
+	 */
+	protected function getSortFields()
+	{
+		return array(
+			'a.ordering'     => Text::_('JGRID_HEADING_ORDERING'),
+			'a.published'    => Text::_('JSTATUS'),
+			'a.name'         => Text::_('JGLOBAL_TITLE'),
+			'category_title' => Text::_('JCATEGORY'),
+			'a.access'       => Text::_('JGRID_HEADING_ACCESS'),
+			'a.language'     => Text::_('JGRID_HEADING_LANGUAGE'),
+			'a.id'           => Text::_('JGRID_HEADING_ID'),
+		);
+	}
+}
+
+
+</source>
+
+=== Changing administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini ===
+
+The <tt>administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini</tt> file is ....
+
+==== Completed administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini file ====
+
+The code for the <tt>administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini</tt> file is as follows:
+ 
+<source lang="init" highlight="25-32,39-47" >
+COM_FOOS="[PROJECT_NAME]"
+COM_FOOS_CONFIGURATION="Foo Options"
+
+COM_FOOS_MANAGER_FOO_NEW="New"
+COM_FOOS_MANAGER_FOO_EDIT="Edit"
+COM_FOOS_MANAGER_FOOS="Foo Manager"
+
+COM_FOOS_TABLE_TABLEHEAD_NAME="Name"
+COM_FOOS_TABLE_TABLEHEAD_ID="ID"
+COM_FOOS_ERROR_FOO_NOT_FOUND="Foo not found"
+
+COM_FOOS_FIELD_NAME_LABEL="Name"
+
+COM_FOOS_FIELD_FOO_SHOW_CATEGORY_LABEL="Show name label"
+COM_FOOS_FIELD_CONFIG_INDIVIDUAL_FOO_DESC="These settings apply for all foo."
+COM_FOOS_FIELD_CONFIG_INDIVIDUAL_FOO_DISPLAY="Foo"
+
+COM_FOOS_FIELD_PUBLISH_DOWN_LABEL="Finish Publishing"
+COM_FOOS_FIELD_PUBLISH_UP_LABEL="Start Publishing"
+COM_FOOS_N_ITEMS_PUBLISHED="%d foos published."
+COM_FOOS_N_ITEMS_PUBLISHED_1="%d foo published."
+COM_FOOS_N_ITEMS_UNPUBLISHED="%d foos unpublished."
+COM_FOOS_N_ITEMS_UNPUBLISHED_1="%d foo unpublished."
+
+COM_FOOS_FOOS_FIELD_PUBLISH_DOWN_LABEL="Finish Publishing"
+COM_FOOS_FOOS_FIELD_PUBLISH_UP_LABEL="Start Publishing"
+COM_FOOS_FOOS_N_ITEMS_PUBLISHED="%d foos published."
+COM_FOOS_FOOS_N_ITEMS_PUBLISHED_1="%d foo published."
+COM_FOOS_FOOS_N_ITEMS_UNPUBLISHED="%d foos unpublished."
+COM_FOOS_FOOS_N_ITEMS_UNPUBLISHED_1="%d foo unpublished."
+
+COM_FOOS_EDIT_FOO="Edit Foo"
+COM_FOOS_NEW_FOO="New Foo"
+
+COM_FOOS_HEADING_ASSOCIATION="Association"
+COM_FOOS_CHANGE_FOO="Change a foo"
+COM_FOOS_SELECT_A_FOO="Select a foo"
+
+COM_FOOS_TABLE_CAPTION="Foo Table Caption"
+
+COM_FOOS_N_ITEMS_ARCHIVED="%d foos archived."
+COM_FOOS_N_ITEMS_ARCHIVED_1="%d foo archived."
+COM_FOOS_N_ITEMS_DELETED="%d foos deleted."
+COM_FOOS_N_ITEMS_DELETED_1="%d foo deleted."
+COM_FOOS_N_ITEMS_TRASHED="%d foos trashed."
+COM_FOOS_N_ITEMS_TRASHED_1="%d foo trashed."
+COM_FOO_MANAGER_FOOS="Foos"
+
+</source>
+
+=== Changing administrator/components/com_foos/foos.xml ===
+
+The <tt>administrator/components/com_foos/foos.xml</tt> file is ....
+
+==== Completed administrator/components/com_foos/foos.xml file ====
+
+The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as follows:
+ 
+<source lang="xml" hightlight="10">
+<?xml version="1.0" encoding="utf-8" ?>
+<extension type="component" method="upgrade">
+	<name>COM_FOOS</name>
+	<creationDate>[DATE]</creationDate>
+	<author>[AUTHOR]</author>
+	<authorEmail>[AUTHOR_EMAIL]</authorEmail>
+	<authorUrl>[AUTHOR_URL]</authorUrl>
+	<copyright>[COPYRIGHT]</copyright>
+	<license>GNU General Public License version 2 or later;</license>
+	<version>1.17.0</version>
+	<description>COM_FOOS_XML_DESCRIPTION</description>
+	<namespace>Joomla\Component\Foos</namespace>
+	<scriptfile>script.php</scriptfile>
+	<install> <!-- Runs on install -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall> <!-- Runs on uninstall -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<update>  <!-- Runs on update -->
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+	<!-- Frond-end files -->
+	<files folder="components/com_foos">
+		<folder>Controller</folder>
+		<folder>Model</folder>
+		<folder>View</folder>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+	</files>
+    <media folder="media/com_foos" destination="com_foos">
+		<folder>js</folder>
+    </media>
+	<!-- Back-end files -->
+	<administration>
+		<!-- Menu entries -->
+		<menu view="foos">COM_FOOS</menu>
+		<submenu>
+			<menu link="option=com_foos">COM_FOOS</menu>
+			<menu link="option=com_categories&amp;extension=com_foos"
+				view="categories" img="class:foos-cat" alt="Foos/Categories">JCATEGORY</menu>
+		</submenu>
+		<files folder="administrator/components/com_foos">
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>foos.xml</filename>
+			<folder>Controller</folder>
+			<folder>Extension</folder>
+			<folder>Model</folder>
+			<folder>Rule</folder>
+			<folder>Service</folder>
+			<folder>View</folder>
+			<folder>services</folder>
+			<folder>tmpl</folder>
+			<folder>sql</folder>
+			<folder>language</folder>
+		</files>
+	</administration>
+</extension>
+
+
+</source>
 
 == Test your component ==
 
 
 == Example in Joomla! ==
 
+Here you can see how you can use already implemented actions.
 
-[[File:componenttutorial17a.png|700px]]
+Here is an example of an actions in the edit view.
+
+[[File:as_j4-t_17_1.png|700px]]
+
+Here is an example of an actions in the default view.
+
+[[File:as_j4-t_17_2.png|700px]]
+
+Do you have a specific problem? Then look at how the standard functions 
+are implemented in Joomla and apply this analogously to your problem.
 
 
 == Component Contents ==
@@ -12421,6 +12940,10 @@ At this point in the tutorial, your component should contain the following files
 
 == Conclusion ==
 
+With its own functions, you can implement almost anything you want. 
+You may want to save parameters that control the 
+function of your component in addition to the data. 
+This is the topic of the next chapter
 
 
 
@@ -12459,16 +12982,6 @@ At this point in the tutorial, your component should contain the following files
 
 
 
-
-
-geändert:       src/administrator/components/com_foos/Model/FoosModel.php
-	geändert:       src/administrator/components/com_foos/Table/FooTable.php
-	geändert:       src/administrator/components/com_foos/config.xml
-	geändert:       src/administrator/components/com_foos/forms/foo.xml
-	geändert:       src/administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini
-	geändert:       src/administrator/components/com_foos/sql/install.mysql.utf8.sql
-	geändert:       src/components/com_foos/View/Foo/HtmlView.php
-	geändert:       src/components/com_foos/tmpl/foo/default.php
 
 
 = Adding Params - Part 18 =
