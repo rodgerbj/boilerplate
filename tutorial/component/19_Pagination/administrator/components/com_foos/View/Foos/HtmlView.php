@@ -100,8 +100,6 @@ class HtmlView extends BaseHtmlView
 			$item->order_dn = true;
 		}
 
-		$this->addToolbar();
-
 		// We don't need toolbar in the modal window.
 		if ($this->getLayout() !== 'modal')
 		{
