@@ -185,6 +185,11 @@ class HtmlView extends BaseHtmlView
 			}
 		}
 
+		$toolbar->popupButton('batch')
+			->text('JTOOLBAR_BATCH')
+			->selector('collapseModal')
+			->listCheck(true);
+
 		if ($this->state->get('filter.published') == -2 && $canDo->get('core.delete'))
 		{
 			$toolbar->delete('foos.delete')

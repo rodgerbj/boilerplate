@@ -156,6 +156,16 @@ if ($saveOrder && !empty($this->items))
 
 					<?php echo $this->pagination->getListFooter(); ?>
 				
+					<?php echo HTMLHelper::_(
+						'bootstrap.renderModal',
+						'collapseModal',
+						array(
+							'title'  => Text::_('COM_FOOS_BATCH_OPTIONS'),
+							'footer' => $this->loadTemplate('batch_footer'),
+						),
+						$this->loadTemplate('batch_body')
+					); ?>
+
 				<?php endif; ?>
 				<input type="hidden" name="task" value="">
 				<input type="hidden" name="boxchecked" value="0">
