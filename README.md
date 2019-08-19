@@ -34,15 +34,7 @@ To customize the boilerplates using your own name you need to take the following
 
 
 
-
-
-
-
-
-
-
-
-Creating a Simple Component for Joomla!4.x
+Creating a Simple Component for Joomla!4.x See https://docs.joomla.org/User:Astridx
 ==========================================
 
 This is a multiple-article series of tutorials on how to develop a
