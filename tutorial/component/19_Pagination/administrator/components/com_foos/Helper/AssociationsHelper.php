@@ -208,4 +208,25 @@ class AssociationsHelper extends AssociationExtensionHelper
 			'title'   => $title
 		);
 	}
+
+	/**
+	 * Get default values for fields array
+	 *
+	 * @return  array
+	 *
+	 * @since   3.7.0
+	 */
+	protected function getFieldsTemplate()
+	{
+		return array(
+			'id'                  => 'a.id',
+			'title'               => 'a.title',
+			'alias'               => 'a.alias',
+			'catid'               => 'a.catid',
+			'language'            => 'a.language',
+			'access'              => 'a.access',
+			'state'               => 'a.state',
+		);
+	}
 }
+	

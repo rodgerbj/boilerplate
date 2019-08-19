@@ -127,6 +127,13 @@ class FoosModel extends ListModel
 				);
 		}
 
+		// Filter on the language.
+		if ($language = $this->getState('filter.language'))
+		{
+			$query->where($db->quoteName('a.language') . ' = :language');
+			$query->bind(':language', $language);
+		}
+
 		return $query;
 	}
 }

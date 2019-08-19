@@ -12,6 +12,7 @@ namespace Joomla\Component\Foos\Administrator\View\Foos;
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Language\Text;
@@ -19,6 +20,8 @@ use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 use Joomla\Component\Foos\Administrator\Helper\FooHelper;
+use Joomla\CMS\Language\Multilanguage;
+
 
 /**
  * View class for a list of foos.
@@ -52,7 +55,30 @@ class HtmlView extends BaseHtmlView
 	{
 		$this->items = $this->get('Items');
 
-		$this->addToolbar();
+		// We don't need toolbar in the modal window.
+		if ($this->getLayout() !== 'modal')
+		{
+			FooHelper::addSubmenu('foos');
+			$this->addToolbar();
+			$this->sidebar = \JHtmlSidebar::render();
+
+			// We do not need to filter by language when multilingual is disabled
+			if (!Multilanguage::isEnabled())
+			{
+				unset($this->activeFilters['language']);
+				$this->filterForm->removeField('language', 'filter');
+			}
+		}
+		else
+		{
+			// In article associations modal we need to remove language filter if forcing a language.
+			// We also need to change the category filter to show show categories with All or the forced language.
+			if ($forcedLanguage = Factory::getApplication()->input->get('forcedLanguage', '', 'CMD'))
+			{
+				// If the language is forced we can't allow to select the language, so transform the language selector filter into a hidden field.
+				$languageXml = new \SimpleXMLElement('<field name="language" type="hidden" default="' . $forcedLanguage . '" />');
+			}
+		}
 
 		return parent::display($tpl);
 	}
@@ -66,9 +92,6 @@ class HtmlView extends BaseHtmlView
 	 */
 	protected function addToolbar()
 	{
-		FooHelper::addSubmenu('foos');
-		$this->sidebar = \JHtmlSidebar::render();
-
 		$canDo = ContentHelper::getActions('com_foos');
 
 		// Get the toolbar object instance

@@ -11,6 +11,7 @@ namespace Joomla\Component\Foos\Administrator\Model;
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Associations;
 use Joomla\CMS\MVC\Model\ListModel;
 
@@ -53,18 +54,17 @@ class FoosModel extends ListModel
 
 		// Select the required fields from the table.
 		$query->select(
-			$db->quoteName(
-				explode(
-					', ',
-					$this->getState(
-						'list.select',
-						'a.id, a.name, a.catid' .
-						', a.access' .
-						', a.language' .
-						', a.published' .
-						', a.publish_up, a.publish_down'
-					)
-				)
+			$this->getState(
+				'list.select',
+				'a.id AS id,'
+				. 'a.name AS name,'
+				. 'a.access,'
+				. 'a.language,'
+				. 'a.state AS state,'
+				. 'a.catid AS catid,'
+				. 'a.published AS published,'
+				. 'a.publish_up,'
+				. 'a.publish_down'
 			)
 		);
 
@@ -127,7 +127,54 @@ class FoosModel extends ListModel
 				);
 		}
 
+		// Filter on the language.
+		if ($language = $this->getState('filter.language'))
+		{
+			$query->where($db->quoteName('a.language') . ' = :language');
+			$query->bind(':language', $language);
+		}
+		
 		return $query;
+	}
+
+	/**
+	 * Method to auto-populate the model state.
+	 *
+	 * Note. Calling getState in this method will result in recursion.
+	 *
+	 * @param   string  $ordering   An optional ordering field.
+	 * @param   string  $direction  An optional direction (asc|desc).
+	 *
+	 * @return  void
+	 *
+	 * @since   1.0
+	 */
+	protected function populateState($ordering = 'a.name', $direction = 'asc')
+	{
+		$app = Factory::getApplication();
+
+		$forcedLanguage = $app->input->get('forcedLanguage', '', 'cmd');
+
+		// Adjust the context to support modal layouts.
+		if ($layout = $app->input->get('layout'))
+		{
+			$this->context .= '.' . $layout;
+		}
+
+		// Adjust the context to support forced languages.
+		if ($forcedLanguage)
+		{
+			$this->context .= '.' . $forcedLanguage;
+		}
+
+		// List state information.
+		parent::populateState($ordering, $direction);
+
+		// Force a language.
+		if (!empty($forcedLanguage))
+		{
+			$this->setState('filter.language', $forcedLanguage);
+		}
 	}
 }
 
