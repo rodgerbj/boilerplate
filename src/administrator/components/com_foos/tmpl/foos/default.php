@@ -109,6 +109,9 @@ if ($saveOrder && !empty($this->items))
 									<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
 								</td>
 								<td scope="row" class="has-context">
+									<?php if ($item->checked_out) : ?>
+										<?php echo HTMLHelper::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'foos.', true); ?>
+									<?php endif; ?>
 									<div>
 										<?php echo $this->escape($item->name); ?>
 									</div>
