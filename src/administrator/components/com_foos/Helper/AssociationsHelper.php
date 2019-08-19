@@ -229,3 +229,4 @@ class AssociationsHelper extends AssociationExtensionHelper
 		);
 	}
 }
+	
