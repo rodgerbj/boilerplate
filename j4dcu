@@ -12981,15 +12981,766 @@ This is the topic of the next chapter
 
 
 
-
-
-
 = Adding Params - Part 18 =
 
 == Requirements ==
 You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
+
+=== Changing administrator/components/com_foos/Model/FoosModel.php ===
+
+The <tt>administrator/components/com_foos/Model/FoosModel.php</tt> file is ....
+
+==== Completed administrator/components/com_foos/Model/FoosModel.php file ====
+
+The code for the <tt>administrator/components/com_foos/Model/FoosModel.php</tt> file is as follows:
+ 
+<source lang="php" highlight="203-223">
+<?php
+/**
+ * @package     Joomla.Administrator
+ * @subpackage  com_foos
+ *
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+namespace Joomla\Component\Foos\Administrator\Model;
+
+defined('_JEXEC') or die;
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Associations;
+use Joomla\CMS\MVC\Model\ListModel;
+
+/**
+ * Methods supporting a list of foo records.
+ *
+ * @since  1.0
+ */
+class FoosModel extends ListModel
+{
+	/**
+	 * Constructor.
+	 *
+	 * @param   array  $config  An optional associative array of configuration settings.
+	 *
+	 * @see     \JControllerLegacy
+	 * @since   1.0
+	 */
+	public function __construct($config = array())
+	{
+		if (empty($config['filter_fields']))
+		{
+			$config['filter_fields'] = array(
+				'id', 'a.id',
+				'name', 'a.name',
+				'catid', 'a.catid', 'category_id', 'category_title',
+				'published', 'a.published',
+				'access', 'a.access', 'access_level',
+				'ordering', 'a.ordering',
+				'language', 'a.language', 'language_title',
+				'publish_up', 'a.publish_up',
+				'publish_down', 'a.publish_down',
+			);
+
+			$assoc = Associations::isEnabled();
+
+			if ($assoc)
+			{
+				$config['filter_fields'][] = 'association';
+			}
+		}
+
+		parent::__construct($config);
+	}
+
+	/**
+	 * Build an SQL query to load the list data.
+	 *
+	 * @return  \JDatabaseQuery
+	 *
+	 * @since   1.0
+	 */
+	protected function getListQuery()
+	{
+		// Create a new query object.
+		$db = $this->getDbo();
+		$query = $db->getQuery(true);
+
+		// Select the required fields from the table.
+		$query->select(
+			$this->getState(
+				'list.select',
+				'a.id AS id,'
+				. 'a.name AS name,'
+				. 'a.access,'
+				. 'a.language,'
+				. 'a.ordering AS ordering,'
+				. 'a.state AS state,'
+				. 'a.catid AS catid,'
+				. 'a.published AS published,'
+				. 'a.publish_up,'
+				. 'a.publish_down'
+			)
+		);
+
+		$query->from($db->quoteName('#__foos_details', 'a'));
+
+		// Join over the asset groups.
+		$query->select($db->quoteName('ag.title', 'access_level'))
+			->join(
+				'LEFT',
+				$db->quoteName('#__viewlevels', 'ag') . ' ON ' . $db->quoteName('ag.id') . ' = ' . $db->quoteName('a.access')
+			);
+
+		// Join over the categories.
+		$query->select($db->quoteName('c.title', 'category_title'))
+			->join(
+				'LEFT',
+				$db->quoteName('#__categories', 'c') . ' ON ' . $db->quoteName('c.id') . ' = ' . $db->quoteName('a.catid')
+			);
+
+		// Join over the language
+		$query->select($db->quoteName('l.title', 'language_title'))
+			->select($db->quoteName('l.image', 'language_image'))
+			->join(
+				'LEFT',
+				$db->quoteName('#__languages', 'l') . ' ON ' . $db->quoteName('l.lang_code') . ' = ' . $db->quoteName('a.language')
+			);
+
+		// Join over the associations.
+		$assoc = Associations::isEnabled();
+
+		if ($assoc)
+		{
+			$query->select('COUNT(' . $db->quoteName('asso2.id') . ') > 1 as ' . $db->quoteName('association'))
+				->join(
+					'LEFT',
+					$db->quoteName('#__associations', 'asso') . ' ON ' . $db->quoteName('asso.id') . ' = ' . $db->quoteName('a.id')
+					. ' AND ' . $db->quoteName('asso.context') . ' = ' . $db->quote('com_foos.item')
+				)
+				->join(
+					'LEFT',
+					$db->quoteName('#__associations', 'asso2') . ' ON ' . $db->quoteName('asso2.key') . ' = ' . $db->quoteName('asso.key')
+				)
+				->group(
+					$db->quoteName(
+						array(
+							'a.id',
+							'a.name',
+							'a.catid',
+							'a.published',
+							'a.access',
+							'a.language',
+							'a.publish_up',
+							'a.publish_down',
+							'l.title' ,
+							'l.image' ,
+							'ag.title' ,
+							'c.title'
+						)
+					)
+				);
+		}
+
+		// Filter by access level.
+		if ($access = $this->getState('filter.access'))
+		{
+			$query->where($db->quoteName('a.access') . ' = ' . (int) $access);
+		}
+
+		// Filter by published state
+		$published = (string) $this->getState('filter.published');
+
+		if (is_numeric($published))
+		{
+			$query->where($db->quoteName('a.published') . ' = ' . (int) $published);
+		}
+		elseif ($published === '')
+		{
+			$query->where('(' . $db->quoteName('a.published') . ' = 0 OR ' . $db->quoteName('a.published') . ' = 1)');
+		}
+
+		// Filter by a single or group of categories.
+		$categoryId = $this->getState('filter.category_id');
+
+		if (is_numeric($categoryId))
+		{
+			$query->where($db->quoteName('a.catid') . ' = ' . (int) $categoryId);
+		}
+		elseif (is_array($categoryId))
+		{
+			$query->where($db->quoteName('a.catid') . ' IN (' . implode(',', ArrayHelper::toInteger($categoryId)) . ')');
+		}
+
+		// Filter by search in name.
+		$search = $this->getState('filter.search');
+
+		if (!empty($search))
+		{
+			if (stripos($search, 'id:') === 0)
+			{
+				$query->where('a.id = ' . (int) substr($search, 3));
+			}
+			else
+			{
+				$search = $db->quote('%' . str_replace(' ', '%', $db->escape(trim($search), true) . '%'));
+				$query->where(
+					'(' . $db->quoteName('a.name') . ' LIKE ' . $search . ')'
+				);
+			}
+		}
+
+		// Filter on the language.
+		if ($language = $this->getState('filter.language'))
+		{
+			$query->where($db->quoteName('a.language') . ' = ' . $db->quote($language));
+		}
+
+		// Filter by a single tag.
+		$tagId = $this->getState('filter.tag');
+
+		if (is_numeric($tagId))
+		{
+			$query->where($db->quoteName('tagmap.tag_id') . ' = ' . (int) $tagId)
+				->join(
+					'LEFT',
+					$db->quoteName('#__contentitem_tag_map', 'tagmap')
+					. ' ON ' . $db->quoteName('tagmap.content_item_id') . ' = ' . $db->quoteName('a.id')
+					. ' AND ' . $db->quoteName('tagmap.type_alias') . ' = ' . $db->quote('com_foos.contact')
+				);
+		}
+
+		// Filter on the level.
+		if ($level = $this->getState('filter.level'))
+		{
+			$query->where('c.level <= ' . (int) $level);
+		}
+
+		// Add the list ordering clause.
+		$orderCol = $this->state->get('list.ordering', 'a.name');
+		$orderDirn = $this->state->get('list.direction', 'asc');
+
+		if ($orderCol == 'a.ordering' || $orderCol == 'category_title')
+		{
+			$orderCol = $db->quoteName('c.title') . ' ' . $orderDirn . ', ' . $db->quoteName('a.ordering');
+		}
+
+		$query->order($db->escape($orderCol . ' ' . $orderDirn));
+
+		return $query;
+	}
+
+	/**
+	 * Method to auto-populate the model state.
+	 *
+	 * Note. Calling getState in this method will result in recursion.
+	 *
+	 * @param   string  $ordering   An optional ordering field.
+	 * @param   string  $direction  An optional direction (asc|desc).
+	 *
+	 * @return  void
+	 *
+	 * @since   1.0
+	 */
+	protected function populateState($ordering = 'a.name', $direction = 'asc')
+	{
+		$app = Factory::getApplication();
+
+		$forcedLanguage = $app->input->get('forcedLanguage', '', 'cmd');
+
+		// Adjust the context to support modal layouts.
+		if ($layout = $app->input->get('layout'))
+		{
+			$this->context .= '.' . $layout;
+		}
+
+		// Adjust the context to support forced languages.
+		if ($forcedLanguage)
+		{
+			$this->context .= '.' . $forcedLanguage;
+		}
+
+		// List state information.
+		parent::populateState($ordering, $direction);
+
+		// Force a language.
+		if (!empty($forcedLanguage))
+		{
+			$this->setState('filter.language', $forcedLanguage);
+		}
+	}
+}
+
+
+
+</source>
+
+=== Changing administrator/components/com_foos/Table/FooTable.php ===
+
+The <tt>administrator/components/com_foos/Table/FooTable.php</tt> file is ....
+
+==== Completed administrator/components/com_foos/Table/FooTable.php file ====
+
+The code for the <tt>administrator/components/com_foos/Table/FooTable.php</tt> file is as follows:
+ 
+<source lang="php" highlight="16,42-62">
+<?php
+/**
+ * @package     Joomla.Administrator
+ * @subpackage  com_foos
+ *
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+namespace Joomla\Component\Foos\Administrator\Table;
+
+defined('_JEXEC') or die;
+
+use Joomla\CMS\Table\Table;
+use Joomla\Database\DatabaseDriver;
+use Joomla\Registry\Registry;
+
+/**
+ * Foos Table class.
+ *
+ * @since  1.0
+ */
+class FooTable extends Table
+{
+	/**
+	 * Constructor
+	 *
+	 * @param   DatabaseDriver  $db  Database connector object
+	 *
+	 * @since   1.0
+	 */
+	public function __construct(DatabaseDriver $db)
+	{
+		$this->typeAlias = 'com_foos.foo';
+
+		parent::__construct('#__foos_details', 'id', $db);
+
+		 
+	}
+
+	/**
+	 * Stores a contact.
+	 *
+	 * @param   boolean  $updateNulls  True to update fields even if they are null.
+	 *
+	 * @return  boolean  True on success, false on failure.
+	 *
+	 * @since   1.0
+	 */
+	public function store($updateNulls = false)
+	{
+		// Transform the params field
+		if (is_array($this->params))
+		{
+			$registry = new Registry($this->params);
+			$this->params = (string) $registry;
+		}
+
+		return parent::store($updateNulls);
+	}
+
+	/**
+	 * Overloaded check function
+	 *
+	 * @return  boolean
+	 *
+	 * @see     Table::check
+	 * @since   1.5
+	 */
+	public function check()
+	{
+		try
+		{
+			parent::check();
+		}
+		catch (\Exception $e)
+		{
+			$this->setError($e->getMessage());
+
+			return false;
+		}
+
+		// Set name
+		$this->name = htmlspecialchars_decode($this->name, ENT_QUOTES);
+
+		// Check the publish down date is not earlier than publish up.
+		if ($this->publish_down > $this->_db->getNullDate() && $this->publish_down < $this->publish_up)
+		{
+			$this->setError(Text::_('JGLOBAL_START_PUBLISH_AFTER_FINISH'));
+
+			return false;
+		}
+
+		if (empty($this->publish_up))
+		{
+			$this->publish_up = $this->getDbo()->getNullDate();
+		}
+
+		if (empty($this->publish_down))
+		{
+			$this->publish_down = $this->getDbo()->getNullDate();
+		}
+
+		return true;
+	}
+}
+
+
+</source>
+
+=== Changing administrator/components/com_foos/config.xml ===
+
+The <tt>administrator/components/com_foos/config.xml</tt> file is ....
+
+==== Completed administrator/components/com_foos/config.xml file ====
+
+The code for the <tt>administrator/components/com_foos/config.xml</tt> file is as follows:
+ 
+<source lang="xml" highlight="41-61">
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+
+	<fieldset
+		name="foo"
+		label="COM_FOOS_FIELD_CONFIG_INDIVIDUAL_FOO_DISPLAY"
+		description="COM_FOOS_FIELD_CONFIG_INDIVIDUAL_FOO_DESC"
+		>
+
+		<field
+			name="show_foo_name_label"
+			type="list"
+			label="COM_FOOS_FIELD_FOO_SHOW_CATEGORY_LABEL"
+			default="1"
+			>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+
+		<field
+			name="custom_fields_enable"
+			type="radio"
+			class="switcher"
+			label="JGLOBAL_CUSTOM_FIELDS_ENABLE_LABEL"
+			default="1"
+			>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+
+		<field
+			name="show_name"
+			type="radio"
+			label="COM_FOOS_FIELD_PARAMS_NAME_LABEL"
+			default="1"
+			class="switcher"
+			>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+	</fieldset>
+	<fieldset
+		name="permissions"
+		label="JCONFIG_PERMISSIONS_LABEL"
+		description="JCONFIG_PERMISSIONS_DESC"
+		>
+
+		<field
+			name="rules"
+			type="rules"
+			label="JCONFIG_PERMISSIONS_LABEL"
+			validate="rules"
+			filter="rules"
+			component="com_foos"
+			section="component"
+		/>
+
+	</fieldset>
+</config>
+
+
+</source>
+
+=== Changing administrator/components/com_foos/foos.xml ===
+
+The <tt>administrator/components/com_foos/foos.xml</tt> file is ....
+
+==== Completed administrator/components/com_foos/foos.xml file ====
+
+The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as follows:
+ 
+<source lang="xml" highlight="10">
+<?xml version="1.0" encoding="utf-8" ?>
+<extension type="component" method="upgrade">
+	<name>COM_FOOS</name>
+	<creationDate>[DATE]</creationDate>
+	<author>[AUTHOR]</author>
+	<authorEmail>[AUTHOR_EMAIL]</authorEmail>
+	<authorUrl>[AUTHOR_URL]</authorUrl>
+	<copyright>[COPYRIGHT]</copyright>
+	<license>GNU General Public License version 2 or later;</license>
+	<version>1.18.0</version>
+	<description>COM_FOOS_XML_DESCRIPTION</description>
+	<namespace>Joomla\Component\Foos</namespace>
+	<scriptfile>script.php</scriptfile>
+	<install> <!-- Runs on install -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall> <!-- Runs on uninstall -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<update>  <!-- Runs on update -->
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+	<!-- Frond-end files -->
+	<files folder="components/com_foos">
+		<folder>Controller</folder>
+		<folder>Model</folder>
+		<folder>View</folder>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+	</files>
+    <media folder="media/com_foos" destination="com_foos">
+		<folder>js</folder>
+    </media>
+	<!-- Back-end files -->
+	<administration>
+		<!-- Menu entries -->
+		<menu view="foos">COM_FOOS</menu>
+		<submenu>
+			<menu link="option=com_foos">COM_FOOS</menu>
+			<menu link="option=com_categories&amp;extension=com_foos"
+				view="categories" img="class:foos-cat" alt="Foos/Categories">JCATEGORY</menu>
+		</submenu>
+		<files folder="administrator/components/com_foos">
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>foos.xml</filename>
+			<folder>Controller</folder>
+			<folder>Extension</folder>
+			<folder>Model</folder>
+			<folder>Rule</folder>
+			<folder>Service</folder>
+			<folder>View</folder>
+			<folder>services</folder>
+			<folder>tmpl</folder>
+			<folder>sql</folder>
+			<folder>language</folder>
+		</files>
+	</administration>
+</extension>
+
+
+</source>
+
+=== Changing administrator/components/com_foos/forms/foo.xml ===
+
+The <tt>administrator/components/com_foos/forms/foo.xml</tt> file is ....
+
+==== Completed administrator/components/com_foos/forms/foo.xml file ====
+
+The code for the <tt>administrator/components/com_foos/forms/foo.xml</tt> file is as follows:
+ 
+<source lang="xml" highlight="94-106">
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset 
+		addfieldprefix="Joomla\Component\Foos\Administrator\Field" 
+		addruleprefix="Joomla\Component\Foos\Administrator\Rule"
+	>
+		<field
+			name="id"
+			type="number"
+			label="JGLOBAL_FIELD_ID_LABEL"
+			default="0"
+			class="readonly"
+			readonly="true"
+		/>
+
+		<field
+			name="name"
+			type="text"
+			validate="Letter"
+			class="validate-letter"
+			label="COM_FOOS_FIELD_NAME_LABEL"
+			size="40"
+			required="true"
+		/>
+
+		<field
+			name="language"
+			type="contentlanguage"
+			label="JFIELD_LANGUAGE_LABEL"
+		>
+			<option value="*">JALL</option>
+		</field>
+
+		<field
+			name="published"
+			type="list"
+			label="JSTATUS"
+			default="1"
+			id="published"
+			class="custom-select-color-state"
+			size="1"
+		>
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+			<option value="2">JARCHIVED</option>
+			<option value="-2">JTRASHED</option>
+		</field>
+
+		<field
+			name="publish_up"
+			type="calendar"
+			label="COM_FOOS_FIELD_PUBLISH_UP_LABEL"
+			translateformat="true"
+			showtime="true"
+			size="22"
+			filter="user_utc"
+		/>
+
+		<field
+			name="publish_down"
+			type="calendar"
+			label="COM_FOOS_FIELD_PUBLISH_DOWN_LABEL"
+			translateformat="true"
+			showtime="true"
+			size="22"
+			filter="user_utc"
+		/>
+
+		<field
+			name="catid"
+			type="categoryedit"
+			label="JCATEGORY"
+			extension="com_foos"
+			addfieldprefix="Joomla\Component\Categories\Administrator\Field"
+			required="true"
+			default=""
+		/>
+
+		<field
+			name="access"
+			type="accesslevel"
+			label="JFIELD_ACCESS_LABEL"
+			size="1"
+		/>
+
+		<field
+			name="ordering"
+			type="ordering"
+			label="JFIELD_ORDERING_LABEL"
+			content_type="com_foos.foo"
+		/>
+
+	</fieldset>
+	<fields name="params" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
+		<fieldset name="display" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
+			<field
+				name="show_name"
+				type="list"
+				label="COM_FOOS_FIELD_PARAMS_NAME_LABEL"
+				useglobal="true"
+			>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+		</fieldset>
+	</fields>
+</form>
+
+
+</source>
+
+=== Changing administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini ===
+
+The <tt>administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini</tt> file is ....
+
+==== Completed administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini file ====
+
+The code for the <tt>administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini</tt> file is as follows:
+ 
+<source lang="ini" highlight="49">
+COM_FOOS="[PROJECT_NAME]"
+COM_FOOS_CONFIGURATION="Foo Options"
+
+COM_FOOS_MANAGER_FOO_NEW="New"
+COM_FOOS_MANAGER_FOO_EDIT="Edit"
+COM_FOOS_MANAGER_FOOS="Foo Manager"
+
+COM_FOOS_TABLE_TABLEHEAD_NAME="Name"
+COM_FOOS_TABLE_TABLEHEAD_ID="ID"
+COM_FOOS_ERROR_FOO_NOT_FOUND="Foo not found"
+
+COM_FOOS_FIELD_NAME_LABEL="Name"
+
+COM_FOOS_FIELD_FOO_SHOW_CATEGORY_LABEL="Show name label"
+COM_FOOS_FIELD_CONFIG_INDIVIDUAL_FOO_DESC="These settings apply for all foo."
+COM_FOOS_FIELD_CONFIG_INDIVIDUAL_FOO_DISPLAY="Foo"
+
+COM_FOOS_FIELD_PUBLISH_DOWN_LABEL="Finish Publishing"
+COM_FOOS_FIELD_PUBLISH_UP_LABEL="Start Publishing"
+COM_FOOS_N_ITEMS_PUBLISHED="%d foos published."
+COM_FOOS_N_ITEMS_PUBLISHED_1="%d foo published."
+COM_FOOS_N_ITEMS_UNPUBLISHED="%d foos unpublished."
+COM_FOOS_N_ITEMS_UNPUBLISHED_1="%d foo unpublished."
+
+COM_FOOS_FOOS_FIELD_PUBLISH_DOWN_LABEL="Finish Publishing"
+COM_FOOS_FOOS_FIELD_PUBLISH_UP_LABEL="Start Publishing"
+COM_FOOS_FOOS_N_ITEMS_PUBLISHED="%d foos published."
+COM_FOOS_FOOS_N_ITEMS_PUBLISHED_1="%d foo published."
+COM_FOOS_FOOS_N_ITEMS_UNPUBLISHED="%d foos unpublished."
+COM_FOOS_FOOS_N_ITEMS_UNPUBLISHED_1="%d foo unpublished."
+
+COM_FOOS_EDIT_FOO="Edit Foo"
+COM_FOOS_NEW_FOO="New Foo"
+
+COM_FOOS_HEADING_ASSOCIATION="Association"
+COM_FOOS_CHANGE_FOO="Change a foo"
+COM_FOOS_SELECT_A_FOO="Select a foo"
+
+COM_FOOS_TABLE_CAPTION="Foo Table Caption"
+
+COM_FOOS_N_ITEMS_ARCHIVED="%d foos archived."
+COM_FOOS_N_ITEMS_ARCHIVED_1="%d foo archived."
+COM_FOOS_N_ITEMS_DELETED="%d foos deleted."
+COM_FOOS_N_ITEMS_DELETED_1="%d foo deleted."
+COM_FOOS_N_ITEMS_TRASHED="%d foos trashed."
+COM_FOOS_N_ITEMS_TRASHED_1="%d foo trashed."
+COM_FOO_MANAGER_FOOS="Foos"
+
+COM_FOOS_FIELD_PARAMS_NAME_LABEL="Show Name"
+
+</source>
+
+=== Changing components/com_foos/View/Foo/HtmlView.php ===
+
+The <tt>components/com_foos/View/Foo/HtmlView.php</tt> file is ....
+
+==== Completed components/com_foos/View/Foo/HtmlView.php file ====
+
+The code for the <tt>components/com_foos/View/Foo/HtmlView.php</tt> file is as follows:
+ 
+<source lang="php" highlight="">
+<?php
+
+</source>
 
 === Changing x ===
 
@@ -12999,8 +13750,133 @@ The <tt>x</tt> file is ....
 
 The code for the <tt>x</tt> file is as follows:
  
-<source lang="xml">
+<source lang="php" highlight="16,26-41,59-66">
 <?php
+/**
+ * @package     Joomla.Site
+ * @subpackage  com_foos
+ *
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+namespace Joomla\Component\Foos\Site\View\Foo;
+
+defined('_JEXEC') or die;
+
+use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
+use Joomla\CMS\Factory;
+use Joomla\Registry\Registry;
+
+/**
+ * HTML Foos View class for the Foo component
+ *
+ * @since  1.0
+ */
+class HtmlView extends BaseHtmlView
+{
+	/**
+	 * The page parameters
+	 *
+	 * @var    \Joomla\Registry\Registry|null
+	 * @since  1.0.0
+	 */
+	protected $params = null;
+
+	/**
+	 * The item model state
+	 *
+	 * @var    \Joomla\Registry\Registry
+	 * @since  1.0.0
+	 */
+	protected $state;
+
+	/**
+	 * The item object details
+	 *
+	 * @var    \JObject
+	 * @since  1.0.0
+	 */
+	protected $item;
+
+	/**
+	 * Execute and display a template script.
+	 *
+	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
+	 *
+	 * @return  mixed  A string if successful, otherwise an Error object.
+	 */
+	public function display($tpl = null)
+	{
+		$item = $this->item = $this->get('Item');
+		$state = $this->State = $this->get('State');
+		$params = $this->Params = $state->get('params');
+		$itemparams = new Registry(json_decode($item->params));
+
+		$temp = clone $params;
+		$temp->merge($itemparams);
+		$item->params = $temp;
+
+		Factory::getApplication()->triggerEvent('onContentPrepare', array ('com_foos.foo', &$item));
+
+		// Store the events for later
+		$item->event = new \stdClass;
+		$results = Factory::getApplication()->triggerEvent('onContentAfterTitle', array('com_foos.foo', &$item, &$item->params));
+		$item->event->afterDisplayTitle = trim(implode("\n", $results));
+
+		$results = Factory::getApplication()->triggerEvent('onContentBeforeDisplay', array('com_foos.foo', &$item, &$item->params));
+		$item->event->beforeDisplayContent = trim(implode("\n", $results));
+
+		$results = Factory::getApplication()->triggerEvent('onContentAfterDisplay', array('com_foos.foo', &$item, &$item->params));
+		$item->event->afterDisplayContent = trim(implode("\n", $results));
+
+		return parent::display($tpl);
+	}
+}
+
+
+</source>
+
+=== Creating administrator/components/com_foos/sql/updates/mysql/1.18.0.sql ===
+
+The <tt>administrator/components/com_foos/sql/updates/mysql/1.18.0.sql</tt> file is ....
+
+==== Completed administrator/components/com_foos/sql/updates/mysql/1.18.0.sql file ====
+
+The code for the <tt>administrator/components/com_foos/sql/updates/mysql/1.18.0.sql</tt> file is as follows:
+ 
+<source lang="sql" highlight="">
+<?php
+
+ALTER TABLE `#__foos_details` ADD COLUMN  `params` text NOT NULL AFTER `alias`;
+
+</source>
+
+=== Changing components/com_foos/tmpl/foo/default.php ===
+
+The <tt>components/com_foos/tmpl/foo/default.php</tt> file is ....
+
+==== Completed components/com_foos/tmpl/foo/default.php file ====
+
+The code for the <tt>components/com_foos/tmpl/foo/default.php</tt> file is as follows:
+ 
+<source lang="php" highlight="7,8">
+<?php
+
+defined('_JEXEC') or die;
+
+use Joomla\CMS\Language\Text;
+
+if ($this->item->params->get('show_name')) {
+	if ($this->Params->get('show_foo_name_label')) {
+		echo Text::_('COM_FOOS_NAME') . $this->item->name;
+	} else {
+		echo $this->item->name;
+	}
+}
+echo $this->item->event->afterDisplayTitle; 
+echo $this->item->event->beforeDisplayContent;
+echo $this->item->event->afterDisplayContent;
 
 </source>
 
