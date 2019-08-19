@@ -18769,11 +18769,18 @@ The code for the <tt>administrator/components/com_foos/foo_update.xml</tt> file 
 
 == Test your component ==
 
+[[File:componenttutorial24atest.png|700px]]
+
 
 == Example in Joomla! ==
 
 
-[[File:componenttutorial24atest.png|700px]]
+== More informations ==
+
+https://docs.joomla.org/Adding_changelog_to_your_manifest_file
+https://github.com/joomla/joomla-cms/pull/24026
+
+
 
 == Component Contents ==
 
@@ -18863,3 +18870,20 @@ At this point in the tutorial, your component should contain the following files
 
 
 == Conclusion ==
+
+
+
+
+= Adding Adding frontend edit - Part 25 =
+
+https://github.com/joomla/joomla-cms/pull/24311
+
+
+= Adding Tags - Part 26 =
+
+https://github.com/joomla/joomla-cms/issues/23589
+
+
+= Adding Workflow - Part 27 =
+
+I am not sure if we can use it in a third party component.
