@@ -182,7 +182,7 @@ class FoosComponent extends MVCComponent implements BootableExtensionInterface, 
 
 === Creating administrator/components/com_foos/Service/HTML/AdministratorService.php ===
 
-The <tt>administrator/components/com_foos/Service/HTML/AdministratorService.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/Service/HTML/AdministratorService.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/Service/HTML/AdministratorService.php file ====
 
@@ -216,7 +216,7 @@ class AdministratorService
 
 === Creating administrator/components/com_foos/View/Foos/HtmlView.php ===
 
-The <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/View/Foos/HtmlView.php file ====
 
@@ -265,7 +265,7 @@ class HtmlView extends BaseHtmlView
 
 === Creating administrator/components/com_foos/services/provider.php ===
 
-The <tt>administrator/components/com_foos/services/provider.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/services/provider.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/services/provider.php file ====
 
@@ -335,7 +335,7 @@ return new class implements ServiceProviderInterface
 
 === Creating administrator/components/com_foos/tmpl/foos/default.php ===
 
-The <tt>administrator/components/com_foos/tmpl/foos/default.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/tmpl/foos/default.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/tmpl/foos/default.php file ====
 
@@ -349,7 +349,7 @@ Hello Foos
 
 === Creating script.php ===
 
-The <tt>script.php</tt> file is the installation file. Most entries are self-explanatory.
+The <tt>script.php</tt> file is .... Most entries are self-explanatory.
 
 ==== Completed script.php file ====
 
@@ -501,7 +501,7 @@ class FoosInstallerScript
 
 === Creating com_foos.xml ===
 
-The <tt>foo.xml</tt> file is the installation file. 
+The <tt>foo.xml</tt> file is .... 
 Most entries are self-explanatory.
 
 ==== Completed foo.xml file ====
@@ -689,7 +689,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Changing administrator/components/com_foos/foos.xml ===
 
-The <tt>administrator/components/com_foos/foos.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/foos.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/foos.xml file ====
 
@@ -811,7 +811,7 @@ class DisplayController extends BaseController
 
 === Creating components/com_foos/View/Foo/HtmlView.php ===
 
-The <tt>components/com_foos/View/Foo/HtmlView.php</tt> file is the installation file.
+The <tt>components/com_foos/View/Foo/HtmlView.php</tt> file is ....
 
 ==== Completed components/com_foos/View/Foo/HtmlView.php file ====
 
@@ -858,7 +858,7 @@ class HtmlView extends BaseHtmlView
 
 === Creating components/com_foos/tmpl/foo/default.php ===
 
-The <tt>components/com_foos/tmpl/foo/default.php</tt> file is the installation file. Most entries are self-explanatory.
+The <tt>components/com_foos/tmpl/foo/default.php</tt> file is .... Most entries are self-explanatory.
 
 ==== Completed components/com_foos/tmpl/foo/default.php file ====
 
@@ -990,7 +990,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Creating components/com_foos/tmpl/foo/default.xml ===
 
-The <tt>components/com_foos/tmpl/foo/default.xml</tt> file is the installation file.
+The <tt>components/com_foos/tmpl/foo/default.xml</tt> file is ....
 
 ==== Completed components/com_foos/tmpl/foo/default.xml file ====
 
@@ -1011,7 +1011,7 @@ The code for the <tt>components/com_foos/tmpl/foo/default.xml</tt> file is as fo
 
 === Changing administrator/components/com_foos/foos.xml ===
 
-The <tt>administrator/components/com_foos/foos.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/foos.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/foos.xml file ====
 
@@ -1186,7 +1186,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Changing administrator/components/com_foos/foos.xml ===
 
-The <tt>administrator/components/com_foos/foos.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/foos.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/foos.xml file ====
 
@@ -1236,7 +1236,7 @@ The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as 
 
 === Creating components/com_foos/Model/FooModel.php ===
 
-The <tt>components/com_foos/Model/FooModel.php</tt> file is the installation file.
+The <tt>components/com_foos/Model/FooModel.php</tt> file is ....
 
 ==== Completed components/com_foos/Model/FooModel.php file ====
 
@@ -1292,7 +1292,7 @@ class FooModel extends BaseDatabaseModel
 
 === Changing components/com_foos/View/Foo/HtmlView.php ===
 
-The <tt>components/com_foos/View/Foo/HtmlView.php</tt> file is the installation file.
+The <tt>components/com_foos/View/Foo/HtmlView.php</tt> file is ....
 
 ==== Completed components/com_foos/View/Foo/HtmlView.php file ====
 
@@ -1340,7 +1340,7 @@ class HtmlView extends BaseHtmlView
 
 === Changing components/com_foos/tmpl/foo/default.php ===
 
-The <tt>components/com_foos/tmpl/foo/default.php</tt> file is the installation file. Most entries are self-explanatory.
+The <tt>components/com_foos/tmpl/foo/default.php</tt> file is .... Most entries are self-explanatory.
 
 ==== Completed components/com_foos/tmpl/foo/default.php file ====
 
@@ -1476,7 +1476,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Changing administrator/components/com_foos/foos.xml ===
 
-The <tt>administrator/components/com_foos/foos.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/foos.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/foos.xml file ====
 
@@ -1527,7 +1527,7 @@ The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as 
 
 === Changing components/com_foos/Model/FooModel.php ===
 
-The <tt>components/com_foos/Model/FooModel.php</tt> file is the installation file.
+The <tt>components/com_foos/Model/FooModel.php</tt> file is ....
 
 ==== Completed components/com_foos/Model/FooModel.php file ====
 
@@ -1581,7 +1581,7 @@ class FooModel extends BaseDatabaseModel
 
 === Changing components/com_foos/tmpl/foo/default.xml ===
 
-The <tt>components/com_foos/tmpl/foo/default.xml</tt> file is the installation file.
+The <tt>components/com_foos/tmpl/foo/default.xml</tt> file is ....
 
 ==== Completed components/com_foos/tmpl/foo/default.xml file ====
 
@@ -1751,7 +1751,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Creating administrator/components/com_foos/Model/FoosModel.php ===
 
-The <tt>administrator/components/com_foos/Model/FoosModel.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/Model/FoosModel.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/Model/FoosModel.php file ====
 
@@ -1819,7 +1819,7 @@ class FoosModel extends ListModel
 
 === Changing administrator/components/com_foos/View/Foos/HtmlView.php ===
 
-The <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/View/Foos/HtmlView.php file ====
 
@@ -1877,7 +1877,7 @@ class HtmlView extends BaseHtmlView
 
 === Changing administrator/components/com_foos/services/provider.php ===
 
-The <tt>administrator/components/com_foos/services/provider.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/services/provider.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/services/provider.php file ====
 
@@ -1948,7 +1948,7 @@ return new class implements ServiceProviderInterface
 
 === Creating administrator/components/com_foos/sql/install.mysql.utf8.sql ===
 
-The <tt>administrator/components/com_foos/sql/install.mysql.utf8.sql</tt> file is the installation file.
+The <tt>administrator/components/com_foos/sql/install.mysql.utf8.sql</tt> file is ....
 
 ==== Completed administrator/components/com_foos/sql/install.mysql.utf8.sql file ====
 
@@ -1972,7 +1972,7 @@ INSERT INTO `#__foos_details` (`name`) VALUES
 
 === Creating administrator/components/com_foos/sql/uninstall.mysql.utf8.sql ===
 
-The <tt>administrator/components/com_foos/sql/uninstall.mysql.utf8.sql</tt> file is the installation file.
+The <tt>administrator/components/com_foos/sql/uninstall.mysql.utf8.sql</tt> file is ....
 
 ==== Completed administrator/components/com_foos/sql/uninstall.mysql.utf8.sql file ====
 
@@ -1984,7 +1984,7 @@ DROP TABLE IF EXISTS `#__foos_details`;
 
 === Changing administrator/components/com_foos/tmpl/foos/default.php ===
 
-The <tt>administrator/components/com_foos/tmpl/foos/default.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/tmpl/foos/default.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/tmpl/foos/default.php file ====
 
@@ -2012,7 +2012,7 @@ defined('_JEXEC') or die;
 
 === Changing administrator/components/com_foos/foos.xml ===
 
-The <tt>administrator/components/com_foos/foos.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/foos.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/foos.xml file ====
 
@@ -2546,7 +2546,7 @@ class FooModel extends AdminModel
 
 === Changing administrator/components/com_foos/View/Foos/HtmlView.php ===
 
-The <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/View/Foos/HtmlView.php file ====
 
@@ -2559,7 +2559,7 @@ The code for the <tt>administrator/components/com_foos/View/Foos/HtmlView.php</t
 
 === Changing administrator/components/com_foos/tmpl/foos/default.php ===
 
-The <tt>administrator/components/com_foos/tmpl/foos/default.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/tmpl/foos/default.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/tmpl/foos/default.php file ====
 
@@ -2572,7 +2572,7 @@ The code for the <tt>administrator/components/com_foos/tmpl/foos/default.php</tt
 
 === Creating administrator/components/com_foos/Table/FooTable.php ===
 
-The <tt>administrator/components/com_foos/Table/FooTable.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/Table/FooTable.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/Table/FooTable.php file ====
 
@@ -2622,7 +2622,7 @@ class FooTable extends Table
 
 === Changing administrator/components/com_foos/foos.xml ===
 
-The <tt>administrator/components/com_foos/foos.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/foos.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/foos.xml file ====
 
@@ -2690,7 +2690,7 @@ The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as 
 
 === Creating administrator/components/com_foos/forms/foo.xml ===
 
-The <tt>administrator/components/com_foos/forms/foo.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/forms/foo.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/forms/foo.xml file ====
 
@@ -2728,7 +2728,7 @@ The code for the <tt>administrator/components/com_foos/forms/foo.xml</tt> file i
 
 === Changing components/com_foos/Model/FooModel.php ===
 
-The <tt>components/com_foos/Model/FooModel.php</tt> file is the installation file.
+The <tt>components/com_foos/Model/FooModel.php</tt> file is ....
 
 ==== Completed components/com_foos/Model/FooModel.php file ====
 
@@ -2821,7 +2821,7 @@ class FooModel extends BaseDatabaseModel
 
 === Changing administrator/components/com_foos/View/Foos/HtmlView.php ===
 
-The <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/View/Foos/HtmlView.php file ====
 
@@ -2901,7 +2901,7 @@ class HtmlView extends BaseHtmlView
 
 === Changing components/com_foos/View/Foo/HtmlView.php ===
 
-The <tt>components/com_foos/View/Foo/HtmlView.php</tt> file is the installation file.
+The <tt>components/com_foos/View/Foo/HtmlView.php</tt> file is ....
 
 ==== Completed components/com_foos/View/Foo/HtmlView.php file ====
 
@@ -2957,7 +2957,7 @@ class HtmlView extends BaseHtmlView
 
 === Creating administrator/components/com_foos/tmpl/foo/edit.php ===
 
-The <tt>administrator/components/com_foos/tmpl/foo/edit.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/tmpl/foo/edit.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/tmpl/foo/edit.php file ====
 
@@ -2998,7 +2998,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 === Creating Creating administrator/components/com_foos/tmpl/foo/modal.php ===
 
-The <tt>Creating administrator/components/com_foos/tmpl/foo/modal.php</tt> file is the installation file.
+The <tt>Creating administrator/components/com_foos/tmpl/foo/modal.php</tt> file is ....
 
 ==== Completed Creating administrator/components/com_foo/tmpl/foos/modal.php file ====
 
@@ -3025,7 +3025,7 @@ defined('_JEXEC') or die;
 
 === Changing components/com_foos/tmpl/foo/default.php ===
 
-The <tt>components/com_foos/tmpl/foo/default.php</tt> file is the installation file.
+The <tt>components/com_foos/tmpl/foo/default.php</tt> file is ....
 
 ==== Completed components/com_foos/tmpl/foo/default.php file ====
 
@@ -3039,7 +3039,7 @@ echo $this->item->name;
 
 === Creating administrator/components/com_foos/tmpl/foos/modal.php ===
 
-The <tt>administrator/components/com_foos/tmpl/foos/modal.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/tmpl/foos/modal.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/tmpl/foos/modal.php file ====
 
@@ -3128,7 +3128,7 @@ $onclick   = $this->escape($function);
 
 === Changing components/com_foos/tmpl/foo/default.php ===
 
-The <tt>components/com_foos/tmpl/foo/default.php</tt> file is the installation file.
+The <tt>components/com_foos/tmpl/foo/default.php</tt> file is ....
 
 ==== Completed components/com_foos/tmpl/foo/default.php file ====
 
@@ -3143,7 +3143,7 @@ echo $this->item->name;
 
 === Changing components/com_foos/tmpl/foo/default.xml ===
 
-The <tt>components/com_foos/tmpl/foo/default.xml</tt> file is the installation file.
+The <tt>components/com_foos/tmpl/foo/default.xml</tt> file is ....
 
 ==== Completed components/com_foos/tmpl/foo/default.xml file ====
 
@@ -3180,7 +3180,7 @@ The code for the <tt>components/com_foos/tmpl/foo/default.xml</tt> file is as fo
 
 === Creating media/com_foos/js/admin-foos-modal.js ===
 
-The <tt>media/com_foos/js/admin-foos-modal.js</tt> file is the installation file.
+The <tt>media/com_foos/js/admin-foos-modal.js</tt> file is ....
 
 ==== Completed media/com_foos/js/admin-foos-modal.js file ====
 
@@ -3451,7 +3451,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Changing administrator/components/com_foos/foos.xml ===
 
-The <tt>administrator/components/com_foos/foos.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/foos.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/foos.xml file ====
 
@@ -3519,7 +3519,7 @@ The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as 
 
 === Changing components/com_foos/tmpl/foo/default.php ===
 
-The <tt>components/com_foos/tmpl/foo/default.php</tt> file is the installation file.
+The <tt>components/com_foos/tmpl/foo/default.php</tt> file is ....
 
 ==== Completed components/com_foos/tmpl/foo/default.php file ====
 
@@ -3536,7 +3536,7 @@ echo Text::_('COM_FOOS_NAME') . $this->item->name;
 
 === Creating components/com_foos/language/en-GB/en-GB.com_foo.ini ===
 
-The <tt>components/com_foos/language/en-GB/en-GB.com_foo.ini</tt> file is the installation file.
+The <tt>components/com_foos/language/en-GB/en-GB.com_foo.ini</tt> file is ....
 
 ==== Completed components/com_foos/language/en-GB/en-GB.com_foo.ini file ====
 
@@ -3550,7 +3550,7 @@ COM_FOOS_NAME="Name: "
 
 === Creating administrator/components/com_foos/language/en-GB/en-GB.com_foo.ini ===
 
-The <tt>administrator/components/com_foos/language/en-GB/en-GB.com_foo.ini</tt> file is the installation file.
+The <tt>administrator/components/com_foos/language/en-GB/en-GB.com_foo.ini</tt> file is ....
 
 ==== Completed administrator/components/com_foos/language/en-GB/en-GB.com_foo.ini file ====
 
@@ -3575,7 +3575,7 @@ COM_FOOS_FIELD_NAME_LABEL="Name"
 
 === Creating administrator/components/com_foos/language/en-GB/en-GB.com_foo.sys.ini ===
 
-The <tt>administrator/components/com_foos/language/en-GB/en-GB.com_foo.sys.ini</tt> file is the installation file.
+The <tt>administrator/components/com_foos/language/en-GB/en-GB.com_foo.sys.ini</tt> file is ....
 
 ==== Completed administrator/components/com_foos/language/en-GB/en-GB.com_foo.sys.ini file ====
 
@@ -3801,7 +3801,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Creating administrator/components/com_foos/config.php ===
 
-The <tt>administrator/components/com_foos/config.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/config.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/config.php file ====
 
@@ -3832,7 +3832,7 @@ The code for the <tt>administrator/components/com_foos/config.php</tt> file is a
 
 === Changing administrator/components/com_foos/foos.xml ===
 
-The <tt>administrator/components/com_foos/foos.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/foos.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/foos.xml file ====
 
@@ -3900,7 +3900,7 @@ The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as 
 
 === Changing administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini ===
 
-The <tt>administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini</tt> file is the installation file.
+The <tt>administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini</tt> file is ....
 
 ==== Completed administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini file ====
 
@@ -3928,7 +3928,7 @@ COM_FOOS_FIELD_CONFIG_INDIVIDUAL_FOO_DISPLAY="Foo"
 
 === Changing administrator/components/com_foos/Model/FooModel.php ===
 
-The <tt>administrator/components/com_foos/Model/FooModel.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/Model/FooModel.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/Model/FooModel.php file ====
 
@@ -3941,7 +3941,7 @@ The code for the <tt>administrator/components/com_foos/Model/FooModel.php</tt> f
 
 === Changing administrator/components/com_foos/View/Foos/HtmlView.php ===
 
-The <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/View/Foos/HtmlView.php file ====
 
@@ -4022,7 +4022,7 @@ class HtmlView extends BaseHtmlView
 
 === Changing components/com_foos/Model/FooModel.php ===
 
-The <tt>components/com_foos/Model/FooModel.php</tt> file is the installation file.
+The <tt>components/com_foos/Model/FooModel.php</tt> file is ....
 
 ==== Completed components/com_foos/Model/FooModel.php file ====
 
@@ -4131,7 +4131,7 @@ class FooModel extends BaseDatabaseModel
 
 === Changing components/com_foos/tmpl/foo/default.php ===
 
-The <tt>components/com_foos/tmpl/foo/default.php</tt> file is the installation file.
+The <tt>components/com_foos/tmpl/foo/default.php</tt> file is ....
 
 ==== Completed components/com_foos/tmpl/foo/default.php file ====
 
@@ -4394,7 +4394,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Creating administrator/components/com_foos/access.xml ===
 
-The <tt>administrator/components/com_foos/access.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/access.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/access.xml file ====
 
@@ -4419,7 +4419,7 @@ The code for the <tt>administrator/components/com_foos/access.xml</tt> file is a
 
 === Changing administrator/components/com_foos/foos.xml ===
 
-The <tt>administrator/components/com_foos/foos.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/foos.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/foos.xml file ====
 
@@ -4493,7 +4493,7 @@ The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as 
 
 === Changing administrator/components/com_foos/Model/FoosModel.php ===
 
-The <tt>administrator/components/com_foos/Model/FoosModel.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/Model/FoosModel.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/Model/FoosModel.php file ====
 
@@ -4569,7 +4569,7 @@ class FoosModel extends ListModel
 
 === Changing administrator/components/com_foos/View/Foos/HtmlView.php ===
 
-The <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/View/Foos/HtmlView.php file ====
 
@@ -4658,7 +4658,7 @@ class HtmlView extends BaseHtmlView
 
 === Changing administrator/components/com_foos/config.xml ===
 
-The <tt>administrator/components/com_foos/config.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/config.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/config.xml file ====
 
@@ -4709,7 +4709,7 @@ The code for the <tt>administrator/components/com_foos/config.xml</tt> file is a
 
 === Changing administrator/components/com_foos/forms/foo.xml ===
 
-The <tt>administrator/components/com_foos/forms/foo.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/forms/foo.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/forms/foo.xml file ====
 
@@ -4749,7 +4749,7 @@ The code for the <tt>administrator/components/com_foos/forms/foo.xml</tt> file i
 
 === Creating administrator/components/com_foos/sql/updates/mysql/1.10.0.sql ===
 
-The <tt>administrator/components/com_foos/sql/updates/mysql/1.10.0.sql</tt> file is the installation file.
+The <tt>administrator/components/com_foos/sql/updates/mysql/1.10.0.sql</tt> file is ....
 
 ==== Completed administrator/components/com_foos/sql/updates/mysql/1.10.0.sql file ====
 
@@ -4764,7 +4764,7 @@ ALTER TABLE `#__foos_details` ADD KEY `idx_access` (`access`);
 
 === Changing administrator/components/com_foos/tmpl/foo/edit.php ===
 
-The <tt>administrator/components/com_foos/tmpl/foo/edit.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/tmpl/foo/edit.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/tmpl/foo/edit.php file ====
 
@@ -4806,7 +4806,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 === Changing administrator/components/com_foos/tmpl/foo/default.php ===
 
-The <tt>administrator/components/com_foos/tmpl/foo/default.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/tmpl/foo/default.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/tmpl/foo/default.php file ====
 
@@ -5139,7 +5139,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Create administrator/components/com_foos/Rule/LetterRule.php ===
 
-The <tt>administrator/components/com_foos/Rule/LetterRule.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/Rule/LetterRule.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/Rule/LetterRule.php file ====
 
@@ -5188,7 +5188,7 @@ class LetterRule extends FormRule
 
 === Changing administrator/components/com_foos/forms/foo.xml ===
 
-The <tt>administrator/components/com_foos/forms/foo.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/forms/foo.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/forms/foo.xml file ====
 
@@ -5229,7 +5229,7 @@ The code for the <tt>administrator/components/com_foos/forms/foo.xml</tt> file i
 
 === Changing administrator/components/com_foos/foo.xml ===
 
-The <tt>administrator/components/com_foos/foo.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/foo.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/foo.xml file ====
 
@@ -5523,7 +5523,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Changing administrator/components/com_foos/foo.xml ===
 
-The <tt>administrator/components/com_foos/foo.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/foo.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/foo.xml file ====
 
@@ -5599,7 +5599,7 @@ The code for the <tt>administrator/components/com_foos/foo.xml</tt> file is as f
 
 === Create media/com_foos/js/admin-foos-letter.js ===
 
-The <tt>media/com_foos/js/admin-foos-letter.js</tt> file is the installation file.
+The <tt>media/com_foos/js/admin-foos-letter.js</tt> file is ....
 
 ==== Completed media/com_foos/js/admin-foos-letter.js file ====
 
@@ -5628,7 +5628,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 === Changing administrator/components/com_foos/forms/foo.xml ===
 
-The <tt>administrator/components/com_foos/forms/foo.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/forms/foo.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/forms/foo.xml file ====
 
@@ -5670,7 +5670,7 @@ The code for the <tt>administrator/components/com_foos/forms/foo.xml</tt> file i
 
 === Changing administrator/components/com_foos/tmpl/foo/edit.php ===
 
-The <tt>administrator/components/com_foos/tmpl/foo/edit.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/tmpl/foo/edit.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/tmpl/foo/edit.php file ====
 
@@ -5943,7 +5943,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Changing administrator/components/com_foos/Model/FoosModel.php ===
 
-The <tt>administrator/components/com_foos/Model/FoosModel.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/Model/FoosModel.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/Model/FoosModel.php file ====
 
@@ -6027,7 +6027,7 @@ class FoosModel extends ListModel
 
 === Changing administrator/components/com_foos/access.xml ===
 
-The <tt>administrator/components/com_foos/access.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/access.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/access.xml file ====
 
@@ -6059,7 +6059,7 @@ The code for the <tt>administrator/components/com_foos/access.xml</tt> file is a
 
 === Changing administrator/components/com_foos/foos.xml ===
 
-The <tt>administrator/components/com_foos/foos.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/foos.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/foos.xml file ====
 
@@ -6072,7 +6072,7 @@ The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as 
 
 === Changing administrator/components/com_foos/forms/foo.xml ===
 
-The <tt>administrator/components/com_foos/forms/foo.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/forms/foo.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/forms/foo.xml file ====
 
@@ -6126,7 +6126,7 @@ The code for the <tt>administrator/components/com_foos/forms/foo.xml</tt> file i
 
 We will implement <tt>state</tt> later.
 
-The <tt>administrator/components/com_foos/sql/update/1.12.0.sql</tt> file is the installation file.
+The <tt>administrator/components/com_foos/sql/update/1.12.0.sql</tt> file is ....
 
 ==== Completed administrator/components/com_foos/sql/update/1.12.0.sql file ====
 
@@ -6144,7 +6144,7 @@ ALTER TABLE `#__foos_details` ADD KEY `idx_catid` (`catid`);
 
 === Changing administrator/components/com_foos/Extension/FoosComponent.php ===
 
-The <tt>administrator/components/com_foos/Extension/FoosComponent.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/Extension/FoosComponent.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/Extension/FoosComponent.php file ====
 
@@ -6220,7 +6220,7 @@ class FoosComponent extends MVCComponent implements BootableExtensionInterface, 
 
 === Changing administrator/components/com_foos/tmpl/foo/edit.php ===
 
-The <tt>administrator/components/com_foos/tmpl/foo/edit.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/tmpl/foo/edit.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/tmpl/foo/edit.php file ====
 
@@ -6267,7 +6267,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 === Changing administrator/components/com_foos/tmpl/foos/default.php ===
 
-The <tt>administrator/components/com_foos/tmpl/foos/default.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/tmpl/foos/default.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/tmpl/foos/default.php file ====
 
@@ -6600,7 +6600,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Creating administrator/components/com_foos/Controller/FoosController.php ===
 
-The <tt>administrator/components/com_foos/Controller/FoosController.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/Controller/FoosController.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/Controller/FoosController.php file ====
 
@@ -6678,7 +6678,7 @@ class FoosController extends AdminController
 
 === Changing administrator/components/com_foos/Model/FoosModel.php ===
 
-The <tt>administrator/components/com_foos/Model/FoosModel.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/Model/FoosModel.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/Model/FoosModel.php file ====
 
@@ -6772,7 +6772,7 @@ class FoosModel extends ListModel
 
 === Changing administrator/components/com_foos/Table/FooTable.php ===
 
-The <tt>administrator/components/com_foos/Table/FooTable.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/Table/FooTable.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/Table/FooTable.php file ====
 
@@ -6868,7 +6868,7 @@ class FooTable extends Table
 
 === Changing administrator/components/com_foos/forms/foo.xml ===
 
-The <tt>administrator/components/com_foos/forms/foo.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/forms/foo.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/forms/foo.xml file ====
 
@@ -6998,7 +6998,7 @@ COM_FOOS_FOOS_N_ITEMS_UNPUBLISHED_1="%d foo unpublished."
 
 === Create administrator/components/com_foos/sql/updates/1.13.0.sql ===
 
-The <tt>administrator/components/com_foos/sql/updates/1.13.0.sql</tt> file is the installation file.
+The <tt>administrator/components/com_foos/sql/updates/1.13.0.sql</tt> file is ....
 
 ==== Completed administrator/components/com_foos/sql/updates/1.13.0.sql file ====
 
@@ -7018,7 +7018,7 @@ ALTER TABLE `#__foos_details` ADD KEY `idx_state` (`published`);
 
 === Changing administrator/components/com_foos/tmpl/foo/edit.php ===
 
-The <tt>administrator/components/com_foos/tmpl/foo/edit.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/tmpl/foo/edit.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/tmpl/foo/edit.php file ====
 
@@ -7067,7 +7067,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 === Changing administrator/components/com_foos/tmpl/foos/default.php ===
 
-The <tt>administrator/components/com_foos/tmpl/foos/default.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/tmpl/foos/default.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/tmpl/foos/default.php file ====
 
@@ -7413,7 +7413,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Changing administrator/components/com_foos/View/Foos/HtmlView.php ===
 
-The <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/View/Foos/HtmlView.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/View/Foos/HtmlView.php file ====
 
@@ -7517,7 +7517,7 @@ class HtmlView extends BaseHtmlView
 
 === Changing administrator/components/com_foos/access.xml ===
 
-The <tt>administrator/components/com_foos/access.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/access.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/access.xml file ====
 
@@ -7564,7 +7564,7 @@ The code for the <tt>administrator/components/com_foos/access.xml</tt> file is a
 
 === Changing administrator/components/com_foos/config.xml ===
 
-The <tt>administrator/components/com_foos/config.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/config.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/config.xml file ====
 
@@ -7625,7 +7625,7 @@ The code for the <tt>administrator/components/com_foos/config.xml</tt> file is a
 
 === Changing administrator/components/com_foos/foos.xml ===
 
-The <tt>administrator/components/com_foos/foos.xml</tt> file is the installation file.
+The <tt>administrator/components/com_foos/foos.xml</tt> file is ....
 
 ==== Completed administrator/components/com_foos/foos.xml file ====
 
@@ -7704,7 +7704,7 @@ The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as 
 
 === Changing administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini ===
 
-The <tt>administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini</tt> file is the installation file.
+The <tt>administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini</tt> file is ....
 
 ==== Completed administrator/components/com_foos/language/en-GB/en-GB.com_foos.ini file ====
 
@@ -7749,7 +7749,7 @@ COM_FOOS_NEW_FOO="New Foo"
 
 === Changing administrator/components/com_foos/tmpl/foo/edit.php ===
 
-The <tt>administrator/components/com_foos/tmpl/foo/edit.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/tmpl/foo/edit.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/tmpl/foo/edit.php file ====
 
@@ -7824,7 +7824,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 === Changing administrator/components/com_foos/tmpl/foos/default.php ===
 
-The <tt>administrator/components/com_foos/tmpl/foos/default.php</tt> file is the installation file.
+The <tt>administrator/components/com_foos/tmpl/foos/default.php</tt> file is ....
 
 ==== Completed administrator/components/com_foos/tmpl/foos/default.php file ====
 
@@ -7933,7 +7933,7 @@ $canChange  = true;
 
 === Creating administrator/components/com_foos/Helper ===
 
-The <tt>administrator/components/com_foos/Helper</tt> file is the installation file.
+The <tt>administrator/components/com_foos/Helper</tt> file is ....
 
 ==== Completed administrator/components/com_foos/Helper file ====
 
@@ -7998,12 +7998,22 @@ class FooHelper extends ContentHelper
 
 Now you can zip all files and install them via Joomla Extension Manager. 
 
-After that you can 
+After that you have an option for activating custom fields in the options of 
+your component.
 
+[[File:as_j4_t_14_1.png|700px]]
+
+If you activate the option for custom fields, then you see an submenu in 
+the backend.
+
+[[File:as_j4_t_14_2.png|700px]]
+
+While editing an foo item, you see a tab, with all available custom fields for 
+this item.
+
+[[File:as_j4_t_14_3.png|700px]]
 
 == Example in Joomla! ==
-
-[[File:componenttutorial14a1.png|700px]]
 
 
 == Component Contents ==
@@ -8192,6 +8202,8 @@ At this point in the tutorial, your component should contain the following files
 
 == Conclusion ==
 
+You never know how to integrate custom fields in the backend into your component. 
+In the next chapter, we'll look at how to display the values in the frontend.
 
 
 
@@ -8216,13 +8228,6 @@ At this point in the tutorial, your component should contain the following files
 
 
 
-
-
-
-	geändert:       src/administrator/components/com_foos/Model/FoosModel.php
-	geändert:       src/administrator/components/com_foos/tmpl/foo/edit.php
-	geändert:       src/components/com_foos/View/Foo/HtmlView.php
-	geändert:       src/components/com_foos/tmpl/foo/default.php
 
 
 = Adding Custom Fields in the frontend - Part 14b =
@@ -8232,31 +8237,183 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 == File Structure ==
 
+=== Changing administrator/components/com_foos/foos.xml ===
+
+The <tt>administrator/components/com_foos/foos.xml</tt> file is ....
+
+==== Completed administrator/components/com_foos/foos.xml file ====
+
+The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as follows:
+ 
+<source lang="xml" highlight="10">
+<?xml version="1.0" encoding="utf-8" ?>
+<extension type="component" method="upgrade">
+	<name>COM_FOOS</name>
+	<creationDate>[DATE]</creationDate>
+	<author>[AUTHOR]</author>
+	<authorEmail>[AUTHOR_EMAIL]</authorEmail>
+	<authorUrl>[AUTHOR_URL]</authorUrl>
+	<copyright>[COPYRIGHT]</copyright>
+	<license>GNU General Public License version 2 or later;</license>
+	<version>1.14.1</version>
+	<description>COM_FOOS_XML_DESCRIPTION</description>
+	<namespace>Joomla\Component\Foos</namespace>
+	<scriptfile>script.php</scriptfile>
+	<install> <!-- Runs on install -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall> <!-- Runs on uninstall -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<update>  <!-- Runs on update -->
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+	<!-- Frond-end files -->
+	<files folder="components/com_foos">
+		<folder>Controller</folder>
+		<folder>Model</folder>
+		<folder>View</folder>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+	</files>
+    <media folder="media/com_foos" destination="com_foos">
+		<folder>js</folder>
+    </media>
+	<!-- Back-end files -->
+	<administration>
+		<!-- Menu entries -->
+		<menu view="foos">COM_FOOS</menu>
+		<submenu>
+			<menu link="option=com_foos">COM_FOOS</menu>
+			<menu link="option=com_categories&amp;extension=com_foos"
+				view="categories" img="class:foos-cat" alt="Foos/Categories">JCATEGORY</menu>
+		</submenu>
+		<files folder="administrator/components/com_foos">
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>foos.xml</filename>
+			<folder>Controller</folder>
+			<folder>Extension</folder>
+			<folder>Model</folder>
+			<folder>Rule</folder>
+			<folder>Service</folder>
+			<folder>View</folder>
+			<folder>services</folder>
+			<folder>tmpl</folder>
+			<folder>sql</folder>
+			<folder>language</folder>
+		</files>
+	</administration>
+</extension>
+
+</source>
+
+
+=== Changing administrator/components/com_foos/foos.xml ===
+
+The <tt>administrator/components/com_foos/foos.xml</tt> file is ....
+
+==== Completed administrator/components/com_foos/foos.xml file ====
+
+The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+</source>
+
 === Changing x ===
 
-The <tt>x</tt> file is the installation file.
+The <tt>x</tt> file is ....
 
 ==== Completed x file ====
 
 The code for the <tt>x</tt> file is as follows:
  
-<source lang="xml">
+<source lang="php" highlight="15,41-55">
 <?php
+/**
+ * @package     Joomla.Site
+ * @subpackage  com_foos
+ *
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+namespace Joomla\Component\Foos\Site\View\Foo;
+
+defined('_JEXEC') or die;
+
+use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
+use Joomla\CMS\Factory;
+
+/**
+ * HTML Foos View class for the Foo component
+ *
+ * @since  1.0
+ */
+class HtmlView extends BaseHtmlView
+{
+	/**
+	 * The item object details
+	 *
+	 * @var    \JObject
+	 * @since  1.0.0
+	 */
+	protected $item;
+
+	/**
+	 * Execute and display a template script.
+	 *
+	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
+	 *
+	 * @return  mixed  A string if successful, otherwise an Error object.
+	 */
+	public function display($tpl = null)
+	{
+		$item = $this->item = $this->get('Item');
+
+		Factory::getApplication()->triggerEvent('onContentPrepare', array ('com_foos.foo', &$item));
+
+		// Store the events for later
+		$item->event = new \stdClass;
+		$results = Factory::getApplication()->triggerEvent('onContentAfterTitle', array('com_foos.foo', &$item, &$item->params));
+		$item->event->afterDisplayTitle = trim(implode("\n", $results));
+
+		$results = Factory::getApplication()->triggerEvent('onContentBeforeDisplay', array('com_foos.foo', &$item, &$item->params));
+		$item->event->beforeDisplayContent = trim(implode("\n", $results));
+
+		$results = Factory::getApplication()->triggerEvent('onContentAfterDisplay', array('com_foos.foo', &$item, &$item->params));
+		$item->event->afterDisplayContent = trim(implode("\n", $results));
+
+		return parent::display($tpl);
+	}
+}
+
 
 </source>
-
 
 == Test your component ==
 
 Now you can zip all files and install them via Joomla Extension Manager. 
 
-After that you can 
+You can edit the value of a custom field in the backend. 
+
+[[File:as_j4_t_14b_1.png|700px]]
+
+After that you can show the value for a custom field in the front end.
+
+[[File:as_j4_t_14b_2.png|700px]]
 
 
 == Example in Joomla! ==
 
-
-[[File:componenttutorial14b1.png|700px]]
 
 
 == Component Contents ==
@@ -8445,7 +8602,9 @@ At this point in the tutorial, your component should contain the following files
 
 == Conclusion ==
 
-
+Your components can now fully use custom fields. This is a huge advantage 
+because cusotm fields make joomla and every component in Joomla 
+user friendly and customizable.
 
 
 
@@ -8515,7 +8674,7 @@ The installation should be multilingual.
 
 === Changing x ===
 
-The <tt>x</tt> file is the installation file.
+The <tt>x</tt> file is ....
 
 ==== Completed x file ====
 
@@ -8786,7 +8945,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Changing x ===
 
-The <tt>x</tt> file is the installation file.
+The <tt>x</tt> file is ....
 
 ==== Completed x file ====
 
@@ -8861,7 +9020,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Changing x ===
 
-The <tt>x</tt> file is the installation file.
+The <tt>x</tt> file is ....
 
 ==== Completed x file ====
 
@@ -9141,7 +9300,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Changing x ===
 
-The <tt>x</tt> file is the installation file.
+The <tt>x</tt> file is ....
 
 ==== Completed x file ====
 
@@ -9421,7 +9580,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Changing x ===
 
-The <tt>x</tt> file is the installation file.
+The <tt>x</tt> file is ....
 
 ==== Completed x file ====
 
@@ -9578,7 +9737,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Changing x ===
 
-The <tt>x</tt> file is the installation file.
+The <tt>x</tt> file is ....
 
 ==== Completed x file ====
 
@@ -9739,7 +9898,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Changing x ===
 
-The <tt>x</tt> file is the installation file.
+The <tt>x</tt> file is ....
 
 ==== Completed x file ====
 
@@ -9902,7 +10061,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Changing x ===
 
-The <tt>x</tt> file is the installation file.
+The <tt>x</tt> file is ....
 
 ==== Completed x file ====
 
@@ -10083,7 +10242,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Changing x ===
 
-The <tt>x</tt> file is the installation file.
+The <tt>x</tt> file is ....
 
 ==== Completed x file ====
 
@@ -10249,7 +10408,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Changing x ===
 
-The <tt>x</tt> file is the installation file.
+The <tt>x</tt> file is ....
 
 ==== Completed x file ====
 
@@ -10417,7 +10576,7 @@ You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-al
 
 === Changing x ===
 
-The <tt>x</tt> file is the installation file.
+The <tt>x</tt> file is ....
 
 ==== Completed x file ====
 
