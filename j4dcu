@@ -888,12 +888,12 @@ We are going to work on this in the next chapter.
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
  |-
-  |1
+|1
  |administrator/components/com_foos/Extension/FoosComponent.php
  | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
  | unchanged
@@ -1081,12 +1081,12 @@ the view with the help of the menu item.
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
  |-
-  |1
+|1
  |administrator/components/com_foos/Extension/FoosComponent.php
  | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
  | unchanged
@@ -1363,12 +1363,12 @@ After that you can see the view in the front using a model.
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
  |-
-  |1
+|1
  |administrator/components/com_foos/Extension/FoosComponent.php
  | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
  | unchanged
@@ -1639,12 +1639,12 @@ See: https://www.php.net/manual/en/language.basic-syntax.instruction-separation.
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
  |-
-  |1
+|1
  |administrator/components/com_foos/Extension/FoosComponent.php
  | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
  | unchanged
@@ -2091,12 +2091,12 @@ In the next chapters, we are working to make the data changeable in the backend.
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
  |-
- |1
+|1
  |administrator/components/com_foos/Extension/FoosComponent.php
  | the interface BootableExtensionInterface where a component class can load its internal class loader or register HTML services see https://github.com/joomla/joomla-cms/pull/20217
  | unchanged
@@ -3271,12 +3271,12 @@ After that you
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
  |-
- | 7
+| 7
  | administrator/components/com_foos/Controller/FooController.php
  | this is the entry point to the Foo component 
  | new
@@ -3615,12 +3615,12 @@ After that, all language strings are translated for all installed languages.
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
  |-
- | 7
+| 7
  | administrator/components/com_foos/Controller/FooController.php
  | this is the entry point to the Foo component 
  | unchanged
@@ -4169,12 +4169,12 @@ The options are the configuration that you can use for all the items in your ext
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
  |-
- | 7
+| 7
  | administrator/components/com_foos/Controller/FooController.php
  | this is the entry point to the Foo component 
  | unchanged
@@ -4923,7 +4923,7 @@ You can specify a special permission when editing a item. You can see that in th
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
@@ -5322,7 +5322,7 @@ You will now see an error message after clicking the Save button
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
@@ -5733,7 +5733,7 @@ submitted the form to the server using the Save button.
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
@@ -6384,7 +6384,7 @@ If a category is assigned, it will be displayed in the overview.
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
@@ -7199,7 +7199,7 @@ In category manager, the items are now also displayed with the correct state.
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
@@ -8020,7 +8020,7 @@ this item.
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
@@ -8433,7 +8433,7 @@ After that you can show the value for a custom field in the front end.
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
@@ -10017,7 +10017,7 @@ And you can translate the items with the help of the component Multilingual Asso
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
@@ -11949,7 +11949,7 @@ You use Joomla functions here and do not have to invent the wheel yourself.
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
@@ -12744,7 +12744,7 @@ are implemented in Joomla and apply this analogously to your problem.
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
@@ -13900,7 +13900,7 @@ Now you can save a parameter of the options separately for each item.
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
@@ -14539,7 +14539,7 @@ lower part of the backend and you can scroll through the pages.
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
@@ -15001,7 +15001,7 @@ The code for the <tt>components/com_foos/tmpl/foo/withhead.xml</tt> file is as f
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
@@ -16188,7 +16188,7 @@ The sign is the lock.
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
@@ -17790,7 +17790,7 @@ use Joomla\CMS\Language\Text;
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
@@ -18442,7 +18442,7 @@ Of course, you can adapt this page to your circumstances.
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
@@ -18786,7 +18786,7 @@ https://github.com/joomla/joomla-cms/pull/24026
 
 At this point in the tutorial, your component should contain the following files:
 {| border=1
- | 1
+| 1
  | administrator/components/com_foos/Controller/DisplayController.php
  | this is the administrator entry point to the Foo component 
  | unchanged
