@@ -14627,6 +14627,8 @@ At this point in the tutorial, your component should contain the following files
 
 You see a pagination in the 
 lower part of the backend and you can scroll through the pages. 
+In the next chapter, we'll 
+look at how to make the layout consistent while also saving lines of code.
 
 
 
@@ -14652,28 +14654,227 @@ lower part of the backend and you can scroll through the pages.
 
 
 
-
-
-geändert:       src/administrator/components/com_foos/Model/FoosModel.php
-	geändert:       src/administrator/components/com_foos/View/Foo/HtmlView.php
-	geändert:       src/administrator/components/com_foos/View/Foos/HtmlView.php
-	geändert:       src/administrator/components/com_foos/forms/foo.xml
-	geändert:       src/administrator/components/com_foos/language/en-GB/en-GB.com_foos.sys.ini
-
-Unversionierte Dateien:
-  (benutzen Sie "git add <Datei>...", um die Änderungen zum Commit vorzumerken)
-
-	src/components/com_foos/tmpl/foo/withhead.php
-	src/components/com_foos/tmpl/foo/withhead.xml
 
 
 
 = Adding a Layout - Part 20 =
 
+In this chapter, we'll look at how to make the layout consistent while 
+also saving lines of code.
+
 == Requirements ==
 You need Joomla! 4.x for this tutorial (as of writing currently Joomla! 4.0.0-alpha11-dev)
 
 == File Structure ==
+
+=== Changing administrator/components/com_foos/foos.xml ===
+
+The <tt>administrator/components/com_foos/foos.xml</tt> file is ....
+
+==== Completed administrator/components/com_foos/foos.xml file ====
+
+The code for the <tt>administrator/components/com_foos/foos.xml</tt> file is as follows:
+ 
+<source lang="xml" highlight="10">
+<?xml version="1.0" encoding="utf-8" ?>
+<extension type="component" method="upgrade">
+	<name>COM_FOOS</name>
+	<creationDate>[DATE]</creationDate>
+	<author>[AUTHOR]</author>
+	<authorEmail>[AUTHOR_EMAIL]</authorEmail>
+	<authorUrl>[AUTHOR_URL]</authorUrl>
+	<copyright>[COPYRIGHT]</copyright>
+	<license>GNU General Public License version 2 or later;</license>
+	<version>1.20.0</version>
+	<description>COM_FOOS_XML_DESCRIPTION</description>
+	<namespace>Joomla\Component\Foos</namespace>
+	<scriptfile>script.php</scriptfile>
+	<install> <!-- Runs on install -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall> <!-- Runs on uninstall -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<update>  <!-- Runs on update -->
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+	<!-- Frond-end files -->
+	<files folder="components/com_foos">
+		<folder>Controller</folder>
+		<folder>Model</folder>
+		<folder>View</folder>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+	</files>
+    <media folder="media/com_foos" destination="com_foos">
+		<folder>js</folder>
+    </media>
+	<!-- Back-end files -->
+	<administration>
+		<!-- Menu entries -->
+		<menu view="foos">COM_FOOS</menu>
+		<submenu>
+			<menu link="option=com_foos">COM_FOOS</menu>
+			<menu link="option=com_categories&amp;extension=com_foos"
+				view="categories" img="class:foos-cat" alt="Foos/Categories">JCATEGORY</menu>
+		</submenu>
+		<files folder="administrator/components/com_foos">
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>foos.xml</filename>
+			<folder>Controller</folder>
+			<folder>Extension</folder>
+			<folder>Model</folder>
+			<folder>Rule</folder>
+			<folder>Service</folder>
+			<folder>View</folder>
+			<folder>services</folder>
+			<folder>tmpl</folder>
+			<folder>sql</folder>
+			<folder>language</folder>
+		</files>
+	</administration>
+</extension>
+
+</source>
+
+=== Changing administrator/components/com_foos/forms/foo.xml ===
+
+The <tt>administrator/components/com_foos/forms/foo.xml</tt> file is ....
+
+==== Completed administrator/components/com_foos/forms/foo.xml file ====
+
+The code for the <tt>administrator/components/com_foos/forms/foo.xml</tt> file is as follows:
+ 
+<source lang="xml" highlight="106-116">
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset 
+		addfieldprefix="Joomla\Component\Foos\Administrator\Field" 
+		addruleprefix="Joomla\Component\Foos\Administrator\Rule"
+	>
+		<field
+			name="id"
+			type="number"
+			label="JGLOBAL_FIELD_ID_LABEL"
+			default="0"
+			class="readonly"
+			readonly="true"
+		/>
+
+		<field
+			name="name"
+			type="text"
+			validate="Letter"
+			class="validate-letter"
+			label="COM_FOOS_FIELD_NAME_LABEL"
+			size="40"
+			required="true"
+		/>
+
+		<field
+			name="language"
+			type="contentlanguage"
+			label="JFIELD_LANGUAGE_LABEL"
+		>
+			<option value="*">JALL</option>
+		</field>
+
+		<field
+			name="published"
+			type="list"
+			label="JSTATUS"
+			default="1"
+			id="published"
+			class="custom-select-color-state"
+			size="1"
+		>
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+			<option value="2">JARCHIVED</option>
+			<option value="-2">JTRASHED</option>
+		</field>
+
+		<field
+			name="publish_up"
+			type="calendar"
+			label="COM_FOOS_FIELD_PUBLISH_UP_LABEL"
+			translateformat="true"
+			showtime="true"
+			size="22"
+			filter="user_utc"
+		/>
+
+		<field
+			name="publish_down"
+			type="calendar"
+			label="COM_FOOS_FIELD_PUBLISH_DOWN_LABEL"
+			translateformat="true"
+			showtime="true"
+			size="22"
+			filter="user_utc"
+		/>
+
+		<field
+			name="catid"
+			type="categoryedit"
+			label="JCATEGORY"
+			extension="com_foos"
+			addfieldprefix="Joomla\Component\Categories\Administrator\Field"
+			required="true"
+			default=""
+		/>
+
+		<field
+			name="access"
+			type="accesslevel"
+			label="JFIELD_ACCESS_LABEL"
+			size="1"
+		/>
+
+		<field
+			name="ordering"
+			type="ordering"
+			label="JFIELD_ORDERING_LABEL"
+			content_type="com_foos.foo"
+		/>
+
+	</fieldset>
+	<fields name="params" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
+		<fieldset name="display" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
+
+			<field
+				name="show_name"
+				type="list"
+				label="COM_FOOS_FIELD_PARAMS_NAME_LABEL"
+				useglobal="true"
+			>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+
+			<field
+				name="foos_layout"
+				type="componentlayout"
+				label="JFIELD_ALT_LAYOUT_LABEL"
+				class="custom-select"
+				extension="com_foos"
+				view="foo"
+				useglobal="true"
+			/>
+
+		</fieldset>
+	</fields>
+</form>
+
+
+</source>
 
 === Changing x ===
 
@@ -14688,6 +14889,104 @@ The code for the <tt>x</tt> file is as follows:
 
 </source>
 
+=== Changing administrator/components/com_foos/language/en-GB/en-GB.com_foos.sys.ini ===
+
+The <tt>administrator/components/com_foos/language/en-GB/en-GB.com_foos.sys.ini</tt> file is ....
+
+==== Completed administrator/components/com_foos/language/en-GB/en-GB.com_foos.sys.ini file ====
+
+The code for the <tt>administrator/components/com_foos/language/en-GB/en-GB.com_foos.sys.ini</tt> file is as follows:
+ 
+<source lang="ini" hightlight="17,18">
+COM_FOOS="[PROJECT_NAME]"
+COM_FOOS_XML_DESCRIPTION="Foo Component"
+
+COM_FOOS_INSTALLERSCRIPT_PREFLIGHT="<p>Anything here happens before the installation/update/uninstallation of the component</p>"
+COM_FOOS_INSTALLERSCRIPT_UPDATE="<p>The component has been updated</p>"
+COM_FOOS_INSTALLERSCRIPT_UNINSTALL="<p>The component has been uninstalled</p>"
+COM_FOOS_INSTALLERSCRIPT_INSTALL="<p>The component has been installed</p>"
+COM_FOOS_INSTALLERSCRIPT_POSTFLIGHT="<p>Anything here happens after the installation/update/uninstallation of the component</p>"
+
+COM_FOOS_FOO_VIEW_DEFAULT_TITLE="Single Foo"
+COM_FOOS_FOO_VIEW_DEFAULT_DESC="This links to the information for one foo."
+COM_FOOS_SELECT_FOO_LABEL="Select a foo"
+
+COM_FOOS_CHANGE_FOO="Change a foo"
+COM_FOOS_SELECT_A_FOO="Select a foo"
+
+COM_FOOS_FOO_VIEW_WITHHEAD_TITLE="Single Foo with a headertext"
+COM_FOOS_FOO_VIEW_WITHHEAD_DESC="This links to the information for one foo with a headertext."
+
+
+</source>
+
+=== Creating components/com_foos/tmpl/foo/withhead.php ===
+
+The <tt>components/com_foos/tmpl/foo/withhead.php</tt> file is ....
+
+==== Completed components/com_foos/tmpl/foo/withhead.php file ====
+
+The code for the <tt>components/com_foos/tmpl/foo/withhead.php</tt> file is as follows:
+ 
+<source lang="php">
+<?php
+
+defined('_JEXEC') or die;
+
+use Joomla\CMS\Language\Text;
+
+echo "<hr>Here you can show a headertext<hr>";
+
+if ($this->item->params->get('show_name')) {
+	if ($this->Params->get('show_foo_name_label')) {
+		echo Text::_('COM_FOOS_NAME') . $this->item->name;
+	} else {
+		echo $this->item->name;
+	}
+}
+echo $this->item->event->afterDisplayTitle; 
+echo $this->item->event->beforeDisplayContent;
+echo $this->item->event->afterDisplayContent;
+
+</source>
+
+=== Creating components/com_foos/tmpl/foo/withhead.xml ===
+
+The <tt>components/com_foos/tmpl/foo/withhead.xml</tt> file is ....
+
+==== Completed components/com_foos/tmpl/foo/withhead.xml file ====
+
+The code for the <tt>components/com_foos/tmpl/foo/withhead.xml</tt> file is as follows:
+ 
+<source lang="xml">
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_FOOS_FOO_VIEW_WITHHEAD_TITLE">
+		<message>
+			<![CDATA[COM_FOOS_FOO_VIEW_WITHHEAD_DESC]]>
+		</message>
+	</layout>
+	<!-- Add fields to the request variables for the layout. -->
+	<fields name="request">
+		<fieldset name="request"
+			addfieldprefix="Joomla\Component\Foos\Administrator\Field"
+		>
+			<field
+				name="id"
+				type="modal_foo"
+				label="COM_FOOS_SELECT_FOO_LABEL"
+				required="true"
+				select="true"
+				new="true"
+				edit="true"
+				clear="true"
+			/>
+		</fieldset>
+	</fields>
+</metadata>
+
+
+</source>
 
 == Test your component ==
 

@@ -174,11 +174,6 @@ class HtmlView extends BaseHtmlView
 
 			$childBar->archive('foos.archive')->listCheck(true);
 
-			if ($user->authorise('core.admin'))
-			{
-				$childBar->checkin('foos.checkin')->listCheck(true);
-			}
-
 			if ($this->state->get('filter.published') != -2)
 			{
 				$childBar->trash('foos.trash')->listCheck(true);
