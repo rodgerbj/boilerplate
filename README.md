@@ -5,6 +5,10 @@ Boilerplate files for Joomla! 4 extensions.
 You can find the Tutorial Sample Files in the folder *Tutorial* :)
 
 # Installation
+
+A installable zip file of the last version you can find in the release tab. 
+So you do not need to clone this repo.
+
 The boilerplates are in the folder src. They can be installed 
 as-is using the Extension Manager. 
 However, the component, module and plugin will be called Foo :)
