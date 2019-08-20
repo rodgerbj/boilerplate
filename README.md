@@ -9,8 +9,17 @@ The boilerplates are in the folder src. They can be installed
 as-is using the Extension Manager. 
 However, the component, module and plugin will be called Foo :)
 
-To create installable zip packages, you only need to zip the folder with 
-the files and it is ready to be installed.
+The easiest way is to copy the files in
+
+- adminsitrator folder in the administrator folder of your Joomla installation.
+- components folder in the components folder of your Joomla installation.
+- media folder in the media folder of your Joomla installation.
+
+Then you can run discover in Joomla
+
+To create installable zip packages, you need to run
+'composer i' and and after that 'vendor/bin/robo build' and in the 'dist' 
+folder it is ready to be installed.
 
 # Customizing
 To customize the boilerplates using your own name you need to take the following steps:
