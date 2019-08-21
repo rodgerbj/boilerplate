@@ -36,7 +36,7 @@ class FooModel extends BaseDatabaseModel
 	 *
 	 * @return  mixed Object or null
 	 *
-	 * @since   1.0.0
+	 * @since   1.0
 	 */
 	public function getItem($pk = null)
 	{
