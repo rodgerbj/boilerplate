@@ -62,7 +62,6 @@
 			<folder>services</folder>
 			<folder>sql</folder>
 			<folder>tmpl</folder>
-			<folder>sql</folder>
 			<folder>language</folder>
 		</files>
 	</administration>
