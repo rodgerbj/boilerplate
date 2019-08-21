@@ -40,6 +40,23 @@ class FooModel extends AdminModel
 	protected $associationsContext = 'com_foos.item';
 
 	/**
+	 * Batch copy/move command. If set to false, the batch copy/move command is not supported
+	 *
+	 * @var  string
+	 */
+	protected $batch_copymove = 'category_id';
+
+	/**
+	 * Allowed batch commands
+	 *
+	 * @var array
+	 */
+	protected $batch_commands = array(
+		'assetgroup_id' => 'batchAccess',
+		'language_id'   => 'batchLanguage',
+	);
+
+	/**
 	 * Method to get the row form.
 	 *
 	 * @param   array    $data      Data for the form.
@@ -99,7 +116,6 @@ class FooModel extends AdminModel
 		if ($assoc)
 		{
 			$item->associations = array();
-			$item->alias = "test";
 
 			if ($item->id != null)
 			{

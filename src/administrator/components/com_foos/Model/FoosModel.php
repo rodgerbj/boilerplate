@@ -38,6 +38,7 @@ class FoosModel extends ListModel
 			$config['filter_fields'] = array(
 				'id', 'a.id',
 				'name', 'a.name',
+				'alias', 'a.alias',
 				'catid', 'a.catid', 'category_id', 'category_title',
 				'checked_out', 'a.checked_out',
 				'checked_out_time', 'a.checked_out_time',
@@ -87,6 +88,7 @@ class FoosModel extends ListModel
 						'list.select',
 						'a.id AS id,'
 						. 'a.name AS name,'
+						. 'a.alias,'
 						. 'a.access,'
 						. 'a.language,'
 						. 'a.ordering AS ordering,'
@@ -146,6 +148,7 @@ class FoosModel extends ListModel
 						array(
 							'a.id',
 							'a.name',
+							'a.alias',
 							'a.catid',
 							'a.checked_out',
 							'a.checked_out_time',
