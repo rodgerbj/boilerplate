@@ -31,9 +31,9 @@ if ($saveOrder && !empty($this->items))
 <form action="<?php echo Route::_('index.php?option=com_foos'); ?>" method="post" name="adminForm" id="adminForm">
 	<div class="row">
 		<?php if (!empty($this->sidebar)) : ?>
-			<div id="j-sidebar-container" class="col-md-2">
+            <div id="j-sidebar-container" class="col-md-2">
 				<?php echo $this->sidebar; ?>
-			</div>
+            </div>
 		<?php endif; ?>
 		<div class="<?php if (!empty($this->sidebar)) {echo 'col-md-10'; } else { echo 'col-md-12'; } ?>">
 			<div id="j-main-container" class="j-main-container">
@@ -150,6 +150,8 @@ if ($saveOrder && !empty($this->items))
 						</tbody>
 					</table>
 
+					<?php echo $this->pagination->getListFooter(); ?>
+				
 				<?php endif; ?>
 				<input type="hidden" name="task" value="">
 				<input type="hidden" name="boxchecked" value="0">
