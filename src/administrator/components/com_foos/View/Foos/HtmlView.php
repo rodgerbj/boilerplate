@@ -12,11 +12,13 @@ namespace Joomla\Component\Foos\Administrator\View\Foos;
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
+use Joomla\Component\Foos\Administrator\Helper\FooHelper;
 
 /**
  * View class for a list of foos.
@@ -33,6 +35,13 @@ class HtmlView extends BaseHtmlView
 	protected $items;
 
 	/**
+	 * The sidebar markup
+	 *
+	 * @var  string
+	 */
+	protected $sidebar;
+
+	/**
 	 * Display the view.
 	 *
 	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
@@ -41,7 +50,6 @@ class HtmlView extends BaseHtmlView
 	 */
 	public function display($tpl = null)
 	{
-
 		$this->items = $this->get('Items');
 
 		$this->addToolbar();
@@ -58,6 +66,9 @@ class HtmlView extends BaseHtmlView
 	 */
 	protected function addToolbar()
 	{
+		FooHelper::addSubmenu('foos');
+		$this->sidebar = \JHtmlSidebar::render();
+
 		$canDo = ContentHelper::getActions('com_foos');
 
 		// Get the toolbar object instance
@@ -74,5 +85,7 @@ class HtmlView extends BaseHtmlView
 		{
 			$toolbar->preferences('com_foos');
 		}
+
+		HTMLHelper::_('sidebar.setAction', 'index.php?option=com_foos');
 	}
 }
