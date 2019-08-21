@@ -58,7 +58,7 @@ $canChange  = true;
 								<td class="text-center">
 									<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
 								</td>
-								<td scope="row" class="has-context">
+								<th scope="row" class="has-context">
 									<div>
 										<?php echo $this->escape($item->name); ?>
 									</div>
@@ -70,7 +70,7 @@ $canChange  = true;
 										<?php echo Text::_('JCATEGORY') . ': ' . $this->escape($item->category_title); ?>
 									</div>
 
-								</td>
+								</th>
 								<td class="small d-none d-md-table-cell">
 									<?php echo $item->access_level; ?>
 								</td>
