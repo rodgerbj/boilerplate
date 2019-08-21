@@ -63,6 +63,7 @@ class HtmlView extends BaseHtmlView
 		ToolbarHelper::title(Text::_('COM_FOOS_MANAGER_FOOS'), 'address foo');
 
 		$toolbar->addNew('foo.add');
+		$toolbar->preferences('com_foos');
 	}
 
 }
