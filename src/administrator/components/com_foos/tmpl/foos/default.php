@@ -12,8 +12,12 @@ defined('_JEXEC') or die;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
+use Joomla\CMS\Language\Multilanguage;
+use Joomla\CMS\Language\Associations;
+use Joomla\CMS\Layout\LayoutHelper;
 
 $canChange  = true;
+$assoc = Associations::isEnabled();
 ?>
 <form action="<?php echo Route::_('index.php?option=com_foos'); ?>" method="post" name="adminForm" id="adminForm">
 	<div class="row">
@@ -41,6 +45,16 @@ $canChange  = true;
 								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
 									<?php echo TEXT::_('JGRID_HEADING_ACCESS') ?>
 								</th>
+								<?php if ($assoc) : ?>
+									<th scope="col" style="width:10%">
+										<?php echo Text::_('COM_FOOS_HEADING_ASSOCIATION'); ?>
+									</th>
+								<?php endif; ?>
+								<?php if (Multilanguage::isEnabled()) : ?>
+									<th scope="col" style="width:10%" class="d-none d-md-table-cell">
+										<?php echo Text::_('JGRID_HEADING_LANGUAGE'); ?>
+									</th>
+								<?php endif; ?>
 								<th scope="col" style="width:1%; min-width:85px" class="text-center">
 									<?php echo Text::_('JSTATUS'); ?>
 								</th>
@@ -73,6 +87,20 @@ $canChange  = true;
 								<td class="small d-none d-md-table-cell">
 									<?php echo $item->access_level; ?>
 								</td>
+								<?php if ($assoc) : ?>
+								<td class="d-none d-md-table-cell">
+									<?php if ($item->association) : ?>
+										<?php 
+										echo HTMLHelper::_('foosadministrator.association', $item->id); 
+										?>
+									<?php endif; ?>
+								</td>
+								<?php endif; ?>
+								<?php if (Multilanguage::isEnabled()) : ?>
+									<td class="small d-none d-md-table-cell">
+										<?php echo LayoutHelper::render('joomla.content.language', $item); ?>
+									</td>
+								<?php endif; ?>
 								<td class="text-center">
 									<div class="btn-group">
 										<?php echo HTMLHelper::_('jgrid.published', $item->published, $i, 'foos.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>

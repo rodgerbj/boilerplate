@@ -11,6 +11,7 @@ namespace Joomla\Component\Foos\Administrator\Model;
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Language\Associations;
 use Joomla\CMS\MVC\Model\ListModel;
 
 /**
@@ -47,6 +48,11 @@ class FoosModel extends ListModel
 
 		// Select the required fields from the table.
 		$query->select(
+			$db->quoteName(array('a.id', 'a.name', 'a.catid', 'a.access', 'a.published', 'a.publish_up', 'a.publish_down', 'a.language'))
+		);
+
+		// Select the required fields from the table.
+		$query->select(
 			$db->quoteName(
 				explode(
 					', ',
@@ -54,6 +60,7 @@ class FoosModel extends ListModel
 						'list.select',
 						'a.id, a.name, a.catid' .
 						', a.access' .
+						', a.language' .
 						', a.published' .
 						', a.publish_up, a.publish_down'
 					)
@@ -76,6 +83,56 @@ class FoosModel extends ListModel
 				'LEFT',
 				$db->quoteName('#__categories', 'c') . ' ON ' . $db->quoteName('c.id') . ' = ' . $db->quoteName('a.catid')
 			);
+
+		// Join over the language
+		$query->select($db->quoteName('l.title', 'language_title'))
+			->select($db->quoteName('l.image', 'language_image'))
+			->join(
+				'LEFT',
+				$db->quoteName('#__languages', 'l') . ' ON ' . $db->quoteName('l.lang_code') . ' = ' . $db->quoteName('a.language')
+			);
+
+		// Join over the associations.
+		$assoc = Associations::isEnabled();
+
+		if ($assoc)
+		{
+			$query->select('COUNT(' . $db->quoteName('asso2.id') . ') > 1 as ' . $db->quoteName('association'))
+				->join(
+					'LEFT',
+					$db->quoteName('#__associations', 'asso') . ' ON ' . $db->quoteName('asso.id') . ' = ' . $db->quoteName('a.id')
+					. ' AND ' . $db->quoteName('asso.context') . ' = ' . $db->quote('com_foos.item')
+				)
+				->join(
+					'LEFT',
+					$db->quoteName('#__associations', 'asso2') . ' ON ' . $db->quoteName('asso2.key') . ' = ' . $db->quoteName('asso.key')
+				)
+				->group(
+					$db->quoteName(
+						array(
+							'a.id',
+							'a.name',
+							'a.catid',
+							'a.published',
+							'a.access',
+							'a.language',
+							'a.publish_up',
+							'a.publish_down',
+							'l.title' ,
+							'l.image' ,
+							'ag.title' ,
+							'c.title'
+						)
+					)
+				);
+		}
+
+		// Filter on the language.
+		if ($language = $this->getState('filter.language'))
+		{
+			$query->where($db->quoteName('a.language') . ' = :language');
+			$query->bind(':language', $language);
+		}
 
 		return $query;
 	}
