@@ -39,6 +39,8 @@ class FoosModel extends ListModel
 				'id', 'a.id',
 				'name', 'a.name',
 				'catid', 'a.catid', 'category_id', 'category_title',
+				'checked_out', 'a.checked_out',
+				'checked_out_time', 'a.checked_out_time',
 				'published', 'a.published',
 				'access', 'a.access', 'access_level',
 				'ordering', 'a.ordering',
@@ -88,6 +90,8 @@ class FoosModel extends ListModel
 						. 'a.access,'
 						. 'a.language,'
 						. 'a.ordering AS ordering,'
+						. 'a.checked_out AS checked_out,'
+						. 'a.checked_out_time AS checked_out_time,'
 						. 'a.state AS state,'
 						. 'a.catid AS catid,'
 						. 'a.published AS published,'
@@ -143,6 +147,8 @@ class FoosModel extends ListModel
 							'a.id',
 							'a.name',
 							'a.catid',
+							'a.checked_out',
+							'a.checked_out_time',
 							'a.published',
 							'a.access',
 							'a.language',
@@ -156,6 +162,13 @@ class FoosModel extends ListModel
 					)
 				);
 		}
+
+		// Join over the users for the checked out user.
+		$query->select($db->quoteName('uc.name', 'editor'))
+			->join(
+				'LEFT',
+				$db->quoteName('#__users', 'uc') . ' ON ' . $db->quoteName('uc.id') . ' = ' . $db->quoteName('a.checked_out')
+			);
 
 		// Filter by access level.
 		if ($access = $this->getState('filter.access'))
