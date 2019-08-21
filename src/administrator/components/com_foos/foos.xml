@@ -60,10 +60,10 @@
 			<folder>Table</folder>
 			<folder>View</folder>
 			<folder>forms</folder>
-			<folder>language</folder>
 			<folder>services</folder>
 			<folder>sql</folder>
 			<folder>tmpl</folder>
+			<folder>language</folder>
 		</files>
 	</administration>
 </extension>
