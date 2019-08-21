@@ -6,6 +6,7 @@
 		label="COM_FOOS_FIELD_CONFIG_INDIVIDUAL_FOO_DISPLAY"
 		description="COM_FOOS_FIELD_CONFIG_INDIVIDUAL_FOO_DESC"
 		>
+
 		<field
 			name="show_foo_name_label"
 			type="list"
@@ -27,12 +28,24 @@
 			<option value="1">JYES</option>
 		</field>
 
+		<field
+			name="show_name"
+			type="radio"
+			label="COM_FOOS_FIELD_PARAMS_NAME_LABEL"
+			default="1"
+			class="switcher"
+			>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
 	</fieldset>
 	<fieldset
 		name="permissions"
 		label="JCONFIG_PERMISSIONS_LABEL"
 		description="JCONFIG_PERMISSIONS_DESC"
 		>
+
 		<field
 			name="rules"
 			type="rules"
@@ -42,5 +55,6 @@
 			component="com_foos"
 			section="component"
 		/>
+
 	</fieldset>
 </config>

@@ -13,6 +13,7 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Factory;
+use Joomla\Registry\Registry;
 
 /**
  * HTML Foos View class for the Foo component
@@ -21,6 +22,22 @@ use Joomla\CMS\Factory;
  */
 class HtmlView extends BaseHtmlView
 {
+	/**
+	 * The page parameters
+	 *
+	 * @var    \Joomla\Registry\Registry|null
+	 * @since  1.0.0
+	 */
+	protected $params = null;
+
+	/**
+	 * The item model state
+	 *
+	 * @var    \Joomla\Registry\Registry
+	 * @since  1.0.0
+	 */
+	protected $state;
+
 	/**
 	 * The item object details
 	 *
@@ -39,6 +56,13 @@ class HtmlView extends BaseHtmlView
 	public function display($tpl = null)
 	{
 		$item = $this->item = $this->get('Item');
+		$state = $this->State = $this->get('State');
+		$params = $this->Params = $state->get('params');
+		$itemparams = new Registry(json_decode($item->params));
+
+		$temp = clone $params;
+		$temp->merge($itemparams);
+		$item->params = $temp;
 
 		Factory::getApplication()->triggerEvent('onContentPrepare', array ('com_foos.foo', &$item));
 

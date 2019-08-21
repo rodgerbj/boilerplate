@@ -20,13 +20,13 @@
 			label="COM_FOOS_FIELD_NAME_LABEL"
 			size="40"
 			required="true"
-		 />
+		/>
 
 		<field
 			name="language"
 			type="contentlanguage"
 			label="JFIELD_LANGUAGE_LABEL"
-			>
+		>
 			<option value="*">JALL</option>
 		</field>
 
@@ -38,7 +38,7 @@
 			id="published"
 			class="custom-select-color-state"
 			size="1"
-			>
+		>
 			<option value="1">JPUBLISHED</option>
 			<option value="0">JUNPUBLISHED</option>
 			<option value="2">JARCHIVED</option>
@@ -90,4 +90,17 @@
 		/>
 
 	</fieldset>
+	<fields name="params" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
+		<fieldset name="display" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
+			<field
+				name="show_name"
+				type="list"
+				label="COM_FOOS_FIELD_PARAMS_NAME_LABEL"
+				useglobal="true"
+			>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+		</fieldset>
+	</fields>
 </form>

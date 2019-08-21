@@ -13,6 +13,7 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Table\Table;
 use Joomla\Database\DatabaseDriver;
+use Joomla\Registry\Registry;
 
 /**
  * Foos Table class.
@@ -33,6 +34,27 @@ class FooTable extends Table
 		$this->typeAlias = 'com_foos.foo';
 
 		parent::__construct('#__foos_details', 'id', $db);
+	}
+
+	/**
+	 * Stores a contact.
+	 *
+	 * @param   boolean  $updateNulls  True to update fields even if they are null.
+	 *
+	 * @return  boolean  True on success, false on failure.
+	 *
+	 * @since   1.0
+	 */
+	public function store($updateNulls = false)
+	{
+		// Transform the params field
+		if (is_array($this->params))
+		{
+			$registry = new Registry($this->params);
+			$this->params = (string) $registry;
+		}
+
+		return parent::store($updateNulls);
 	}
 
 	/**
