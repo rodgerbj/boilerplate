@@ -42,7 +42,7 @@ use Joomla\CMS\Router\Route;
 						foreach ($this->items as $i => $item) :
 							?>
 							<tr class="row<?php echo $i % 2; ?>">
-								<td scope="row" class="has-context">
+								<th scope="row" class="has-context">
 									<div>
 										<?php echo $this->escape($item->name); ?>
 									</div>
@@ -50,7 +50,7 @@ use Joomla\CMS\Router\Route;
 									<a class="hasTooltip" href="<?php echo Route::_('index.php?option=com_foos&task=foo.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->name)); ?>">
 										<?php echo $editIcon; ?><?php echo $this->escape($item->name); ?></a>
 
-								</td>
+								</th>
 								<td class="small d-none d-md-table-cell">
 									<?php echo $item->access_level; ?>
 								</td>
