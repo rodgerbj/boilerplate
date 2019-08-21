@@ -20,13 +20,13 @@
 			label="COM_FOOS_FIELD_NAME_LABEL"
 			size="40"
 			required="true"
-		/>
+		 />
 
 		<field
 			name="language"
 			type="contentlanguage"
 			label="JFIELD_LANGUAGE_LABEL"
-		>
+			>
 			<option value="*">JALL</option>
 		</field>
 
@@ -38,7 +38,7 @@
 			id="published"
 			class="custom-select-color-state"
 			size="1"
-		>
+			>
 			<option value="1">JPUBLISHED</option>
 			<option value="0">JUNPUBLISHED</option>
 			<option value="2">JARCHIVED</option>
