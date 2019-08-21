@@ -61,6 +61,7 @@ class FooModel extends AdminModel
 
 		return $form;
 	}
+
 	/**
 	 * Method to get the data that should be injected in the form.
 	 *
