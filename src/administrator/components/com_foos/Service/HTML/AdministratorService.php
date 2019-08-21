@@ -9,7 +9,7 @@
 
 namespace Joomla\Component\Foos\Administrator\Service\HTML;
 
-defined('_JEXEC') or die;
+defined('JPATH_BASE') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
@@ -19,7 +19,7 @@ use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Router\Route;
 
 /**
- * Foos HTML helper class.
+ * Foo HTML class.
  *
  * @since  1.0
  */
