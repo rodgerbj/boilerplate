@@ -7,7 +7,7 @@
 	<authorUrl>[AUTHOR_URL]</authorUrl>
 	<copyright>[COPYRIGHT]</copyright>
 	<license>GNU General Public License version 2 or later;</license>
-	<version>9.0.0</version>
+	<version>1.10.0</version>
 	<description>COM_FOOS_XML_DESCRIPTION</description>
 	<namespace>Joomla\Component\Foos</namespace>
 	<scriptfile>script.php</scriptfile>
@@ -45,6 +45,7 @@
 			<menu link="option=com_foos">COM_FOOS</menu>
 		</submenu>
 		<files folder="administrator/components/com_foos">
+			<filename>access.xml</filename>
 			<filename>config.xml</filename>
 			<filename>foos.xml</filename>
 			<folder>Controller</folder>
