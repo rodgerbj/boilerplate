@@ -34,4 +34,49 @@ class FooTable extends Table
 
 		parent::__construct('#__foos_details', 'id', $db);
 	}
+
+	/**
+	 * Overloaded check function
+	 *
+	 * @return  boolean
+	 *
+	 * @see     Table::check
+	 * @since   1.5
+	 */
+	public function check()
+	{
+		try
+		{
+			parent::check();
+		}
+		catch (\Exception $e)
+		{
+			$this->setError($e->getMessage());
+
+			return false;
+		}
+
+		// Set name
+		$this->name = htmlspecialchars_decode($this->name, ENT_QUOTES);
+
+		// Check the publish down date is not earlier than publish up.
+		if ($this->publish_down > $this->_db->getNullDate() && $this->publish_down < $this->publish_up)
+		{
+			$this->setError(Text::_('JGLOBAL_START_PUBLISH_AFTER_FINISH'));
+
+			return false;
+		}
+
+		if (empty($this->publish_up))
+		{
+			$this->publish_up = $this->getDbo()->getNullDate();
+		}
+
+		if (empty($this->publish_down))
+		{
+			$this->publish_down = $this->getDbo()->getNullDate();
+		}
+
+		return true;
+	}
 }
