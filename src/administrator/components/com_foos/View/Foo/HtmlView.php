@@ -145,5 +145,8 @@ class HtmlView extends BaseHtmlView
 
 			ToolbarHelper::cancel('foo.cancel', 'JTOOLBAR_CLOSE');
 		}
+
+		ToolbarHelper::divider();
+		ToolbarHelper::help('', false, 'http://joomla.org');
 	}
 }

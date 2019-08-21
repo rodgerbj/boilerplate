@@ -203,6 +203,9 @@ class HtmlView extends BaseHtmlView
 			$toolbar->preferences('com_foos');
 		}
 
+		ToolbarHelper::divider();
+		ToolbarHelper::help('', false, 'http://joomla.org');
+
 		HTMLHelper::_('sidebar.setAction', 'index.php?option=com_foos');
 	}
 
