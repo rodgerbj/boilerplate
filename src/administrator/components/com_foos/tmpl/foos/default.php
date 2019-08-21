@@ -64,8 +64,7 @@ $canChange  = true;
 									</div>
 									<?php $editIcon = '<span class="fa fa-pencil-square mr-2" aria-hidden="true"></span>'; ?>
 									<a class="hasTooltip" href="<?php echo Route::_('index.php?option=com_foos&task=foo.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->name)); ?>">
-										<?php echo $editIcon; ?><?php echo $this->escape($item->name); ?>
-									</a>
+										<?php echo $editIcon; ?><?php echo $this->escape($item->name); ?></a>
 									<div class="small">
 										<?php echo Text::_('JCATEGORY') . ': ' . $this->escape($item->category_title); ?>
 									</div>
