@@ -35,4 +35,5 @@
 			<folder>tmpl</folder>
 		</files>
 	</administration>
+	<dlid prefix="dlid=" suffix="" />
 </extension>
