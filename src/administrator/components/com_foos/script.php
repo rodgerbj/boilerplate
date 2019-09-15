@@ -10,6 +10,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Installer\InstallerAdapter;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Log\Log;
+
 /**
  * Script file of Foo Component
  *
@@ -32,6 +33,7 @@ class Com_FoosInstallerScript
 	 * @since  1.0.0
 	 */
 	private $minimumPHPVersion = JOOMLA_MINIMUM_PHP;
+
 	/**
 	 * Method to install the extension
 	 *
@@ -47,6 +49,7 @@ class Com_FoosInstallerScript
 
 		return true;
 	}
+
 	/**
 	 * Method to uninstall the extension
 	 *
@@ -62,6 +65,7 @@ class Com_FoosInstallerScript
 
 		return true;
 	}
+
 	/**
 	 * Method to update the extension
 	 *
@@ -78,6 +82,7 @@ class Com_FoosInstallerScript
 
 		return true;
 	}
+
 	/**
 	 * Function called before extension installation/update/removal procedure commences
 	 *
@@ -123,6 +128,7 @@ class Com_FoosInstallerScript
 
 		return true;
 	}
+
 	/**
 	 * Function called after extension installation/update/removal procedure commences
 	 *
