@@ -16,7 +16,7 @@ use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 /**
  * View class for a list of foos.
  *
- * @since  1.0
+ * @since  1.0.0
  */
 class HtmlView extends BaseHtmlView
 {
@@ -32,14 +32,13 @@ class HtmlView extends BaseHtmlView
 	 *
 	 * @param   string  $tpl  A template file to load. [optional]
 	 *
-	 * @return  mixed  A string if successful, otherwise an \Exception object.
+	 * @return  void
 	 *
-	 * @since   1.0
+	 * @since   1.0.0
 	 */
-	public function display($tpl = null)
+	public function display($tpl = null): void
 	{
 		$this->items = $this->get('Items');
-
-		return parent::display($tpl);
+		parent::display($tpl);
 	}
 }
