@@ -16,7 +16,7 @@ use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 /**
  * HTML Foos View class for the Foo component
  *
- * @since  1.0
+ * @since  1.0.0
  */
 class HtmlView extends BaseHtmlView
 {
