@@ -62,4 +62,5 @@
 			<folder>language</folder>
 		</files>
 	</administration>
+	<dlid prefix="dlid=" suffix="" />
 </extension>
