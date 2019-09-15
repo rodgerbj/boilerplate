@@ -1,4 +1,11 @@
 <?php
+/**
+ * @package     Joomla.Site
+ * @subpackage  com_foos
+ *
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
 
 defined('_JEXEC') or die;
 
@@ -9,6 +16,7 @@ if ($this->get('State')->get('params')->get('show_foo_name_label')) {
 } else {
 	echo $this->item->name;
 }
+
 echo $this->item->event->afterDisplayTitle; 
 echo $this->item->event->beforeDisplayContent;
 echo $this->item->event->afterDisplayContent;
