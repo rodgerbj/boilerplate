@@ -49,4 +49,12 @@
 			<item>Add a menu type to the site part</item>
 		</note>
 	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>4.0.0</version>
+		<note>
+			<item>Add ACL</item>
+		</note>
+	</changelog>
 </changelogs>
