@@ -33,4 +33,12 @@
 			<item>Change log and Update Server added.</item>
 		</note>
 	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>2.0.0</version>
+		<note>
+			<item>Add front end view</item>
+		</note>
+	</changelog>
 </changelogs>
