@@ -57,4 +57,12 @@
 			<item>Add a MVC model</item>
 		</note>
 	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>5.0.0</version>
+		<note>
+			<item>Add a request variable</item>
+		</note>
+	</changelog>
 </changelogs>
