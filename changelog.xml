@@ -41,4 +41,12 @@
 			<item>Add front end view</item>
 		</note>
 	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>3.0.0</version>
+		<note>
+			<item>Add a menu type to the site part</item>
+		</note>
+	</changelog>
 </changelogs>
