@@ -54,7 +54,7 @@
 		<type>component</type>
 		<version>4.0.0</version>
 		<note>
-			<item>Add ACL</item>
+			<item>Add a MVC model</item>
 		</note>
 	</changelog>
 </changelogs>
