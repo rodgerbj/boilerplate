@@ -21,11 +21,6 @@
 			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
 		</sql>
 	</uninstall>
-	<update>  <!-- Runs on update -->
-		<schemas>
-			<schemapath type="mysql">sql/updates/mysql</schemapath>
-		</schemas>
-	</update>
 	<!-- Frond-end files -->
 	<files folder="components/com_foos">
 		<folder>Controller</folder>
@@ -58,5 +53,9 @@
 			<folder>tmpl</folder>
 		</files>
 	</administration>
+	<changelogurl>https://raw.githubusercontent.com/astridx/boilerplate/tutorial/changelog.xml</changelogurl>
+	<updateservers>
+		<server type="extension" name="Foo Updates">https://raw.githubusercontent.com/astridx/boilerplate/tutorial/foo_update.xml</server>
+	</updateservers>
 	<dlid prefix="dlid=" suffix="" />
 </extension>
