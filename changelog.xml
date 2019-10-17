@@ -81,4 +81,12 @@
 			<item>Add database data in the front end view</item>
 		</note>
 	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>8.0.0</version>
+		<note>
+			<item>Add language files</item>
+		</note>
+	</changelog>
 </changelogs>
