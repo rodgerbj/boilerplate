@@ -18,8 +18,8 @@
 			size="40"
 			required="true"
 		 />
-
-		 <field
+		
+		<field
 			name="access"
 			type="accesslevel"
 			label="JFIELD_ACCESS_LABEL"
