@@ -105,4 +105,12 @@
 			<item>Add ACL</item>
 		</note>
 	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>11.1.0</version>
+		<note>
+			<item>Add server-side validation</item>
+		</note>
+	</changelog>
 </changelogs>
