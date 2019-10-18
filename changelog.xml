@@ -129,4 +129,12 @@
 			<item>Add categories</item>
 		</note>
 	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>13.0.0</version>
+		<note>
+			<item>Add publish/unpublish</item>
+		</note>
+	</changelog>
 </changelogs>
