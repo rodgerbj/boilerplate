@@ -70,8 +70,6 @@ class HtmlView extends BaseHtmlView
 			$toolbar->addNew('foo.add');
 		}
 		
-		$toolbar->preferences('com_foos');
-
 		if ($canDo->get('core.options'))
 		{
 			$toolbar->preferences('com_foos');
