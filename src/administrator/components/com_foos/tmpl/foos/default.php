@@ -6,7 +6,6 @@
  * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
-
 defined('_JEXEC') or die;
 
 use Joomla\CMS\HTML\HTMLHelper;
@@ -15,7 +14,7 @@ use Joomla\CMS\Router\Route;
 ?>
 <form action="<?php echo Route::_('index.php?option=com_foos'); ?>" method="post" name="adminForm" id="adminForm">
 	<div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
 			<div id="j-main-container" class="j-main-container">
 				<?php if (empty($this->items)) : ?>
 					<div class="alert alert-warning">
