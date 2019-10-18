@@ -94,5 +94,5 @@ class FooModel extends BaseDatabaseModel
 
 		$this->setState('foo.id', $app->input->getInt('id'));
 		$this->setState('params', $app->getParams());
-	}
+	}	
 }
