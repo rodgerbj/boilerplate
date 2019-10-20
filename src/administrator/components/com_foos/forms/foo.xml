@@ -89,6 +89,5 @@
 			label="JFIELD_ORDERING_LABEL"
 			content_type="com_foos.foo"
 		/>
-
 	</fieldset>
 </form>
