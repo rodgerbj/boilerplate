@@ -153,4 +153,12 @@
 			<item>Add Custom Fields - front end</item>
 		</note>
 	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>14.2.0</version>
+		<note>
+			<item>Add Associations</item>
+		</note>
+	</changelog>
 </changelogs>
