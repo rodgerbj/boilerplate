@@ -63,6 +63,6 @@ implements BootableExtensionInterface, CategoryServiceInterface, AssociationServ
 	protected function getTableNameForSection(string $section = null)
 	{
 		return ($section === 'category' ? 'categories' : 'foos_details');
-		
+
 	}
 }

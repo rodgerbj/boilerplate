@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
-
-	<fieldset addruleprefix="Joomla\Component\Foos\Administrator\Rule">
-
+	<fieldset 
+		addruleprefix="Joomla\Component\Foos\Administrator\Rule"
+		addfieldprefix="Joomla\Component\Foos\Administrator\Field"
+	>
 		<field
 			name="id"
 			type="number"
@@ -21,7 +22,7 @@
 			size="40"
 			required="true"
 		 />
-
+		
 		<field
 			name="language"
 			type="contentlanguage"
@@ -100,7 +101,6 @@
 			label="JFIELD_ORDERING_LABEL"
 			content_type="com_foos.foo"
 		/>
-
 	</fieldset>
 	<fields name="params" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
 		<fieldset name="display" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
@@ -123,7 +123,6 @@
 				view="foo"
 				useglobal="true"
 			/>
-
 		</fieldset>
 	</fields>
 </form>

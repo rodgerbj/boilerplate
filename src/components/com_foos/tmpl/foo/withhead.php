@@ -13,6 +13,7 @@ if ($this->item->params->get('show_name')) {
 		echo $this->item->name;
 	}
 }
+
 echo $this->item->event->afterDisplayTitle; 
 echo $this->item->event->beforeDisplayContent;
 echo $this->item->event->afterDisplayContent;

@@ -188,8 +188,8 @@ class AssociationsHelper extends AssociationExtensionHelper
 
 					$support['state'] = true;
 					$support['acl'] = true;
-					$support['checkout'] = true;
-					$support['level'] = true;
+					$support['checkout'] = false;
+					$support['level'] = false;
 
 					$tables = array(
 						'a' => '#__categories'
@@ -222,11 +222,17 @@ class AssociationsHelper extends AssociationExtensionHelper
 			'id'                  => 'a.id',
 			'title'               => 'a.title',
 			'alias'               => 'a.alias',
+		//	'ordering'            => 'a.ordering',
+			'menutype'            => '',
+			'level'               => '',
 			'catid'               => 'a.catid',
 			'language'            => 'a.language',
 			'access'              => 'a.access',
 			'state'               => 'a.state',
+		//	'created_user_id'     => 'a.created_by',
+		//	'checked_out'         => 'a.checked_out',
+		//	'checked_out_time'    => 'a.checked_out_time'
 		);
 	}
 }
-	
+
