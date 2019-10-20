@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
-
-	<fieldset addruleprefix="Joomla\Component\Foos\Administrator\Rule">
-
+	<fieldset 
+		addruleprefix="Joomla\Component\Foos\Administrator\Rule"
+		addfieldprefix="Joomla\Component\Foos\Administrator\Field"
+	>
 		<field
 			name="id"
 			type="number"
@@ -21,7 +22,7 @@
 			size="40"
 			required="true"
 		 />
-
+		
 		<field
 			name="language"
 			type="contentlanguage"
