@@ -1,0 +1,140 @@
+<changelogs>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>1.0.0</version>
+		<note>
+			<item>Initial Version</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>1.0.1</version>
+		<security>
+			<item><![CDATA[<p>No security issues.</p>]]></item>
+		</security>
+		<fix>
+			<item>No fix</item>
+		</fix>
+		<language>
+			<item>English</item>
+		</language>
+		<addition>
+			<item>Change log and Update Server added.</item>
+		</addition>
+		<change>
+			<item>No change</item>
+		</change>
+		<remove>
+			<item>No remove</item>
+		</remove>
+		<note>
+			<item>Change log and Update Server added.</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>2.0.0</version>
+		<note>
+			<item>Add front end view</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>3.0.0</version>
+		<note>
+			<item>Add a menu type to the site part</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>4.0.0</version>
+		<note>
+			<item>Add a MVC model</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>5.0.0</version>
+		<note>
+			<item>Add a request variable</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>6.0.0</version>
+		<note>
+			<item>Add database</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>7.0.0</version>
+		<note>
+			<item>Add database data in the front end view</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>8.0.0</version>
+		<note>
+			<item>Add language files</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>9.0.0</version>
+		<note>
+			<item>Add configuration</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>10.0.0</version>
+		<note>
+			<item>Add ACL</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>11.1.0</version>
+		<note>
+			<item>Add server-side validation</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>11.2.0</version>
+		<note>
+			<item>Add client-side validation</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>12.0.0</version>
+		<note>
+			<item>Add categories</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>13.0.0</version>
+		<note>
+			<item>Add publish/unpublish</item>
+		</note>
+	</changelog>
+</changelogs>
