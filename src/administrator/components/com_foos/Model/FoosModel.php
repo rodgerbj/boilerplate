@@ -120,41 +120,20 @@ class FoosModel extends ListModel
 			);
 
 		// Join over the associations.
-		$assoc = Associations::isEnabled();
-
-		if ($assoc)
+		if (Associations::isEnabled())
 		{
-			$query->select('COUNT(' . $db->quoteName('asso2.id') . ') > 1 as ' . $db->quoteName('association'))
-				->join(
-					'LEFT',
-					$db->quoteName('#__associations', 'asso') . ' ON ' . $db->quoteName('asso.id') . ' = ' . $db->quoteName('a.id')
-					. ' AND ' . $db->quoteName('asso.context') . ' = ' . $db->quote('com_foos.item')
-				)
-				->join(
-					'LEFT',
-					$db->quoteName('#__associations', 'asso2') . ' ON ' . $db->quoteName('asso2.key') . ' = ' . $db->quoteName('asso.key')
-				)
-				->group(
-					$db->quoteName(
-						array(
-							'a.id',
-							'a.name',
-							'a.alias',
-							'a.catid',
-							'a.checked_out',
-							'a.checked_out_time',
-							'a.published',
-							'a.access',
-							'a.language',
-							'a.publish_up',
-							'a.publish_down',
-							'l.title' ,
-							'l.image' ,
-							'ag.title' ,
-							'c.title'
-						)
-					)
+			$subQuery = $db->getQuery(true)
+				->select('COUNT(' . $db->quoteName('asso1.id') . ') > 1')
+				->from($db->quoteName('#__associations', 'asso1'))
+				->join('INNER', $db->quoteName('#__associations', 'asso2'), $db->quoteName('asso1.key') . ' = ' . $db->quoteName('asso2.key'))
+				->where(
+					[
+						$db->quoteName('asso1.id') . ' = ' . $db->quoteName('a.id'),
+						$db->quoteName('asso1.context') . ' = ' . $db->quote('com_foos.item'),
+					]
 				);
+
+			$query->select('(' . $subQuery . ') AS ' . $db->quoteName('association'));
 		}
 
 		// Join over the users for the checked out user.
@@ -215,8 +194,7 @@ class FoosModel extends ListModel
 		// Filter on the language.
 		if ($language = $this->getState('filter.language'))
 		{
-			$query->where($db->quoteName('a.language') . ' = :language');
-			$query->bind(':language', $language);
+			$query->where($db->quoteName('a.language') . ' = ' . $db->quote($language));
 		}
 
 		// Add the list ordering clause.
@@ -273,4 +251,3 @@ class FoosModel extends ListModel
 		}
 	}
 }
-

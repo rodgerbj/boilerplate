@@ -12,8 +12,8 @@ namespace Joomla\Component\Foos\Administrator\Model;
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
-use Joomla\CMS\MVC\Model\AdminModel;
 use Joomla\CMS\Language\Associations;
+use Joomla\CMS\MVC\Model\AdminModel;
 use Joomla\CMS\Language\LanguageHelper;
 
 /**
@@ -35,7 +35,7 @@ class FooModel extends AdminModel
 	 * The context used for the associations table
 	 *
 	 * @var    string
-	 * @since  3.4.4
+	 * @since  1.0
 	 */
 	protected $associationsContext = 'com_foos.item';
 
