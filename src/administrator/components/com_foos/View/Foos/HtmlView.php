@@ -41,7 +41,7 @@ class HtmlView extends BaseHtmlView
 	protected $sidebar;
 
 	/**
-	 * Display the view.
+	 * Method to display the view.
 	 *
 	 * @param   string  $tpl  A template file to load. [optional]
 	 *
