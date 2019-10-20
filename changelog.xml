@@ -169,4 +169,12 @@
 			<item>Add Filters</item>
 		</note>
 	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>17.0.0</version>
+		<note>
+			<item>Add Actions</item>
+		</note>
+	</changelog>
 </changelogs>
