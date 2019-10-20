@@ -137,4 +137,12 @@
 			<item>Add publish/unpublish</item>
 		</note>
 	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>14.1.0</version>
+		<note>
+			<item>Add Custom Fields - back end</item>
+		</note>
+	</changelog>
 </changelogs>
