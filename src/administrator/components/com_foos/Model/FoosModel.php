@@ -110,6 +110,12 @@ class FoosModel extends ListModel
 			$query->select('(' . $subQuery . ') AS ' . $db->quoteName('association'));
 		}
 
+		// Filter on the language.
+		if ($language = $this->getState('filter.language'))
+		{
+			$query->where($db->quoteName('a.language') . ' = ' . $db->quote($language));
+		}
+
 		return $query;
 	}
 
