@@ -161,4 +161,12 @@
 			<item>Add Associations</item>
 		</note>
 	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>16.0.0</version>
+		<note>
+			<item>Add Filters</item>
+		</note>
+	</changelog>
 </changelogs>
