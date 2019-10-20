@@ -11,7 +11,6 @@ namespace Joomla\Component\Foos\Administrator\Controller;
 
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Application\CmsApplication;
 use Joomla\CMS\MVC\Controller\AdminController;
 use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 
@@ -22,14 +21,6 @@ use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
  */
 class FoosController extends AdminController
 {
-	/**
-	 * The prefix to use with controller messages.
-	 *
-	 * @var    string
-	 * @since  1.0
-	 */
-	protected $text_prefix = 'COM_FOOS_FOOS';
-
 	/**
 	 * Constructor.
 	 *
