@@ -185,4 +185,12 @@
 			<item>Add Params</item>
 		</note>
 	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>19.0.0</version>
+		<note>
+			<item>Add Pagination</item>
+		</note>
+	</changelog>
 </changelogs>
