@@ -12,7 +12,6 @@ namespace Joomla\Component\Foos\Administrator\Service\HTML;
 defined('JPATH_BASE') or die;
 
 use Joomla\CMS\Factory;
-use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Associations;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Layout\LayoutHelper;
@@ -76,17 +75,15 @@ class AdministratorService
 				foreach ($items as &$item)
 				{
 					$text = strtoupper($item->lang_sef);
-					$url = Route::_('index.php?option=com_foos&task=foo.edit&id=' . (int) $item->id);
-					$tooltip = htmlspecialchars($item->title, ENT_QUOTES, 'UTF-8') . '<br>' . Text::sprintf('JCATEGORY_SPRINTF', $item->category_title);
-					$classes = 'hasPopover badge badge-secondary';
+					$url = Route::_('index.php?option=com_contact&task=contact.edit&id=' . (int) $item->id);
+					$tooltip = '<strong>' . htmlspecialchars($item->language_title, ENT_QUOTES, 'UTF-8') . '</strong><br>'
+						. htmlspecialchars($item->title, ENT_QUOTES, 'UTF-8') . '<br>' . Text::sprintf('JCATEGORY_SPRINTF', $item->category_title);
+					$classes = 'badge badge-secondary';
 
-					$item->link = '<a href="' . $url . '" title="' . $item->language_title . '" class="' . $classes
-						. '" data-content="' . $tooltip . '" data-placement="top">'
-						. $text . '</a>';
+					$item->link = '<a href="' . $url . '" title="' . $item->language_title . '" class="' . $classes . '">' . $text . '</a>'
+						. '<div role="tooltip" id="tip' . (int) $item->id . '">' . $tooltip . '</div>';
 				}
 			}
-
-			HTMLHelper::_('bootstrap.popover');
 
 			$html = LayoutHelper::render('joomla.content.associations', $items);
 		}
