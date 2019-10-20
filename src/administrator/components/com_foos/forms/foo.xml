@@ -112,7 +112,6 @@
 				view="foo"
 				useglobal="true"
 			/>
-
 		</fieldset>
 	</fields>
 </form>
