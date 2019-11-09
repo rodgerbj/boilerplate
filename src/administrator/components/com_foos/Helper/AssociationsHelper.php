@@ -222,17 +222,16 @@ class AssociationsHelper extends AssociationExtensionHelper
 			'id'                  => 'a.id',
 			'title'               => 'a.title',
 			'alias'               => 'a.alias',
-		//	'ordering'            => 'a.ordering',
+			'ordering'            => '',
 			'menutype'            => '',
 			'level'               => '',
 			'catid'               => 'a.catid',
 			'language'            => 'a.language',
 			'access'              => 'a.access',
 			'state'               => 'a.state',
-		//	'created_user_id'     => 'a.created_by',
-		//	'checked_out'         => 'a.checked_out',
-		//	'checked_out_time'    => 'a.checked_out_time'
+			'created_user_id'     => '',
+			'checked_out'         => '',
+			'checked_out_time'    => ''
 		);
 	}
 }
-
