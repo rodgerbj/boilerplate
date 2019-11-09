@@ -143,7 +143,6 @@ class FooModel extends AdminModel
 	 */
 	protected function preprocessForm(\JForm $form, $data, $group = 'content')
 	{
-		// Association contact items
 		if (Associations::isEnabled())
 		{
 			$languages = LanguageHelper::getContentLanguages(false, true, null, 'ordering', 'asc');
