@@ -137,9 +137,7 @@ if ($saveOrder && !empty($this->items))
 									</td>
 								<?php endif; ?>
 								<td class="text-center">
-									<div class="btn-group">
-										<?php echo HTMLHelper::_('jgrid.published', $item->published, $i, 'foos.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
-									</div>	
+									<?php echo HTMLHelper::_('jgrid.published', $item->published, $i, 'foos.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
 								</td>
 								<td class="d-none d-md-table-cell">
 									<?php echo $item->id; ?>
