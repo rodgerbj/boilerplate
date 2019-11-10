@@ -15,7 +15,7 @@ use Joomla\CMS\MVC\Controller\AdminController;
 use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 
 /**
- * Contacts list controller class.
+ * Foos list controller class.
  *
  * @since  1.0
  */
