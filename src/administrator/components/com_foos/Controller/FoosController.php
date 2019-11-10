@@ -17,7 +17,7 @@ use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 use Joomla\Utilities\ArrayHelper;
 
 /**
- * Contacts list controller class.
+ * Foos list controller class.
  *
  * @since  1.0
  */
