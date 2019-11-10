@@ -143,7 +143,7 @@ class HtmlView extends BaseHtmlView
 		// Get the toolbar object instance
 		$toolbar = Toolbar::getInstance('toolbar');
 
-		ToolbarHelper::title(Text::_('COM_FOOS_MANAGER_FOOS'), 'address foo');
+		ToolbarHelper::title(Text::_('COM_FOOS_MANAGER_FOOS'), 'address-book foo');
 
 		if ($canDo->get('core.create') || count($user->getAuthorisedCategories('com_foos', 'core.create')) > 0)
 		{
@@ -155,8 +155,8 @@ class HtmlView extends BaseHtmlView
 			$dropdown = $toolbar->dropdownButton('status-group')
 				->text('JTOOLBAR_CHANGE_STATUS')
 				->toggleSplit(false)
-				->icon('fa fa-globe')
-				->buttonClass('btn btn-info')
+				->icon('fa fa-ellipsis-h')
+				->buttonClass('btn btn-action')
 				->listCheck(true);
 
 			$childBar = $dropdown->getChildToolbar();
