@@ -16,7 +16,7 @@ use Joomla\CMS\Language\Associations;
 use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Session\Session;
 
-$canChange  = true;
+$canChange = true;
 $assoc = Associations::isEnabled();
 $listOrder = $this->escape($this->state->get('list.ordering'));
 $listDirn  = $this->escape($this->state->get('list.direction'));
