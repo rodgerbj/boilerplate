@@ -57,6 +57,9 @@ if ($saveOrder && !empty($this->items))
 								<th scope="col" style="width:1%" class="text-center d-none d-md-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_FOOS_TABLE_TABLEHEAD_NAME', 'a.name', $listDirn, $listOrder); ?>
 								</th>
+								<th scope="col" style="width:1%" class="text-center">
+									<?php echo HTMLHelper::_('searchtools.sort', 'JFEATURED', 'a.featured', $listDirn, $listOrder); ?>
+								</th>
 								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'access_level', $listDirn, $listOrder); ?>
 								</th>
@@ -122,6 +125,9 @@ if ($saveOrder && !empty($this->items))
 									</div>
 
 								</th>
+								<td class="text-center">
+									<?php echo HTMLHelper::_('foosadministrator.featured', $item->featured, $i, $canChange); ?>
+								</td>
 								<td class="small d-none d-md-table-cell">
 									<?php echo $item->access_level; ?>
 								</td>

@@ -42,3 +42,6 @@ ALTER TABLE `#__foos_details` ADD COLUMN `checked_out_time` datetime AFTER `alia
 
 ALTER TABLE `#__foos_details` ADD KEY `idx_checkout` (`checked_out`);
 
+ALTER TABLE `#__foos_details` ADD COLUMN  `featured` tinyint(3) unsigned NOT NULL DEFAULT 0 COMMENT 'Set if contact is featured.';
+
+ALTER TABLE `#__foos_details` ADD KEY `idx_featured_catid` (`featured`,`catid`);

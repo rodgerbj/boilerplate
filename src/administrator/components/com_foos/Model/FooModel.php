@@ -15,6 +15,8 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Associations;
 use Joomla\CMS\MVC\Model\AdminModel;
 use Joomla\CMS\Language\LanguageHelper;
+use Joomla\Database\ParameterType;
+use Joomla\Utilities\ArrayHelper;
 
 /**
  * Item Model for a Foo.
@@ -128,6 +130,59 @@ class FooModel extends AdminModel
 		}
 
 		return $item;
+	}
+
+	/**
+	 * Method to toggle the featured setting of foos.
+	 *
+	 * @param   array    $pks    The ids of the items to toggle.
+	 * @param   integer  $value  The value to toggle to.
+	 *
+	 * @return  boolean  True on success.
+	 *
+	 * @since   1.6
+	 */
+	public function featured($pks, $value = 0)
+	{
+		// Sanitize the ids.
+		$pks = ArrayHelper::toInteger((array) $pks);
+
+		if (empty($pks))
+		{
+			$this->setError(Text::_('COM_FOOS_NO_ITEM_SELECTED'));
+
+			return false;
+		}
+
+		$table = $this->getTable();
+
+		try
+		{
+			$db = $this->getDbo();
+
+			$query = $db->getQuery(true);
+			$query->update($db->quoteName('#__foos_details'));
+			$query->set($db->quoteName('featured') . ' = :featured');
+			$query->whereIn($db->quoteName('id'), $pks);
+			$query->bind(':featured', $value, ParameterType::INTEGER);
+
+			$db->setQuery($query);
+
+			$db->execute();
+		}
+		catch (\Exception $e)
+		{
+			$this->setError($e->getMessage());
+
+			return false;
+		}
+
+		$table->reorder();
+
+		// Clean component's cache
+		$this->cleanCache();
+
+		return true;
 	}
 
 	/**

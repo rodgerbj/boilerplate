@@ -40,6 +40,17 @@
 		</field>
 
 		<field
+			name="featured"
+			type="radio"
+			class="switcher"
+			label="JFEATURED"
+			default="0"
+			>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+
+		<field
 			name="published"
 			type="list"
 			label="JSTATUS"

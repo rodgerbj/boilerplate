@@ -165,6 +165,15 @@ class HtmlView extends BaseHtmlView
 
 			$childBar->unpublish('foos.unpublish')->listCheck(true);
 
+			$childBar->standardButton('featured')
+				->text('JFEATURE')
+				->task('foos.featured')
+				->listCheck(true);
+			$childBar->standardButton('unfeatured')
+				->text('JUNFEATURE')
+				->task('foos.unfeatured')
+				->listCheck(true);
+
 			$childBar->archive('foos.archive')->listCheck(true);
 
 			if ($user->authorise('core.admin'))
@@ -221,6 +230,7 @@ class HtmlView extends BaseHtmlView
 			'a.ordering'     => Text::_('JGRID_HEADING_ORDERING'),
 			'a.published'    => Text::_('JSTATUS'),
 			'a.name'         => Text::_('JGLOBAL_TITLE'),
+			'a.featured'     => Text::_('JFEATURED'),
 			'category_title' => Text::_('JCATEGORY'),
 			'a.access'       => Text::_('JGRID_HEADING_ACCESS'),
 			'a.language'     => Text::_('JGRID_HEADING_LANGUAGE'),

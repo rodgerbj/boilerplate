@@ -16,6 +16,7 @@ use Joomla\CMS\Language\Associations;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Router\Route;
+use Joomla\Utilities\ArrayHelper;
 
 /**
  * Foo HTML class.
@@ -86,6 +87,41 @@ class AdministratorService
 			}
 
 			$html = LayoutHelper::render('joomla.content.associations', $items);
+		}
+
+		return $html;
+	}
+	/**
+	 * Show the featured/not-featured icon.
+	 *
+	 * @param   integer  $value      The featured value.
+	 * @param   integer  $i          Id of the item.
+	 * @param   boolean  $canChange  Whether the value can be changed or not.
+	 *
+	 * @return  string	The anchor tag to toggle featured/unfeatured foos.
+	 *
+	 * @since   1.6
+	 */
+	public function featured($value, $i, $canChange = true)
+	{
+		// Array of image, task, title, action
+		$states = array(
+			0 => array('unfeatured', 'foos.featured', 'COM_FOOS_UNFEATURED', 'JGLOBAL_TOGGLE_FEATURED'),
+			1 => array('featured', 'foos.unfeatured', 'JFEATURED', 'JGLOBAL_TOGGLE_FEATURED'),
+		);
+		$state = ArrayHelper::getValue($states, (int) $value, $states[1]);
+		$icon  = $state[0];
+
+		if ($canChange)
+		{
+			$html = '<a href="#" onclick="return Joomla.listItemTask(\'cb' . $i . '\',\'' . $state[1] . '\')" class="tbody-icon'
+				. ($value == 1 ? ' active' : '') . '" title="' . Text::_($state[3])
+				. '"><span class="icon-' . $icon . '" aria-hidden="true"></span></a>';
+		}
+		else
+		{
+			$html = '<a class="tbody-icon disabled' . ($value == 1 ? ' active' : '')
+				. '" title="' . Text::_($state[2]) . '"><span class="icon-' . $icon . '" aria-hidden="true"></span></a>';
 		}
 
 		return $html;

@@ -45,15 +45,18 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 			<div class="col-md-9">
 				<div class="row">
 					<div class="col-md-6">
-						<?php echo $this->getForm()->renderField('access'); ?>
-						<?php echo $this->getForm()->renderField('published'); ?>
 						<?php echo $this->getForm()->renderField('publish_up'); ?>
 						<?php echo $this->getForm()->renderField('publish_down'); ?>
-						<?php echo $this->getForm()->renderField('catid'); ?>
-						<?php echo $this->getForm()->renderField('language'); ?>
 					</div>
 				</div>
 			</div>
+			<div class="col-lg-3">
+				<div class="card">
+					<div class="card-body">
+						<?php echo LayoutHelper::render('joomla.edit.global', $this); ?>
+					</div>
+				</div>
+			</div>			
 		</div>
 		<?php echo HTMLHelper::_('uitab.endTab'); ?>
 

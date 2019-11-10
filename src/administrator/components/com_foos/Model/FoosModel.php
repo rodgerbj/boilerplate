@@ -45,6 +45,7 @@ class FoosModel extends ListModel
 				'published', 'a.published',
 				'access', 'a.access', 'access_level',
 				'ordering', 'a.ordering',
+				'featured', 'a.featured',
 				'language', 'a.language', 'language_title',
 				'publish_up', 'a.publish_up',
 				'publish_down', 'a.publish_down',
@@ -87,6 +88,7 @@ class FoosModel extends ListModel
 						', a.checked_out_time' .
 						', a.language' .
 						', a.ordering' .
+						', a.featured' .
 						', a.state' .
 						', a.published' .
 						', a.publish_up, a.publish_down'
@@ -195,6 +197,14 @@ class FoosModel extends ListModel
 		if ($language = $this->getState('filter.language'))
 		{
 			$query->where($db->quoteName('a.language') . ' = ' . $db->quote($language));
+		}
+
+		// Filter by featured.
+		$featured = (string) $this->getState('filter.featured');
+
+		if (in_array($featured, ['0','1']))
+		{
+			$query->where($db->quoteName('a.featured') . ' = ' . (int) $featured);
 		}
 
 		// Add the list ordering clause.
