@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_foos
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2020 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -19,7 +19,7 @@ use Joomla\Component\Foos\Site\Helper\AssociationHelper;
 /**
  * Content associations helper.
  *
- * @since  3.7.0
+ * @since  15.2.0
  */
 class AssociationsHelper extends AssociationExtensionHelper
 {
@@ -28,7 +28,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 *
 	 * @var     array   $extension
 	 *
-	 * @since   3.7.0
+	 * @since   15.2.0
 	 */
 	protected $extension = 'com_foos';
 
@@ -37,7 +37,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 *
 	 * @var     array   $itemTypes
 	 *
-	 * @since   3.7.0
+	 * @since   15.2.0
 	 */
 	protected $itemTypes = array('foo', 'category');
 
@@ -46,7 +46,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 *
 	 * @var     boolean   $associationsSupport
 	 *
-	 * @since   3.7.0
+	 * @since   15.2.0
 	 */
 	protected $associationsSupport = true;
 
@@ -73,7 +73,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 *
 	 * @return  array
 	 *
-	 * @since   3.7.0
+	 * @since   15.2.0
 	 */
 	public function getAssociations($typeName, $id)
 	{
@@ -110,7 +110,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 *
 	 * @return  Table|null
 	 *
-	 * @since   3.7.0
+	 * @since   15.2.0
 	 */
 	public function getItem($typeName, $id)
 	{
@@ -149,7 +149,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 *
 	 * @return  array  Array of item types
 	 *
-	 * @since   3.7.0
+	 * @since   15.2.0
 	 */
 	public function getType($typeName = '')
 	{
@@ -214,7 +214,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 *
 	 * @return  array
 	 *
-	 * @since   3.7.0
+	 * @since   15.2.0
 	 */
 	protected function getFieldsTemplate()
 	{
