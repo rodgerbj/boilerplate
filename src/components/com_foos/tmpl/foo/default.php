@@ -9,4 +9,4 @@
 defined('_JEXEC') or die;
 ?>
 
-<?php echo $this->msg;
+<?php echo $this->item->name;

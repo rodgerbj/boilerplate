@@ -52,7 +52,7 @@ class FooModel extends BaseDatabaseModel
 		{
 			try
 			{
-				$db    = $this->getDbo();
+				$db = $this->getDbo();
 				$query = $db->getQuery(true);
 
 				$query->select('*')
