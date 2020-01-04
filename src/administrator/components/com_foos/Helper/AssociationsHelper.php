@@ -19,7 +19,7 @@ use Joomla\Component\Foos\Site\Helper\AssociationHelper;
 /**
  * Content associations helper.
  *
- * @since  15.2.0
+ * @since  15.1.0
  */
 class AssociationsHelper extends AssociationExtensionHelper
 {
@@ -28,7 +28,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 *
 	 * @var     array   $extension
 	 *
-	 * @since   15.2.0
+	 * @since   15.1.0
 	 */
 	protected $extension = 'com_foos';
 
@@ -37,7 +37,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 *
 	 * @var     array   $itemTypes
 	 *
-	 * @since   15.2.0
+	 * @since   15.1.0
 	 */
 	protected $itemTypes = array('foo', 'category');
 
@@ -46,7 +46,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 *
 	 * @var     boolean   $associationsSupport
 	 *
-	 * @since   15.2.0
+	 * @since   15.1.0
 	 */
 	protected $associationsSupport = true;
 
@@ -58,7 +58,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 *
 	 * @return  array   Array of associations for the item
 	 *
-	 * @since  1.0.0
+	 * @since  15.1.0
 	 */
 	public function getAssociationsForItem($id = 0, $view = null)
 	{
@@ -73,7 +73,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 *
 	 * @return  array
 	 *
-	 * @since   15.2.0
+	 * @since   15.1.0
 	 */
 	public function getAssociations($typeName, $id)
 	{
@@ -110,7 +110,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 *
 	 * @return  Table|null
 	 *
-	 * @since   15.2.0
+	 * @since   15.1.0
 	 */
 	public function getItem($typeName, $id)
 	{
@@ -149,7 +149,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 *
 	 * @return  array  Array of item types
 	 *
-	 * @since   15.2.0
+	 * @since   15.1.0
 	 */
 	public function getType($typeName = '')
 	{
@@ -214,7 +214,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 *
 	 * @return  array
 	 *
-	 * @since   15.2.0
+	 * @since   15.1.0
 	 */
 	protected function getFieldsTemplate()
 	{
