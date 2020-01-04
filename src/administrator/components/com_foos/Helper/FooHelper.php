@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_foos
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2020 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -18,7 +18,7 @@ use Joomla\CMS\Language\Text;
 /**
  * Foo component helper.
  *
- * @since  1.0
+ * @since  15.2.0
  */
 class FooHelper extends ContentHelper
 {
@@ -29,7 +29,7 @@ class FooHelper extends ContentHelper
 	 *
 	 * @return  void
 	 *
-	 * @since   1.0
+	 * @since   15.2.0
 	 */
 	public static function addSubmenu($vName)
 	{
