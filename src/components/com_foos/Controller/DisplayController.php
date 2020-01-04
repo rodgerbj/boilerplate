@@ -3,7 +3,7 @@
  * @package     Joomla.Site
  * @subpackage  com_foos
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2020 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -18,7 +18,7 @@ use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 /**
  * Foos Component Controller
  *
- * @since  1.0.0
+ * @since  2.0.0
  */
 class DisplayController extends BaseController
 {
@@ -32,7 +32,7 @@ class DisplayController extends BaseController
 	 * @param   CMSApplication       $app      The JApplication for the dispatcher
 	 * @param   \JInput              $input    Input
 	 *
-	 * @since   1.0
+	 * @since   2.0.0
 	 */
 	public function __construct($config = array(), MVCFactoryInterface $factory = null, $app = null, $input = null)
 	{
@@ -47,7 +47,7 @@ class DisplayController extends BaseController
 	 *
 	 * @return  static  This object to support chaining.
 	 *
-	 * @since   1.0
+	 * @since   2.0.0
 	 */
 	public function display($cachable = false, $urlparams = array())
 	{

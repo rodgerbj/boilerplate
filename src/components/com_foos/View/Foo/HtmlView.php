@@ -3,7 +3,7 @@
  * @package     Joomla.Site
  * @subpackage  com_foos
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2020 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -18,7 +18,7 @@ use Joomla\Registry\Registry;
 /**
  * HTML Foos View class for the Foo component
  *
- * @since  1.0.0
+ * @since  2.0.0
  */
 class HtmlView extends BaseHtmlView
 {

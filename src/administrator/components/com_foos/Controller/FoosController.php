@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_foos
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2020 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -19,7 +19,7 @@ use Joomla\Utilities\ArrayHelper;
 /**
  * Foos list controller class.
  *
- * @since  1.0
+ * @since  13.0.0
  */
 class FoosController extends AdminController
 {
@@ -33,7 +33,7 @@ class FoosController extends AdminController
 	 * @param   CMSApplication       $app      The JApplication for the dispatcher
 	 * @param   \JInput              $input    Input
 	 *
-	 * @since   1.0
+	 * @since   13.0.0
 	 */
 	public function __construct($config = array(), MVCFactoryInterface $factory = null, $app = null, $input = null)
 	{
@@ -108,7 +108,7 @@ class FoosController extends AdminController
 	 *
 	 * @return  \Joomla\CMS\MVC\Model\BaseDatabaseModel
 	 *
-	 * @since   1.0
+	 * @since   13.0.0
 	 */
 	public function getModel($name = 'Foo', $prefix = 'Administrator', $config = array('ignore_request' => true))
 	{
