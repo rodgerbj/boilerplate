@@ -216,25 +216,4 @@ class HtmlView extends BaseHtmlView
 
 		HTMLHelper::_('sidebar.setAction', 'index.php?option=com_foos');
 	}
-
-	/**
-	 * Returns an array of fields the table can be sorted by
-	 *
-	 * @return  array  Array containing the field name to sort by as the key and display text as value
-	 *
-	 * @since   1.0
-	 */
-	protected function getSortFields()
-	{
-		return array(
-			'a.ordering'     => Text::_('JGRID_HEADING_ORDERING'),
-			'a.published'    => Text::_('JSTATUS'),
-			'a.name'         => Text::_('JGLOBAL_TITLE'),
-			'a.featured'     => Text::_('JFEATURED'),
-			'category_title' => Text::_('JCATEGORY'),
-			'a.access'       => Text::_('JGRID_HEADING_ACCESS'),
-			'a.language'     => Text::_('JGRID_HEADING_LANGUAGE'),
-			'a.id'           => Text::_('JGRID_HEADING_ID'),
-		);
-	}
 }
