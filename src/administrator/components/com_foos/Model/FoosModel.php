@@ -239,4 +239,3 @@ class FoosModel extends ListModel
 		}
 	}
 }
-
