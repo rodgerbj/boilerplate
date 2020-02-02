@@ -26,6 +26,14 @@ use Joomla\Utilities\ArrayHelper;
 class FooModel extends AdminModel
 {
 	/**
+	 * Name of the form
+	 *
+	 * @var string
+	 * @since  __DEPLOY_VERSION__
+	 */
+	protected $formName = 'foo';
+
+	/**
 	 * The type alias for this content type.
 	 *
 	 * @var    string
@@ -71,7 +79,7 @@ class FooModel extends AdminModel
 	public function getForm($data = array(), $loadData = true)
 	{
 		// Get the form.
-		$form = $this->loadForm('com_foos.foo', 'foo', array('control' => 'jform', 'load_data' => $loadData));
+		$form = $this->loadForm('com_foos.' . $this->formName, $this->formName, array('control' => 'jform', 'load_data' => $loadData));
 
 		if (empty($form))
 		{

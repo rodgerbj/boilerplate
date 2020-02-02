@@ -11,6 +11,7 @@ namespace Joomla\Component\Foos\Administrator\Extension;
 
 defined('JPATH_PLATFORM') or die;
 
+use Joomla\CMS\Application\SiteApplication;
 use Joomla\CMS\Association\AssociationServiceInterface;
 use Joomla\CMS\Association\AssociationServiceTrait;
 use Joomla\CMS\Categories\CategoryServiceInterface;
@@ -19,6 +20,7 @@ use Joomla\CMS\Extension\BootableExtensionInterface;
 use Joomla\CMS\Extension\MVCComponent;
 use Joomla\CMS\HTML\HTMLRegistryAwareTrait;
 use Joomla\Component\Foos\Administrator\Service\HTML\AdministratorService;
+use Joomla\Component\Foos\Administrator\Service\HTML\Icon;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -49,6 +51,7 @@ implements BootableExtensionInterface, CategoryServiceInterface, AssociationServ
 	public function boot(ContainerInterface $container)
 	{
 		$this->getRegistry()->register('foosadministrator', new AdministratorService);
+		$this->getRegistry()->register('fooicon', new Icon($container->get(SiteApplication::class)));
 	}
 
 	/**

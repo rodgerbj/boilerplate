@@ -8,16 +8,39 @@
  */
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Language\Text;
 
-if ($this->item->params->get('show_name')) {
+$canDo   = ContentHelper::getActions('com_foos', 'category', $this->item->catid);
+$canEdit = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == Factory::getUser()->id);
+$tparams = $this->item->params;
+
+if ($tparams->get('show_name')) {
 	if ($this->Params->get('show_foo_name_label')) {
 		echo Text::_('COM_FOOS_NAME') . $this->item->name;
 	} else {
 		echo $this->item->name;
 	}
 }
+?>
 
+<?php if ($canEdit) : ?>
+	<div class="icons">
+		<div class="btn-group float-right">
+			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton-<?php echo $this->item->id; ?>"
+				aria-label="<?php echo JText::_('JUSER_TOOLS'); ?>"
+				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<span class="fa fa-cog" aria-hidden="true"></span>
+			</button>
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton-<?php echo $this->item->id; ?>">
+				<li class="edit-icon"> <?php echo JHtml::_('fooicon.edit', $this->item, $tparams); ?> </li>
+			</ul>
+		</div>
+	</div>
+<?php endif; ?>
+
+<?php
 echo $this->item->event->afterDisplayTitle; 
 echo $this->item->event->beforeDisplayContent;
 echo $this->item->event->afterDisplayContent;

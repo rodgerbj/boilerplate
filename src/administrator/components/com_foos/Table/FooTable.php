@@ -46,7 +46,7 @@ class FooTable extends Table
 	}
 
 	/**
-	 * Stores a contact.
+	 * Stores a foo.
 	 *
 	 * @param   boolean  $updateNulls  True to update fields even if they are null.
 	 *
