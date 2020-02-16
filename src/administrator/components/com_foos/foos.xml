@@ -36,6 +36,7 @@
 		<files folder="administrator/components/com_foos">
 			<filename>foos.xml</filename>
 			<folder>services</folder>
+			<folder>sql</folder>
 			<folder>src</folder>
 			<folder>tmpl</folder>
 		</files>
