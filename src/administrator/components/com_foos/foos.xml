@@ -9,7 +9,7 @@
 	<license>GNU General Public License version 2 or later;</license>
 	<version>6.0.0</version>
 	<description>COM_FOOS_XML_DESCRIPTION</description>
-	<namespace>Joomla\Component\Foos</namespace>
+	<namespace path="src">Joomla\Component\Foos</namespace>
 	<scriptfile>script.php</scriptfile>
 	<install> <!-- Runs on install -->
 		<sql>
@@ -23,9 +23,7 @@
 	</uninstall>
 	<!-- Frond-end files -->
 	<files folder="components/com_foos">
-		<folder>Controller</folder>
-		<folder>Model</folder>
-		<folder>View</folder>
+		<folder>src</folder>
 		<folder>tmpl</folder>
 	</files>
 	<!-- Back-end files -->
@@ -37,13 +35,8 @@
 		</submenu>
 		<files folder="administrator/components/com_foos">
 			<filename>foos.xml</filename>
-			<folder>Controller</folder>
-			<folder>Extension</folder>
-			<folder>Model</folder>
-			<folder>Service</folder>
-			<folder>View</folder>
 			<folder>services</folder>
-			<folder>sql</folder>
+			<folder>src</folder>
 			<folder>tmpl</folder>
 		</files>
 	</administration>
