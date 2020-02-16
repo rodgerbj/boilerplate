@@ -28,9 +28,9 @@
 	</update>
 	<!-- Frond-end files -->
 	<files folder="components/com_foos">
+		<folder>language</folder>
 		<folder>src</folder>
 		<folder>tmpl</folder>
-		<folder>language</folder>
 	</files>
     <media folder="media/com_foos" destination="com_foos">
 		<folder>js</folder>
@@ -49,11 +49,11 @@
 			<filename>foos.xml</filename>
 			<filename>config.xml</filename>
 			<folder>forms</folder>
+			<folder>language</folder>
 			<folder>services</folder>
 			<folder>sql</folder>
 			<folder>src</folder>
 			<folder>tmpl</folder>
-			<folder>language</folder>
 		</files>
 	</administration>
 	<changelogurl>https://raw.githubusercontent.com/astridx/boilerplate/tutorial/changelog.xml</changelogurl>
