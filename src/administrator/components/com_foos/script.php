@@ -7,9 +7,12 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 defined('_JEXEC') or die;
+
+use Joomla\CMS\Factory;
 use Joomla\CMS\Installer\InstallerAdapter;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Log\Log;
+use Joomla\CMS\Table\Table;
 
 /**
  * Script file of Foo Component
@@ -46,6 +49,45 @@ class Com_FoosInstallerScript
 	public function install($parent): bool
 	{
 		echo Text::_('COM_FOOS_INSTALLERSCRIPT_INSTALL');
+
+		$db = Factory::getDbo();
+		
+		// Initialize a new category.
+		$category = Table::getInstance('Category');
+
+		$data = array(
+			'extension'       => 'com_foos',
+			'title'           => 'Uncategorised',
+			'description'     => '',
+			'published'       => 1,
+			'access'          => 1,
+			'params'          => '{"category_layout":"","image":""}',
+			'metadesc'        => '',
+			'metakey'         => '',
+			'metadata'        => '{"page_title":"","author":"","robots":""}',
+			'created_time'    => Factory::getDate()->toSql(),
+			'created_user_id' => (int) $this->getAdminId(),
+			'rules'           => array(),
+			'parent_id'       => 1,
+		);
+		
+		// Bind the data to the table
+		if (!$category->bind($data))
+		{
+			return false;
+		}
+
+		// Check to make sure our data is valid.
+		if (!$category->check())
+		{
+			return false;
+		}
+
+		// Store the category.
+		if (!$category->store(true))
+		{
+			return false;
+		}
 
 		return true;
 	}
@@ -146,4 +188,49 @@ class Com_FoosInstallerScript
 
 		return true;
 	}
+
+	/**
+	 * Retrieve the admin user id.
+	 *
+	 * @return  integer|boolean  One Administrator ID.
+	 *
+	 * @since   3.2
+	 */
+	private function getAdminId()
+	{
+		$db    = Factory::getDbo();
+		$query = $db->getQuery(true);
+
+		// Select the admin user ID
+		$query
+			->clear()
+			->select($db->quoteName('u') . '.' . $db->quoteName('id'))
+			->from($db->quoteName('#__users', 'u'))
+			->join(
+				'LEFT',
+				$db->quoteName('#__user_usergroup_map', 'map')
+				. ' ON ' . $db->quoteName('map') . '.' . $db->quoteName('user_id')
+				. ' = ' . $db->quoteName('u') . '.' . $db->quoteName('id')
+			)
+			->join(
+				'LEFT',
+				$db->quoteName('#__usergroups', 'g')
+				. ' ON ' . $db->quoteName('map') . '.' . $db->quoteName('group_id')
+				. ' = ' . $db->quoteName('g') . '.' . $db->quoteName('id')
+			)
+			->where(
+				$db->quoteName('g') . '.' . $db->quoteName('title')
+				. ' = ' . $db->quote('Super Users')
+			);
+
+		$db->setQuery($query);
+		$id = $db->loadResult();
+
+		if (!$id || $id instanceof \Exception)
+		{
+			return false;
+		}
+
+		return $id;
+	}	
 }
