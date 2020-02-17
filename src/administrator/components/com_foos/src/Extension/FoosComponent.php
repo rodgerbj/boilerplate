@@ -46,4 +46,19 @@ class FoosComponent extends MVCComponent implements BootableExtensionInterface, 
 	{
 		$this->getRegistry()->register('foosadministrator', new AdministratorService);
 	}
+
+	/**
+	 * Returns the table for the count items functions for the given section.
+	 *
+	 * @param   string  $section  The section
+	 *
+	 * @return  string|null
+	 *
+	 * @since   1.0.0
+	 */
+	protected function getTableNameForSection(string $section = null)
+	{
+		return ($section === 'category' ? 'categories' : 'foos_details');
+
+	}
 }
