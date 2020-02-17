@@ -14,8 +14,6 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\BaseDatabaseModel;
-use Joomla\CMS\Language\Text;
-use Joomla\Registry\Registry;
 
 /**
  * Foo model for the Joomla Foos component.
@@ -25,57 +23,24 @@ use Joomla\Registry\Registry;
 class FooModel extends BaseDatabaseModel
 {
 	/**
-	 * @var string item
+	 * @var string message
 	 */
-	protected $_item = null;
+	protected $message = null;
 
 	/**
-	 * Gets a foo
+	 * Get the message
 	 *
 	 * @param   integer  $pk  Id for the foo
 	 *
-	 * @return  mixed Object or null
+	 * @return  string  The message to be displayed to the user
 	 *
 	 * @since   1.0
 	 */
-	public function getItem($pk = null)
+	public function getMsg($pk = null)
 	{
 		$app = Factory::getApplication();
-		$pk = $app->input->getInt('id');
+		$this->message = $app->input->get('show_text', "Hi");
 
-		if ($this->_item === null)
-		{
-			$this->_item = array();
-		}
-
-		if (!isset($this->_item[$pk]))
-		{
-			try
-			{
-				$db = $this->getDbo();
-				$query = $db->getQuery(true);
-
-				$query->select('*')
-					->from($db->quoteName('#__foos_details', 'a'))
-					->where('a.id = ' . (int) $pk);
-
-				$db->setQuery($query);
-				$data = $db->loadObject();
-
-				if (empty($data))
-				{
-					throw new \Exception(Text::_('COM_FOOS_ERROR_FOO_NOT_FOUND'), 404);
-				}
-
-				$this->_item[$pk] = $data;
-			}
-			catch (\Exception $e)
-			{
-				$this->setError($e);
-				$this->_item[$pk] = false;
-			}
-		}
-
-		return $this->_item[$pk];
+		return $this->message;
 	}
 }
