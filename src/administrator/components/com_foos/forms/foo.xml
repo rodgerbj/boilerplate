@@ -17,5 +17,14 @@
 			size="40"
 			required="true"
 		 />
+
+		 <field
+			name="alias"
+			type="text"
+			label="JFIELD_ALIAS_LABEL"
+			size="45"
+			hint="JFIELD_ALIAS_PLACEHOLDER"
+		/>
+
 	</fieldset>
 </form>
