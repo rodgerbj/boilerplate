@@ -69,4 +69,17 @@ class FooModel extends AdminModel
 
 		return $data;
 	}
+	/**
+	 * Prepare and sanitise the table prior to saving.
+	 *
+	 * @param   \Joomla\CMS\Table\Table  $table  The Table object
+	 *
+	 * @return  void
+	 *
+	 * @since   6.1.0
+	 */
+	protected function prepareTable($table)
+	{
+		$table->generateAlias();
+	}
 }
