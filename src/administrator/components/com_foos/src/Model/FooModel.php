@@ -21,7 +21,7 @@ use Joomla\Utilities\ArrayHelper;
 /**
  * Item Model for a Foo.
  *
- * @since  1.0
+ * @since  6.1.0
  */
 class FooModel extends AdminModel
 {
@@ -37,7 +37,7 @@ class FooModel extends AdminModel
 	 * The type alias for this content type.
 	 *
 	 * @var    string
-	 * @since  1.0
+	 * @since  6.1.0
 	 */
 	public $typeAlias = 'com_foos.foo';
 
@@ -74,7 +74,7 @@ class FooModel extends AdminModel
 	 *
 	 * @return  \JForm|boolean  A \JForm object on success, false on failure
 	 *
-	 * @since   1.0
+	 * @since   6.1.0
 	 */
 	public function getForm($data = array(), $loadData = true)
 	{
@@ -93,7 +93,7 @@ class FooModel extends AdminModel
 	 *
 	 * @return  mixed  The data for the form.
 	 *
-	 * @since   1.0
+	 * @since   6.1.0
 	 */
 	protected function loadFormData()
 	{
@@ -237,5 +237,19 @@ class FooModel extends AdminModel
 		}
 
 		parent::preprocessForm($form, $data, $group);
+	}
+
+	/**
+	 * Prepare and sanitise the table prior to saving.
+	 *
+	 * @param   \Joomla\CMS\Table\Table  $table  The Table object
+	 *
+	 * @return  void
+	 *
+	 * @since   6.1.0
+	 */
+	protected function prepareTable($table)
+	{
+		$table->generateAlias();
 	}
 }
