@@ -47,7 +47,7 @@ class FooTable extends Table
 		if (empty($this->alias))
 		{
 			$this->alias = $this->name;
-		}
+}
 
 		$this->alias = ApplicationHelper::stringURLSafe($this->alias, $this->language);
 
