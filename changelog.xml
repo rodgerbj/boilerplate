@@ -76,6 +76,14 @@
 	<changelog>
 		<element>com_foos</element>
 		<type>component</type>
+		<version>6.1.0</version>
+		<note>
+			<item>Add edit form in back end</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
 		<version>7.0.0</version>
 		<note>
 			<item>Add database data in the front end view</item>
