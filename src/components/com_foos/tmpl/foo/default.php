@@ -8,4 +8,5 @@
  */
 defined('_JEXEC') or die;
 ?>
+
 <?php echo $this->msg;

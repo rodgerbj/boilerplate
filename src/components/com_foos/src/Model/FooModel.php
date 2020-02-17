@@ -25,18 +25,14 @@ class FooModel extends BaseDatabaseModel
 	/**
 	 * @var string message
 	 */
-	protected $message = null;
+	protected $message;
 
 	/**
 	 * Get the message
 	 *
-	 * @param   integer  $pk  Id for the foo
-	 *
 	 * @return  string  The message to be displayed to the user
-	 *
-	 * @since   1.0
 	 */
-	public function getMsg($pk = null)
+	public function getMsg()
 	{
 		$app = Factory::getApplication();
 		$this->message = $app->input->get('show_text', "Hi");
