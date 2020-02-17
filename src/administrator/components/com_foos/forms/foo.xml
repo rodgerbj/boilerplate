@@ -18,7 +18,7 @@
 			required="true"
 		 />
 
-		<field
+		 <field
 			name="alias"
 			type="text"
 			label="JFIELD_ALIAS_LABEL"
