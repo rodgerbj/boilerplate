@@ -11,6 +11,8 @@ defined('_JEXEC') or die;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
+
+$canChange = true;
 ?>
 <form action="<?php echo Route::_('index.php?option=com_foos'); ?>" method="post" name="adminForm" id="adminForm">
 	<div class="row">
@@ -24,11 +26,17 @@ use Joomla\CMS\Router\Route;
 					<table class="table" id="fooList">
 						<thead>
 							<tr>
+								<td style="width:1%" class="text-center">
+									<?php echo HTMLHelper::_('grid.checkall'); ?>
+								</td>
 								<th scope="col" style="width:1%" class="text-center d-none d-md-table-cell">
 									<?php echo Text::_('COM_FOOS_TABLE_TABLEHEAD_NAME'); ?>
 								</th>
 								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
 									<?php echo TEXT::_('JGRID_HEADING_ACCESS') ?>
+								</th>
+								<th scope="col" style="width:1%; min-width:85px" class="text-center">
+									<?php echo Text::_('JSTATUS'); ?>
 								</th>
 								<th scope="col">
 									<?php echo Text::_('COM_FOOS_TABLE_TABLEHEAD_ID'); ?>
@@ -41,6 +49,9 @@ use Joomla\CMS\Router\Route;
 						foreach ($this->items as $i => $item) :
 							?>
 							<tr class="row<?php echo $i % 2; ?>">
+								<td class="text-center">
+									<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
+								</td>
 								<th scope="row" class="has-context">
 									<div>
 										<?php echo $this->escape($item->name); ?>
@@ -55,6 +66,9 @@ use Joomla\CMS\Router\Route;
 								</th>
 								<td class="small d-none d-md-table-cell">
 									<?php echo $item->access_level; ?>
+								</td>
+								<td class="text-center">
+									<?php echo HTMLHelper::_('jgrid.published', $item->published, $i, 'foos.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
 								</td>
 								<td class="d-none d-md-table-cell">
 									<?php echo $item->id; ?>
