@@ -11,13 +11,14 @@ namespace Joomla\Component\Foos\Administrator\Table;
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Application\ApplicationHelper;
 use Joomla\CMS\Table\Table;
 use Joomla\Database\DatabaseDriver;
 
 /**
  * Foos Table class.
  *
- * @since  1.0
+ * @since  6.1.0
  */
 class FooTable extends Table
 {
@@ -26,12 +27,35 @@ class FooTable extends Table
 	 *
 	 * @param   DatabaseDriver  $db  Database connector object
 	 *
-	 * @since   1.0
+	 * @since   6.1.0
 	 */
 	public function __construct(DatabaseDriver $db)
 	{
 		$this->typeAlias = 'com_foos.foo';
 
 		parent::__construct('#__foos_details', 'id', $db);
+	}
+
+	/**
+	 * Generate a valid alias from title / date.
+	 * Remains public to be able to check for duplicated alias before saving
+	 *
+	 * @return  string
+	 */
+	public function generateAlias()
+	{
+		if (empty($this->alias))
+		{
+			$this->alias = $this->name;
+		}
+
+		$this->alias = ApplicationHelper::stringURLSafe($this->alias, $this->language);
+
+		if (trim(str_replace('-', '', $this->alias)) == '')
+		{
+			$this->alias = Factory::getDate()->format('Y-m-d-H-i-s');
+		}
+
+		return $this->alias;
 	}
 }
