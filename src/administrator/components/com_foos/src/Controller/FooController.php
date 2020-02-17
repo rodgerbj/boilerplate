@@ -17,7 +17,7 @@ use Joomla\CMS\Router\Route;
 /**
  * Controller for a single foo
  *
- * @since  1.0
+ * @since  6.1.0
  */
 class FooController extends FormController
 {
