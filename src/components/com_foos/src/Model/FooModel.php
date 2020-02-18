@@ -14,10 +14,7 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\BaseDatabaseModel;
-<<<<<<< HEAD
 use Joomla\CMS\Language\Text;
-=======
->>>>>>> t6b
 
 /**
  * Foo model for the Joomla Foos component.
