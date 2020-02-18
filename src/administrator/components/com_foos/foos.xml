@@ -28,7 +28,8 @@
 	</files>
     <media folder="media/com_foos" destination="com_foos">
 		<folder>js</folder>
-    </media>	<!-- Back-end files -->
+    </media>
+	<!-- Back-end files -->
 	<administration>
 		<!-- Menu entries -->
 		<menu view="foos">COM_FOOS</menu>
