@@ -86,7 +86,7 @@
 		<type>component</type>
 		<version>7.0.0</version>
 		<note>
-			<item>Add edit form in back end</item>
+			<item>Add edit form in front end</item>
 		</note>
 	</changelog>
 </changelogs>
