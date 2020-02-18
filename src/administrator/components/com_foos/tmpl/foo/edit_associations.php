@@ -8,8 +8,7 @@
  */
 
 defined('_JEXEC') or die;
-?>
-<div class="container-popup">
-	<?php $this->setLayout('edit'); ?>
-	<?php echo $this->loadTemplate(); ?>
-</div>
+
+use Joomla\CMS\Layout\LayoutHelper;
+
+echo LayoutHelper::render('joomla.edit.associations', $this);

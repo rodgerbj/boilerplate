@@ -7,7 +7,7 @@
 	<authorUrl>[AUTHOR_URL]</authorUrl>
 	<copyright>[COPYRIGHT]</copyright>
 	<license>GNU General Public License version 2 or later;</license>
-	<version>10.0.0</version>
+	<version>19.0.0</version>
 	<description>COM_FOOS_XML_DESCRIPTION</description>
 	<namespace path="src">Joomla\Component\Foos</namespace>
 	<scriptfile>script.php</scriptfile>
@@ -41,6 +41,8 @@
 		<menu view="foos">COM_FOOS</menu>
 		<submenu>
 			<menu link="option=com_foos">COM_FOOS</menu>
+			<menu link="option=com_categories&amp;extension=com_foos"
+				view="categories" img="class:foos-cat" alt="Foos/Categories">JCATEGORY</menu>
 		</submenu>
 		<files folder="administrator/components/com_foos">
 			<filename>access.xml</filename>
