@@ -26,7 +26,8 @@ class FoosModel extends ListModel
 	 * @param   array  $config  An optional associative array of configuration settings.
 	 *
 	 * @see     \JControllerLegacy
-	 * @since   1.0
+	 * 
+	 * @since   6.0.0
 	 */
 	public function __construct($config = array())
 	{
@@ -37,7 +38,7 @@ class FoosModel extends ListModel
 	 *
 	 * @return  \JDatabaseQuery
 	 *
-	 * @since   1.0
+	 * @since   6.0.0
 	 */
 	protected function getListQuery()
 	{
@@ -47,7 +48,7 @@ class FoosModel extends ListModel
 
 		// Select the required fields from the table.
 		$query->select(
-			$db->quoteName(array('id', 'name'))
+			$db->quoteName(array('id', 'name', 'alias'))
 		);
 		$query->from($db->quoteName('#__foos_details'));
 
