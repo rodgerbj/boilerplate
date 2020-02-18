@@ -69,6 +69,7 @@ class FooModel extends AdminModel
 
 		return $data;
 	}
+
 	/**
 	 * Prepare and sanitise the table prior to saving.
 	 *

@@ -9,6 +9,4 @@
 defined('_JEXEC') or die;
 ?>
 
-<?php 
-// ToDo Check if $this->item === false
-echo $this->item->name;
+<?php echo $this->msg;

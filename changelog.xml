@@ -86,7 +86,7 @@
 		<type>component</type>
 		<version>7.0.0</version>
 		<note>
-			<item>Add database data in the front end view</item>
+			<item>Add edit form in back end</item>
 		</note>
 	</changelog>
 </changelogs>
