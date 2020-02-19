@@ -16,4 +16,3 @@ if ($this->get('State')->get('params')->get('show_foo_name_label'))
 }
 
 echo $this->item->name;
-
