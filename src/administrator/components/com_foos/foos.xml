@@ -7,7 +7,7 @@
 	<authorUrl>[AUTHOR_URL]</authorUrl>
 	<copyright>[COPYRIGHT]</copyright>
 	<license>GNU General Public License version 2 or later;</license>
-	<version>11.2.0</version>
+	<version>__BUMP_VERSION__</version>
 	<description>COM_FOOS_XML_DESCRIPTION</description>
 	<namespace path="src">Joomla\Component\Foos</namespace>
 	<scriptfile>script.php</scriptfile>
@@ -28,9 +28,9 @@
 	</update>
 	<!-- Frond-end files -->
 	<files folder="components/com_foos">
+		<folder>language</folder>
 		<folder>src</folder>
 		<folder>tmpl</folder>
-		<folder>language</folder>
 	</files>
     <media folder="media/com_foos" destination="com_foos">
 		<folder>js</folder>
@@ -47,11 +47,11 @@
 			<filename>foos.xml</filename>
 			<filename>config.xml</filename>
 			<folder>forms</folder>
+			<folder>language</folder>
 			<folder>services</folder>
 			<folder>sql</folder>
 			<folder>src</folder>
 			<folder>tmpl</folder>
-			<folder>language</folder>
 		</files>
 	</administration>
 	<changelogurl>https://raw.githubusercontent.com/astridx/boilerplate/tutorial/changelog.xml</changelogurl>

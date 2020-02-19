@@ -14,7 +14,7 @@ use Joomla\CMS\Log\Log;
 /**
  * Script file of Foo Component
  *
- * @since  1.0.0
+ * @since  __BUMP_VERSION__
  */
 class Com_FoosInstallerScript
 {
@@ -22,7 +22,7 @@ class Com_FoosInstallerScript
 	 * Minimum Joomla version to check
 	 *
 	 * @var    string
-	 * @since  1.0.0
+	 * @since  __BUMP_VERSION__
 	 */
 	private $minimumJoomlaVersion = '4.0';
 
@@ -30,7 +30,7 @@ class Com_FoosInstallerScript
 	 * Minimum PHP version to check
 	 *
 	 * @var    string
-	 * @since  1.0.0
+	 * @since  __BUMP_VERSION__
 	 */
 	private $minimumPHPVersion = JOOMLA_MINIMUM_PHP;
 
@@ -41,7 +41,7 @@ class Com_FoosInstallerScript
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since  1.0.0
+	 * @since  __BUMP_VERSION__
 	 */
 	public function install($parent): bool
 	{
@@ -57,7 +57,7 @@ class Com_FoosInstallerScript
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since  1.0.0
+	 * @since  __BUMP_VERSION__
 	 */
 	public function uninstall($parent): bool
 	{
@@ -73,7 +73,7 @@ class Com_FoosInstallerScript
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since  1.0.0
+	 * @since  __BUMP_VERSION__
 	 *
 	 */
 	public function update($parent): bool
@@ -91,7 +91,7 @@ class Com_FoosInstallerScript
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since  1.0.0
+	 * @since  __BUMP_VERSION__
 	 *
 	 * @throws Exception
 	 */
@@ -137,7 +137,7 @@ class Com_FoosInstallerScript
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since  1.0.0
+	 * @since  __BUMP_VERSION__
 	 *
 	 */
 	public function postflight($type, $parent)
