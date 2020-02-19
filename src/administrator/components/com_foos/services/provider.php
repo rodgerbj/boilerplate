@@ -23,7 +23,7 @@ use Joomla\Component\Foos\Administrator\Extension\FoosComponent;
  * The foos service provider.
  * https://github.com/joomla/joomla-cms/pull/20217
  *
- * @since  1.0.0
+ * @since  __BUMP_VERSION__
  */
 return new class implements ServiceProviderInterface
 {
@@ -34,7 +34,7 @@ return new class implements ServiceProviderInterface
 	 *
 	 * @return  void
 	 *
-	 * @since   1.0.0
+	 * @since   __BUMP_VERSION__
 	 */
 	public function register(Container $container)
 	{
