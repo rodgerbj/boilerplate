@@ -29,6 +29,7 @@ class FooModel extends AdminModel
 	 */
 	public $typeAlias = 'com_foos.foo';
 
+
 	/**
 	 * Method to get the row form.
 	 *
