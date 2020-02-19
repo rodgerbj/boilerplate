@@ -34,7 +34,7 @@ class FooModel extends BaseDatabaseModel
 	 *
 	 * @return  mixed Object or null
 	 *
-	 * @since   1.0
+	 * @since   __BUMP_VERSION__
 	 */
 	public function getItem($pk = null)
 	{
@@ -84,7 +84,7 @@ class FooModel extends BaseDatabaseModel
 	 *
 	 * @return  void
 	 *
-	 * @since   1.0
+	 * @since   __BUMP_VERSION__
 	 */
 	protected function populateState()
 	{
