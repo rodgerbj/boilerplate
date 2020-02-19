@@ -16,7 +16,7 @@ use Joomla\CMS\MVC\Model\ListModel;
 /**
  * Methods supporting a list of foo records.
  *
- * @since  1.0
+ * @since  __BUMP_VERSION__
  */
 class FoosModel extends ListModel
 {
@@ -26,8 +26,8 @@ class FoosModel extends ListModel
 	 * @param   array  $config  An optional associative array of configuration settings.
 	 *
 	 * @see     \JControllerLegacy
-	 * 
-	 * @since   6.0.0
+	 *
+	 * @since   __BUMP_VERSION__
 	 */
 	public function __construct($config = array())
 	{
@@ -38,7 +38,7 @@ class FoosModel extends ListModel
 	 *
 	 * @return  \JDatabaseQuery
 	 *
-	 * @since   6.0.0
+	 * @since   __BUMP_VERSION__
 	 */
 	protected function getListQuery()
 	{
