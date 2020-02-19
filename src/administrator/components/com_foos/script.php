@@ -48,7 +48,7 @@ class Com_FoosInstallerScript
 		echo Text::_('COM_FOOS_INSTALLERSCRIPT_INSTALL');
 
 		$db = Factory::getDbo();
-		
+
 		// Initialize a new category.
 		$category = Table::getInstance('Category');
 
@@ -67,7 +67,7 @@ class Com_FoosInstallerScript
 			'rules'           => array(),
 			'parent_id'       => 1,
 		);
-		
+
 		// Bind the data to the table
 		if (!$category->bind($data))
 		{
