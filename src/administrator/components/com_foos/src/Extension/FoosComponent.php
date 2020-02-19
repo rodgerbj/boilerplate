@@ -22,7 +22,7 @@ use Psr\Container\ContainerInterface;
 /**
  * Component class for com_foos
  *
- * @since  1.0.0
+ * @since  __BUMP_VERSION__
  */
 class FoosComponent extends MVCComponent implements BootableExtensionInterface, CategoryServiceInterface
 {
@@ -40,7 +40,7 @@ class FoosComponent extends MVCComponent implements BootableExtensionInterface, 
 	 *
 	 * @return  void
 	 *
-	 * @since   1.0.0
+	 * @since   __BUMP_VERSION__
 	 */
 	public function boot(ContainerInterface $container)
 	{
