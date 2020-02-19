@@ -33,7 +33,6 @@ class FoosModel extends ListModel
 	{
 		parent::__construct($config);
 	}
-
 	/**
 	 * Build an SQL query to load the list data.
 	 *
