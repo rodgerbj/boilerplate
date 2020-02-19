@@ -16,7 +16,7 @@ use Joomla\CMS\MVC\Controller\FormController;
 /**
  * Controller for a single foo
  *
- * @since  6.1.0
+ * @since  __BUMP_VERSION__
  */
 class FooController extends FormController
 {

@@ -17,7 +17,7 @@ use Joomla\CMS\MVC\Model\AdminModel;
 /**
  * Item Model for a Foo.
  *
- * @since  6.1.0
+ * @since  __BUMP_VERSION__
  */
 class FooModel extends AdminModel
 {
@@ -25,7 +25,7 @@ class FooModel extends AdminModel
 	 * The type alias for this content type.
 	 *
 	 * @var    string
-	 * @since  6.1.0
+	 * @since  __BUMP_VERSION__
 	 */
 	public $typeAlias = 'com_foos.foo';
 
@@ -38,7 +38,7 @@ class FooModel extends AdminModel
 	 *
 	 * @return  \JForm|boolean  A \JForm object on success, false on failure
 	 *
-	 * @since   6.1.0
+	 * @since   __BUMP_VERSION__
 	 */
 	public function getForm($data = array(), $loadData = true)
 	{
@@ -57,7 +57,7 @@ class FooModel extends AdminModel
 	 *
 	 * @return  mixed  The data for the form.
 	 *
-	 * @since   6.1.0
+	 * @since   __BUMP_VERSION__
 	 */
 	protected function loadFormData()
 	{
@@ -77,7 +77,7 @@ class FooModel extends AdminModel
 	 *
 	 * @return  void
 	 *
-	 * @since   6.1.0
+	 * @since   __BUMP_VERSION__
 	 */
 	protected function prepareTable($table)
 	{

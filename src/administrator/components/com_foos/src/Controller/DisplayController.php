@@ -16,7 +16,7 @@ use Joomla\CMS\MVC\Controller\BaseController;
 /**
  * Foos master display controller.
  *
- * @since  1.0.0
+ * @since  __BUMP_VERSION__
  */
 class DisplayController extends BaseController
 {
@@ -24,7 +24,7 @@ class DisplayController extends BaseController
 	 * The default view.
 	 *
 	 * @var    string
-	 * @since  1.0.0
+	 * @since  __BUMP_VERSION__
 	 */
 	protected $default_view = 'foos';
 
@@ -36,7 +36,7 @@ class DisplayController extends BaseController
 	 *
 	 * @return  BaseController|bool  This object to support chaining.
 	 *
-	 * @since   1.0.0
+	 * @since   __BUMP_VERSION__
 	 *
 	 * @throws  \Exception
 	 */
