@@ -7,7 +7,7 @@
 	<authorUrl>[AUTHOR_URL]</authorUrl>
 	<copyright>[COPYRIGHT]</copyright>
 	<license>GNU General Public License version 2 or later;</license>
-	<version>4.0.0</version>
+	<version>__BUMP_VERSION__</version>
 	<description>COM_FOOS_XML_DESCRIPTION</description>
 	<namespace path="src">Joomla\Component\Foos</namespace>
 	<scriptfile>script.php</scriptfile>
