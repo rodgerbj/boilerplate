@@ -187,4 +187,49 @@ class Com_FoosInstallerScript
 
 		return true;
 	}
+
+	/**
+	 * Retrieve the admin user id.
+	 *
+	 * @return  integer|boolean  One Administrator ID.
+	 *
+	 * @since   3.2
+	 */
+	private function getAdminId()
+	{
+		$db    = Factory::getDbo();
+		$query = $db->getQuery(true);
+
+		// Select the admin user ID
+		$query
+			->clear()
+			->select($db->quoteName('u') . '.' . $db->quoteName('id'))
+			->from($db->quoteName('#__users', 'u'))
+			->join(
+				'LEFT',
+				$db->quoteName('#__user_usergroup_map', 'map')
+				. ' ON ' . $db->quoteName('map') . '.' . $db->quoteName('user_id')
+				. ' = ' . $db->quoteName('u') . '.' . $db->quoteName('id')
+			)
+			->join(
+				'LEFT',
+				$db->quoteName('#__usergroups', 'g')
+				. ' ON ' . $db->quoteName('map') . '.' . $db->quoteName('group_id')
+				. ' = ' . $db->quoteName('g') . '.' . $db->quoteName('id')
+			)
+			->where(
+				$db->quoteName('g') . '.' . $db->quoteName('title')
+				. ' = ' . $db->quote('Super Users')
+			);
+
+		$db->setQuery($query);
+		$id = $db->loadResult();
+
+		if (!$id || $id instanceof \Exception)
+		{
+			return false;
+		}
+
+		return $id;
+	}
 }
