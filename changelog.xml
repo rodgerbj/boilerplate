@@ -233,12 +233,4 @@
 			<item>Add helplink</item>
 		</note>
 	</changelog>
-	<changelog>
-		<element>com_foos</element>
-		<type>component</type>
-		<version>8.0.0</version>
-		<note>
-			<item>Add language files</item>
-		</note>
-	</changelog>
 </changelogs>
