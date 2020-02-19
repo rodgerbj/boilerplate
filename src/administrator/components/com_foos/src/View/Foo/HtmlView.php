@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_foos
  *
- * @copyright   Copyright (C) 2005 - 2020 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -11,9 +11,6 @@ namespace Joomla\Component\Foos\Administrator\View\Foo;
 
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Component\ComponentHelper;
-use Joomla\CMS\Helper\ContentHelper;
-use Joomla\CMS\Language\Associations;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
@@ -50,17 +47,6 @@ class HtmlView extends BaseHtmlView
 	public function display($tpl = null)
 	{
 		$this->item = $this->get('Item');
-
-		// If we are forcing a language in modal (used for associations).
-		if ($this->getLayout() === 'modal' && $forcedLanguage = Factory::getApplication()->input->get('forcedLanguage', '', 'cmd'))
-		{
-			// Set the language field to the forcedLanguage and disable changing it.
-			$this->form->setValue('language', null, $forcedLanguage);
-			$this->form->setFieldAttribute('language', 'readonly', 'true');
-
-			// Only allow to select categories with All language or with the forced language.
-			$this->form->setFieldAttribute('catid', 'language', '*,' . $forcedLanguage);
-		}
 
 		$this->addToolbar();
 

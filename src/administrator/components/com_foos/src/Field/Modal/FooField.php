@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_foos
  *
- * @copyright   Copyright (C) 2005 - 2020 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -80,13 +80,6 @@ class FooField extends FormField
 		$linkFoos = 'index.php?option=com_foos&amp;view=foos&amp;layout=modal&amp;tmpl=component&amp;' . Session::getFormToken() . '=1';
 		$linkFoo  = 'index.php?option=com_foos&amp;view=foo&amp;layout=modal&amp;tmpl=component&amp;' . Session::getFormToken() . '=1';
 		$modalTitle   = Text::_('COM_FOOS_CHANGE_FOO');
-
-		if (isset($this->element['language']))
-		{
-			$linkFoos .= '&amp;forcedLanguage=' . $this->element['language'];
-			$linkFoo   .= '&amp;forcedLanguage=' . $this->element['language'];
-			$modalTitle     .= ' &#8212; ' . $this->element['label'];
-		}
 
 		$urlSelect = $linkFoos . '&amp;function=jSelectFoo_' . $this->id;
 

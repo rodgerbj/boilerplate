@@ -12,9 +12,7 @@ namespace Joomla\Component\Foos\Administrator\Model;
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
-use Joomla\CMS\Language\Associations;
 use Joomla\CMS\MVC\Model\AdminModel;
-use Joomla\CMS\Language\LanguageHelper;
 
 /**
  * Item Model for a Foo.
@@ -30,14 +28,6 @@ class FooModel extends AdminModel
 	 * @since  __BUMP_VERSION__
 	 */
 	public $typeAlias = 'com_foos.foo';
-
-	/**
-	 * The context used for the associations table
-	 *
-	 * @var    string
-	 * @since  1.0
-	 */
-	protected $associationsContext = 'com_foos.item';
 
 	/**
 	 * Method to get the row form.
@@ -80,86 +70,6 @@ class FooModel extends AdminModel
 	}
 
 	/**
-<<<<<<< HEAD:src/administrator/components/com_foos/Model/FooModel.php
-	 * Method to get a single record.
-	 *
-	 * @param   integer  $pk  The id of the primary key.
-	 *
-	 * @return  mixed  Object on success, false on failure.
-	 *
-	 * @since   1.0
-	 */
-	public function getItem($pk = null)
-	{
-		$item = parent::getItem($pk);
-
-		// Load associated foo items
-		$assoc = Associations::isEnabled();
-
-		if ($assoc)
-		{
-			$item->associations = array();
-			$item->alias = "test";
-
-			if ($item->id != null)
-			{
-				$associations = Associations::getAssociations('com_foos', '#__foos_details', 'com_foos.item', $item->id, 'id', null);
-
-				foreach ($associations as $tag => $association)
-				{
-					$item->associations[$tag] = $association->id;
-				}
-			}
-		}
-
-		return $item;
-	}
-
-	/**
-	 * Preprocess the form.
-	 *
-	 * @param   \JForm  $form   Form object.
-	 * @param   object  $data   Data object.
-	 * @param   string  $group  Group name.
-	 *
-	 * @return  void
-	 *
-	 * @since   1.0
-	 */
-	protected function preprocessForm(\JForm $form, $data, $group = 'content')
-	{
-		if (Associations::isEnabled())
-		{
-			$languages = LanguageHelper::getContentLanguages(false, true, null, 'ordering', 'asc');
-
-			if (count($languages) > 1)
-			{
-				$addform = new \SimpleXMLElement('<form />');
-				$fields = $addform->addChild('fields');
-				$fields->addAttribute('name', 'associations');
-				$fieldset = $fields->addChild('fieldset');
-				$fieldset->addAttribute('name', 'item_associations');
-
-				foreach ($languages as $language)
-				{
-					$field = $fieldset->addChild('field');
-					$field->addAttribute('name', $language->lang_code);
-					$field->addAttribute('type', 'modal_foo');
-					$field->addAttribute('language', $language->lang_code);
-					$field->addAttribute('label', $language->title);
-					$field->addAttribute('translate_label', 'false');
-					$field->addAttribute('select', 'true');
-					$field->addAttribute('new', 'true');
-					$field->addAttribute('edit', 'true');
-					$field->addAttribute('clear', 'true');
-				}
-
-				$form->load($addform, false);
-			}
-		}
-
-		parent::preprocessForm($form, $data, $group);
-=======
 	 * Prepare and sanitise the table prior to saving.
 	 *
 	 * @param   \Joomla\CMS\Table\Table  $table  The Table object
@@ -171,6 +81,5 @@ class FooModel extends AdminModel
 	protected function prepareTable($table)
 	{
 		$table->generateAlias();
->>>>>>> t11b:src/administrator/components/com_foos/src/Model/FooModel.php
 	}
 }

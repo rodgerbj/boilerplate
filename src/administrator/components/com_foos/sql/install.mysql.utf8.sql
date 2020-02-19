@@ -15,23 +15,3 @@ ALTER TABLE `#__foos_details` ADD COLUMN  `access` int(10) unsigned NOT NULL DEF
 ALTER TABLE `#__foos_details` ADD KEY `idx_access` (`access`);
 
 ALTER TABLE `#__foos_details` ADD COLUMN  `catid` int(11) NOT NULL DEFAULT 0 AFTER `alias`;
-
-ALTER TABLE `#__foos_details` ADD COLUMN  `state` tinyint(3) NOT NULL DEFAULT 0 AFTER `alias`;
-
-ALTER TABLE `#__foos_details` ADD KEY `idx_catid` (`catid`);
-
-ALTER TABLE `#__foos_details` ADD COLUMN  `published` tinyint(1) NOT NULL DEFAULT 0 AFTER `alias`;
-
-ALTER TABLE `#__foos_details` ADD COLUMN  `publish_up` datetime AFTER `alias`;
-
-ALTER TABLE `#__foos_details` ADD COLUMN  `publish_down` datetime AFTER `alias`;
-
-ALTER TABLE `#__foos_details` ADD KEY `idx_state` (`published`);
-
-ALTER TABLE `#__foos_details` ADD COLUMN  `language` char(7) NOT NULL DEFAULT '*' AFTER `alias`;
-
-ALTER TABLE `#__foos_details` ADD KEY `idx_language` (`language`);
-
-ALTER TABLE `#__foos_details` ADD COLUMN  `ordering` int(11) NOT NULL DEFAULT 0 AFTER `alias`;
-
-ALTER TABLE `#__foos_details` ADD COLUMN  `params` text NOT NULL AFTER `alias`;
