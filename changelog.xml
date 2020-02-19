@@ -76,6 +76,14 @@
 	<changelog>
 		<element>com_foos</element>
 		<type>component</type>
+		<version>6.1.0</version>
+		<note>
+			<item>Add edit form in back end</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
 		<version>7.0.0</version>
 		<note>
 			<item>Add database data in the front end view</item>
@@ -183,6 +191,46 @@
 		<version>18.0.0</version>
 		<note>
 			<item>Add Params</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>19.0.0</version>
+		<note>
+			<item>Add Pagination</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>20.0.0</version>
+		<note>
+			<item>Add a Layout</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>21.0.0</version>
+		<note>
+			<item>Add checkout/checkin</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>22.0.0</version>
+		<note>
+			<item>Add batch</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>23.0.0</version>
+		<note>
+			<item>Add helplink</item>
 		</note>
 	</changelog>
 </changelogs>
