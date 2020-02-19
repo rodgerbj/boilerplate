@@ -19,7 +19,7 @@ use Joomla\CMS\Toolbar\ToolbarHelper;
 /**
  * View class for a list of foos.
  *
- * @since  1.0.0
+ * @since  __BUMP_VERSION__
  */
 class HtmlView extends BaseHtmlView
 {
@@ -37,7 +37,7 @@ class HtmlView extends BaseHtmlView
 	 *
 	 * @return  void
 	 *
-	 * @since   1.0.0
+	 * @since   __BUMP_VERSION__
 	 */
 	public function display($tpl = null): void
 	{
@@ -53,7 +53,7 @@ class HtmlView extends BaseHtmlView
 	 *
 	 * @return  void
 	 *
-	 * @since   6.1.0
+	 * @since   __BUMP_VERSION__
 	 */
 	protected function addToolbar()
 	{
