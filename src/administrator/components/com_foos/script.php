@@ -47,6 +47,45 @@ class Com_FoosInstallerScript
 	{
 		echo Text::_('COM_FOOS_INSTALLERSCRIPT_INSTALL');
 
+		$db = Factory::getDbo();
+		
+		// Initialize a new category.
+		$category = Table::getInstance('Category');
+
+		$data = array(
+			'extension'       => 'com_foos',
+			'title'           => 'Uncategorised',
+			'description'     => '',
+			'published'       => 1,
+			'access'          => 1,
+			'params'          => '{"category_layout":"","image":""}',
+			'metadesc'        => '',
+			'metakey'         => '',
+			'metadata'        => '{"page_title":"","author":"","robots":""}',
+			'created_time'    => Factory::getDate()->toSql(),
+			'created_user_id' => (int) $this->getAdminId(),
+			'rules'           => array(),
+			'parent_id'       => 1,
+		);
+		
+		// Bind the data to the table
+		if (!$category->bind($data))
+		{
+			return false;
+		}
+
+		// Check to make sure our data is valid.
+		if (!$category->check())
+		{
+			return false;
+		}
+
+		// Store the category.
+		if (!$category->store(true))
+		{
+			return false;
+		}
+
 		return true;
 	}
 
