@@ -12,6 +12,7 @@ namespace Joomla\Component\Foos\Administrator\Model;
 defined('_JEXEC') or die;
 
 use Joomla\CMS\MVC\Model\ListModel;
+use Joomla\CMS\Language\Associations;
 
 /**
  * Methods supporting a list of foo records.
