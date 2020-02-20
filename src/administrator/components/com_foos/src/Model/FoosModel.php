@@ -67,18 +67,6 @@ class FoosModel extends ListModel
 				$db->quoteName('#__categories', 'c') . ' ON ' . $db->quoteName('c.id') . ' = ' . $db->quoteName('a.catid')
 			);
 
-		// Filter by a single or group of categories.
-		$categoryId = $this->getState('filter.category_id');
-
-		if (is_numeric($categoryId))
-		{
-			$query->where($db->quoteName('a.catid') . ' = ' . (int) $categoryId);
-		}
-		elseif (is_array($categoryId))
-		{
-			$query->where($db->quoteName('a.catid') . ' IN (' . implode(',', ArrayHelper::toInteger($categoryId)) . ')');
-		}
-
 		return $query;
 	}
 }
