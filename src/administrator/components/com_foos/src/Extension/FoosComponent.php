@@ -91,4 +91,18 @@ class FoosComponent extends MVCComponent implements BootableExtensionInterface, 
 		return ($section === 'category' ? 'categories' : 'foos_details');
 
 	}
+
+	/**
+	 * Returns the state column for the count items functions for the given section.
+	 *
+	 * @param   string  $section  The section
+	 *
+	 * @return  string|null
+	 *
+	 * @since   __BUMP_VERSION__
+	 */
+	protected function getStateColumnForSection(string $section = null)
+	{
+		return 'published';
+	}
 }

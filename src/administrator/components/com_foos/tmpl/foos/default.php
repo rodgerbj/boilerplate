@@ -27,6 +27,9 @@ use Joomla\CMS\Router\Route;
 								<th scope="col" style="width:1%" class="text-center d-none d-md-table-cell">
 									<?php echo Text::_('COM_FOOS_TABLE_TABLEHEAD_NAME'); ?>
 								</th>
+								<th scope="col" style="width:1%; min-width:85px" class="text-center">
+									<?php echo TEXT::_('JSTATUS'); ?>
+								</th>
 								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
 									<?php echo TEXT::_('JGRID_HEADING_ACCESS') ?>
 								</th>
@@ -51,8 +54,13 @@ use Joomla\CMS\Router\Route;
 
 									<div class="small">
 										<?php echo Text::_('JCATEGORY') . ': ' . $this->escape($item->category_title); ?>
-+ 									</div>
+ 									</div>
 								</th>
+								<td class="text-center">
+									<?php 
+									echo HTMLHelper::_('jgrid.published', $item->published, $i, 'foos.', true, 'cb', $item->publish_up, $item->publish_down); 
+									?>
+								</td>
 								<td class="small d-none d-md-table-cell">
 									<?php echo $item->access_level; ?>
 								</td>
