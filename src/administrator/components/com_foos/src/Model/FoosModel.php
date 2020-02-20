@@ -13,6 +13,7 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\MVC\Model\ListModel;
 use Joomla\CMS\Language\Associations;
+use Joomla\CMS\Factory;
 
 /**
  * Methods supporting a list of foo records.
@@ -99,6 +100,48 @@ class FoosModel extends ListModel
 			$query->select('(' . $subQuery . ') AS ' . $db->quoteName('association'));
 		}
 
+
+		// Filter on the language.
+		if ($language = $this->getState('filter.language'))
+		{
+			$query->where($db->quoteName('a.language') . ' = ' . $db->quote($language));
+		}
+
 		return $query;
+	}
+
+	/**
+	 * Method to auto-populate the model state.
+	 *
+	 * Note. Calling getState in this method will result in recursion.
+	 *
+	 * @param   string  $ordering   An optional ordering field.
+	 * @param   string  $direction  An optional direction (asc|desc).
+	 *
+	 * @return  void
+	 *
+	 * @since   __BUMP_VERSION__
+	 */
+	protected function populateState($ordering = 'a.name', $direction = 'asc')
+	{
+		$app = Factory::getApplication();
+		$forcedLanguage = $app->input->get('forcedLanguage', '', 'cmd');
+		// Adjust the context to support modal layouts.
+		if ($layout = $app->input->get('layout'))
+		{
+			$this->context .= '.' . $layout;
+		}
+		// Adjust the context to support forced languages.
+		if ($forcedLanguage)
+		{
+			$this->context .= '.' . $forcedLanguage;
+		}
+		// List state information.
+		parent::populateState($ordering, $direction);
+		// Force a language.
+		if (!empty($forcedLanguage))
+		{
+			$this->setState('filter.language', $forcedLanguage);
+		}
 	}
 }
