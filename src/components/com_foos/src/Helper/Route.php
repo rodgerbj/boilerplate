@@ -20,7 +20,7 @@ use Joomla\CMS\Language\Multilanguage;
  * @static
  * @package     Joomla.Site
  * @subpackage  com_foos
- * @since       1.5
+ * @since       __BUMP_VERSION__
  */
 abstract class Route
 {
@@ -33,7 +33,7 @@ abstract class Route
 	 *
 	 * @return  string  The link to the foos
 	 *
-	 * @since   1.5
+	 * @since   __BUMP_VERSION__
 	 */
 	public static function getFoosRoute($id, $catid, $language = 0)
 	{
@@ -61,7 +61,7 @@ abstract class Route
 	 *
 	 * @return  string  The link to the foos
 	 *
-	 * @since   1.5
+	 * @since   __BUMP_VERSION__
 	 */
 	public static function getCategoryRoute($catid, $language = 0)
 	{
