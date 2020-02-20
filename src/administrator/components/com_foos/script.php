@@ -62,7 +62,7 @@ class Com_FoosInstallerScript
 			'access'          => 1,
 			'level'           => 1,
 			'path'            => 'uncategorised',
-			'params'          => '{"category_layout":"","image":""}',
+			'params'          => '{"category_layout":"","image":"", "image_alt":""}',
 			'metadesc'        => '',
 			'metakey'         => '',
 			'metadata'        => '{"author":"","robots":""}',
