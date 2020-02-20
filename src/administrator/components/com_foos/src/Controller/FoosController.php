@@ -9,7 +9,10 @@
 
 namespace Joomla\Component\Foos\Administrator\Controller;
 
+use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\MVC\Controller\AdminController;
+use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
+use Joomla\Input\Input;
 
 defined('_JEXEC') or die;
 
@@ -30,7 +33,7 @@ class FoosController extends AdminController
 	 * @param   CMSApplication       $app      The JApplication for the dispatcher
 	 * @param   Input                $input    Input
 	 *
-	 * @since   3.0
+	 * @since   __BUMP_VERSION__
 	 */
 	public function __construct($config = array(), MVCFactoryInterface $factory = null, $app = null, $input = null)
 	{
