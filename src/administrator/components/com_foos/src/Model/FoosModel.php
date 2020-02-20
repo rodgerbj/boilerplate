@@ -16,7 +16,7 @@ use Joomla\CMS\MVC\Model\ListModel;
 /**
  * Methods supporting a list of foo records.
  *
- * @since  1.0
+ * @since  __BUMP_VERSION__
  */
 class FoosModel extends ListModel
 {
@@ -26,7 +26,8 @@ class FoosModel extends ListModel
 	 * @param   array  $config  An optional associative array of configuration settings.
 	 *
 	 * @see     \JControllerLegacy
-	 * @since   1.0
+	 *
+	 * @since   __BUMP_VERSION__
 	 */
 	public function __construct($config = array())
 	{
@@ -37,7 +38,7 @@ class FoosModel extends ListModel
 	 *
 	 * @return  \JDatabaseQuery
 	 *
-	 * @since   1.0
+	 * @since   __BUMP_VERSION__
 	 */
 	protected function getListQuery()
 	{
@@ -47,18 +48,7 @@ class FoosModel extends ListModel
 
 		// Select the required fields from the table.
 		$query->select(
-			$db->quoteName(
-				explode(
-					', ',
-					$this->getState(
-						'list.select',
-						'a.id, a.name, a.catid' .
-						', a.access' .
-						', a.published' .
-						', a.publish_up, a.publish_down'
-					)
-				)
-			)
+			$db->quoteName(array('a.id', 'a.name', 'a.alias', 'a.access', 'a.catid'))
 		);
 
 		$query->from($db->quoteName('#__foos_details', 'a'));

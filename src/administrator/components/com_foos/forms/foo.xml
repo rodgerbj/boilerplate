@@ -54,16 +54,6 @@
 		/>
 
 		<field
-			name="publish_down"
-			type="calendar"
-			label="COM_FOOS_FIELD_PUBLISH_DOWN_LABEL"
-			translateformat="true"
-			showtime="true"
-			size="22"
-			filter="user_utc"
-		/>
-
-		<field
 			name="catid"
 			type="categoryedit"
 			label="JCATEGORY"

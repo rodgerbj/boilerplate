@@ -14,12 +14,11 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\BaseDatabaseModel;
-use Joomla\CMS\Language\Text;
 
 /**
  * Foo model for the Joomla Foos component.
  *
- * @since  4.0.0
+ * @since  __BUMP_VERSION__
  */
 class FooModel extends BaseDatabaseModel
 {
@@ -35,7 +34,7 @@ class FooModel extends BaseDatabaseModel
 	 *
 	 * @return  mixed Object or null
 	 *
-	 * @since   1.0
+	 * @since   __BUMP_VERSION__
 	 */
 	public function getItem($pk = null)
 	{
@@ -85,7 +84,7 @@ class FooModel extends BaseDatabaseModel
 	 *
 	 * @return  void
 	 *
-	 * @since   1.0
+	 * @since   __BUMP_VERSION__
 	 */
 	protected function populateState()
 	{

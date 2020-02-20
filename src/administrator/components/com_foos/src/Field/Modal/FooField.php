@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_foos
  *
- * @copyright   Copyright (C) 2005 - 2020 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -20,7 +20,7 @@ use Joomla\CMS\Session\Session;
 /**
  * Supports a modal foo picker.
  *
- * @since  7.0.0
+ * @since  __DEPLOY_VERSION__
  */
 class FooField extends FormField
 {
@@ -28,7 +28,7 @@ class FooField extends FormField
 	 * The form field type.
 	 *
 	 * @var     string
-	 * @since   7.0.0
+	 * @since   __DEPLOY_VERSION__
 	 */
 	protected $type = 'Modal_Foo';
 
@@ -37,7 +37,7 @@ class FooField extends FormField
 	 *
 	 * @return  string  The field input markup.
 	 *
-	 * @since   7.0.0
+	 * @since   __DEPLOY_VERSION__
 	 */
 	protected function getInput()
 	{
@@ -183,7 +183,7 @@ class FooField extends FormField
 	 *
 	 * @return  string  The field label markup.
 	 *
-	 * @since   7.0.0
+	 * @since   __DEPLOY_VERSION__
 	 */
 	protected function getLabel()
 	{
