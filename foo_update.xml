@@ -255,4 +255,164 @@
         <targetplatform name="joomla" version="4.*"/>
 		<php_minimum>7.1</php_minimum>
     </update>
+    <update>
+        <name>com_foos</name>
+        <description>This is com_foo</description>
+        <element>com_foos</element>
+        <type>component</type>
+        <version>14.2.0</version>
+		<changelogurl>https://raw.githubusercontent.com/astridx/boilerplate/tutorial/changelog.xml</changelogurl>
+		<infourl title="agosms">https://github.com/astridx/boilerplate/blob/v14.2.0/README.md</infourl>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/astridx/boilerplate/releases/download/v14.2.0/com_foos-14.2.0.zip</downloadurl>
+        </downloads>
+        <maintainer>Foo Creator</maintainer>
+        <maintainerurl>http://www.example.com</maintainerurl>
+        <targetplatform name="joomla" version="4.*"/>
+		<php_minimum>7.1</php_minimum>
+    </update>
+    <update>
+        <name>com_foos</name>
+        <description>This is com_foo</description>
+        <element>com_foos</element>
+        <type>component</type>
+        <version>15.1.0</version>
+		<changelogurl>https://raw.githubusercontent.com/astridx/boilerplate/tutorial/changelog.xml</changelogurl>
+		<infourl title="agosms">https://github.com/astridx/boilerplate/blob/v15.1.0/README.md</infourl>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/astridx/boilerplate/releases/download/v15.1.0/com_foos-15.1.0.zip</downloadurl>
+        </downloads>
+        <maintainer>Foo Creator</maintainer>
+        <maintainerurl>http://www.example.com</maintainerurl>
+        <targetplatform name="joomla" version="4.*"/>
+		<php_minimum>7.1</php_minimum>
+    </update>
+    <update>
+        <name>com_foos</name>
+        <description>This is com_foo</description>
+        <element>com_foos</element>
+        <type>component</type>
+        <version>16.0.0</version>
+		<changelogurl>https://raw.githubusercontent.com/astridx/boilerplate/tutorial/changelog.xml</changelogurl>
+		<infourl title="agosms">https://github.com/astridx/boilerplate/blob/v16.0.0/README.md</infourl>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/astridx/boilerplate/releases/download/v16.0.0/com_foos-16.0.0.zip</downloadurl>
+        </downloads>
+        <maintainer>Foo Creator</maintainer>
+        <maintainerurl>http://www.example.com</maintainerurl>
+        <targetplatform name="joomla" version="4.*"/>
+		<php_minimum>7.1</php_minimum>
+    </update>
+    <update>
+        <name>com_foos</name>
+        <description>This is com_foo</description>
+        <element>com_foos</element>
+        <type>component</type>
+        <version>17.0.0</version>
+		<changelogurl>https://raw.githubusercontent.com/astridx/boilerplate/tutorial/changelog.xml</changelogurl>
+		<infourl title="agosms">https://github.com/astridx/boilerplate/blob/v17.0.0/README.md</infourl>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/astridx/boilerplate/releases/download/v17.0.0/com_foos-17.0.0.zip</downloadurl>
+        </downloads>
+        <maintainer>Foo Creator</maintainer>
+        <maintainerurl>http://www.example.com</maintainerurl>
+        <targetplatform name="joomla" version="4.*"/>
+		<php_minimum>7.1</php_minimum>
+    </update>
+    <update>
+        <name>com_foos</name>
+        <description>This is com_foo</description>
+        <element>com_foos</element>
+        <type>component</type>
+        <version>18.0.0</version>
+		<changelogurl>https://raw.githubusercontent.com/astridx/boilerplate/tutorial/changelog.xml</changelogurl>
+		<infourl title="agosms">https://github.com/astridx/boilerplate/blob/v18.0.0/README.md</infourl>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/astridx/boilerplate/releases/download/v18.0.0/com_foos-18.0.0.zip</downloadurl>
+        </downloads>
+        <maintainer>Foo Creator</maintainer>
+        <maintainerurl>http://www.example.com</maintainerurl>
+        <targetplatform name="joomla" version="4.*"/>
+		<php_minimum>7.1</php_minimum>
+    </update>
+    <update>
+        <name>com_foos</name>
+        <description>This is com_foo</description>
+        <element>com_foos</element>
+        <type>component</type>
+        <version>19.0.0</version>
+		<changelogurl>https://raw.githubusercontent.com/astridx/boilerplate/tutorial/changelog.xml</changelogurl>
+		<infourl title="agosms">https://github.com/astridx/boilerplate/blob/v19.0.0/README.md</infourl>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/astridx/boilerplate/releases/download/v19.0.0/com_foos-19.0.0.zip</downloadurl>
+        </downloads>
+        <maintainer>Foo Creator</maintainer>
+        <maintainerurl>http://www.example.com</maintainerurl>
+        <targetplatform name="joomla" version="4.*"/>
+		<php_minimum>7.1</php_minimum>
+    </update>
+    <update>
+        <name>com_foos</name>
+        <description>This is com_foo</description>
+        <element>com_foos</element>
+        <type>component</type>
+        <version>20.0.0</version>
+		<changelogurl>https://raw.githubusercontent.com/astridx/boilerplate/tutorial/changelog.xml</changelogurl>
+		<infourl title="agosms">https://github.com/astridx/boilerplate/blob/v20.0.0/README.md</infourl>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/astridx/boilerplate/releases/download/v20.0.0/com_foos-20.0.0.zip</downloadurl>
+        </downloads>
+        <maintainer>Foo Creator</maintainer>
+        <maintainerurl>http://www.example.com</maintainerurl>
+        <targetplatform name="joomla" version="4.*"/>
+		<php_minimum>7.1</php_minimum>
+    </update>
+    <update>
+        <name>com_foos</name>
+        <description>This is com_foo</description>
+        <element>com_foos</element>
+        <type>component</type>
+        <version>21.0.0</version>
+		<changelogurl>https://raw.githubusercontent.com/astridx/boilerplate/tutorial/changelog.xml</changelogurl>
+		<infourl title="agosms">https://github.com/astridx/boilerplate/blob/v21.0.0/README.md</infourl>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/astridx/boilerplate/releases/download/v21.0.0/com_foos-21.0.0.zip</downloadurl>
+        </downloads>
+        <maintainer>Foo Creator</maintainer>
+        <maintainerurl>http://www.example.com</maintainerurl>
+        <targetplatform name="joomla" version="4.*"/>
+		<php_minimum>7.1</php_minimum>
+    </update>
+    <update>
+        <name>com_foos</name>
+        <description>This is com_foo</description>
+        <element>com_foos</element>
+        <type>component</type>
+        <version>22.0.0</version>
+		<changelogurl>https://raw.githubusercontent.com/astridx/boilerplate/tutorial/changelog.xml</changelogurl>
+		<infourl title="agosms">https://github.com/astridx/boilerplate/blob/v22.0.0/README.md</infourl>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/astridx/boilerplate/releases/download/v22.0.0/com_foos-22.0.0.zip</downloadurl>
+        </downloads>
+        <maintainer>Foo Creator</maintainer>
+        <maintainerurl>http://www.example.com</maintainerurl>
+        <targetplatform name="joomla" version="4.*"/>
+		<php_minimum>7.1</php_minimum>
+    </update>
+    <update>
+        <name>com_foos</name>
+        <description>This is com_foo</description>
+        <element>com_foos</element>
+        <type>component</type>
+        <version>23.0.0</version>
+		<changelogurl>https://raw.githubusercontent.com/astridx/boilerplate/tutorial/changelog.xml</changelogurl>
+		<infourl title="agosms">https://github.com/astridx/boilerplate/blob/v23.0.0/README.md</infourl>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/astridx/boilerplate/releases/download/v23.0.0/com_foos-23.0.0.zip</downloadurl>
+        </downloads>
+        <maintainer>Foo Creator</maintainer>
+        <maintainerurl>http://www.example.com</maintainerurl>
+        <targetplatform name="joomla" version="4.*"/>
+		<php_minimum>7.1</php_minimum>
+    </update>
 </updates>

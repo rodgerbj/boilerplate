@@ -15,7 +15,7 @@ use Joomla\CMS\Form\FormRule;
 /**
  * Form Rule class for the Joomla Platform.
  *
- * @since  11.1.0
+ * @since  __DEPLOY_VERSION__
  */
 class LetterRule extends FormRule
 {
@@ -23,7 +23,7 @@ class LetterRule extends FormRule
 	 * The regular expression to use in testing a form field value.
 	 *
 	 * @var    string
-	 * @since  11.1.0
+	 * @since  __DEPLOY_VERSION__
 	 */
 	protected $regex = '^([a-z]+)$';
 
@@ -31,7 +31,7 @@ class LetterRule extends FormRule
 	 * The regular expression modifiers to use when testing a form field value.
 	 *
 	 * @var    string
-	 * @since  11.1.0
+	 * @since  __DEPLOY_VERSION__
 	 */
 	protected $modifiers = 'i';
 }

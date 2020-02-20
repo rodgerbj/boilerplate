@@ -9,15 +9,17 @@
 
 namespace Joomla\Component\Foos\Administrator\Controller;
 
-defined('_JEXEC') or die;
-
+use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\MVC\Controller\AdminController;
 use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
+use Joomla\Input\Input;
+
+defined('_JEXEC') or die;
 
 /**
- * Foos list controller class.
+ * Contacts list controller class.
  *
- * @since  13.0.0
+ * @since  __BUMP_VERSION__
  */
 class FoosController extends AdminController
 {
@@ -29,14 +31,13 @@ class FoosController extends AdminController
 	 * 'view_path' (this list is not meant to be comprehensive).
 	 * @param   MVCFactoryInterface  $factory  The factory.
 	 * @param   CMSApplication       $app      The JApplication for the dispatcher
-	 * @param   \JInput              $input    Input
+	 * @param   Input                $input    Input
 	 *
-	 * @since   13.0.0
+	 * @since   __BUMP_VERSION__
 	 */
 	public function __construct($config = array(), MVCFactoryInterface $factory = null, $app = null, $input = null)
 	{
 		parent::__construct($config, $factory, $app, $input);
-
 	}
 
 	/**
@@ -48,7 +49,7 @@ class FoosController extends AdminController
 	 *
 	 * @return  \Joomla\CMS\MVC\Model\BaseDatabaseModel
 	 *
-	 * @since   13.0.0
+	 * @since   __BUMP_VERSION__
 	 */
 	public function getModel($name = 'Foo', $prefix = 'Administrator', $config = array('ignore_request' => true))
 	{
