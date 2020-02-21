@@ -90,7 +90,6 @@
 			label="JFIELD_ACCESS_LABEL"
 			size="1"
 		/>
-
 		<field
 			name="ordering"
 			type="ordering"

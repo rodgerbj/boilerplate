@@ -11,7 +11,6 @@ namespace Joomla\Component\Foos\Administrator\View\Foos;
 
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Language\Text;
@@ -19,11 +18,13 @@ use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 use Joomla\Component\Foos\Administrator\Helper\FooHelper;
+use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\View\GenericDataException;
 
 /**
  * View class for a list of foos.
  *
- * @since  6.1.0
+ * @since  __BUMP_VERSION__
  */
 class HtmlView extends BaseHtmlView
 {
@@ -69,11 +70,12 @@ class HtmlView extends BaseHtmlView
 	 *
 	 * @return  void
 	 *
-	 * @since   6.1.0
+	 * @since   __BUMP_VERSION__
 	 */
 	public function display($tpl = null): void
 	{
 		$this->items = $this->get('Items');
+
 		$this->filterForm = $this->get('FilterForm');
 		$this->activeFilters = $this->get('ActiveFilters');
 		$this->state = $this->get('State');
@@ -81,7 +83,7 @@ class HtmlView extends BaseHtmlView
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
-			throw new \JViewGenericdataexception(implode("\n", $errors), 500);
+			throw new GenericDataException(implode("\n", $errors), 500);
 		}
 
 		// Preprocess the list of items to find ordering divisions.
@@ -95,7 +97,6 @@ class HtmlView extends BaseHtmlView
 		// We don't need toolbar in the modal window.
 		if ($this->getLayout() !== 'modal')
 		{
-			FooHelper::addSubmenu('foos');
 			$this->addToolbar();
 			$this->sidebar = \JHtmlSidebar::render();
 		}
@@ -125,60 +126,26 @@ class HtmlView extends BaseHtmlView
 	 *
 	 * @return  void
 	 *
-	 * @since   6.1.0
+	 * @since   __BUMP_VERSION__
 	 */
 	protected function addToolbar()
 	{
-		$canDo = ContentHelper::getActions('com_foos', 'category', $this->state->get('filter.category_id'));
-		$user  = Factory::getUser();
+		FooHelper::addSubmenu('foos');
+		$this->sidebar = \JHtmlSidebar::render();
+
+		$canDo = ContentHelper::getActions('com_foos');
 
 		// Get the toolbar object instance
 		$toolbar = Toolbar::getInstance('toolbar');
 
-		ToolbarHelper::title(Text::_('COM_FOOS_MANAGER_FOOS'), 'address-book foo');
+		ToolbarHelper::title(Text::_('COM_FOOS_MANAGER_FOOS'), 'address foo');
 
-		if ($canDo->get('core.create') || count($user->getAuthorisedCategories('com_foos', 'core.create')) > 0)
+		if ($canDo->get('core.create'))
 		{
 			$toolbar->addNew('foo.add');
 		}
 
-		if ($canDo->get('core.edit.state'))
-		{
-			$dropdown = $toolbar->dropdownButton('status-group')
-				->text('JTOOLBAR_CHANGE_STATUS')
-				->toggleSplit(false)
-				->icon('fa fa-ellipsis-h')
-				->buttonClass('btn btn-action')
-				->listCheck(true);
-
-			$childBar = $dropdown->getChildToolbar();
-
-			$childBar->publish('foos.publish')->listCheck(true);
-
-			$childBar->unpublish('foos.unpublish')->listCheck(true);
-
-			$childBar->archive('foos.archive')->listCheck(true);
-
-			if ($user->authorise('core.admin'))
-			{
-				$childBar->checkin('foos.checkin')->listCheck(true);
-			}
-
-			if ($this->state->get('filter.published') != -2)
-			{
-				$childBar->trash('foos.trash')->listCheck(true);
-			}
-		}
-
-		if ($this->state->get('filter.published') == -2 && $canDo->get('core.delete'))
-		{
-			$toolbar->delete('foos.delete')
-				->text('JTOOLBAR_EMPTY_TRASH')
-				->message('JGLOBAL_CONFIRM_DELETE')
-				->listCheck(true);
-		}
-
-		if ($user->authorise('core.admin', 'com_foos') || $user->authorise('core.options', 'com_foos'))
+		if ($canDo->get('core.options'))
 		{
 			$toolbar->preferences('com_foos');
 		}
