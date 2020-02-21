@@ -54,6 +54,7 @@ class HtmlView extends BaseHtmlView
 			// Set the language field to the forcedLanguage and disable changing it.
 			$this->form->setValue('language', null, $forcedLanguage);
 			$this->form->setFieldAttribute('language', 'readonly', 'true');
+
 			// Only allow to select categories with All language or with the forced language.
 			$this->form->setFieldAttribute('catid', 'language', '*,' . $forcedLanguage);
 		}
