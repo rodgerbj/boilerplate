@@ -117,10 +117,15 @@ if ($saveOrder && !empty($this->items))
 									<div class="small">
 										<?php echo Text::_('JCATEGORY') . ': ' . $this->escape($item->category_title); ?>
 									</div>
-
 								</th>
 								<td class="small d-none d-md-table-cell">
 									<?php echo $item->access_level; ?>
+								</td>
+
+								<td class="text-center">
+									<?php 
+										echo HTMLHelper::_('jgrid.published', $item->published, $i, 'foos.', $canChange, 'cb', $item->publish_up, $item->publish_down); 
+									?>
 								</td>
 								<?php if ($assoc) : ?>
 								<td class="d-none d-md-table-cell">
@@ -136,9 +141,7 @@ if ($saveOrder && !empty($this->items))
 										<?php echo LayoutHelper::render('joomla.content.language', $item); ?>
 									</td>
 								<?php endif; ?>
-								<td class="text-center">
-									<?php echo HTMLHelper::_('jgrid.published', $item->published, $i, 'foos.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
-								</td>
+
 								<td class="d-none d-md-table-cell">
 									<?php echo $item->id; ?>
 								</td>
