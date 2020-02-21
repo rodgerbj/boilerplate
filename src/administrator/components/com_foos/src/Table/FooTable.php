@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_foos
  *
- * @copyright   Copyright (C) 2005 - 2020 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -14,29 +14,20 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Application\ApplicationHelper;
 use Joomla\CMS\Table\Table;
 use Joomla\Database\DatabaseDriver;
-use Joomla\CMS\Language\Text;
 
 /**
  * Foos Table class.
  *
- * @since  6.1.0
+ * @since  __BUMP_VERSION__
  */
 class FooTable extends Table
 {
-	/**
-	 * Indicates that columns fully support the NULL value in the database
-	 *
-	 * @var    boolean
-	 * @since  4.0.0
-	 */
-	protected $_supportNullValue = true;
-
 	/**
 	 * Constructor
 	 *
 	 * @param   DatabaseDriver  $db  Database connector object
 	 *
-	 * @since   6.1.0
+	 * @since   __BUMP_VERSION__
 	 */
 	public function __construct(DatabaseDriver $db)
 	{
@@ -74,7 +65,7 @@ class FooTable extends Table
 	 * @return  boolean
 	 *
 	 * @see     Table::check
-	 * @since   1.5
+	 * @since   __BUMP_VERSION__
 	 */
 	public function check()
 	{

@@ -11,7 +11,6 @@ namespace Joomla\Component\Foos\Administrator\View\Foos;
 
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Language\Text;
@@ -19,11 +18,12 @@ use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 use Joomla\Component\Foos\Administrator\Helper\FooHelper;
+use Joomla\CMS\Factory;
 
 /**
  * View class for a list of foos.
  *
- * @since  6.1.0
+ * @since  __BUMP_VERSION__
  */
 class HtmlView extends BaseHtmlView
 {
@@ -33,27 +33,6 @@ class HtmlView extends BaseHtmlView
 	 * @var  array
 	 */
 	protected $items;
-
-	/**
-	 * The model state
-	 *
-	 * @var  \JObject
-	 */
-	protected $state;
-
-	/**
-	 * Form object for search filters
-	 *
-	 * @var  \JForm
-	 */
-	public $filterForm;
-
-	/**
-	 * The active search filters
-	 *
-	 * @var  array
-	 */
-	public $activeFilters;
 
 	/**
 	 * The sidebar markup
@@ -69,33 +48,15 @@ class HtmlView extends BaseHtmlView
 	 *
 	 * @return  void
 	 *
-	 * @since   6.1.0
+	 * @since   __BUMP_VERSION__
 	 */
 	public function display($tpl = null): void
 	{
 		$this->items = $this->get('Items');
-		$this->filterForm = $this->get('FilterForm');
-		$this->activeFilters = $this->get('ActiveFilters');
-		$this->state = $this->get('State');
-
-		// Check for errors.
-		if (count($errors = $this->get('Errors')))
-		{
-			throw new \JViewGenericdataexception(implode("\n", $errors), 500);
-		}
-
-		// Preprocess the list of items to find ordering divisions.
-		// TODO: Complete the ordering stuff with nested sets
-		foreach ($this->items as &$item)
-		{
-			$item->order_up = true;
-			$item->order_dn = true;
-		}
 
 		// We don't need toolbar in the modal window.
 		if ($this->getLayout() !== 'modal')
 		{
-			FooHelper::addSubmenu('foos');
 			$this->addToolbar();
 			$this->sidebar = \JHtmlSidebar::render();
 		}
@@ -107,13 +68,6 @@ class HtmlView extends BaseHtmlView
 			{
 				// If the language is forced we can't allow to select the language, so transform the language selector filter into a hidden field.
 				$languageXml = new \SimpleXMLElement('<field name="language" type="hidden" default="' . $forcedLanguage . '" />');
-				$this->filterForm->setField($languageXml, 'filter', true);
-
-				// Also, unset the active language filter so the search tools is not open by default with this filter.
-				unset($this->activeFilters['language']);
-
-				// One last changes needed is to change the category filter to just show categories with All language or with the forced language.
-				$this->filterForm->setFieldAttribute('category_id', 'language', '*,' . $forcedLanguage, 'filter');
 			}
 		}
 
@@ -125,10 +79,13 @@ class HtmlView extends BaseHtmlView
 	 *
 	 * @return  void
 	 *
-	 * @since   6.1.0
+	 * @since   __BUMP_VERSION__
 	 */
 	protected function addToolbar()
 	{
+		FooHelper::addSubmenu('foos');
+		$this->sidebar = \JHtmlSidebar::render();
+
 		$canDo = ContentHelper::getActions('com_foos');
 
 		// Get the toolbar object instance
