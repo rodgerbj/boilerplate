@@ -31,3 +31,5 @@ ALTER TABLE `#__foos_details` ADD KEY `idx_state` (`published`);
 ALTER TABLE `#__foos_details` ADD COLUMN  `language` char(7) NOT NULL DEFAULT '*' AFTER `alias`;
 
 ALTER TABLE `#__foos_details` ADD KEY `idx_language` (`language`);
+
+ALTER TABLE `#__foos_details` ADD COLUMN  `ordering` int(11) NOT NULL DEFAULT 0 AFTER `alias`;
