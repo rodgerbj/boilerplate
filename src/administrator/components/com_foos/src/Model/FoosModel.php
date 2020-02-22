@@ -11,15 +11,15 @@ namespace Joomla\Component\Foos\Administrator\Model;
 
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Factory;
-use Joomla\CMS\Language\Associations;
 use Joomla\CMS\MVC\Model\ListModel;
+use Joomla\CMS\Language\Associations;
+use Joomla\CMS\Factory;
 use Joomla\Utilities\ArrayHelper;
 
 /**
  * Methods supporting a list of foo records.
  *
- * @since  1.0
+ * @since  __BUMP_VERSION__
  */
 class FoosModel extends ListModel
 {
@@ -29,11 +29,12 @@ class FoosModel extends ListModel
 	 * @param   array  $config  An optional associative array of configuration settings.
 	 *
 	 * @see     \JControllerLegacy
-	 * 
-	 * @since   6.0.0
+	 *
+	 * @since   __BUMP_VERSION__
 	 */
 	public function __construct($config = array())
 	{
+
 		if (empty($config['filter_fields']))
 		{
 			$config['filter_fields'] = array(
@@ -61,13 +62,12 @@ class FoosModel extends ListModel
 
 		parent::__construct($config);
 	}
-
 	/**
 	 * Build an SQL query to load the list data.
 	 *
 	 * @return  \JDatabaseQuery
 	 *
-	 * @since   6.0.0
+	 * @since   __BUMP_VERSION__
 	 */
 	protected function getListQuery()
 	{
@@ -77,7 +77,6 @@ class FoosModel extends ListModel
 
 		// Select the required fields from the table.
 		$query->select(
-<<<<<<< HEAD
 			$db->quoteName(
 				explode(
 					', ',
@@ -95,9 +94,6 @@ class FoosModel extends ListModel
 					)
 				)
 			)
-=======
-			$db->quoteName(array('id', 'name', 'alias'))
->>>>>>> t9
 		);
 
 		$query->from($db->quoteName('#__foos_details', 'a'));
@@ -148,6 +144,12 @@ class FoosModel extends ListModel
 				$db->quoteName('#__users', 'uc') . ' ON ' . $db->quoteName('uc.id') . ' = ' . $db->quoteName('a.checked_out')
 			);
 
+		// Filter on the language.
+		if ($language = $this->getState('filter.language'))
+		{
+			$query->where($db->quoteName('a.language') . ' = ' . $db->quote($language));
+		}
+
 		// Filter by access level.
 		if ($access = $this->getState('filter.access'))
 		{
@@ -196,12 +198,6 @@ class FoosModel extends ListModel
 			}
 		}
 
-		// Filter on the language.
-		if ($language = $this->getState('filter.language'))
-		{
-			$query->where($db->quoteName('a.language') . ' = ' . $db->quote($language));
-		}
-
 		// Add the list ordering clause.
 		$orderCol = $this->state->get('list.ordering', 'a.name');
 		$orderDirn = $this->state->get('list.direction', 'asc');
@@ -226,12 +222,11 @@ class FoosModel extends ListModel
 	 *
 	 * @return  void
 	 *
-	 * @since   1.0
+	 * @since   __BUMP_VERSION__
 	 */
 	protected function populateState($ordering = 'a.name', $direction = 'asc')
 	{
 		$app = Factory::getApplication();
-
 		$forcedLanguage = $app->input->get('forcedLanguage', '', 'cmd');
 
 		// Adjust the context to support modal layouts.

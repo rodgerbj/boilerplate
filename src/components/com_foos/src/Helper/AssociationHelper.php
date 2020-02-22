@@ -3,7 +3,7 @@
  * @package     Joomla.Site
  * @subpackage  com_foos
  *
- * @copyright   Copyright (C) 2005 - 2020 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -19,7 +19,7 @@ use Joomla\Component\Foos\Site\Helper\Route as FoosHelperRoute;
 /**
  * Foos Component Association Helper
  *
- * @since  3.0
+ * @since  __BUMP_VERSION__
  */
 abstract class AssociationHelper extends CategoryAssociationHelper
 {
@@ -31,7 +31,7 @@ abstract class AssociationHelper extends CategoryAssociationHelper
 	 *
 	 * @return  array   Array of associations for the item
 	 *
-	 * @since  3.0
+	 * @since  __BUMP_VERSION__
 	 */
 	public static function getAssociations($id = 0, $view = null)
 	{
