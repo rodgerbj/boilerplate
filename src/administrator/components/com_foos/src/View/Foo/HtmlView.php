@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_foos
  *
- * @copyright   Copyright (C) 2005 - 2020 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -22,7 +22,7 @@ use Joomla\CMS\Toolbar\ToolbarHelper;
 /**
  * View to edit a foo.
  *
- * @since  6.1.0
+ * @since  __BUMP_VERSION__
  */
 class HtmlView extends BaseHtmlView
 {
@@ -72,7 +72,7 @@ class HtmlView extends BaseHtmlView
 	 *
 	 * @return  void
 	 *
-	 * @since   6.1.0
+	 * @since   __BUMP_VERSION__
 	 */
 	protected function addToolbar()
 	{
@@ -80,6 +80,7 @@ class HtmlView extends BaseHtmlView
 
 		$user = Factory::getUser();
 		$userId = $user->id;
+
 		$isNew = ($this->item->id == 0);
 
 		ToolbarHelper::title($isNew ? Text::_('COM_FOOS_MANAGER_FOO_NEW') : Text::_('COM_FOOS_MANAGER_FOO_EDIT'), 'address foo');
@@ -94,7 +95,6 @@ class HtmlView extends BaseHtmlView
 			if ($isNew && (count($user->getAuthorisedCategories('com_foos', 'core.create')) > 0))
 			{
 				ToolbarHelper::apply('foo.apply');
-
 				ToolbarHelper::saveGroup(
 					[
 						['save', 'foo.save'],
@@ -110,14 +110,12 @@ class HtmlView extends BaseHtmlView
 		{
 			// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
 			$itemEditable = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == $userId);
-
 			$toolbarButtons = [];
 
 			// Can't save the record if it's not editable
 			if ($itemEditable)
 			{
 				ToolbarHelper::apply('foo.apply');
-
 				$toolbarButtons[] = ['save', 'foo.save'];
 
 				// We can save this record, but check the create permission to see if we can return to make a new one.
