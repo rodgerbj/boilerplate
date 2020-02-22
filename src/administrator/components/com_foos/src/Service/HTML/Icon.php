@@ -24,7 +24,7 @@ use Joomla\Registry\Registry;
 /**
  * Content Component HTML Helper
  *
- * @since  4.0.0
+ * @since  __DEPLOY_VERSION__
  */
 class Icon
 {
@@ -33,7 +33,7 @@ class Icon
 	 *
 	 * @var    CMSApplication
 	 *
-	 * @since  4.0.0
+	 * @since  __DEPLOY_VERSION__
 	 */
 	private $application;
 
@@ -42,7 +42,7 @@ class Icon
 	 *
 	 * @param   CMSApplication  $application  The application
 	 *
-	 * @since   4.0.0
+	 * @since   __DEPLOY_VERSION__
 	 */
 	public function __construct(CMSApplication $application)
 	{
@@ -137,8 +137,8 @@ class Icon
 
 			return $output;
 		}
-		
-		if(!isset($foo->slug))
+
+		if (!isset($foo->slug))
 		{
 			$foo->slug = "";
 		}
@@ -155,7 +155,7 @@ class Icon
 			$overlib = Text::_('JPUBLISHED');
 		}
 
-		if(!isset($foo->created))
+		if (!isset($foo->created))
 		{
 			$date = HTMLHelper::_('date', 'now');
 		}
@@ -164,7 +164,7 @@ class Icon
 			$date = HTMLHelper::_('date', $foo->created);
 		}
 
-		if(!isset($created_by_alias) && !isset($foo->created_by))
+		if (!isset($created_by_alias) && !isset($foo->created_by))
 		{
 			$author = '';
 		}

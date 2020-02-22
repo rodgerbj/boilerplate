@@ -101,13 +101,6 @@ class HtmlView extends BaseHtmlView
 			return false;
 		}
 
-		$this->item->tags = new TagsHelper;
-
-		if (!empty($this->item->id))
-		{
-			$this->item->tags->getItemTags('com_foos.foo', $this->item->id);
-		}
-
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
@@ -132,7 +125,7 @@ class HtmlView extends BaseHtmlView
 			$this->form->setFieldAttribute('language', 'default', $lang);
 		}
 
-		//$this->_prepareDocument();
+		$this->_prepareDocument();
 
 		parent::display($tpl);
 	}

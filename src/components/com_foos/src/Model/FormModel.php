@@ -13,7 +13,6 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Form\Form;
-use Joomla\CMS\Helper\TagsHelper;
 use Joomla\CMS\Language\Associations;
 use Joomla\CMS\Language\Multilanguage;
 use Joomla\Registry\Registry;
@@ -191,7 +190,7 @@ class FormModel extends \Joomla\Component\Foos\Administrator\Model\FooModel
 	 * @param   array   $data   The data to be merged into the form object
 	 * @param   string  $group  The plugin group to be executed
 	 *
-	 * @return  void
+	 * @return  Form
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */

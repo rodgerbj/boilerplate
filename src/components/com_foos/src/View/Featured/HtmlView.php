@@ -21,7 +21,7 @@ use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 /**
  * Featured View class
  *
- * @since  1.6
+ * @since  __BUMP_VERSION__
  */
 class HtmlView extends BaseHtmlView
 {
@@ -29,7 +29,7 @@ class HtmlView extends BaseHtmlView
 	 * The item model state
 	 *
 	 * @var    \Joomla\Registry\Registry
-	 * @since  1.6.0
+	 * @since  __BUMP_VERSION__
 	 */
 	protected $state;
 
@@ -37,7 +37,7 @@ class HtmlView extends BaseHtmlView
 	 * The item details
 	 *
 	 * @var    \JObject
-	 * @since  1.6.0
+	 * @since  __BUMP_VERSION__
 	 */
 	protected $items;
 
@@ -45,7 +45,7 @@ class HtmlView extends BaseHtmlView
 	 * The pagination object
 	 *
 	 * @var    \JPagination
-	 * @since  1.6.0
+	 * @since  __BUMP_VERSION__
 	 */
 	protected $pagination;
 
@@ -53,7 +53,7 @@ class HtmlView extends BaseHtmlView
 	 * The page parameters
 	 *
 	 * @var    \Joomla\Registry\Registry|null
-	 * @since  4.0.0
+	 * @since  __BUMP_VERSION__
 	 */
 	protected $params = null;
 
@@ -61,7 +61,7 @@ class HtmlView extends BaseHtmlView
 	 * The page class suffix
 	 *
 	 * @var    string
-	 * @since  4.0.0
+	 * @since  __BUMP_VERSION__
 	 */
 	protected $pageclass_sfx = '';
 
@@ -72,7 +72,7 @@ class HtmlView extends BaseHtmlView
 	 *
 	 * @return  mixed  \Exception on failure, void on success.
 	 *
-	 * @since   1.6
+	 * @since   __BUMP_VERSION__
 	 */
 	public function display($tpl = null)
 	{
@@ -144,7 +144,7 @@ class HtmlView extends BaseHtmlView
 	 *
 	 * @return  void
 	 *
-	 * @since   1.6
+	 * @since   __BUMP_VERSION__
 	 */
 	protected function _prepareDocument()
 	{

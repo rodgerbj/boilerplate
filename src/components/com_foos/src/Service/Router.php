@@ -26,7 +26,7 @@ use Joomla\Database\ParameterType;
 /**
  * Routing class from com_foos
  *
- * @since  3.3
+ * @since  __DEPLOY_VERSION__
  */
 class Router extends RouterView
 {
@@ -42,7 +42,7 @@ class Router extends RouterView
 	 *
 	 * @var CategoryFactoryInterface
 	 *
-	 * @since  4.0.0
+	 * @since  __DEPLOY_VERSION__
 	 */
 	private $categoryFactory;
 
@@ -51,7 +51,7 @@ class Router extends RouterView
 	 *
 	 * @var DatabaseInterface
 	 *
-	 * @since  4.0.0
+	 * @since  __DEPLOY_VERSION__
 	 */
 	private $db;
 

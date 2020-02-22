@@ -6,7 +6,7 @@
 		<field
 			name="spacer"
 			type="spacer"
-			label="COM_CONTACT_CONTACT_REQUIRED"
+			label="COM_FOOS_FOO_REQUIRED"
 			class="text"
 		/>
 

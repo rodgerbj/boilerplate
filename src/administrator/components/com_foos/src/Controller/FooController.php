@@ -17,7 +17,7 @@ use Joomla\CMS\Router\Route;
 /**
  * Controller for a single foo
  *
- * @since  6.1.0
+ * @since  __BUMP_VERSION__
  */
 class FooController extends FormController
 {
@@ -28,7 +28,7 @@ class FooController extends FormController
 	 *
 	 * @return  boolean   True if successful, false otherwise and internal error is set.
 	 *
-	 * @since   1.0
+	 * @since   __BUMP_VERSION__
 	 */
 	public function batch($model = null)
 	{

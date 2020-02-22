@@ -18,10 +18,10 @@ $tparams = $this->item->params;
 
 if ($tparams->get('show_name')) {
 	if ($this->Params->get('show_foo_name_label')) {
-		echo Text::_('COM_FOOS_NAME') . $this->item->name;
-	} else {
-		echo $this->item->name;
+		echo Text::_('COM_FOOS_NAME');
 	}
+
+	echo $this->item->name;
 }
 ?>
 
