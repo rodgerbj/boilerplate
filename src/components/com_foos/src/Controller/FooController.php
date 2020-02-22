@@ -20,7 +20,7 @@ use Joomla\Utilities\ArrayHelper;
 /**
  * Controller for single foo view
  *
- * @since  1.5.19
+ * @since  __DEPLOY_VERSION__
  */
 class FooController extends FormController
 {
@@ -33,14 +33,6 @@ class FooController extends FormController
 	protected $view_item = 'form';
 
 	/**
-	 * The URL view list variable.
-	 *
-	 * @var    string
-	 * @since  __DEPLOY_VERSION__
-	 */
-	protected $view_list = 'categories';
-
-	/**
 	 * Method to get a model object, loading it if required.
 	 *
 	 * @param   string  $name    The model name. Optional.
@@ -49,13 +41,13 @@ class FooController extends FormController
 	 *
 	 * @return  \Joomla\CMS\MVC\Model\BaseDatabaseModel  The model.
 	 *
-	 * @since   1.6.4
+	 * @since   __DEPLOY_VERSION__
 	 */
 	public function getModel($name = 'form', $prefix = '', $config = array('ignore_request' => true))
 	{
 		return parent::getModel($name, $prefix, array('ignore_request' => false));
 	}
-	
+
 	/**
 	 * Method override to check if you can add a new record.
 	 *

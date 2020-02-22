@@ -18,9 +18,9 @@ use Joomla\CMS\Router\Route;
 HTMLHelper::_('behavior.keepalive');
 HTMLHelper::_('behavior.formvalidator');
 
-$this->tab_name = 'com-foos-form';
+$this->tab_name = 'com-foo-form';
 $this->ignore_fieldsets = array('details', 'item_associations', 'language');
-$this->useCoreUI        = true;
+$this->useCoreUI = true;
 ?>
 <div class="edit item-page<?php echo $this->pageclass_sfx; ?>">
 	<?php if ($this->params->get('show_page_heading')) : ?>
@@ -35,22 +35,17 @@ $this->useCoreUI        = true;
 		name="adminForm" id="adminForm" class="form-validate form-vertical">
 		<fieldset>
 			<?php echo HTMLHelper::_('uitab.startTabSet', $this->tab_name, array('active' => 'details')); ?>
-			<?php echo HTMLHelper::_('uitab.addTab', $this->tab_name, 'details', empty($this->item->id) ? Text::_('COM_CONTACT_NEW_CONTACT') : Text::_('COM_CONTACT_EDIT_CONTACT')); ?>
+			<?php echo HTMLHelper::_('uitab.addTab', $this->tab_name, 'details', empty($this->item->id) ? Text::_('COM_FOOS_NEW_FOO') : Text::_('COM_FOOS_EDIT_FOO')); ?>
 			<?php echo $this->form->renderField('name'); ?>
 
 			<?php if (is_null($this->item->id)) : ?>
 				<?php echo $this->form->renderField('alias'); ?>
 			<?php endif; ?>
 
-			<?php if (Multilanguage::isEnabled()) : ?>
-				<?php echo HTMLHelper::_('uitab.addTab', $this->tab_name, 'language', Text::_('JFIELD_LANGUAGE_LABEL')); ?>
-				<?php echo $this->form->renderField('language'); ?>
-				<?php echo HTMLHelper::_('uitab.endTab'); ?>
-			<?php else: ?>
-				<?php echo $this->form->renderField('language'); ?>
-			<?php endif; ?>
+			<?php //echo $this->form->renderFieldset('details'); ?>
+			<?php echo HTMLHelper::_('uitab.endTab'); ?>
 
-			<?php echo LayoutHelper::render('joomla.edit.params', $this); ?>
+			<?php //echo LayoutHelper::render('joomla.edit.params', $this); ?>
 			<?php echo HTMLHelper::_('uitab.endTabSet'); ?>
 
 			<input type="hidden" name="task" value=""/>
@@ -59,11 +54,11 @@ $this->useCoreUI        = true;
 		</fieldset>
 		<div class="mb-2">
 			<button type="button" class="btn btn-primary" onclick="Joomla.submitbutton('foo.save')">
-				<span class="fa fa-check" aria-hidden="true"></span>
+				<span class="fas fa-check" aria-hidden="true"></span>
 				<?php echo Text::_('JSAVE'); ?>
 			</button>
 			<button type="button" class="btn btn-danger" onclick="Joomla.submitbutton('foo.cancel')">
-				<span class="fa fa-times-cancel" aria-hidden="true"></span>
+				<span class="fas fa-times-cancel" aria-hidden="true"></span>
 				<?php echo Text::_('JCANCEL'); ?>
 			</button>
 		</div>
