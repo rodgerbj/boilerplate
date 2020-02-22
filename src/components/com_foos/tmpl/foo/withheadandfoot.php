@@ -14,6 +14,8 @@ if ($this->item->params->get('show_name')) {
 	}
 }
 
+echo "<hr>Hier kannst du eine Fußzeile anzeigen.<hr>";
+
 echo $this->item->event->afterDisplayTitle; 
 echo $this->item->event->beforeDisplayContent;
 echo $this->item->event->afterDisplayContent;

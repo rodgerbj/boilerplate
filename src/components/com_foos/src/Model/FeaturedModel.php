@@ -21,7 +21,7 @@ use Joomla\Registry\Registry;
 /**
  * Featured foos model class.
  *
- * @since  1.6.0
+ * @since  __BUMP_VERSION__
  */
 class FeaturedModel extends ListModel
 {
@@ -30,7 +30,7 @@ class FeaturedModel extends ListModel
 	 *
 	 * @param   array  $config  An optional associative array of configuration settings.
 	 *
-	 * @since   1.6
+	 * @since   __BUMP_VERSION__
 	 */
 	public function __construct($config = array())
 	{
@@ -75,7 +75,7 @@ class FeaturedModel extends ListModel
 	 *
 	 * @return  string    An SQL query
 	 *
-	 * @since   1.6
+	 * @since   __BUMP_VERSION__
 	 */
 	protected function getListQuery()
 	{
@@ -148,7 +148,7 @@ class FeaturedModel extends ListModel
 	 *
 	 * @return  void
 	 *
-	 * @since   1.6
+	 * @since   __BUMP_VERSION__
 	 */
 	protected function populateState($ordering = null, $direction = null)
 	{

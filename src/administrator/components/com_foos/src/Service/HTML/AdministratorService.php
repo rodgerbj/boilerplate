@@ -21,7 +21,7 @@ use Joomla\Utilities\ArrayHelper;
 /**
  * Foo HTML class.
  *
- * @since  1.0.0
+ * @since  __BUMP_VERSION__
  */
 class AdministratorService
 {
@@ -100,7 +100,7 @@ class AdministratorService
 	 *
 	 * @return  string	The anchor tag to toggle featured/unfeatured foos.
 	 *
-	 * @since   1.6
+	 * @since   __BUMP_VERSION__
 	 */
 	public function featured($value, $i, $canChange = true)
 	{
