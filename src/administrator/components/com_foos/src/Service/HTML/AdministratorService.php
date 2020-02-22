@@ -20,7 +20,7 @@ use Joomla\CMS\Router\Route;
 /**
  * Foo HTML class.
  *
- * @since  1.0.0
+ * @since  __BUMP_VERSION__
  */
 class AdministratorService
 {
