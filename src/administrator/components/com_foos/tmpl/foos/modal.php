@@ -33,10 +33,10 @@ $onclick   = $this->escape($function);
 		<?php else : ?>
 			<table class="table table-sm">
 				<thead>
+					<tr>
 					<caption id="captionTable" class="sr-only">
 						<?php echo Text::_('COM_FOOS_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 					</caption>
-					<tr>
 						<th scope="col" style="width:10%" class="d-none d-md-table-cell">
 						</th>
 						<th scope="col" style="width:1%">

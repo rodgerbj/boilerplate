@@ -217,4 +217,20 @@
 			<item>Add checkout/checkin</item>
 		</note>
 	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>22.0.0</version>
+		<note>
+			<item>Add batch</item>
+		</note>
+	</changelog>
+	<changelog>
+		<element>com_foos</element>
+		<type>component</type>
+		<version>23.0.0</version>
+		<note>
+			<item>Add helplink</item>
+		</note>
+	</changelog>
 </changelogs>
