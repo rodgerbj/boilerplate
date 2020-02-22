@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fieldset 
+		name="foo" 
+		label="COM_FOOS_FOO_DEFAULT_LABEL">
+		<field
+			name="spacer"
+			type="spacer"
+			label="COM_FOOS_FOO_REQUIRED"
+			class="text"
+		/>
+
+		<field
+			name="name"
+			type="text"
+			label="COM_FOOS_FOO_NAME_LABEL"
+			id="foo-name"
+			size="30"
+			filter="string"
+			required="true"
+		/>
+	</fieldset>
+</form>
