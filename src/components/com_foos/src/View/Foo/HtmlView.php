@@ -18,7 +18,7 @@ use Joomla\Registry\Registry;
 /**
  * HTML Foos View class for the Foo component
  *
- * @since  2.0.0
+ * @since  __BUMP_VERSION__
  */
 class HtmlView extends BaseHtmlView
 {
@@ -26,7 +26,7 @@ class HtmlView extends BaseHtmlView
 	 * The page parameters
 	 *
 	 * @var    \Joomla\Registry\Registry|null
-	 * @since  1.0.0
+	 * @since  __BUMP_VERSION__
 	 */
 	protected $params = null;
 
@@ -34,7 +34,7 @@ class HtmlView extends BaseHtmlView
 	 * The item model state
 	 *
 	 * @var    \Joomla\Registry\Registry
-	 * @since  1.0.0
+	 * @since  __BUMP_VERSION__
 	 */
 	protected $state;
 
@@ -42,7 +42,7 @@ class HtmlView extends BaseHtmlView
 	 * The item object details
 	 *
 	 * @var    \JObject
-	 * @since  1.0.0
+	 * @since  __BUMP_VERSION__
 	 */
 	protected $item;
 
@@ -56,11 +56,21 @@ class HtmlView extends BaseHtmlView
 	public function display($tpl = null)
 	{
 		$item = $this->item = $this->get('Item');
+
 		$state = $this->State = $this->get('State');
 		$params = $this->Params = $state->get('params');
 		$itemparams = new Registry(json_decode($item->params));
 
 		$temp = clone $params;
+
+		/**
+		 * $item->params are the foo params, $temp are the menu item params
+		 * Merge so that the menu item params take priority
+		 *
+		 * $itemparams->merge($temp);
+		 */
+
+		// Merge so that foo params take priority
 		$temp->merge($itemparams);
 		$item->params = $temp;
 
