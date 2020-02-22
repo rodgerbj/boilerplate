@@ -35,8 +35,6 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 <input type="text" readonly id="jform_id" name="jform_id" value="<?php echo (int) $this->item->id ?>">
 <form action="<?php echo Route::_('index.php?option=com_foos&layout=' . $layout . $tmpl . '&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="foo-form" class="form-validate">
 
-	<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
-
 	<div>
 		<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'details')); ?>
 
@@ -45,6 +43,8 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 			<div class="col-md-9">
 				<div class="row">
 					<div class="col-md-6">
+						<?php echo $this->getForm()->renderField('name'); ?>
+						<?php echo $this->getForm()->renderField('alias'); ?>
 						<?php echo $this->getForm()->renderField('access'); ?>
 						<?php echo $this->getForm()->renderField('published'); ?>
 						<?php echo $this->getForm()->renderField('publish_up'); ?>
