@@ -19,7 +19,7 @@ use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 use Joomla\Input\Input;
 
 /**
- * Contacts list controller class.
+ * Foos list controller class.
  *
  * @since  __BUMP_VERSION__
  */
