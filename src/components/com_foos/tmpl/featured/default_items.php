@@ -11,9 +11,7 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
-use Joomla\CMS\Router\Route;
 use Joomla\CMS\Uri\Uri;
-use Joomla\Component\Foos\Site\Helper\RouteHelper;
 
 HTMLHelper::_('behavior.core');
 
@@ -30,18 +28,6 @@ $params = &$this->item->params;
 	<?php else : ?>
 
 	<form action="<?php echo htmlspecialchars(Uri::getInstance()->toString()); ?>" method="post" name="adminForm" id="adminForm">
-		<fieldset class="com-foos-featured__filters filters">
-		<legend class="hidelabeltxt"><?php echo Text::_('JGLOBAL_FILTER_LABEL'); ?></legend>
-		<?php if ($this->params->get('show_pagination_limit')) : ?>
-			<div class="display-limit">
-				<?php echo Text::_('JGLOBAL_DISPLAY_NUM'); ?>&#160;
-				<?php echo $this->pagination->getLimitBox(); ?>
-			</div>
-		<?php endif; ?>
-		<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>">
-			<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>">
-		</fieldset>
-
 		<table class="com-foos-featured__table table">
 			<?php if ($this->params->get('show_headings')) : ?>
 			<thead class="thead-default">
