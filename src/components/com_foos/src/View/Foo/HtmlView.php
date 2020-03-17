@@ -74,6 +74,23 @@ class HtmlView extends BaseHtmlView
 		$temp->merge($itemparams);
 		$item->params = $temp;
 
+		$active = Factory::getApplication()->getMenu()->getActive();
+
+		// Override the layout only if this is not the active menu item
+		// If it is the active menu item, then the view and item id will match
+		if ((!$active) || ((strpos($active->link, 'view=foo') === false) || (strpos($active->link, '&id=' . (string) $this->item->id) === false)))
+		{
+			if (($layout = $item->params->get('foos_layout')))
+			{
+				$this->setLayout($layout);
+			}
+		}
+		elseif (isset($active->query['layout']))
+		{
+			// We need to set the layout in case this is an alternative menu item (with an alternative layout)
+			$this->setLayout($active->query['layout']);
+		}
+
 		Factory::getApplication()->triggerEvent('onContentPrepare', array ('com_foos.foo', &$item));
 
 		// Store the events for later
