@@ -10,7 +10,6 @@
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Layout\LayoutHelper;
-echo 'test';
 ?>
 
 <div class="com-foo-category">
