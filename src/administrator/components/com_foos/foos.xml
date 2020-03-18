@@ -38,7 +38,12 @@
 	<!-- Back-end files -->
 	<administration>
 		<!-- Menu entries -->
-		<menu view="foos">COM_FOOS</menu>
+		<menu img="class:comment">
+			COM_FOOS
+			<params>
+				<dashboard>foos</dashboard>
+			</params>
+		</menu>
 		<submenu>
 			<menu link="option=com_foos">COM_FOOS</menu>
 			<menu link="option=com_categories&amp;extension=com_foos"
