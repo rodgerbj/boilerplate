@@ -6,7 +6,7 @@
  * @copyright   Copyright (C) 2005 - 2020 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
-defined('_JEXEC') or die;
+\defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Installer\InstallerAdapter;
@@ -17,7 +17,7 @@ use Joomla\CMS\Table\Table;
 /**
  * Script file of Foo Component
  *
- * @since  1.0.0
+ * @since  __BUMP_VERSION__
  */
 class Com_FoosInstallerScript
 {
@@ -25,7 +25,7 @@ class Com_FoosInstallerScript
 	 * Minimum Joomla version to check
 	 *
 	 * @var    string
-	 * @since  1.0.0
+	 * @since  __BUMP_VERSION__
 	 */
 	private $minimumJoomlaVersion = '4.0';
 
@@ -33,7 +33,7 @@ class Com_FoosInstallerScript
 	 * Minimum PHP version to check
 	 *
 	 * @var    string
-	 * @since  1.0.0
+	 * @since  __BUMP_VERSION__
 	 */
 	private $minimumPHPVersion = JOOMLA_MINIMUM_PHP;
 
@@ -44,14 +44,14 @@ class Com_FoosInstallerScript
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since  1.0.0
+	 * @since  __BUMP_VERSION__
 	 */
 	public function install($parent): bool
 	{
 		echo Text::_('COM_FOOS_INSTALLERSCRIPT_INSTALL');
 
 		$db = Factory::getDbo();
-		
+
 		// Initialize a new category.
 		$category = Table::getInstance('Category');
 
@@ -61,16 +61,18 @@ class Com_FoosInstallerScript
 			'description'     => '',
 			'published'       => 1,
 			'access'          => 1,
-			'params'          => '{"category_layout":"","image":""}',
+			'level'           => 1,
+			'path'            => 'uncategorised',
+			'params'          => '{"category_layout":"","image":"", "image_alt":""}',
 			'metadesc'        => '',
 			'metakey'         => '',
-			'metadata'        => '{"page_title":"","author":"","robots":""}',
+			'metadata'        => '{"author":"","robots":""}',
 			'created_time'    => Factory::getDate()->toSql(),
 			'created_user_id' => (int) $this->getAdminId(),
 			'rules'           => array(),
 			'parent_id'       => 1,
 		);
-		
+
 		// Bind the data to the table
 		if (!$category->bind($data))
 		{
@@ -99,7 +101,7 @@ class Com_FoosInstallerScript
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since  1.0.0
+	 * @since  __BUMP_VERSION__
 	 */
 	public function uninstall($parent): bool
 	{
@@ -115,7 +117,7 @@ class Com_FoosInstallerScript
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since  1.0.0
+	 * @since  __BUMP_VERSION__
 	 *
 	 */
 	public function update($parent): bool
@@ -133,7 +135,7 @@ class Com_FoosInstallerScript
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since  1.0.0
+	 * @since  __BUMP_VERSION__
 	 *
 	 * @throws Exception
 	 */
@@ -179,7 +181,7 @@ class Com_FoosInstallerScript
 	 *
 	 * @return  boolean  True on success
 	 *
-	 * @since  1.0.0
+	 * @since  __BUMP_VERSION__
 	 *
 	 */
 	public function postflight($type, $parent)
@@ -232,5 +234,5 @@ class Com_FoosInstallerScript
 		}
 
 		return $id;
-	}	
+	}
 }

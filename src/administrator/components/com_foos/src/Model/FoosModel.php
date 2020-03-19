@@ -9,16 +9,16 @@
 
 namespace Joomla\Component\Foos\Administrator\Model;
 
-defined('_JEXEC') or die;
+\defined('_JEXEC') or die;
 
-use Joomla\CMS\Factory;
-use Joomla\CMS\Language\Associations;
 use Joomla\CMS\MVC\Model\ListModel;
+use Joomla\CMS\Language\Associations;
+use Joomla\CMS\Factory;
 
 /**
  * Methods supporting a list of foo records.
  *
- * @since  1.0
+ * @since  __BUMP_VERSION__
  */
 class FoosModel extends ListModel
 {
@@ -28,7 +28,8 @@ class FoosModel extends ListModel
 	 * @param   array  $config  An optional associative array of configuration settings.
 	 *
 	 * @see     \JControllerLegacy
-	 * @since   1.0
+	 *
+	 * @since   __BUMP_VERSION__
 	 */
 	public function __construct($config = array())
 	{
@@ -39,7 +40,7 @@ class FoosModel extends ListModel
 	 *
 	 * @return  \JDatabaseQuery
 	 *
-	 * @since   1.0
+	 * @since   __BUMP_VERSION__
 	 */
 	protected function getListQuery()
 	{
@@ -49,22 +50,11 @@ class FoosModel extends ListModel
 
 		// Select the required fields from the table.
 		$query->select(
-			$db->quoteName(array('a.id', 'a.name', 'a.catid', 'a.access', 'a.published', 'a.publish_up', 'a.publish_down', 'a.language'))
-		);
-
-		// Select the required fields from the table.
-		$query->select(
 			$db->quoteName(
-				explode(
-					', ',
-					$this->getState(
-						'list.select',
-						'a.id, a.name, a.catid' .
-						', a.access' .
-						', a.language' .
-						', a.published' .
-						', a.publish_up, a.publish_down'
-					)
+				array(
+					'a.id', 'a.name', 'a.alias', 'a.access',
+					'a.catid', 'a.published', 'a.publish_up', 'a.publish_down',
+					'a.language'
 				)
 			)
 		);
@@ -129,12 +119,11 @@ class FoosModel extends ListModel
 	 *
 	 * @return  void
 	 *
-	 * @since   1.0
+	 * @since   __BUMP_VERSION__
 	 */
 	protected function populateState($ordering = 'a.name', $direction = 'asc')
 	{
 		$app = Factory::getApplication();
-
 		$forcedLanguage = $app->input->get('forcedLanguage', '', 'cmd');
 
 		// Adjust the context to support modal layouts.

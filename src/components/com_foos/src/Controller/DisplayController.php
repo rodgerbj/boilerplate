@@ -9,16 +9,15 @@
 
 namespace Joomla\Component\Foos\Site\Controller;
 
-defined('_JEXEC') or die;
+\defined('_JEXEC') or die;
 
-use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Controller\BaseController;
 use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 
 /**
  * Foos Component Controller
  *
- * @since  2.0.0
+ * @since  __BUMP_VERSION__
  */
 class DisplayController extends BaseController
 {
@@ -32,7 +31,7 @@ class DisplayController extends BaseController
 	 * @param   CMSApplication       $app      The JApplication for the dispatcher
 	 * @param   \JInput              $input    Input
 	 *
-	 * @since   2.0.0
+	 * @since   __BUMP_VERSION__
 	 */
 	public function __construct($config = array(), MVCFactoryInterface $factory = null, $app = null, $input = null)
 	{
@@ -47,7 +46,7 @@ class DisplayController extends BaseController
 	 *
 	 * @return  static  This object to support chaining.
 	 *
-	 * @since   2.0.0
+	 * @since   __BUMP_VERSION__
 	 */
 	public function display($cachable = false, $urlparams = array())
 	{

@@ -9,14 +9,14 @@
 
 namespace Joomla\Component\Foos\Administrator\Controller;
 
-defined('_JEXEC') or die;
+\defined('_JEXEC') or die;
 
 use Joomla\CMS\MVC\Controller\FormController;
 
 /**
  * Controller for a single foo
  *
- * @since  6.1.0
+ * @since  __BUMP_VERSION__
  */
 class FooController extends FormController
 {
