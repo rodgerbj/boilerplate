@@ -12,13 +12,14 @@ use Joomla\CMS\Installer\InstallerAdapter;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Log\Log;
 use Joomla\CMS\Table\Table;
+use Joomla\CMS\Installer\InstallerScript;
 
 /**
  * Script file of Foo Component
  *
  * @since  __BUMP_VERSION__
  */
-class Com_FoosInstallerScript
+class Com_FoosInstallerScript extends InstallerScript
 {
 	/**
 	 * Minimum Joomla version to check
@@ -90,6 +91,8 @@ class Com_FoosInstallerScript
 			return false;
 		}
 
+		$this->addDashboardMenu('foo', 'foo');
+
 		return true;
 	}
 
@@ -122,6 +125,8 @@ class Com_FoosInstallerScript
 	public function update($parent): bool
 	{
 		echo Text::_('COM_FOOS_INSTALLERSCRIPT_UPDATE');
+		
+		$this->addDashboardMenu('foo', 'foo');
 
 		return true;
 	}

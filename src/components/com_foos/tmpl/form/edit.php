@@ -1,66 +1,100 @@
 <?php
 /**
- * @package     Joomla.Site
+ * @package     Joomla.Administrator
  * @subpackage  com_foos
  *
- * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Language\Multilanguage;
+use Joomla\CMS\Language\Associations;
+use Joomla\CMS\Router\Route;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Layout\LayoutHelper;
-use Joomla\CMS\Router\Route;
 
-HTMLHelper::_('behavior.keepalive');
 HTMLHelper::_('behavior.formvalidator');
+HTMLHelper::_('script', 'com_foos/admin-foos-letter.js', array('version' => 'auto', 'relative' => true));
 
-$this->tab_name = 'com-foo-form';
-$this->ignore_fieldsets = array('details', 'item_associations', 'language');
+$app = Factory::getApplication();
+$input = $app->input;
+
+$assoc = Associations::isEnabled();
+
+$this->ignore_fieldsets = array('item_associations');
 $this->useCoreUI = true;
+
+// In case of modal
+$isModal = $input->get('layout') == 'modal' ? true : false;
+$layout  = $isModal ? 'modal' : 'edit';
+$tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
 ?>
-<div class="edit item-page<?php echo $this->pageclass_sfx; ?>">
-	<?php if ($this->params->get('show_page_heading')) : ?>
-		<div class="page-header">
-			<h1>
-				<?php echo $this->escape($this->params->get('page_heading')); ?>
-			</h1>
+<form action="<?php echo Route::_('index.php?option=com_foos&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate form-vertical">
+
+	<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
+
+	<div>
+		<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'details')); ?>
+
+		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'details', empty($this->item->id) ? Text::_('COM_FOOS_NEW_FOO') : Text::_('COM_FOOS_EDIT_FOO')); ?>
+		<div class="row">
+			<div class="col-md-9">
+				<div class="row">
+					<div class="col-md-6">
+						<?php echo 'Hier ist Platz für die Inhalte deiner Erweiterung'; ?>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="card">
+					<div class="card-body">
+						<?php echo LayoutHelper::render('joomla.edit.global', $this); ?>
+					</div>
+				</div>
+			</div>
 		</div>
-	<?php endif; ?>
-
-	<form action="<?php echo Route::_('index.php?option=com_foos&id=' . (int) $this->item->id); ?>" method="post"
-		name="adminForm" id="adminForm" class="form-validate form-vertical">
-		<fieldset>
-			<?php echo HTMLHelper::_('uitab.startTabSet', $this->tab_name, array('active' => 'details')); ?>
-			<?php echo HTMLHelper::_('uitab.addTab', $this->tab_name, 'details', empty($this->item->id) ? Text::_('COM_FOOS_NEW_FOO') : Text::_('COM_FOOS_EDIT_FOO')); ?>
-			<?php echo $this->form->renderField('name'); ?>
-
-			<?php if (is_null($this->item->id)) : ?>
-				<?php echo $this->form->renderField('alias'); ?>
-			<?php endif; ?>
-
-			<?php //echo $this->form->renderFieldset('details'); ?>
+		<?php echo HTMLHelper::_('uitab.endTab'); ?>
+		
+		<?php if ( !$isModal && $assoc) : ?>
+			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'associations', Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS')); ?>
+			<?php echo $this->loadTemplate('associations'); ?>
 			<?php echo HTMLHelper::_('uitab.endTab'); ?>
+		<?php elseif ($isModal && $assoc) : ?>
+			<div class="hidden"><?php echo $this->loadTemplate('associations'); ?></div>
+		<?php endif; ?>
+		
+		<?php echo LayoutHelper::render('joomla.edit.params', $this); ?>
 
-			<?php //echo LayoutHelper::render('joomla.edit.params', $this); ?>
-			<?php echo HTMLHelper::_('uitab.endTabSet'); ?>
-
-			<input type="hidden" name="task" value=""/>
-			<input type="hidden" name="return" value="<?php echo $this->return_page; ?>"/>
-			<?php echo HTMLHelper::_('form.token'); ?>
-		</fieldset>
-		<div class="mb-2">
-			<button type="button" class="btn btn-primary" onclick="Joomla.submitbutton('foo.save')">
-				<span class="fas fa-check" aria-hidden="true"></span>
-				<?php echo Text::_('JSAVE'); ?>
-			</button>
-			<button type="button" class="btn btn-danger" onclick="Joomla.submitbutton('foo.cancel')">
-				<span class="fas fa-times-cancel" aria-hidden="true"></span>
-				<?php echo Text::_('JCANCEL'); ?>
-			</button>
+		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'publishing', Text::_('JGLOBAL_FIELDSET_PUBLISHING')); ?>
+		<div class="row">
+			<div class="col-md-6">
+				<fieldset id="fieldset-publishingdata" class="options-form">
+					<legend><?php echo Text::_('JGLOBAL_FIELDSET_PUBLISHING'); ?></legend>
+					<div>
+					<?php echo LayoutHelper::render('joomla.edit.publishingdata', $this); ?>
+					</div>
+				</fieldset>
+			</div>
 		</div>
-	</form>
-</div>
+		<?php echo HTMLHelper::_('uitab.endTab'); ?>
+
+		<?php echo HTMLHelper::_('uitab.endTabSet'); ?>
+	</div>
+
+	<input type="hidden" name="task" value="">
+	<input type="hidden" name="return" value="<?php echo $this->return_page; ?>"/>
+	<?php echo HTMLHelper::_('form.token'); ?>
+	<div class="mb-2">
+		<button type="button" class="btn btn-primary" onclick="Joomla.submitbutton('foo.save')">
+			<span class="fas fa-check" aria-hidden="true"></span>
+			<?php echo Text::_('JSAVE'); ?>
+		</button>
+		<button type="button" class="btn btn-danger" onclick="Joomla.submitbutton('foo.cancel')">
+			<span class="fas fa-times-cancel" aria-hidden="true"></span>
+			<?php echo Text::_('JCANCEL'); ?>
+		</button>
+	</div>
+</form>
