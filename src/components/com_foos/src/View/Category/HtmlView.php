@@ -9,7 +9,7 @@
 
 namespace Joomla\Component\Foos\Site\View\Category;
 
-defined('_JEXEC') or die;
+\defined('_JEXEC') or die;
 
 use Joomla\CMS\MVC\View\CategoryView;
 use Joomla\Component\Foos\Site\Helper\RouteHelper;
