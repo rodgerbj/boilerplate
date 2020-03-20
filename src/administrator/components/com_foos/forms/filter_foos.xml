@@ -62,6 +62,16 @@
 			<option value="*">JALL</option>
 		</field>
 
+		<field
+			name="tag"
+			type="tag"
+			label="JOPTION_SELECT_TAG"
+			multiple="true"
+			mode="nested"
+			custom="false"
+			hint="JOPTION_SELECT_TAG"
+			onchange="this.form.submit();"
+		/>
 	</fields>
 
 	<fields name="list">
