@@ -9,7 +9,7 @@
 
 namespace Joomla\Component\Foos\Administrator\Controller;
 
-defined('_JEXEC') or die;
+\defined('_JEXEC') or die;
 
 use Joomla\CMS\Language\Text;
 use Joomla\Utilities\ArrayHelper;
@@ -19,7 +19,7 @@ use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 use Joomla\Input\Input;
 
 /**
- * Contacts list controller class.
+ * Foos list controller class.
  *
  * @since  __BUMP_VERSION__
  */
