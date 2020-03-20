@@ -50,7 +50,7 @@ return new class implements ServiceProviderInterface
 		$container->registerServiceProvider(new MVCFactory('\\Joomla\\Component\\Foos'));
 		$container->registerServiceProvider(new ComponentDispatcherFactory('\\Joomla\\Component\\Foos'));
 		$container->registerServiceProvider(new RouterFactory('\\Joomla\\Component\\Foos'));
-		
+
 		$container->set(
 			ComponentInterface::class,
 			function (Container $container)
@@ -62,7 +62,7 @@ return new class implements ServiceProviderInterface
 				$component->setCategoryFactory($container->get(CategoryFactoryInterface::class));
 				$component->setAssociationExtension($container->get(AssociationExtensionInterface::class));
 				$component->setRouterFactory($container->get(RouterFactoryInterface::class));
-				
+
 				return $component;
 			}
 		);

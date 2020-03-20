@@ -92,7 +92,7 @@ class Com_FoosInstallerScript extends InstallerScript
 			return false;
 		}
 
-		$this->addDashboardMenu('foo', 'foo');
+		$this->addDashboardMenu('foos', 'foos');
 
 		return true;
 	}
@@ -126,7 +126,7 @@ class Com_FoosInstallerScript extends InstallerScript
 	public function update($parent): bool
 	{
 		echo Text::_('COM_FOOS_INSTALLERSCRIPT_UPDATE');
-		
+
 		$this->addDashboardMenu('foo', 'foo');
 
 		return true;
