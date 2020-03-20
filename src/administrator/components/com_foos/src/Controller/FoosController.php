@@ -14,7 +14,7 @@ use Joomla\CMS\MVC\Controller\AdminController;
 use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 use Joomla\Input\Input;
 
-defined('_JEXEC') or die;
+\defined('_JEXEC') or die;
 
 /**
  * Contacts list controller class.
