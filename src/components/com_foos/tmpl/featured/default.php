@@ -7,7 +7,8 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-defined('_JEXEC') or die;
+\defined('_JEXEC') or die;
+
 ?>
 <div class="com-foos-featured blog-featured">
 <?php if ($this->params->get('show_page_headings') != 0 ) : ?>
