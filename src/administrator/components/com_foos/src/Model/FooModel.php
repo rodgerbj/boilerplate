@@ -17,6 +17,7 @@ use Joomla\CMS\MVC\Model\AdminModel;
 use Joomla\CMS\Language\LanguageHelper;
 use Joomla\Database\ParameterType;
 use Joomla\Utilities\ArrayHelper;
+use Joomla\CMS\Helper\TagsHelper;
 
 /**
  * Item Model for a Foo.
@@ -56,6 +57,7 @@ class FooModel extends AdminModel
 	protected $batch_commands = array(
 		'assetgroup_id' => 'batchAccess',
 		'language_id'   => 'batchLanguage',
+		'tag'           => 'batchTag',
 		'user_id'       => 'batchUser',
 	);
 
@@ -128,6 +130,13 @@ class FooModel extends AdminModel
 					$item->associations[$tag] = $association->id;
 				}
 			}
+		}
+
+		// Load item tags
+		if (!empty($item->id))
+		{
+			$item->tags = new TagsHelper;
+			$item->tags->getTagIds($item->id, 'com_foos.foo');
 		}
 
 		return $item;
