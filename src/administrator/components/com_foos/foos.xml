@@ -74,8 +74,7 @@
 	</administration>
 	<api>
 		<files folder="api/components/com_foos">
-			<folder>Controller</folder>
-			<folder>View</folder>
+			<folder>src</folder>
 		</files>
 	</api>
 	<changelogurl>https://raw.githubusercontent.com/astridx/boilerplate/tutorial/changelog.xml</changelogurl>
