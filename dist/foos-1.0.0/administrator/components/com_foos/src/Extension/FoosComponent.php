@@ -23,6 +23,8 @@ use Joomla\Component\Foos\Administrator\Service\HTML\AdministratorService;
 use Joomla\Component\Foos\Administrator\Service\HTML\Icon;
 use Psr\Container\ContainerInterface;
 use Joomla\CMS\Helper\ContentHelper;
+use Joomla\CMS\Component\Router\RouterServiceInterface;
+use Joomla\CMS\Component\Router\RouterServiceTrait;
 
 /**
  * Component class for com_foos
@@ -30,11 +32,12 @@ use Joomla\CMS\Helper\ContentHelper;
  * @since  __BUMP_VERSION__
  */
 class FoosComponent extends MVCComponent
-implements BootableExtensionInterface, CategoryServiceInterface, AssociationServiceInterface
+implements BootableExtensionInterface, CategoryServiceInterface, AssociationServiceInterface, RouterServiceInterface
 {
 	use CategoryServiceTrait;
 	use AssociationServiceTrait;
 	use HTMLRegistryAwareTrait;
+	use RouterServiceTrait;
 
 	/**
 	 * Booting the extension. This is the function to set up the environment of the extension like

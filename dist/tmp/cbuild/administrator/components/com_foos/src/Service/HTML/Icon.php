@@ -9,7 +9,7 @@
 
 namespace Joomla\Component\Foos\Administrator\Service\HTML;
 
-defined('_JEXEC') or die;
+\defined('_JEXEC') or die;
 
 use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Factory;
@@ -187,10 +187,10 @@ class Icon
 		}
 
 		$text = '<span class="hasTooltip fa fa-' . $icon . '" title="'
-			. HTMLHelper::tooltipText(Text::_('COM_FOOS_EDIT_CONTACT'), $overlib, 0, 0) . '"></span> ';
+			. HTMLHelper::tooltipText(Text::_('COM_FOOS_EDIT_FOO'), $overlib, 0, 0) . '"></span> ';
 		$text .= Text::_('JGLOBAL_EDIT');
 
-		$attribs['title'] = Text::_('COM_FOOS_EDIT_CONTACT');
+		$attribs['title'] = Text::_('COM_FOOS_EDIT_FOO');
 		$output           = HTMLHelper::_('link', Route::_($url), $text, $attribs);
 
 		return $output;

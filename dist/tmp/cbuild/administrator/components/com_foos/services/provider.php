@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-defined('_JEXEC') or die;
+\defined('_JEXEC') or die;
 
 use Joomla\CMS\Categories\CategoryFactoryInterface;
 use Joomla\CMS\Dispatcher\ComponentDispatcherFactoryInterface;
@@ -22,6 +22,8 @@ use Joomla\DI\ServiceProviderInterface;
 use Joomla\Component\Foos\Administrator\Extension\FoosComponent;
 use Joomla\Component\Foos\Administrator\Helper\AssociationsHelper;
 use Joomla\CMS\Association\AssociationExtensionInterface;
+use Joomla\CMS\Component\Router\RouterFactoryInterface;
+use Joomla\CMS\Extension\Service\Provider\RouterFactory;
 
 /**
  * The foos service provider.
@@ -47,6 +49,7 @@ return new class implements ServiceProviderInterface
 		$container->registerServiceProvider(new CategoryFactory('\\Joomla\\Component\\Foos'));
 		$container->registerServiceProvider(new MVCFactory('\\Joomla\\Component\\Foos'));
 		$container->registerServiceProvider(new ComponentDispatcherFactory('\\Joomla\\Component\\Foos'));
+		$container->registerServiceProvider(new RouterFactory('\\Joomla\\Component\\Foos'));
 
 		$container->set(
 			ComponentInterface::class,
@@ -58,6 +61,7 @@ return new class implements ServiceProviderInterface
 				$component->setMVCFactory($container->get(MVCFactoryInterface::class));
 				$component->setCategoryFactory($container->get(CategoryFactoryInterface::class));
 				$component->setAssociationExtension($container->get(AssociationExtensionInterface::class));
+				$component->setRouterFactory($container->get(RouterFactoryInterface::class));
 
 				return $component;
 			}
