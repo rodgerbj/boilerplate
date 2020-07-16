@@ -1,5 +1,5 @@
-dist/
 vendor/
+dist/
 RoboFile.php
 composer.json
 composer.lock
