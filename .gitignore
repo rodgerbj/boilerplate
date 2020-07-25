@@ -1,3 +1,4 @@
+dist/
 vendor/
 RoboFile.php
 composer.json
