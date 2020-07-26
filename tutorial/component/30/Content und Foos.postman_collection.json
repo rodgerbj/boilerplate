@@ -1,0 +1,410 @@
+{
+	"info": {
+		"_postman_id": "e674637a-8fcc-4362-9985-e535fb098d6f",
+		"name": "Content und Foos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List Articles",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.api+json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/index.php/v1/content/article",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"index.php",
+						"v1",
+						"content",
+						"article"
+					]
+				},
+				"description": "Get list of articles"
+			},
+			"response": []
+		},
+		{
+			"name": "List Foos",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/vnd.api+json"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/index.php/v1/foos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"index.php",
+						"v1",
+						"foos"
+					]
+				},
+				"description": "Get list of foos"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Foo ID 2",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/vnd.api+json"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/index.php/v1/foos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"index.php",
+						"v1",
+						"foos"
+					]
+				},
+				"description": "Get single of foo"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Foo ID 2",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/vnd.api+json"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/index.php/v1/foos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"index.php",
+						"v1",
+						"foos"
+					]
+				},
+				"description": "Delete single of foo"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Article ID 1",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.api+json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/index.php/v1/content/article/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"index.php",
+						"v1",
+						"content",
+						"article",
+						"1"
+					]
+				},
+				"description": "Get single article"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Article 1",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.api+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Just for you - Modified\",\n\t\"catid\": 2\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/index.php/v1/content/article/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"index.php",
+						"v1",
+						"content",
+						"article",
+						"1"
+					]
+				},
+				"description": "Update article"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Article",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.api+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Just for you\",\n    \"catid\": 2,\n    \"articletext\": \"A dummy article to save to the database\",\n    \"language\": \"*\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/index.php/v1/content/article",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"index.php",
+						"v1",
+						"content",
+						"article"
+					]
+				},
+				"description": "Create article"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Foo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.api+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Just for you\",\n    \"catid\": 2,\n    \"articletext\": \"A dummy article to save to the database\",\n    \"language\": \"*\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/index.php/v1/content/article",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"index.php",
+						"v1",
+						"content",
+						"article"
+					]
+				},
+				"description": "Create foo"
+			},
+			"response": []
+		},
+		{
+			"name": "List Categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/index.php/v1/content/categories",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"index.php",
+						"v1",
+						"content",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Category",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/vnd.api+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"A test category 2\",\n    \"parent_id\": 2,\n    \"params\": {\n    \t\"workflow_id\": \"inherit\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/index.php/v1/content/categories",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"index.php",
+						"v1",
+						"content",
+						"categories"
+					]
+				},
+				"description": "Create category"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "admin",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "3a6bdaf2-e0a1-476f-9fb4-fe3ff605e111",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c35d0e0f-81a2-41f4-b3a7-e98c434fe753",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "d67c8a6e-f16d-4e12-926b-c3d9cabfde56",
+			"key": "base_url",
+			"value": "http://localhost/joomla-cms4"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
