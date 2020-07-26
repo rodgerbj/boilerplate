@@ -410,8 +410,7 @@
         <downloads>
             <downloadurl type="full" format="zip">https://github.com/astridx/boilerplate/releases/download/v1.0.0/com_foos.zip</downloadurl>
         </downloads>
-		<sha384>539d83bdc070cc3079d79c9524931b91f00b406a23f9b873bf97dd16c64a76c87c6654d20fb6c551d8885e0bde9e9168
-		</sha384>
+		<sha384>539d83bdc070cc3079d79c9524931b91f00b406a23f9b873bf97dd16c64a76c87c6654d20fb6c551d8885e0bde9e9168</sha384>
         <maintainer>Foo Creator</maintainer>
         <maintainerurl>http://www.example.com</maintainerurl>
         <targetplatform name="joomla" version="4.*"/>
