@@ -46,6 +46,7 @@ class HtmlView extends BaseHtmlView
 	 */
 	public function display($tpl = null)
 	{
+		$this->form  = $this->get('Form');
 		$this->item = $this->get('Item');
 
 		$this->addToolbar();
