@@ -56,8 +56,8 @@ class Com_FoosInstallerScript
 		$category = Table::getInstance('Category');
 
 		$data = array(
-			'extension'       => 'com_foos',
-			'title'           => 'Uncategorised',
+			'extension' => 'com_foos',
+			'title' => 'Uncategorised',
 		);
 
 		// Bind the data to the table
