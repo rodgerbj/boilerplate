@@ -17,7 +17,8 @@ use Joomla\CMS\Session\Session;
 
 $app = Factory::getApplication();
 
-HTMLHelper::_('script', 'com_foos/admin-foos-modal.min.js', array('version' => 'auto', 'relative' => true));
+$wa = $this->document->getWebAssetManager();
+$wa->useScript('com_foos.admin-foos-modal');
 
 $function  = $app->input->getCmd('function', 'jSelectFoos');
 $onclick   = $this->escape($function);
