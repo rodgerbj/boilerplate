@@ -20,7 +20,6 @@ $app = Factory::getApplication();
 $input = $app->input;
 
 $wa = $this->document->getWebAssetManager();
-$wa->getRegistry()->addExtensionRegistryFile('com_contenthistory');
 $wa->useScript('keepalive')
 	->useScript('form.validate')
 	->useScript('com_foos.admin-foos-letter');
