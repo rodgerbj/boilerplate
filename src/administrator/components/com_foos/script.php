@@ -58,19 +58,6 @@ class Com_FoosInstallerScript
 		$data = array(
 			'extension'       => 'com_foos',
 			'title'           => 'Uncategorised',
-			'description'     => '',
-			'published'       => 1,
-			'access'          => 1,
-			'level'           => 1,
-			'path'            => 'uncategorised',
-			'params'          => '{"category_layout":"","image":"", "image_alt":""}',
-			'metadesc'        => '',
-			'metakey'         => '',
-			'metadata'        => '{"author":"","robots":""}',
-			'created_time'    => Factory::getDate()->toSql(),
-			'created_user_id' => (int) $this->getAdminId(),
-			'rules'           => array(),
-			'parent_id'       => 1,
 		);
 
 		// Bind the data to the table
@@ -196,7 +183,7 @@ class Com_FoosInstallerScript
 	 *
 	 * @return  integer|boolean  One Administrator ID.
 	 *
-	 * @since   3.2
+	 * @since   __BUMP_VERSION__
 	 */
 	private function getAdminId()
 	{
