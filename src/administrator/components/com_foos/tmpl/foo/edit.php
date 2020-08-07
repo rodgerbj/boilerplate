@@ -13,9 +13,6 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Router\Route;
 
-HTMLHelper::_('behavior.formvalidator');
-HTMLHelper::_('script', 'com_foos/admin-foos-letter.js', array('version' => 'auto', 'relative' => true));
-
 $app = Factory::getApplication();
 $input = $app->input;
 
