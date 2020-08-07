@@ -25,9 +25,6 @@ $wa->useScript('keepalive')
 	->useScript('form.validate')
 	->useScript('com_foos.admin-foos-letter');
 
-// In case of modal
-$isModal = $input->get('layout') == 'modal' ? true : false;
-
 $layout  = 'edit';
 $tmpl = $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
 ?>
