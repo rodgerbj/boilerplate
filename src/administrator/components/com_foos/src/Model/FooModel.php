@@ -72,7 +72,7 @@ class FooModel extends AdminModel
 	public function getForm($data = array(), $loadData = true)
 	{
 		// Get the form.
-		$form = $this->loadForm('com_foos.foo', 'foo', array('control' => 'jform', 'load_data' => $loadData));
+		$form = $this->loadForm($this->typeAlias, 'foo', array('control' => 'jform', 'load_data' => $loadData));
 
 		if (empty($form))
 		{
@@ -81,6 +81,7 @@ class FooModel extends AdminModel
 
 		return $form;
 	}
+
 	/**
 	 * Method to get the data that should be injected in the form.
 	 *
@@ -94,7 +95,7 @@ class FooModel extends AdminModel
 
 		$data = $this->getItem();
 
-		$this->preprocessData('com_foos.foo', $data);
+		$this->preprocessData($this->typeAlias, $data);
 
 		return $data;
 	}
