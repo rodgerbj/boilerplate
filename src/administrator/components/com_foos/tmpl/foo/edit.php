@@ -56,12 +56,10 @@ $tmpl = $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
 		</div>
 		<?php echo HTMLHelper::_('uitab.endTab'); ?>
 		
-		<?php if ( !$isModal && $assoc) : ?>
+		<?php if ($assoc) : ?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'associations', Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS')); ?>
 			<?php echo $this->loadTemplate('associations'); ?>
 			<?php echo HTMLHelper::_('uitab.endTab'); ?>
-		<?php elseif ($isModal && $assoc) : ?>
-			<div class="hidden"><?php echo $this->loadTemplate('associations'); ?></div>
 		<?php endif; ?>
 		
 		<?php echo LayoutHelper::render('joomla.edit.params', $this); ?>
