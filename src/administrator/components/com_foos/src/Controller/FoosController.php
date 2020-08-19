@@ -9,15 +9,15 @@
 
 namespace Joomla\Component\Foos\Administrator\Controller;
 
+\defined('_JEXEC') or die;
+
 use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\MVC\Controller\AdminController;
 use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 use Joomla\Input\Input;
 
-\defined('_JEXEC') or die;
-
 /**
- * Contacts list controller class.
+ * Foos list controller class.
  *
  * @since  __BUMP_VERSION__
  */
