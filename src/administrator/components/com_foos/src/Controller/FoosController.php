@@ -41,7 +41,7 @@ class FoosController extends AdminController
 	{
 		parent::__construct($config, $factory, $app, $input);
 
-		$this->registerTask('unfeatured',	'featured');
+		$this->registerTask('unfeatured', 'featured');
 	}
 
 	/**
