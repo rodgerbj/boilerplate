@@ -38,6 +38,35 @@ abstract class Route
 	public static function getFoosRoute($id, $catid, $language = 0)
 	{
 		// Create the link
+		$link = 'index.php?option=com_foos&view=foos&id=' . $id;
+
+		if ($catid > 1)
+		{
+			$link .= '&catid=' . $catid;
+		}
+
+		if ($language && $language !== '*' && Multilanguage::isEnabled())
+		{
+			$link .= '&lang=' . $language;
+		}
+
+		return $link;
+	}
+
+	/**
+	 * Get the URL route for a foo from a foo ID, foos category ID and language
+	 *
+	 * @param   integer  $id        The id of the foos
+	 * @param   integer  $catid     The id of the foos's category
+	 * @param   mixed    $language  The id of the language being used.
+	 *
+	 * @return  string  The link to the foos
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	public static function getFooRoute($id, $catid, $language = 0)
+	{
+		// Create the link
 		$link = 'index.php?option=com_foos&view=foo&id=' . $id;
 
 		if ($catid > 1)
