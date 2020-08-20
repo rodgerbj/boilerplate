@@ -22,10 +22,10 @@ use Joomla\CMS\Language\Multilanguage;
  * @subpackage  com_foos
  * @since       __DEPLOY_VERSION__
  */
-abstract class	RouteHelper
+abstract class Route
 {
 	/**
-	 * Get the URL route for a foo from a foo ID, foos category ID and language
+	 * Get the URL route for a foos from a foo ID, foos category ID and language
 	 *
 	 * @param   integer  $id        The id of the foos
 	 * @param   integer  $catid     The id of the foos's category
@@ -35,7 +35,7 @@ abstract class	RouteHelper
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
-	public static function getFooRoute($id, $catid, $language = 0)
+	public static function getFoosRoute($id, $catid, $language = 0)
 	{
 		// Create the link
 		$link = 'index.php?option=com_foos&view=foo&id=' . $id;
