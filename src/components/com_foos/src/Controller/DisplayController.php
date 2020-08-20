@@ -13,7 +13,6 @@ namespace Joomla\Component\Foos\Site\Controller;
 
 use Joomla\CMS\MVC\Controller\BaseController;
 use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
-use Joomla\CMS\Factory;
 
 /**
  * Foos Component Controller
@@ -52,11 +51,6 @@ class DisplayController extends BaseController
 	public function display($cachable = false, $urlparams = array())
 	{
 		parent::display($cachable);
-
-		if (Factory::getUser()->get('id'))
-		{
-			$cachable = false;
-		}
 
 		return $this;
 	}
