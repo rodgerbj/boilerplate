@@ -51,7 +51,9 @@ class FooField extends FormField
 		$modalId = 'Foo_' . $this->id;
 
 		// Add the modal field script to the document head.
-		HTMLHelper::_('script', 'system/fields/modal-fields.min.js', array('version' => 'auto', 'relative' => true));
+		HTMLHelper::_('script', 'system/fields/modal-fields.min.js',
+			array('version' => 'auto', 'relative' => true)
+		);
 
 		// Script to proxy the select modal function to the modal-fields.js file.
 		if ($allowSelect)
@@ -66,10 +68,10 @@ class FooField extends FormField
 			if (!isset($scriptSelect[$this->id]))
 			{
 				Factory::getDocument()->addScriptDeclaration("
-				function jSelectFoo_" . $this->id . "(id, title, object) {
-					window.processModalSelect('Foo', '" . $this->id . "', id, title, '', object);
-				}
-				"
+				function jSelectFoo_"
+					. $this->id
+					. "(id, title, object) { window.processModalSelect('Foo', '"
+					. $this->id . "', id, title, '', object);}"
 				);
 
 				$scriptSelect[$this->id] = true;
@@ -77,15 +79,14 @@ class FooField extends FormField
 		}
 
 		// Setup variables for display.
-		$linkFoos = 'index.php?option=com_foos&amp;view=foos&amp;layout=modal&amp;tmpl=component&amp;' . Session::getFormToken() . '=1';
-		$linkFoo  = 'index.php?option=com_foos&amp;view=foo&amp;layout=modal&amp;tmpl=component&amp;' . Session::getFormToken() . '=1';
+		$linkFoos = 'index.php?option=com_foos&amp;view=foos&amp;layout=modal&amp;tmpl=component&amp;'
+			. Session::getFormToken() . '=1';
 		$modalTitle   = Text::_('COM_FOOS_CHANGE_FOO');
 
 		if (isset($this->element['language']))
 		{
 			$linkFoos .= '&amp;forcedLanguage=' . $this->element['language'];
-			$linkFoo   .= '&amp;forcedLanguage=' . $this->element['language'];
-			$modalTitle     .= ' &#8212; ' . $this->element['label'];
+			$modalTitle .= ' &#8212; ' . $this->element['label'];
 		}
 
 		$urlSelect = $linkFoos . '&amp;function=jSelectFoo_' . $this->id;
@@ -119,7 +120,9 @@ class FooField extends FormField
 			$html .= '<span class="input-group">';
 		}
 
-		$html .= '<input class="form-control" id="' . $this->id . '_name" type="text" value="' . $title . '" disabled="disabled" size="35">';
+		$html .= '<input class="form-control" id="' . $this->id
+			. '_name" type="text" value="'
+			. $title . '" disabled="disabled" size="35">';
 
 		if ($allowSelect || $allowNew || $allowEdit || $allowClear)
 		{
@@ -170,8 +173,10 @@ class FooField extends FormField
 					'width'       => '800px',
 					'bodyHeight'  => 70,
 					'modalWidth'  => 80,
-					'footer'      => '<a role="button" class="btn btn-secondary" data-dismiss="modal" aria-hidden="true">'
-										. Text::_('JLIB_HTML_BEHAVIOR_CLOSE') . '</a>',
+					'footer'      => '<a role="button" '
+					. 'class="btn btn-secondary" '
+					. 'data-dismiss="modal" aria-hidden="true">'
+					. Text::_('JLIB_HTML_BEHAVIOR_CLOSE') . '</a>',
 				)
 			);
 		}
@@ -179,8 +184,13 @@ class FooField extends FormField
 		// Note: class='required' for client side validation.
 		$class = $this->required ? ' class="required modal-value"' : '';
 
-		$html .= '<input type="hidden" id="' . $this->id . '_id"' . $class . ' data-required="' . (int) $this->required . '" name="' . $this->name
-			. '" data-text="' . htmlspecialchars(Text::_('COM_FOOS_SELECT_A_FOO', true), ENT_COMPAT, 'UTF-8') . '" value="' . $value . '">';
+		$html .= '<input type="hidden" id="'
+			. $this->id . '_id"'
+			. $class . ' data-required="' . (int) $this->required
+			. '" name="' . $this->name
+			. '" data-text="'
+			. htmlspecialchars(Text::_('COM_FOOS_SELECT_A_FOO', true), ENT_COMPAT, 'UTF-8')
+			. '" value="' . $value . '">';
 
 		return $html;
 	}

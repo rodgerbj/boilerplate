@@ -57,21 +57,8 @@ class Com_FoosInstallerScript extends InstallerScript
 		$category = Table::getInstance('Category');
 
 		$data = array(
-			'extension'       => 'com_foos',
-			'title'           => 'Uncategorised',
-			'description'     => '',
-			'published'       => 1,
-			'access'          => 1,
-			'level'           => 1,
-			'path'            => 'uncategorised',
-			'params'          => '{"category_layout":"","image":"", "image_alt":""}',
-			'metadesc'        => '',
-			'metakey'         => '',
-			'metadata'        => '{"author":"","robots":""}',
-			'created_time'    => Factory::getDate()->toSql(),
-			'created_user_id' => (int) $this->getAdminId(),
-			'rules'           => array(),
-			'parent_id'       => 1,
+			'extension' => 'com_foos',
+			'title' => 'Uncategorised',
 		);
 
 		// Bind the data to the table
