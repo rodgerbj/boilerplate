@@ -12,7 +12,8 @@ namespace Joomla\Component\Foos\Site\View\Category;
 \defined('_JEXEC') or die;
 
 use Joomla\CMS\MVC\View\CategoryView;
-use Joomla\Component\Foos\Site\Helper\RouteHelper;
+use Joomla\Component\Foos\Site\Helper\Route as RouteHelper;
+
 
 /**
  * HTML View class for the Foos component

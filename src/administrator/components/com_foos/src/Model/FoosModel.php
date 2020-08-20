@@ -41,8 +41,6 @@ class FoosModel extends ListModel
 				'id', 'a.id',
 				'name', 'a.name',
 				'catid', 'a.catid', 'category_id', 'category_title',
-				'checked_out', 'a.checked_out',
-				'checked_out_time', 'a.checked_out_time',
 				'published', 'a.published',
 				'access', 'a.access', 'access_level',
 				'ordering', 'a.ordering',
