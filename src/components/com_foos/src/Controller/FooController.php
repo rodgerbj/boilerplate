@@ -118,6 +118,25 @@ class FooController extends FormController
 	}
 
 	/**
+	 * Method to save a record.
+	 *
+	 * @param   string  $key     The name of the primary key of the URL variable.
+	 * @param   string  $urlVar  The name of the URL variable if different from the primary key (sometimes required to avoid router collisions).
+	 *
+	 * @return  boolean  True if successful, false otherwise.
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	public function save($key = null, $urlVar = null)
+	{
+		$result = parent::save($key, $urlVar);
+
+		$this->setRedirect(Route::_($this->getReturnPage(), false));
+
+		return $result;
+	}
+
+	/**
 	 * Method to cancel an edit.
 	 *
 	 * @param   string  $key  The name of the primary key of the URL variable.
