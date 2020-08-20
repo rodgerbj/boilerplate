@@ -81,15 +81,12 @@ class FooField extends FormField
 		// Setup variables for display.
 		$linkFoos = 'index.php?option=com_foos&amp;view=foos&amp;layout=modal&amp;tmpl=component&amp;'
 			. Session::getFormToken() . '=1';
-		$linkFoo  = 'index.php?option=com_foos&amp;view=foo&amp;layout=modal&amp;tmpl=component&amp;'
-			. Session::getFormToken() . '=1';
 		$modalTitle   = Text::_('COM_FOOS_CHANGE_FOO');
 
 		if (isset($this->element['language']))
 		{
 			$linkFoos .= '&amp;forcedLanguage=' . $this->element['language'];
-			$linkFoo   .= '&amp;forcedLanguage=' . $this->element['language'];
-			$modalTitle     .= ' &#8212; ' . $this->element['label'];
+			$modalTitle .= ' &#8212; ' . $this->element['label'];
 		}
 
 		$urlSelect = $linkFoos . '&amp;function=jSelectFoo_' . $this->id;
