@@ -130,8 +130,9 @@ class FooController extends FormController
 	public function save($key = null, $urlVar = null)
 	{
 		$result = parent::save($key, $urlVar);
-
-		$this->setRedirect(Route::_($this->getReturnPage(), false));
+		
+		$url = 'index.php?option=' . $this->option;
+		$this->setRedirect(Route::_($url, false));
 
 		return $result;
 	}
