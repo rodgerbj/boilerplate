@@ -31,17 +31,6 @@
 	<fields name="params">
 		<fieldset name="basic" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
 			<field
-				name="show_name"
-				type="radio"
-				label="COM_FOOS_FIELD_PARAMS_NAME_LABEL"
-				default="1"
-				class=""
-				>
-				<option value="0">JHIDE</option>
-				<option value="1">JSHOW</option>
-			</field>
-
-			<field
 				name="show_pagination"
 				type="list"
 				label="JGLOBAL_PAGINATION_LABEL"
