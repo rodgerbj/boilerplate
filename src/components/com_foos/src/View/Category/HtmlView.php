@@ -12,7 +12,7 @@ namespace Joomla\Component\Foos\Site\View\Category;
 \defined('_JEXEC') or die;
 
 use Joomla\CMS\MVC\View\CategoryView;
-use Joomla\Component\Foos\Site\Helper\Route as RouteHelper;
+use Joomla\Component\Foos\Site\Helper\RouteHelper;
 
 
 /**
@@ -59,14 +59,11 @@ class HtmlView extends CategoryView
 	{
 		parent::commonCategoryDisplay();
 
-		// Flag indicates to not add limitstart=0 to URL
 		$this->pagination->hideEmptyLimitstart = true;
 
-		// Prepare the data.
-		// Compute the foo slug.
 		foreach ($this->items as $item)
 		{
-			$item->slug = $item->alias ? ($item->id . ':' . $item->alias) : $item->id;
+			$item->slug = $item->id;
 			$temp = $item->params;
 			$item->params = clone $this->params;
 			$item->params->merge($temp);
