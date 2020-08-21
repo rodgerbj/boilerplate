@@ -65,7 +65,7 @@
 		<field
 			name="tag"
 			type="tag"
-			label="JOPTION_SELECT_TAG"
+			label="JTAG"
 			multiple="true"
 			mode="nested"
 			custom="false"
