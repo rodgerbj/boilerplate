@@ -14,7 +14,7 @@ namespace Joomla\Component\Foos\Site\Helper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Associations;
 use Joomla\Component\Categories\Administrator\Helper\CategoryAssociationHelper;
-use Joomla\Component\Foos\Site\Helper\Route as FoosHelperRoute;
+use Joomla\Component\Foos\Site\Helper\RouteHelper;
 
 /**
  * Foos Component Association Helper
@@ -49,7 +49,7 @@ abstract class AssociationHelper extends CategoryAssociationHelper
 
 				foreach ($associations as $tag => $item)
 				{
-					$return[$tag] = FoosHelperRoute::getFoosRoute($item->id, (int) $item->catid, $item->language);
+					$return[$tag] = RouteHelper::getFoosRoute($item->id, (int) $item->catid, $item->language);
 				}
 
 				return $return;
