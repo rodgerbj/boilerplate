@@ -1,14 +1,14 @@
 <?php
 /**
- * @package    [PACKAGE_NAME]
+/**
+ * @package     Joomla.Administrator
+ * @subpackage  mod_foo
  *
- * @author     [AUTHOR] <[AUTHOR_EMAIL]>
- * @copyright  [COPYRIGHT]
- * @license    GNU General Public License version 2 or later; see LICENSE.txt
- * @link       [AUTHOR_URL]
+ * @copyright   Copyright (C) 2005 - 2020 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-defined('_JEXEC') or die;
+\defined('_JEXEC') or die;
 
 use Joomla\CMS\Helper\ModuleHelper;
 
