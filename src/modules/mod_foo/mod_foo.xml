@@ -7,7 +7,7 @@
     <authorUrl>[AUTHOR_URL]</authorUrl>
     <copyright>[COPYRIGHT]</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-    <version>1.0</version>
+    <version>__BUMP_VERSION__</version>
     <description>MOD_FOO_XML_DESCRIPTION</description>
     <namespace>Joomla\Module\Foo</namespace>
     <scriptfile>script.php</scriptfile>
@@ -18,6 +18,9 @@
         <folder>language</folder>
         <filename>mod_foo.xml</filename>
     </files>
+	<updateservers>
+		<server type="extension" priority="1" name="[PROJECT_NAME]">https://www.example.com/mod_foo.xml</server>
+	</updateservers>	
     <config>
         <fields name="params">
             <fieldset name="basic">
