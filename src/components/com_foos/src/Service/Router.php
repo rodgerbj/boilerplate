@@ -43,7 +43,7 @@ class Router extends RouterView
 	 *
 	 * @var CategoryFactoryInterface
 	 *
-	 * @since  4.0.0
+	 * @since  __BUMP_VERSION__
 	 */
 	private $categoryFactory;
 
@@ -52,7 +52,7 @@ class Router extends RouterView
 	 *
 	 * @var  array
 	 *
-	 * @since  4.0.0
+	 * @since  __BUMP_VERSION__
 	 */
 	private $categoryCache = [];
 
@@ -61,7 +61,7 @@ class Router extends RouterView
 	 *
 	 * @var DatabaseInterface
 	 *
-	 * @since  4.0.0
+	 * @since  __BUMP_VERSION__
 	 */
 	private $db;
 
@@ -283,7 +283,7 @@ class Router extends RouterView
 	 *
 	 * @return  CategoryInterface  The object containing categories
 	 *
-	 * @since   4.0.0
+	 * @since   __BUMP_VERSION__
 	 */
 	private function getCategories(array $options = []): CategoryInterface
 	{
