@@ -11,5 +11,8 @@
 \defined('_JEXEC') or die;
 
 use Joomla\CMS\Helper\ModuleHelper;
+use Joomla\Module\Foo\Site\Helper\FooHelper;
+
+$test  = FooHelper::getText();
 
 require ModuleHelper::getLayoutPath('mod_foo', $params->get('layout', 'default'));
