@@ -186,7 +186,7 @@ class Router extends RouterView
 	 *
 	 * @return  array|string  The segments of this item
 	 *
-	 * @since   4.0.0
+	 * @since   __BUMP_VERSION__
 	 */
 	public function getFormSegment($id, $query)
 	{
