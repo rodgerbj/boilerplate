@@ -14,7 +14,7 @@ namespace Joomla\Module\Foo\Site\Helper;
 /**
  * Helper for mod_foo
  *
- * @since  4.0
+ * @since  __BUMP_VERSION__
  */
 class FooHelper
 {
