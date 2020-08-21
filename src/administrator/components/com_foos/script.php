@@ -262,10 +262,10 @@ class Com_FoosInstallerScript extends InstallerScript
 
 		$tablestring = '{
 			"special": {
-			  "dbtable": "#__contact_foos",
+			  "dbtable": "#__foos",
 			  "key": "id",
 			  "type": "FooTable",
-			  "prefix": "Joomla\\\\Component\\\\Contact\\\\Administrator\\\\Table\\\\",
+			  "prefix": "Joomla\\\\Component\\\\Foos\\\\Administrator\\\\Table\\\\",
 			  "config": "array()"
 			},
 			"common": {
