@@ -22,7 +22,7 @@ use Joomla\CMS\Language\Multilanguage;
  * @subpackage  com_foos
  * @since       __DEPLOY_VERSION__
  */
-abstract class Route
+abstract class RouteHelper
 {
 	/**
 	 * Get the URL route for a foos from a foo ID, foos category ID and language
