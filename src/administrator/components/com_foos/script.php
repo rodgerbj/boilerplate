@@ -53,7 +53,7 @@ class Com_FoosInstallerScript
 
 		$db = Factory::getDbo();
 		$alias   = ApplicationHelper::stringURLSafe('FooUncategorised');
-		
+
 		// Initialize a new category.
 		$category = Table::getInstance('Category');
 
@@ -74,7 +74,7 @@ class Com_FoosInstallerScript
 			'rules' => array(),
 			'parent_id' => 1,
 		);
-		
+
 		$category->setLocation(1, 'last-child');
 
 		// Bind the data to the table
