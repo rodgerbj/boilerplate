@@ -8,6 +8,7 @@
  */
 \defined('_JEXEC') or die;
 
+use Joomla\CMS\Application\ApplicationHelper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Installer\InstallerAdapter;
 use Joomla\CMS\Language\Text;
@@ -52,14 +53,30 @@ class Com_FoosInstallerScript extends InstallerScript
 		echo Text::_('COM_FOOS_INSTALLERSCRIPT_INSTALL');
 
 		$db = Factory::getDbo();
+		$alias   = ApplicationHelper::stringURLSafe('FooUncategorised');
 
 		// Initialize a new category.
 		$category = Table::getInstance('Category');
 
 		$data = array(
 			'extension' => 'com_foos',
-			'title' => 'Uncategorised',
+			'title' => 'FooUncategorised',
+			'alias' => $alias . '(en-GB)',
+			'description' => '',
+			'published' => 1,
+			'access' => 1,
+			'params' => '{"target":"","image":""}',
+			'metadesc' => '',
+			'metakey' => '',
+			'metadata' => '{"page_title":"","author":"","robots":""}',
+			'created_time' => Factory::getDate()->toSql(),
+			'created_user_id' => (int) $this->getAdminId(),
+			'language' => 'en-GB',
+			'rules' => array(),
+			'parent_id' => 1,
 		);
+
+		$category->setLocation(1, 'last-child');
 
 		// Bind the data to the table
 		if (!$category->bind($data))
