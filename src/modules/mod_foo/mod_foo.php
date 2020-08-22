@@ -15,4 +15,6 @@ use Joomla\Module\Foo\Site\Helper\FooHelper;
 
 $test  = FooHelper::getText();
 
+$url = $params->get('domain');
+
 require ModuleHelper::getLayoutPath('mod_foo', $params->get('layout', 'default'));
