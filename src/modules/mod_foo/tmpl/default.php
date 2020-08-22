@@ -9,4 +9,4 @@
 
 \defined('_JEXEC') or die;
 
-echo '[PROJECT_NAME]' . $test;
+echo '[PROJECT_NAME]' . $test . '<br />' . $url;
