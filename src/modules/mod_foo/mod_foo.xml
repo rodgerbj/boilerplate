@@ -17,9 +17,6 @@
         <folder>language</folder>
         <filename>mod_foo.xml</filename>
     </files>
-    <updateservers>
-        <server type="extension" priority="1" name="[PROJECT_NAME]">https://www.example.com/mod_foo.xml</server>
-    </updateservers>
     <config>
         <fields name="params">
             <fieldset name="basic">
@@ -45,29 +42,32 @@
                     rows="3"
                 />
 
-                <field
-                    name="cache"
-                    type="list"
-                    label="COM_MODULES_FIELD_CACHING_LABEL"
-                    default="0"
-                >
-                    <option value="1">JGLOBAL_USE_GLOBAL</option>
-                    <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
-                </field>
+				<field
+					name="cache"
+					type="list"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					default="1"
+					filter="integer"
+					validate="options"
+					>
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
 
-                <field
-                    name="cache_time"
-                    type="number"
-                    label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
-                    default="0"
-                />
+				<field
+					name="cache_time"
+					type="number"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					default="900"
+					filter="integer"
+				/>
 
                 <field
                     name="cachemode"
                     type="hidden"
-                    default="itemid"
+                    default="static"
                 >
-                    <option value="itemid"></option>
+                    <option value="static"></option>
                 </field>
             </fieldset>
         </fields>
