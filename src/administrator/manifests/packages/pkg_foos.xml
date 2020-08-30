@@ -18,7 +18,8 @@
 		<!-- The id for each extension is the element stored in the DB -->
 		<file type="component" id="com_foos">com_foos.zip</file>
 		<file type="module" id="mod_foo" client="site">mod_foo.zip</file>
-		<file type="plugin" id="foos" group="webservices">plg_webservices_foos.zip</file>
+		<file type="plugin" id="plg_webservices_foos" group="webservices">plg_webservices_foos.zip</file>
+		<file type="template" id="tpl_facile" client="site">tpl_facile.zip</file>
 	</files>
 	<languages folder="language">
 		<language tag="en-GB">en-GB/pkg_foos.sys.ini</language>
