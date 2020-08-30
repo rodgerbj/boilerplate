@@ -21,10 +21,6 @@
 		<file type="plugin" id="plg_webservices_foos" group="webservices">plg_webservices_foos.zip</file>
 		<file type="template" id="tpl_facile" client="site">tpl_facile.zip</file>
 	</files>
-	<languages folder="language">
-		<language tag="en-GB">en-GB/pkg_foos.sys.ini</language>
-		<language tag="de-DE">de-DE/pkg_foos.sys.ini</language>
-	</languages>
 	<updateservers>
 		<server type="extension" name="Foo Updates">https://raw.githubusercontent.com/astridx/boilerplate/tutorial/foo_update.xml</server>
 	</updateservers>
