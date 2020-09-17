@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace Joomla\Component\Foos\Administrator\Model;
+namespace FooNamespace\Component\Foos\Administrator\Model;
 
 \defined('_JEXEC') or die;
 
