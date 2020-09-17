@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace Joomla\Component\Foos\Site\Model;
+namespace FooNamespace\Component\Foos\Site\Model;
 
 \defined('_JEXEC') or die;
 
@@ -23,7 +23,7 @@ use Joomla\Utilities\ArrayHelper;
  *
  * @since  __DEPLOY_VERSION__
  */
-class FormModel extends \Joomla\Component\Foos\Administrator\Model\FooModel
+class FormModel extends \FooNamespace\Component\Foos\Administrator\Model\FooModel
 {
 	/**
 	 * Model typeAlias string. Used for version history.
