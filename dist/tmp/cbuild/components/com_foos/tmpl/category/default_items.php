@@ -14,9 +14,9 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Uri\Uri;
-use Joomla\Component\Foos\Administrator\Helper\FooHelper;
-use Joomla\Component\Foos\Site\Helper\Route as FooHelperRoute;
-use Joomla\Component\Foos\Site\Helper\RouteHelper;
+use FooNamespace\Component\Foos\Administrator\Helper\FooHelper;
+use FooNamespace\Component\Foos\Site\Helper\Route as FooHelperRoute;
+use FooNamespace\Component\Foos\Site\Helper\RouteHelper;
 
 HTMLHelper::_('behavior.core');
 $canDo   = FooHelper::getActions('com_foos', 'category', $this->category->id);

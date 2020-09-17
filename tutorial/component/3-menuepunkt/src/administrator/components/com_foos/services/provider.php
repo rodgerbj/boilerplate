@@ -17,7 +17,7 @@ use Joomla\CMS\Extension\Service\Provider\MVCFactory;
 use Joomla\CMS\HTML\Registry;
 use Joomla\DI\Container;
 use Joomla\DI\ServiceProviderInterface;
-use Joomla\Component\Foos\Administrator\Extension\FoosComponent;
+use FooNamespace\Component\Foos\Administrator\Extension\FoosComponent;
 
 /**
  * The foos service provider.

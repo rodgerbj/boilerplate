@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace Joomla\Component\Foos\Administrator\Service\HTML;
+namespace FooNamespace\Component\Foos\Administrator\Service\HTML;
 
 \defined('_JEXEC') or die;
 
@@ -18,7 +18,7 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Uri\Uri;
-use Joomla\Component\Foos\Site\Helper\RouteHelper;
+use FooNamespace\Component\Foos\Site\Helper\RouteHelper;
 use Joomla\Registry\Registry;
 
 /**
