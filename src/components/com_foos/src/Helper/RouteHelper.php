@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace Joomla\Component\Foos\Site\Helper;
+namespace FooNamespace\Component\Foos\Site\Helper;
 
 \defined('_JEXEC') or die;
 
