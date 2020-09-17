@@ -17,7 +17,7 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
-use Joomla\Component\Foos\Administrator\Helper\FooHelper;
+use FooNamespace\Component\Foos\Administrator\Helper\FooHelper;
 
 /**
  * View class for a list of foos.
