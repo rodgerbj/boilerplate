@@ -9,7 +9,7 @@
 	<license>GNU General Public License version 2 or later;</license>
 	<version>__BUMP_VERSION__</version>
 	<description>COM_FOOS_XML_DESCRIPTION</description>
-	<namespace path="src">Joomla\Component\Foos</namespace>
+	<namespace path="src">FooNamespace\Component\Foos</namespace>
 	<scriptfile>script.php</scriptfile>
 	<!-- Frond-end files -->
 	<files folder="components/com_foos">
