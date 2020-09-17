@@ -7,14 +7,14 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace Joomla\Component\Foos\Administrator\Helper;
+namespace FooNamespace\Component\Foos\Administrator\Helper;
 
 \defined('_JEXEC') or die;
 
 use Joomla\CMS\Association\AssociationExtensionHelper;
 use Joomla\CMS\Language\Associations;
 use Joomla\CMS\Table\Table;
-use Joomla\Component\Foos\Site\Helper\AssociationHelper;
+use FooNamespace\Component\Foos\Site\Helper\AssociationHelper;
 
 /**
  * Content associations helper.
