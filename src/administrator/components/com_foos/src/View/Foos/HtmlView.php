@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace Joomla\Component\Foos\Administrator\View\Foos;
+namespace FooNamespace\Component\Foos\Administrator\View\Foos;
 
 \defined('_JEXEC') or die;
 
@@ -17,9 +17,16 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
-use Joomla\Component\Foos\Administrator\Helper\FooHelper;
+<<<<<<< HEAD
+use FooNamespace\Component\Foos\Administrator\Helper\FooHelper;
 use Joomla\CMS\Factory;
+<<<<<<< HEAD
 use Joomla\CMS\MVC\View\GenericDataException;
+=======
+=======
+use FooNamespace\Component\Foos\Administrator\Helper\FooHelper;
+>>>>>>> t14b
+>>>>>>> t15a
 
 /**
  * View class for a list of foos.
