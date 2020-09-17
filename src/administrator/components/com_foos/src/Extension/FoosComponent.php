@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace Joomla\Component\Foos\Administrator\Extension;
+namespace FooNamespace\Component\Foos\Administrator\Extension;
 
 defined('JPATH_PLATFORM') or die;
 
@@ -16,7 +16,7 @@ use Joomla\CMS\Categories\CategoryServiceTrait;
 use Joomla\CMS\Extension\BootableExtensionInterface;
 use Joomla\CMS\Extension\MVCComponent;
 use Joomla\CMS\HTML\HTMLRegistryAwareTrait;
-use Joomla\Component\Foos\Administrator\Service\HTML\AdministratorService;
+use FooNamespace\Component\Foos\Administrator\Service\HTML\AdministratorService;
 use Psr\Container\ContainerInterface;
 use Joomla\CMS\Helper\ContentHelper;
 
