@@ -10,23 +10,11 @@
 	<version>__BUMP_VERSION__</version>
 	<description>MOD_FOO_XML_DESCRIPTION</description>
 	<scriptfile>script.php</scriptfile>
-<<<<<<< HEAD
-<<<<<<< HEAD
-	<files>
-		<filename module="mod_foo">mod_foo.php</filename>
-		<folder>tmpl</folder>
-		<folder>Helper</folder>		
-=======
-=======
-<<<<<<< HEAD
-=======
->>>>>>> t35
 	<namespace>FooNamespace\Module\Foo</namespace>
 	<files>
 		<filename module="mod_foo">mod_foo.php</filename>
 		<folder>tmpl</folder>
 		<folder>Helper</folder>
->>>>>>> t35
 		<folder>language</folder>
 		<filename>mod_foo.xml</filename>
 	</files>
