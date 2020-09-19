@@ -11,10 +11,7 @@
 	<description>MOD_FOO_XML_DESCRIPTION</description>
 	<namespace>FooNamespace\Module\Foo</namespace>
 	<scriptfile>script.php</scriptfile>
-=======
-<<<<<<< HEAD
 	<namespace>FooNamespace\Module\Foo</namespace>
->>>>>>> t33
 	<files>
 		<filename module="mod_foo">mod_foo.php</filename>
 		<folder>tmpl</folder>
