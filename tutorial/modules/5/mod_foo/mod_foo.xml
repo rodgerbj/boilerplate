@@ -9,7 +9,7 @@
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <version>1.0</version>
     <description>MOD_FOO_XML_DESCRIPTION</description>
-    <namespace>Joomla\Module\Foo</namespace>
+    <namespace>FooNamespace\Module\Foo</namespace>
     <scriptfile>script.php</scriptfile>
     <files>
         <filename module="mod_foo">mod_foo.php</filename>
