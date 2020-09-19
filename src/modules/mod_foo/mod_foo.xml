@@ -11,10 +11,21 @@
 	<description>MOD_FOO_XML_DESCRIPTION</description>
 	<namespace>FooNamespace\Module\Foo</namespace>
 	<scriptfile>script.php</scriptfile>
+<<<<<<< HEAD
 	<files>
 		<filename module="mod_foo">mod_foo.php</filename>
 		<folder>tmpl</folder>
 		<folder>Helper</folder>		
+=======
+=======
+<<<<<<< HEAD
+	<namespace>FooNamespace\Module\Foo</namespace>
+>>>>>>> t33
+	<files>
+		<filename module="mod_foo">mod_foo.php</filename>
+		<folder>tmpl</folder>
+		<folder>Helper</folder>
+>>>>>>> t35
 		<folder>language</folder>
 		<filename>mod_foo.xml</filename>
 	</files>
