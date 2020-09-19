@@ -9,24 +9,12 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<version>__BUMP_VERSION__</version>
 	<description>MOD_FOO_XML_DESCRIPTION</description>
-<<<<<<< HEAD
 	<namespace>FooNamespace\Module\Foo</namespace>
 	<scriptfile>script.php</scriptfile>
-=======
-<<<<<<< HEAD
-	<namespace>FooNamespace\Module\Foo</namespace>
->>>>>>> t33
-	<files>
-		<filename module="mod_foo">mod_foo.php</filename>
-		<folder>tmpl</folder>
-		<folder>Helper</folder>
-=======
-	<namespace>FooNamespace\Module\Foo</namespace>
 	<files>
 		<filename module="mod_foo">mod_foo.php</filename>
 		<folder>tmpl</folder>
 		<folder>Helper</folder>		
->>>>>>> t32
 		<folder>language</folder>
 		<filename>mod_foo.xml</filename>
 	</files>
