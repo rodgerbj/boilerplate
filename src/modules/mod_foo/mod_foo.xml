@@ -12,6 +12,7 @@
 	<namespace>FooNamespace\Module\Foo</namespace>
 	<scriptfile>script.php</scriptfile>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<files>
 		<filename module="mod_foo">mod_foo.php</filename>
 		<folder>tmpl</folder>
@@ -19,8 +20,9 @@
 =======
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> t35
 	<namespace>FooNamespace\Module\Foo</namespace>
->>>>>>> t33
 	<files>
 		<filename module="mod_foo">mod_foo.php</filename>
 		<folder>tmpl</folder>
