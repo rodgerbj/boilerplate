@@ -1,6 +1,4 @@
 dist/
 vendor/
-RoboFile.php
 composer.lock
-jorobo.ini
 package-lock.json
