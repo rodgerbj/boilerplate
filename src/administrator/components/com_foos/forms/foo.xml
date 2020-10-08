@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
-<<<<<<< HEAD
 	<fieldset 
 		addruleprefix="FooNamespace\Component\Foos\Administrator\Rule"
 		addfieldprefix="FooNamespace\Component\Foos\Administrator\Field"
 	>
-=======
-	<fieldset addruleprefix="FooNamespace\Component\Foos\Administrator\Rule">
->>>>>>> t14b
 		<field
 			name="id"
 			type="number"
