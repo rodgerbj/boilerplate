@@ -19,18 +19,11 @@ use Joomla\CMS\HTML\Registry;
 use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 use Joomla\DI\Container;
 use Joomla\DI\ServiceProviderInterface;
-<<<<<<< HEAD
 use FooNamespace\Component\Foos\Administrator\Extension\FoosComponent;
 use FooNamespace\Component\Foos\Administrator\Helper\AssociationsHelper;
 use Joomla\CMS\Association\AssociationExtensionInterface;
-<<<<<<< HEAD
 use Joomla\CMS\Component\Router\RouterFactoryInterface;
 use Joomla\CMS\Extension\Service\Provider\RouterFactory;
-=======
-=======
-use FooNamespace\Component\Foos\Administrator\Extension\FoosComponent;
->>>>>>> t14b
->>>>>>> t26
 
 /**
  * The foos service provider.
