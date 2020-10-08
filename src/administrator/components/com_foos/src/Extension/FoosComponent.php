@@ -19,12 +19,8 @@ use Joomla\CMS\Categories\CategoryServiceTrait;
 use Joomla\CMS\Extension\BootableExtensionInterface;
 use Joomla\CMS\Extension\MVCComponent;
 use Joomla\CMS\HTML\HTMLRegistryAwareTrait;
-<<<<<<< HEAD
 use FooNamespace\Component\Foos\Administrator\Service\HTML\AdministratorService;
 use FooNamespace\Component\Foos\Administrator\Service\HTML\Icon;
-=======
-use FooNamespace\Component\Foos\Administrator\Service\HTML\AdministratorService;
->>>>>>> t24b
 use Psr\Container\ContainerInterface;
 use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Component\Router\RouterServiceInterface;
