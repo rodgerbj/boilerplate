@@ -46,16 +46,10 @@ return new class implements ServiceProviderInterface
 	{
 		$container->set(AssociationExtensionInterface::class, new AssociationsHelper);
 
-<<<<<<< HEAD
 		$container->registerServiceProvider(new CategoryFactory('\\NamespaceJoomla\\Component\\Foos'));
 		$container->registerServiceProvider(new MVCFactory('\\NamespaceJoomla\\Component\\Foos'));
 		$container->registerServiceProvider(new ComponentDispatcherFactory('\\NamespaceJoomla\\Component\\Foos'));
 		$container->registerServiceProvider(new RouterFactory('\\NamespaceJoomla\\Component\\Foos'));
-=======
-		$container->registerServiceProvider(new CategoryFactory('\\NamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceJoomla\\Component\\Foos'));
-		$container->registerServiceProvider(new MVCFactory('\\NamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceJoomla\\Component\\Foos'));
-		$container->registerServiceProvider(new ComponentDispatcherFactory('\\NamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceJoomla\\Component\\Foos'));
->>>>>>> t26
 
 		$container->set(
 			ComponentInterface::class,
