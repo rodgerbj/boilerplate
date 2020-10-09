@@ -47,14 +47,14 @@ return new class implements ServiceProviderInterface
 		$container->set(AssociationExtensionInterface::class, new AssociationsHelper);
 
 <<<<<<< HEAD
-		$container->registerServiceProvider(new CategoryFactory('\\NamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceJoomla\\Component\\Foos'));
-		$container->registerServiceProvider(new MVCFactory('\\NamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceJoomla\\Component\\Foos'));
-		$container->registerServiceProvider(new ComponentDispatcherFactory('\\NamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceJoomla\\Component\\Foos'));
-		$container->registerServiceProvider(new RouterFactory('\\NamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceJoomla\\Component\\Foos'));
+		$container->registerServiceProvider(new CategoryFactory('\\NamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceJoomla\\Component\\Foos'));
+		$container->registerServiceProvider(new MVCFactory('\\NamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceJoomla\\Component\\Foos'));
+		$container->registerServiceProvider(new ComponentDispatcherFactory('\\NamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceJoomla\\Component\\Foos'));
+		$container->registerServiceProvider(new RouterFactory('\\NamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceJoomla\\Component\\Foos'));
 =======
-		$container->registerServiceProvider(new CategoryFactory('\\NamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceJoomla\\Component\\Foos'));
-		$container->registerServiceProvider(new MVCFactory('\\NamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceJoomla\\Component\\Foos'));
-		$container->registerServiceProvider(new ComponentDispatcherFactory('\\NamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceJoomla\\Component\\Foos'));
+		$container->registerServiceProvider(new CategoryFactory('\\NamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceJoomla\\Component\\Foos'));
+		$container->registerServiceProvider(new MVCFactory('\\NamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceJoomla\\Component\\Foos'));
+		$container->registerServiceProvider(new ComponentDispatcherFactory('\\NamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceNamespaceJoomla\\Component\\Foos'));
 >>>>>>> t26
 
 		$container->set(
