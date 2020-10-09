@@ -124,7 +124,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 		switch ($typeName)
 		{
 			case 'foo':
-				$table = Table::getInstance('FooTable', 'NamespaceNamespaceNamespaceNamespaceNamespaceJoomla\\Component\\Foos\\Administrator\\Table\\');
+				$table = Table::getInstance('FooTable', 'NamespaceNamespaceNamespaceNamespaceNamespaceNamespaceJoomla\\Component\\Foos\\Administrator\\Table\\');
 				break;
 
 			case 'category':
