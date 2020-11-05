@@ -1,3 +1,5 @@
+https://blog.astrid-guenther.de/der-weg-zu-joomlae4-erweiterungen/
+
 # Boilerplate and Tutorial Sample Files
 Boilerplate files for Joomla! 4 extensions.
 
