@@ -132,16 +132,16 @@ if ($saveOrder && !empty($this->items))
 									<?php echo $item->access_level; ?>
 								</td>
 								<td class="text-center">
-									<?php 
-									echo HTMLHelper::_('jgrid.published', $item->published, $i, 'foos.', $canChange, 'cb', $item->publish_up, $item->publish_down); 
+									<?php
+									echo HTMLHelper::_('jgrid.published', $item->published, $i, 'foos.', $canChange, 'cb', $item->publish_up, $item->publish_down);
 									?>
 
 								</td>
 								<?php if ($assoc) : ?>
 								<td class="d-none d-md-table-cell">
 									<?php if ($item->association) : ?>
-										<?php 
-										echo HTMLHelper::_('foosadministrator.association', $item->id); 
+										<?php
+										echo HTMLHelper::_('foosadministrator.association', $item->id);
 										?>
 									<?php endif; ?>
 								</td>
