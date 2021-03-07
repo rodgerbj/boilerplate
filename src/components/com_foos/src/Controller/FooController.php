@@ -43,9 +43,9 @@ class FooController extends FormController
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
-	public function getModel($name = 'form', $prefix = '', $config = array('ignore_request' => true))
+	public function getModel($name = 'form', $prefix = '', $config = ['ignore_request' => true])
 	{
-		return parent::getModel($name, $prefix, array('ignore_request' => false));
+		return parent::getModel($name, $prefix, ['ignore_request' => false]);
 	}
 
 	/**
@@ -57,10 +57,9 @@ class FooController extends FormController
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
-	protected function allowAdd($data = array())
+	protected function allowAdd($data = [])
 	{
-		if ($categoryId = ArrayHelper::getValue($data, 'catid', $this->input->getInt('catid'), 'int'))
-		{
+		if ($categoryId = ArrayHelper::getValue($data, 'catid', $this->input->getInt('catid'), 'int')) {
 			$user = Factory::getUser();
 
 			// If the category has been passed in the data or URL check it.
@@ -81,12 +80,11 @@ class FooController extends FormController
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
-	protected function allowEdit($data = array(), $key = 'id')
+	protected function allowEdit($data = [], $key = 'id')
 	{
 		$recordId = (int) isset($data[$key]) ? $data[$key] : 0;
 
-		if (!$recordId)
-		{
+		if (!$recordId) {
 			return false;
 		}
 
@@ -94,19 +92,16 @@ class FooController extends FormController
 		$record     = $this->getModel()->getItem($recordId);
 		$categoryId = (int) $record->catid;
 
-		if ($categoryId)
-		{
+		if ($categoryId) {
 			$user = Factory::getUser();
 
 			// The category has been set. Check the category permissions.
-			if ($user->authorise('core.edit', $this->option . '.category.' . $categoryId))
-			{
+			if ($user->authorise('core.edit', $this->option . '.category.' . $categoryId)) {
 				return true;
 			}
 
 			// Fallback on edit.own.
-			if ($user->authorise('core.edit.own', $this->option . '.category.' . $categoryId))
-			{
+			if ($user->authorise('core.edit.own', $this->option . '.category.' . $categoryId)) {
 				return ($record->created_by == $user->id);
 			}
 
@@ -172,8 +167,7 @@ class FooController extends FormController
 		$append = '';
 
 		// Setup redirect info.
-		if ($tmpl)
-		{
+		if ($tmpl) {
 			$append .= '&tmpl=' . $tmpl;
 		}
 
@@ -185,18 +179,15 @@ class FooController extends FormController
 		$return = $this->getReturnPage();
 		$catId  = $this->input->getInt('catid');
 
-		if ($itemId)
-		{
+		if ($itemId) {
 			$append .= '&Itemid=' . $itemId;
 		}
 
-		if ($catId)
-		{
+		if ($catId) {
 			$append .= '&catid=' . $catId;
 		}
 
-		if ($return)
-		{
+		if ($return) {
 			$append .= '&return=' . base64_encode($return);
 		}
 
@@ -216,8 +207,7 @@ class FooController extends FormController
 	{
 		$return = $this->input->get('return', null, 'base64');
 
-		if (empty($return) || !Uri::isInternal(base64_decode($return)))
-		{
+		if (empty($return) || !Uri::isInternal(base64_decode($return))) {
 			return Uri::base();
 		}
 

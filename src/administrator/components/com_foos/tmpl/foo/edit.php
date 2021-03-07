@@ -21,7 +21,7 @@ $input = $app->input;
 
 $assoc = Associations::isEnabled();
 
-$this->ignore_fieldsets = array('item_associations');
+$this->ignore_fieldsets = ['item_associations'];
 $this->useCoreUI = true;
 
 $wa = $this->document->getWebAssetManager();
@@ -36,7 +36,7 @@ $tmpl = $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
 
 	<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
 	<div>
-		<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'details')); ?>
+		<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', ['active' => 'details']); ?>
 
 		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'details', empty($this->item->id) ? Text::_('COM_FOOS_NEW_FOO') : Text::_('COM_FOOS_EDIT_FOO')); ?>
 		<div class="row">
