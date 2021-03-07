@@ -78,30 +78,26 @@ class HtmlView extends BaseHtmlView
 
 		// Override the layout only if this is not the active menu item
 		// If it is the active menu item, then the view and item id will match
-		if ((!$active) || ((strpos($active->link, 'view=foo') === false) || (strpos($active->link, '&id=' . (string) $this->item->id) === false)))
-		{
-			if (($layout = $item->params->get('foos_layout')))
-			{
+		if ((!$active) || ((strpos($active->link, 'view=foo') === false) || (strpos($active->link, '&id=' . (string) $this->item->id) === false))) {
+			if (($layout = $item->params->get('foos_layout'))) {
 				$this->setLayout($layout);
 			}
-		}
-		elseif (isset($active->query['layout']))
-		{
+		} else if (isset($active->query['layout'])) {
 			// We need to set the layout in case this is an alternative menu item (with an alternative layout)
 			$this->setLayout($active->query['layout']);
 		}
 
-		Factory::getApplication()->triggerEvent('onContentPrepare', array ('com_foos.foo', &$item));
+		Factory::getApplication()->triggerEvent('onContentPrepare', ['com_foos.foo', &$item]);
 
 		// Store the events for later
 		$item->event = new \stdClass;
-		$results = Factory::getApplication()->triggerEvent('onContentAfterTitle', array('com_foos.foo', &$item, &$item->params));
+		$results = Factory::getApplication()->triggerEvent('onContentAfterTitle', ['com_foos.foo', &$item, &$item->params]);
 		$item->event->afterDisplayTitle = trim(implode("\n", $results));
 
-		$results = Factory::getApplication()->triggerEvent('onContentBeforeDisplay', array('com_foos.foo', &$item, &$item->params));
+		$results = Factory::getApplication()->triggerEvent('onContentBeforeDisplay', ['com_foos.foo', &$item, &$item->params]);
 		$item->event->beforeDisplayContent = trim(implode("\n", $results));
 
-		$results = Factory::getApplication()->triggerEvent('onContentAfterDisplay', array('com_foos.foo', &$item, &$item->params));
+		$results = Factory::getApplication()->triggerEvent('onContentAfterDisplay', ['com_foos.foo', &$item, &$item->params]);
 		$item->event->afterDisplayContent = trim(implode("\n", $results));
 
 		return parent::display($tpl);
