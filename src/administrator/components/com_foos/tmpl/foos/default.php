@@ -25,7 +25,11 @@ $assoc = Associations::isEnabled();
 				<?php echo $this->sidebar; ?>
 			</div>
 		<?php endif; ?>
-		<div class="<?php if (!empty($this->sidebar)) {echo 'col-md-10'; } else { echo 'col-md-12'; } ?>">
+		<div class="<?php if (!empty($this->sidebar)) {
+			echo 'col-md-10';
+					} else {
+						echo 'col-md-12';
+					} ?>">
 			<div id="j-main-container" class="j-main-container">
 				<?php if (empty($this->items)) : ?>
 					<div class="alert alert-warning">
@@ -84,11 +88,11 @@ $assoc = Associations::isEnabled();
 
 									<div class="small">
 										<?php echo Text::_('JCATEGORY') . ': ' . $this->escape($item->category_title); ?>
- 									</div>
+									 </div>
 								</th>
 								<td class="text-center">
-									<?php 
-									echo HTMLHelper::_('jgrid.published', $item->published, $i, 'foos.', true, 'cb', $item->publish_up, $item->publish_down); 
+									<?php
+									echo HTMLHelper::_('jgrid.published', $item->published, $i, 'foos.', true, 'cb', $item->publish_up, $item->publish_down);
 									?>
 								</td>
 								<td class="small d-none d-md-table-cell">
@@ -98,8 +102,8 @@ $assoc = Associations::isEnabled();
 								<?php if ($assoc) : ?>
 								<td class="d-none d-md-table-cell">
 									<?php if ($item->association) : ?>
-										<?php 
-										echo HTMLHelper::_('foosadministrator.association', $item->id); 
+										<?php
+										echo HTMLHelper::_('foosadministrator.association', $item->id);
 										?>
 									<?php endif; ?>
 								</td>
@@ -114,7 +118,7 @@ $assoc = Associations::isEnabled();
 									<?php echo $item->id; ?>
 								</td>
 							</tr>
-							<?php endforeach; ?>
+						<?php endforeach; ?>
 						</tbody>
 					</table>
 

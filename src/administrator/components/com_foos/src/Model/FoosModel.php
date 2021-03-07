@@ -31,7 +31,7 @@ class FoosModel extends ListModel
 	 *
 	 * @since   __BUMP_VERSION__
 	 */
-	public function __construct($config = array())
+	public function __construct($config = [])
 	{
 		parent::__construct($config);
 	}
@@ -51,11 +51,11 @@ class FoosModel extends ListModel
 		// Select the required fields from the table.
 		$query->select(
 			$db->quoteName(
-				array(
+				[
 					'a.id', 'a.name', 'a.alias', 'a.access',
 					'a.catid', 'a.published', 'a.publish_up', 'a.publish_down',
 					'a.language'
-				)
+				]
 			)
 		);
 
@@ -84,8 +84,7 @@ class FoosModel extends ListModel
 			);
 
 		// Join over the associations.
-		if (Associations::isEnabled())
-		{
+		if (Associations::isEnabled()) {
 			$subQuery = $db->getQuery(true)
 				->select('COUNT(' . $db->quoteName('asso1.id') . ') > 1')
 				->from($db->quoteName('#__associations', 'asso1'))
@@ -101,8 +100,7 @@ class FoosModel extends ListModel
 		}
 
 		// Filter on the language.
-		if ($language = $this->getState('filter.language'))
-		{
+		if ($language = $this->getState('filter.language')) {
 			$query->where($db->quoteName('a.language') . ' = ' . $db->quote($language));
 		}
 
@@ -127,14 +125,12 @@ class FoosModel extends ListModel
 		$forcedLanguage = $app->input->get('forcedLanguage', '', 'cmd');
 
 		// Adjust the context to support modal layouts.
-		if ($layout = $app->input->get('layout'))
-		{
+		if ($layout = $app->input->get('layout')) {
 			$this->context .= '.' . $layout;
 		}
 
 		// Adjust the context to support forced languages.
-		if ($forcedLanguage)
-		{
+		if ($forcedLanguage) {
 			$this->context .= '.' . $forcedLanguage;
 		}
 
@@ -142,8 +138,7 @@ class FoosModel extends ListModel
 		parent::populateState($ordering, $direction);
 
 		// Force a language.
-		if (!empty($forcedLanguage))
-		{
+		if (!empty($forcedLanguage)) {
 			$this->setState('filter.language', $forcedLanguage);
 		}
 	}
