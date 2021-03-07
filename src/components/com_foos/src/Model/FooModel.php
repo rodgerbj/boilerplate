@@ -42,15 +42,12 @@ class FooModel extends BaseDatabaseModel
 		$app = Factory::getApplication();
 		$pk = $app->input->getInt('id');
 
-		if ($this->_item === null)
-		{
-			$this->_item = array();
+		if ($this->_item === null) {
+			$this->_item = [];
 		}
 
-		if (!isset($this->_item[$pk]))
-		{
-			try
-			{
+		if (!isset($this->_item[$pk])) {
+			try {
 				$db = $this->getDbo();
 				$query = $db->getQuery(true);
 
@@ -61,15 +58,12 @@ class FooModel extends BaseDatabaseModel
 				$db->setQuery($query);
 				$data = $db->loadObject();
 
-				if (empty($data))
-				{
+				if (empty($data)) {
 					throw new \Exception(Text::_('COM_FOOS_ERROR_FOO_NOT_FOUND'), 404);
 				}
 
 				$this->_item[$pk] = $data;
-			}
-			catch (\Exception $e)
-			{
+			} catch (\Exception $e) {
 				$this->setError($e);
 				$this->_item[$pk] = false;
 			}
