@@ -81,19 +81,15 @@ class HtmlView extends BaseHtmlView
 		$this->form = $this->get('Form');
 		$this->return_page = $this->get('ReturnPage');
 
-		if (empty($this->item->id))
-		{
+		if (empty($this->item->id)) {
 			$authorised = $user->authorise('core.create', 'com_foos') || count($user->getAuthorisedCategories('com_foos', 'core.create'));
-		}
-		else
-		{
+		} else {
 			// Since we don't track these assets at the item level, use the category id.
 			$canDo = FooHelper::getActions('com_foos', 'category', $this->item->catid);
 			$authorised = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == $user->id);
 		}
 
-		if ($authorised !== true)
-		{
+		if ($authorised !== true) {
 			$app->enqueueMessage(Text::_('JERROR_ALERTNOAUTHOR'), 'error');
 			$app->setHeader('status', 403, true);
 
@@ -101,8 +97,7 @@ class HtmlView extends BaseHtmlView
 		}
 
 		// Check for errors.
-		if (count($errors = $this->get('Errors')))
-		{
+		if (count($errors = $this->get('Errors'))) {
 			$app->enqueueMessage(implode("\n", $errors), 'error');
 
 			return false;
@@ -118,8 +113,7 @@ class HtmlView extends BaseHtmlView
 		$this->params->merge($this->item->params);
 
 		// Propose current language as default when creating new foo
-		if (empty($this->item->id) && Multilanguage::isEnabled())
-		{
+		if (empty($this->item->id) && Multilanguage::isEnabled()) {
 			$lang = Factory::getLanguage()->getTag();
 			$this->form->setFieldAttribute('language', 'default', $lang);
 		}
@@ -148,23 +142,17 @@ class HtmlView extends BaseHtmlView
 		// we need to get it from the menu item itself
 		$menu = $menus->getActive();
 
-		if ($menu)
-		{
+		if ($menu) {
 			$this->params->def('page_heading', $this->params->get('page_title', $menu->title));
-		}
-		else
-		{
+		} else {
 			$this->params->def('page_heading', Text::_('COM_FOOS_FORM_EDIT_FOO'));
 		}
 
 		$title = $this->params->def('page_title', Text::_('COM_FOOS_FORM_EDIT_FOO'));
 
-		if ($app->get('sitename_pagetitles', 0) == 1)
-		{
+		if ($app->get('sitename_pagetitles', 0) == 1) {
 			$title = Text::sprintf('JPAGETITLE', $app->get('sitename'), $title);
-		}
-		elseif ($app->get('sitename_pagetitles', 0) == 2)
-		{
+		} else if ($app->get('sitename_pagetitles', 0) == 2) {
 			$title = Text::sprintf('JPAGETITLE', $title, $app->get('sitename'));
 		}
 
