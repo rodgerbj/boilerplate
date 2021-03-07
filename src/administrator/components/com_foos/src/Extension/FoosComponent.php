@@ -31,8 +31,7 @@ use Joomla\CMS\Component\Router\RouterServiceTrait;
  *
  * @since  __BUMP_VERSION__
  */
-class FoosComponent extends MVCComponent
-implements BootableExtensionInterface, CategoryServiceInterface, AssociationServiceInterface, RouterServiceInterface
+class FoosComponent extends MVCComponent implements BootableExtensionInterface, CategoryServiceInterface, AssociationServiceInterface, RouterServiceInterface
 {
 	use CategoryServiceTrait;
 	use AssociationServiceTrait;
@@ -70,19 +69,16 @@ implements BootableExtensionInterface, CategoryServiceInterface, AssociationServ
 	 */
 	public function countItems(array $items, string $section)
 	{
-		try
-		{
-			$config = (object) array(
+		try {
+			$config = (object) [
 				'related_tbl'   => $this->getTableNameForSection($section),
 				'state_col'     => 'published',
 				'group_col'     => 'catid',
 				'relation_type' => 'category_or_group',
-			);
+			];
 
 			ContentHelper::countRelations($items, $config);
-		}
-		catch (\Exception $e)
-		{
+		} catch (\Exception $e) {
 			// Ignore it
 		}
 	}
@@ -99,7 +95,6 @@ implements BootableExtensionInterface, CategoryServiceInterface, AssociationServ
 	protected function getTableNameForSection(string $section = null)
 	{
 		return ($section === 'category' ? 'categories' : 'foos_details');
-
 	}
 
 	/**
