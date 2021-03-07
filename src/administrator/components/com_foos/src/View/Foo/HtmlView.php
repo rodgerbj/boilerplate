@@ -53,8 +53,7 @@ class HtmlView extends BaseHtmlView
 		$this->item = $this->get('Item');
 
 		// If we are forcing a language in modal (used for associations).
-		if ($this->getLayout() === 'modal' && $forcedLanguage = Factory::getApplication()->input->get('forcedLanguage', '', 'cmd'))
-		{
+		if ($this->getLayout() === 'modal' && $forcedLanguage = Factory::getApplication()->input->get('forcedLanguage', '', 'cmd')) {
 			// Set the language field to the forcedLanguage and disable changing it.
 			$this->form->setValue('language', null, $forcedLanguage);
 			$this->form->setFieldAttribute('language', 'readonly', 'true');
@@ -90,11 +89,9 @@ class HtmlView extends BaseHtmlView
 		$canDo = ContentHelper::getActions('com_foos', 'category', $this->item->catid);
 
 		// Build the actions for new and existing records.
-		if ($isNew)
-		{
+		if ($isNew) {
 			// For new records, check the create permission.
-			if ($isNew && (count($user->getAuthorisedCategories('com_foos', 'core.create')) > 0))
-			{
+			if ($isNew && (count($user->getAuthorisedCategories('com_foos', 'core.create')) > 0)) {
 				ToolbarHelper::apply('foo.apply');
 				ToolbarHelper::saveGroup(
 					[
@@ -106,29 +103,24 @@ class HtmlView extends BaseHtmlView
 			}
 
 			ToolbarHelper::cancel('foo.cancel');
-		}
-		else
-		{
+		} else {
 			// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
 			$itemEditable = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == $userId);
 			$toolbarButtons = [];
 
 			// Can't save the record if it's not editable
-			if ($itemEditable)
-			{
+			if ($itemEditable) {
 				ToolbarHelper::apply('foo.apply');
 				$toolbarButtons[] = ['save', 'foo.save'];
 
 				// We can save this record, but check the create permission to see if we can return to make a new one.
-				if ($canDo->get('core.create'))
-				{
+				if ($canDo->get('core.create')) {
 					$toolbarButtons[] = ['save2new', 'foo.save2new'];
 				}
 			}
 
 			// If checked out, we can still save
-			if ($canDo->get('core.create'))
-			{
+			if ($canDo->get('core.create')) {
 				$toolbarButtons[] = ['save2copy', 'foo.save2copy'];
 			}
 
@@ -137,8 +129,7 @@ class HtmlView extends BaseHtmlView
 				'btn-success'
 			);
 
-			if (Associations::isEnabled() && ComponentHelper::isEnabled('com_associations'))
-			{
+			if (Associations::isEnabled() && ComponentHelper::isEnabled('com_associations')) {
 				ToolbarHelper::custom('foo.editAssociations', 'contract', 'contract', 'JTOOLBAR_ASSOCIATIONS', false, false);
 			}
 
