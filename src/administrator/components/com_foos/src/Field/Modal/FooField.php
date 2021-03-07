@@ -51,28 +51,26 @@ class FooField extends FormField
 		$modalId = 'Foo_' . $this->id;
 
 		// Add the modal field script to the document head.
-		HTMLHelper::_('script', 'system/fields/modal-fields.min.js',
-			array('version' => 'auto', 'relative' => true)
+		HTMLHelper::_(
+			'script',
+			'system/fields/modal-fields.min.js',
+			['version' => 'auto', 'relative' => true]
 		);
 
 		// Script to proxy the select modal function to the modal-fields.js file.
-		if ($allowSelect)
-		{
+		if ($allowSelect) {
 			static $scriptSelect = null;
 
-			if (is_null($scriptSelect))
-			{
-				$scriptSelect = array();
+			if (is_null($scriptSelect)) {
+				$scriptSelect = [];
 			}
 
-			if (!isset($scriptSelect[$this->id]))
-			{
+			if (!isset($scriptSelect[$this->id])) {
 				Factory::getDocument()->addScriptDeclaration("
 				function jSelectFoo_"
 					. $this->id
 					. "(id, title, object) { window.processModalSelect('Foo', '"
-					. $this->id . "', id, title, '', object);}"
-				);
+					. $this->id . "', id, title, '', object);}");
 
 				$scriptSelect[$this->id] = true;
 			}
@@ -87,8 +85,7 @@ class FooField extends FormField
 
 		$urlSelect = $linkFoos . '&amp;function=jSelectFoo_' . $this->id;
 
-		if ($value)
-		{
+		if ($value) {
 			$db    = Factory::getDbo();
 			$query = $db->getQuery(true)
 				->select($db->quoteName('name'))
@@ -96,12 +93,9 @@ class FooField extends FormField
 				->where($db->quoteName('id') . ' = ' . (int) $value);
 			$db->setQuery($query);
 
-			try
-			{
+			try {
 				$title = $db->loadResult();
-			}
-			catch (\RuntimeException $e)
-			{
+			} catch (\RuntimeException $e) {
 				Factory::getApplication()->enqueueMessage($e->getMessage(), 'error');
 			}
 		}
@@ -111,8 +105,7 @@ class FooField extends FormField
 		// The current foo display field.
 		$html  = '';
 
-		if ($allowSelect || $allowNew || $allowEdit || $allowClear)
-		{
+		if ($allowSelect || $allowNew || $allowEdit || $allowClear) {
 			$html .= '<span class="input-group">';
 		}
 
@@ -120,14 +113,12 @@ class FooField extends FormField
 			. '_name" type="text" value="'
 			. $title . '" disabled="disabled" size="35">';
 
-		if ($allowSelect || $allowNew || $allowEdit || $allowClear)
-		{
+		if ($allowSelect || $allowNew || $allowEdit || $allowClear) {
 			$html .= '<span class="input-group-append">';
 		}
 
 		// Select foo button
-		if ($allowSelect)
-		{
+		if ($allowSelect) {
 			$html .= '<button'
 				. ' class="btn btn-primary hasTooltip' . ($value ? ' hidden' : '') . '"'
 				. ' id="' . $this->id . '_select"'
@@ -140,8 +131,7 @@ class FooField extends FormField
 		}
 
 		// Clear foo button
-		if ($allowClear)
-		{
+		if ($allowClear) {
 			$html .= '<button'
 				. ' class="btn btn-secondary' . ($value ? '' : ' hidden') . '"'
 				. ' id="' . $this->id . '_clear"'
@@ -151,18 +141,16 @@ class FooField extends FormField
 				. '</button>';
 		}
 
-		if ($allowSelect || $allowNew || $allowEdit || $allowClear)
-		{
+		if ($allowSelect || $allowNew || $allowEdit || $allowClear) {
 			$html .= '</span></span>';
 		}
 
 		// Select foo modal
-		if ($allowSelect)
-		{
+		if ($allowSelect) {
 			$html .= HTMLHelper::_(
 				'bootstrap.renderModal',
 				'ModalSelect' . $modalId,
-				array(
+				[
 					'title'       => $modalTitle,
 					'url'         => $urlSelect,
 					'height'      => '400px',
@@ -173,7 +161,7 @@ class FooField extends FormField
 					. 'class="btn btn-secondary" '
 					. 'data-dismiss="modal" aria-hidden="true">'
 					. Text::_('JLIB_HTML_BEHAVIOR_CLOSE') . '</a>',
-				)
+				]
 			);
 		}
 
