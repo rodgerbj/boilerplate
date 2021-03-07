@@ -27,7 +27,7 @@ class Category extends Categories
 	 *
 	 * @since   __BUMP_VERSION__
 	 */
-	public function __construct($options = array())
+	public function __construct($options = [])
 	{
 		$options['table']      = '#__foos_details';
 		$options['extension']  = 'com_foos';

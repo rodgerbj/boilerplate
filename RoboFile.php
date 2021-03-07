@@ -8,8 +8,7 @@
 
 use Joomla\Jorobo\Tasks\loadTasks;
 
-if (!defined('JPATH_BASE'))
-{
+if (!defined('JPATH_BASE')) {
 	define('JPATH_BASE', __DIR__);
 }
 
@@ -55,7 +54,7 @@ class RoboFile extends \Robo\Tasks
 		(new \Joomla\Jorobo\Tasks\Umap($target))->run();
 	}
 
-        /**
+		/**
 	 * Build the joomla extension package
 	 *
 	 * @param   array  $params  Additional params

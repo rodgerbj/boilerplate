@@ -14,7 +14,7 @@ use Joomla\CMS\Router\Route;
 ?>
 <form action="<?php echo Route::_('index.php?option=com_foos'); ?>" method="post" name="adminForm" id="adminForm">
 	<div class="row">
-        <div class="col-md-12">
+		<div class="col-md-12">
 			<div id="j-main-container" class="j-main-container">
 				<?php if (empty($this->items)) : ?>
 					<div class="alert alert-warning">
@@ -51,7 +51,7 @@ use Joomla\CMS\Router\Route;
 									<?php echo $item->id; ?>
 								</td>
 							</tr>
-							<?php endforeach; ?>
+						<?php endforeach; ?>
 						</tbody>
 					</table>
 

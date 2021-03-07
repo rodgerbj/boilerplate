@@ -62,10 +62,8 @@ $userId  = Factory::getUser()->id;
 				<?php echo Text::_('COM_FOO_NO_FOOS'); ?>
 			</p>
 		<?php else : ?>
-
 			<ul class="com-foo-category__list category row-striped">
 				<?php foreach ($this->items as $i => $item) : ?>
-
 					<?php if (in_array($item->access, $this->user->getAuthorisedViewLevels())) : ?>
 						<?php if ($this->items[$i]->published == 0) : ?>
 							<li class="row system-unpublished cat-list-row<?php echo $i % 2; ?>">
@@ -78,7 +76,7 @@ $userId  = Factory::getUser()->id;
 							<div class="col-md-2">
 								<?php if ($this->items[$i]->image) : ?>
 									<a href="<?php echo Route::_(RouteHelper::getFooRoute($item->slug, $item->catid, $item->language)); ?>">
-										<?php echo HTMLHelper::_('image', $this->items[$i]->image, Text::_('COM_FOO_IMAGE_DETAILS'), array('class' => 'foo-thumbnail img-thumbnail')); ?></a>
+										<?php echo HTMLHelper::_('image', $this->items[$i]->image, Text::_('COM_FOO_IMAGE_DETAILS'), ['class' => 'foo-thumbnail img-thumbnail']); ?></a>
 								<?php endif; ?>
 							</div>
 						<?php else : ?>
@@ -101,7 +99,7 @@ $userId  = Factory::getUser()->id;
 							<?php if ($this->params->get('show_email_headings')) : ?>
 									<?php echo $item->email_to; ?><br>
 							<?php endif; ?>
-							<?php $location = array(); ?>
+							<?php $location = []; ?>
 							<?php if ($this->params->get('show_suburb_headings') && !empty($item->suburb)) : ?>
 								<?php $location[] = $item->suburb; ?>
 							<?php endif; ?>
@@ -122,7 +120,7 @@ $userId  = Factory::getUser()->id;
 					<?php endif; ?>
 				<?php endforeach; ?>
 			</ul>
-			<?php endif; ?>
+		<?php endif; ?>
 
 			<?php if ($canDo->get('core.create')) : ?>
 				<?php echo HTMLHelper::_('fooicon.create', $this->category, $this->category->params); ?>

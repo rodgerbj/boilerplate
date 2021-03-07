@@ -64,5 +64,4 @@ class HtmlView extends BaseHtmlView
 
 		$toolbar->addNew('foo.add');
 	}
-
 }

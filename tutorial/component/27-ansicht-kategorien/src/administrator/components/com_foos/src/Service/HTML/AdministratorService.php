@@ -40,10 +40,8 @@ class AdministratorService
 		$html = '';
 
 		// Get the associations
-		if ($associations = Associations::getAssociations('com_foos', '#__foos_details', 'com_foos.item', $fooid, 'id', null))
-		{
-			foreach ($associations as $tag => $associated)
-			{
+		if ($associations = Associations::getAssociations('com_foos', '#__foos_details', 'com_foos.item', $fooid, 'id', null)) {
+			foreach ($associations as $tag => $associated) {
 				$associations[$tag] = (int) $associated->id;
 			}
 
@@ -62,19 +60,14 @@ class AdministratorService
 				->select('l.title as language_title');
 			$db->setQuery($query);
 
-			try
-			{
+			try {
 				$items = $db->loadObjectList('id');
-			}
-			catch (\RuntimeException $e)
-			{
+			} catch (\RuntimeException $e) {
 				throw new \Exception($e->getMessage(), 500, $e);
 			}
 
-			if ($items)
-			{
-				foreach ($items as &$item)
-				{
+			if ($items) {
+				foreach ($items as &$item) {
 					$text = strtoupper($item->lang_sef);
 					$url = Route::_('index.php?option=com_foos&task=foo.edit&id=' . (int) $item->id);
 					$tooltip = '<strong>' . htmlspecialchars($item->language_title, ENT_QUOTES, 'UTF-8') . '</strong><br>'
@@ -105,21 +98,18 @@ class AdministratorService
 	public function featured($value, $i, $canChange = true)
 	{
 		// Array of image, task, title, action
-		$states = array(
-			0 => array('unfeatured', 'foos.featured', 'COM_FOOS_UNFEATURED', 'JGLOBAL_TOGGLE_FEATURED'),
-			1 => array('featured', 'foos.unfeatured', 'JFEATURED', 'JGLOBAL_TOGGLE_FEATURED'),
-		);
+		$states = [
+			0 => ['unfeatured', 'foos.featured', 'COM_FOOS_UNFEATURED', 'JGLOBAL_TOGGLE_FEATURED'],
+			1 => ['featured', 'foos.unfeatured', 'JFEATURED', 'JGLOBAL_TOGGLE_FEATURED'],
+		];
 		$state = ArrayHelper::getValue($states, (int) $value, $states[1]);
 		$icon  = $state[0];
 
-		if ($canChange)
-		{
+		if ($canChange) {
 			$html = '<a href="#" onclick="return Joomla.listItemTask(\'cb' . $i . '\',\'' . $state[1] . '\')" class="tbody-icon'
 				. ($value == 1 ? ' active' : '') . '" title="' . Text::_($state[3])
 				. '"><span class="icon-' . $icon . '" aria-hidden="true"></span></a>';
-		}
-		else
-		{
+		} else {
 			$html = '<a class="tbody-icon disabled' . ($value == 1 ? ' active' : '')
 				. '" title="' . Text::_($state[2]) . '"><span class="icon-' . $icon . '" aria-hidden="true"></span></a>';
 		}

@@ -39,7 +39,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 *
 	 * @since   __BUMP_VERSION__
 	 */
-	protected $itemTypes = array('foo', 'category');
+	protected $itemTypes = ['foo', 'category'];
 
 	/**
 	 * Has the extension association support
@@ -82,8 +82,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 		$context    = $this->extension . '.item';
 		$catidField = 'catid';
 
-		if ($typeName === 'category')
-		{
+		if ($typeName === 'category') {
 			$context    = 'com_categories.item';
 			$catidField = '';
 		}
@@ -114,15 +113,13 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 */
 	public function getItem($typeName, $id)
 	{
-		if (empty($id))
-		{
+		if (empty($id)) {
 			return null;
 		}
 
 		$table = null;
 
-		switch ($typeName)
-		{
+		switch ($typeName) {
 			case 'foo':
 				$table = Table::getInstance('FooTable', 'NamespaceJoomla\\Component\\Foos\\Administrator\\Table\\');
 				break;
@@ -132,8 +129,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 				break;
 		}
 
-		if (empty($table))
-		{
+		if (empty($table)) {
 			return null;
 		}
 
@@ -154,15 +150,13 @@ class AssociationsHelper extends AssociationExtensionHelper
 	public function getType($typeName = '')
 	{
 		$fields  = $this->getFieldsTemplate();
-		$tables  = array();
-		$joins   = array();
+		$tables  = [];
+		$joins   = [];
 		$support = $this->getSupportTemplate();
 		$title   = '';
 
-		if (in_array($typeName, $this->itemTypes))
-		{
-			switch ($typeName)
-			{
+		if (in_array($typeName, $this->itemTypes)) {
+			switch ($typeName) {
 				case 'foo':
 					$fields['title'] = 'a.name';
 					$fields['state'] = 'a.published';
@@ -172,9 +166,9 @@ class AssociationsHelper extends AssociationExtensionHelper
 					$support['category'] = true;
 					$support['save2copy'] = true;
 
-					$tables = array(
+					$tables = [
 						'a' => '#__foos_details'
-					);
+					];
 
 					$title = 'foo';
 					break;
@@ -191,22 +185,22 @@ class AssociationsHelper extends AssociationExtensionHelper
 					$support['checkout'] = false;
 					$support['level'] = false;
 
-					$tables = array(
+					$tables = [
 						'a' => '#__categories'
-					);
+					];
 
 					$title = 'category';
 					break;
 			}
 		}
 
-		return array(
+		return [
 			'fields'  => $fields,
 			'support' => $support,
 			'tables'  => $tables,
 			'joins'   => $joins,
 			'title'   => $title
-		);
+		];
 	}
 
 	/**
@@ -218,7 +212,7 @@ class AssociationsHelper extends AssociationExtensionHelper
 	 */
 	protected function getFieldsTemplate()
 	{
-		return array(
+		return [
 			'id'                  => 'a.id',
 			'title'               => 'a.title',
 			'alias'               => 'a.alias',
@@ -232,6 +226,6 @@ class AssociationsHelper extends AssociationExtensionHelper
 			'created_user_id'     => '',
 			'checked_out'         => '',
 			'checked_out_time'    => ''
-		);
+		];
 	}
 }

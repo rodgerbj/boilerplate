@@ -81,31 +81,25 @@ class HtmlView extends BaseHtmlView
 		$this->state = $this->get('State');
 
 		// Check for errors.
-		if (count($errors = $this->get('Errors')))
-		{
+		if (count($errors = $this->get('Errors'))) {
 			throw new GenericDataException(implode("\n", $errors), 500);
 		}
 
 		// Preprocess the list of items to find ordering divisions.
 		// TODO: Complete the ordering stuff with nested sets
-		foreach ($this->items as &$item)
-		{
+		foreach ($this->items as &$item) {
 			$item->order_up = true;
 			$item->order_dn = true;
 		}
 
 		// We don't need toolbar in the modal window.
-		if ($this->getLayout() !== 'modal')
-		{
+		if ($this->getLayout() !== 'modal') {
 			$this->addToolbar();
 			$this->sidebar = \JHtmlSidebar::render();
-		}
-		else
-		{
+		} else {
 			// In article associations modal we need to remove language filter if forcing a language.
 			// We also need to change the category filter to show show categories with All or the forced language.
-			if ($forcedLanguage = Factory::getApplication()->input->get('forcedLanguage', '', 'CMD'))
-			{
+			if ($forcedLanguage = Factory::getApplication()->input->get('forcedLanguage', '', 'CMD')) {
 				// If the language is forced we can't allow to select the language, so transform the language selector filter into a hidden field.
 				$languageXml = new \SimpleXMLElement('<field name="language" type="hidden" default="' . $forcedLanguage . '" />');
 				$this->filterForm->setField($languageXml, 'filter', true);
@@ -140,13 +134,11 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::_('COM_FOOS_MANAGER_FOOS'), 'address foo');
 
-		if ($canDo->get('core.create'))
-		{
+		if ($canDo->get('core.create')) {
 			$toolbar->addNew('foo.add');
 		}
 
-		if ($canDo->get('core.options'))
-		{
+		if ($canDo->get('core.options')) {
 			$toolbar->preferences('com_foos');
 		}
 

@@ -17,23 +17,19 @@ $sitename = htmlspecialchars($app->get('sitename'), ENT_QUOTES, 'UTF-8');
 $pageclass = $app->getMenu()->getActive()->getParams()->get('pageclass_sfx');
 
 // Logo file or site title param
-if ($this->params->get('logoFile'))
-{
+if ($this->params->get('logoFile')) {
 	$logo = '<img src="' . Uri::root() . htmlspecialchars($this->params->get('logoFile'), ENT_QUOTES) . '" alt="' . $sitename . '">';
-} else
-{
+} else {
 	$logo = '<span title="' . $sitename . '">' . htmlspecialchars($this->params->get('siteTitle'), ENT_COMPAT, 'UTF-8') . '</span>';
 }
 
 $hasSidebar = '';
 
-if ($this->countModules('sidebar-left'))
-{
+if ($this->countModules('sidebar-left')) {
 	$hasSidebar .= ' has-sidebar-left';
 }
 
-if ($this->countModules('sidebar-right'))
-{
+if ($this->countModules('sidebar-right')) {
 	$hasSidebar .= ' has-sidebar-right';
 }
 
@@ -76,7 +72,7 @@ $scripts = $this->getBuffer('scripts');
 					</a>
 <?php if ($this->params->get('siteDescription')) : ?>
 						<div><?php echo htmlspecialchars($this->params->get('siteDescription')); ?></div>
-					<?php endif; ?>
+<?php endif; ?>
 				</div>
 
 <?php if ($this->countModules('menu') || $this->countModules('search')) : ?>
@@ -86,7 +82,7 @@ $scripts = $this->getBuffer('scripts');
 							<div>
 							<?php echo $search; ?>
 							</div>
-							<?php endif; ?>
+						<?php endif; ?>
 					</div>
 					<span id="navbar-menu-toggle" class="navbar-menu-toggle"><span></span></span>
 <?php endif; ?>
@@ -97,25 +93,25 @@ $scripts = $this->getBuffer('scripts');
 			<div class="grid-child full-width container-banner">
 			<?php echo $banner; ?>
 			</div>
-			<?php endif; ?>
+<?php endif; ?>
 
 		<?php if ($this->countModules('top-a')) : ?>
 			<div class="grid-child container-top-a">
 			<?php echo $topA; ?>
 			</div>
-			<?php endif; ?>
+		<?php endif; ?>
 
 		<?php if ($this->countModules('top-b')) : ?>
 			<div class="grid-child container-top-b">
 			<?php echo $topB; ?>
 			</div>
-			<?php endif; ?>
+		<?php endif; ?>
 
 		<?php if ($this->countModules('sidebar-left')) : ?>
 			<div class="grid-child container-sidebar-left">
 			<?php echo $sidebarLeft; ?>
 			</div>
-			<?php endif; ?>
+		<?php endif; ?>
 
 		<div class="grid-child container-component">
 <?php echo $mainTop; ?>
@@ -129,27 +125,27 @@ $scripts = $this->getBuffer('scripts');
 			<div class="grid-child container-sidebar-right">
 			<?php echo $sidebarRight; ?>
 			</div>
-			<?php endif; ?>
+<?php endif; ?>
 
 		<?php if ($this->countModules('bottom-a')) : ?>
 			<div class="grid-child container-bottom-a">
 			<?php echo $bottomA; ?>
 			</div>
-			<?php endif; ?>
+		<?php endif; ?>
 
 		<?php if ($this->countModules('bottom-b')) : ?>
 			<div class="grid-child container-bottom-b">
 			<?php echo $bottomB; ?>
 			</div>
-			<?php endif; ?>
+		<?php endif; ?>
 
 		<?php if ($this->countModules('footer')) : ?>
 			<footer class="grid-child container-footer full-width footer">
 				<div class="container">
-	<?php echo $footer; ?>
+			<?php echo $footer; ?>
 				</div>
 			</footer>
-<?php endif; ?>
+		<?php endif; ?>
 
 		<?php echo $debug; ?>
 

@@ -33,7 +33,7 @@ class DisplayController extends BaseController
 	 *
 	 * @since   __BUMP_VERSION__
 	 */
-	public function __construct($config = array(), MVCFactoryInterface $factory = null, $app = null, $input = null)
+	public function __construct($config = [], MVCFactoryInterface $factory = null, $app = null, $input = null)
 	{
 		parent::__construct($config, $factory, $app, $input);
 	}
@@ -48,7 +48,7 @@ class DisplayController extends BaseController
 	 *
 	 * @since   __BUMP_VERSION__
 	 */
-	public function display($cachable = false, $urlparams = array())
+	public function display($cachable = false, $urlparams = [])
 	{
 		parent::display($cachable);
 

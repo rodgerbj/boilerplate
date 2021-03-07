@@ -9,5 +9,5 @@
 \defined('_JEXEC') or die;
 ?>
 
-<?php 
+<?php
 echo $this->item->name;

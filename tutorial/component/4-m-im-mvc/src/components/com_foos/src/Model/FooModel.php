@@ -33,8 +33,7 @@ class FooModel extends BaseDatabaseModel
 	 */
 	public function getMsg()
 	{
-		if (!isset($this->message))
-		{
+		if (!isset($this->message)) {
 			$this->message = 'Hello Foo!';
 		}
 

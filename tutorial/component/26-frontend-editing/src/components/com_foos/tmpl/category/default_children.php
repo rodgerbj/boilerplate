@@ -15,10 +15,10 @@ use Joomla\CMS\Router\Route;
 use FooNamespace\Component\Foos\Site\Helper\RouteHelper;
 
 if ($this->maxLevel != 0 && count($this->children[$this->category->id]) > 0) :
-?>
+	?>
 <ul class="com-foo-category__children list-striped list-condensed">
-<?php foreach ($this->children[$this->category->id] as $id => $child) : ?>
-	<?php if ($this->params->get('show_empty_categories') || $child->numitems || count($child->getChildren())) : ?>
+	<?php foreach ($this->children[$this->category->id] as $id => $child) : ?>
+		<?php if ($this->params->get('show_empty_categories') || $child->numitems || count($child->getChildren())) : ?>
 	<li>
 		<h4 class="item-title">
 			<a href="<?php echo Route::_(RouteHelper::getCategoryRoute($child->id, $child->language)); ?>">
@@ -30,24 +30,24 @@ if ($this->maxLevel != 0 && count($this->children[$this->category->id]) > 0) :
 			<?php endif; ?>
 		</h4>
 
-		<?php if ($this->params->get('show_subcat_desc') == 1) : ?>
-			<?php if ($child->description) : ?>
+			<?php if ($this->params->get('show_subcat_desc') == 1) : ?>
+				<?php if ($child->description) : ?>
 				<div class="category-desc">
 					<?php echo HTMLHelper::_('content.prepare', $child->description, '', 'com_foos.category'); ?>
 				</div>
+				<?php endif; ?>
 			<?php endif; ?>
-		<?php endif; ?>
 
-		<?php if (count($child->getChildren()) > 0 ) :
-			$this->children[$child->id] = $child->getChildren();
-			$this->category = $child;
-			$this->maxLevel--;
-			echo $this->loadTemplate('children');
-			$this->category = $child->getParent();
-			$this->maxLevel++;
-		endif; ?>
+			<?php if (count($child->getChildren()) > 0) :
+				$this->children[$child->id] = $child->getChildren();
+				$this->category = $child;
+				$this->maxLevel--;
+				echo $this->loadTemplate('children');
+				$this->category = $child->getParent();
+				$this->maxLevel++;
+			endif; ?>
 	</li>
-	<?php endif; ?>
-<?php endforeach; ?>
+		<?php endif; ?>
+	<?php endforeach; ?>
 </ul>
 <?php endif; ?>

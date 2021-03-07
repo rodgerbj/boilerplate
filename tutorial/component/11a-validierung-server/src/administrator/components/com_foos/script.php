@@ -97,11 +97,9 @@ class Com_FoosInstallerScript
 	 */
 	public function preflight($type, $parent): bool
 	{
-		if ($type !== 'uninstall')
-		{
+		if ($type !== 'uninstall') {
 			// Check for the minimum PHP version before continuing
-			if (!empty($this->minimumPHPVersion) && version_compare(PHP_VERSION, $this->minimumPHPVersion, '<'))
-			{
+			if (!empty($this->minimumPHPVersion) && version_compare(PHP_VERSION, $this->minimumPHPVersion, '<')) {
 				Log::add(
 					Text::sprintf('JLIB_INSTALLER_MINIMUM_PHP', $this->minimumPHPVersion),
 					Log::WARNING,
@@ -112,8 +110,7 @@ class Com_FoosInstallerScript
 			}
 
 			// Check for the minimum Joomla version before continuing
-			if (!empty($this->minimumJoomlaVersion) && version_compare(JVERSION, $this->minimumJoomlaVersion, '<'))
-			{
+			if (!empty($this->minimumJoomlaVersion) && version_compare(JVERSION, $this->minimumJoomlaVersion, '<')) {
 				Log::add(
 					Text::sprintf('JLIB_INSTALLER_MINIMUM_JOOMLA', $this->minimumJoomlaVersion),
 					Log::WARNING,

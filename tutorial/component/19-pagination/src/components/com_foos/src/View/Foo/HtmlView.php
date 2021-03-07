@@ -74,17 +74,17 @@ class HtmlView extends BaseHtmlView
 		$temp->merge($itemparams);
 		$item->params = $temp;
 
-		Factory::getApplication()->triggerEvent('onContentPrepare', array ('com_foos.foo', &$item));
+		Factory::getApplication()->triggerEvent('onContentPrepare', ['com_foos.foo', &$item]);
 
 		// Store the events for later
 		$item->event = new \stdClass;
-		$results = Factory::getApplication()->triggerEvent('onContentAfterTitle', array('com_foos.foo', &$item, &$item->params));
+		$results = Factory::getApplication()->triggerEvent('onContentAfterTitle', ['com_foos.foo', &$item, &$item->params]);
 		$item->event->afterDisplayTitle = trim(implode("\n", $results));
 
-		$results = Factory::getApplication()->triggerEvent('onContentBeforeDisplay', array('com_foos.foo', &$item, &$item->params));
+		$results = Factory::getApplication()->triggerEvent('onContentBeforeDisplay', ['com_foos.foo', &$item, &$item->params]);
 		$item->event->beforeDisplayContent = trim(implode("\n", $results));
 
-		$results = Factory::getApplication()->triggerEvent('onContentAfterDisplay', array('com_foos.foo', &$item, &$item->params));
+		$results = Factory::getApplication()->triggerEvent('onContentAfterDisplay', ['com_foos.foo', &$item, &$item->params]);
 		$item->event->afterDisplayContent = trim(implode("\n", $results));
 
 		return parent::display($tpl);

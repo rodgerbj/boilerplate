@@ -91,31 +91,25 @@ class HtmlView extends BaseHtmlView
 		$pagination->hideEmptyLimitstart = true;
 
 		// Check for errors.
-		if (count($errors = $this->get('Errors')))
-		{
+		if (count($errors = $this->get('Errors'))) {
 			throw new GenericDataException(implode("\n", $errors), 500);
 		}
 
 		// Prepare the data.
 		// Compute the foos slug.
-		for ($i = 0, $n = count($items); $i < $n; $i++)
-		{
+		for ($i = 0, $n = count($items); $i < $n; $i++) {
 			$item       = &$items[$i];
 			$item->slug = $item->alias ? ($item->id . ':' . $item->alias) : $item->id;
 			$temp       = $item->params;
 			$item->params = clone $params;
 			$item->params->merge($temp);
 
-			if ($item->params->get('show_email', 0) == 1)
-			{
+			if ($item->params->get('show_email', 0) == 1) {
 				$item->email_to = trim($item->email_to);
 
-				if (!empty($item->email_to) && MailHelper::isEmailAddress($item->email_to))
-				{
+				if (!empty($item->email_to) && MailHelper::isEmailAddress($item->email_to)) {
 					$item->email_to = HTMLHelper::_('email.cloak', $item->email_to);
-				}
-				else
-				{
+				} else {
 					$item->email_to = '';
 				}
 			}
@@ -156,44 +150,33 @@ class HtmlView extends BaseHtmlView
 		// we need to get it from the menu item itself
 		$menu = $menus->getActive();
 
-		if ($menu)
-		{
+		if ($menu) {
 			$this->params->def('page_heading', $this->params->get('page_title', $menu->title));
-		}
-		else
-		{
+		} else {
 			$this->params->def('page_heading', Text::_('COM_FOOS_DEFAULT_PAGE_TITLE'));
 		}
 
 		$title = $this->params->get('page_title', '');
 
-		if (empty($title))
-		{
+		if (empty($title)) {
 			$title = $app->get('sitename');
-		}
-		elseif ($app->get('sitename_pagetitles', 0) == 1)
-		{
+		} else if ($app->get('sitename_pagetitles', 0) == 1) {
 			$title = Text::sprintf('JPAGETITLE', $app->get('sitename'), $title);
-		}
-		elseif ($app->get('sitename_pagetitles', 0) == 2)
-		{
+		} else if ($app->get('sitename_pagetitles', 0) == 2) {
 			$title = Text::sprintf('JPAGETITLE', $title, $app->get('sitename'));
 		}
 
 		$this->document->setTitle($title);
 
-		if ($this->params->get('menu-meta_description'))
-		{
+		if ($this->params->get('menu-meta_description')) {
 			$this->document->setDescription($this->params->get('menu-meta_description'));
 		}
 
-		if ($this->params->get('menu-meta_keywords'))
-		{
+		if ($this->params->get('menu-meta_keywords')) {
 			$this->document->setMetaData('keywords', $this->params->get('menu-meta_keywords'));
 		}
 
-		if ($this->params->get('robots'))
-		{
+		if ($this->params->get('robots')) {
 			$this->document->setMetaData('robots', $this->params->get('robots'));
 		}
 	}

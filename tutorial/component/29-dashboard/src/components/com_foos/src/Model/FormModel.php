@@ -51,18 +51,16 @@ class FormModel extends \FooNamespace\Component\Foos\Administrator\Model\FooMode
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
-	public function getForm($data = array(), $loadData = true)
+	public function getForm($data = [], $loadData = true)
 	{
 		$form = parent::getForm($data, $loadData);
 
 		// Prevent messing with article language and category when editing existing foo with associations
-		if ($id = $this->getState('foo.id') && Associations::isEnabled())
-		{
+		if ($id = $this->getState('foo.id') && Associations::isEnabled()) {
 			$associations = Associations::getAssociations('com_foos', '#__foos_details', 'com_foos.item', $id);
 
 			// Make fields read only
-			if (!empty($associations))
-			{
+			if (!empty($associations)) {
 				$form->setFieldAttribute('language', 'readonly', 'true');
 				$form->setFieldAttribute('language', 'filter', 'unset');
 			}
@@ -90,15 +88,11 @@ class FormModel extends \FooNamespace\Component\Foos\Administrator\Model\FooMode
 		$table = $this->getTable();
 
 		// Attempt to load the row.
-		try
-		{
-			if (!$table->load($itemId))
-			{
+		try {
+			if (!$table->load($itemId)) {
 				return false;
 			}
-		}
-		catch (Exception $e)
-		{
+		} catch (Exception $e) {
 			Factory::getApplication()->enqueueMessage($e->getMessage());
 
 			return false;
@@ -139,10 +133,8 @@ class FormModel extends \FooNamespace\Component\Foos\Administrator\Model\FooMode
 	{
 		// Associations are not edited in frontend ATM so we have to inherit them
 		if (Associations::isEnabled() && !empty($data['id'])
-			&& $associations = Associations::getAssociations('com_foos', '#__foos_details', 'com_foos.item', $data['id']))
-		{
-			foreach ($associations as $tag => $associated)
-			{
+			&& $associations = Associations::getAssociations('com_foos', '#__foos_details', 'com_foos.item', $data['id'])) {
+			foreach ($associations as $tag => $associated) {
 				$associations[$tag] = (int) $associated->id;
 			}
 
@@ -196,8 +188,7 @@ class FormModel extends \FooNamespace\Component\Foos\Administrator\Model\FooMode
 	 */
 	protected function preprocessForm(Form $form, $data, $group = 'foo')
 	{
-		if (!Multilanguage::isEnabled())
-		{
+		if (!Multilanguage::isEnabled()) {
 			$form->setFieldAttribute('language', 'type', 'hidden');
 			$form->setFieldAttribute('language', 'default', '*');
 		}
@@ -217,7 +208,7 @@ class FormModel extends \FooNamespace\Component\Foos\Administrator\Model\FooMode
 	 * @since   __DEPLOY_VERSION__
 	 * @throws  \Exception
 	 */
-	public function getTable($name = 'Foo', $prefix = 'Administrator', $options = array())
+	public function getTable($name = 'Foo', $prefix = 'Administrator', $options = [])
 	{
 		return parent::getTable($name, $prefix, $options);
 	}

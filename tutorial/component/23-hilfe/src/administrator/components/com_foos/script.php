@@ -55,7 +55,7 @@ class Com_FoosInstallerScript
 		// Initialize a new category.
 		$category = Table::getInstance('Category');
 
-		$data = array(
+		$data = [
 			'extension'       => 'com_foos',
 			'title'           => 'Uncategorised',
 			'description'     => '',
@@ -69,25 +69,22 @@ class Com_FoosInstallerScript
 			'metadata'        => '{"author":"","robots":""}',
 			'created_time'    => Factory::getDate()->toSql(),
 			'created_user_id' => (int) $this->getAdminId(),
-			'rules'           => array(),
+			'rules'           => [],
 			'parent_id'       => 1,
-		);
+		];
 
 		// Bind the data to the table
-		if (!$category->bind($data))
-		{
+		if (!$category->bind($data)) {
 			return false;
 		}
 
 		// Check to make sure our data is valid.
-		if (!$category->check())
-		{
+		if (!$category->check()) {
 			return false;
 		}
 
 		// Store the category.
-		if (!$category->store(true))
-		{
+		if (!$category->store(true)) {
 			return false;
 		}
 
@@ -141,11 +138,9 @@ class Com_FoosInstallerScript
 	 */
 	public function preflight($type, $parent): bool
 	{
-		if ($type !== 'uninstall')
-		{
+		if ($type !== 'uninstall') {
 			// Check for the minimum PHP version before continuing
-			if (!empty($this->minimumPHPVersion) && version_compare(PHP_VERSION, $this->minimumPHPVersion, '<'))
-			{
+			if (!empty($this->minimumPHPVersion) && version_compare(PHP_VERSION, $this->minimumPHPVersion, '<')) {
 				Log::add(
 					Text::sprintf('JLIB_INSTALLER_MINIMUM_PHP', $this->minimumPHPVersion),
 					Log::WARNING,
@@ -156,8 +151,7 @@ class Com_FoosInstallerScript
 			}
 
 			// Check for the minimum Joomla version before continuing
-			if (!empty($this->minimumJoomlaVersion) && version_compare(JVERSION, $this->minimumJoomlaVersion, '<'))
-			{
+			if (!empty($this->minimumJoomlaVersion) && version_compare(JVERSION, $this->minimumJoomlaVersion, '<')) {
 				Log::add(
 					Text::sprintf('JLIB_INSTALLER_MINIMUM_JOOMLA', $this->minimumJoomlaVersion),
 					Log::WARNING,
@@ -228,8 +222,7 @@ class Com_FoosInstallerScript
 		$db->setQuery($query);
 		$id = $db->loadResult();
 
-		if (!$id || $id instanceof \Exception)
-		{
+		if (!$id || $id instanceof \Exception) {
 			return false;
 		}
 

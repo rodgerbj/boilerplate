@@ -51,11 +51,11 @@ class FooModel extends AdminModel
 	 *
 	 * @var array
 	 */
-	protected $batch_commands = array(
+	protected $batch_commands = [
 		'assetgroup_id' => 'batchAccess',
 		'language_id'   => 'batchLanguage',
 		'user_id'       => 'batchUser',
-	);
+	];
 
 	/**
 	 * Method to get the row form.
@@ -67,13 +67,12 @@ class FooModel extends AdminModel
 	 *
 	 * @since   __BUMP_VERSION__
 	 */
-	public function getForm($data = array(), $loadData = true)
+	public function getForm($data = [], $loadData = true)
 	{
 		// Get the form.
-		$form = $this->loadForm('com_foos.foo', 'foo', array('control' => 'jform', 'load_data' => $loadData));
+		$form = $this->loadForm('com_foos.foo', 'foo', ['control' => 'jform', 'load_data' => $loadData]);
 
-		if (empty($form))
-		{
+		if (empty($form)) {
 			return false;
 		}
 
@@ -113,16 +112,13 @@ class FooModel extends AdminModel
 		// Load associated foo items
 		$assoc = Associations::isEnabled();
 
-		if ($assoc)
-		{
-			$item->associations = array();
+		if ($assoc) {
+			$item->associations = [];
 
-			if ($item->id != null)
-			{
+			if ($item->id != null) {
 				$associations = Associations::getAssociations('com_foos', '#__foos_details', 'com_foos.item', $item->id, 'id', null);
 
-				foreach ($associations as $tag => $association)
-				{
+				foreach ($associations as $tag => $association) {
 					$item->associations[$tag] = $association->id;
 				}
 			}
@@ -144,20 +140,17 @@ class FooModel extends AdminModel
 	 */
 	protected function preprocessForm(\JForm $form, $data, $group = 'content')
 	{
-		if (Associations::isEnabled())
-		{
+		if (Associations::isEnabled()) {
 			$languages = LanguageHelper::getContentLanguages(false, true, null, 'ordering', 'asc');
 
-			if (count($languages) > 1)
-			{
+			if (count($languages) > 1) {
 				$addform = new \SimpleXMLElement('<form />');
 				$fields = $addform->addChild('fields');
 				$fields->addAttribute('name', 'associations');
 				$fieldset = $fields->addChild('fieldset');
 				$fieldset->addAttribute('name', 'item_associations');
 
-				foreach ($languages as $language)
-				{
+				foreach ($languages as $language) {
 					$field = $fieldset->addChild('field');
 					$field->addAttribute('name', $language->lang_code);
 					$field->addAttribute('type', 'modal_foo');

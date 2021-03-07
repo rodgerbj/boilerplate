@@ -17,7 +17,7 @@ use Joomla\CMS\Session\Session;
 
 $app = Factory::getApplication();
 
-HTMLHelper::_('script', 'com_foos/admin-foos-modal.min.js', array('version' => 'auto', 'relative' => true));
+HTMLHelper::_('script', 'com_foos/admin-foos-modal.min.js', ['version' => 'auto', 'relative' => true]);
 
 $function  = $app->input->getCmd('function', 'jSelectFoos');
 $onclick   = $this->escape($function);
@@ -42,12 +42,12 @@ $onclick   = $this->escape($function);
 				</thead>
 				<tbody>
 				<?php
-				$iconStates = array(
+				$iconStates = [
 					-2 => 'icon-trash',
 					0  => 'icon-unpublish',
 					1  => 'icon-publish',
 					2  => 'icon-archive',
-				);
+				];
 				?>
 				<?php foreach ($this->items as $i => $item) : ?>
 					<?php $lang = ''; ?>

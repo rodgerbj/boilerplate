@@ -12,4 +12,4 @@ defined('_JEXEC') or die;
 
 ?>
 
-<?php echo '[PROJECT_NAME]' . $test; 
+<?php echo '[PROJECT_NAME]' . $test;

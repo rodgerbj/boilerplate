@@ -37,11 +37,11 @@ class FoosController extends AdminController
 	 *
 	 * @since   __BUMP_VERSION__
 	 */
-	public function __construct($config = array(), MVCFactoryInterface $factory = null, $app = null, $input = null)
+	public function __construct($config = [], MVCFactoryInterface $factory = null, $app = null, $input = null)
 	{
 		parent::__construct($config, $factory, $app, $input);
 
-		$this->registerTask('unfeatured',	'featured');
+		$this->registerTask('unfeatured', 'featured');
 	}
 
 	/**
@@ -56,44 +56,35 @@ class FoosController extends AdminController
 		// Check for request forgeries
 		$this->checkToken();
 
-		$ids    = $this->input->get('cid', array(), 'array');
-		$values = array('featured' => 1, 'unfeatured' => 0);
+		$ids    = $this->input->get('cid', [], 'array');
+		$values = ['featured' => 1, 'unfeatured' => 0];
 		$task   = $this->getTask();
 		$value  = ArrayHelper::getValue($values, $task, 0, 'int');
 
 		$model  = $this->getModel();
 
 		// Access checks.
-		foreach ($ids as $i => $id)
-		{
+		foreach ($ids as $i => $id) {
 			$item = $model->getItem($id);
 
-			if (!$this->app->getIdentity()->authorise('core.edit.state', 'com_foos.category.' . (int) $item->catid))
-			{
+			if (!$this->app->getIdentity()->authorise('core.edit.state', 'com_foos.category.' . (int) $item->catid)) {
 				// Prune items that you can't change.
 				unset($ids[$i]);
 				$this->app->enqueueMessage(Text::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'), 'notice');
 			}
 		}
 
-		if (empty($ids))
-		{
+		if (empty($ids)) {
 			$this->app->enqueueMessage(Text::_('COM_FOOS_NO_ITEM_SELECTED'), 'warning');
-		}
-		else
-		{
+		} else {
 			// Publish the items.
-			if (!$model->featured($ids, $value))
-			{
+			if (!$model->featured($ids, $value)) {
 				$this->app->enqueueMessage($model->getError(), 'warning');
 			}
 
-			if ($value == 1)
-			{
+			if ($value == 1) {
 				$message = Text::plural('COM_FOOS_N_ITEMS_FEATURED', count($ids));
-			}
-			else
-			{
+			} else {
 				$message = Text::plural('COM_FOOS_N_ITEMS_UNFEATURED', count($ids));
 			}
 		}
@@ -112,7 +103,7 @@ class FoosController extends AdminController
 	 *
 	 * @since   __BUMP_VERSION__
 	 */
-	public function getModel($name = 'Foo', $prefix = 'Administrator', $config = array('ignore_request' => true))
+	public function getModel($name = 'Foo', $prefix = 'Administrator', $config = ['ignore_request' => true])
 	{
 		return parent::getModel($name, $prefix, $config);
 	}

@@ -11,7 +11,7 @@
 
 ?>
 <div class="com-foos-featured blog-featured">
-<?php if ($this->params->get('show_page_headings') != 0 ) : ?>
+<?php if ($this->params->get('show_page_headings') != 0) : ?>
 	<h1>
 		<?php echo $this->escape($this->params->get('page_heading')); ?>
 	</h1>

@@ -45,8 +45,7 @@ return new class implements ServiceProviderInterface
 
 		$container->set(
 			ComponentInterface::class,
-			function (Container $container)
-			{
+			function (Container $container) {
 				$component = new FoosComponent($container->get(ComponentDispatcherFactoryInterface::class));
 
 				$component->setRegistry($container->get(Registry::class));

@@ -103,15 +103,12 @@ class Router extends RouterView
 	{
 		$category = $this->categoryFactory->createCategory()->get($id);
 
-		if ($category)
-		{
+		if ($category) {
 			$path = array_reverse($category->getPath(), true);
 			$path[0] = '1:root';
 
-			if ($this->noIDs)
-			{
-				foreach ($path as &$segment)
-				{
+			if ($this->noIDs) {
+				foreach ($path as &$segment) {
 					list($id, $segment) = explode(':', $segment, 2);
 				}
 			}
@@ -119,7 +116,7 @@ class Router extends RouterView
 			return $path;
 		}
 
-		return array();
+		return [];
 	}
 
 	/**
@@ -145,8 +142,7 @@ class Router extends RouterView
 	 */
 	public function getFooSegment($id, $query)
 	{
-		if (!strpos($id, ':'))
-		{
+		if (!strpos($id, ':')) {
 			$id = (int) $id;
 			$dbquery = $this->db->getQuery(true);
 			$dbquery->select($this->db->quoteName('alias'))
@@ -158,14 +154,13 @@ class Router extends RouterView
 			$id .= ':' . $this->db->loadResult();
 		}
 
-		if ($this->noIDs)
-		{
+		if ($this->noIDs) {
 			list($void, $segment) = explode(':', $id, 2);
 
-			return array($void => $segment);
+			return [$void => $segment];
 		}
 
-		return array((int) $id => $id);
+		return [(int) $id => $id];
 	}
 
 	/**
@@ -193,25 +188,17 @@ class Router extends RouterView
 	 */
 	public function getCategoryId($segment, $query)
 	{
-		if (isset($query['id']))
-		{
+		if (isset($query['id'])) {
 			$category = $this->categoryFactory->createCategory(['access' => false])->get($query['id']);
 
-			if ($category)
-			{
-				foreach ($category->getChildren() as $child)
-				{
-					if ($this->noIDs)
-					{
-						if ($child->alias == $segment)
-						{
+			if ($category) {
+				foreach ($category->getChildren() as $child) {
+					if ($this->noIDs) {
+						if ($child->alias == $segment) {
 							return $child->id;
 						}
-					}
-					else
-					{
-						if ($child->id == (int) $segment)
-						{
+					} else {
+						if ($child->id == (int) $segment) {
 							return $child->id;
 						}
 					}
@@ -245,8 +232,7 @@ class Router extends RouterView
 	 */
 	public function getFooId($segment, $query)
 	{
-		if ($this->noIDs)
-		{
+		if ($this->noIDs) {
 			$dbquery = $this->db->getQuery(true);
 			$dbquery->select($this->db->quoteName('id'))
 				->from($this->db->quoteName('#__foos_details'))
