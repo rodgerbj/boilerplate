@@ -74,6 +74,7 @@ class HtmlView extends BaseHtmlView
 		$temp->merge($itemparams);
 		$item->params = $temp;
 
+<<<<<<< HEAD
 		$active = Factory::getApplication()->getMenu()->getActive();
 
 		// Override the layout only if this is not the active menu item
@@ -87,6 +88,8 @@ class HtmlView extends BaseHtmlView
 			$this->setLayout($active->query['layout']);
 		}
 
+=======
+>>>>>>> origin/t19
 		Factory::getApplication()->triggerEvent('onContentPrepare', ['com_foos.foo', &$item]);
 
 		// Store the events for later
