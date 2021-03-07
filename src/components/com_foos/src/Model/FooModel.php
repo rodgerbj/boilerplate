@@ -34,8 +34,14 @@ class FooModel extends BaseDatabaseModel
 	 */
 	public function getMsg()
 	{
+<<<<<<< HEAD
 		$app = Factory::getApplication();
 		$this->message = $app->input->get('show_text', "Hi");
+=======
+		if (!isset($this->message)) {
+			$this->message = 'Hello Foo!';
+		}
+>>>>>>> origin/t4
 
 		return $this->message;
 	}
