@@ -24,10 +24,8 @@ HTMLHelper::_('behavior.core');
 				<?php echo Text::_('COM_FOO_NO_FOOS'); ?>
 			</p>
 		<?php else : ?>
-
 			<ul class="com-foo-category__list category">
 				<?php foreach ($this->items as $i => $item) : ?>
-
 					<?php if (in_array($item->access, $this->user->getAuthorisedViewLevels())) : ?>
 						<li class="row cat-list-row" >
 
@@ -44,7 +42,7 @@ HTMLHelper::_('behavior.core');
 					<?php endif; ?>
 				<?php endforeach; ?>
 			</ul>
-			<?php endif; ?>
+		<?php endif; ?>
 
 			<?php if ($this->params->get('show_pagination', 2)) : ?>
 			<div class="com-foo-category__counter">

@@ -60,21 +60,18 @@ class Icon
 	 *
 	 * @since  __DEPLOY_VERSION__
 	 */
-	public static function create($category, $params, $attribs = array())
+	public static function create($category, $params, $attribs = [])
 	{
 		$uri = Uri::getInstance();
 
 		$url = 'index.php?option=com_foos&task=foo.add&return=' . base64_encode($uri) . '&id=0&catid=' . $category->id;
 
-		$text = LayoutHelper::render('joomla.content.icons.create', array('params' => $params, 'legacy' => false));
+		$text = LayoutHelper::render('joomla.content.icons.create', ['params' => $params, 'legacy' => false]);
 
 		// Add the button classes to the attribs array
-		if (isset($attribs['class']))
-		{
+		if (isset($attribs['class'])) {
 			$attribs['class'] .= ' btn btn-primary';
-		}
-		else
-		{
+		} else {
 			$attribs['class'] = 'btn btn-primary';
 		}
 
@@ -100,20 +97,18 @@ class Icon
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
-	public static function edit($foo, $params, $attribs = array(), $legacy = false)
+	public static function edit($foo, $params, $attribs = [], $legacy = false)
 	{
 		$user = Factory::getUser();
 		$uri  = Uri::getInstance();
 
 		// Ignore if in a popup window.
-		if ($params && $params->get('popup'))
-		{
+		if ($params && $params->get('popup')) {
 			return '';
 		}
 
 		// Ignore if the state is negative (trashed).
-		if ($foo->published < 0)
-		{
+		if ($foo->published < 0) {
 			return '';
 		}
 
@@ -124,52 +119,41 @@ class Icon
 		if (property_exists($foo, 'checked_out')
 			&& property_exists($foo, 'checked_out_time')
 			&& $foo->checked_out > 0
-			&& $foo->checked_out != $user->get('id'))
-		{
+			&& $foo->checked_out != $user->get('id')) {
 			$checkoutUser = Factory::getUser($foo->checked_out);
 			$date         = HTMLHelper::_('date', $foo->checked_out_time);
 			$tooltip      = Text::_('JLIB_HTML_CHECKED_OUT') . ' :: ' . Text::sprintf('COM_FOOS_CHECKED_OUT_BY', $checkoutUser->name)
 				. ' <br /> ' . $date;
 
-			$text = LayoutHelper::render('joomla.content.icons.edit_lock', array('tooltip' => $tooltip, 'legacy' => $legacy));
+			$text = LayoutHelper::render('joomla.content.icons.edit_lock', ['tooltip' => $tooltip, 'legacy' => $legacy]);
 
 			$output = HTMLHelper::_('link', '#', $text, $attribs);
 
 			return $output;
 		}
 
-		if (!isset($foo->slug))
-		{
+		if (!isset($foo->slug)) {
 			$foo->slug = "";
 		}
 
 		$fooUrl = RouteHelper::getFooRoute($foo->slug, $foo->catid, $foo->language);
 		$url        = $fooUrl . '&task=foo.edit&id=' . $foo->id . '&return=' . base64_encode($uri);
 
-		if ($foo->published == 0)
-		{
+		if ($foo->published == 0) {
 			$overlib = Text::_('JUNPUBLISHED');
-		}
-		else
-		{
+		} else {
 			$overlib = Text::_('JPUBLISHED');
 		}
 
-		if (!isset($foo->created))
-		{
+		if (!isset($foo->created)) {
 			$date = HTMLHelper::_('date', 'now');
-		}
-		else
-		{
+		} else {
 			$date = HTMLHelper::_('date', $foo->created);
 		}
 
-		if (!isset($created_by_alias) && !isset($foo->created_by))
-		{
+		if (!isset($created_by_alias) && !isset($foo->created_by)) {
 			$author = '';
-		}
-		else
-		{
+		} else {
 			$author = $foo->created_by_alias ?: Factory::getUser($foo->created_by)->name;
 		}
 
@@ -181,8 +165,7 @@ class Icon
 		$icon = $foo->published ? 'edit' : 'eye-slash';
 
 		if (strtotime($foo->publish_up) > strtotime(Factory::getDate())
-			|| ((strtotime($foo->publish_down) < strtotime(Factory::getDate())) && $foo->publish_down != Factory::getDbo()->getNullDate()))
-		{
+			|| ((strtotime($foo->publish_down) < strtotime(Factory::getDate())) && $foo->publish_down != Factory::getDbo()->getNullDate())) {
 			$icon = 'eye-slash';
 		}
 
