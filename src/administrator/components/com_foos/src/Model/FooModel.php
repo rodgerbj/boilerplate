@@ -39,13 +39,12 @@ class FooModel extends AdminModel
 	 *
 	 * @since   __BUMP_VERSION__
 	 */
-	public function getForm($data = array(), $loadData = true)
+	public function getForm($data = [], $loadData = true)
 	{
 		// Get the form.
-		$form = $this->loadForm($this->typeAlias, 'foo', array('control' => 'jform', 'load_data' => $loadData));
+		$form = $this->loadForm($this->typeAlias, 'foo', ['control' => 'jform', 'load_data' => $loadData]);
 
-		if (empty($form))
-		{
+		if (empty($form)) {
 			return false;
 		}
 
