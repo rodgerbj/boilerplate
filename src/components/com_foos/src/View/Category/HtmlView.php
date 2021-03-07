@@ -14,7 +14,6 @@ namespace FooNamespace\Component\Foos\Site\View\Category;
 use Joomla\CMS\MVC\View\CategoryView;
 use FooNamespace\Component\Foos\Site\Helper\RouteHelper;
 
-
 /**
  * HTML View class for the Foos component
  *
@@ -26,13 +25,13 @@ class HtmlView extends CategoryView
 	 * @var    string  The name of the extension for the category
 	 * @since  __BUMP_VERSION__
 	 */
-	protected  $extension = 'com_foos';
+	protected $extension = 'com_foos';
 
 	/**
 	 * @var    string  Default title to use for page title
 	 * @since  __BUMP_VERSION__
 	 */
-	protected  $defaultPageTitle = 'COM_FOO_DEFAULT_PAGE_TITLE';
+	protected $defaultPageTitle = 'COM_FOO_DEFAULT_PAGE_TITLE';
 
 	/**
 	 * @var    string  The name of the view to link individual items to
@@ -61,8 +60,7 @@ class HtmlView extends CategoryView
 
 		$this->pagination->hideEmptyLimitstart = true;
 
-		foreach ($this->items as $item)
-		{
+		foreach ($this->items as $item) {
 			$item->slug = $item->id;
 			$temp = $item->params;
 			$item->params = clone $this->params;
@@ -85,22 +83,19 @@ class HtmlView extends CategoryView
 		$id = (int) @$menu->query['id'];
 
 		if ($menu && (!isset($menu->query['option']) || $menu->query['option'] != $this->extension || $menu->query['view'] == $this->viewName
-			|| $id != $this->category->id))
-		{
-			$path = array(array('title' => $this->category->title, 'link' => ''));
+			|| $id != $this->category->id)) {
+			$path = [['title' => $this->category->title, 'link' => '']];
 			$category = $this->category->getParent();
 
 			while ((!isset($menu->query['option']) || $menu->query['option'] !== 'com_foos' || $menu->query['view'] === 'foo'
-				|| $id != $category->id) && $category->id > 1)
-			{
-				$path[] = array('title' => $category->title, 'link' => RouteHelper::getCategoryRoute($category->id, $category->language));
+				|| $id != $category->id) && $category->id > 1) {
+				$path[] = ['title' => $category->title, 'link' => RouteHelper::getCategoryRoute($category->id, $category->language)];
 				$category = $category->getParent();
 			}
 
 			$path = array_reverse($path);
 
-			foreach ($path as $item)
-			{
+			foreach ($path as $item) {
 				$this->pathway->addItem($item['title'], $item['link']);
 			}
 		}
