@@ -39,16 +39,13 @@ abstract class AssociationHelper extends CategoryAssociationHelper
 		$view = $view ?? $jinput->get('view');
 		$id = empty($id) ? $jinput->getInt('id') : $id;
 
-		if ($view === 'foos')
-		{
-			if ($id)
-			{
+		if ($view === 'foos') {
+			if ($id) {
 				$associations = Associations::getAssociations('com_foos', '#__foos_details', 'com_foos.item', $id);
 
-				$return = array();
+				$return = [];
 
-				foreach ($associations as $tag => $item)
-				{
+				foreach ($associations as $tag => $item) {
 					$return[$tag] = RouteHelper::getFoosRoute($item->id, (int) $item->catid, $item->language);
 				}
 
@@ -56,12 +53,10 @@ abstract class AssociationHelper extends CategoryAssociationHelper
 			}
 		}
 
-		if ($view === 'category' || $view === 'categories')
-		{
+		if ($view === 'category' || $view === 'categories') {
 			return self::getCategoryAssociations($id, 'com_foos');
 		}
 
-		return array();
-
+		return [];
 	}
 }
