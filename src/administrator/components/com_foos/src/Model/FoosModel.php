@@ -29,7 +29,7 @@ class FoosModel extends ListModel
 	 *
 	 * @since   __BUMP_VERSION__
 	 */
-	public function __construct($config = array())
+	public function __construct($config = [])
 	{
 		parent::__construct($config);
 	}
@@ -48,7 +48,7 @@ class FoosModel extends ListModel
 
 		// Select the required fields from the table.
 		$query->select(
-			$db->quoteName(array('id', 'name', 'alias'))
+			$db->quoteName(['id', 'name', 'alias'])
 		);
 		$query->from($db->quoteName('#__foos_details'));
 
