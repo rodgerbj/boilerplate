@@ -22,8 +22,7 @@ $listOrder = $this->escape($this->state->get('list.ordering'));
 $listDirn  = $this->escape($this->state->get('list.direction'));
 $saveOrder = $listOrder == 'a.ordering';
 
-if ($saveOrder && !empty($this->items))
-{
+if ($saveOrder && !empty($this->items)) {
 	$saveOrderingUrl = 'index.php?option=com_foos&task=foos.saveOrderAjax&tmpl=component&' . Session::getFormToken() . '=1';
 }
 ?>
@@ -34,9 +33,13 @@ if ($saveOrder && !empty($this->items))
 				<?php echo $this->sidebar; ?>
 			</div>
 		<?php endif; ?>
-		<div class="<?php if (!empty($this->sidebar)) {echo 'col-md-10'; } else { echo 'col-md-12'; } ?>">
+		<div class="<?php if (!empty($this->sidebar)) {
+			echo 'col-md-10';
+					} else {
+						echo 'col-md-12';
+					} ?>">
 			<div id="j-main-container" class="j-main-container">
-				<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
+				<?php echo LayoutHelper::render('joomla.searchtools.default', ['view' => $this]); ?>
 				<?php if (empty($this->items)) : ?>
 					<div class="alert alert-warning">
 						<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
@@ -90,12 +93,9 @@ if ($saveOrder && !empty($this->items))
 								<td class="order text-center d-none d-md-table-cell">
 									<?php
 									$iconClass = '';
-									if (!$canChange)
-									{
+									if (!$canChange) {
 										$iconClass = ' inactive';
-									}
-									elseif (!$saveOrder)
-									{
+									} else if (!$saveOrder) {
 										$iconClass = ' inactive tip-top hasTooltip" title="' . HTMLHelper::_('tooltipText', 'JORDERINGDISABLED');
 									}
 									?>
@@ -132,16 +132,16 @@ if ($saveOrder && !empty($this->items))
 									<?php echo $item->access_level; ?>
 								</td>
 								<td class="text-center">
-									<?php 
-									echo HTMLHelper::_('jgrid.published', $item->published, $i, 'foos.', $canChange, 'cb', $item->publish_up, $item->publish_down); 
+									<?php
+									echo HTMLHelper::_('jgrid.published', $item->published, $i, 'foos.', $canChange, 'cb', $item->publish_up, $item->publish_down);
 									?>
 
 								</td>
 								<?php if ($assoc) : ?>
 								<td class="d-none d-md-table-cell">
 									<?php if ($item->association) : ?>
-										<?php 
-										echo HTMLHelper::_('foosadministrator.association', $item->id); 
+										<?php
+										echo HTMLHelper::_('foosadministrator.association', $item->id);
 										?>
 									<?php endif; ?>
 								</td>
@@ -156,7 +156,7 @@ if ($saveOrder && !empty($this->items))
 									<?php echo $item->id; ?>
 								</td>
 							</tr>
-							<?php endforeach; ?>
+						<?php endforeach; ?>
 						</tbody>
 					</table>
 
@@ -165,10 +165,10 @@ if ($saveOrder && !empty($this->items))
 					<?php echo HTMLHelper::_(
 						'bootstrap.renderModal',
 						'collapseModal',
-						array(
+						[
 							'title'  => Text::_('COM_FOOS_BATCH_OPTIONS'),
 							'footer' => $this->loadTemplate('batch_footer'),
-						),
+						],
 						$this->loadTemplate('batch_body')
 					); ?>
 
