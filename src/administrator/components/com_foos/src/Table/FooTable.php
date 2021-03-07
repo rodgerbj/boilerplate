@@ -44,15 +44,13 @@ class FooTable extends Table
 	 */
 	public function generateAlias()
 	{
-		if (empty($this->alias))
-		{
+		if (empty($this->alias)) {
 			$this->alias = $this->name;
 		}
 
 		$this->alias = ApplicationHelper::stringURLSafe($this->alias, $this->language);
 
-		if (trim(str_replace('-', '', $this->alias)) == '')
-		{
+		if (trim(str_replace('-', '', $this->alias)) == '') {
 			$this->alias = Factory::getDate()->format('Y-m-d-H-i-s');
 		}
 
@@ -69,33 +67,27 @@ class FooTable extends Table
 	 */
 	public function check()
 	{
-		try
-		{
+		try {
 			parent::check();
-		}
-		catch (\Exception $e)
-		{
+		} catch (\Exception $e) {
 			$this->setError($e->getMessage());
 
 			return false;
 		}
 
 		// Check the publish down date is not earlier than publish up.
-		if ($this->publish_down > $this->_db->getNullDate() && $this->publish_down < $this->publish_up)
-		{
+		if ($this->publish_down > $this->_db->getNullDate() && $this->publish_down < $this->publish_up) {
 			$this->setError(Text::_('JGLOBAL_START_PUBLISH_AFTER_FINISH'));
 
 			return false;
 		}
 
 		// Set publish_up, publish_down to null if not set
-		if (!$this->publish_up)
-		{
+		if (!$this->publish_up) {
 			$this->publish_up = null;
 		}
 
-		if (!$this->publish_down)
-		{
+		if (!$this->publish_down) {
 			$this->publish_down = null;
 		}
 
