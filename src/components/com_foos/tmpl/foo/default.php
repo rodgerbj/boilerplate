@@ -41,6 +41,6 @@ if ($tparams->get('show_name')) {
 <?php endif; ?>
 
 <?php
-echo $this->item->event->afterDisplayTitle; 
+echo $this->item->event->afterDisplayTitle;
 echo $this->item->event->beforeDisplayContent;
 echo $this->item->event->afterDisplayContent;

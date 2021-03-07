@@ -50,10 +50,8 @@ class FooController extends ApiController
 	{
 		$data = (array) json_decode($this->input->json->getRaw(), true);
 
-		foreach (FieldsHelper::getFields('com_foos.foo') as $field)
-		{
-			if (isset($data[$field->name]))
-			{
+		foreach (FieldsHelper::getFields('com_foos.foo') as $field) {
+			if (isset($data[$field->name])) {
 				!isset($data['com_fields']) && $data['com_fields'] = [];
 
 				$data['com_fields'][$field->name] = $data[$field->name];
