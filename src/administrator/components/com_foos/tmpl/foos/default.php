@@ -127,6 +127,9 @@ if ($saveOrder && !empty($this->items)) {
 								</th>
 								<td class="text-center">
 									<?php echo HTMLHelper::_('foosadministrator.featured', $item->featured, $i, $canChange); ?>
+									<?php
+									echo HTMLHelper::_('jgrid.published', $item->published, $i, 'foos.', $canChange, 'cb', $item->publish_up, $item->publish_down);
+									?>
 								</td>
 								<td class="small d-none d-md-table-cell">
 									<?php echo $item->access_level; ?>
