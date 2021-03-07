@@ -65,13 +65,11 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::_('COM_FOOS_MANAGER_FOOS'), 'address foo');
 
-		if ($canDo->get('core.create'))
-		{
+		if ($canDo->get('core.create')) {
 			$toolbar->addNew('foo.add');
 		}
 
-		if ($canDo->get('core.options'))
-		{
+		if ($canDo->get('core.options')) {
 			$toolbar->preferences('com_foos');
 		}
 	}

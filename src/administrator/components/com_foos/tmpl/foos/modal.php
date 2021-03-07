@@ -43,12 +43,12 @@ $onclick   = $this->escape($function);
 				</thead>
 				<tbody>
 				<?php
-				$iconStates = array(
+				$iconStates = [
 					-2 => 'icon-trash',
 					0  => 'icon-unpublish',
 					1  => 'icon-publish',
 					2  => 'icon-archive',
-				);
+				];
 				?>
 				<?php foreach ($this->items as $i => $item) : ?>
 					<?php $lang = ''; ?>
