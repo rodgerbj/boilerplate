@@ -58,7 +58,7 @@ class Com_FoosInstallerScript extends InstallerScript
 		// Initialize a new category.
 		$category = Table::getInstance('Category');
 
-		$data = array(
+		$data = [
 			'extension' => 'com_foos',
 			'title' => 'FooUncategorised',
 			'alias' => $alias . '(en-GB)',
@@ -72,27 +72,24 @@ class Com_FoosInstallerScript extends InstallerScript
 			'created_time' => Factory::getDate()->toSql(),
 			'created_user_id' => (int) $this->getAdminId(),
 			'language' => 'en-GB',
-			'rules' => array(),
+			'rules' => [],
 			'parent_id' => 1,
-		);
+		];
 
 		$category->setLocation(1, 'last-child');
 
 		// Bind the data to the table
-		if (!$category->bind($data))
-		{
+		if (!$category->bind($data)) {
 			return false;
 		}
 
 		// Check to make sure our data is valid.
-		if (!$category->check())
-		{
+		if (!$category->check()) {
 			return false;
 		}
 
 		// Store the category.
-		if (!$category->store(true))
-		{
+		if (!$category->store(true)) {
 			return false;
 		}
 
@@ -150,11 +147,9 @@ class Com_FoosInstallerScript extends InstallerScript
 	 */
 	public function preflight($type, $parent): bool
 	{
-		if ($type !== 'uninstall')
-		{
+		if ($type !== 'uninstall') {
 			// Check for the minimum PHP version before continuing
-			if (!empty($this->minimumPHPVersion) && version_compare(PHP_VERSION, $this->minimumPHPVersion, '<'))
-			{
+			if (!empty($this->minimumPHPVersion) && version_compare(PHP_VERSION, $this->minimumPHPVersion, '<')) {
 				Log::add(
 					Text::sprintf('JLIB_INSTALLER_MINIMUM_PHP', $this->minimumPHPVersion),
 					Log::WARNING,
@@ -165,8 +160,7 @@ class Com_FoosInstallerScript extends InstallerScript
 			}
 
 			// Check for the minimum Joomla version before continuing
-			if (!empty($this->minimumJoomlaVersion) && version_compare(JVERSION, $this->minimumJoomlaVersion, '<'))
-			{
+			if (!empty($this->minimumJoomlaVersion) && version_compare(JVERSION, $this->minimumJoomlaVersion, '<')) {
 				Log::add(
 					Text::sprintf('JLIB_INSTALLER_MINIMUM_JOOMLA', $this->minimumJoomlaVersion),
 					Log::WARNING,
@@ -239,8 +233,7 @@ class Com_FoosInstallerScript extends InstallerScript
 		$db->setQuery($query);
 		$id = $db->loadResult();
 
-		if (!$id || $id instanceof \Exception)
-		{
+		if (!$id || $id instanceof \Exception) {
 			return false;
 		}
 
@@ -258,7 +251,7 @@ class Com_FoosInstallerScript extends InstallerScript
 	{
 		$table = Table::getInstance('Contenttype', 'JTable');
 
-		$table->load(array('type_alias' => 'com_foos.foo'));
+		$table->load(['type_alias' => 'com_foos.foo']);
 
 		$tablestring = '{
 			"special": {
@@ -297,7 +290,7 @@ class Com_FoosInstallerScript extends InstallerScript
 			}
 		  }';
 
-		$contenttype = array();
+		$contenttype = [];
 		$contenttype['type_id'] = ($table->type_id) ? $table->type_id : 0;
 		$contenttype['type_title'] = 'Foos';
 		$contenttype['type_alias'] = 'com_foos.foo';
