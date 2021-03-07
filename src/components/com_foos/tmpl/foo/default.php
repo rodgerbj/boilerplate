@@ -11,7 +11,6 @@
 use Joomla\CMS\Language\Text;
 
 if ($this->item->params->get('show_name')) {
-
 	if ($this->Params->get('show_foo_name_label')) {
 		echo Text::_('COM_FOOS_NAME');
 	}
@@ -19,6 +18,6 @@ if ($this->item->params->get('show_name')) {
 	echo $this->item->name;
 }
 
-echo $this->item->event->afterDisplayTitle; 
+echo $this->item->event->afterDisplayTitle;
 echo $this->item->event->beforeDisplayContent;
 echo $this->item->event->afterDisplayContent;
