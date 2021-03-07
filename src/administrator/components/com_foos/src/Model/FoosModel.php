@@ -47,13 +47,7 @@ class FoosModel extends ListModel
 				'language', 'a.language', 'language_title',
 				'publish_up', 'a.publish_up',
 				'publish_down', 'a.publish_down',
-<<<<<<< HEAD
-				'tag',
-=======
->>>>>>> origin/t28
 			];
-
-			$assoc = Associations::isEnabled();
 
 			if ($assoc) {
 				$config['filter_fields'][] = 'association';
