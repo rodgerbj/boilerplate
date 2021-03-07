@@ -9,6 +9,6 @@
 \defined('_JEXEC') or die;
 ?>
 <?php foreach ($this->items as $i => $item) : ?>
-<?php echo $item->name; ?>
+	<?php echo $item->name; ?>
 </br>
 <?php endforeach; ?>
