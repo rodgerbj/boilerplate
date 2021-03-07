@@ -34,7 +34,7 @@ class FooController extends FormController
 	{
 		$this->checkToken();
 
-		$model = $this->getModel('Foo', 'Administrator', array());
+		$model = $this->getModel('Foo', 'Administrator', []);
 
 		// Preset the redirect
 		$this->setRedirect(Route::_('index.php?option=com_foos&view=foos' . $this->getRedirectToListAppend(), false));
