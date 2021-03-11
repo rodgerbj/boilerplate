@@ -9,7 +9,7 @@
 
 namespace FooNamespace\Component\Foos\Administrator\Field\Modal;
 
-defined('JPATH_BASE') or die;
+\defined('JPATH_BASE') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Form\FormField;
@@ -109,22 +109,16 @@ class FooField extends FormField
 			$html .= '<span class="input-group">';
 		}
 
-		$html .= '<input class="form-control" id="' . $this->id
-			. '_name" type="text" value="'
-			. $title . '" disabled="disabled" size="35">';
-
-		if ($allowSelect || $allowNew || $allowEdit || $allowClear) {
-			$html .= '<span class="input-group-append">';
-		}
+		$html .= '<input class="form-control" id="' . $this->id . '_name" type="text" value="' . $title . '" readonly size="35">';
 
 		// Select foo button
 		if ($allowSelect) {
 			$html .= '<button'
 				. ' class="btn btn-primary hasTooltip' . ($value ? ' hidden' : '') . '"'
 				. ' id="' . $this->id . '_select"'
-				. ' data-toggle="modal"'
+				. ' data-bs-toggle="modal"'
 				. ' type="button"'
-				. ' data-target="#ModalSelect' . $modalId . '"'
+				. ' data-bs-target="#ModalSelect' . $modalId . '"'
 				. ' title="' . HTMLHelper::tooltipText('COM_FOOS_CHANGE_FOO') . '">'
 				. '<span class="icon-file" aria-hidden="true"></span> ' . Text::_('JSELECT')
 				. '</button>';
@@ -142,7 +136,7 @@ class FooField extends FormField
 		}
 
 		if ($allowSelect || $allowNew || $allowEdit || $allowClear) {
-			$html .= '</span></span>';
+			$html .= '</span>';
 		}
 
 		// Select foo modal
@@ -157,10 +151,8 @@ class FooField extends FormField
 					'width'       => '800px',
 					'bodyHeight'  => 70,
 					'modalWidth'  => 80,
-					'footer'      => '<a role="button" '
-					. 'class="btn btn-secondary" '
-					. 'data-dismiss="modal" aria-hidden="true">'
-					. Text::_('JLIB_HTML_BEHAVIOR_CLOSE') . '</a>',
+					'footer'      => '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">'
+										. Text::_('JLIB_HTML_BEHAVIOR_CLOSE') . '</button>',
 				]
 			);
 		}
