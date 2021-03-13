@@ -61,9 +61,6 @@ $assoc = Associations::isEnabled();
 										<?php echo Text::_('JGRID_HEADING_LANGUAGE'); ?>
 									</th>
 								<?php endif; ?>
-								<th scope="col" style="width:1%; min-width:85px" class="text-center">
-									<?php echo Text::_('JSTATUS'); ?>
-								</th>
 								<th scope="col">
 									<?php echo Text::_('COM_FOOS_TABLE_TABLEHEAD_ID'); ?>
 								</th>
