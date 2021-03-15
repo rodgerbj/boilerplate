@@ -10,6 +10,7 @@
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Helper\ContentHelper;
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 
 $canDo   = ContentHelper::getActions('com_foos', 'category', $this->item->catid);
@@ -27,15 +28,10 @@ if ($tparams->get('show_name')) {
 
 <?php if ($canEdit) : ?>
 	<div class="icons">
-		<div class="btn-group float-right">
-			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton-<?php echo $this->item->id; ?>"
-				aria-label="<?php echo JText::_('JUSER_TOOLS'); ?>"
-				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				<span class="fa fa-cog" aria-hidden="true"></span>
-			</button>
-			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton-<?php echo $this->item->id; ?>">
-				<li class="edit-icon"> <?php echo JHtml::_('fooicon.edit', $this->item, $tparams); ?> </li>
-			</ul>
+		<div class="float-end">
+			<div>
+				<?php echo HTMLHelper::_('fooicon.edit', $this->item, $tparams); ?>
+			</div>
 		</div>
 	</div>
 <?php endif; ?>
