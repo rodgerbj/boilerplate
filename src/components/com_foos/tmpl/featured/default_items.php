@@ -24,7 +24,6 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 	<?php if (empty($this->items)) : ?>
 		<p class="com-foos-featured__message"> <?php echo Text::_('COM_FOO_NO_FOOS'); ?>	 </p>
 	<?php else : ?>
-
 	<form action="<?php echo htmlspecialchars(Uri::getInstance()->toString()); ?>" method="post" name="adminForm" id="adminForm">
 		<table class="com-foos-featured__table table">
 			<?php if ($this->params->get('show_headings')) : ?>

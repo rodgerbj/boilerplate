@@ -145,8 +145,7 @@ class FooModel extends AdminModel
 		// Sanitize the ids.
 		$pks = ArrayHelper::toInteger((array) $pks);
 
-		if (empty($pks))
-		{
+		if (empty($pks)) {
 			$this->setError(Text::_('COM_FOOS_NO_ITEM_SELECTED'));
 
 			return false;
@@ -154,8 +153,7 @@ class FooModel extends AdminModel
 
 		$table = $this->getTable();
 
-		try
-		{
+		try {
 			$db = $this->getDbo();
 
 			$query = $db->getQuery(true);
@@ -167,9 +165,7 @@ class FooModel extends AdminModel
 			$db->setQuery($query);
 
 			$db->execute();
-		}
-		catch (\Exception $e)
-		{
+		} catch (\Exception $e) {
 			$this->setError($e->getMessage());
 
 			return false;

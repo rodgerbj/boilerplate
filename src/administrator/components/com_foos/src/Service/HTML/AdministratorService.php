@@ -98,22 +98,19 @@ class AdministratorService
 	public function featured($value, $i, $canChange = true)
 	{
 		// Array of image, task, title, action
-		$states = array(
-			0 => array('unfeatured', 'foos.featured', 'COM_CONTACT_UNFEATURED', 'JGLOBAL_ITEM_FEATURE'),
-			1 => array('featured', 'foos.unfeatured', 'JFEATURED', 'JGLOBAL_ITEM_UNFEATURE'),
-		);
+		$states = [
+			0 => ['unfeatured', 'foos.featured', 'COM_CONTACT_UNFEATURED', 'JGLOBAL_ITEM_FEATURE'],
+			1 => ['featured', 'foos.unfeatured', 'JFEATURED', 'JGLOBAL_ITEM_UNFEATURE'],
+		];
 		$state = ArrayHelper::getValue($states, (int) $value, $states[1]);
 		$icon = $state[0] === 'featured' ? 'star featured' : 'star';
 
-		if ($canChange)
-		{
+		if ($canChange) {
 			$html = '<a href="#" onclick="return Joomla.listItemTask(\'cb' . $i . '\',\'' . $state[1] . '\')" class="tbody-icon'
 				. ($value == 1 ? ' active' : '') . '" aria-labelledby="cb' . $i . '-desc">'
 				. '<span class="fas fa-' . $icon . '" aria-hidden="true"></span></a>'
 				. '<div role="tooltip" id="cb' . $i . '-desc">' . Text::_($state[3]);
-		}
-		else
-		{
+		} else {
 			$html = '<a class="tbody-icon disabled' . ($value == 1 ? ' active' : '')
 				. '" title="' . Text::_($state[2]) . '"><span class="fas fa-' . $icon . '" aria-hidden="true"></span></a>';
 		}
