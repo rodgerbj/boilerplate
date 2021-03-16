@@ -13,6 +13,8 @@ namespace FooNamespace\Component\Foos\Administrator\Table;
 
 use Joomla\CMS\Application\ApplicationHelper;
 use Joomla\CMS\Table\Table;
+use Joomla\CMS\Tag\TaggableTableInterface;
+use Joomla\CMS\Tag\TaggableTableTrait;
 use Joomla\Database\DatabaseDriver;
 use Joomla\CMS\Language\Text;
 use Joomla\Registry\Registry;
@@ -22,8 +24,10 @@ use Joomla\Registry\Registry;
  *
  * @since  __BUMP_VERSION__
  */
-class FooTable extends Table
+class FooTable extends Table implements TaggableTableInterface
 {
+	use TaggableTableTrait;
+
 	/**
 	 * Constructor
 	 *
@@ -114,5 +118,17 @@ class FooTable extends Table
 		}
 
 		return true;
+	}
+
+	/**
+	 * Get the type alias
+	 *
+	 * @return  string  The alias as described above
+	 *
+	 * @since   __BUMP_VERSION__
+	 */
+	public function getTypeAlias()
+	{
+		return $this->typeAlias;
 	}
 }

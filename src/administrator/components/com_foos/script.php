@@ -258,7 +258,7 @@ class Com_FoosInstallerScript extends InstallerScript
 			  "dbtable": "#__foos",
 			  "key": "id",
 			  "type": "FooTable",
-			  "prefix": "Joomla\\\\Component\\\\Foos\\\\Administrator\\\\Table\\\\",
+			  "prefix": "FooNamespace\\\\Component\\\\Foos\\\\Administrator\\\\Table\\\\",
 			  "config": "array()"
 			},
 			"common": {
