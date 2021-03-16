@@ -18,7 +18,7 @@
 			<field
 				name="id"
 				type="modal_category"
-				label="COM_FOOS_FIELD_CATEGORY_LABEL"
+				label="JGLOBAL_CHOOSE_CATEGORY_LABEL"
 				extension="com_foos"
 				required="true"
 				select="true"
