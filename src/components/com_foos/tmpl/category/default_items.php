@@ -21,7 +21,7 @@ HTMLHelper::_('behavior.core');
 	<form action="<?php echo htmlspecialchars(Uri::getInstance()->toString()); ?>" method="post" name="adminForm" id="adminForm">
 		<?php if (empty($this->items)) : ?>
 			<p>
-				<?php echo Text::_('COM_FOO_NO_FOOS'); ?>
+				<?php echo Text::_('JGLOBAL_SELECT_NO_RESULTS_MATCH'); ?>
 			</p>
 		<?php else : ?>
 			<ul class="com-foo-category__list category">
