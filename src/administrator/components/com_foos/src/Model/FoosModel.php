@@ -15,6 +15,7 @@ use Joomla\CMS\MVC\Model\ListModel;
 use Joomla\CMS\Language\Associations;
 use Joomla\CMS\Factory;
 use Joomla\Utilities\ArrayHelper;
+use Joomla\Database\ParameterType;
 
 /**
  * Methods supporting a list of foo records.
@@ -48,7 +49,9 @@ class FoosModel extends ListModel
 				'publish_up', 'a.publish_up',
 				'publish_down', 'a.publish_down',
 			];
-
+			
+			$assoc = Associations::isEnabled();
+			
 			if ($assoc) {
 				$config['filter_fields'][] = 'association';
 			}
