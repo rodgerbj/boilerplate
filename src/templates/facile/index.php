@@ -100,6 +100,35 @@ $templatePath = 'templates/' . $this->template;
         </section>
 
         <footer id="footer">
+            <?php if ($this->params->get('showFooter')) : ?>
+            <div class="col-12">
+                <section>
+                    <?php 
+                        $fieldValues = $this->params->get('showFooterTouchFields');
+
+                        if (empty($fieldValues))
+                        {
+                            return;
+                        }
+
+                        $html = '<ul class="contact">';
+
+                        foreach ($fieldValues as $value)
+                        {
+                            $html .= '<li><a class="icon brands ' . $value->touchsubicon . '" href="' . $value->touchsuburl . '"><span class="label">' . $value->touchsubname . '</span></a></li>';
+
+                        }
+
+                        $html .= '</ul>';
+
+                        echo $html;
+
+                    ?>
+                </section>
+            </div>
+            <?php endif; ?>
+
+
             <?php if ($this->countModules('footer', true)) : ?>
             <div id="copyright">
                 <jdoc:include type="modules" name="footer" />
