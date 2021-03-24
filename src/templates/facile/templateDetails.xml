@@ -17,4 +17,108 @@
 		<filename>template_thumbnail.png</filename>
 		<folder>language</folder>
 	</files>
+
+	<positions>
+		<position>menu</position>
+		<position>search</position>
+		<position>banner</position>
+		<position>top-a</position>
+		<position>top-b</position>
+		<position>main-top</position>
+		<position>main-bottom</position>
+		<position>breadcrumbs</position>
+		<position>sidebar-left</position>
+		<position>sidebar-right</position>
+		<position>bottom-a</position>
+		<position>bottom-b</position>
+		<position>footer</position>
+		<position>debug</position>
+	</positions>
+	<config>
+		<fields name="params">
+			<fieldset name="banner" label="TPL_FACILE_BANNER_FIELDSET_LABEL" description="TPL_FACILE_BANNER_FIELDSET_DESC">
+				<field
+					name="showBanner"
+					type="radio"
+					label="TPL_FACILE_BANNER_LABEL"
+					layout="joomla.form.field.radio.switcher"
+					default="0"
+					filter="integer"
+					>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="bannerTitle"
+					type="text"
+					default="Welcome to the Joomla version of TXT by HTML5 UP"
+					label="TPL_FACILE_BANNER_TITLE"
+					filter="string"
+					showon="showBanner:1"
+				/>
+
+				<field
+					name="bannerDescription"
+					type="text"
+					default="A free responsive site template built on HTML5, CSS3, and some other stuff"
+					label="TPL_FACILE_BANNER_TAGLINE"
+					filter="string"
+					showon="showBanner:1"
+				/>
+
+				<field
+					name="bannerButton"
+					type="text"
+					default="Alright let's go"
+					label="TPL_FACILE_BANNER_BUTTON"
+					filter="string"
+					showon="showBanner:1"
+				/>
+			</fieldset>
+			<fieldset name="footer" label="TPL_FACILE_FOOTER_FIELDSET_LABEL" description="TPL_FACILE_FOOTER_FIELDSET_DESC">
+				<field
+					name="showFooter"
+					type="radio"
+					label="TPL_FACILE_FOOTER_LABEL"
+					layout="joomla.form.field.radio.switcher"
+					default="0"
+					filter="integer"
+					>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="showFooterTouchFields"
+					type="subform"
+					label="TPL_FACILE_GET_IN_TOUCH"
+					multiple="true"
+					max="10"
+					showon="showFooter:1"
+					>
+					<form>
+						<field
+							name="touchsubname"
+							type="text"
+							label="TPL_FACILE_GET_IN_TOUCH_SUBNAME"
+							/>
+						<field
+							name="touchsubicon"
+							type="text"
+							label="TPL_FACILE_GET_IN_TOUCH_SUBICON"
+							/>
+						<field
+							name="touchsuburl"
+							type="url"
+							label="TPL_FACILE_GET_IN_TOUCH_SUBURL"
+							size="30"
+							filter="url"
+							validate="url"
+							/>
+					</form>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
 </extension>
