@@ -12,7 +12,8 @@ use Joomla\CMS\HTML\HTMLHelper;
 
 $templatePath = 'templates/' . $this->template;
 $wa  = $this->getWebAssetManager();
-$wa->registerAndUseStyle('main', $templatePath . '/assets/css/main.css');
+$wa->registerAndUseStyle('main_dark', $templatePath . '/assets/css/main.dark.css', [], ['media' => '(prefers-color-scheme: dark)']);
+$wa->registerAndUseStyle('main_light', $templatePath . '/assets/css/main.css', [], ['media' => '(prefers-color-scheme: no-preference), (prefers-color-scheme: light)']);
 HTMLHelper::_('jquery.framework');
 $wa->registerAndUseScript('dropotron', $templatePath . '/assets/js/jquery.dropotron.min.js', [], ['defer' => true], []);
 $wa->registerAndUseScript('scrolly', $templatePath . '/assets/js/jquery.scrolly.min.js', [], ['defer' => true], []);
@@ -20,20 +21,36 @@ $wa->registerAndUseScript('browser', $templatePath . '/assets/js/browser.min.js'
 $wa->registerAndUseScript('breakpoints', $templatePath . '/assets/js/breakpoints.min.js', [], ['defer' => true], []);
 $wa->registerAndUseScript('util', $templatePath . '/assets/js/util.js', [], ['defer' => true], []);
 $wa->registerAndUseScript('main', $templatePath . '/assets/js/main.js', [], ['defer' => true], []);
+
 ?>
 
 <!DOCTYPE html>
 <html lang="de">
 
 <head>
-	<jdoc:include type="metas" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <jdoc:include type="metas" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <jdoc:include type="styles" />
     <jdoc:include type="scripts" />
+	<script type="module" src="https://unpkg.com/dark-mode-toggle"></script>
+
+	<script>
+    if (window.matchMedia('(prefers-color-scheme)').media !== 'not all') {
+        console.log('Dark mode is supported');
+    }
+    if (matchMedia('(prefers-color-scheme: dark)').matches) {
+        console.log('Dark mode');
+    } else {
+        console.log('Light  mode');
+    }
+    </script>
+
+
 </head>
 
 <body class="homepage is-preload">
     <div id="page-wrapper">
+		<dark-mode-toggle></dark-mode-toggle>
 
         <?php if ($this->countModules('menu', true)) : ?>
         <nav id="nav">
