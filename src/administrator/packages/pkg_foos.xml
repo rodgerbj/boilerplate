@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" method="upgrade">
+	<name>PKG_FOOS</name>
+	<creationDate>[DATE]</creationDate>
+	<author>[AUTHOR]</author>
+	<authorEmail>[AUTHOR_EMAIL]</authorEmail>
+	<authorUrl>[AUTHOR_URL]</authorUrl>
+	<copyright>[COPYRIGHT]</copyright>
+	<license>GNU General Public License version 2 or later;</license>
+	<version>__BUMP_VERSION__</version>
+	<description>COM_FOOS_XML_DESCRIPTION</description>
+	<packagename>PKG_FOOS</packagename>
+	<packageremail>[PKG_EMAIL]</packageremail>
+	<packagerurl>[PKG_URL]</packagerurl>
+	<scriptfile>script.php</scriptfile>
+	<files>
+		<file type="component" id="com_foos">com_foos.zip</file>
+		<file type="module" id="mod_foo" client="site">mod_foo.zip</file>
+		<file type="plugin" id="foos" group="webservices">plg_webservices_foos.zip</file>
+		<file type="template" id="agadvents" group="search">tpl_facile.zip</file>
+	</files>
+	<updateservers>
+		<server type="extension" name="Foos Update Site">https://raw.githubusercontent.com/astridx/boilerplate/foo-pkg-update.xml</server>
+	</updateservers>
+</extension>
