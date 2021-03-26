@@ -149,5 +149,4 @@ $templatePath = 'templates/' . $this->template;
 
     </div>
 </body>
-
 </html>
