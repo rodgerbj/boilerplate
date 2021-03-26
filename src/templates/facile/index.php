@@ -177,4 +177,8 @@ $wa->registerAndUseScript('main', $templatePath . '/assets/js/main.js', [], ['de
 
     </div>
 </body>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/t37
 </html>
