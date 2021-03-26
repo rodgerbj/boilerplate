@@ -169,5 +169,4 @@ $wa->registerAndUseScript('main', $templatePath . '/assets/js/main.js', [], ['de
 
     </div>
 </body>
-
 </html>
