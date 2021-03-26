@@ -20,3 +20,4 @@
 	Hallo Joomla!
   </body>
 </html>
+
