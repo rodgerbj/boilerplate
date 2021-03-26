@@ -238,4 +238,5 @@ $templatePath = 'templates/' . $this->template;
 	</div>
 >>>>>>> origin/t37
 </body>
+
 </html>
