@@ -97,7 +97,7 @@ $templatePath = 'templates/' . $this->template;
 		</footer>
 
 		<jdoc:include type="modules" name="debug" />
-		<!-- Scripts -->
+
 		<script src="<?php echo $templatePath; ?>/assets/js/jquery.min.js"></script>
 		<script src="<?php echo $templatePath; ?>/assets/js/jquery.dropotron.min.js"></script>
 		<script src="<?php echo $templatePath; ?>/assets/js/jquery.scrolly.min.js"></script>
@@ -105,7 +105,6 @@ $templatePath = 'templates/' . $this->template;
 		<script src="<?php echo $templatePath; ?>/assets/js/breakpoints.min.js"></script>
 		<script src="<?php echo $templatePath; ?>/assets/js/util.js"></script>
 		<script src="<?php echo $templatePath; ?>/assets/js/main.js"></script>
-
 
 	</div>
 </body>
