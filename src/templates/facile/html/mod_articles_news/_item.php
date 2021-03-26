@@ -6,8 +6,6 @@ use Joomla\CMS\Layout\LayoutHelper;
 ?>
 
 <div class="col-4 col-12-medium col-12-small">
-
-<!-- Feature -->
 	<section class="box feature">
 		<a href="<?php echo $item->link; ?>" class="image featured"><img src="<?php echo $item->imageSrc; ?>" alt="<?php echo $item->imageAlt; ?>"/></a>
 
@@ -18,5 +16,4 @@ use Joomla\CMS\Layout\LayoutHelper;
 			<?php echo LayoutHelper::render('joomla.content.readmore', ['item' => $item, 'params' => $item->params, 'link' => $item->link]); ?>
 		</p>
 	</section>
-
 </div>
