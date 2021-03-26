@@ -109,5 +109,10 @@ $templatePath = 'templates/' . $this->template;
 
 	</div>
 </body>
+<<<<<<< HEAD
 
 </html>
+=======
+</html>
+
+>>>>>>> origin/t36
