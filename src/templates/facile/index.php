@@ -174,7 +174,28 @@ $wa->registerAndUseScript('main', $templatePath . '/assets/js/main.js', [], ['de
         </footer>
 
         <jdoc:include type="modules" name="debug" />
+<<<<<<< HEAD
+=======
+        <<<<<<< HEAD <!-- Scripts -->
+            =======
 
-    </div>
+            >>>>>>> origin/t37
+            <script src="<?php echo $templatePath; ?>/assets/js/jquery.min.js"></script>
+            <script src="<?php echo $templatePath; ?>/assets/js/jquery.dropotron.min.js"></script>
+            <script src="<?php echo $templatePath; ?>/assets/js/jquery.scrolly.min.js"></script>
+            <script src="<?php echo $templatePath; ?>/assets/js/browser.min.js"></script>
+            <script src="<?php echo $templatePath; ?>/assets/js/breakpoints.min.js"></script>
+            <script src="<?php echo $templatePath; ?>/assets/js/util.js"></script>
+            <script src="<?php echo $templatePath; ?>/assets/js/main.js"></script>
+
+            <<<<<<< HEAD </div>
 </body>
+>>>>>>> origin/t38
+
 </html>
+=======
+</div>
+</body>
+
+</html>
+>>>>>>> origin/t37
