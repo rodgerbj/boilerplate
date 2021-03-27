@@ -1833,8 +1833,3 @@ body {
   /* Basic */
     body, input, textarea, select {
       font-size: 10pt; } }
-
-/* Joomla Core*/
-joomla-alert {
-  background-color: #181517 !important;
-  color: rgba(255, 255, 255, 0.25) !important; }
