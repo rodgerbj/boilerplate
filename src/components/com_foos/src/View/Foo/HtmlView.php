@@ -14,7 +14,6 @@ namespace FooNamespace\Component\Foos\Site\View\Foo;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Factory;
 use Joomla\Registry\Registry;
-use Joomla\CMS\Log\Log;
 
 /**
  * HTML Foos View class for the Foo component
@@ -57,7 +56,7 @@ class HtmlView extends BaseHtmlView
 	public function display($tpl = null)
 	{
 		$item = $this->item = $this->get('Item');
-		Log::add('Log me.', Log::DEBUG); //og::add('Received signal: ' . $signal, Log::DEBUG);
+
 		$state = $this->State = $this->get('State');
 		$params = $this->Params = $state->get('params');
 		$itemparams = new Registry(json_decode($item->params));
