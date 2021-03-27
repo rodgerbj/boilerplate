@@ -4,7 +4,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Helper\ModuleHelper;
 ?>
 
-<ul>
+<ul class="menu">
 <?php foreach ($list as $i => &$item) {
 	$itemParams = $item->getParams();
 	$class      = '';
