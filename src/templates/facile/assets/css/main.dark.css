@@ -13,6 +13,14 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   font: inherit;
   vertical-align: baseline; }
 
+/* 
+  Joomla Core
+*/ 
+joomla-alert {
+	background-color:#181517!important;
+	color:rgba(255,255,255, 0.25)!important;
+}
+
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
   display: block; }
 
