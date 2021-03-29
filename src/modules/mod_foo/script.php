@@ -39,7 +39,7 @@ class mod_fooInstallerScript
 	 */
 	function install($parent)
 	{
-		echo Text::_('MOD_FOO_INSTALLERSCRIPT_UNINSTALL');
+		echo Text::_('MOD_FOO_INSTALLERSCRIPT_INSTALL');
 
 		return true;
 	}
