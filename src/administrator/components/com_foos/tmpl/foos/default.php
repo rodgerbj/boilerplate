@@ -46,7 +46,7 @@ if ($saveOrder && !empty($this->items)) {
 					</div>
 				<?php else : ?>
 					<table class="table" id="fooList">
-						<caption id="captionTable" class="sr-only">
+						<caption class="visually-hidden">
 							<?php echo Text::_('COM_FOOS_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 						</caption>
 						<thead>
