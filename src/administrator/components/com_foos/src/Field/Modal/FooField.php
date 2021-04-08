@@ -9,7 +9,7 @@
 
 namespace FooNamespace\Component\Foos\Administrator\Field\Modal;
 
-defined('JPATH_BASE') or die;
+\defined('JPATH_BASE') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Form\FormField;
@@ -51,28 +51,26 @@ class FooField extends FormField
 		$modalId = 'Foo_' . $this->id;
 
 		// Add the modal field script to the document head.
-		HTMLHelper::_('script', 'system/fields/modal-fields.min.js',
-			array('version' => 'auto', 'relative' => true)
+		HTMLHelper::_(
+			'script',
+			'system/fields/modal-fields.min.js',
+			['version' => 'auto', 'relative' => true]
 		);
 
 		// Script to proxy the select modal function to the modal-fields.js file.
-		if ($allowSelect)
-		{
+		if ($allowSelect) {
 			static $scriptSelect = null;
 
-			if (is_null($scriptSelect))
-			{
-				$scriptSelect = array();
+			if (is_null($scriptSelect)) {
+				$scriptSelect = [];
 			}
 
-			if (!isset($scriptSelect[$this->id]))
-			{
+			if (!isset($scriptSelect[$this->id])) {
 				Factory::getDocument()->addScriptDeclaration("
 				function jSelectFoo_"
 					. $this->id
 					. "(id, title, object) { window.processModalSelect('Foo', '"
-					. $this->id . "', id, title, '', object);}"
-				);
+					. $this->id . "', id, title, '', object);}");
 
 				$scriptSelect[$this->id] = true;
 			}
@@ -83,16 +81,14 @@ class FooField extends FormField
 			. Session::getFormToken() . '=1';
 		$modalTitle   = Text::_('COM_FOOS_CHANGE_FOO');
 
-		if (isset($this->element['language']))
-		{
+		if (isset($this->element['language'])) {
 			$linkFoos .= '&amp;forcedLanguage=' . $this->element['language'];
 			$modalTitle .= ' &#8212; ' . $this->element['label'];
 		}
 
 		$urlSelect = $linkFoos . '&amp;function=jSelectFoo_' . $this->id;
 
-		if ($value)
-		{
+		if ($value) {
 			$db    = Factory::getDbo();
 			$query = $db->getQuery(true)
 				->select($db->quoteName('name'))
@@ -100,12 +96,9 @@ class FooField extends FormField
 				->where($db->quoteName('id') . ' = ' . (int) $value);
 			$db->setQuery($query);
 
-			try
-			{
+			try {
 				$title = $db->loadResult();
-			}
-			catch (\RuntimeException $e)
-			{
+			} catch (\RuntimeException $e) {
 				Factory::getApplication()->enqueueMessage($e->getMessage(), 'error');
 			}
 		}
@@ -115,37 +108,27 @@ class FooField extends FormField
 		// The current foo display field.
 		$html  = '';
 
-		if ($allowSelect || $allowNew || $allowEdit || $allowClear)
-		{
+		if ($allowSelect || $allowNew || $allowEdit || $allowClear) {
 			$html .= '<span class="input-group">';
 		}
 
-		$html .= '<input class="form-control" id="' . $this->id
-			. '_name" type="text" value="'
-			. $title . '" disabled="disabled" size="35">';
-
-		if ($allowSelect || $allowNew || $allowEdit || $allowClear)
-		{
-			$html .= '<span class="input-group-append">';
-		}
+		$html .= '<input class="form-control" id="' . $this->id . '_name" type="text" value="' . $title . '" readonly size="35">';
 
 		// Select foo button
-		if ($allowSelect)
-		{
+		if ($allowSelect) {
 			$html .= '<button'
 				. ' class="btn btn-primary hasTooltip' . ($value ? ' hidden' : '') . '"'
 				. ' id="' . $this->id . '_select"'
-				. ' data-toggle="modal"'
+				. ' data-bs-toggle="modal"'
 				. ' type="button"'
-				. ' data-target="#ModalSelect' . $modalId . '"'
+				. ' data-bs-target="#ModalSelect' . $modalId . '"'
 				. ' title="' . HTMLHelper::tooltipText('COM_FOOS_CHANGE_FOO') . '">'
 				. '<span class="icon-file" aria-hidden="true"></span> ' . Text::_('JSELECT')
 				. '</button>';
 		}
 
 		// Clear foo button
-		if ($allowClear)
-		{
+		if ($allowClear) {
 			$html .= '<button'
 				. ' class="btn btn-secondary' . ($value ? '' : ' hidden') . '"'
 				. ' id="' . $this->id . '_clear"'
@@ -155,29 +138,25 @@ class FooField extends FormField
 				. '</button>';
 		}
 
-		if ($allowSelect || $allowNew || $allowEdit || $allowClear)
-		{
-			$html .= '</span></span>';
+		if ($allowSelect || $allowNew || $allowEdit || $allowClear) {
+			$html .= '</span>';
 		}
 
 		// Select foo modal
-		if ($allowSelect)
-		{
+		if ($allowSelect) {
 			$html .= HTMLHelper::_(
 				'bootstrap.renderModal',
 				'ModalSelect' . $modalId,
-				array(
+				[
 					'title'       => $modalTitle,
 					'url'         => $urlSelect,
 					'height'      => '400px',
 					'width'       => '800px',
 					'bodyHeight'  => 70,
 					'modalWidth'  => 80,
-					'footer'      => '<a role="button" '
-					. 'class="btn btn-secondary" '
-					. 'data-dismiss="modal" aria-hidden="true">'
-					. Text::_('JLIB_HTML_BEHAVIOR_CLOSE') . '</a>',
-				)
+					'footer'      => '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">'
+										. Text::_('JLIB_HTML_BEHAVIOR_CLOSE') . '</button>',
+				]
 			);
 		}
 

@@ -39,10 +39,8 @@ class AdministratorService
 		$html = '';
 
 		// Get the associations
-		if ($associations = Associations::getAssociations('com_foos', '#__foos_details', 'com_foos.item', $fooid, 'id', null))
-		{
-			foreach ($associations as $tag => $associated)
-			{
+		if ($associations = Associations::getAssociations('com_foos', '#__foos_details', 'com_foos.item', $fooid, 'id', null)) {
+			foreach ($associations as $tag => $associated) {
 				$associations[$tag] = (int) $associated->id;
 			}
 
@@ -61,24 +59,19 @@ class AdministratorService
 				->select('l.title as language_title');
 			$db->setQuery($query);
 
-			try
-			{
+			try {
 				$items = $db->loadObjectList('id');
-			}
-			catch (\RuntimeException $e)
-			{
+			} catch (\RuntimeException $e) {
 				throw new \Exception($e->getMessage(), 500, $e);
 			}
 
-			if ($items)
-			{
-				foreach ($items as &$item)
-				{
+			if ($items) {
+				foreach ($items as &$item) {
 					$text = strtoupper($item->lang_sef);
 					$url = Route::_('index.php?option=com_foos&task=foo.edit&id=' . (int) $item->id);
 					$tooltip = '<strong>' . htmlspecialchars($item->language_title, ENT_QUOTES, 'UTF-8') . '</strong><br>'
 						. htmlspecialchars($item->title, ENT_QUOTES, 'UTF-8') . '<br>' . Text::sprintf('JCATEGORY_SPRINTF', $item->category_title);
-					$classes = 'badge badge-secondary';
+					$classes = 'badge bg-secondary';
 
 					$item->link = '<a href="' . $url . '" title="' . $item->language_title . '" class="' . $classes . '">' . $text . '</a>'
 						. '<div role="tooltip" id="tip' . (int) $item->id . '">' . $tooltip . '</div>';
