@@ -35,13 +35,14 @@
 		<field
 			name="category_id"
 			type="category"
-			label="JOPTION_SELECT_CATEGORY"
+			label="JCATEGORY"
+			multiple="true"
 			extension="com_foos"
-			published="0,1,2"
+			layout="joomla.form.field.list-fancy-select"
+			hint="JOPTION_SELECT_CATEGORY"
 			onchange="this.form.submit();"
-			>
-			<option value="">JOPTION_SELECT_CATEGORY</option>
-		</field>
+			published="0,1,2"
+		/>
 
 		<field
 			name="access"
@@ -62,6 +63,16 @@
 			<option value="*">JALL</option>
 		</field>
 
+		<field
+			name="tag"
+			type="tag"
+			label="JTAG"
+			multiple="true"
+			mode="nested"
+			custom="false"
+			hint="JOPTION_SELECT_TAG"
+			onchange="this.form.submit();"
+		/>
 	</fields>
 
 	<fields name="list">
