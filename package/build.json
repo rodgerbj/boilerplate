@@ -1,0 +1,38 @@
+{
+  "packages": [
+    {
+      "name": "boilerplate",
+      "originalManifestFileName": "pkg_foos",
+      "substituteManifestFileName": "foos",
+      "extensions": [
+        {
+          "name": "com_foos",
+          "copies": [
+            {
+              "original": "administrator/components/com_foos/foos.xml",
+              "replace": "foos.xml"
+            },
+            {
+              "original": "administrator/components/com_foos/script.php",
+              "replace": "script.php"
+            }
+          ],
+          "excludes": [
+          ],
+          "substitutes": [
+          ]
+        },
+        {
+          "name": "mod_agosm",
+          "substitutes": [
+          ]
+        },
+        {
+          "name": "mod_agosms_search",
+          "substitutes": [
+          ]
+        }
+      ]
+    }
+  ]
+}
