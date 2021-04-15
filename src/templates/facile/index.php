@@ -124,7 +124,7 @@ $wa->registerAndUseScript('main', $templatePath . '/assets/js/main.js', [], ['de
             </div>
         </section>
 
-        <footer id="footer">
+        <agadventter id="agadventter">
             <?php if ($this->params->get('showFooter')) : ?>
             <div class="col-12">
                 <section>
@@ -154,12 +154,12 @@ $wa->registerAndUseScript('main', $templatePath . '/assets/js/main.js', [], ['de
             <?php endif; ?>
 
 
-            <?php if ($this->countModules('footer', true)) : ?>
+            <?php if ($this->countModules('agadventter', true)) : ?>
             <div id="copyright">
-                <jdoc:include type="modules" name="footer" />
+                <jdoc:include type="modules" name="agadventter" />
             </div>
             <?php endif; ?>
-        </footer>
+        </agadventter>
 
         <jdoc:include type="modules" name="debug" />
     </div>
