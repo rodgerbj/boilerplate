@@ -31,6 +31,17 @@ $wa->registerAndUseScript('main', $templatePath . '/assets/js/main.js', [], ['de
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <jdoc:include type="styles" />
     <jdoc:include type="scripts" />
+
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="<?php echo $templatePath . '/favicon_package'; ?>/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="<?php echo $templatePath . '/favicon_package'; ?>/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="<?php echo $templatePath . '/favicon_package'; ?>/favicon-16x16.png">
+    <link rel="manifest" href="<?php echo $templatePath . '/favicon_package'; ?>/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
     <script type="module" src="https://unpkg.com/dark-mode-toggle"></script>
 </head>
 
@@ -113,7 +124,7 @@ $wa->registerAndUseScript('main', $templatePath . '/assets/js/main.js', [], ['de
             </div>
         </section>
 
-        <footer id="footer">
+        <agadventter id="agadventter">
             <?php if ($this->params->get('showFooter')) : ?>
             <div class="col-12">
                 <section>
@@ -143,12 +154,12 @@ $wa->registerAndUseScript('main', $templatePath . '/assets/js/main.js', [], ['de
             <?php endif; ?>
 
 
-            <?php if ($this->countModules('footer', true)) : ?>
+            <?php if ($this->countModules('agadventter', true)) : ?>
             <div id="copyright">
-                <jdoc:include type="modules" name="footer" />
+                <jdoc:include type="modules" name="agadventter" />
             </div>
             <?php endif; ?>
-        </footer>
+        </agadventter>
 
         <jdoc:include type="modules" name="debug" />
     </div>
