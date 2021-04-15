@@ -10,7 +10,7 @@
 	<version>__BUMP_VERSION__</version>
 	<description>MOD_FOO_XML_DESCRIPTION</description>
 	<scriptfile>script.php</scriptfile>
-	<namespace>FooNamespace\Module\Foo</namespace>
+	<namespace path="src">FooNamespace\Module\Foo</namespace>
 	<files>
 		<filename module="mod_foo">mod_foo.php</filename>
 		<folder>tmpl</folder>
