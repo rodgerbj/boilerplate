@@ -1,8 +1,8 @@
 #!/bin/bash
 
-ex="agadvent"
-Ex="Agadvent"
-EX="AGADVENT"
+ex="agosm"
+Ex="Agosm"
+EX="AGOSM"
 
 mkdir "new_folder"
 
@@ -46,7 +46,7 @@ find ./new_folder \( -type d -name .git -prune \) -o -type f -print0 | xargs -0 
 
 
 #Build zip docker-lamp server need to be active
-docker exec -it --user 1000 -w /home/astrid/git/joomla-development/btutorial/t43_umbennen/new_folder docker-lamp_php73 composer install
-docker exec -it --user 1000 -w /home/astrid/git/joomla-development/btutorial/t43_umbennen/new_folder docker-lamp_php73 ./vendor/bin/robo build
+#docker exec -it --user 1000 -w /home/astrid/git/joomla-development/btutorial/t43_umbennen/new_folder docker-lamp_php73 composer install
+#docker exec -it --user 1000 -w /home/astrid/git/joomla-development/btutorial/t43_umbennen/new_folder docker-lamp_php73 ./vendor/bin/robo build
 
 
