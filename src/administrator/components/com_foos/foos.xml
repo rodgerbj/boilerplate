@@ -28,6 +28,7 @@
 	</files>
     <media folder="media/com_foos" destination="com_foos">
 		<folder>js</folder>
+		<filename>joomla.asset.json</filename>
     </media>
 	<!-- Back-end files -->
 	<administration>
