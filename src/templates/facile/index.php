@@ -21,7 +21,6 @@ $wa->registerAndUseScript('browser', $templatePath . '/assets/js/browser.min.js'
 $wa->registerAndUseScript('breakpoints', $templatePath . '/assets/js/breakpoints.min.js', [], ['defer' => true], []);
 $wa->registerAndUseScript('util', $templatePath . '/assets/js/util.js', [], ['defer' => true], []);
 $wa->registerAndUseScript('main', $templatePath . '/assets/js/main.js', [], ['defer' => true], []);
-
 ?>
 
 <!DOCTYPE html>
@@ -123,7 +122,7 @@ $wa->registerAndUseScript('main', $templatePath . '/assets/js/main.js', [], ['de
             </div>
         </section>
 
-        < id="">
+        <footer id="footer">
             <?php if ($this->params->get('showFooter')) : ?>
             <div class="col-12">
                 <section>
@@ -153,12 +152,12 @@ $wa->registerAndUseScript('main', $templatePath . '/assets/js/main.js', [], ['de
             <?php endif; ?>
 
 
-            <?php if ($this->countModules('', true)) : ?>
+            <?php if ($this->countModules('footer', true)) : ?>
             <div id="copyright">
-                <jdoc:include type="modules" name="" />
+                <jdoc:include type="modules" name="footer" />
             </div>
             <?php endif; ?>
-        </>
+        </footer>
 
         <jdoc:include type="modules" name="debug" />
     </div>
