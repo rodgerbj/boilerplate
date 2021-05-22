@@ -21,6 +21,14 @@
 <body>
     <header>
         <div>
+            <jdoc:include type="modules" name="topbar" style="none" />
+        </div>
+
+        <div>
+            <jdoc:include type="modules" name="below-top" style="none" />
+        </div>
+
+        <div>
             <nav>
                 <div>
                     <jdoc:include type="modules" name="menu" />
