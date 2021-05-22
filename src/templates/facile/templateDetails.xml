@@ -22,6 +22,8 @@
 	</files>
 
 	<positions>
+		<position>topbar</position>
+		<position>below-top</position>
 		<position>menu</position>
 		<position>search</position>
 		<position>banner</position>
