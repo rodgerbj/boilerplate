@@ -14,7 +14,7 @@ $published = $this->state->get('filter.published');
 $noUser    = true;
 ?>
 
-<div class="container">
+<div class="p-3">
 	<div class="row">
 		<div class="form-group col-md-6">
 			<div class="controls">
@@ -35,5 +35,10 @@ $noUser    = true;
 				</div>
 			</div>
 		<?php endif; ?>
+		<div class="form-group col-md-6">
+			<div class="controls">
+				<?php echo LayoutHelper::render('joomla.html.batch.tag', []); ?>
+			</div>
+		</div>
 	</div>
 </div>
