@@ -50,9 +50,9 @@ class FoosModel extends ListModel
 				'publish_down', 'a.publish_down',
 				'tag',
 			];
-			
+
 			$assoc = Associations::isEnabled();
-			
+
 			if ($assoc) {
 				$config['filter_fields'][] = 'association';
 			}
