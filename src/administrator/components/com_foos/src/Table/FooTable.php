@@ -43,26 +43,6 @@ class FooTable extends Table implements TaggableTableInterface
 	}
 
 	/**
-	 * Stores a foo.
-	 *
-	 * @param   boolean  $updateNulls  True to update fields even if they are null.
-	 *
-	 * @return  boolean  True on success, false on failure.
-	 *
-	 * @since   __BUMP_VERSION__
-	 */
-	public function store($updateNulls = false)
-	{
-		// Transform the params field
-		if (is_array($this->params)) {
-			$registry = new Registry($this->params);
-			$this->params = (string) $registry;
-		}
-
-		return parent::store($updateNulls);
-	}
-
-	/**
 	 * Generate a valid alias from title / date.
 	 * Remains public to be able to check for duplicated alias before saving
 	 *
@@ -121,7 +101,6 @@ class FooTable extends Table implements TaggableTableInterface
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Get the type alias
 	 *
 	 * @return  string  The alias as described above
@@ -132,8 +111,8 @@ class FooTable extends Table implements TaggableTableInterface
 	{
 		return $this->typeAlias;
 	}
-=======
-	 * Stores a foo.
+
+	/** Stores a foo.
 	 *
 	 * @param   boolean  $updateNulls  True to update fields even if they are null.
 	 *
@@ -143,7 +122,12 @@ class FooTable extends Table implements TaggableTableInterface
 	 */
 	public function store($updateNulls = true)
 	{
+		// Transform the params field
+		if (is_array($this->params)) {
+			$registry = new Registry($this->params);
+			$this->params = (string) $registry;
+		}
+
 		return parent::store($updateNulls);
-	}	
->>>>>>> origin/t28
+	}
 }
