@@ -76,6 +76,7 @@ class HtmlView extends BaseHtmlView
 	{
 		$this->items = $this->get('Items');
 
+<<<<<<< HEAD
 		$this->filterForm = $this->get('FilterForm');
 		$this->activeFilters = $this->get('ActiveFilters');
 		$this->state = $this->get('State');
@@ -90,6 +91,10 @@ class HtmlView extends BaseHtmlView
 		foreach ($this->items as &$item) {
 			$item->order_up = true;
 			$item->order_dn = true;
+=======
+		if (!count($this->items) && $this->get('IsEmptyState')) {
+			$this->setLayout('emptystate');
+>>>>>>> origin/t15a
 		}
 
 		// We don't need toolbar in the modal window.
