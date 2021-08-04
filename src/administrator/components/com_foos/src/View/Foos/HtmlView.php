@@ -17,7 +17,10 @@ use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 use Joomla\CMS\Factory;
+<<<<<<< HEAD
 use Joomla\CMS\MVC\View\GenericDataException;
+=======
+>>>>>>> origin/t15a
 
 /**
  * View class for a list of foos.
