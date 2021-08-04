@@ -51,7 +51,7 @@ use Joomla\CMS\Router\Route;
 
 									<div class="small">
 										<?php echo Text::_('JCATEGORY') . ': ' . $this->escape($item->category_title); ?>
-									 </div>
+									</div>
 								</th>
 								<td class="small d-none d-md-table-cell">
 									<?php echo $item->access_level; ?>
