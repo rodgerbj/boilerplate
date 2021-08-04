@@ -53,6 +53,10 @@ class HtmlView extends BaseHtmlView
 	{
 		$this->items = $this->get('Items');
 
+		if (!count($this->items) && $this->get('IsEmptyState')) {
+			$this->setLayout('emptystate');
+		}
+
 		$this->addToolbar();
 
 		parent::display($tpl);
