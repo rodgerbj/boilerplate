@@ -11,13 +11,11 @@ namespace FooNamespace\Component\Foos\Administrator\View\Foos;
 
 \defined('_JEXEC') or die;
 
-use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
-use FooNamespace\Component\Foos\Administrator\Helper\FooHelper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\View\GenericDataException;
 
@@ -55,13 +53,6 @@ class HtmlView extends BaseHtmlView
 	 * @var  array
 	 */
 	public $activeFilters;
-
-	/**
-	 * The sidebar markup
-	 *
-	 * @var  string
-	 */
-	protected $sidebar;
 
 	/**
 	 * Method to display the view.
@@ -142,7 +133,5 @@ class HtmlView extends BaseHtmlView
 		if ($canDo->get('core.options')) {
 			$toolbar->preferences('com_foos');
 		}
-
-		HTMLHelper::_('sidebar.setAction', 'index.php?option=com_foos');
 	}
 }
