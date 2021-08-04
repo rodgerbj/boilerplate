@@ -106,5 +106,5 @@ class FooTable extends Table
 	public function store($updateNulls = true)
 	{
 		return parent::store($updateNulls);
-	}	
+	}
 }
