@@ -46,6 +46,7 @@
 			</params>
 		</menu>
 		<submenu>
+<<<<<<< HEAD
 			<menu link="option=com_foos">
 				COM_FOOS
 				<params>
@@ -61,6 +62,12 @@
 					<menu-quicktask>index.php?option=com_categories&amp;view=category&amp;layout=edit&amp;extension=com_foos</menu-quicktask>
 				</params>
 			</menu>
+=======
+			<menu link="option=com_foos">COM_FOOS</menu>
+			<menu link="option=com_categories&amp;extension=com_foos">JCATEGORY</menu>
+			<menu link="option=com_fields&amp;context=com_foos.foo">JGLOBAL_FIELDS</menu>
+			<menu link="option=com_fields&amp;view=groups&amp;context=com_foos.foo">JGLOBAL_FIELD_GROUPS</menu>
+>>>>>>> origin/t27
 		</submenu>
 		<files folder="administrator/components/com_foos">
 			<filename>access.xml</filename>
