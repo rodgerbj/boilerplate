@@ -82,12 +82,13 @@ class HtmlView extends BaseHtmlView
 	public function display($tpl = null): void
 	{
 		$this->items = $this->get('Items');
-<<<<<<< HEAD
-		$this->pagination = $this->get('Pagination');
-=======
 
-<<<<<<< HEAD
->>>>>>> origin/t18
+		$this->pagination = $this->get('Pagination');
+
+		if (!count($this->items) && $this->get('IsEmptyState')) {
+			$this->setLayout('emptystate');
+		}
+
 		$this->filterForm = $this->get('FilterForm');
 		$this->activeFilters = $this->get('ActiveFilters');
 		$this->state = $this->get('State');
@@ -102,10 +103,6 @@ class HtmlView extends BaseHtmlView
 		foreach ($this->items as &$item) {
 			$item->order_up = true;
 			$item->order_dn = true;
-=======
-		if (!count($this->items) && $this->get('IsEmptyState')) {
-			$this->setLayout('emptystate');
->>>>>>> origin/t15a
 		}
 
 		// We don't need toolbar in the modal window.
