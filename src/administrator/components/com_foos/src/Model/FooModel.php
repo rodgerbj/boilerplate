@@ -72,7 +72,17 @@ class FooModel extends AdminModel
 	{
 		$app = Factory::getApplication();
 
-		$data = $this->getItem();
+		// Check the session for previously entered form data.
+		$data = $app->getUserState('com_foos.edit.foo.data', []);
+
+		if (empty($data)) {
+			$data = $this->getItem();
+
+			// Prime some default values.
+			if ($this->getState('foo.id') == 0) {
+				$data->set('catid', $app->input->get('catid', $app->getUserState('com_foos.foos.filter.category_id'), 'int'));
+			}
+		}
 
 		$this->preprocessData($this->typeAlias, $data);
 
