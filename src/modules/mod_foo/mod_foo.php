@@ -1,6 +1,5 @@
 <?php
 /**
-/**
  * @package     Joomla.Administrator
  * @subpackage  mod_foo
  *
