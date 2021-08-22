@@ -17,7 +17,7 @@ use Joomla\CMS\Table\Table;
 use FooNamespace\Component\Foos\Site\Helper\AssociationHelper;
 
 /**
- * Content associations helper.
+ * Foo associations helper.
  *
  * @since  __BUMP_VERSION__
  */
