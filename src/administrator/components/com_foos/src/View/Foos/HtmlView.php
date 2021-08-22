@@ -119,7 +119,6 @@ class HtmlView extends BaseHtmlView
 	 */
 	protected function addToolbar()
 	{
-		FooHelper::addSubmenu('foos');
 		$this->sidebar = \JHtmlSidebar::render();
 
 		$canDo = ContentHelper::getActions('com_foos', 'category', $this->state->get('filter.category_id'));
