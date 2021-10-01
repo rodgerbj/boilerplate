@@ -87,7 +87,7 @@ class HtmlView extends BaseHtmlView
 			$this->setLayout($active->query['layout']);
 		}
 
-		Factory::getApplication()->triggerEvent('onContentPrepare', ['com_foos.foo', &$item]);
+		Factory::getApplication()->triggerEvent('onContentPrepare', ['com_foos.foo', &$item, &$item->params]);
 
 		// Store the events for later
 		$item->event = new \stdClass;
