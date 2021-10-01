@@ -40,7 +40,7 @@ class HtmlView extends BaseHtmlView
 	{
 		$item = $this->item = $this->get('Item');
 
-		Factory::getApplication()->triggerEvent('onContentPrepare', ['com_foos.foo', &$item]);
+		Factory::getApplication()->triggerEvent('onContentPrepare', ['com_foos.foo', &$item, &$item->params]);
 
 		// Store the events for later
 		$item->event = new \stdClass;
