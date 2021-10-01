@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="system" method="upgrade">
+	<name>plg_system_foos</name>
+	<creationDate>[DATE]</creationDate>
+	<author>[AUTHOR]</author>
+	<authorEmail>[AUTHOR_EMAIL]</authorEmail>
+	<authorUrl>[AUTHOR_URL]</authorUrl>
+	<copyright>[COPYRIGHT]</copyright>
+	<license>GNU General Public License version 2 or later;</license>
+	<version>__BUMP_VERSION__</version>
+	<description>PLG_SYSTEM_FOOS_XML_DESCRIPTION</description>
+	<files>
+		<filename plugin="foos">foos.php</filename>
+		<folder>language</folder>
+	</files>
+    <media folder="media/plg_system_foos" destination="plg_system_foos">
+		<folder>js</folder>
+		<folder>css</folder>
+    </media>
+</extension>

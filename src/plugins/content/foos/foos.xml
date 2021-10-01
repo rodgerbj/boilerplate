@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="content" method="upgrade">
+	<name>plg_content_foos</name>
+	<creationDate>[DATE]</creationDate>
+	<author>[AUTHOR]</author>
+	<authorEmail>[AUTHOR_EMAIL]</authorEmail>
+	<authorUrl>[AUTHOR_URL]</authorUrl>
+	<copyright>[COPYRIGHT]</copyright>
+	<license>GNU General Public License version 2 or later;</license>
+	<version>__BUMP_VERSION__</version>
+	<description>PLG_CONTENT_FOOS_XML_DESCRIPTION</description>
+	<files>
+		<filename plugin="foos">foos.php</filename>
+		<folder>language</folder>
+	</files>
+    <media folder="media/plg_content_foos" destination="plg_content_foos">
+		<filename>joomla.asset.json</filename>
+		<folder>js</folder>
+		<folder>css</folder>
+    </media>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field 
+				name="prismtype" 
+				type="list" 
+				label="PLG_CONTENT_FOOS_TYPE" 
+				description="PLG_CONTENT_FOOS_TYPE_DESC" 
+				default="tinymce" 
+				>
+					<option value="tinymce">PLG_CONTENT_FOOS_TINYMCE</option>
+					<option value="autoloader">PLG_CONTENT_FOOS_AUTLOADER</option>
+					<option value="all">PLG_CONTENT_FOOS_ALL</option>
+				</field>
+				<field 
+				name="prismstyle" 
+				type="list" 
+				label="PLG_CONTENT_FOOS_STYLE" 
+				description="PLG_CONTENT_FOOS_STYLE_DESC" 
+				default="default" 
+				>
+					<option value="default">default</option>
+					<option value="dark">dark</option>
+					<option value="coy">coy</option>
+					<option value="funky">funky</option>
+					<option value="okaidia">okaidia</option>
+					<option value="solarizedlight">solarizedlight</option>
+					<option value="tomorrownight">tomorrownight</option>
+					<option value="twilight">twilight</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>		
+</extension>

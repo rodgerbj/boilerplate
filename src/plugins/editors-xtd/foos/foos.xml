@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="content" method="upgrade">
+	<name>plg_editors-xtd_foos</name>
+	<creationDate>[DATE]</creationDate>
+	<author>[AUTHOR]</author>
+	<authorEmail>[AUTHOR_EMAIL]</authorEmail>
+	<authorUrl>[AUTHOR_URL]</authorUrl>
+	<copyright>[COPYRIGHT]</copyright>
+	<license>GNU General Public License version 2 or later;</license>
+	<version>__BUMP_VERSION__</version>
+	<description>PLG_EDITORS-XTD_FOOS_XML_DESCRIPTION</description>
+	<files>
+		<filename plugin="foos">foos.php</filename>
+		<folder>language</folder>
+	</files>
+    <media folder="media/plg_editors-xtd_foos" destination="plg_content_foos">
+		<filename>joomla.asset.json</filename>
+		<folder>js</folder>
+		<folder>css</folder>
+    </media>
+</extension>
