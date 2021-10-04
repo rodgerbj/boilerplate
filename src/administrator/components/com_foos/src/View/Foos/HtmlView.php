@@ -76,10 +76,6 @@ class HtmlView extends BaseHtmlView
 
 		$this->pagination = $this->get('Pagination');
 
-		if (!count($this->items) && $this->get('IsEmptyState')) {
-			$this->setLayout('emptystate');
-		}
-
 		$this->filterForm = $this->get('FilterForm');
 		$this->activeFilters = $this->get('ActiveFilters');
 		$this->state = $this->get('State');
