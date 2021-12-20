@@ -36,6 +36,10 @@ if ($tparams->get('show_name')) {
 	</div>
 <?php endif; ?>
 
+<hr>
+<?php echo HTMLHelper::_('foodirection.displayDirection', $this->item, $tparams); ?>
+<hr>
+
 <?php
 echo $this->item->event->afterDisplayTitle;
 echo $this->item->event->beforeDisplayContent;

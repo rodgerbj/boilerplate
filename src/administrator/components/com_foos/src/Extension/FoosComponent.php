@@ -21,6 +21,7 @@ use Joomla\CMS\Extension\MVCComponent;
 use Joomla\CMS\HTML\HTMLRegistryAwareTrait;
 use FooNamespace\Component\Foos\Administrator\Service\HTML\AdministratorService;
 use FooNamespace\Component\Foos\Administrator\Service\HTML\Icon;
+use FooNamespace\Component\Foos\Administrator\Service\HTML\Direction;
 use Psr\Container\ContainerInterface;
 use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Component\Router\RouterServiceInterface;
@@ -55,6 +56,7 @@ class FoosComponent extends MVCComponent implements BootableExtensionInterface, 
 	{
 		$this->getRegistry()->register('foosadministrator', new AdministratorService);
 		$this->getRegistry()->register('fooicon', new Icon($container->get(SiteApplication::class)));
+		$this->getRegistry()->register('foodirection', new Direction());
 	}
 
 	/**
