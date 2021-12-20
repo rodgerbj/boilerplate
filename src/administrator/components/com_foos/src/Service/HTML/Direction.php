@@ -41,7 +41,7 @@ class Direction
 	/**
 	 * Method to generate a routing direction
 	 *
-	 * @return  string  The HTML markup for the create item link
+	 * @return  string  The HTML markup for the direction
 	 *
 	 * @since  __DEPLOY_VERSION__
 	 */
