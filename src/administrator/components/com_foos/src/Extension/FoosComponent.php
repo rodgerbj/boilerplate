@@ -60,6 +60,7 @@ class FoosComponent extends MVCComponent implements BootableExtensionInterface, 
 		$this->getRegistry()->register('foosadministrator', new AdministratorService);
 		$this->getRegistry()->register('fooicon', new Icon($container->get(SiteApplication::class)));
 
+		// START Variation 1
 		$directions =  [
 			new Text,
 			new Image,
@@ -68,6 +69,7 @@ class FoosComponent extends MVCComponent implements BootableExtensionInterface, 
 		shuffle($directions);
 
 		$this->getRegistry()->register('foodirection', new Direction($directions[0]));
+		// END Variation 1
 	}
 
 	/**
@@ -110,6 +112,7 @@ class FoosComponent extends MVCComponent implements BootableExtensionInterface, 
 		return ($section === 'category' ? 'categories' : 'foos_details');
 	}
 
+	// START Variation 2
 	/**
 	 * Returns the direction for the given section.
 	 *
@@ -133,6 +136,7 @@ class FoosComponent extends MVCComponent implements BootableExtensionInterface, 
 				break;
 		}
 	}
+	// END Variation 2
 
 	/**
 	 * Returns the state column for the count items functions for the given section.

@@ -29,10 +29,10 @@ class Direction
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
-	public function __construct(DirectiontoolInterface $directionsTool)
-	{
-		$this->directionTool = $directionsTool;
-	}
+public function __construct(DirectiontoolInterface $directionsTool)
+{
+	$this->directionTool = $directionsTool;
+}
 	
 	/**
 	 * Method to generate a routing direction
@@ -41,8 +41,15 @@ class Direction
 	 *
 	 * @since  __DEPLOY_VERSION__
 	 */
-	public function displayDirection()
+public function displayDirection()
 	{
+<<<<<<< HEAD
 		return $this->directionTool->findDirection();
+=======
+		return
+		$this->directionTool1->findDirection() . "<br>" .
+		$this->directionTool2->findDirection() . "<br>" .
+		$this->directionTool3->findDirection();
+>>>>>>> origin/t27a2
 	}
 }

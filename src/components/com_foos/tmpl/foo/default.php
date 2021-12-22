@@ -37,14 +37,16 @@ if ($tparams->get('show_name')) {
 <?php endif; ?>
 
 <hr>
+<!-- START Variation 1 -->
 <?php echo HTMLHelper::_('foodirection.displayDirection', $this->item, $tparams); ?>
+<!-- END Variation 1 -->
 <hr>
-
+<!-- START Variation 2 -->
 <?php
 	$component = Factory::getApplication()->bootComponent('com_foos');
 	echo $component->getDirectionForSection("map")->displayDirection();
 ?>
-
+<!-- END Variation 2 -->
 
 <?php
 echo $this->item->event->afterDisplayTitle;
