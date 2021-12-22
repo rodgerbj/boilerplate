@@ -47,9 +47,9 @@ class Direction
 	 */
 	public function displayDirection()
 	{
-		return 
-		$this->directionTool1->findDirection() . "<br>" . 
-		$this->directionTool2->findDirection() . "<br>" . 
+		return
+		$this->directionTool1->findDirection() . "<br>" .
+		$this->directionTool2->findDirection() . "<br>" .
 		$this->directionTool3->findDirection();
 	}
 }
