@@ -16,7 +16,7 @@ namespace FooNamespace\Component\Foos\Administrator\Service\HTML\Directions;
  *
  * @since  __DEPLOY_VERSION__
  */
-class Text
+class Text implements DirectiontoolInterface
 {
 
 	/**

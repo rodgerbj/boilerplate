@@ -11,9 +11,7 @@ namespace FooNamespace\Component\Foos\Administrator\Service\HTML;
 
 \defined('_JEXEC') or die;
 
-use FooNamespace\Component\Foos\Administrator\Service\HTML\Directions\Image;
-use FooNamespace\Component\Foos\Administrator\Service\HTML\Directions\Map;
-use FooNamespace\Component\Foos\Administrator\Service\HTML\Directions\Text;
+use FooNamespace\Component\Foos\Administrator\Service\HTML\Directions\DirectiontoolInterface;
 
 /**
  * Directions Helper
@@ -22,20 +20,18 @@ use FooNamespace\Component\Foos\Administrator\Service\HTML\Directions\Text;
  */
 class Direction
 {
-	protected $directionTool1;
-	protected $directionTool2;
-	protected $directionTool3;
+	protected $directionTool;
 
 	/**
 	 * Service constructor
 	 *
+	 * @param   CMSApplication  $application  The application
+	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
-	public function __construct()
+	public function __construct(DirectiontoolInterface $directionsTool)
 	{
-		$this->directionTool1 = new Image;
-		$this->directionTool2 = new Map;
-		$this->directionTool3 = new Text;
+		$this->directionTool = $directionsTool;
 	}
 	
 	/**
@@ -47,9 +43,6 @@ class Direction
 	 */
 	public function displayDirection()
 	{
-		return 
-		$this->directionTool1->findDirection() . "<br>" . 
-		$this->directionTool2->findDirection() . "<br>" . 
-		$this->directionTool3->findDirection();
+		return $this->directionTool->findDirection();
 	}
 }

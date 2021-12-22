@@ -11,27 +11,17 @@ namespace FooNamespace\Component\Foos\Administrator\Service\HTML\Directions;
 
 \defined('_JEXEC') or die;
 
+use Joomla\CMS\Application\CMSApplication;
+
 /**
  * Content Component HTML Helper
  *
  * @since  __DEPLOY_VERSION__
  */
-class Map implements DirectiontoolInterface
+interface DirectiontoolInterface
 {
-
 	/**
-	 * Service constructor
-	 *
-	 * @param   CMSApplication  $application  The application
-	 *
-	 * @since   __DEPLOY_VERSION__
-	 */
-	public function __construct()
-	{
-	}
-
-	/**
-	 * Method to generate a link to the create item page for the given category
+	 * Method to generate a routing direction for the given parameters
 	 *
 	 * @param   object    $category  The category information
 	 * @param   Registry  $params    The item parameters
@@ -41,8 +31,5 @@ class Map implements DirectiontoolInterface
 	 *
 	 * @since  __DEPLOY_VERSION__
 	 */
-	public static function findDirection()
-	{
-		return "Find direction with a Map.";
-	}
+	public static function findDirection();
 }

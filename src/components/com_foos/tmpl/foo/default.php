@@ -41,6 +41,12 @@ if ($tparams->get('show_name')) {
 <hr>
 
 <?php
+	$component = Factory::getApplication()->bootComponent('com_foos');
+	echo $component->getDirectionForSection("map")->displayDirection();
+?>
+
+
+<?php
 echo $this->item->event->afterDisplayTitle;
 echo $this->item->event->beforeDisplayContent;
 echo $this->item->event->afterDisplayContent;
