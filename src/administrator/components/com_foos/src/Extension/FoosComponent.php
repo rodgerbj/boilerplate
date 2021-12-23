@@ -22,9 +22,6 @@ use Joomla\CMS\HTML\HTMLRegistryAwareTrait;
 use FooNamespace\Component\Foos\Administrator\Service\HTML\AdministratorService;
 use FooNamespace\Component\Foos\Administrator\Service\HTML\Icon;
 use FooNamespace\Component\Foos\Administrator\Service\HTML\Direction;
-use FooNamespace\Component\Foos\Administrator\Service\HTML\Directions\Text;
-use FooNamespace\Component\Foos\Administrator\Service\HTML\Directions\Map;
-use FooNamespace\Component\Foos\Administrator\Service\HTML\Directions\Image;
 use Psr\Container\ContainerInterface;
 use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Component\Router\RouterServiceInterface;
@@ -59,17 +56,6 @@ class FoosComponent extends MVCComponent implements BootableExtensionInterface, 
 	{
 		$this->getRegistry()->register('foosadministrator', new AdministratorService);
 		$this->getRegistry()->register('fooicon', new Icon($container->get(SiteApplication::class)));
-
-		// START Variation 1
-		$directions =  [
-			new Text,
-			new Image,
-			new Map
-		];
-		shuffle($directions);
-
-		$this->getRegistry()->register('foodirection', new Direction($directions[0]));
-		// END Variation 1
 	}
 
 	/**
@@ -112,31 +98,17 @@ class FoosComponent extends MVCComponent implements BootableExtensionInterface, 
 		return ($section === 'category' ? 'categories' : 'foos_details');
 	}
 
-	// START Variation 2
 	/**
 	 * Returns the direction for the given section.
-	 *
-	 * @param   string  $section  The section
 	 *
 	 * @return  Direction
 	 *
 	 * @since   __BUMP_VERSION__
 	 */
-	public function getDirectionForSection(string $section = "text")
+	public function getDirection()
 	{
-		switch ($section) {
-			case "map":
-				return new Direction(new Map);
-				break;
-			case "text":
-				return new Direction(new Text);
-				break;
-			case "image":
-				return new Direction(new Image);
-				break;
-		}
+		return new Direction();
 	}
-	// END Variation 2
 
 	/**
 	 * Returns the state column for the count items functions for the given section.

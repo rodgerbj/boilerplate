@@ -12,6 +12,7 @@ namespace FooNamespace\Component\Foos\Administrator\Service\HTML;
 \defined('_JEXEC') or die;
 
 use FooNamespace\Component\Foos\Administrator\Service\HTML\Directions\DirectiontoolInterface;
+use FooNamespace\Component\Foos\Administrator\Service\HTML\Directions\Text as DirectionText;
 
 /**
  * Directions Helper
@@ -25,15 +26,37 @@ class Direction
 	/**
 	 * Service constructor
 	 *
-	 * @param   CMSApplication  $application  The application
-	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
-public function __construct(DirectiontoolInterface $directionsTool)
-{
-	$this->directionTool = $directionsTool;
-}
+	public function __construct()
+	{
+		$this->directionTool = new DirectionText();
+	}
 	
+	/**
+	 * Method to get the directionTool
+	 *
+	 * @return  DirectiontoolInterface  The directionTool
+	 *
+	 * @since  __DEPLOY_VERSION__
+	 */
+	public function getDirectionTool()
+	{
+		return $this->directionTool->findDirection();
+	}
+
+	/**
+	 * Method to get the directionTool
+	 *
+	 * @param   DirectiontoolInterface  $directionsTool  The directionTool
+	 *
+	 * @since  __DEPLOY_VERSION__
+	 */
+	public function setDirectionTool(DirectiontoolInterface $directionsTool)
+	{
+		$this->directionTool = $directionsTool;
+	}
+
 	/**
 	 * Method to generate a routing direction
 	 *
@@ -41,15 +64,8 @@ public function __construct(DirectiontoolInterface $directionsTool)
 	 *
 	 * @since  __DEPLOY_VERSION__
 	 */
-public function displayDirection()
+	public function displayDirection()
 	{
-<<<<<<< HEAD
 		return $this->directionTool->findDirection();
-=======
-		return
-		$this->directionTool1->findDirection() . "<br>" .
-		$this->directionTool2->findDirection() . "<br>" .
-		$this->directionTool3->findDirection();
->>>>>>> origin/t27a2
 	}
 }

@@ -12,6 +12,9 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
+use FooNamespace\Component\Foos\Administrator\Service\HTML\Directions\Map as DirectionMap;
+use FooNamespace\Component\Foos\Administrator\Service\HTML\Directions\Text as DirectionText;
+use FooNamespace\Component\Foos\Administrator\Service\HTML\Directions\Image as DirectionImage;
 
 $canDo   = ContentHelper::getActions('com_foos', 'category', $this->item->catid);
 $canEdit = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == Factory::getUser()->id);
@@ -37,16 +40,16 @@ if ($tparams->get('show_name')) {
 <?php endif; ?>
 
 <hr>
-<!-- START Variation 1 -->
-<?php echo HTMLHelper::_('foodirection.displayDirection', $this->item, $tparams); ?>
-<!-- END Variation 1 -->
-<hr>
-<!-- START Variation 2 -->
 <?php
 	$component = Factory::getApplication()->bootComponent('com_foos');
-	echo $component->getDirectionForSection("map")->displayDirection();
+	$direction = $component->getDirection();
+	echo $direction->displayDirection();
+	$direction->setDirectionTool(new DirectionMap);
+	echo $direction->displayDirection();
+	$direction->setDirectionTool(new DirectionImage);
+	echo $direction->displayDirection();
 ?>
-<!-- END Variation 2 -->
+<hr>
 
 <?php
 echo $this->item->event->afterDisplayTitle;
