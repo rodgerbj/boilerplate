@@ -24,8 +24,6 @@ use FooNamespace\Component\Foos\Administrator\Helper\AssociationsHelper;
 use Joomla\CMS\Association\AssociationExtensionInterface;
 use Joomla\CMS\Component\Router\RouterFactoryInterface;
 use Joomla\CMS\Extension\Service\Provider\RouterFactory;
-use FooNamespace\Component\Foos\Administrator\Service\HTML\Directions\DirectiontoolInterface;
-use FooNamespace\Component\Foos\Administrator\Service\HTML\Directions\Text as DirectionText;
 
 /**
  * The foos service provider.
