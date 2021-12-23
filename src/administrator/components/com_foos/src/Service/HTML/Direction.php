@@ -41,7 +41,7 @@ class Direction
 	 */
 	public function getDirectionTool()
 	{
-		return $this->directionTool->findDirection();
+		return $this->directionTool;
 	}
 
 	/**
