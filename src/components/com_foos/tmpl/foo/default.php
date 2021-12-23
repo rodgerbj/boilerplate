@@ -41,11 +41,16 @@ if ($tparams->get('show_name')) {
 
 <hr>
 <?php
-	$component = Factory::getApplication()->bootComponent('com_foos');
-	$direction = $component->getDirection();
+	$direction = Factory::getApplication()->bootComponent('com_foos')->getDirection();
 	echo $direction->displayDirection();
+?>
+<hr>
+<?php
 	$direction->setDirectionTool(new DirectionMap);
 	echo $direction->displayDirection();
+?>
+<hr>
+<?php
 	$direction->setDirectionTool(new DirectionImage);
 	echo $direction->displayDirection();
 ?>

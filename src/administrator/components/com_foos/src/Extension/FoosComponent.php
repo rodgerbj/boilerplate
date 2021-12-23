@@ -99,18 +99,6 @@ class FoosComponent extends MVCComponent implements BootableExtensionInterface, 
 	}
 
 	/**
-	 * Returns the direction for the given section.
-	 *
-	 * @return  Direction
-	 *
-	 * @since   __BUMP_VERSION__
-	 */
-	public function getDirection()
-	{
-		return new Direction();
-	}
-
-	/**
 	 * Returns the state column for the count items functions for the given section.
 	 *
 	 * @param   string  $section  The section
@@ -122,5 +110,17 @@ class FoosComponent extends MVCComponent implements BootableExtensionInterface, 
 	protected function getStateColumnForSection(string $section = null)
 	{
 		return 'published';
+	}
+
+	/**
+	 * Returns the direction.
+	 *
+	 * @return  Direction
+	 *
+	 * @since   __BUMP_VERSION__
+	 */
+	public function getDirection()
+	{
+		return new Direction();
 	}
 }
