@@ -12,9 +12,9 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
-use FooNamespace\Component\Foos\Administrator\Service\HTML\Directions\Map as DirectionMap;
-use FooNamespace\Component\Foos\Administrator\Service\HTML\Directions\Text as DirectionText;
-use FooNamespace\Component\Foos\Administrator\Service\HTML\Directions\Image as DirectionImage;
+use FooNamespace\Component\Foos\Administrator\Service\Direction\Map as DirectionMap;
+use FooNamespace\Component\Foos\Administrator\Service\Direction\Text as DirectionText;
+use FooNamespace\Component\Foos\Administrator\Service\Direction\Image as DirectionImage;
 
 $canDo   = ContentHelper::getActions('com_foos', 'category', $this->item->catid);
 $canEdit = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == Factory::getUser()->id);
@@ -39,25 +39,23 @@ if ($tparams->get('show_name')) {
 	</div>
 <?php endif; ?>
 
-<hr>
 <?php
-	$direction = Factory::getApplication()->bootComponent('com_foos')->getDirection();
-	echo $direction->displayDirection();
+	$fooComponent = Factory::getApplication()->bootComponent('com_foos');
 ?>
 <hr>
 <?php
-	$direction->setDirectionTool(new DirectionMap);
-	echo $direction->displayDirection();
+	$fooComponent->setDirectionExtension(new DirectionMap);
+	echo $fooComponent->getDirectionExtension()->findDirection();
 ?>
 <hr>
 <?php
-	$direction->setDirectionTool(new DirectionImage);
-	echo $direction->displayDirection();
+	$fooComponent->setDirectionExtension(new DirectionText);
+	echo $fooComponent->getDirectionExtension()->findDirection();
 ?>
 <hr>
 <?php
-	$direction->setDirectionTool(new DirectionText);
-	echo $direction->displayDirection();
+	$fooComponent->setDirectionExtension(new DirectionImage);
+	echo $fooComponent->getDirectionExtension()->findDirection();
 ?>
 <hr>
 

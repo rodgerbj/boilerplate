@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-namespace FooNamespace\Component\Foos\Administrator\Service\HTML\Directions;
+namespace FooNamespace\Component\Foos\Administrator\Service\Direction;
 
 \defined('_JEXEC') or die;
 
@@ -16,7 +16,7 @@ namespace FooNamespace\Component\Foos\Administrator\Service\HTML\Directions;
  *
  * @since  __DEPLOY_VERSION__
  */
-class Map implements DirectiontoolInterface
+class Map implements DirectionExtensionInterface
 {
 
 	/**

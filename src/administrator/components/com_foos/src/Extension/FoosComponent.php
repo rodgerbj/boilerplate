@@ -26,18 +26,22 @@ use Psr\Container\ContainerInterface;
 use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Component\Router\RouterServiceInterface;
 use Joomla\CMS\Component\Router\RouterServiceTrait;
+use FooNamespace\Component\Foos\Administrator\Service\Direction\DirectionServiceInterface;
+use FooNamespace\Component\Foos\Administrator\Service\Direction\DirectionServiceTrait;
 
 /**
  * Component class for com_foos
  *
  * @since  __BUMP_VERSION__
  */
-class FoosComponent extends MVCComponent implements BootableExtensionInterface, CategoryServiceInterface, AssociationServiceInterface, RouterServiceInterface
+class FoosComponent extends MVCComponent 
+implements BootableExtensionInterface, CategoryServiceInterface, AssociationServiceInterface, RouterServiceInterface, DirectionServiceInterface
 {
 	use CategoryServiceTrait;
 	use AssociationServiceTrait;
 	use HTMLRegistryAwareTrait;
 	use RouterServiceTrait;
+	use DirectionServiceTrait;
 
 	/**
 	 * Booting the extension. This is the function to set up the environment of the extension like
@@ -110,17 +114,5 @@ class FoosComponent extends MVCComponent implements BootableExtensionInterface, 
 	protected function getStateColumnForSection(string $section = null)
 	{
 		return 'published';
-	}
-
-	/**
-	 * Returns the direction.
-	 *
-	 * @return  Direction
-	 *
-	 * @since   __BUMP_VERSION__
-	 */
-	public function getDirection()
-	{
-		return new Direction();
 	}
 }
