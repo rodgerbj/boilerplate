@@ -34,8 +34,7 @@ use FooNamespace\Component\Foos\Administrator\Service\Direction\DirectionService
  *
  * @since  __BUMP_VERSION__
  */
-class FoosComponent extends MVCComponent 
-implements BootableExtensionInterface, CategoryServiceInterface, AssociationServiceInterface, RouterServiceInterface, DirectionServiceInterface
+class FoosComponent extends MVCComponent implements BootableExtensionInterface, CategoryServiceInterface, AssociationServiceInterface, RouterServiceInterface, DirectionServiceInterface
 {
 	use CategoryServiceTrait;
 	use AssociationServiceTrait;
