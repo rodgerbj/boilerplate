@@ -55,6 +55,11 @@ if ($tparams->get('show_name')) {
 	echo $direction->displayDirection();
 ?>
 <hr>
+<?php
+	$direction->setDirectionTool(new DirectionText);
+	echo $direction->displayDirection();
+?>
+<hr>
 
 <?php
 echo $this->item->event->afterDisplayTitle;

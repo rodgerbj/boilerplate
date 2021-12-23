@@ -12,7 +12,6 @@ namespace FooNamespace\Component\Foos\Administrator\Service\HTML;
 \defined('_JEXEC') or die;
 
 use FooNamespace\Component\Foos\Administrator\Service\HTML\Directions\DirectiontoolInterface;
-use FooNamespace\Component\Foos\Administrator\Service\HTML\Directions\Text as DirectionText;
 
 /**
  * Directions Helper
@@ -30,7 +29,7 @@ class Direction
 	 */
 	public function __construct()
 	{
-		$this->directionTool = new DirectionText();
+		$this->directionTool = null;
 	}
 	
 	/**
@@ -66,6 +65,10 @@ class Direction
 	 */
 	public function displayDirection()
 	{
-		return $this->directionTool->findDirection();
+		if ($this->directionTool !== null) {
+			return $this->directionTool->findDirection();
+		} else {
+			return "";
+		}
 	}
 }
