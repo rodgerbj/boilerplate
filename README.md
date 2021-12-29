@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 https://blog.astrid-guenther.de/der-weg-zu-joomlae4-erweiterungen/
+=======
+https://blog.astrid-guenther.de/en/der-weg-zu-joomla4-erweiterungen/
+German: https://blog.astrid-guenther.de/der-weg-zu-joomla4-erweiterungen/
+>>>>>>> origin/t42
 
 # Boilerplate and Tutorial Sample Files
 Boilerplate files for Joomla! 4 extensions.
