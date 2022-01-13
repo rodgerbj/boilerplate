@@ -13,12 +13,17 @@ use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 
+<<<<<<< HEAD
 $canDo   = ContentHelper::getActions('com_foos', 'category', $this->item->catid);
 $canEdit = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == Factory::getUser()->id);
 $tparams = $this->item->params;
 
 if ($tparams->get('show_name')) {
 	if ($this->Params->get('show_foo_name_label')) {
+=======
+if ($this->item->params->get('show_name')) {
+	if ($this->params->get('show_foo_name_label')) {
+>>>>>>> origin/t24b
 		echo Text::_('COM_FOOS_NAME');
 	}
 
