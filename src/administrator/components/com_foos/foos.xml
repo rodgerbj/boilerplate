@@ -69,6 +69,7 @@
 			<filename>foos.xml</filename>
 			<filename>config.xml</filename>
 			<folder>forms</folder>
+			<folder>presets</folder>
 			<folder>language</folder>
 			<folder>services</folder>
 			<folder>sql</folder>
