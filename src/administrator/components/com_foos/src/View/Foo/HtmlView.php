@@ -137,6 +137,7 @@ class HtmlView extends BaseHtmlView
 		}
 
 		ToolbarHelper::divider();
+		ToolbarHelper::inlinehelp();
 		ToolbarHelper::help('', false, 'http://joomla.org');
 	}
 }
