@@ -183,8 +183,5 @@ class HtmlView extends BaseHtmlView
 		if ($user->authorise('core.admin', 'com_foos') || $user->authorise('core.options', 'com_foos')) {
 			$toolbar->preferences('com_foos');
 		}
-
-		ToolbarHelper::divider();
-		ToolbarHelper::help('', false, 'http://joomla.org');
 	}
 }
