@@ -2,7 +2,7 @@
 /**
  * @package     Facile
  *
- * @copyright   Copyright (C) 2021 Facile. All rights reserved.
+ * @copyright   Copyright (C) Facile. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
