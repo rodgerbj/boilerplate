@@ -19,15 +19,14 @@
 		<filename>templateDetails.xml</filename>
 		<filename>template_preview.png</filename>
 		<filename>template_thumbnail.png</filename>
-		<folder>assets</folder>
 		<folder>html</folder>
-		<folder>images</folder>
 		<folder>language</folder>
 	</files>
 	<media destination="templates/site/facile" folder="media">
 		<folder>js</folder>
 		<folder>css</folder>
-		<folder>scss</folder>
+		<folder>sass</folder>
+		<folder>webfonts</folder>
 		<folder>images</folder>
 	</media>
 	<positions>
