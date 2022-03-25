@@ -9,6 +9,7 @@
 	<license>GNU General Public License version 2 or later;</license>
 	<version>__BUMP_VERSION__</version>
 	<description>TPL_FACILE_XML_DESCRIPTION</description>
+	<inheritable>1</inheritable> 
 
 	<files>
 		<filename>component.php</filename>
