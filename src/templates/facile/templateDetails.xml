@@ -9,6 +9,7 @@
 	<license>GNU General Public License version 2 or later;</license>
 	<version>__BUMP_VERSION__</version>
 	<description>TPL_FACILE_XML_DESCRIPTION</description>
+	<inheritable>1</inheritable> 
 
 	<files>
 		<filename>component.php</filename>
@@ -18,6 +19,8 @@
 		<filename>templateDetails.xml</filename>
 		<filename>template_preview.png</filename>
 		<filename>template_thumbnail.png</filename>
+		<folder>assets</folder>
+		<folder>html</folder>
 		<folder>language</folder>
 	</files>
 
