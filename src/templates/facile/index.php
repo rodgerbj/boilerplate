@@ -10,17 +10,17 @@
 
 use Joomla\CMS\HTML\HTMLHelper;
 
-$templatePath = 'templates/' . $this->template;
+$mediaPath = 'media/templates/site/' . $this->template;
 $wa  = $this->getWebAssetManager();
-$wa->registerAndUseStyle('main_dark', $templatePath . '/assets/css/main.dark.css', [], ['media' => '(prefers-color-scheme: dark)']);
-$wa->registerAndUseStyle('main_light', $templatePath . '/assets/css/main.css', [], ['media' => '(prefers-color-scheme: no-preference), (prefers-color-scheme: light)']);
+$wa->registerAndUseStyle('main_dark', $mediaPath . '/css/main.dark.css', [], ['media' => '(prefers-color-scheme: dark)']);
+$wa->registerAndUseStyle('main_light', $mediaPath . '/css/main.css', [], ['media' => '(prefers-color-scheme: no-preference), (prefers-color-scheme: light)']);
 HTMLHelper::_('jquery.framework');
-$wa->registerAndUseScript('dropotron', $templatePath . '/assets/js/jquery.dropotron.min.js', [], ['defer' => true], []);
-$wa->registerAndUseScript('scrolly', $templatePath . '/assets/js/jquery.scrolly.min.js', [], ['defer' => true], []);
-$wa->registerAndUseScript('browser', $templatePath . '/assets/js/browser.min.js', [], ['defer' => true], []);
-$wa->registerAndUseScript('breakpoints', $templatePath . '/assets/js/breakpoints.min.js', [], ['defer' => true], []);
-$wa->registerAndUseScript('util', $templatePath . '/assets/js/util.js', [], ['defer' => true], []);
-$wa->registerAndUseScript('main', $templatePath . '/assets/js/main.js', [], ['defer' => true], []);
+$wa->registerAndUseScript('dropotron', $mediaPath . '/js/jquery.dropotron.min.js', [], ['defer' => true], []);
+$wa->registerAndUseScript('scrolly', $mediaPath . '/js/jquery.scrolly.min.js', [], ['defer' => true], []);
+$wa->registerAndUseScript('browser', $mediaPath . '/js/browser.min.js', [], ['defer' => true], []);
+$wa->registerAndUseScript('breakpoints', $mediaPath . '/js/breakpoints.min.js', [], ['defer' => true], []);
+$wa->registerAndUseScript('util', $mediaPath . '/js/util.js', [], ['defer' => true], []);
+$wa->registerAndUseScript('main', $mediaPath . '/js/main.js', [], ['defer' => true], []);
 ?>
 
 <!DOCTYPE html>
@@ -33,12 +33,12 @@ $wa->registerAndUseScript('main', $templatePath . '/assets/js/main.js', [], ['de
     <jdoc:include type="scripts" />
 
     <link rel="apple-touch-icon" sizes="180x180"
-        href="<?php echo $templatePath . '/favicon_package'; ?>/apple-touch-icon.png">
+        href="<?php echo $mediaPath . '/favicon_package'; ?>/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32"
-        href="<?php echo $templatePath . '/favicon_package'; ?>/favicon-32x32.png">
+        href="<?php echo $mediaPath . '/favicon_package'; ?>/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16"
-        href="<?php echo $templatePath . '/favicon_package'; ?>/favicon-16x16.png">
-    <link rel="manifest" href="<?php echo $templatePath . '/favicon_package'; ?>/site.webmanifest">
+        href="<?php echo $mediaPath . '/favicon_package'; ?>/favicon-16x16.png">
+    <link rel="manifest" href="<?php echo $mediaPath . '/favicon_package'; ?>/site.webmanifest">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
