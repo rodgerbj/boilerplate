@@ -28,7 +28,6 @@
 		<folder>sass</folder>
 		<folder>webfonts</folder>
 		<folder>images</folder>
-		<folder>favicon_package</folder>
 	</media>
 	<positions>
 		<position>topbar</position>
