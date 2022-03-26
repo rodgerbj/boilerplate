@@ -13,6 +13,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 $wa  = $this->getWebAssetManager();
 $wa->registerAndUseStyle('main_dark', 'main.dark.css', [], ['media' => '(prefers-color-scheme: dark)']);
 $wa->registerAndUseStyle('main_light', 'main.css', [], ['media' => '(prefers-color-scheme: no-preference), (prefers-color-scheme: light)']);
+$wa->registerAndUseStyle('user', 'user.css', [], []);
 HTMLHelper::_('jquery.framework');
 $wa->registerAndUseScript('dropotron', '/js/jquery.dropotron.min.js', [], ['defer' => true], []);
 $wa->registerAndUseScript('scrolly', '/js/jquery.scrolly.min.js', [], ['defer' => true], []);
