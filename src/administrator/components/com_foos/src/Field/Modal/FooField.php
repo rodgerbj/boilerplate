@@ -37,7 +37,7 @@ class FooField extends FormField
 	 *
 	 * @return  string  The field input markup.
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   __DEPLOY_VERSION__ 
 	 */
 	protected function getInput()
 	{
@@ -51,11 +51,11 @@ class FooField extends FormField
 		$modalId = 'Foo_' . $this->id;
 
 		// Add the modal field script to the document head.
-		HTMLHelper::_(
-			'script',
-			'system/fields/modal-fields.min.js',
-			['version' => 'auto', 'relative' => true]
-		);
+		/** @var \Joomla\CMS\WebAsset\WebAssetManager $wa */
+		$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+
+		// Add the modal field script to the document head.
+		$wa->useScript('field.modal-fields');
 
 		// Script to proxy the select modal function to the modal-fields.js file.
 		if ($allowSelect) {
@@ -65,12 +65,17 @@ class FooField extends FormField
 				$scriptSelect = [];
 			}
 
-			if (!isset($scriptSelect[$this->id])) {
-				Factory::getDocument()->addScriptDeclaration("
-				function jSelectFoo_"
-					. $this->id
-					. "(id, title, object) { window.processModalSelect('Foo', '"
-					. $this->id . "', id, title, '', object);}");
+			if (!isset($scriptSelect[$this->id]))
+			{
+				$wa->addInlineScript("
+				window.jSelectFoo_" . $this->id . " = function (id, title, object) {
+					window.processModalSelect('Contact', '" . $this->id . "', id, title, '', object);
+				}",
+					[],
+					['type' => 'module']
+				);
+
+				Text::script('JGLOBAL_ASSOCIATIONS_PROPAGATE_FAILED');
 
 				$scriptSelect[$this->id] = true;
 			}
