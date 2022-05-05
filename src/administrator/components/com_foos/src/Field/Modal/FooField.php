@@ -65,17 +65,14 @@ class FooField extends FormField
 				$scriptSelect = [];
 			}
 
-			if (!isset($scriptSelect[$this->id]))
-			{
+			if (!isset($scriptSelect[$this->id])) {
 				$wa->addInlineScript("
 				window.jSelectFoo_" . $this->id . " = function (id, title, object) {
-					window.processModalSelect('Contact', '" . $this->id . "', id, title, '', object);
+					window.processModalSelect('Foo', '" . $this->id . "', id, title, '', object);
 				}",
 					[],
 					['type' => 'module']
 				);
-
-				Text::script('JGLOBAL_ASSOCIATIONS_PROPAGATE_FAILED');
 
 				$scriptSelect[$this->id] = true;
 			}
